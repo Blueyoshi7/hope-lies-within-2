@@ -41,6 +41,7 @@ HLW.elementLabels = {
 HLW.pendingSkill = null;
 HLW.rangeLayer = null;
 HLW.rangeHelp = null;
+HLW.lastHandledTurnKey = null;
 
 function numberValue(value) {
   const parsed = Number(value);
@@ -159,6 +160,9 @@ function drawSkillRange(sourceToken, rangeLimit, skillName) {
   layer.endFill();
   layer.lineStyle(1, 0xffffff, 0.6);
   layer.drawCircle(center.x, center.y, radius);
+  layer.eventMode = "none";
+  layer.interactive = false;
+  layer.interactiveChildren = false;
   canvas.stage.addChild(layer);
   HLW.rangeLayer = layer;
 
@@ -236,6 +240,16 @@ async function resetActorTurnState(actor) {
 
   await actor.update(updates);
   if (itemUpdates.length) await actor.updateEmbeddedDocuments("Item", itemUpdates);
+}
+
+function handleCombatTurnChange(combat) {
+  const turnKey = `${combat.id}-${combat.round}-${combat.turn}`;
+  if (HLW.lastHandledTurnKey === turnKey) return;
+  HLW.lastHandledTurnKey = turnKey;
+
+  const actor = combat.combatant?.actor;
+  resetActorTurnState(actor);
+  showTurnOverlayForActor(actor);
 }
 
 export class HopeLiesWithinActor extends Actor {
@@ -656,12 +670,15 @@ Hooks.on("canvasReady", () => {
   canvas.stage.on("pointerdown", HLW._canvasPointerDown);
 });
 
-document.addEventListener("keydown", (event) => {
+function handleCancelPendingSkill(event) {
   if (event.key === "Escape" && HLW.pendingSkill) {
     clearPendingSkill();
     ui.notifications?.info("Skill-Zielmodus abgebrochen.");
   }
-});
+}
+
+document.addEventListener("keydown", handleCancelPendingSkill, true);
+window.addEventListener("keydown", handleCancelPendingSkill, true);
 
 Hooks.on("combatStart", (combat) => {
   showCombatOverlay(combat);
@@ -676,26 +693,25 @@ Hooks.on("deleteCombat", (combat) => {
 
 Hooks.on("updateCombat", (combat, changed) => {
   if (!("turn" in changed)) return;
+  handleCombatTurnChange(combat);
+});
 
-  const actor = combat.combatant?.actor;
-  resetActorTurnState(actor);
-  showTurnOverlayForActor(actor);
+Hooks.on("combatTurn", (combat) => {
+  handleCombatTurnChange(combat);
 });
 
 Hooks.on("preUpdateToken", async (tokenDocument, changes) => {
   if (!game.combat?.started) return;
   if (!("x" in changes) && !("y" in changes)) return;
+  if (game.user?.isGM) return;
 
   const actor = tokenDocument.actor;
   if (!actor) return;
 
   const currentActor = game.combat.combatant?.actor;
   if (currentActor?.id !== actor.id) {
-    if (!game.user?.isGM) {
-      ui.notifications?.warn("Dieser Token ist gerade nicht am Zug.");
-      return false;
-    }
-    return;
+    ui.notifications?.warn("Dieser Token ist gerade nicht am Zug.");
+    return false;
   }
 
   const from = {
