@@ -53,6 +53,18 @@
         </button>
       </section>
 
+      <section class="resistance-panel">
+        <h2>Resistenzen</h2>
+        <div class="resistance-grid">
+          {{#each system.resistances as |resistance key|}}
+            <label>
+              <span>{{resistance.label}}</span>
+              <input name="system.resistances.{{key}}.value" type="number" value="{{resistance.value}}" />
+            </label>
+          {{/each}}
+        </div>
+      </section>
+
       <section class="two-column">
         <div>
           <h2>Attribute</h2>
@@ -91,10 +103,11 @@
       <h2>Spieler- und Klassenskills</h2>
       <ol class="item-list">
         {{#each itemsByType.skills as |item|}}
-          <li class="item-row" data-item-id="{{item.id}}">
-            <button type="button" data-use-skill>Nutzen</button>
+          <li class="item-row {{#unless item.canUse}}is-disabled{{/unless}}" data-item-id="{{item.id}}">
+            <button type="button" data-use-skill {{#unless item.canUse}}disabled{{/unless}}>Nutzen</button>
             <strong>{{item.name}}</strong>
             <span>{{item.system.skillType}}</span>
+            <span>{{item.system.element}}</span>
             <span>CD {{item.system.cooldown.value}} / {{item.system.cooldown.max}}</span>
             <span>Range {{item.system.range}}</span>
             <span>{{item.system.damage}}</span>

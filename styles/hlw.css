@@ -64,6 +64,7 @@
 .hlw-sheet .identity-grid,
 .hlw-sheet .resource-grid,
 .hlw-sheet .action-grid,
+.hlw-sheet .resistance-grid,
 .hlw-sheet .form-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -120,12 +121,26 @@
 
 .hlw-sheet .attribute-grid label,
 .hlw-sheet .resource-grid label,
+.hlw-sheet .resistance-grid label,
 .hlw-sheet .form-grid label,
 .hlw-sheet .stacked {
   padding: 8px;
   border: 1px solid var(--hlw-border);
   border-radius: 6px;
   background: var(--hlw-panel);
+}
+
+.hlw-sheet .resistance-panel {
+  margin: 10px 0;
+}
+
+.hlw-sheet .resistance-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hlw-sheet .resistance-grid label span {
+  min-height: 18px;
+  font-size: 12px;
 }
 
 .hlw-sheet .action-grid {
@@ -191,7 +206,11 @@
 }
 
 .hlw-sheet .item-row {
-  grid-template-columns: minmax(72px, auto) minmax(150px, 1fr) repeat(4, minmax(70px, auto));
+  grid-template-columns: minmax(72px, auto) minmax(150px, 1fr) repeat(5, minmax(70px, auto));
+}
+
+.hlw-sheet .item-row.is-disabled {
+  opacity: 0.48;
 }
 
 .hlw-sheet .world-skill-row button {
@@ -215,6 +234,10 @@
   animation: hlw-combat-enter 500ms ease-out both;
 }
 
+.hlw-combat-overlay.is-end {
+  background: radial-gradient(circle, rgba(20, 120, 70, 0.34), rgba(0, 25, 16, 0.74));
+}
+
 .hlw-combat-overlay.is-fading {
   animation: hlw-combat-exit 800ms ease-in both;
 }
@@ -227,6 +250,10 @@
   letter-spacing: 0;
   text-shadow: 0 6px 0 #4b0909, 0 0 28px rgba(255, 61, 20, 0.9), 0 0 70px rgba(255, 154, 42, 0.55);
   transform: rotate(-2deg);
+}
+
+.hlw-combat-overlay.is-end .hlw-combat-overlay__text {
+  text-shadow: 0 6px 0 #0d4b2b, 0 0 28px rgba(43, 255, 154, 0.85), 0 0 70px rgba(103, 255, 184, 0.5);
 }
 
 .hlw-combat-overlay__sub {
@@ -267,6 +294,10 @@
 .hlw-combat-card h2 {
   color: #7b1414;
   letter-spacing: 0;
+}
+
+.hlw-combat-card.is-end h2 {
+  color: #16633d;
 }
 
 @keyframes hlw-combat-enter {

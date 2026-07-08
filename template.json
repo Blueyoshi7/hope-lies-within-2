@@ -37,6 +37,17 @@
           "actionPoints": { "label": "Aktionspunkte", "value": 1, "max": 1 },
           "corruption": { "label": "Korruptionswert", "value": 0, "max": 100 }
         },
+        "resistances": {
+          "physical": { "label": "Physical Resistance", "value": 0 },
+          "magic": { "label": "Magic Resistance", "value": 0 },
+          "fire": { "label": "Fire Resistance", "value": 0 },
+          "ice": { "label": "Ice Resistance", "value": 0 },
+          "lightning": { "label": "Lightning Resistance", "value": 0 },
+          "earth": { "label": "Earth Resistance", "value": 0 },
+          "wind": { "label": "Wind Resistance", "value": 0 },
+          "holy": { "label": "Holy Resistance", "value": 0 },
+          "shadow": { "label": "Shadow Resistance", "value": 0 }
+        },
         "actions": {
           "main": { "label": "Hauptaktion", "available": true },
           "movement": { "label": "Bewegung", "available": true },
@@ -78,6 +89,7 @@
         "skillType": "",
         "cost": "",
         "castTime": "",
+        "element": "",
         "range": "",
         "damage": "",
         "effect": "",
