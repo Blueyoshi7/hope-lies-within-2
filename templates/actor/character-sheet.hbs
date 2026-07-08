@@ -126,7 +126,7 @@
       <h2>Spieler- und Klassenskills</h2>
       <ol class="item-list">
         {{#each itemsByType.skills as |item|}}
-          <li class="item-row {{#unless item.canUse}}is-disabled{{/unless}}" data-item-id="{{item.id}}">
+          <li class="item-row {{#unless item.canUse}}is-disabled{{/unless}}" data-item-id="{{item.id}}" draggable="true">
             <button type="button" data-use-skill {{#unless item.canUse}}disabled{{/unless}}>{{#if item.isPending}}Abbrechen{{else}}Nutzen{{/if}}</button>
             <strong>{{item.name}}</strong>
             <span>{{item.system.skillType}}</span>

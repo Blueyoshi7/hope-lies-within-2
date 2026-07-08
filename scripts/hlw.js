@@ -62,6 +62,7 @@ HLW.insigniaSlotDefaults = {
 HLW.pendingSkill = null;
 HLW.rangeLayer = null;
 HLW.rangeHelp = null;
+HLW.targetPicker = null;
 HLW.lastHandledTurnKey = null;
 
 function numberValue(value) {
@@ -193,7 +194,32 @@ function getSourceTokenForActor(actor) {
   return canvas.tokens?.controlled?.find((token) => token.actor?.id === actor.id) ?? actor.getActiveTokens()?.[0];
 }
 
+function rerenderActorSheet(actorId) {
+  const actor = game.actors?.get(actorId);
+  if (actor?.sheet?.rendered) actor.sheet.render(false);
+}
+
+function getTokensInRange(sourceToken, rangeLimit) {
+  return (canvas.tokens?.placeables ?? [])
+    .filter((token) => token.id !== sourceToken.id && token.actor)
+    .map((token) => ({
+      token,
+      distance: getTokenDistanceInTiles(sourceToken, token)
+    }))
+    .filter((entry) => rangeLimit <= 0 || entry.distance <= rangeLimit + 0.01)
+    .sort((a, b) => a.distance - b.distance);
+}
+
+function closeTargetPicker() {
+  if (HLW.targetPicker) {
+    HLW.targetPicker.remove();
+    HLW.targetPicker = null;
+  }
+}
+
 function clearPendingSkill() {
+  const actorId = HLW.pendingSkill?.actorId;
+
   if (HLW.rangeLayer) {
     HLW.rangeLayer.remove();
     HLW.rangeLayer = null;
@@ -204,12 +230,12 @@ function clearPendingSkill() {
     HLW.rangeHelp = null;
   }
 
+  closeTargetPicker();
   HLW.pendingSkill = null;
+  if (actorId) rerenderActorSheet(actorId);
 }
 
 function drawSkillRange(sourceToken, rangeLimit, skillName) {
-  clearPendingSkill();
-
   const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
   const radius = Math.max(rangeLimit * gridSize, gridSize * 0.5);
   const center = sourceToken.center ?? { x: sourceToken.x + sourceToken.w / 2, y: sourceToken.y + sourceToken.h / 2 };
@@ -226,22 +252,61 @@ function drawSkillRange(sourceToken, rangeLimit, skillName) {
 
   const help = document.createElement("div");
   help.className = "hlw-range-help";
-  help.innerText = `${skillName}: Ziel im Umkreis von ${rangeLimit || "-"} Tiles anklicken. ESC bricht ab.`;
+  help.innerText = `${skillName}: Ziel aus der Liste waehlen. Button erneut klicken bricht ab.`;
   document.body.appendChild(help);
   HLW.rangeHelp = help;
 }
 
-function tokenAtCanvasPoint(point) {
-  const tokens = canvas.tokens?.placeables ?? [];
-  return tokens.find((token) => {
-    const bounds = token.bounds;
-    if (bounds?.contains?.(point.x, point.y)) return true;
-    return point.x >= token.x && point.x <= token.x + token.w && point.y >= token.y && point.y <= token.y + token.h;
-  });
-}
-
 function getCanvasTokenById(tokenId) {
   return canvas.tokens?.placeables?.find((token) => token.id === tokenId || token.document?.id === tokenId);
+}
+
+function showTargetPicker(actor, item, sourceToken, rangeLimit) {
+  closeTargetPicker();
+
+  const entries = getTokensInRange(sourceToken, rangeLimit);
+  const picker = document.createElement("div");
+  picker.className = "hlw-target-picker";
+
+  const targetRows = entries.length
+    ? entries.map(({ token, distance }) => `
+      <button type="button" data-target-token-id="${token.id}">
+        <img src="${escapeHtml(token.document?.texture?.src || token.actor?.img || "")}" alt="">
+        <span>${escapeHtml(token.name)}</span>
+        <strong>${distance.toFixed(1)} Tiles</strong>
+      </button>
+    `).join("")
+    : `<p>Keine Ziele in Reichweite.</p>`;
+
+  picker.innerHTML = `
+    <header>
+      <strong>${escapeHtml(item.name)}</strong>
+      <button type="button" data-cancel-targeting>Abbrechen</button>
+    </header>
+    <div class="hlw-target-picker__list">${targetRows}</div>
+  `;
+
+  picker.addEventListener("click", async (event) => {
+    const cancel = event.target.closest("[data-cancel-targeting]");
+    if (cancel) {
+      clearPendingSkill();
+      return;
+    }
+
+    const button = event.target.closest("[data-target-token-id]");
+    if (!button) return;
+
+    const token = getCanvasTokenById(button.dataset.targetTokenId);
+    if (!token) {
+      ui.notifications?.warn("Zieltoken wurde nicht gefunden.");
+      return;
+    }
+
+    await actor.resolveSkill(item.id, token);
+  });
+
+  document.body.appendChild(picker);
+  HLW.targetPicker = picker;
 }
 
 async function postCombatStartMessage(combat) {
@@ -458,8 +523,11 @@ export class HopeLiesWithinActor extends Actor {
       }
 
       const rangeLimit = parseRange(item.system?.range);
+      clearPendingSkill();
       HLW.pendingSkill = { actorId: this.id, itemId, sourceType, sourceTokenId: sourceToken.id, rangeLimit };
       drawSkillRange(sourceToken, rangeLimit, item.name);
+      showTargetPicker(this, item, sourceToken, rangeLimit);
+      rerenderActorSheet(this.id);
       return;
     }
 
@@ -518,11 +586,19 @@ export class HopeLiesWithinActor extends Actor {
       const defenseAffinity = getDefensiveAffinity(targetToken.actor, element);
       const finalDamage = Math.max(numberValue(roll.total) + attackAffinity - defenseAffinity, 0);
       const currentHp = numberValue(targetToken.actor?.system?.resources?.hp?.value);
+      const nextHp = Math.max(currentHp - finalDamage, 0);
+      let defeated = false;
 
       if (targetToken.actor) {
         await targetToken.actor.update({
-          "system.resources.hp.value": Math.max(currentHp - finalDamage, 0)
+          "system.resources.hp.value": nextHp
         });
+
+        defeated = nextHp <= 0;
+        if (defeated && game.combat) {
+          const combatant = game.combat.combatants.find((entry) => entry.tokenId === targetToken.document?.id || entry.actor?.id === targetToken.actor?.id);
+          if (combatant) await combatant.update({ defeated: true });
+        }
       }
 
       damageResult = {
@@ -533,7 +609,8 @@ export class HopeLiesWithinActor extends Actor {
         roll,
         attackAffinity,
         defenseAffinity,
-        finalDamage
+        finalDamage,
+        defeated
       };
     }
 
@@ -566,6 +643,7 @@ export class HopeLiesWithinActor extends Actor {
               <dt>Veranlagung Angriff</dt><dd>+${damageResult.attackAffinity}</dd>
               <dt>Veranlagung Ziel</dt><dd>-${damageResult.defenseAffinity}</dd>
               <dt>Finaler Schaden</dt><dd><strong>${damageResult.finalDamage}</strong></dd>
+              ${damageResult.defeated ? `<dt>Status</dt><dd><strong>Besiegt</strong></dd>` : ""}
             </dl>
           ` : ""}
           ${effect ? `<p>${effect}</p>` : ""}
@@ -640,6 +718,20 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     html.find("[data-standard-action]").on("click", (event) => {
       event.preventDefault();
       this.actor.useStandardAction(event.currentTarget.dataset.standardAction);
+    });
+
+    html.find("[data-item-id][draggable=true]").on("dragstart", (event) => {
+      const itemId = event.currentTarget.dataset.itemId;
+      const item = this.actor.items.get(itemId);
+      if (!item) return;
+
+      event.originalEvent.dataTransfer.setData("text/plain", JSON.stringify({
+        type: "Item",
+        uuid: item.uuid,
+        actorId: this.actor.id,
+        itemId: item.id,
+        systemId: "hope-lies-within-2"
+      }));
     });
   }
 
@@ -753,29 +845,30 @@ Hooks.once("ready", () => {
   });
 });
 
-Hooks.on("canvasReady", () => {
-  clearPendingSkill();
+Hooks.on("hotbarDrop", async (bar, data, slot) => {
+  if (data?.systemId !== "hope-lies-within-2" || !data.actorId || !data.itemId) return;
+
+  const actor = game.actors.get(data.actorId);
+  const item = actor?.items.get(data.itemId);
+  if (!actor || !item) return false;
+
+  const command = `game.actors.get("${actor.id}")?.startSkillTargeting("${item.id}");`;
+  let macro = game.macros.find((entry) => entry.name === item.name && entry.command === command);
+  if (!macro) {
+    macro = await Macro.create({
+      name: item.name,
+      type: "script",
+      img: item.img,
+      command
+    });
+  }
+
+  game.user.assignHotbarMacro(macro, slot);
+  return false;
 });
 
-Hooks.on("controlToken", async (token, controlled) => {
-  if (!controlled || !HLW.pendingSkill) return;
-
-  const actor = game.actors?.get(HLW.pendingSkill.actorId);
-  const sourceToken = getCanvasTokenById(HLW.pendingSkill.sourceTokenId);
-  if (!actor || !sourceToken) {
-    clearPendingSkill();
-    return;
-  }
-
-  if (token.id === sourceToken.id) return;
-
-  const distance = getTokenDistanceInTiles(sourceToken, token);
-  if (HLW.pendingSkill.rangeLimit > 0 && distance > HLW.pendingSkill.rangeLimit) {
-    ui.notifications?.warn(`${token.name} ist ausser Reichweite (${distance.toFixed(1)} / ${HLW.pendingSkill.rangeLimit} Tiles).`);
-    return;
-  }
-
-  await actor.resolveSkill(HLW.pendingSkill.itemId, token);
+Hooks.on("canvasReady", () => {
+  clearPendingSkill();
 });
 
 function handleCancelPendingSkill(event) {
