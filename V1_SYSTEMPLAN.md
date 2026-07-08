@@ -24,6 +24,7 @@ Der Erkundungsmodus nutzt Foundrys Standardfunktionen:
 Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten:
 
 - Initiative / Turn Order ueber Foundry
+- Initiative-Formel V1: 1W20 + SPE
 - Lebenspunkte
 - Bewegungsreichweite
 - Aktionspunkte

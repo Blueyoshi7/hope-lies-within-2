@@ -26,12 +26,21 @@ HLW.worldSkills = {
   tierkunde: { label: "Tierkunde", attributes: ["agl", "spe", "wis"] }
 };
 
+HLW.initiativeFormula = "1d20 + @attributes.spe.value";
+
 function numberValue(value) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
 export class HopeLiesWithinActor extends Actor {
+  getRollData() {
+    const data = super.getRollData();
+    data.attributes = this.system.attributes ?? {};
+    data.resources = this.system.resources ?? {};
+    return data;
+  }
+
   prepareDerivedData() {
     super.prepareDerivedData();
 
@@ -169,6 +178,10 @@ Hooks.once("init", () => {
   CONFIG.HLW = HLW;
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
+  CONFIG.Combat.initiative = {
+    formula: HLW.initiativeFormula,
+    decimals: 2
+  };
 
   if (BaseActorSheet && globalThis.Actors?.registerSheet) {
     Actors.unregisterSheet("core", BaseActorSheet);
