@@ -145,6 +145,7 @@
 
 .hlw-sheet .action-grid {
   margin: 10px 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .hlw-sheet .action-toggle {
@@ -173,6 +174,11 @@
 .hlw-sheet .action-toggle.is-spent {
   opacity: 0.62;
   background: #e2d8c9;
+}
+
+.hlw-sheet .action-toggle.end-turn {
+  border-color: #9d7a1e;
+  background: #fff4c2;
 }
 
 .hlw-sheet .attribute-grid small {
@@ -238,6 +244,10 @@
   background: radial-gradient(circle, rgba(20, 120, 70, 0.34), rgba(0, 25, 16, 0.74));
 }
 
+.hlw-combat-overlay.is-turn {
+  background: radial-gradient(circle, rgba(180, 132, 18, 0.3), rgba(22, 16, 0, 0.64));
+}
+
 .hlw-combat-overlay.is-fading {
   animation: hlw-combat-exit 800ms ease-in both;
 }
@@ -254,6 +264,26 @@
 
 .hlw-combat-overlay.is-end .hlw-combat-overlay__text {
   text-shadow: 0 6px 0 #0d4b2b, 0 0 28px rgba(43, 255, 154, 0.85), 0 0 70px rgba(103, 255, 184, 0.5);
+}
+
+.hlw-combat-overlay.is-turn .hlw-combat-overlay__text {
+  color: #fff1ad;
+  text-shadow: 0 6px 0 #6b4d09, 0 0 28px rgba(255, 209, 68, 0.95), 0 0 70px rgba(255, 232, 140, 0.55);
+}
+
+.hlw-range-help {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  z-index: 99999;
+  transform: translateX(-50%);
+  padding: 10px 16px;
+  border: 1px solid #d6a52d;
+  border-radius: 6px;
+  background: rgba(25, 18, 4, 0.9);
+  color: #fff1ad;
+  font-weight: 700;
+  pointer-events: none;
 }
 
 .hlw-combat-overlay__sub {

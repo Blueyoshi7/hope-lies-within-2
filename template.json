@@ -53,6 +53,9 @@
           "movement": { "label": "Bewegung", "available": true },
           "bonus": { "label": "Bonusaktion", "available": true }
         },
+        "combat": {
+          "movementSpent": 0
+        },
         "worldSkills": {
           "athletik": { "label": "Athletik", "attributes": ["str", "con", "agl"], "bonus": 0, "total": 0 },
           "wortgewandtheit": { "label": "Wortgewandtheit", "attributes": ["cha", "edu", "int"], "bonus": 0, "total": 0 },
