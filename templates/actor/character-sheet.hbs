@@ -17,6 +17,7 @@
   <nav class="sheet-tabs tabs" data-group="primary">
     <a class="item" data-tab="main">Charakter</a>
     <a class="item" data-tab="skills">Skills</a>
+    <a class="item" data-tab="insignia">Insignien</a>
     <a class="item" data-tab="inventory">Inventar</a>
     <a class="item" data-tab="notes">Notizen</a>
   </nav>
@@ -57,13 +58,31 @@
         </button>
       </section>
 
+      <section class="standard-actions">
+        <h2>Standardaktionen</h2>
+        <div class="action-grid">
+          <button type="button" class="action-toggle {{#unless system.actions.main.available}}is-spent{{/unless}}" data-standard-action="attack" {{#unless system.actions.main.available}}disabled{{/unless}}>
+            <strong>Normaler Angriff</strong>
+            <span>Waffe</span>
+          </button>
+          <button type="button" class="action-toggle {{#unless system.actions.main.available}}is-spent{{/unless}}" data-standard-action="item" {{#unless system.actions.main.available}}disabled{{/unless}}>
+            <strong>Item verwenden</strong>
+            <span>Aktion</span>
+          </button>
+          <button type="button" class="action-toggle {{#unless system.actions.main.available}}is-spent{{/unless}}" data-standard-action="defend" {{#unless system.actions.main.available}}disabled{{/unless}}>
+            <strong>Abwehrhaltung</strong>
+            <span>Aktion</span>
+          </button>
+        </div>
+      </section>
+
       <section class="resistance-panel">
-        <h2>Resistenzen</h2>
+        <h2>Veranlagung</h2>
         <div class="resistance-grid">
-          {{#each system.resistances as |resistance key|}}
+          {{#each system.affinities as |affinity key|}}
             <label>
-              <span>{{resistance.label}}</span>
-              <input name="system.resistances.{{key}}.value" type="number" value="{{resistance.value}}" />
+              <span>{{affinity.label}}</span>
+              <input name="system.affinities.{{key}}.value" type="number" value="{{affinity.value}}" />
             </label>
           {{/each}}
         </div>
@@ -108,7 +127,7 @@
       <ol class="item-list">
         {{#each itemsByType.skills as |item|}}
           <li class="item-row {{#unless item.canUse}}is-disabled{{/unless}}" data-item-id="{{item.id}}">
-            <button type="button" data-use-skill {{#unless item.canUse}}disabled{{/unless}}>Nutzen</button>
+            <button type="button" data-use-skill {{#unless item.canUse}}disabled{{/unless}}>{{#if item.isPending}}Abbrechen{{else}}Nutzen{{/if}}</button>
             <strong>{{item.name}}</strong>
             <span>{{item.system.skillType}}</span>
             <span>{{item.system.element}}</span>
@@ -120,10 +139,24 @@
       </ol>
     </div>
 
+    <div class="tab" data-group="primary" data-tab="insignia">
+      <h2>Insignien</h2>
+      <div class="insignia-grid">
+        {{#each system.insigniaSlots as |slot key|}}
+          <section class="insignia-slot">
+            <img src="{{slot.image}}" data-edit="system.insigniaSlots.{{key}}.image" title="{{slot.name}}" />
+            <label>Name <input name="system.insigniaSlots.{{key}}.name" type="text" value="{{slot.name}}" /></label>
+            <label>Bild <input name="system.insigniaSlots.{{key}}.image" type="text" value="{{slot.image}}" /></label>
+            <label>Beschreibung <textarea name="system.insigniaSlots.{{key}}.description">{{slot.description}}</textarea></label>
+          </section>
+        {{/each}}
+      </div>
+    </div>
+
     <div class="tab" data-group="primary" data-tab="inventory">
       <h2>Inventar</h2>
       <h3>Waffen</h3>
-      <ol class="item-list">{{#each itemsByType.weapons as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>{{item.system.damage}}</span><span>{{item.system.range}}</span></li>{{/each}}</ol>
+      <ol class="item-list">{{#each itemsByType.weapons as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>{{item.system.element}}</span><span>{{item.system.damage}}</span><span>{{item.system.range}}</span></li>{{/each}}</ol>
       <h3>Ruestung</h3>
       <ol class="item-list">{{#each itemsByType.armor as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>RW {{item.system.armor}}</span><span>{{item.system.slot}}</span></li>{{/each}}</ol>
       <h3>Ausrüstung</h3>

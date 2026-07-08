@@ -134,6 +134,10 @@
   margin: 10px 0;
 }
 
+.hlw-sheet .standard-actions {
+  margin: 10px 0;
+}
+
 .hlw-sheet .resistance-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -225,6 +229,42 @@
 
 .hlw-sheet .world-skill-row small {
   display: block;
+}
+
+.hlw-sheet .insignia-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hlw-sheet .insignia-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--hlw-border);
+  border-radius: 6px;
+  background: var(--hlw-panel);
+}
+
+.hlw-sheet .insignia-slot img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid var(--hlw-border);
+  border-radius: 4px;
+  background: #efe7d7;
+}
+
+.hlw-range-circle {
+  position: fixed;
+  z-index: 99990;
+  box-sizing: border-box;
+  border: 3px solid rgba(240, 181, 41, 0.95);
+  border-radius: 50%;
+  background: rgba(240, 181, 41, 0.11);
+  box-shadow: 0 0 18px rgba(240, 181, 41, 0.55), inset 0 0 18px rgba(240, 181, 41, 0.25);
+  pointer-events: none;
 }
 
 .hlw-combat-overlay {

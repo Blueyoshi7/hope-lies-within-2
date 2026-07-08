@@ -37,16 +37,18 @@
           "actionPoints": { "label": "Aktionspunkte", "value": 1, "max": 1 },
           "corruption": { "label": "Korruptionswert", "value": 0, "max": 100 }
         },
-        "resistances": {
-          "physical": { "label": "Physical Resistance", "value": 0 },
-          "magic": { "label": "Magic Resistance", "value": 0 },
-          "fire": { "label": "Fire Resistance", "value": 0 },
-          "ice": { "label": "Ice Resistance", "value": 0 },
-          "lightning": { "label": "Lightning Resistance", "value": 0 },
-          "earth": { "label": "Earth Resistance", "value": 0 },
-          "wind": { "label": "Wind Resistance", "value": 0 },
-          "holy": { "label": "Holy Resistance", "value": 0 },
-          "shadow": { "label": "Shadow Resistance", "value": 0 }
+        "affinities": {
+          "slash": { "label": "Klinge", "value": 0 },
+          "blunt": { "label": "Stumpf", "value": 0 },
+          "pierce": { "label": "Stich", "value": 0 },
+          "magic": { "label": "Magie", "value": 0 },
+          "fire": { "label": "Feuer", "value": 0 },
+          "ice": { "label": "Eis", "value": 0 },
+          "lightning": { "label": "Blitz", "value": 0 },
+          "earth": { "label": "Erde", "value": 0 },
+          "wind": { "label": "Wind", "value": 0 },
+          "holy": { "label": "Heilig", "value": 0 },
+          "shadow": { "label": "Schatten", "value": 0 }
         },
         "actions": {
           "main": { "label": "Hauptaktion", "available": true },
@@ -55,6 +57,11 @@
         },
         "combat": {
           "movementSpent": 0
+        },
+        "insigniaSlots": {
+          "slot1": { "image": "", "name": "", "description": "" },
+          "slot2": { "image": "", "name": "", "description": "" },
+          "slot3": { "image": "", "name": "", "description": "" }
         },
         "worldSkills": {
           "athletik": { "label": "Athletik", "attributes": ["str", "con", "agl"], "bonus": 0, "total": 0 },
@@ -112,6 +119,7 @@
         "equipped": false,
         "slot": "",
         "damage": "",
+        "element": "",
         "armor": "",
         "range": "",
         "effect": ""
