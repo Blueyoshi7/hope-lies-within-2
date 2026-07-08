@@ -14,36 +14,30 @@ hope-lies-within-2
 
 Wichtig: Der Ordnerinhalt muss direkt im Repository liegen. Also `system.json`, `template.json`, `scripts/`, `styles/`, `templates/` usw. nicht nochmal in einem Unterordner verstecken.
 
-3. Ersetze in `system.json` diese Platzhalter:
-
-```text
-DEIN-GITHUB-NAME
-```
-
-Beispiel, wenn dein GitHub-Name `dominik` waere:
+3. In `system.json` sind die Links fuer das GitHub-Repo `Blueyoshi7/hope-lies-within-2` vorbereitet:
 
 ```json
-"url": "https://github.com/dominik/hope-lies-within-2",
-"manifest": "https://raw.githubusercontent.com/dominik/hope-lies-within-2/main/system.json",
-"download": "https://github.com/dominik/hope-lies-within-2/releases/download/v0.1.0/hope-lies-within-2-0.1.0.zip"
+"url": "https://github.com/Blueyoshi7/hope-lies-within-2",
+"manifest": "https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json",
+"download": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/download/v0.1.2/hope-lies-within-2-0.1.2.zip"
 ```
 
 4. Erstelle auf GitHub ein Release mit dem Tag:
 
 ```text
-v0.1.0
+v0.1.2
 ```
 
 5. Lade dort die ZIP-Datei hoch:
 
 ```text
-hope-lies-within-2-0.1.0.zip
+hope-lies-within-2-0.1.2.zip
 ```
 
 6. In Foundry nutzt du als Manifest-URL:
 
 ```text
-https://raw.githubusercontent.com/DEIN-GITHUB-NAME/hope-lies-within-2/main/system.json
+https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json
 ```
 
 ## Was Foundry damit macht
