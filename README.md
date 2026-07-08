@@ -25,7 +25,7 @@ Dies ist der V1-Prototyp des Foundry-VTT-Systems fuer **Hope lies Within 2.0**.
 Sobald das System auf GitHub liegt, kannst du in Foundry diese Manifest-URL verwenden:
 
 ```text
-https://raw.githubusercontent.com/DEIN-GITHUB-NAME/hope-lies-within-2/main/system.json
+https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json
 ```
 
 Die genaue Anleitung steht in [MANIFEST_URL_ANLEITUNG.md](MANIFEST_URL_ANLEITUNG.md).
