@@ -35,6 +35,8 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Aktueller Spieler erhaelt ein goldenes "DU BIST AM ZUG"-Overlay
 - Spieler koennen ihren Zug per Button beenden
 - Combat-Bewegung wird anhand der Movement Range begrenzt und pro Zug getrackt
+- GM wird durch Combat-Bewegungslimits nicht blockiert
+- Range-Kreis ist rein visuell und blockiert Token-Klicks nicht
 - Cooldowns sinken am Zugbeginn des jeweiligen Actors um 1
 - Lebenspunkte
 - Bewegungsreichweite
