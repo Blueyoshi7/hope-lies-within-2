@@ -32,6 +32,9 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Skill-Nutzung erzeugt eine Chat Card und setzt Cooldown
 - Schadensskills zeigen einen Range-Kreis, pruefen Range, wuerfeln Schaden, verrechnen Veranlagung und reduzieren HP
 - Skill-Zielmodus: Skill klicken, Range-Kreis sehen, Zieltoken anklicken
+- Zielauswahl erfolgt ueber ein Ziel-Fenster mit Tokens in Reichweite
+- Bei 0 HP wird ein Ziel im Combat Tracker als besiegt markiert
+- Skills koennen aus dem Character Sheet in die Hotbar gezogen werden
 - Veranlagung ersetzt Resistenzen: eigener Wert reduziert eingehenden Schaden und erhoeht ausgehenden Schaden desselben Typs
 - Insignien-Tab mit 3 Slots fuer Bild, Name und Beschreibung
 - Standardaktionen: normaler Angriff, Item verwenden, Abwehrhaltung
