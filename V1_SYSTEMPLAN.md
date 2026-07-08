@@ -25,6 +25,10 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 
 - Initiative / Turn Order ueber Foundry
 - Initiative-Formel V1: 1W20 + SPE
+- Kampfstart-Overlay: grosser Text "IM KAMPF"
+- Aktionsstatus pro Zug: Hauptaktion, Bewegung, Bonusaktion
+- Skill-Nutzung erzeugt eine Chat Card und setzt Cooldown
+- Cooldowns sinken am Zugbeginn des jeweiligen Actors um 1
 - Lebenspunkte
 - Bewegungsreichweite
 - Aktionspunkte

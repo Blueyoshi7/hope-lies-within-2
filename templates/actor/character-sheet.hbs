@@ -38,6 +38,21 @@
         </label>
       </section>
 
+      <section class="action-grid">
+        <button type="button" class="action-toggle {{#if system.actions.main.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="main">
+          <strong>Hauptaktion</strong>
+          <span>{{#if system.actions.main.available}}bereit{{else}}verbraucht{{/if}}</span>
+        </button>
+        <button type="button" class="action-toggle {{#if system.actions.movement.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="movement">
+          <strong>Bewegung</strong>
+          <span>{{#if system.actions.movement.available}}bereit{{else}}verbraucht{{/if}}</span>
+        </button>
+        <button type="button" class="action-toggle {{#if system.actions.bonus.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="bonus">
+          <strong>Bonusaktion</strong>
+          <span>{{#if system.actions.bonus.available}}bereit{{else}}verbraucht{{/if}}</span>
+        </button>
+      </section>
+
       <section class="two-column">
         <div>
           <h2>Attribute</h2>
@@ -77,6 +92,7 @@
       <ol class="item-list">
         {{#each itemsByType.skills as |item|}}
           <li class="item-row" data-item-id="{{item.id}}">
+            <button type="button" data-use-skill>Nutzen</button>
             <strong>{{item.name}}</strong>
             <span>{{item.system.skillType}}</span>
             <span>CD {{item.system.cooldown.value}} / {{item.system.cooldown.max}}</span>

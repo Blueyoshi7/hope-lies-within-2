@@ -33,6 +33,73 @@ function numberValue(value) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
+function boolValue(value) {
+  return value === true || value === "true";
+}
+
+function escapeHtml(value) {
+  const div = document.createElement("div");
+  div.innerText = value ?? "";
+  return div.innerHTML;
+}
+
+function showCombatOverlay(combat) {
+  const existing = document.querySelector(".hlw-combat-overlay");
+  if (existing) existing.remove();
+
+  const overlay = document.createElement("div");
+  overlay.className = "hlw-combat-overlay";
+  overlay.innerHTML = `
+    <div class="hlw-combat-overlay__text">IM KAMPF</div>
+    <div class="hlw-combat-overlay__sub">Runde ${combat.round || 1} beginnt</div>
+  `;
+  document.body.appendChild(overlay);
+
+  window.setTimeout(() => overlay.classList.add("is-fading"), 1800);
+  window.setTimeout(() => overlay.remove(), 2600);
+}
+
+async function postCombatStartMessage(combat) {
+  if (!game.user?.isGM) return;
+
+  await ChatMessage.create({
+    speaker: ChatMessage.getSpeaker(),
+    content: `
+      <div class="hlw-chat-card hlw-combat-card">
+        <h2>IM KAMPF</h2>
+        <p>Der Combatmodus wurde gestartet. Runde ${combat.round || 1} beginnt.</p>
+      </div>
+    `
+  });
+}
+
+async function resetActorTurnState(actor) {
+  if (!game.user?.isGM) return;
+  if (!actor?.isOwner) return;
+
+  const updates = {
+    "system.actions.main.available": true,
+    "system.actions.movement.available": true,
+    "system.actions.bonus.available": true
+  };
+
+  const itemUpdates = [];
+  for (const item of actor.items ?? []) {
+    if (!["playerSkill", "classSkill"].includes(item.type)) continue;
+
+    const currentCooldown = numberValue(item.system?.cooldown?.value);
+    if (currentCooldown > 0) {
+      itemUpdates.push({
+        _id: item.id,
+        "system.cooldown.value": Math.max(currentCooldown - 1, 0)
+      });
+    }
+  }
+
+  await actor.update(updates);
+  if (itemUpdates.length) await actor.updateEmbeddedDocuments("Item", itemUpdates);
+}
+
 export class HopeLiesWithinActor extends Actor {
   getRollData() {
     const data = super.getRollData();
@@ -75,6 +142,52 @@ export class HopeLiesWithinActor extends Actor {
       flavor: `<strong>${skill.label}</strong> (${skill.attributes.map((key) => HLW.attributeLabels[key]).join(" + ")})`
     });
   }
+
+  async toggleAction(actionKey) {
+    const current = boolValue(this.system.actions?.[actionKey]?.available);
+    await this.update({ [`system.actions.${actionKey}.available`]: !current });
+  }
+
+  async useSkill(itemId) {
+    const item = this.items.get(itemId);
+    if (!item || !["playerSkill", "classSkill"].includes(item.type)) return;
+
+    const cooldown = item.system?.cooldown ?? {};
+    const currentCooldown = numberValue(cooldown.value);
+    const maxCooldown = numberValue(cooldown.max);
+
+    if (currentCooldown > 0) {
+      ui.notifications?.warn(`${item.name} ist noch ${currentCooldown} Zug(e) auf Cooldown.`);
+      return;
+    }
+
+    const skillType = escapeHtml(item.system?.skillType);
+    const cost = escapeHtml(item.system?.cost);
+    const range = escapeHtml(item.system?.range);
+    const damage = escapeHtml(item.system?.damage);
+    const effect = escapeHtml(item.system?.effect || item.system?.description);
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <div class="hlw-chat-card">
+          <h2>${escapeHtml(item.name)}</h2>
+          <dl>
+            <dt>Art</dt><dd>${skillType || "-"}</dd>
+            <dt>Kosten</dt><dd>${cost || "-"}</dd>
+            <dt>Range</dt><dd>${range || "-"}</dd>
+            <dt>Schaden / Heilung</dt><dd>${damage || "-"}</dd>
+            <dt>Cooldown</dt><dd>${maxCooldown || 0} Zug(e)</dd>
+          </dl>
+          ${effect ? `<p>${effect}</p>` : ""}
+        </div>
+      `
+    });
+
+    if (maxCooldown > 0) {
+      await item.update({ "system.cooldown.value": maxCooldown });
+    }
+  }
 }
 
 export class HopeLiesWithinItem extends Item {}
@@ -113,6 +226,18 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       event.preventDefault();
       const skillKey = event.currentTarget.dataset.rollWorldSkill;
       this.actor.rollWorldSkill(skillKey);
+    });
+
+    html.find("[data-toggle-action]").on("click", (event) => {
+      event.preventDefault();
+      const actionKey = event.currentTarget.dataset.toggleAction;
+      this.actor.toggleAction(actionKey);
+    });
+
+    html.find("[data-use-skill]").on("click", (event) => {
+      event.preventDefault();
+      const itemId = event.currentTarget.closest("[data-item-id]")?.dataset.itemId;
+      this.actor.useSkill(itemId);
     });
   }
 
@@ -202,4 +327,16 @@ Hooks.once("init", () => {
   } else {
     console.warn("Hope lies Within 2.0 | Klassische ItemSheet-API nicht gefunden. System startet ohne eigenes Item Sheet.");
   }
+});
+
+Hooks.on("createCombat", (combat) => {
+  showCombatOverlay(combat);
+  postCombatStartMessage(combat);
+});
+
+Hooks.on("updateCombat", (combat, changed) => {
+  if (!("turn" in changed)) return;
+
+  const actor = combat.combatant?.actor;
+  resetActorTurnState(actor);
 });
