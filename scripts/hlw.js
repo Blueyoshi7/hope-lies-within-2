@@ -28,15 +28,36 @@ HLW.worldSkills = {
 
 HLW.initiativeFormula = "1d20 + @attributes.spe.value";
 HLW.elementLabels = {
-  physical: "Physical",
-  magic: "Magic",
-  fire: "Fire",
-  ice: "Ice",
-  lightning: "Lightning",
-  earth: "Earth",
+  slash: "Klinge",
+  blunt: "Stumpf",
+  pierce: "Stich",
+  physical: "Physisch",
+  magic: "Magie",
+  fire: "Feuer",
+  ice: "Eis",
+  lightning: "Blitz",
+  earth: "Erde",
   wind: "Wind",
-  holy: "Holy",
-  shadow: "Shadow"
+  holy: "Heilig",
+  shadow: "Schatten"
+};
+HLW.affinityDefaults = {
+  slash: { label: "Klinge", value: 0 },
+  blunt: { label: "Stumpf", value: 0 },
+  pierce: { label: "Stich", value: 0 },
+  magic: { label: "Magie", value: 0 },
+  fire: { label: "Feuer", value: 0 },
+  ice: { label: "Eis", value: 0 },
+  lightning: { label: "Blitz", value: 0 },
+  earth: { label: "Erde", value: 0 },
+  wind: { label: "Wind", value: 0 },
+  holy: { label: "Heilig", value: 0 },
+  shadow: { label: "Schatten", value: 0 }
+};
+HLW.insigniaSlotDefaults = {
+  slot1: { image: "", name: "", description: "" },
+  slot2: { image: "", name: "", description: "" },
+  slot3: { image: "", name: "", description: "" }
 };
 HLW.pendingSkill = null;
 HLW.rangeLayer = null;
@@ -76,6 +97,9 @@ function normalizeElement(value, fallbackText = "") {
   if (text.includes("wind") || text.includes("sturm")) return "wind";
   if (text.includes("holy") || text.includes("heilig")) return "holy";
   if (text.includes("shadow") || text.includes("schatten")) return "shadow";
+  if (text.includes("klinge") || text.includes("slash") || text.includes("schnitt")) return "slash";
+  if (text.includes("stumpf") || text.includes("blunt") || text.includes("keule")) return "blunt";
+  if (text.includes("stich") || text.includes("pierce") || text.includes("pfeil")) return "pierce";
   if (text.includes("phys") || text.includes("nahkampf") || text.includes("fernkampf")) return "physical";
   return "magic";
 }
@@ -93,13 +117,50 @@ function getPointDistanceInTiles(from, to) {
   return Math.hypot(to.x - from.x, to.y - from.y) / gridSize;
 }
 
-function getBestResistance(actor, element) {
-  const resistances = actor.system?.resistances ?? {};
-  const elementResistance = numberValue(resistances[element]?.value);
-  const magicResistance = numberValue(resistances.magic?.value);
+function getAffinity(actor, element) {
+  const affinities = actor.system?.affinities ?? actor.system?.resistances ?? {};
+  return numberValue(affinities[element]?.value);
+}
 
-  if (element === "physical") return numberValue(resistances.physical?.value);
-  return Math.max(elementResistance, magicResistance);
+function getDefensiveAffinity(actor, element) {
+  const elementAffinity = getAffinity(actor, element);
+  const magicAffinity = getAffinity(actor, "magic");
+  if (["fire", "ice", "lightning", "earth", "wind", "holy", "shadow"].includes(element)) {
+    return Math.max(elementAffinity, magicAffinity);
+  }
+  return elementAffinity || getAffinity(actor, "physical");
+}
+
+function prepareAffinities(system) {
+  const oldResistances = system.resistances ?? {};
+  const current = system.affinities ?? {};
+  const prepared = {};
+
+  for (const [key, defaults] of Object.entries(HLW.affinityDefaults)) {
+    const oldValue = oldResistances[key]?.value;
+    const currentValue = current[key]?.value;
+    prepared[key] = {
+      label: defaults.label,
+      value: numberValue(currentValue ?? oldValue ?? defaults.value)
+    };
+  }
+
+  return prepared;
+}
+
+function prepareInsigniaSlots(system) {
+  const current = system.insigniaSlots ?? {};
+  const prepared = {};
+
+  for (const [key, defaults] of Object.entries(HLW.insigniaSlotDefaults)) {
+    prepared[key] = {
+      image: current[key]?.image ?? defaults.image,
+      name: current[key]?.name ?? defaults.name,
+      description: current[key]?.description ?? defaults.description
+    };
+  }
+
+  return prepared;
 }
 
 function showCombatOverlay(combat, mode = "start", actorName = "") {
@@ -134,7 +195,7 @@ function getSourceTokenForActor(actor) {
 
 function clearPendingSkill() {
   if (HLW.rangeLayer) {
-    HLW.rangeLayer.destroy({ children: true });
+    HLW.rangeLayer.remove();
     HLW.rangeLayer = null;
   }
 
@@ -150,20 +211,17 @@ function drawSkillRange(sourceToken, rangeLimit, skillName) {
   clearPendingSkill();
 
   const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
-  const radius = rangeLimit * gridSize;
-  const layer = new PIXI.Graphics();
+  const radius = Math.max(rangeLimit * gridSize, gridSize * 0.5);
   const center = sourceToken.center ?? { x: sourceToken.x + sourceToken.w / 2, y: sourceToken.y + sourceToken.h / 2 };
-
-  layer.lineStyle(4, 0xf0b529, 0.95);
-  layer.beginFill(0xf0b529, 0.13);
-  layer.drawCircle(center.x, center.y, radius);
-  layer.endFill();
-  layer.lineStyle(1, 0xffffff, 0.6);
-  layer.drawCircle(center.x, center.y, radius);
-  layer.eventMode = "none";
-  layer.interactive = false;
-  layer.interactiveChildren = false;
-  canvas.stage.addChild(layer);
+  const screenCenter = canvas.stage.worldTransform.apply(new PIXI.Point(center.x, center.y));
+  const viewRect = canvas.app.view.getBoundingClientRect();
+  const layer = document.createElement("div");
+  layer.className = "hlw-range-circle";
+  layer.style.width = `${radius * 2}px`;
+  layer.style.height = `${radius * 2}px`;
+  layer.style.left = `${viewRect.left + screenCenter.x - radius}px`;
+  layer.style.top = `${viewRect.top + screenCenter.y - radius}px`;
+  document.body.appendChild(layer);
   HLW.rangeLayer = layer;
 
   const help = document.createElement("div");
@@ -266,6 +324,9 @@ export class HopeLiesWithinActor extends Actor {
     const system = this.system;
     if (!system?.attributes || !system?.worldSkills) return;
 
+    system.affinities = prepareAffinities(system);
+    system.insigniaSlots = prepareInsigniaSlots(system);
+
     for (const [key, definition] of Object.entries(HLW.worldSkills)) {
       const current = system.worldSkills[key] ?? {};
       const base = definition.attributes.reduce((sum, attributeKey) => {
@@ -326,9 +387,52 @@ export class HopeLiesWithinActor extends Actor {
     ui.notifications?.info("Zugende wurde an den GM gesendet.");
   }
 
+  async useStandardAction(actionType) {
+    if (!boolValue(this.system.actions?.main?.available)) {
+      ui.notifications?.warn("Die Hauptaktion ist in diesem Zug bereits verbraucht.");
+      return;
+    }
+
+    if (actionType === "attack") {
+      const weapon = this.items.find((item) => item.type === "weapon" && boolValue(item.system?.equipped)) ?? this.items.find((item) => item.type === "weapon");
+      if (!weapon) {
+        ui.notifications?.warn("Keine Waffe gefunden. Bitte eine Waffe anlegen oder ausruesten.");
+        return;
+      }
+      this.startOffensiveTargeting(weapon.id, "weapon");
+      return;
+    }
+
+    if (actionType === "defend") {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<div class="hlw-chat-card"><h2>Abwehrhaltung</h2><p>${escapeHtml(this.name)} nimmt eine defensive Haltung ein.</p></div>`
+      });
+      await this.update({ "system.actions.main.available": false });
+      return;
+    }
+
+    if (actionType === "item") {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<div class="hlw-chat-card"><h2>Item verwenden</h2><p>${escapeHtml(this.name)} verwendet ein Item. Die konkrete Item-Wirkung wird in einer spaeteren Version automatisiert.</p></div>`
+      });
+      await this.update({ "system.actions.main.available": false });
+    }
+  }
+
   startSkillTargeting(itemId) {
+    if (HLW.pendingSkill?.actorId === this.id && HLW.pendingSkill?.itemId === itemId) {
+      clearPendingSkill();
+      return;
+    }
+
+    this.startOffensiveTargeting(itemId, "skill");
+  }
+
+  startOffensiveTargeting(itemId, sourceType = "skill") {
     const item = this.items.get(itemId);
-    if (!item || !["playerSkill", "classSkill"].includes(item.type)) return;
+    if (!item) return;
 
     const cooldown = item.system?.cooldown ?? {};
     const currentCooldown = numberValue(cooldown.value);
@@ -354,7 +458,7 @@ export class HopeLiesWithinActor extends Actor {
       }
 
       const rangeLimit = parseRange(item.system?.range);
-      HLW.pendingSkill = { actorId: this.id, itemId, sourceTokenId: sourceToken.id, rangeLimit };
+      HLW.pendingSkill = { actorId: this.id, itemId, sourceType, sourceTokenId: sourceToken.id, rangeLimit };
       drawSkillRange(sourceToken, rangeLimit, item.name);
       return;
     }
@@ -364,7 +468,7 @@ export class HopeLiesWithinActor extends Actor {
 
   async resolveSkill(itemId, targetToken = null) {
     const item = this.items.get(itemId);
-    if (!item || !["playerSkill", "classSkill"].includes(item.type)) return;
+    if (!item || !["playerSkill", "classSkill", "weapon"].includes(item.type)) return;
 
     const cooldown = item.system?.cooldown ?? {};
     const currentCooldown = numberValue(cooldown.value);
@@ -410,8 +514,9 @@ export class HopeLiesWithinActor extends Actor {
 
       const element = normalizeElement(item.system?.element, `${item.system?.skillType} ${item.name}`);
       const roll = await new Roll(damageFormula, this.getRollData()).evaluate();
-      const resistance = getBestResistance(targetToken.actor, element);
-      const finalDamage = Math.max(numberValue(roll.total) - resistance, 0);
+      const attackAffinity = getAffinity(this, element);
+      const defenseAffinity = getDefensiveAffinity(targetToken.actor, element);
+      const finalDamage = Math.max(numberValue(roll.total) + attackAffinity - defenseAffinity, 0);
       const currentHp = numberValue(targetToken.actor?.system?.resources?.hp?.value);
 
       if (targetToken.actor) {
@@ -426,7 +531,8 @@ export class HopeLiesWithinActor extends Actor {
         distance,
         element,
         roll,
-        resistance,
+        attackAffinity,
+        defenseAffinity,
         finalDamage
       };
     }
@@ -457,7 +563,8 @@ export class HopeLiesWithinActor extends Actor {
               <dt>Ziel</dt><dd>${escapeHtml(damageResult.targetName)}</dd>
               <dt>Distanz</dt><dd>${damageResult.distance.toFixed(1)} / ${damageResult.range || "-"} Tiles</dd>
               <dt>Wurf</dt><dd>${damageResult.roll.total}</dd>
-              <dt>Resistenz</dt><dd>${damageResult.resistance}</dd>
+              <dt>Veranlagung Angriff</dt><dd>+${damageResult.attackAffinity}</dd>
+              <dt>Veranlagung Ziel</dt><dd>-${damageResult.defenseAffinity}</dd>
               <dt>Finaler Schaden</dt><dd><strong>${damageResult.finalDamage}</strong></dd>
             </dl>
           ` : ""}
@@ -529,6 +636,11 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       event.preventDefault();
       this.actor.endTurn();
     });
+
+    html.find("[data-standard-action]").on("click", (event) => {
+      event.preventDefault();
+      this.actor.useStandardAction(event.currentTarget.dataset.standardAction);
+    });
   }
 
   _prepareItems(items) {
@@ -548,7 +660,8 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
           name: item.name,
           type: item.type,
           system: item.system,
-          canUse: boolValue(this.actor.system.actions?.main?.available) && numberValue(item.system?.cooldown?.value) <= 0
+          canUse: boolValue(this.actor.system.actions?.main?.available) && numberValue(item.system?.cooldown?.value) <= 0,
+          isPending: HLW.pendingSkill?.actorId === this.actor.id && HLW.pendingSkill?.itemId === item.id
         });
       }
       else if (item.type === "weapon") groups.weapons.push(item);
@@ -641,33 +754,28 @@ Hooks.once("ready", () => {
 });
 
 Hooks.on("canvasReady", () => {
-  canvas.stage.off("pointerdown", HLW._canvasPointerDown);
+  clearPendingSkill();
+});
 
-  HLW._canvasPointerDown = async (event) => {
-    if (!HLW.pendingSkill) return;
+Hooks.on("controlToken", async (token, controlled) => {
+  if (!controlled || !HLW.pendingSkill) return;
 
-    const point = event.data.getLocalPosition(canvas.stage);
-    const targetToken = tokenAtCanvasPoint(point);
-    if (!targetToken) return;
+  const actor = game.actors?.get(HLW.pendingSkill.actorId);
+  const sourceToken = getCanvasTokenById(HLW.pendingSkill.sourceTokenId);
+  if (!actor || !sourceToken) {
+    clearPendingSkill();
+    return;
+  }
 
-    const actor = game.actors?.get(HLW.pendingSkill.actorId);
-    const sourceToken = getCanvasTokenById(HLW.pendingSkill.sourceTokenId);
-    if (!actor || !sourceToken) {
-      clearPendingSkill();
-      return;
-    }
+  if (token.id === sourceToken.id) return;
 
-    const distance = getTokenDistanceInTiles(sourceToken, targetToken);
-    if (HLW.pendingSkill.rangeLimit > 0 && distance > HLW.pendingSkill.rangeLimit) {
-      ui.notifications?.warn(`${targetToken.name} ist ausser Reichweite (${distance.toFixed(1)} / ${HLW.pendingSkill.rangeLimit} Tiles).`);
-      return;
-    }
+  const distance = getTokenDistanceInTiles(sourceToken, token);
+  if (HLW.pendingSkill.rangeLimit > 0 && distance > HLW.pendingSkill.rangeLimit) {
+    ui.notifications?.warn(`${token.name} ist ausser Reichweite (${distance.toFixed(1)} / ${HLW.pendingSkill.rangeLimit} Tiles).`);
+    return;
+  }
 
-    await actor.resolveSkill(HLW.pendingSkill.itemId, targetToken);
-  };
-
-  canvas.stage.eventMode = "static";
-  canvas.stage.on("pointerdown", HLW._canvasPointerDown);
+  await actor.resolveSkill(HLW.pendingSkill.itemId, token);
 });
 
 function handleCancelPendingSkill(event) {
