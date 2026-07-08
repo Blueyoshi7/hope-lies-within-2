@@ -1,0 +1,127 @@
+{
+  "Actor": {
+    "types": ["character", "npc", "monster"],
+    "templates": {
+      "base": {
+        "identity": {
+          "player": "",
+          "age": "",
+          "gender": "",
+          "origin": "",
+          "notes": ""
+        },
+        "progression": {
+          "level": 1,
+          "exp": 0,
+          "class": "",
+          "tier": "",
+          "job": "",
+          "title": "",
+          "insignia": ""
+        },
+        "attributes": {
+          "str": { "label": "Staerke", "abbr": "STR", "value": 0 },
+          "dex": { "label": "Geschicklichkeit", "abbr": "DEX", "value": 0 },
+          "con": { "label": "Konstitution / Ausdauer", "abbr": "CON", "value": 0 },
+          "int": { "label": "Intelligenz", "abbr": "INT", "value": 0 },
+          "wis": { "label": "Weisheit", "abbr": "WIS", "value": 0 },
+          "cha": { "label": "Charisma", "abbr": "CHA", "value": 0 },
+          "agl": { "label": "Beweglichkeit", "abbr": "AGL", "value": 0 },
+          "spe": { "label": "Geschwindigkeit", "abbr": "SPE", "value": 0 },
+          "edu": { "label": "Bildung", "abbr": "EDU", "value": 0 },
+          "sou": { "label": "Seelenkraft", "abbr": "SOU", "value": 0 }
+        },
+        "resources": {
+          "hp": { "label": "Lebenspunkte", "value": 10, "max": 10 },
+          "movement": { "label": "Bewegungsreichweite", "value": 3, "units": "Tiles" },
+          "actionPoints": { "label": "Aktionspunkte", "value": 1, "max": 1 },
+          "corruption": { "label": "Korruptionswert", "value": 0, "max": 100 }
+        },
+        "actions": {
+          "main": { "label": "Hauptaktion", "available": true },
+          "movement": { "label": "Bewegung", "available": true },
+          "bonus": { "label": "Bonusaktion", "available": true }
+        },
+        "worldSkills": {
+          "athletik": { "label": "Athletik", "attributes": ["str", "con", "agl"], "bonus": 0, "total": 0 },
+          "wortgewandtheit": { "label": "Wortgewandtheit", "attributes": ["cha", "edu", "int"], "bonus": 0, "total": 0 },
+          "erfindergeist": { "label": "Erfindergeist", "attributes": ["int", "wis", "dex"], "bonus": 0, "total": 0 },
+          "naturkunde": { "label": "Naturkunde", "attributes": ["wis", "agl", "sou"], "bonus": 0, "total": 0 },
+          "religion": { "label": "Religion", "attributes": ["wis", "edu", "sou"], "bonus": 0, "total": 0 },
+          "scharfsinnigkeit": { "label": "Scharfsinnigkeit", "attributes": ["int", "spe", "dex"], "bonus": 0, "total": 0 },
+          "archaeologie": { "label": "Archaeologie", "attributes": ["str", "con", "edu"], "bonus": 0, "total": 0 },
+          "handwerkskunst": { "label": "Handwerkskunst", "attributes": ["dex", "con", "str"], "bonus": 0, "total": 0 },
+          "willenskraft": { "label": "Willenskraft", "attributes": ["sou", "cha", "con"], "bonus": 0, "total": 0 },
+          "tierkunde": { "label": "Tierkunde", "attributes": ["agl", "spe", "wis"], "bonus": 0, "total": 0 }
+        }
+      }
+    },
+    "character": {
+      "templates": ["base"]
+    },
+    "npc": {
+      "templates": ["base"]
+    },
+    "monster": {
+      "templates": ["base"]
+    }
+  },
+  "Item": {
+    "types": ["playerSkill", "classSkill", "weapon", "armor", "equipment", "consumable", "material"],
+    "templates": {
+      "base": {
+        "description": "",
+        "source": "",
+        "tier": 1
+      },
+      "skill": {
+        "skillType": "",
+        "cost": "",
+        "castTime": "",
+        "range": "",
+        "damage": "",
+        "effect": "",
+        "cooldown": {
+          "value": 0,
+          "max": 0
+        },
+        "scaling": {
+          "primary": "",
+          "secondary": "",
+          "tertiary": ""
+        }
+      },
+      "gear": {
+        "quantity": 1,
+        "price": "",
+        "equipped": false,
+        "slot": "",
+        "damage": "",
+        "armor": "",
+        "range": "",
+        "effect": ""
+      }
+    },
+    "playerSkill": {
+      "templates": ["base", "skill"]
+    },
+    "classSkill": {
+      "templates": ["base", "skill"]
+    },
+    "weapon": {
+      "templates": ["base", "gear"]
+    },
+    "armor": {
+      "templates": ["base", "gear"]
+    },
+    "equipment": {
+      "templates": ["base", "gear"]
+    },
+    "consumable": {
+      "templates": ["base", "gear"]
+    },
+    "material": {
+      "templates": ["base", "gear"]
+    }
+  }
+}

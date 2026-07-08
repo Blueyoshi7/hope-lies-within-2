@@ -1,0 +1,110 @@
+<form class="{{cssClass}} hlw-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <div class="header-fields">
+      <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Charaktername" /></h1>
+      <div class="identity-grid">
+        <label>Spieler <input name="system.identity.player" type="text" value="{{system.identity.player}}" /></label>
+        <label>Level <input name="system.progression.level" type="number" value="{{system.progression.level}}" /></label>
+        <label>Klasse <input name="system.progression.class" type="text" value="{{system.progression.class}}" /></label>
+        <label>Job <input name="system.progression.job" type="text" value="{{system.progression.job}}" /></label>
+        <label>Titel <input name="system.progression.title" type="text" value="{{system.progression.title}}" /></label>
+        <label>Insignie <input name="system.progression.insignia" type="text" value="{{system.progression.insignia}}" /></label>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="main">Charakter</a>
+    <a class="item" data-tab="skills">Skills</a>
+    <a class="item" data-tab="inventory">Inventar</a>
+    <a class="item" data-tab="notes">Notizen</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="main">
+      <section class="resource-grid">
+        <label>Lebenspunkte
+          <span><input name="system.resources.hp.value" type="number" value="{{system.resources.hp.value}}" /> / <input name="system.resources.hp.max" type="number" value="{{system.resources.hp.max}}" /></span>
+        </label>
+        <label>Bewegung
+          <span><input name="system.resources.movement.value" type="number" value="{{system.resources.movement.value}}" /> {{system.resources.movement.units}}</span>
+        </label>
+        <label>Aktionspunkte
+          <span><input name="system.resources.actionPoints.value" type="number" value="{{system.resources.actionPoints.value}}" /> / <input name="system.resources.actionPoints.max" type="number" value="{{system.resources.actionPoints.max}}" /></span>
+        </label>
+        <label>Korruption
+          <span><input name="system.resources.corruption.value" type="number" value="{{system.resources.corruption.value}}" /> / <input name="system.resources.corruption.max" type="number" value="{{system.resources.corruption.max}}" /></span>
+        </label>
+      </section>
+
+      <section class="two-column">
+        <div>
+          <h2>Attribute</h2>
+          <div class="attribute-grid">
+            {{#each system.attributes as |attribute key|}}
+              <label>
+                <span>{{attribute.abbr}}</span>
+                <small>{{attribute.label}}</small>
+                <input name="system.attributes.{{key}}.value" type="number" value="{{attribute.value}}" />
+              </label>
+            {{/each}}
+          </div>
+        </div>
+
+        <div>
+          <h2>World-Skills</h2>
+          <div class="world-skill-list">
+            {{#each worldSkills as |skill|}}
+              <div class="world-skill-row">
+                <button type="button" data-roll-world-skill="{{skill.key}}">W20</button>
+                <div>
+                  <strong>{{skill.label}}</strong>
+                  <small>{{skill.attributeLabels}}</small>
+                </div>
+                <span>{{skill.base}}</span>
+                <input name="system.worldSkills.{{skill.key}}.bonus" type="number" value="{{skill.bonus}}" />
+                <strong>{{skill.total}}</strong>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="skills">
+      <h2>Spieler- und Klassenskills</h2>
+      <ol class="item-list">
+        {{#each itemsByType.skills as |item|}}
+          <li class="item-row" data-item-id="{{item.id}}">
+            <strong>{{item.name}}</strong>
+            <span>{{item.system.skillType}}</span>
+            <span>CD {{item.system.cooldown.value}} / {{item.system.cooldown.max}}</span>
+            <span>Range {{item.system.range}}</span>
+            <span>{{item.system.damage}}</span>
+          </li>
+        {{/each}}
+      </ol>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="inventory">
+      <h2>Inventar</h2>
+      <h3>Waffen</h3>
+      <ol class="item-list">{{#each itemsByType.weapons as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>{{item.system.damage}}</span><span>{{item.system.range}}</span></li>{{/each}}</ol>
+      <h3>Ruestung</h3>
+      <ol class="item-list">{{#each itemsByType.armor as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>RW {{item.system.armor}}</span><span>{{item.system.slot}}</span></li>{{/each}}</ol>
+      <h3>Ausrüstung</h3>
+      <ol class="item-list">{{#each itemsByType.equipment as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>{{item.system.slot}}</span><span>{{item.system.effect}}</span></li>{{/each}}</ol>
+      <h3>Verbrauchbares & Material</h3>
+      <ol class="item-list">
+        {{#each itemsByType.consumables as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>x{{item.system.quantity}}</span><span>{{item.system.effect}}</span></li>{{/each}}
+        {{#each itemsByType.materials as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>x{{item.system.quantity}}</span><span>{{item.system.source}}</span></li>{{/each}}
+      </ol>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="notes">
+      <h2>Charakternotizen</h2>
+      <textarea name="system.identity.notes">{{system.identity.notes}}</textarea>
+    </div>
+  </section>
+</form>
