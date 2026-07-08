@@ -26,12 +26,21 @@ HLW.worldSkills = {
   tierkunde: { label: "Tierkunde", attributes: ["agl", "spe", "wis"] }
 };
 
+HLW.initiativeFormula = "1d20 + @attributes.spe.value";
+
 function numberValue(value) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
 export class HopeLiesWithinActor extends Actor {
+  getRollData() {
+    const data = super.getRollData();
+    data.attributes = this.system.attributes ?? {};
+    data.resources = this.system.resources ?? {};
+    return data;
+  }
+
   prepareDerivedData() {
     super.prepareDerivedData();
 
@@ -70,7 +79,10 @@ export class HopeLiesWithinActor extends Actor {
 
 export class HopeLiesWithinItem extends Item {}
 
-export class HopeLiesWithinActorSheet extends ActorSheet {
+const BaseActorSheet = globalThis.ActorSheet;
+const BaseItemSheet = globalThis.ItemSheet;
+
+export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["hope-lies-within", "sheet", "actor"],
@@ -141,7 +153,7 @@ export class HopeLiesWithinActorSheet extends ActorSheet {
   }
 }
 
-export class HopeLiesWithinItemSheet extends ItemSheet {
+export class HopeLiesWithinItemSheet extends (BaseItemSheet ?? class {}) {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["hope-lies-within", "sheet", "item"],
@@ -166,16 +178,28 @@ Hooks.once("init", () => {
   CONFIG.HLW = HLW;
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
+  CONFIG.Combat.initiative = {
+    formula: HLW.initiativeFormula,
+    decimals: 2
+  };
 
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("hope-lies-within-2", HopeLiesWithinActorSheet, {
-    makeDefault: true,
-    types: ["character", "npc", "monster"]
-  });
+  if (BaseActorSheet && globalThis.Actors?.registerSheet) {
+    Actors.unregisterSheet("core", BaseActorSheet);
+    Actors.registerSheet("hope-lies-within-2", HopeLiesWithinActorSheet, {
+      makeDefault: true,
+      types: ["character", "npc", "monster"]
+    });
+  } else {
+    console.warn("Hope lies Within 2.0 | Klassische ActorSheet-API nicht gefunden. System startet ohne eigenes Actor Sheet.");
+  }
 
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("hope-lies-within-2", HopeLiesWithinItemSheet, {
-    makeDefault: true,
-    types: ["playerSkill", "classSkill", "weapon", "armor", "equipment", "consumable", "material"]
-  });
+  if (BaseItemSheet && globalThis.Items?.registerSheet) {
+    Items.unregisterSheet("core", BaseItemSheet);
+    Items.registerSheet("hope-lies-within-2", HopeLiesWithinItemSheet, {
+      makeDefault: true,
+      types: ["playerSkill", "classSkill", "weapon", "armor", "equipment", "consumable", "material"]
+    });
+  } else {
+    console.warn("Hope lies Within 2.0 | Klassische ItemSheet-API nicht gefunden. System startet ohne eigenes Item Sheet.");
+  }
 });
