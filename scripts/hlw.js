@@ -27,6 +27,17 @@ HLW.worldSkills = {
 };
 
 HLW.initiativeFormula = "1d20 + @attributes.spe.value";
+HLW.elementLabels = {
+  physical: "Physical",
+  magic: "Magic",
+  fire: "Fire",
+  ice: "Ice",
+  lightning: "Lightning",
+  earth: "Earth",
+  wind: "Wind",
+  holy: "Holy",
+  shadow: "Shadow"
+};
 
 function numberValue(value) {
   const parsed = Number(value);
@@ -43,15 +54,55 @@ function escapeHtml(value) {
   return div.innerHTML;
 }
 
-function showCombatOverlay(combat) {
+function normalizeFormula(value) {
+  return String(value ?? "").trim().replaceAll("W", "d").replaceAll("D", "d");
+}
+
+function parseRange(value) {
+  const parsed = Number(String(value ?? "").replace(",", ".").match(/-?\d+(\.\d+)?/)?.[0]);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function normalizeElement(value, fallbackText = "") {
+  const text = `${value ?? ""} ${fallbackText ?? ""}`.toLowerCase();
+  if (text.includes("feuer") || text.includes("fire")) return "fire";
+  if (text.includes("eis") || text.includes("ice") || text.includes("frost")) return "ice";
+  if (text.includes("blitz") || text.includes("donner") || text.includes("lightning")) return "lightning";
+  if (text.includes("erde") || text.includes("earth") || text.includes("stein")) return "earth";
+  if (text.includes("wind") || text.includes("sturm")) return "wind";
+  if (text.includes("holy") || text.includes("heilig")) return "holy";
+  if (text.includes("shadow") || text.includes("schatten")) return "shadow";
+  if (text.includes("phys") || text.includes("nahkampf") || text.includes("fernkampf")) return "physical";
+  return "magic";
+}
+
+function getTokenDistanceInTiles(sourceToken, targetToken) {
+  const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
+  const sourceCenter = sourceToken.center ?? { x: sourceToken.x + sourceToken.w / 2, y: sourceToken.y + sourceToken.h / 2 };
+  const targetCenter = targetToken.center ?? { x: targetToken.x + targetToken.w / 2, y: targetToken.y + targetToken.h / 2 };
+  const distancePixels = Math.hypot(targetCenter.x - sourceCenter.x, targetCenter.y - sourceCenter.y);
+  return distancePixels / gridSize;
+}
+
+function getBestResistance(actor, element) {
+  const resistances = actor.system?.resistances ?? {};
+  const elementResistance = numberValue(resistances[element]?.value);
+  const magicResistance = numberValue(resistances.magic?.value);
+
+  if (element === "physical") return numberValue(resistances.physical?.value);
+  return Math.max(elementResistance, magicResistance);
+}
+
+function showCombatOverlay(combat, mode = "start") {
   const existing = document.querySelector(".hlw-combat-overlay");
   if (existing) existing.remove();
 
+  const isEnd = mode === "end";
   const overlay = document.createElement("div");
-  overlay.className = "hlw-combat-overlay";
+  overlay.className = `hlw-combat-overlay ${isEnd ? "is-end" : "is-start"}`;
   overlay.innerHTML = `
-    <div class="hlw-combat-overlay__text">IM KAMPF</div>
-    <div class="hlw-combat-overlay__sub">Runde ${combat.round || 1} beginnt</div>
+    <div class="hlw-combat-overlay__text">${isEnd ? "KAMPF BEENDET" : "IM KAMPF"}</div>
+    <div class="hlw-combat-overlay__sub">${isEnd ? "Zurueck in den Erkundungsmodus" : `Runde ${combat.round || 1} beginnt`}</div>
   `;
   document.body.appendChild(overlay);
 
@@ -68,6 +119,20 @@ async function postCombatStartMessage(combat) {
       <div class="hlw-chat-card hlw-combat-card">
         <h2>IM KAMPF</h2>
         <p>Der Combatmodus wurde gestartet. Runde ${combat.round || 1} beginnt.</p>
+      </div>
+    `
+  });
+}
+
+async function postCombatEndMessage(combat) {
+  if (!game.user?.isGM) return;
+
+  await ChatMessage.create({
+    speaker: ChatMessage.getSpeaker(),
+    content: `
+      <div class="hlw-chat-card hlw-combat-card is-end">
+        <h2>KAMPF BEENDET</h2>
+        <p>Der Combatmodus wurde beendet.</p>
       </div>
     `
   });
@@ -161,10 +226,65 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
+    if (!boolValue(this.system.actions?.main?.available)) {
+      ui.notifications?.warn("Die Hauptaktion ist in diesem Zug bereits verbraucht.");
+      return;
+    }
+
+    const damageFormula = normalizeFormula(item.system?.damage);
+    const hasDamage = damageFormula && !["-", "xxx", "n/a"].includes(damageFormula.toLowerCase());
+    const sourceToken = canvas.tokens?.controlled?.find((token) => token.actor?.id === this.id) ?? this.getActiveTokens()?.[0];
+    const targets = Array.from(game.user?.targets ?? []);
+    let damageResult = null;
+
+    if (hasDamage) {
+      if (!sourceToken) {
+        ui.notifications?.warn("Bitte zuerst den handelnden Token auf der Szene auswählen.");
+        return;
+      }
+
+      if (targets.length !== 1) {
+        ui.notifications?.warn("Bitte genau einen Ziel-Token mit Foundry-Target markieren.");
+        return;
+      }
+
+      const targetToken = targets[0];
+      const rangeLimit = parseRange(item.system?.range);
+      const distance = getTokenDistanceInTiles(sourceToken, targetToken);
+
+      if (rangeLimit > 0 && distance > rangeLimit) {
+        ui.notifications?.warn(`${targetToken.name} ist ausser Reichweite (${distance.toFixed(1)} / ${rangeLimit} Tiles).`);
+        return;
+      }
+
+      const element = normalizeElement(item.system?.element, `${item.system?.skillType} ${item.name}`);
+      const roll = await new Roll(damageFormula, this.getRollData()).evaluate();
+      const resistance = getBestResistance(targetToken.actor, element);
+      const finalDamage = Math.max(numberValue(roll.total) - resistance, 0);
+      const currentHp = numberValue(targetToken.actor?.system?.resources?.hp?.value);
+
+      if (targetToken.actor) {
+        await targetToken.actor.update({
+          "system.resources.hp.value": Math.max(currentHp - finalDamage, 0)
+        });
+      }
+
+      damageResult = {
+        targetName: targetToken.name,
+        range: rangeLimit,
+        distance,
+        element,
+        roll,
+        resistance,
+        finalDamage
+      };
+    }
+
     const skillType = escapeHtml(item.system?.skillType);
     const cost = escapeHtml(item.system?.cost);
     const range = escapeHtml(item.system?.range);
     const damage = escapeHtml(item.system?.damage);
+    const elementLabel = escapeHtml(HLW.elementLabels[damageResult?.element] ?? item.system?.element ?? "-");
     const effect = escapeHtml(item.system?.effect || item.system?.description);
 
     await ChatMessage.create({
@@ -175,10 +295,21 @@ export class HopeLiesWithinActor extends Actor {
           <dl>
             <dt>Art</dt><dd>${skillType || "-"}</dd>
             <dt>Kosten</dt><dd>${cost || "-"}</dd>
+            <dt>Element</dt><dd>${elementLabel || "-"}</dd>
             <dt>Range</dt><dd>${range || "-"}</dd>
             <dt>Schaden / Heilung</dt><dd>${damage || "-"}</dd>
             <dt>Cooldown</dt><dd>${maxCooldown || 0} Zug(e)</dd>
           </dl>
+          ${damageResult ? `
+            <hr>
+            <dl>
+              <dt>Ziel</dt><dd>${escapeHtml(damageResult.targetName)}</dd>
+              <dt>Distanz</dt><dd>${damageResult.distance.toFixed(1)} / ${damageResult.range || "-"} Tiles</dd>
+              <dt>Wurf</dt><dd>${damageResult.roll.total}</dd>
+              <dt>Resistenz</dt><dd>${damageResult.resistance}</dd>
+              <dt>Finaler Schaden</dt><dd><strong>${damageResult.finalDamage}</strong></dd>
+            </dl>
+          ` : ""}
           ${effect ? `<p>${effect}</p>` : ""}
         </div>
       `
@@ -187,6 +318,8 @@ export class HopeLiesWithinActor extends Actor {
     if (maxCooldown > 0) {
       await item.update({ "system.cooldown.value": maxCooldown });
     }
+
+    await this.update({ "system.actions.main.available": false });
   }
 }
 
@@ -252,7 +385,15 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     };
 
     for (const item of items) {
-      if (["playerSkill", "classSkill"].includes(item.type)) groups.skills.push(item);
+      if (["playerSkill", "classSkill"].includes(item.type)) {
+        groups.skills.push({
+          id: item.id,
+          name: item.name,
+          type: item.type,
+          system: item.system,
+          canUse: boolValue(this.actor.system.actions?.main?.available) && numberValue(item.system?.cooldown?.value) <= 0
+        });
+      }
       else if (item.type === "weapon") groups.weapons.push(item);
       else if (item.type === "armor") groups.armor.push(item);
       else if (item.type === "consumable") groups.consumables.push(item);
@@ -329,9 +470,14 @@ Hooks.once("init", () => {
   }
 });
 
-Hooks.on("createCombat", (combat) => {
+Hooks.on("combatStart", (combat) => {
   showCombatOverlay(combat);
   postCombatStartMessage(combat);
+});
+
+Hooks.on("deleteCombat", (combat) => {
+  showCombatOverlay(combat, "end");
+  postCombatEndMessage(combat);
 });
 
 Hooks.on("updateCombat", (combat, changed) => {
