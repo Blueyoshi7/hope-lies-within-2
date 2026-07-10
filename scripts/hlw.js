@@ -861,8 +861,8 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["hope-lies-within", "sheet", "actor"],
       template: "systems/hope-lies-within-2/templates/actor/character-sheet.hbs",
-      width: 760,
-      height: 780,
+      width: 920,
+      height: 820,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }]
     });
   }
@@ -1099,7 +1099,7 @@ Hooks.on("combatTurn", (combat) => {
   renderCombatHud();
 });
 
-Hooks.on("preUpdateToken", async (tokenDocument, changes) => {
+Hooks.on("preUpdateToken", (tokenDocument, changes) => {
   if (!game.combat?.started) return;
   if (!("x" in changes) && !("y" in changes)) return;
 
@@ -1131,7 +1131,7 @@ Hooks.on("preUpdateToken", async (tokenDocument, changes) => {
   }
 
   const nextSpent = spent + distance;
-  await actor.update({
+  actor.update({
     "system.combat.movementSpent": nextSpent,
     "system.actions.movement.available": limit <= 0 || nextSpent < limit - 0.01
   });
