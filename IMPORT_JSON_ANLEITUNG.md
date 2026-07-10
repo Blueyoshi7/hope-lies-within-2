@@ -13,11 +13,15 @@ Die Importdateien liegen im Systemordner unter `import/`.
 
 ## Import in Foundry
 
-Als GM in der Browser-Konsole ausfuehren:
+Als GM im Character Sheet im Inventar-Tab auf `JSON importieren` klicken.
+
+Alternativ in der Browser-Konsole ausfuehren:
 
 ```js
 await game.hlw.importAllJson()
 ```
+
+Bereits vorhandene Items mit gleichem Namen und Typ werden beim Import uebersprungen, damit Testimporte keine Duplikate erzeugen.
 
 Eine einzelne Datei importierst du so:
 

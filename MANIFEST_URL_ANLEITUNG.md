@@ -19,19 +19,19 @@ Wichtig: Der Ordnerinhalt muss direkt im Repository liegen. Also `system.json`, 
 ```json
 "url": "https://github.com/Blueyoshi7/hope-lies-within-2",
 "manifest": "https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json",
-"download": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/download/v0.2.5/hope-lies-within-2-0.2.5.zip"
+"download": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/download/v0.2.6/hope-lies-within-2-0.2.6.zip"
 ```
 
 4. Erstelle auf GitHub ein Release mit dem Tag:
 
 ```text
-v0.2.5
+v0.2.6
 ```
 
 5. Lade dort die ZIP-Datei hoch:
 
 ```text
-hope-lies-within-2-0.2.5.zip
+hope-lies-within-2-0.2.6.zip
 ```
 
 6. In Foundry nutzt du als Manifest-URL:
