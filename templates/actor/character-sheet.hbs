@@ -34,8 +34,23 @@
         <label>Aktionspunkte
           <span><input name="system.resources.actionPoints.value" type="number" value="{{system.resources.actionPoints.value}}" /> / <input name="system.resources.actionPoints.max" type="number" value="{{system.resources.actionPoints.max}}" /></span>
         </label>
+        <label>Gold
+          <span><input name="system.resources.gold.value" type="number" value="{{system.resources.gold.value}}" /></span>
+        </label>
         <label>Korruption
           <span><input name="system.resources.corruption.value" type="number" value="{{system.resources.corruption.value}}" /> / <input name="system.resources.corruption.max" type="number" value="{{system.resources.corruption.max}}" /></span>
+        </label>
+      </section>
+
+      <section class="defense-grid">
+        <label>Physische Verteidigung
+          <input name="system.defenses.physical.value" type="number" value="{{system.defenses.physical.value}}" />
+        </label>
+        <label>Magische Verteidigung
+          <input name="system.defenses.magical.value" type="number" value="{{system.defenses.magical.value}}" />
+        </label>
+        <label>Gold geben
+          <span><input data-gold-amount type="number" min="0" placeholder="Betrag" /><button type="button" data-give-gold>Geben</button></span>
         </label>
       </section>
 
@@ -156,15 +171,73 @@
     <div class="tab" data-group="primary" data-tab="inventory">
       <h2>Inventar</h2>
       <h3>Waffen</h3>
-      <ol class="item-list">{{#each itemsByType.weapons as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>{{item.system.element}}</span><span>{{item.system.damage}}</span><span>{{item.system.range}}</span></li>{{/each}}</ol>
+      <ol class="item-list">
+        {{#each itemsByType.weapons as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+            <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>{{item.damageCategoryLabel}}</span>
+            <span>{{item.damageTypeLabel}}</span>
+            <span>{{item.system.damage}}</span>
+            <span>R {{item.system.range}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+          </li>
+        {{/each}}
+      </ol>
       <h3>Ruestung</h3>
-      <ol class="item-list">{{#each itemsByType.armor as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>RW {{item.system.armor}}</span><span>{{item.system.slot}}</span></li>{{/each}}</ol>
+      <ol class="item-list">
+        {{#each itemsByType.armor as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+            <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>RW {{item.system.armor}}</span>
+            <span>{{item.system.slot}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+          </li>
+        {{/each}}
+      </ol>
       <h3>Ausrüstung</h3>
-      <ol class="item-list">{{#each itemsByType.equipment as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>{{item.system.slot}}</span><span>{{item.system.effect}}</span></li>{{/each}}</ol>
+      <ol class="item-list">
+        {{#each itemsByType.equipment as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+            <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>{{item.system.slot}}</span>
+            <span>{{item.system.effect}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+          </li>
+        {{/each}}
+      </ol>
       <h3>Verbrauchbares & Material</h3>
       <ol class="item-list">
-        {{#each itemsByType.consumables as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>x{{item.system.quantity}}</span><span>{{item.system.effect}}</span></li>{{/each}}
-        {{#each itemsByType.materials as |item|}}<li class="item-row"><strong>{{item.name}}</strong><span>x{{item.system.quantity}}</span><span>{{item.system.source}}</span></li>{{/each}}
+        {{#each itemsByType.consumables as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+            <span></span>
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>x{{item.system.quantity}}</span>
+            <span>{{item.system.effect}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+          </li>
+        {{/each}}
+        {{#each itemsByType.materials as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+            <span></span>
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>x{{item.system.quantity}}</span>
+            <span>{{item.system.source}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+          </li>
+        {{/each}}
       </ol>
     </div>
 
