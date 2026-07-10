@@ -74,6 +74,7 @@ HLW.damageCategories = {
   physical: "Physisch",
   magical: "Magisch"
 };
+HLW.gearItemTypes = ["weapon", "armor", "equipment", "consumable", "material", "natural", "mineral", "junk", "foodDrink"];
 
 function numberValue(value) {
   const parsed = Number(value);
@@ -189,6 +190,22 @@ function prepareInsigniaSlots(system) {
   }
 
   return prepared;
+}
+
+function getActiveInsignia(system) {
+  const slots = prepareInsigniaSlots(system);
+  const activeKey = system.progression?.activeInsignia || "slot1";
+  return slots[activeKey] ?? slots.slot1;
+}
+
+function getInsigniaSlotList(system) {
+  const slots = prepareInsigniaSlots(system);
+  const activeKey = system.progression?.activeInsignia || "slot1";
+  return Object.entries(slots).map(([key, slot]) => ({
+    key,
+    active: key === activeKey,
+    ...slot
+  }));
 }
 
 function prepareResources(system) {
@@ -623,6 +640,7 @@ export class HopeLiesWithinActor extends Actor {
 
     system.affinities = prepareAffinities(system);
     system.insigniaSlots = prepareInsigniaSlots(system);
+    system.progression.activeInsignia = system.progression.activeInsignia || "slot1";
     system.resources = prepareResources(system);
     system.defenses = prepareDefenses(system);
     system.combat = system.combat ?? {};
@@ -732,7 +750,89 @@ export class HopeLiesWithinActor extends Actor {
 
   editOwnedItem(itemId) {
     const item = this.items.get(itemId);
-    item?.sheet?.render(true);
+    if (!item) return;
+
+    if (item.sheet?.render) {
+      item.sheet.render(true);
+      return;
+    }
+
+    const sheet = new HopeLiesWithinItemSheet(item);
+    sheet.render(true);
+  }
+
+  showOwnedItemDetails(itemId) {
+    const item = this.items.get(itemId);
+    if (!item) return;
+
+    const price = item.system?.price || item.system?.goldValue || "-";
+    const quantity = Math.max(numberValue(item.system?.quantity), 1);
+    const description = item.system?.description || item.system?.effect || "Keine Beschreibung.";
+    const content = `
+      <div class="hlw-item-detail">
+        <img src="${escapeHtml(item.img || "")}" alt="">
+        <div>
+          <h2>${escapeHtml(item.name)}</h2>
+          <dl>
+            <dt>Kategorie</dt><dd>${escapeHtml(item.type)}</dd>
+            <dt>Anzahl</dt><dd>${quantity}</dd>
+            <dt>Goldwert</dt><dd>${escapeHtml(price)}</dd>
+          </dl>
+          <p>${escapeHtml(description)}</p>
+        </div>
+      </div>
+    `;
+
+    new Dialog({
+      title: item.name,
+      content,
+      buttons: {
+        close: { label: "Schliessen" }
+      }
+    }).render(true);
+  }
+
+  async consumeOwnedItem(itemId) {
+    const item = this.items.get(itemId);
+    if (!item) return;
+
+    const quantity = Math.max(numberValue(item.system?.quantity), 1);
+    if (quantity > 1) await item.update({ "system.quantity": quantity - 1 });
+    else await this.deleteEmbeddedDocuments("Item", [item.id]);
+    ui.notifications?.info(`${item.name} verbraucht.`);
+  }
+
+  async discardOwnedItem(itemId) {
+    const item = this.items.get(itemId);
+    if (!item) return;
+
+    const confirmed = await Dialog.confirm({
+      title: `${item.name} wegwerfen?`,
+      content: `<p>${escapeHtml(item.name)} wirklich entfernen?</p>`,
+      yes: () => true,
+      no: () => false,
+      defaultYes: false
+    });
+    if (!confirmed) return;
+
+    await this.deleteEmbeddedDocuments("Item", [item.id]);
+    ui.notifications?.info(`${item.name} wurde weggeworfen.`);
+  }
+
+  async deleteOwnedSkill(itemId) {
+    const item = this.items.get(itemId);
+    if (!item || !["playerSkill", "classSkill"].includes(item.type)) return;
+
+    const confirmed = await Dialog.confirm({
+      title: `${item.name} entfernen?`,
+      content: `<p>Skill von ${escapeHtml(this.name)} entfernen?</p>`,
+      yes: () => true,
+      no: () => false,
+      defaultYes: false
+    });
+    if (!confirmed) return;
+
+    await this.deleteEmbeddedDocuments("Item", [item.id]);
   }
 
   async giveItemToTarget(itemId) {
@@ -991,6 +1091,10 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.system = context.actor.system;
     context.itemsByType = this._prepareItems(context.actor.items);
     context.worldSkills = this._prepareWorldSkills(context.system);
+    context.activeInsignia = getActiveInsignia(context.system);
+    context.insigniaSlots = getInsigniaSlotList(context.system);
+    context.profileImage = context.activeInsignia?.image || context.actor.img;
+    context.isGM = game.user?.isGM;
     return context;
   }
 
@@ -1028,17 +1132,43 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
 
     html.find("[data-edit-owned-item]").on("click", (event) => {
       event.preventDefault();
+      event.stopPropagation();
       this.actor.editOwnedItem(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
     });
 
     html.find("[data-give-owned-item]").on("click", (event) => {
       event.preventDefault();
+      event.stopPropagation();
       this.actor.giveItemToTarget(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
     });
 
     html.find("[data-toggle-equipped]").on("change", (event) => {
       event.preventDefault();
+      event.stopPropagation();
       this.actor.toggleEquipped(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
+    });
+
+    html.find("[data-consume-owned-item]").on("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.actor.consumeOwnedItem(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
+    });
+
+    html.find("[data-discard-owned-item]").on("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.actor.discardOwnedItem(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
+    });
+
+    html.find("[data-delete-skill]").on("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.actor.deleteOwnedSkill(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
+    });
+
+    html.find("[data-show-item-details]").on("click", (event) => {
+      event.preventDefault();
+      this.actor.showOwnedItemDetails(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
     });
 
     html.find("[data-give-gold]").on("click", (event) => {
@@ -1070,7 +1200,11 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       armor: [],
       equipment: [],
       consumables: [],
-      materials: []
+      materials: [],
+      natural: [],
+      minerals: [],
+      junk: [],
+      foodDrink: []
     };
 
     for (const item of items) {
@@ -1100,6 +1234,10 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         else if (item.type === "armor") groups.armor.push(preparedItem);
         else if (item.type === "consumable") groups.consumables.push(preparedItem);
         else if (item.type === "material") groups.materials.push(preparedItem);
+        else if (item.type === "natural") groups.natural.push(preparedItem);
+        else if (item.type === "mineral") groups.minerals.push(preparedItem);
+        else if (item.type === "junk") groups.junk.push(preparedItem);
+        else if (item.type === "foodDrink") groups.foodDrink.push(preparedItem);
         else groups.equipment.push(preparedItem);
       }
     }
@@ -1134,8 +1272,8 @@ export class HopeLiesWithinItemSheet extends (BaseItemSheet ?? class {}) {
 
   async getData(options) {
     const context = await super.getData(options);
-    context.system = context.item.system;
-    context.isSkill = ["playerSkill", "classSkill"].includes(context.item.type);
+      context.system = context.item.system;
+      context.isSkill = ["playerSkill", "classSkill"].includes(context.item.type);
     context.isGear = !context.isSkill;
     return context;
   }
@@ -1166,7 +1304,7 @@ Hooks.once("init", () => {
     Items.unregisterSheet("core", BaseItemSheet);
     Items.registerSheet("hope-lies-within-2", HopeLiesWithinItemSheet, {
       makeDefault: true,
-      types: ["playerSkill", "classSkill", "weapon", "armor", "equipment", "consumable", "material"]
+      types: ["playerSkill", "classSkill", "weapon", "armor", "equipment", "consumable", "material", "natural", "mineral", "junk", "foodDrink"]
     });
   } else {
     console.warn("Hope lies Within 2.0 | Klassische ItemSheet-API nicht gefunden. System startet ohne eigenes Item Sheet.");
