@@ -104,6 +104,7 @@
       },
       "skill": {
         "skillType": "",
+        "activation": "active",
         "cost": "",
         "castTime": "",
         "element": "",

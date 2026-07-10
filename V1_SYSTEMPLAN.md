@@ -28,13 +28,14 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Kampfstart-Overlay: grosser Text "IM KAMPF"
 - Kampfstart-Overlay erscheint erst beim Start des Combats
 - Kampfende-Overlay: gruener Text "KAMPF BEENDET"
-- Aktionsstatus pro Zug: Hauptaktion, Bewegung, Bonusaktion
+- Aktionsstatus pro Zug: Aktionspunkte und Bewegung
 - Skill-Nutzung erzeugt eine Chat Card und setzt Cooldown
 - Schadensskills zeigen einen Range-Kreis, pruefen Range, wuerfeln Schaden, verrechnen Veranlagung und reduzieren HP
 - Skill-Zielmodus: Skill klicken, Range-Kreis sehen, Ziel aus der Liste waehlen, erneuter Skill-Klick bricht ab
 - Zielauswahl erfolgt ueber ein Ziel-Fenster mit Tokens in Reichweite, Zielnummer, Feldposition, Distanz und HP
 - Combat-HUD zeigt aktuellen Actor, HP, restliche Bewegung, Aktionspunkte, Standardaktionen, Skills/Waffen und Zugende
 - Combat-HUD ist als dunkles Game-Overlay am unteren Bildrand gestaltet
+- Aktive Skills und Waffen verbrauchen 1 Aktionspunkt; passive Skills sind nicht als Combat-Aktion auswaehlbar
 - Range-Werte entsprechen Tiles: Range 12 bedeutet 12 Tiles
 - Range- und Bewegungsanzeigen werden direkt auf dem Foundry-Canvas gezeichnet und bleiben beim Map-Pan an der Szene
 - Bei 0 HP wird ein Ziel im Combat Tracker als besiegt markiert
@@ -47,7 +48,7 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Schaden trennt Kategorie (physisch/magisch) von Schadenstyp (Schnitt, Stich, Feuer usw.)
 - Physische und magische Verteidigung reduzieren eingehenden Schaden nach Kategorie
 - Inventar zeigt ausgeruestete Waffen/Ruestung, eingebettete Items koennen bearbeitet oder an markierte Ziel-Actors gegeben werden
-- Gold ist als Ressource vorhanden und kann an markierte Ziel-Actors gegeben werden
+- Gold ist im Inventar sichtbar, kann an markierte Ziel-Actors gegeben werden, und der GM kann direkt Gold hinzufuegen
 - Inventar-Items koennen geoeffnet, verbraucht oder weggeworfen werden
 - Weitere Item-Kategorien: Naturgegenstaende, Mineralien, Muell, Essen/Trinken
 - GM kann Skills direkt vom Charakter entfernen
@@ -67,9 +68,10 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 
 ## Aktionen pro Zug
 
-- 1 Hauptaktion
-- 1 Bewegung
-- 1 optionale Bonusaktion
+- Aktionen werden ueber Aktionspunkte abgewickelt
+- 1 Angriff, Skill, Item oder Abwehrhaltung verbraucht 1 Aktionspunkt
+- Charaktere mit 2 Aktionspunkten koennen in ihrem Zug 2 Aktionen ausfuehren
+- Bewegung wird separat ueber die Bewegungsreichweite pro Zug limitiert
 
 ## Attribute
 

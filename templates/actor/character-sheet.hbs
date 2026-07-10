@@ -34,9 +34,6 @@
         <label>Aktionspunkte
           <span><input name="system.resources.actionPoints.value" type="number" value="{{system.resources.actionPoints.value}}" /> / <input name="system.resources.actionPoints.max" type="number" value="{{system.resources.actionPoints.max}}" /></span>
         </label>
-        <label>Gold
-          <span><input name="system.resources.gold.value" type="number" value="{{system.resources.gold.value}}" /></span>
-        </label>
         <label>Korruption
           <span><input name="system.resources.corruption.value" type="number" value="{{system.resources.corruption.value}}" /> / <input name="system.resources.corruption.max" type="number" value="{{system.resources.corruption.max}}" /></span>
         </label>
@@ -49,23 +46,16 @@
         <label>Magische Verteidigung
           <input name="system.defenses.magical.value" type="number" value="{{system.defenses.magical.value}}" />
         </label>
-        <label>Gold geben
-          <span><input data-gold-amount type="number" min="0" placeholder="Betrag" /><button type="button" data-give-gold>Geben</button></span>
-        </label>
       </section>
 
       <section class="action-grid">
-        <button type="button" class="action-toggle {{#if system.actions.main.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="main">
-          <strong>Hauptaktion</strong>
-          <span>{{#if system.actions.main.available}}bereit{{else}}verbraucht{{/if}}</span>
-        </button>
+        <div class="action-toggle {{#if canAct}}is-ready{{else}}is-spent{{/if}}">
+          <strong>Aktionspunkte</strong>
+          <span>{{system.resources.actionPoints.value}} / {{system.resources.actionPoints.max}}</span>
+        </div>
         <button type="button" class="action-toggle {{#if system.actions.movement.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="movement">
           <strong>Bewegung</strong>
           <span>{{#if system.actions.movement.available}}bereit{{else}}verbraucht{{/if}}</span>
-        </button>
-        <button type="button" class="action-toggle {{#if system.actions.bonus.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="bonus">
-          <strong>Bonusaktion</strong>
-          <span>{{#if system.actions.bonus.available}}bereit{{else}}verbraucht{{/if}}</span>
         </button>
         <button type="button" class="action-toggle end-turn" data-end-turn>
           <strong>Zug beenden</strong>
@@ -76,17 +66,17 @@
       <section class="standard-actions">
         <h2>Standardaktionen</h2>
         <div class="action-grid">
-          <button type="button" class="action-toggle {{#unless system.actions.main.available}}is-spent{{/unless}}" data-standard-action="attack" {{#unless system.actions.main.available}}disabled{{/unless}}>
+          <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="attack" {{#unless canAct}}disabled{{/unless}}>
             <strong>Normaler Angriff</strong>
-            <span>Waffe</span>
+            <span>1 AP</span>
           </button>
-          <button type="button" class="action-toggle {{#unless system.actions.main.available}}is-spent{{/unless}}" data-standard-action="item" {{#unless system.actions.main.available}}disabled{{/unless}}>
+          <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="item" {{#unless canAct}}disabled{{/unless}}>
             <strong>Item verwenden</strong>
-            <span>Aktion</span>
+            <span>1 AP</span>
           </button>
-          <button type="button" class="action-toggle {{#unless system.actions.main.available}}is-spent{{/unless}}" data-standard-action="defend" {{#unless system.actions.main.available}}disabled{{/unless}}>
+          <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="defend" {{#unless canAct}}disabled{{/unless}}>
             <strong>Abwehrhaltung</strong>
-            <span>Aktion</span>
+            <span>1 AP</span>
           </button>
         </div>
       </section>
@@ -145,6 +135,7 @@
             <button type="button" data-use-skill {{#unless item.canUse}}disabled{{/unless}}>{{#if item.isPending}}Abbrechen{{else}}Nutzen{{/if}}</button>
             <strong>{{item.name}}</strong>
             <span>{{item.system.skillType}}</span>
+            <span>{{item.activationLabel}}</span>
             <span>{{item.system.element}}</span>
             <span>CD {{item.system.cooldown.value}} / {{item.system.cooldown.max}}</span>
             <span>Range {{item.system.range}}</span>
@@ -172,6 +163,20 @@
 
     <div class="tab" data-group="primary" data-tab="inventory">
       <h2>Inventar</h2>
+      <section class="inventory-gold-bar">
+        <div>
+          <span>Gold</span>
+          <strong>{{system.resources.gold.value}}</strong>
+        </div>
+        <label>Gold geben
+          <span><input data-gold-amount type="number" min="0" placeholder="Betrag" /><button type="button" data-give-gold>Geben</button></span>
+        </label>
+        {{#if isGM}}
+          <label>GM Gold +
+            <span><input data-add-gold-amount type="number" min="0" placeholder="Betrag" /><button type="button" data-add-gold>Hinzufügen</button></span>
+          </label>
+        {{/if}}
+      </section>
       <h3>Waffen</h3>
       <ol class="item-list">
         {{#each itemsByType.weapons as |item|}}

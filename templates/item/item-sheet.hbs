@@ -13,6 +13,14 @@
   {{#if isSkill}}
     <section class="form-grid">
       <label>Skill-Art <input name="system.skillType" type="text" value="{{system.skillType}}" /></label>
+      <label>Aktivierung
+        <select name="system.activation">
+          {{#select system.activation}}
+            <option value="active">Aktiv</option>
+            <option value="passive">Passiv</option>
+          {{/select}}
+        </select>
+      </label>
       <label>Kosten <input name="system.cost" type="text" value="{{system.cost}}" /></label>
       <label>Cast Time <input name="system.castTime" type="text" value="{{system.castTime}}" /></label>
       <label>Kategorie
