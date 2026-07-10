@@ -1650,6 +1650,27 @@ Hooks.once("ready", () => {
   });
 });
 
+Hooks.on("renderItemDirectory", (app, html) => {
+  if (!game.user?.isGM) return;
+
+  const root = html?.[0] ?? html;
+  if (!root?.querySelector) return;
+  if (root.querySelector("[data-hlw-sidebar-import]")) return;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "hlw-sidebar-import";
+  button.dataset.hlwSidebarImport = "true";
+  button.innerText = "HLW JSON Import";
+  button.addEventListener("click", async (event) => {
+    event.preventDefault();
+    await importAllJsonFiles();
+  });
+
+  const target = root.querySelector(".directory-header") ?? root.querySelector("header") ?? root;
+  target.appendChild(button);
+});
+
 Hooks.on("hotbarDrop", async (bar, data, slot) => {
   if (data?.systemId !== "hope-lies-within-2" || !data.actorId || !data.itemId) return;
 

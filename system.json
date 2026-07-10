@@ -2,10 +2,10 @@
   "id": "hope-lies-within-2",
   "title": "Hope lies Within 2.0",
   "description": "Ein Foundry-VTT-Systemprototyp fuer Hope lies Within 2.0.",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "url": "https://github.com/Blueyoshi7/hope-lies-within-2",
   "manifest": "https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json",
-  "download": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/download/v0.2.6/hope-lies-within-2-0.2.6.zip",
+  "download": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/download/v0.2.7/hope-lies-within-2-0.2.7.zip",
   "authors": [
     {
       "name": "Dominik Bretterklieber"
