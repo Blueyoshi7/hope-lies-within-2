@@ -31,8 +31,8 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Aktionsstatus pro Zug: Hauptaktion, Bewegung, Bonusaktion
 - Skill-Nutzung erzeugt eine Chat Card und setzt Cooldown
 - Schadensskills zeigen einen Range-Kreis, pruefen Range, wuerfeln Schaden, verrechnen Veranlagung und reduzieren HP
-- Skill-Zielmodus: Skill klicken, Range-Kreis sehen, Zieltoken anklicken
-- Zielauswahl erfolgt ueber ein Ziel-Fenster mit Tokens in Reichweite
+- Skill-Zielmodus: Skill klicken, Range-Kreis sehen, Ziel aus der Liste waehlen, erneuter Skill-Klick bricht ab
+- Zielauswahl erfolgt ueber ein Ziel-Fenster mit Tokens in Reichweite, Zielnummer, Feldposition, Distanz und HP
 - Bei 0 HP wird ein Ziel im Combat Tracker als besiegt markiert
 - Skills koennen aus dem Character Sheet in die Hotbar gezogen werden
 - Veranlagung ersetzt Resistenzen: eigener Wert reduziert eingehenden Schaden und erhoeht ausgehenden Schaden desselben Typs
@@ -41,7 +41,7 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Aktueller Spieler erhaelt ein goldenes "DU BIST AM ZUG"-Overlay
 - Spieler koennen ihren Zug per Button beenden
 - Combat-Bewegung wird anhand der Movement Range begrenzt und pro Zug getrackt
-- GM wird durch Combat-Bewegungslimits nicht blockiert
+- Range-Kreis und Zielauswahl aktualisieren sich, wenn der handelnde Token bewegt wird
 - Range-Kreis ist rein visuell und blockiert Token-Klicks nicht
 - Cooldowns sinken am Zugbeginn des jeweiligen Actors um 1
 - Lebenspunkte
