@@ -33,6 +33,9 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Schadensskills zeigen einen Range-Kreis, pruefen Range, wuerfeln Schaden, verrechnen Veranlagung und reduzieren HP
 - Skill-Zielmodus: Skill klicken, Range-Kreis sehen, Ziel aus der Liste waehlen, erneuter Skill-Klick bricht ab
 - Zielauswahl erfolgt ueber ein Ziel-Fenster mit Tokens in Reichweite, Zielnummer, Feldposition, Distanz und HP
+- Combat-HUD zeigt aktuellen Actor, HP, restliche Bewegung, Hauptaktion, Standardaktionen, Skills und Zugende
+- Range-Werte entsprechen Tiles: Range 12 bedeutet 12 Tiles
+- Range- und Bewegungsanzeigen werden direkt auf dem Foundry-Canvas gezeichnet und bleiben beim Map-Pan an der Szene
 - Bei 0 HP wird ein Ziel im Combat Tracker als besiegt markiert
 - Skills koennen aus dem Character Sheet in die Hotbar gezogen werden
 - Veranlagung ersetzt Resistenzen: eigener Wert reduziert eingehenden Schaden und erhoeht ausgehenden Schaden desselben Typs

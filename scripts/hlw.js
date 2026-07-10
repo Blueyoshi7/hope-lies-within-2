@@ -60,11 +60,12 @@ HLW.insigniaSlotDefaults = {
   slot3: { image: "", name: "", description: "" }
 };
 HLW.pendingSkill = null;
-HLW.rangeLayer = null;
+HLW.rangeGraphics = null;
+HLW.movementGraphics = null;
 HLW.rangeHelp = null;
 HLW.targetPicker = null;
+HLW.combatHud = null;
 HLW.lastHandledTurnKey = null;
-HLW.rangeTilesPerPoint = 0.5;
 
 function numberValue(value) {
   const parsed = Number(value);
@@ -91,10 +92,7 @@ function parseRange(value) {
 }
 
 function getEffectiveRangeInTiles(value) {
-  const range = parseRange(value);
-  if (range <= 0) return 0;
-  if (range <= 1) return 1.15;
-  return range * HLW.rangeTilesPerPoint;
+  return Math.max(parseRange(value), 0);
 }
 
 function normalizeElement(value, fallbackText = "") {
@@ -199,7 +197,8 @@ function showTurnOverlayForActor(actor) {
 }
 
 function getSourceTokenForActor(actor) {
-  return canvas.tokens?.controlled?.find((token) => token.actor?.id === actor.id) ?? actor.getActiveTokens()?.[0];
+  const combatToken = game.combat?.combatant?.actor?.id === actor.id ? getCanvasTokenById(game.combat.combatant.tokenId) : null;
+  return combatToken ?? canvas.tokens?.controlled?.find((token) => token.actor?.id === actor.id) ?? actor.getActiveTokens()?.[0];
 }
 
 function getPendingSourceToken(actor) {
@@ -224,9 +223,9 @@ function getTokensInRange(sourceToken, rangeLimit) {
 }
 
 function removeRangeUi() {
-  if (HLW.rangeLayer) {
-    HLW.rangeLayer.remove();
-    HLW.rangeLayer = null;
+  if (HLW.rangeGraphics) {
+    HLW.rangeGraphics.destroy();
+    HLW.rangeGraphics = null;
   }
 
   if (HLW.rangeHelp) {
@@ -249,6 +248,7 @@ function clearPendingSkill() {
   closeTargetPicker();
   HLW.pendingSkill = null;
   if (actorId) rerenderActorSheet(actorId);
+  renderCombatHud();
 }
 
 function drawSkillRange(sourceToken, rangeLimit, skillName, rawRange = rangeLimit) {
@@ -257,21 +257,21 @@ function drawSkillRange(sourceToken, rangeLimit, skillName, rawRange = rangeLimi
   const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
   const radius = Math.max(rangeLimit * gridSize, gridSize * 0.5);
   const center = sourceToken.center ?? { x: sourceToken.x + sourceToken.w / 2, y: sourceToken.y + sourceToken.h / 2 };
-  const screenCenter = canvas.stage.worldTransform.apply(new PIXI.Point(center.x, center.y));
-  const viewRect = canvas.app.view.getBoundingClientRect();
-  const layer = document.createElement("div");
-  layer.className = "hlw-range-circle";
-  layer.style.width = `${radius * 2}px`;
-  layer.style.height = `${radius * 2}px`;
-  layer.style.left = `${viewRect.left + screenCenter.x - radius}px`;
-  layer.style.top = `${viewRect.top + screenCenter.y - radius}px`;
-  document.body.appendChild(layer);
-  HLW.rangeLayer = layer;
+  const graphics = new PIXI.Graphics();
+  graphics.eventMode = "none";
+  graphics.lineStyle(4, 0xf0b529, 0.96);
+  graphics.beginFill(0xf0b529, 0.14);
+  graphics.drawCircle(center.x, center.y, radius);
+  graphics.endFill();
+  graphics.lineStyle(1, 0xffef9b, 0.75);
+  graphics.drawCircle(center.x, center.y, Math.max(radius - 6, gridSize * 0.4));
+  const layer = canvas.controls ?? canvas.interface ?? canvas.stage;
+  layer.addChild(graphics);
+  HLW.rangeGraphics = graphics;
 
   const help = document.createElement("div");
   help.className = "hlw-range-help";
-  const rangeInfo = rawRange === rangeLimit ? `${rangeLimit.toFixed(1)} Tiles` : `${rawRange} Range / ${rangeLimit.toFixed(1)} Tiles`;
-  help.innerText = `${skillName}: Ziel aus der Liste waehlen (${rangeInfo}). Button erneut klicken bricht ab.`;
+  help.innerText = `${skillName}: Ziel waehlen (${rawRange || rangeLimit} Tiles). Button erneut klicken bricht ab.`;
   document.body.appendChild(help);
   HLW.rangeHelp = help;
 }
@@ -355,6 +355,143 @@ function refreshPendingSkillTargeting() {
 
   drawSkillRange(sourceToken, pending.rangeLimit, item.name, pending.rawRange);
   showTargetPicker(actor, item, sourceToken, pending.rangeLimit);
+  renderCombatHud();
+}
+
+function removeMovementUi() {
+  if (HLW.movementGraphics) {
+    HLW.movementGraphics.destroy();
+    HLW.movementGraphics = null;
+  }
+}
+
+function drawMovementRange(actor) {
+  removeMovementUi();
+  if (!game.combat?.started || !actor) return;
+
+  const token = getSourceTokenForActor(actor);
+  if (!token) return;
+
+  const limit = numberValue(actor.system?.resources?.movement?.value);
+  const spent = numberValue(actor.system?.combat?.movementSpent);
+  const remaining = Math.max(limit - spent, 0);
+  if (remaining <= 0) return;
+
+  const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
+  const radius = remaining * gridSize;
+  const center = token.center ?? { x: token.x + token.w / 2, y: token.y + token.h / 2 };
+  const graphics = new PIXI.Graphics();
+  graphics.eventMode = "none";
+  graphics.lineStyle(3, 0x45d7ff, 0.75);
+  graphics.beginFill(0x45d7ff, 0.08);
+  graphics.drawCircle(center.x, center.y, Math.max(radius, gridSize * 0.5));
+  graphics.endFill();
+  const layer = canvas.controls ?? canvas.interface ?? canvas.stage;
+  layer.addChild(graphics);
+  HLW.movementGraphics = graphics;
+}
+
+function getCombatHudActor() {
+  const currentActor = game.combat?.combatant?.actor;
+  if (currentActor) return currentActor;
+  const controlled = canvas.tokens?.controlled?.[0]?.actor;
+  return controlled ?? null;
+}
+
+function getUsableCombatItems(actor) {
+  if (!actor) return [];
+  return Array.from(actor.items ?? [])
+    .filter((item) => ["playerSkill", "classSkill"].includes(item.type))
+    .map((item) => ({
+      id: item.id,
+      name: item.name,
+      range: parseRange(item.system?.range),
+      damage: item.system?.damage || "-",
+      cooldown: numberValue(item.system?.cooldown?.value),
+      maxCooldown: numberValue(item.system?.cooldown?.max),
+      element: item.system?.element || "",
+      pending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id
+    }));
+}
+
+function renderCombatHud() {
+  if (HLW.combatHud) {
+    HLW.combatHud.remove();
+    HLW.combatHud = null;
+  }
+
+  if (!game.combat?.started) {
+    removeMovementUi();
+    return;
+  }
+
+  const actor = getCombatHudActor();
+  if (!actor) return;
+
+  drawMovementRange(actor);
+
+  const hp = actor.system?.resources?.hp ?? {};
+  const movement = actor.system?.resources?.movement ?? {};
+  const spent = numberValue(actor.system?.combat?.movementSpent);
+  const movementMax = numberValue(movement.value);
+  const movementLeft = Math.max(movementMax - spent, 0);
+  const mainReady = boolValue(actor.system?.actions?.main?.available);
+  const isCurrentTurn = game.combat?.combatant?.actor?.id === actor.id;
+  const skills = getUsableCombatItems(actor);
+  const skillButtons = skills.length
+    ? skills.map((item) => `
+      <button type="button" class="hlw-hud-skill ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" ${(!mainReady || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
+        <strong>${escapeHtml(item.pending ? "Abbrechen" : item.name)}</strong>
+        <span>${escapeHtml(item.element || "Skill")} | R ${item.range || "-"} | ${escapeHtml(item.damage)}</span>
+        <small>${item.cooldown > 0 ? `CD ${item.cooldown}/${item.maxCooldown}` : "bereit"}</small>
+      </button>
+    `).join("")
+    : `<p class="hlw-hud-empty">Keine Skills am Actor.</p>`;
+
+  const hud = document.createElement("aside");
+  hud.className = `hlw-combat-hud ${isCurrentTurn ? "is-turn" : ""}`;
+  hud.innerHTML = `
+    <header>
+      <img src="${escapeHtml(actor.img || "")}" alt="">
+      <div>
+        <strong>${escapeHtml(actor.name)}</strong>
+        <span>${isCurrentTurn ? "Am Zug" : "Wartet"}</span>
+      </div>
+    </header>
+    <section class="hlw-hud-bars">
+      <div><span>HP</span><strong>${numberValue(hp.value)} / ${numberValue(hp.max)}</strong></div>
+      <div><span>Bewegung</span><strong>${movementLeft.toFixed(1)} / ${movementMax}</strong></div>
+      <div><span>Hauptaktion</span><strong>${mainReady ? "bereit" : "verbraucht"}</strong></div>
+    </section>
+    <section class="hlw-hud-actions">
+      <button type="button" data-hud-standard="attack" ${mainReady ? "" : "disabled"}>Angriff</button>
+      <button type="button" data-hud-standard="item" ${mainReady ? "" : "disabled"}>Item</button>
+      <button type="button" data-hud-standard="defend" ${mainReady ? "" : "disabled"}>Abwehr</button>
+      <button type="button" data-hud-end-turn>Zug Ende</button>
+    </section>
+    <section class="hlw-hud-skills">${skillButtons}</section>
+  `;
+
+  hud.addEventListener("click", (event) => {
+    const skillButton = event.target.closest("[data-hud-skill]");
+    if (skillButton) {
+      actor.startSkillTargeting(skillButton.dataset.hudSkill);
+      return;
+    }
+
+    const standardButton = event.target.closest("[data-hud-standard]");
+    if (standardButton) {
+      actor.useStandardAction(standardButton.dataset.hudStandard);
+      return;
+    }
+
+    if (event.target.closest("[data-hud-end-turn]")) {
+      actor.endTurn();
+    }
+  });
+
+  document.body.appendChild(hud);
+  HLW.combatHud = hud;
 }
 
 async function postCombatStartMessage(combat) {
@@ -577,6 +714,7 @@ export class HopeLiesWithinActor extends Actor {
       drawSkillRange(sourceToken, rangeLimit, item.name, rawRange);
       showTargetPicker(this, item, sourceToken, rangeLimit);
       rerenderActorSheet(this.id);
+      renderCombatHud();
       return;
     }
 
@@ -709,6 +847,7 @@ export class HopeLiesWithinActor extends Actor {
 
     await this.update({ "system.actions.main.available": false });
     clearPendingSkill();
+    renderCombatHud();
   }
 }
 
@@ -921,6 +1060,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 
 Hooks.on("canvasReady", () => {
   clearPendingSkill();
+  renderCombatHud();
 });
 
 function handleCancelPendingSkill(event) {
@@ -937,20 +1077,26 @@ Hooks.on("combatStart", (combat) => {
   showCombatOverlay(combat);
   postCombatStartMessage(combat);
   showTurnOverlayForActor(combat.combatant?.actor);
+  renderCombatHud();
 });
 
 Hooks.on("deleteCombat", (combat) => {
   showCombatOverlay(combat, "end");
   postCombatEndMessage(combat);
+  clearPendingSkill();
+  removeMovementUi();
+  renderCombatHud();
 });
 
 Hooks.on("updateCombat", (combat, changed) => {
   if (!("turn" in changed)) return;
   handleCombatTurnChange(combat);
+  renderCombatHud();
 });
 
 Hooks.on("combatTurn", (combat) => {
   handleCombatTurnChange(combat);
+  renderCombatHud();
 });
 
 Hooks.on("preUpdateToken", async (tokenDocument, changes) => {
@@ -992,9 +1138,27 @@ Hooks.on("preUpdateToken", async (tokenDocument, changes) => {
 });
 
 Hooks.on("updateToken", (tokenDocument, changes) => {
-  if (!HLW.pendingSkill) return;
   if (!("x" in changes) && !("y" in changes)) return;
-  if (HLW.pendingSkill.sourceTokenId !== tokenDocument.id) return;
 
-  window.setTimeout(refreshPendingSkillTargeting, 50);
+  if (HLW.pendingSkill?.sourceTokenId === tokenDocument.id) {
+    window.setTimeout(refreshPendingSkillTargeting, 50);
+    return;
+  }
+
+  window.setTimeout(renderCombatHud, 50);
+});
+
+Hooks.on("updateActor", (actor) => {
+  if (game.combat?.combatant?.actor?.id !== actor.id && HLW.pendingSkill?.actorId !== actor.id) return;
+  window.setTimeout(renderCombatHud, 50);
+});
+
+Hooks.on("updateItem", (item) => {
+  if (!item.parent) return;
+  if (game.combat?.combatant?.actor?.id !== item.parent.id && HLW.pendingSkill?.actorId !== item.parent.id) return;
+  window.setTimeout(renderCombatHud, 50);
+});
+
+Hooks.on("controlToken", () => {
+  window.setTimeout(renderCombatHud, 50);
 });
