@@ -75,7 +75,21 @@ HLW.damageCategories = {
   physical: "Physisch",
   magical: "Magisch"
 };
-HLW.gearItemTypes = ["weapon", "armor", "equipment", "consumable", "material", "natural", "mineral", "junk", "foodDrink"];
+HLW.itemTypeLabels = {
+  playerSkill: "Skills",
+  classSkill: "Skills",
+  weapon: "Waffen",
+  armor: "Ruestung",
+  equipment: "Ausrüstung",
+  accessory: "Accessories",
+  consumable: "Verbrauchbares",
+  material: "Materialien",
+  natural: "Naturgegenstände",
+  mineral: "Mineralien",
+  junk: "Müll",
+  foodDrink: "Essen & Trinken"
+};
+HLW.gearItemTypes = ["weapon", "armor", "equipment", "accessory", "consumable", "material", "natural", "mineral", "junk", "foodDrink"];
 
 function numberValue(value) {
   const parsed = Number(value);
@@ -212,7 +226,23 @@ function getInsigniaSlotList(system) {
 function prepareResources(system) {
   const resources = system.resources ?? {};
   resources.gold = resources.gold ?? { label: "Gold", value: 0 };
+  resources.inventorySlots = resources.inventorySlots ?? { label: "Inventarplaetze", value: 0, max: 20 };
   return resources;
+}
+
+function countInventorySlots(items) {
+  return Array.from(items ?? [])
+    .filter((item) => HLW.gearItemTypes.includes(item.type))
+    .reduce((sum, item) => sum + Math.max(numberValue(item.system?.quantity), 1), 0);
+}
+
+function normalizeTier(value) {
+  const text = String(value ?? "").trim();
+  if (!text) return 1;
+  if (["gm", "abyss"].includes(text.toLowerCase())) return 5;
+  const parsed = Number(text.match(/\d+/)?.[0]);
+  if (!Number.isFinite(parsed)) return 1;
+  return Math.min(Math.max(parsed, 1), 5);
 }
 
 function getActionPointState(actor) {
@@ -787,6 +817,14 @@ export class HopeLiesWithinActor extends Actor {
     if (!item) return;
 
     const nextValue = !boolValue(item.system?.equipped);
+    if (item.type === "accessory" && nextValue) {
+      const equippedAccessories = this.items.filter((entry) => entry.type === "accessory" && boolValue(entry.system?.equipped) && entry.id !== item.id);
+      if (equippedAccessories.length >= 3) {
+        ui.notifications?.warn("Es koennen maximal 3 Accessories ausgeruestet sein.");
+        return;
+      }
+    }
+
     await item.update({ "system.equipped": nextValue });
   }
 
@@ -810,15 +848,20 @@ export class HopeLiesWithinActor extends Actor {
     const price = item.system?.price ?? item.system?.goldValue ?? "-";
     const quantity = Math.max(numberValue(item.system?.quantity), 1);
     const description = item.system?.description || item.system?.effect || "Keine Beschreibung.";
+    const gmRows = game.user?.isGM ? `
+      <dt>Tier</dt><dd>${normalizeTier(item.system?.tier ?? item.system?.importTier ?? item.system?.sourceTier)}</dd>
+      <dt>Fundort</dt><dd>${escapeHtml(item.system?.source || "-")}</dd>
+      <dt>Preisvorschlag</dt><dd>${escapeHtml(price)}</dd>
+    ` : "";
     const content = `
       <div class="hlw-item-detail">
         <img src="${escapeHtml(item.img || "")}" alt="">
         <div>
           <h2>${escapeHtml(item.name)}</h2>
           <dl>
-            <dt>Kategorie</dt><dd>${escapeHtml(item.type)}</dd>
+            <dt>Kategorie</dt><dd>${escapeHtml(HLW.itemTypeLabels[item.type] ?? item.type)}</dd>
             <dt>Anzahl</dt><dd>${quantity}</dd>
-            <dt>Goldwert</dt><dd>${escapeHtml(price)}</dd>
+            ${gmRows}
           </dl>
           <p>${escapeHtml(description)}</p>
         </div>
@@ -1162,6 +1205,8 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.profileImage = context.activeInsignia?.image || context.actor.img;
     context.isGM = game.user?.isGM;
     context.canAct = hasActionPoints(context.actor);
+    context.inventoryUsed = countInventorySlots(context.actor.items);
+    context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
     return context;
   }
 
@@ -1235,6 +1280,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
 
     html.find("[data-show-item-details]").on("click", (event) => {
       event.preventDefault();
+      event.stopPropagation();
       this.actor.showOwnedItemDetails(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
     });
 
@@ -1275,6 +1321,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       equipment: [],
       consumables: [],
       materials: [],
+      accessories: [],
       natural: [],
       minerals: [],
       junk: [],
@@ -1309,6 +1356,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
 
         if (item.type === "weapon") groups.weapons.push(preparedItem);
         else if (item.type === "armor") groups.armor.push(preparedItem);
+        else if (item.type === "accessory") groups.accessories.push(preparedItem);
         else if (item.type === "consumable") groups.consumables.push(preparedItem);
         else if (item.type === "material") groups.materials.push(preparedItem);
         else if (item.type === "natural") groups.natural.push(preparedItem);
@@ -1349,10 +1397,32 @@ export class HopeLiesWithinItemSheet extends (BaseItemSheet ?? class {}) {
 
   async getData(options) {
     const context = await super.getData(options);
-      context.system = context.item.system;
-      context.isSkill = ["playerSkill", "classSkill"].includes(context.item.type);
+    context.system = context.item.system;
+    context.isSkill = ["playerSkill", "classSkill"].includes(context.item.type);
     context.isGear = !context.isSkill;
+    context.isGM = game.user?.isGM;
     return context;
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    html.find("[data-delete-item]").on("click", async (event) => {
+      event.preventDefault();
+      if (!game.user?.isGM) return;
+
+      const confirmed = await Dialog.confirm({
+        title: `${this.item.name} loeschen?`,
+        content: `<p>${escapeHtml(this.item.name)} wirklich dauerhaft loeschen?</p>`,
+        yes: () => true,
+        no: () => false,
+        defaultYes: false
+      });
+      if (!confirmed) return;
+
+      await this.item.delete();
+      this.close();
+    });
   }
 }
 
@@ -1376,6 +1446,10 @@ function normalizeImportType(type) {
     equipment: "equipment",
     ausruestung: "equipment",
     ausrüstung: "equipment",
+    accessory: "accessory",
+    accessories: "accessory",
+    accessoire: "accessory",
+    accessoires: "accessory",
     consumable: "consumable",
     verbrauchbar: "consumable",
     material: "material",
@@ -1412,15 +1486,27 @@ function normalizeImportedItem(entry, fallbackType = "equipment") {
     ["effekt", "effect"],
     ["aktivierung", "activation"],
     ["kategorie", "damageCategory"],
-    ["schadenstyp", "damageType"]
+    ["schadenstyp", "damageType"],
+    ["fundort", "source"],
+    ["wert", "price"],
+    ["gold", "price"],
+    ["faehigkeit", "effect"],
+    ["fähigkeit", "effect"],
+    ["lernpoints", "learningPoints"],
+    ["lernpunkte", "learningPoints"]
   ]) {
     if (entry[sourceKey] !== undefined && systemData[targetKey] === undefined) systemData[targetKey] = entry[sourceKey];
   }
+
+  systemData.tier = normalizeTier(systemData.tier ?? entry.tier ?? entry.Tier);
 
   if (["playerSkill", "classSkill"].includes(type)) {
     systemData.activation = systemData.activation ?? "active";
     systemData.cooldown = systemData.cooldown ?? { value: 0, max: 0 };
     systemData.scaling = systemData.scaling ?? { primary: "", secondary: "", tertiary: "" };
+    if (entry.primary !== undefined && !systemData.scaling.primary) systemData.scaling.primary = entry.primary;
+    if (entry.secondary !== undefined && !systemData.scaling.secondary) systemData.scaling.secondary = entry.secondary;
+    if (entry.tertiary !== undefined && !systemData.scaling.tertiary) systemData.scaling.tertiary = entry.tertiary;
   } else {
     systemData.quantity = Math.max(numberValue(systemData.quantity ?? entry.quantity), 1);
   }
@@ -1429,8 +1515,37 @@ function normalizeImportedItem(entry, fallbackType = "equipment") {
     name: entry.name ?? entry.Name ?? "Unbenannt",
     type,
     img: entry.img ?? entry.image ?? "icons/svg/item-bag.svg",
+    folderPath: entry.folder,
     system: systemData
   };
+}
+
+function getImportFolderPath(itemData) {
+  if (itemData.folderPath) return itemData.folderPath;
+  const category = HLW.itemTypeLabels[itemData.type] ?? "Sonstiges";
+  const tier = normalizeTier(itemData.system?.tier);
+  return `HLW Import/${category}/Tier ${tier}`;
+}
+
+async function ensureItemFolderPath(path) {
+  const parts = String(path ?? "").split("/").map((part) => part.trim()).filter(Boolean);
+  let parent = null;
+
+  for (const name of parts) {
+    const existing = game.folders?.find((folder) => {
+      const parentId = parent?.id ?? null;
+      const folderParentId = folder.folder?.id ?? folder.folder ?? null;
+      return folder.type === "Item" && folder.name === name && folderParentId === parentId;
+    });
+
+    parent = existing ?? await Folder.create({
+      name,
+      type: "Item",
+      folder: parent?.id ?? null
+    });
+  }
+
+  return parent;
 }
 
 async function importJsonFile(path, fallbackType = "equipment") {
@@ -1449,7 +1564,14 @@ async function importJsonFile(path, fallbackType = "equipment") {
     return [];
   }
 
-  const documents = entries.map((entry) => normalizeImportedItem(entry, fallbackType));
+  const documents = [];
+  for (const entry of entries) {
+    const itemData = normalizeImportedItem(entry, fallbackType);
+    const folder = await ensureItemFolderPath(getImportFolderPath(itemData));
+    if (folder) itemData.folder = folder.id;
+    delete itemData.folderPath;
+    documents.push(itemData);
+  }
   const created = await Item.createDocuments(documents);
   ui.notifications?.info(`${created.length} Eintraege aus ${path} importiert.`);
   return created;
@@ -1459,8 +1581,10 @@ async function importAllJsonFiles() {
   const basePath = "systems/hope-lies-within-2/import";
   const imports = [
     ["items.json", "equipment"],
+    ["accessories.json", "accessory"],
     ["weapons.json", "weapon"],
     ["armor.json", "armor"],
+    ["food-drink.json", "foodDrink"],
     ["skills.json", "playerSkill"]
   ];
 
@@ -1496,7 +1620,7 @@ Hooks.once("init", () => {
     Items.unregisterSheet("core", BaseItemSheet);
     Items.registerSheet("hope-lies-within-2", HopeLiesWithinItemSheet, {
       makeDefault: true,
-      types: ["playerSkill", "classSkill", "weapon", "armor", "equipment", "consumable", "material", "natural", "mineral", "junk", "foodDrink"]
+      types: ["playerSkill", "classSkill", "weapon", "armor", "equipment", "accessory", "consumable", "material", "natural", "mineral", "junk", "foodDrink"]
     });
   } else {
     console.warn("Hope lies Within 2.0 | Klassische ItemSheet-API nicht gefunden. System startet ohne eigenes Item Sheet.");

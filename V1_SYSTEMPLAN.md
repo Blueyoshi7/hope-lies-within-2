@@ -48,10 +48,14 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Schaden trennt Kategorie (physisch/magisch) von Schadenstyp (Schnitt, Stich, Feuer usw.)
 - Physische und magische Verteidigung reduzieren eingehenden Schaden nach Kategorie
 - Inventar zeigt ausgeruestete Waffen/Ruestung, eingebettete Items koennen bearbeitet oder an markierte Ziel-Actors gegeben werden
+- Inventarlimit zaehlt alle getragenen und mitgefuehrten Items
+- Accessories sind ein eigener Item-Typ; maximal 3 koennen ausgeruestet sein
 - Gold ist im Inventar sichtbar, kann an markierte Ziel-Actors gegeben werden, und der GM kann direkt Gold hinzufuegen
 - Inventar-Items koennen geoeffnet, verbraucht oder weggeworfen werden
 - Weitere Item-Kategorien: Naturgegenstaende, Mineralien, Muell, Essen/Trinken
 - GM kann Skills direkt vom Charakter entfernen
+- JSON-Import erstellt Item-Ordner nach Kategorie und Tier; GM/Abyss wird als Tier 5 behandelt
+- Price ist ein GM-Preisvorschlag und fuer Spieler verborgen
 - Aktueller Spieler erhaelt ein goldenes "DU BIST AM ZUG"-Overlay
 - Spieler koennen ihren Zug per Button beenden
 - Combat-Bewegung wird anhand der Movement Range begrenzt und pro Zug getrackt

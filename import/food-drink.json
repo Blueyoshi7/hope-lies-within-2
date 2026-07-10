@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Sonnenkornbrot",
+    "type": "foodDrink",
+    "img": "icons/consumables/grains/bread-loaf-boule-rustic-brown.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "10 Gold", "quantity": 1, "effect": "Nahrung", "description": "Brot aus Sonnenkorn" }
+  },
+  {
+    "name": "Windgrass-Bier",
+    "type": "foodDrink",
+    "img": "icons/consumables/drinks/ale-mug-brown.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "15 Gold", "quantity": 1, "effect": "Nahrung", "description": "Bier aus Windgras. Betrunken +1." }
+  },
+  {
+    "name": "(Erd-)Wurzelschnitte",
+    "type": "foodDrink",
+    "img": "icons/consumables/food/pie-cooked-brown.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Eine Schnitte mit Erdwurzelfuelle." }
+  },
+  {
+    "name": "Tränenkraut-Vodka",
+    "type": "foodDrink",
+    "img": "icons/consumables/drinks/bottle-corked-blue.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Vodka aus Traenenkraut. Betrunken +2." }
+  },
+  {
+    "name": "Nachter-Pizza",
+    "type": "foodDrink",
+    "img": "icons/consumables/food/pizza-slice-yellow.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Sonnenkornteig belegt mit Nachtschattenbluete." }
+  },
+  {
+    "name": "Wasserbeeren-Drink",
+    "type": "foodDrink",
+    "img": "icons/consumables/drinks/glass-blue.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Ein Trinken aus Wasserbeeren. Saettigt mehr als man denkt." }
+  },
+  {
+    "name": "Wasserbeeren-Drink klein",
+    "type": "foodDrink",
+    "img": "icons/consumables/drinks/glass-blue.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "5 Gold", "quantity": 1, "effect": "Nahrung", "description": "Ein Trinken aus Wasserbeeren. Saettigt mehr als man denkt." }
+  },
+  {
+    "name": "Sonnenflimmerbrot",
+    "type": "foodDrink",
+    "img": "icons/consumables/grains/bread-loaf-boule-rustic-brown.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "5 Gold", "quantity": 1, "effect": "Nahrung", "description": "Ein rustikales, nahrhaftes Brot mit einer leicht suesslichen Note vom Sonnenkorn." }
+  },
+  {
+    "name": "Nebeltraum-Suppe",
+    "type": "foodDrink",
+    "img": "icons/consumables/soup/bowl-broth-green.webp",
+    "system": { "tier": 1, "source": "Haendler", "price": "3 Gold", "quantity": 1, "effect": "Nahrung", "description": "Eine beruhigende, hellgruene Suppe mit einem sanften, erdigen Aroma vom Nebelfarn." }
+  }
+]

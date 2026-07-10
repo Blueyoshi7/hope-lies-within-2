@@ -61,7 +61,7 @@
   {{else}}
     <section class="form-grid">
       <label>Anzahl <input name="system.quantity" type="number" value="{{system.quantity}}" /></label>
-      <label>Preis <input name="system.price" type="text" value="{{system.price}}" /></label>
+      {{#if isGM}}<label>Preisvorschlag <input name="system.price" type="text" value="{{system.price}}" /></label>{{/if}}
       <label>Slot <input name="system.slot" type="text" value="{{system.slot}}" /></label>
       <label>Kategorie
         <select name="system.damageCategory">
@@ -101,4 +101,10 @@
   <label class="stacked">Beschreibung
     <textarea name="system.description">{{system.description}}</textarea>
   </label>
+
+  {{#if isGM}}
+    <footer class="item-sheet-actions">
+      <button type="button" class="danger-button" data-delete-item>Item löschen</button>
+    </footer>
+  {{/if}}
 </form>

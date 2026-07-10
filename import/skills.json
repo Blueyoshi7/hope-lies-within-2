@@ -1,1 +1,233 @@
-[]
+[
+  {
+    "name": "Blitzschlag",
+    "type": "playerSkill",
+    "img": "icons/magic/lightning/bolt-strike-blue.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Magie",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "25 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "lightning",
+      "range": 4,
+      "damage": "3 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "INT", "secondary": "WIS", "tertiary": "" },
+      "description": "Waffe: Magisch."
+    }
+  },
+  {
+    "name": "Blutrausch",
+    "type": "playerSkill",
+    "img": "icons/skills/melee/strike-sword-red.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Nahkampf",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "10 Gold",
+      "cost": "1 AP",
+      "damageCategory": "physical",
+      "damageType": "slash",
+      "range": 1,
+      "damage": "2 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "STR", "secondary": "", "tertiary": "" },
+      "effect": "Bei Toetung erneuter Angriff.",
+      "description": "Waffe: Physisch. Bei Toetung erneuter Angriff."
+    }
+  },
+  {
+    "name": "Donnerhand",
+    "type": "playerSkill",
+    "img": "icons/magic/lightning/fist-unarmed-strike-blue.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Magie",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "25 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "lightning",
+      "range": 1,
+      "damage": "1 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "description": "Ohne Waffe."
+    }
+  },
+  {
+    "name": "Donnerschlag",
+    "type": "playerSkill",
+    "img": "icons/magic/lightning/bolt-strike-forked-yellow.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Magie",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "25 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "lightning",
+      "range": 2,
+      "damage": "3 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "EDU", "secondary": "CHA", "tertiary": "" },
+      "description": "Waffe: Magisch."
+    }
+  },
+  {
+    "name": "Doppelstoß",
+    "type": "playerSkill",
+    "img": "icons/skills/melee/strikes-sword-scimitar.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Nahkampf",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "10 Gold",
+      "cost": "1 AP",
+      "damageCategory": "physical",
+      "damageType": "pierce",
+      "range": 1,
+      "damage": "2 + 2d6",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "STR", "secondary": "CON", "tertiary": "" },
+      "description": "Waffe: Physisch."
+    }
+  },
+  {
+    "name": "Durchdringender Stoß",
+    "type": "playerSkill",
+    "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Nahkampf",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "10 Gold",
+      "cost": "1 AP",
+      "damageCategory": "physical",
+      "damageType": "pierce",
+      "range": 1,
+      "damage": "3 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "STR, DEX", "secondary": "CON, SPE", "tertiary": "" },
+      "description": "Waffe: Physisch."
+    }
+  },
+  {
+    "name": "Eisbarriere",
+    "type": "playerSkill",
+    "img": "icons/magic/defensive/barrier-shield-dome-blue.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Verteidigung",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "10 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "ice",
+      "range": 0,
+      "damage": "",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "INT", "secondary": "WIS", "tertiary": "" },
+      "effect": "Der Caster erhaelt ein Schild in Hoehe von 1d6 + Waffe, solange der Caster sich nicht bewegt.",
+      "description": "Der Caster erhaelt ein Schild in Hoehe von 1d6 + Waffe, solange der Caster sich nicht bewegt."
+    }
+  },
+  {
+    "name": "Eishand",
+    "type": "playerSkill",
+    "img": "icons/magic/water/hand-ice-blue.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Magie",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "10 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "ice",
+      "range": 3,
+      "damage": "1 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "description": "Waffe: Magisch."
+    }
+  },
+  {
+    "name": "Eislanze",
+    "type": "playerSkill",
+    "img": "icons/magic/water/projectile-ice-spear-blue.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Magie",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "25 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "ice",
+      "range": 4,
+      "damage": "3 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "INT", "secondary": "WIS", "tertiary": "" },
+      "description": "Waffe: Magisch."
+    }
+  },
+  {
+    "name": "Eisschlag",
+    "type": "playerSkill",
+    "img": "icons/magic/water/fist-ice-blue.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Magie",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 5,
+      "price": "25 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "ice",
+      "range": 2,
+      "damage": "3 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "EDU", "secondary": "CHA", "tertiary": "" },
+      "description": "Waffe: Magisch."
+    }
+  },
+  {
+    "name": "Elementar Schuss",
+    "type": "playerSkill",
+    "img": "icons/magic/fire/projectile-arrow-fire-orange.webp",
+    "system": {
+      "tier": 1,
+      "skillType": "Fernkampf",
+      "activation": "active",
+      "source": "Skill-Orb",
+      "learningPoints": 15,
+      "price": "100 Gold",
+      "cost": "1 AP",
+      "damageCategory": "magical",
+      "damageType": "magic",
+      "range": 4,
+      "damage": "2 + 1d4",
+      "cooldown": { "value": 0, "max": 1 },
+      "scaling": { "primary": "AGL", "secondary": "SOU", "tertiary": "" },
+      "description": "Waffe: Magisch."
+    }
+  }
+]

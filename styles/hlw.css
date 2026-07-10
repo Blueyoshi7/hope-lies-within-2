@@ -310,8 +310,8 @@
 }
 
 .hlw-sheet .inventory-row {
-  grid-template-columns: 28px 38px minmax(150px, 1fr) repeat(4, minmax(58px, auto)) repeat(4, minmax(58px, auto));
-  cursor: pointer;
+  grid-template-columns: 28px 38px minmax(150px, 1fr) repeat(4, minmax(52px, auto)) repeat(5, minmax(54px, auto));
+  cursor: default;
 }
 
 .hlw-sheet .inventory-row img {
@@ -330,7 +330,7 @@
 
 .hlw-sheet .inventory-gold-bar {
   display: grid;
-  grid-template-columns: minmax(130px, 0.65fr) minmax(260px, 1fr) minmax(260px, 1fr);
+  grid-template-columns: minmax(110px, 0.5fr) minmax(130px, 0.6fr) minmax(220px, 1fr) minmax(220px, 1fr);
   gap: 10px;
   align-items: stretch;
   margin: 0 0 14px;
@@ -391,6 +391,18 @@
 .hlw-sheet .world-skill-row small {
   display: block;
   color: var(--hlw-muted);
+}
+
+.hlw-sheet .item-sheet-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.hlw-sheet .danger-button {
+  border-color: rgba(240, 90, 90, 0.58);
+  background: rgba(240, 90, 90, 0.15);
+  color: #ffc7c7;
 }
 
 .hlw-sheet .insignia-grid {
@@ -585,11 +597,11 @@
   bottom: 18px;
   z-index: 100000;
   display: grid;
-  grid-template-columns: 220px minmax(360px, 1fr) minmax(300px, 420px);
+  grid-template-columns: 190px minmax(360px, 1fr) minmax(300px, 390px);
   gap: 10px;
-  width: min(1180px, calc(100vw - 190px));
+  width: min(1120px, calc(100vw - 150px));
   min-height: 0;
-  max-height: min(320px, 36vh);
+  max-height: min(260px, 32vh);
   overflow: hidden;
   transform: translateX(-50%);
   border: 1px solid rgba(240, 184, 77, 0.66);
@@ -609,19 +621,19 @@
 .hlw-combat-hud header {
   display: grid;
   grid-row: 1 / span 2;
-  grid-template-columns: 62px 1fr;
-  gap: 12px;
+  grid-template-columns: 54px 1fr;
+  gap: 10px;
   align-items: center;
   align-content: center;
   min-height: 0;
-  padding: 12px;
+  padding: 10px;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.03);
 }
 
 .hlw-combat-hud header img {
-  width: 62px;
-  height: 62px;
+  width: 54px;
+  height: 54px;
   object-fit: cover;
   border: 2px solid var(--hlw-gold);
   border-radius: 12px;
@@ -635,7 +647,7 @@
 
 .hlw-combat-hud header strong {
   overflow: hidden;
-  font-size: 20px;
+  font-size: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -655,12 +667,12 @@
   grid-row: 1;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  padding: 12px 0 0;
+  padding: 10px 0 0;
 }
 
 .hlw-hud-stats div {
-  min-height: 56px;
-  padding: 8px 10px;
+  min-height: 48px;
+  padding: 7px 9px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.045);
@@ -674,7 +686,7 @@
 .hlw-hud-stats strong {
   margin-top: 3px;
   color: #fff7d8;
-  font-size: 19px;
+  font-size: 17px;
 }
 
 .hlw-hud-actions {
@@ -684,7 +696,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   align-self: end;
-  padding: 0 0 12px;
+  padding: 0 0 10px;
 }
 
 .hlw-hud-actions button,
@@ -697,8 +709,8 @@
 }
 
 .hlw-hud-actions button {
-  min-height: 44px;
-  padding: 7px;
+  min-height: 38px;
+  padding: 6px;
 }
 
 .hlw-hud-actions button:hover:not(:disabled),
@@ -717,10 +729,10 @@
   grid-column: 3;
   grid-row: 1 / span 2;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   overflow: auto;
   min-height: 0;
-  padding: 12px;
+  padding: 10px;
   border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -740,8 +752,8 @@
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 2px 8px;
-  min-height: 54px;
-  padding: 8px 10px;
+  min-height: 46px;
+  padding: 7px 9px;
   text-align: left;
 }
 
