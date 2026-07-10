@@ -832,11 +832,6 @@ export class HopeLiesWithinActor extends Actor {
     const item = this.items.get(itemId);
     if (!item) return;
 
-    if (item.sheet?.render) {
-      item.sheet.render(true);
-      return;
-    }
-
     const sheet = new HopeLiesWithinItemSheet(item);
     sheet.render(true);
   }
@@ -871,6 +866,7 @@ export class HopeLiesWithinActor extends Actor {
     new Dialog({
       title: item.name,
       content,
+      classes: ["hope-lies-within", "hlw-detail-dialog"],
       buttons: {
         close: { label: "Schliessen" }
       }
@@ -1298,6 +1294,12 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       input.val("");
     });
 
+    html.find("[data-import-json]").on("click", async (event) => {
+      event.preventDefault();
+      if (!game.user?.isGM) return;
+      await importAllJsonFiles();
+    });
+
     html.find("[data-item-id][draggable=true]").on("dragstart", (event) => {
       const itemId = event.currentTarget.dataset.itemId;
       const item = this.actor.items.get(itemId);
@@ -1567,6 +1569,9 @@ async function importJsonFile(path, fallbackType = "equipment") {
   const documents = [];
   for (const entry of entries) {
     const itemData = normalizeImportedItem(entry, fallbackType);
+    const duplicate = game.items?.find((item) => item.name === itemData.name && item.type === itemData.type);
+    if (duplicate) continue;
+
     const folder = await ensureItemFolderPath(getImportFolderPath(itemData));
     if (folder) itemData.folder = folder.id;
     delete itemData.folderPath;
