@@ -384,11 +384,24 @@
 
 .hlw-target-picker__list button {
   display: grid;
-  grid-template-columns: 36px 1fr auto;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
   align-items: center;
   gap: 8px;
   min-height: 44px;
   text-align: left;
+}
+
+.hlw-target-picker__list button span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.hlw-target-picker__list button small {
+  color: rgba(255, 241, 173, 0.72);
+  font-size: 11px;
+  line-height: 1.15;
 }
 
 .hlw-target-picker__list button:hover {

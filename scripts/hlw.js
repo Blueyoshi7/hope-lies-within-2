@@ -64,6 +64,7 @@ HLW.rangeLayer = null;
 HLW.rangeHelp = null;
 HLW.targetPicker = null;
 HLW.lastHandledTurnKey = null;
+HLW.rangeTilesPerPoint = 0.5;
 
 function numberValue(value) {
   const parsed = Number(value);
@@ -87,6 +88,13 @@ function normalizeFormula(value) {
 function parseRange(value) {
   const parsed = Number(String(value ?? "").replace(",", ".").match(/-?\d+(\.\d+)?/)?.[0]);
   return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function getEffectiveRangeInTiles(value) {
+  const range = parseRange(value);
+  if (range <= 0) return 0;
+  if (range <= 1) return 1.15;
+  return range * HLW.rangeTilesPerPoint;
 }
 
 function normalizeElement(value, fallbackText = "") {
@@ -194,6 +202,11 @@ function getSourceTokenForActor(actor) {
   return canvas.tokens?.controlled?.find((token) => token.actor?.id === actor.id) ?? actor.getActiveTokens()?.[0];
 }
 
+function getPendingSourceToken(actor) {
+  const pendingToken = HLW.pendingSkill?.actorId === actor.id ? getCanvasTokenById(HLW.pendingSkill.sourceTokenId) : null;
+  return pendingToken ?? getSourceTokenForActor(actor);
+}
+
 function rerenderActorSheet(actorId) {
   const actor = game.actors?.get(actorId);
   if (actor?.sheet?.rendered) actor.sheet.render(false);
@@ -210,6 +223,18 @@ function getTokensInRange(sourceToken, rangeLimit) {
     .sort((a, b) => a.distance - b.distance);
 }
 
+function removeRangeUi() {
+  if (HLW.rangeLayer) {
+    HLW.rangeLayer.remove();
+    HLW.rangeLayer = null;
+  }
+
+  if (HLW.rangeHelp) {
+    HLW.rangeHelp.remove();
+    HLW.rangeHelp = null;
+  }
+}
+
 function closeTargetPicker() {
   if (HLW.targetPicker) {
     HLW.targetPicker.remove();
@@ -220,22 +245,15 @@ function closeTargetPicker() {
 function clearPendingSkill() {
   const actorId = HLW.pendingSkill?.actorId;
 
-  if (HLW.rangeLayer) {
-    HLW.rangeLayer.remove();
-    HLW.rangeLayer = null;
-  }
-
-  if (HLW.rangeHelp) {
-    HLW.rangeHelp.remove();
-    HLW.rangeHelp = null;
-  }
-
+  removeRangeUi();
   closeTargetPicker();
   HLW.pendingSkill = null;
   if (actorId) rerenderActorSheet(actorId);
 }
 
-function drawSkillRange(sourceToken, rangeLimit, skillName) {
+function drawSkillRange(sourceToken, rangeLimit, skillName, rawRange = rangeLimit) {
+  removeRangeUi();
+
   const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
   const radius = Math.max(rangeLimit * gridSize, gridSize * 0.5);
   const center = sourceToken.center ?? { x: sourceToken.x + sourceToken.w / 2, y: sourceToken.y + sourceToken.h / 2 };
@@ -252,13 +270,21 @@ function drawSkillRange(sourceToken, rangeLimit, skillName) {
 
   const help = document.createElement("div");
   help.className = "hlw-range-help";
-  help.innerText = `${skillName}: Ziel aus der Liste waehlen. Button erneut klicken bricht ab.`;
+  const rangeInfo = rawRange === rangeLimit ? `${rangeLimit.toFixed(1)} Tiles` : `${rawRange} Range / ${rangeLimit.toFixed(1)} Tiles`;
+  help.innerText = `${skillName}: Ziel aus der Liste waehlen (${rangeInfo}). Button erneut klicken bricht ab.`;
   document.body.appendChild(help);
   HLW.rangeHelp = help;
 }
 
 function getCanvasTokenById(tokenId) {
   return canvas.tokens?.placeables?.find((token) => token.id === tokenId || token.document?.id === tokenId);
+}
+
+function getTokenGridLabel(token, index) {
+  const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
+  const col = Math.round(numberValue(token.document?.x ?? token.x) / gridSize) + 1;
+  const row = Math.round(numberValue(token.document?.y ?? token.y) / gridSize) + 1;
+  return `Ziel ${index + 1} | Feld ${col}:${row}`;
 }
 
 function showTargetPicker(actor, item, sourceToken, rangeLimit) {
@@ -269,11 +295,17 @@ function showTargetPicker(actor, item, sourceToken, rangeLimit) {
   picker.className = "hlw-target-picker";
 
   const targetRows = entries.length
-    ? entries.map(({ token, distance }) => `
+    ? entries.map(({ token, distance }, index) => `
       <button type="button" data-target-token-id="${token.id}">
         <img src="${escapeHtml(token.document?.texture?.src || token.actor?.img || "")}" alt="">
-        <span>${escapeHtml(token.name)}</span>
-        <strong>${distance.toFixed(1)} Tiles</strong>
+        <span>
+          <strong>${escapeHtml(token.name)}</strong>
+          <small>${escapeHtml(getTokenGridLabel(token, index))}</small>
+        </span>
+        <span>
+          <strong>${distance.toFixed(1)} Tiles</strong>
+          <small>HP ${numberValue(token.actor?.system?.resources?.hp?.value)} / ${numberValue(token.actor?.system?.resources?.hp?.max)}</small>
+        </span>
       </button>
     `).join("")
     : `<p>Keine Ziele in Reichweite.</p>`;
@@ -307,6 +339,22 @@ function showTargetPicker(actor, item, sourceToken, rangeLimit) {
 
   document.body.appendChild(picker);
   HLW.targetPicker = picker;
+}
+
+function refreshPendingSkillTargeting() {
+  const pending = HLW.pendingSkill;
+  if (!pending) return;
+
+  const actor = game.actors?.get(pending.actorId);
+  const item = actor?.items?.get(pending.itemId);
+  const sourceToken = getCanvasTokenById(pending.sourceTokenId);
+  if (!actor || !item || !sourceToken) {
+    clearPendingSkill();
+    return;
+  }
+
+  drawSkillRange(sourceToken, pending.rangeLimit, item.name, pending.rawRange);
+  showTargetPicker(actor, item, sourceToken, pending.rangeLimit);
 }
 
 async function postCombatStartMessage(combat) {
@@ -522,10 +570,11 @@ export class HopeLiesWithinActor extends Actor {
         return;
       }
 
-      const rangeLimit = parseRange(item.system?.range);
+      const rawRange = parseRange(item.system?.range);
+      const rangeLimit = getEffectiveRangeInTiles(item.system?.range);
       clearPendingSkill();
-      HLW.pendingSkill = { actorId: this.id, itemId, sourceType, sourceTokenId: sourceToken.id, rangeLimit };
-      drawSkillRange(sourceToken, rangeLimit, item.name);
+      HLW.pendingSkill = { actorId: this.id, itemId, sourceType, sourceTokenId: sourceToken.id, rawRange, rangeLimit };
+      drawSkillRange(sourceToken, rangeLimit, item.name, rawRange);
       showTargetPicker(this, item, sourceToken, rangeLimit);
       rerenderActorSheet(this.id);
       return;
@@ -554,7 +603,7 @@ export class HopeLiesWithinActor extends Actor {
 
     const damageFormula = normalizeFormula(item.system?.damage);
     const hasDamage = damageFormula && !["-", "xxx", "n/a"].includes(damageFormula.toLowerCase());
-    const sourceToken = getSourceTokenForActor(this);
+    const sourceToken = getPendingSourceToken(this);
     let damageResult = null;
 
     if (hasDamage) {
@@ -572,7 +621,8 @@ export class HopeLiesWithinActor extends Actor {
         targetToken = targets[0];
       }
 
-      const rangeLimit = parseRange(item.system?.range);
+      const rawRange = parseRange(item.system?.range);
+      const rangeLimit = getEffectiveRangeInTiles(item.system?.range);
       const distance = getTokenDistanceInTiles(sourceToken, targetToken);
 
       if (rangeLimit > 0 && distance > rangeLimit) {
@@ -603,6 +653,7 @@ export class HopeLiesWithinActor extends Actor {
 
       damageResult = {
         targetName: targetToken.name,
+        rawRange,
         range: rangeLimit,
         distance,
         element,
@@ -638,7 +689,8 @@ export class HopeLiesWithinActor extends Actor {
             <hr>
             <dl>
               <dt>Ziel</dt><dd>${escapeHtml(damageResult.targetName)}</dd>
-              <dt>Distanz</dt><dd>${damageResult.distance.toFixed(1)} / ${damageResult.range || "-"} Tiles</dd>
+              <dt>Distanz</dt><dd>${damageResult.distance.toFixed(1)} / ${damageResult.range.toFixed(1)} Tiles</dd>
+              <dt>Range-Wert</dt><dd>${damageResult.rawRange || "-"}</dd>
               <dt>Wurf</dt><dd>${damageResult.roll.total}</dd>
               <dt>Veranlagung Angriff</dt><dd>+${damageResult.attackAffinity}</dd>
               <dt>Veranlagung Ziel</dt><dd>-${damageResult.defenseAffinity}</dd>
@@ -904,7 +956,6 @@ Hooks.on("combatTurn", (combat) => {
 Hooks.on("preUpdateToken", async (tokenDocument, changes) => {
   if (!game.combat?.started) return;
   if (!("x" in changes) && !("y" in changes)) return;
-  if (game.user?.isGM) return;
 
   const actor = tokenDocument.actor;
   if (!actor) return;
@@ -938,4 +989,12 @@ Hooks.on("preUpdateToken", async (tokenDocument, changes) => {
     "system.combat.movementSpent": nextSpent,
     "system.actions.movement.available": limit <= 0 || nextSpent < limit - 0.01
   });
+});
+
+Hooks.on("updateToken", (tokenDocument, changes) => {
+  if (!HLW.pendingSkill) return;
+  if (!("x" in changes) && !("y" in changes)) return;
+  if (HLW.pendingSkill.sourceTokenId !== tokenDocument.id) return;
+
+  window.setTimeout(refreshPendingSkillTargeting, 50);
 });
