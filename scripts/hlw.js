@@ -68,6 +68,7 @@ HLW.combatHud = null;
 HLW.lastHandledTurnKey = null;
 HLW.lastLegalTokenPositions = new Map();
 HLW.pendingLegalMoves = new Map();
+HLW.movementSpentCache = new Map();
 HLW.revertingTokens = new Set();
 
 HLW.damageCategories = {
@@ -212,6 +213,40 @@ function prepareResources(system) {
   const resources = system.resources ?? {};
   resources.gold = resources.gold ?? { label: "Gold", value: 0 };
   return resources;
+}
+
+function getActionPointState(actor) {
+  const value = numberValue(actor.system?.resources?.actionPoints?.value);
+  const max = Math.max(numberValue(actor.system?.resources?.actionPoints?.max), 0);
+  return { value, max };
+}
+
+function hasActionPoints(actor, amount = 1) {
+  return getActionPointState(actor).value >= amount;
+}
+
+async function spendActionPoints(actor, amount = 1) {
+  const state = getActionPointState(actor);
+  if (state.value < amount) {
+    ui.notifications?.warn("Nicht genug Aktionspunkte.");
+    return false;
+  }
+
+  const nextValue = Math.max(state.value - amount, 0);
+  await actor.update({
+    "system.resources.actionPoints.value": nextValue,
+    "system.actions.main.available": nextValue > 0
+  });
+  return true;
+}
+
+function isPassiveItem(item) {
+  const activation = String(item.system?.activation ?? "").toLowerCase();
+  return activation === "passive" || boolValue(item.system?.passive);
+}
+
+function getActivationLabel(item) {
+  return isPassiveItem(item) ? "Passiv" : "Aktiv";
 }
 
 function prepareDefenses(system) {
@@ -460,6 +495,7 @@ function getUsableCombatItems(actor) {
   if (!actor) return [];
   return Array.from(actor.items ?? [])
     .filter((item) => ["playerSkill", "classSkill", "weapon"].includes(item.type))
+    .filter((item) => item.type === "weapon" || !isPassiveItem(item))
     .map((item) => ({
       id: item.id,
       type: item.type,
@@ -471,6 +507,7 @@ function getUsableCombatItems(actor) {
       element: item.system?.damageType || item.system?.element || "",
       damageCategory: normalizeDamageCategory(item.system?.damageCategory, `${item.system?.skillType} ${item.system?.element}`),
       equipped: boolValue(item.system?.equipped),
+      isPassive: isPassiveItem(item),
       pending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id
     }));
 }
@@ -497,12 +534,13 @@ function renderCombatHud() {
   const spent = numberValue(actor.system?.combat?.movementSpent);
   const movementMax = numberValue(movement.value);
   const movementLeft = Math.max(movementMax - spent, 0);
-  const mainReady = boolValue(actor.system?.actions?.main?.available);
+  const ap = getActionPointState(actor);
+  const canAct = ap.value > 0;
   const isCurrentTurn = game.combat?.combatant?.actor?.id === actor.id;
   const skills = getUsableCombatItems(actor);
   const skillButtons = skills.length
     ? skills.map((item) => `
-      <button type="button" class="hlw-hud-skill ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" ${(!mainReady || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
+      <button type="button" class="hlw-hud-skill ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" ${(!canAct || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
         <strong>${escapeHtml(item.pending ? "Abbrechen" : item.name)}${item.equipped ? " [E]" : ""}</strong>
         <span>${escapeHtml(HLW.damageCategories[item.damageCategory] ?? item.damageCategory)} | ${escapeHtml(item.element || "Typ")} | R ${item.range || "-"} | ${escapeHtml(item.damage)}</span>
         <small>${item.cooldown > 0 ? `CD ${item.cooldown}/${item.maxCooldown}` : "bereit"}</small>
@@ -524,12 +562,12 @@ function renderCombatHud() {
       <div><span>HP</span><strong>${numberValue(hp.value)} / ${numberValue(hp.max)}</strong></div>
       <div><span>Bewegung</span><strong>${movementLeft.toFixed(1)} / ${movementMax}</strong></div>
       <div><span>Aktionspunkte</span><strong>${numberValue(actionPoints.value)} / ${numberValue(actionPoints.max)}</strong></div>
-      <div><span>Aktion</span><strong>${mainReady ? "bereit" : "verbraucht"}</strong></div>
+      <div><span>Status</span><strong>${canAct ? "bereit" : "verbraucht"}</strong></div>
     </section>
     <section class="hlw-hud-actions">
-      <button type="button" data-hud-standard="attack" ${mainReady ? "" : "disabled"}>Angriff</button>
-      <button type="button" data-hud-standard="item" ${mainReady ? "" : "disabled"}>Item</button>
-      <button type="button" data-hud-standard="defend" ${mainReady ? "" : "disabled"}>Abwehr</button>
+      <button type="button" data-hud-standard="attack" ${canAct ? "" : "disabled"}>Angriff</button>
+      <button type="button" data-hud-standard="item" ${canAct ? "" : "disabled"}>Item</button>
+      <button type="button" data-hud-standard="defend" ${canAct ? "" : "disabled"}>Abwehr</button>
       <button type="button" data-hud-end-turn>Zug Ende</button>
     </section>
     <section class="hlw-hud-skills"><h3>Aktionen & Skills</h3>${skillButtons}</section>
@@ -589,10 +627,12 @@ async function resetActorTurnState(actor) {
   if (!game.user?.isGM) return;
   if (!actor?.isOwner) return;
 
+  const maxActionPoints = Math.max(numberValue(actor.system?.resources?.actionPoints?.max), 1);
   const updates = {
     "system.actions.main.available": true,
     "system.actions.movement.available": true,
     "system.actions.bonus.available": true,
+    "system.resources.actionPoints.value": maxActionPoints,
     "system.combat.movementSpent": 0,
     "system.combat.defending": false
   };
@@ -611,6 +651,7 @@ async function resetActorTurnState(actor) {
   }
 
   await actor.update(updates);
+  for (const token of actor.getActiveTokens?.() ?? []) HLW.movementSpentCache.delete(token.id);
   if (itemUpdates.length) await actor.updateEmbeddedDocuments("Item", itemUpdates);
 }
 
@@ -707,8 +748,8 @@ export class HopeLiesWithinActor extends Actor {
   }
 
   async useStandardAction(actionType) {
-    if (!boolValue(this.system.actions?.main?.available)) {
-      ui.notifications?.warn("Die Hauptaktion ist in diesem Zug bereits verbraucht.");
+    if (!hasActionPoints(this)) {
+      ui.notifications?.warn("Nicht genug Aktionspunkte.");
       return;
     }
 
@@ -727,7 +768,8 @@ export class HopeLiesWithinActor extends Actor {
         speaker: ChatMessage.getSpeaker({ actor: this }),
         content: `<div class="hlw-chat-card"><h2>Abwehrhaltung</h2><p>${escapeHtml(this.name)} erhoeht physische und magische Verteidigung bis zum naechsten eigenen Zug um 1.</p></div>`
       });
-      await this.update({ "system.actions.main.available": false, "system.combat.defending": true });
+      await this.update({ "system.combat.defending": true });
+      await spendActionPoints(this);
       return;
     }
 
@@ -736,7 +778,7 @@ export class HopeLiesWithinActor extends Actor {
         speaker: ChatMessage.getSpeaker({ actor: this }),
         content: `<div class="hlw-chat-card"><h2>Item verwenden</h2><p>${escapeHtml(this.name)} verwendet ein Item. Die konkrete Item-Wirkung wird in einer spaeteren Version automatisiert.</p></div>`
       });
-      await this.update({ "system.actions.main.available": false });
+      await spendActionPoints(this);
     }
   }
 
@@ -765,7 +807,7 @@ export class HopeLiesWithinActor extends Actor {
     const item = this.items.get(itemId);
     if (!item) return;
 
-    const price = item.system?.price || item.system?.goldValue || "-";
+    const price = item.system?.price ?? item.system?.goldValue ?? "-";
     const quantity = Math.max(numberValue(item.system?.quantity), 1);
     const description = item.system?.description || item.system?.effect || "Keine Beschreibung.";
     const content = `
@@ -879,6 +921,20 @@ export class HopeLiesWithinActor extends Actor {
     ui.notifications?.info(`${value} Gold an ${targetToken.name} gegeben.`);
   }
 
+  async addGold(amount) {
+    if (!game.user?.isGM) {
+      ui.notifications?.warn("Nur der GM kann Gold frei hinzufuegen.");
+      return;
+    }
+
+    const value = Math.max(Math.floor(numberValue(amount)), 0);
+    if (value <= 0) return;
+
+    const currentGold = numberValue(this.system?.resources?.gold?.value);
+    await this.update({ "system.resources.gold.value": currentGold + value });
+    ui.notifications?.info(`${value} Gold zu ${this.name} hinzugefuegt.`);
+  }
+
   startSkillTargeting(itemId) {
     if (HLW.pendingSkill?.actorId === this.id && HLW.pendingSkill?.itemId === itemId) {
       clearPendingSkill();
@@ -892,6 +948,11 @@ export class HopeLiesWithinActor extends Actor {
     const item = this.items.get(itemId);
     if (!item) return;
 
+    if (sourceType === "skill" && isPassiveItem(item)) {
+      ui.notifications?.warn(`${item.name} ist ein passiver Skill und kann nicht als Aktion genutzt werden.`);
+      return;
+    }
+
     const cooldown = item.system?.cooldown ?? {};
     const currentCooldown = numberValue(cooldown.value);
 
@@ -900,8 +961,8 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    if (!boolValue(this.system.actions?.main?.available)) {
-      ui.notifications?.warn("Die Hauptaktion ist in diesem Zug bereits verbraucht.");
+    if (!hasActionPoints(this)) {
+      ui.notifications?.warn("Nicht genug Aktionspunkte.");
       return;
     }
 
@@ -933,6 +994,11 @@ export class HopeLiesWithinActor extends Actor {
     const item = this.items.get(itemId);
     if (!item || !["playerSkill", "classSkill", "weapon"].includes(item.type)) return;
 
+    if (["playerSkill", "classSkill"].includes(item.type) && isPassiveItem(item)) {
+      ui.notifications?.warn(`${item.name} ist passiv und kann nicht als Aktion genutzt werden.`);
+      return;
+    }
+
     const cooldown = item.system?.cooldown ?? {};
     const currentCooldown = numberValue(cooldown.value);
     const maxCooldown = numberValue(cooldown.max);
@@ -942,8 +1008,8 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    if (!boolValue(this.system.actions?.main?.available)) {
-      ui.notifications?.warn("Die Hauptaktion ist in diesem Zug bereits verbraucht.");
+    if (!hasActionPoints(this)) {
+      ui.notifications?.warn("Nicht genug Aktionspunkte.");
       return;
     }
 
@@ -1060,7 +1126,7 @@ export class HopeLiesWithinActor extends Actor {
       await item.update({ "system.cooldown.value": maxCooldown });
     }
 
-    await this.update({ "system.actions.main.available": false });
+    await spendActionPoints(this);
     clearPendingSkill();
     renderCombatHud();
   }
@@ -1095,6 +1161,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.insigniaSlots = getInsigniaSlotList(context.system);
     context.profileImage = context.activeInsignia?.image || context.actor.img;
     context.isGM = game.user?.isGM;
+    context.canAct = hasActionPoints(context.actor);
     return context;
   }
 
@@ -1178,6 +1245,13 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       input.val("");
     });
 
+    html.find("[data-add-gold]").on("click", (event) => {
+      event.preventDefault();
+      const input = html.find("[data-add-gold-amount]");
+      this.actor.addGold(input.val());
+      input.val("");
+    });
+
     html.find("[data-item-id][draggable=true]").on("dragstart", (event) => {
       const itemId = event.currentTarget.dataset.itemId;
       const item = this.actor.items.get(itemId);
@@ -1209,12 +1283,15 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
 
     for (const item of items) {
       if (["playerSkill", "classSkill"].includes(item.type)) {
+        const passive = isPassiveItem(item);
         groups.skills.push({
           id: item.id,
           name: item.name,
           type: item.type,
           system: item.system,
-          canUse: boolValue(this.actor.system.actions?.main?.available) && numberValue(item.system?.cooldown?.value) <= 0,
+          canUse: !passive && hasActionPoints(this.actor) && numberValue(item.system?.cooldown?.value) <= 0,
+          isPassive: passive,
+          activationLabel: getActivationLabel(item),
           isPending: HLW.pendingSkill?.actorId === this.actor.id && HLW.pendingSkill?.itemId === item.id
         });
       }
@@ -1279,6 +1356,121 @@ export class HopeLiesWithinItemSheet extends (BaseItemSheet ?? class {}) {
   }
 }
 
+function normalizeImportType(type) {
+  const key = String(type ?? "").trim().toLowerCase();
+  const aliases = {
+    playerskill: "playerSkill",
+    player_skill: "playerSkill",
+    player: "playerSkill",
+    skill: "playerSkill",
+    classskill: "classSkill",
+    class_skill: "classSkill",
+    klasse: "classSkill",
+    weapon: "weapon",
+    waffe: "weapon",
+    weapons: "weapon",
+    armor: "armor",
+    armour: "armor",
+    ruestung: "armor",
+    rüstung: "armor",
+    equipment: "equipment",
+    ausruestung: "equipment",
+    ausrüstung: "equipment",
+    consumable: "consumable",
+    verbrauchbar: "consumable",
+    material: "material",
+    natural: "natural",
+    natur: "natural",
+    naturgegenstand: "natural",
+    mineral: "mineral",
+    minerals: "mineral",
+    mineralien: "mineral",
+    junk: "junk",
+    muell: "junk",
+    müll: "junk",
+    food: "foodDrink",
+    drink: "foodDrink",
+    fooddrink: "foodDrink",
+    essen: "foodDrink",
+    trinken: "foodDrink"
+  };
+
+  return aliases[key] ?? type ?? "equipment";
+}
+
+function normalizeImportedItem(entry, fallbackType = "equipment") {
+  const type = normalizeImportType(entry.type ?? fallbackType);
+  const systemData = foundry.utils.deepClone(entry.system ?? {});
+
+  for (const [sourceKey, targetKey] of [
+    ["beschreibung", "description"],
+    ["quelle", "source"],
+    ["anzahl", "quantity"],
+    ["preis", "price"],
+    ["schaden", "damage"],
+    ["reichweite", "range"],
+    ["effekt", "effect"],
+    ["aktivierung", "activation"],
+    ["kategorie", "damageCategory"],
+    ["schadenstyp", "damageType"]
+  ]) {
+    if (entry[sourceKey] !== undefined && systemData[targetKey] === undefined) systemData[targetKey] = entry[sourceKey];
+  }
+
+  if (["playerSkill", "classSkill"].includes(type)) {
+    systemData.activation = systemData.activation ?? "active";
+    systemData.cooldown = systemData.cooldown ?? { value: 0, max: 0 };
+    systemData.scaling = systemData.scaling ?? { primary: "", secondary: "", tertiary: "" };
+  } else {
+    systemData.quantity = Math.max(numberValue(systemData.quantity ?? entry.quantity), 1);
+  }
+
+  return {
+    name: entry.name ?? entry.Name ?? "Unbenannt",
+    type,
+    img: entry.img ?? entry.image ?? "icons/svg/item-bag.svg",
+    system: systemData
+  };
+}
+
+async function importJsonFile(path, fallbackType = "equipment") {
+  if (!game.user?.isGM) {
+    ui.notifications?.warn("Nur der GM kann JSON-Imports ausfuehren.");
+    return [];
+  }
+
+  const response = await fetch(path);
+  if (!response.ok) throw new Error(`Import fehlgeschlagen: ${path}`);
+
+  const json = await response.json();
+  const entries = Array.isArray(json) ? json : json.items ?? [];
+  if (!entries.length) {
+    ui.notifications?.info(`${path} enthaelt keine Eintraege.`);
+    return [];
+  }
+
+  const documents = entries.map((entry) => normalizeImportedItem(entry, fallbackType));
+  const created = await Item.createDocuments(documents);
+  ui.notifications?.info(`${created.length} Eintraege aus ${path} importiert.`);
+  return created;
+}
+
+async function importAllJsonFiles() {
+  const basePath = "systems/hope-lies-within-2/import";
+  const imports = [
+    ["items.json", "equipment"],
+    ["weapons.json", "weapon"],
+    ["armor.json", "armor"],
+    ["skills.json", "playerSkill"]
+  ];
+
+  const results = [];
+  for (const [fileName, fallbackType] of imports) {
+    results.push(...await importJsonFile(`${basePath}/${fileName}`, fallbackType));
+  }
+  return results;
+}
+
 Hooks.once("init", () => {
   console.log("Hope lies Within 2.0 | Initialisiere System");
 
@@ -1312,6 +1504,11 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", () => {
+  game.hlw = {
+    importJsonFile,
+    importAllJson: importAllJsonFiles
+  };
+
   game.socket.on("system.hope-lies-within-2", async (data) => {
     if (!game.user?.isGM) return;
     if (data?.type !== "endTurn") return;
@@ -1373,6 +1570,7 @@ Hooks.on("deleteCombat", (combat) => {
   postCombatEndMessage(combat);
   clearPendingSkill();
   removeMovementUi();
+  HLW.movementSpentCache.clear();
   renderCombatHud();
 });
 
@@ -1416,7 +1614,9 @@ Hooks.on("preUpdateToken", (tokenDocument, changes) => {
   };
   const distance = getPointDistanceInTiles(from, to);
   const limit = numberValue(actor.system?.resources?.movement?.value);
-  const spent = numberValue(actor.system?.combat?.movementSpent);
+  const spent = HLW.movementSpentCache.has(tokenDocument.id)
+    ? numberValue(HLW.movementSpentCache.get(tokenDocument.id))
+    : numberValue(actor.system?.combat?.movementSpent);
   const remaining = Math.max(limit - spent, 0);
 
   if (limit > 0 && distance > remaining + 0.01) {
@@ -1425,18 +1625,15 @@ Hooks.on("preUpdateToken", (tokenDocument, changes) => {
   }
 
   const nextSpent = spent + distance;
+  HLW.movementSpentCache.set(tokenDocument.id, nextSpent);
   HLW.pendingLegalMoves.set(tokenDocument.id, {
     x: to.x,
     y: to.y,
     spent: nextSpent
   });
-  actor.update({
-    "system.combat.movementSpent": nextSpent,
-    "system.actions.movement.available": limit <= 0 || nextSpent < limit - 0.01
-  });
 });
 
-Hooks.on("updateToken", (tokenDocument, changes) => {
+Hooks.on("updateToken", async (tokenDocument, changes) => {
   if (!("x" in changes) && !("y" in changes)) return;
   if (HLW.revertingTokens.has(tokenDocument.id)) {
     HLW.revertingTokens.delete(tokenDocument.id);
@@ -1448,22 +1645,29 @@ Hooks.on("updateToken", (tokenDocument, changes) => {
     const currentActor = game.combat.combatant?.actor;
     if (actor && currentActor?.id === actor.id) {
       const current = { x: numberValue(tokenDocument.x), y: numberValue(tokenDocument.y) };
+      const limit = numberValue(actor.system?.resources?.movement?.value);
       const pendingMove = HLW.pendingLegalMoves.get(tokenDocument.id);
       if (pendingMove && Math.abs(pendingMove.x - current.x) < 0.01 && Math.abs(pendingMove.y - current.y) < 0.01) {
         HLW.pendingLegalMoves.delete(tokenDocument.id);
         HLW.lastLegalTokenPositions.set(tokenDocument.id, current);
+        await actor.update({
+          "system.combat.movementSpent": pendingMove.spent,
+          "system.actions.movement.available": limit <= 0 || pendingMove.spent < limit - 0.01
+        });
         if (HLW.pendingSkill?.sourceTokenId === tokenDocument.id) window.setTimeout(refreshPendingSkillTargeting, 50);
         else window.setTimeout(renderCombatHud, 50);
         return;
       }
 
       const lastLegal = HLW.lastLegalTokenPositions.get(tokenDocument.id);
-      const limit = numberValue(actor.system?.resources?.movement?.value);
-      const spent = numberValue(actor.system?.combat?.movementSpent);
+      const spent = HLW.movementSpentCache.has(tokenDocument.id)
+        ? numberValue(HLW.movementSpentCache.get(tokenDocument.id))
+        : numberValue(actor.system?.combat?.movementSpent);
       const leakedDistance = lastLegal ? getPointDistanceInTiles(lastLegal, current) : 0;
       const remaining = Math.max(limit - spent, 0);
       if (lastLegal && limit > 0 && leakedDistance > remaining + 0.01) {
         HLW.revertingTokens.add(tokenDocument.id);
+        HLW.movementSpentCache.set(tokenDocument.id, spent);
         tokenDocument.update(lastLegal);
         ui.notifications?.warn("Bewegungslimit erreicht. Token wurde zur erlaubten Position zurueckgesetzt.");
         return;

@@ -213,7 +213,7 @@
 }
 
 .hlw-sheet .defense-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 10px;
 }
 
@@ -326,6 +326,40 @@
   width: 18px;
   min-height: 18px;
   justify-self: center;
+}
+
+.hlw-sheet .inventory-gold-bar {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.65fr) minmax(260px, 1fr) minmax(260px, 1fr);
+  gap: 10px;
+  align-items: stretch;
+  margin: 0 0 14px;
+}
+
+.hlw-sheet .inventory-gold-bar > div,
+.hlw-sheet .inventory-gold-bar label {
+  padding: 10px 12px;
+  border: 1px solid rgba(240, 184, 77, 0.32);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(240, 184, 77, 0.12), rgba(17, 19, 27, 0.96));
+}
+
+.hlw-sheet .inventory-gold-bar > div span,
+.hlw-sheet .inventory-gold-bar > div strong {
+  display: block;
+}
+
+.hlw-sheet .inventory-gold-bar > div span {
+  color: var(--hlw-muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hlw-sheet .inventory-gold-bar > div strong {
+  margin-top: 2px;
+  color: #fff1c8;
+  font-size: 24px;
 }
 
 .hlw-sheet .item-row.is-disabled {
@@ -554,7 +588,8 @@
   grid-template-columns: 220px minmax(360px, 1fr) minmax(300px, 420px);
   gap: 10px;
   width: min(1180px, calc(100vw - 190px));
-  max-height: 238px;
+  min-height: 0;
+  max-height: min(320px, 36vh);
   overflow: hidden;
   transform: translateX(-50%);
   border: 1px solid rgba(240, 184, 77, 0.66);
@@ -684,6 +719,7 @@
   flex-direction: column;
   gap: 8px;
   overflow: auto;
+  min-height: 0;
   padding: 12px;
   border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -810,7 +846,7 @@
 
   .hlw-hud-skills {
     grid-column: 1 / -1;
-    max-height: 118px;
+    max-height: 160px;
     border-left: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
@@ -830,7 +866,8 @@
   .hlw-sheet .resource-grid,
   .hlw-sheet .resistance-grid,
   .hlw-sheet .action-grid,
-  .hlw-sheet .identity-grid {
+  .hlw-sheet .identity-grid,
+  .hlw-sheet .inventory-gold-bar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

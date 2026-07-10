@@ -11,6 +11,8 @@ Dies ist der V1-Prototyp des Foundry-VTT-Systems fuer **Hope lies Within 2.0**.
 - World-Skill-Checks in den Chat wuerfeln
 - Skills, Waffen, Ruestung, Ausruestung, Verbrauchsitems und Materialien als Items anlegen
 - einfache Skill- und Item-Sheets nutzen
+- Aktionspunkte als echte Combat-Ressource verwenden
+- Items, Waffen, Ruestungen und Skills aus JSON-Dateien importieren
 
 ## Installation zum lokalen Testen
 
@@ -29,6 +31,16 @@ https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json
 ```
 
 Die genaue Anleitung steht in [MANIFEST_URL_ANLEITUNG.md](MANIFEST_URL_ANLEITUNG.md).
+
+## JSON-Import
+
+Die Importdateien liegen unter `import/`. Als GM kannst du in der Foundry-Konsole importieren:
+
+```js
+await game.hlw.importAllJson()
+```
+
+Details und Beispielstrukturen stehen in [IMPORT_JSON_ANLEITUNG.md](IMPORT_JSON_ANLEITUNG.md).
 
 Typische Foundry-Systempfade:
 
