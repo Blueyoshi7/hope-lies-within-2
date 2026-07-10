@@ -5,8 +5,10 @@ Die Importdateien liegen im Systemordner unter `import/`.
 ## Dateien
 
 - `import/items.json`
+- `import/accessories.json`
 - `import/weapons.json`
 - `import/armor.json`
+- `import/food-drink.json`
 - `import/skills.json`
 
 ## Import in Foundry
@@ -47,12 +49,35 @@ await game.hlw.importJsonFile("systems/hope-lies-within-2/import/weapons.json", 
 - `weapon`
 - `armor`
 - `equipment`
+- `accessory`
 - `consumable`
 - `material`
 - `natural`
 - `mineral`
 - `junk`
 - `foodDrink`
+
+## Ordnerstruktur
+
+Der Import erstellt automatisch Foundry-Ordner:
+
+```text
+HLW Import / Kategorie / Tier X
+```
+
+Beispiele:
+
+```text
+HLW Import / Accessories / Tier 1
+HLW Import / Skills / Tier 1
+HLW Import / Essen & Trinken / Tier 1
+```
+
+Wenn `tier` im JSON `GM` oder `Abyss` ist, wird das Item automatisch in `Tier 5` einsortiert.
+
+## Preis
+
+`system.price` ist ein GM-Preisvorschlag. Spieler sehen diesen Wert nicht im Detailfenster und nicht im Item Sheet.
 
 ## Skills
 

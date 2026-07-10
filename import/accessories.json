@@ -1,0 +1,99 @@
+[
+  {
+    "name": "Ätheriums-Ring",
+    "type": "accessory",
+    "img": "icons/equipment/finger/ring-band-engraved-gold.webp",
+    "system": {
+      "tier": 1,
+      "source": "Tier 1 Cache",
+      "price": "30 Gold",
+      "slot": "Accessory",
+      "effect": "Schaden +1",
+      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
+    }
+  },
+  {
+    "name": "Athreas's-Ohrring",
+    "type": "accessory",
+    "img": "icons/equipment/ear/earring-gold-blue.webp",
+    "system": {
+      "tier": 1,
+      "source": "Tier 2 Cache",
+      "price": "30 Gold",
+      "slot": "Accessory",
+      "effect": "Verstaerkt gewirkte Heilung 1d4",
+      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
+    }
+  },
+  {
+    "name": "Erdkern-Armband",
+    "type": "accessory",
+    "img": "icons/equipment/wrist/bracer-studded-brown.webp",
+    "system": {
+      "tier": 1,
+      "source": "Tier 1 Cache",
+      "price": "12 Gold",
+      "slot": "Accessory",
+      "effect": "Ruestwert +1",
+      "armor": 1,
+      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
+    }
+  },
+  {
+    "name": "Erdkern-Ring",
+    "type": "accessory",
+    "img": "icons/equipment/finger/ring-cabochon-gold-green.webp",
+    "system": {
+      "tier": 1,
+      "source": "Tier 1 Cache",
+      "price": "12 Gold",
+      "slot": "Accessory",
+      "damage": "1d6",
+      "effect": "Ruestwert +1",
+      "armor": 1,
+      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
+    }
+  },
+  {
+    "name": "Erdkern-Kette",
+    "type": "accessory",
+    "img": "icons/equipment/neck/necklace-simple-gold-green.webp",
+    "system": {
+      "tier": 1,
+      "source": "Tier 1 Cache",
+      "price": "30 Gold",
+      "slot": "Accessory",
+      "damage": "1d6",
+      "effect": "Ruestwert +1",
+      "armor": 1,
+      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
+    }
+  },
+  {
+    "name": "Blutstein-Kette",
+    "type": "accessory",
+    "img": "icons/equipment/neck/necklace-simple-red.webp",
+    "system": {
+      "tier": 1,
+      "source": "Tier 1 Cache",
+      "price": "12 Gold",
+      "slot": "Accessory",
+      "damage": "2d6",
+      "effect": "Keine",
+      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
+    }
+  },
+  {
+    "name": "Donnerkeil-Ohrring",
+    "type": "accessory",
+    "img": "icons/equipment/ear/earring-gold-purple.webp",
+    "system": {
+      "tier": 1,
+      "source": "Tier 1 Cache",
+      "price": "30 Gold",
+      "slot": "Accessory",
+      "effect": "Genauigkeit +1",
+      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
+    }
+  }
+]

@@ -13,6 +13,8 @@ Dies ist der V1-Prototyp des Foundry-VTT-Systems fuer **Hope lies Within 2.0**.
 - einfache Skill- und Item-Sheets nutzen
 - Aktionspunkte als echte Combat-Ressource verwenden
 - Items, Waffen, Ruestungen und Skills aus JSON-Dateien importieren
+- Import-Ordner automatisch nach Kategorie und Tier erstellen
+- Accessories mit maximal 3 ausgeruesteten Plaetzen und Inventarlimit testen
 
 ## Installation zum lokalen Testen
 

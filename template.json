@@ -37,6 +37,7 @@
           "movement": { "label": "Bewegungsreichweite", "value": 3, "units": "Tiles" },
           "actionPoints": { "label": "Aktionspunkte", "value": 1, "max": 1 },
           "gold": { "label": "Gold", "value": 0 },
+          "inventorySlots": { "label": "Inventarplaetze", "value": 0, "max": 20 },
           "corruption": { "label": "Korruptionswert", "value": 0, "max": 100 }
         },
         "defenses": {
@@ -95,7 +96,7 @@
     }
   },
   "Item": {
-    "types": ["playerSkill", "classSkill", "weapon", "armor", "equipment", "consumable", "material", "natural", "mineral", "junk", "foodDrink"],
+    "types": ["playerSkill", "classSkill", "weapon", "armor", "equipment", "accessory", "consumable", "material", "natural", "mineral", "junk", "foodDrink"],
     "templates": {
       "base": {
         "description": "",
@@ -150,6 +151,9 @@
       "templates": ["base", "gear"]
     },
     "equipment": {
+      "templates": ["base", "gear"]
+    },
+    "accessory": {
       "templates": ["base", "gear"]
     },
     "consumable": {
