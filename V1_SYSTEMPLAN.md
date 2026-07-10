@@ -41,12 +41,16 @@ Der Combatmodus nutzt Foundrys Combat Tracker und ergaenzt ihn durch Systemdaten
 - Skills koennen aus dem Character Sheet in die Hotbar gezogen werden
 - Veranlagung ersetzt Resistenzen: eigener Wert reduziert eingehenden Schaden und erhoeht ausgehenden Schaden desselben Typs
 - Insignien-Tab mit 3 Slots fuer Bild, Name und Beschreibung
+- Eine aktive Insignie kann ausgewaehlt werden und wird im Profil angezeigt
 - Standardaktionen: normaler Angriff, Item verwenden, Abwehrhaltung
 - Abwehrhaltung erhoeht physische und magische Verteidigung bis zum naechsten eigenen Zug um 1
 - Schaden trennt Kategorie (physisch/magisch) von Schadenstyp (Schnitt, Stich, Feuer usw.)
 - Physische und magische Verteidigung reduzieren eingehenden Schaden nach Kategorie
 - Inventar zeigt ausgeruestete Waffen/Ruestung, eingebettete Items koennen bearbeitet oder an markierte Ziel-Actors gegeben werden
 - Gold ist als Ressource vorhanden und kann an markierte Ziel-Actors gegeben werden
+- Inventar-Items koennen geoeffnet, verbraucht oder weggeworfen werden
+- Weitere Item-Kategorien: Naturgegenstaende, Mineralien, Muell, Essen/Trinken
+- GM kann Skills direkt vom Charakter entfernen
 - Aktueller Spieler erhaelt ein goldenes "DU BIST AM ZUG"-Overlay
 - Spieler koennen ihren Zug per Button beenden
 - Combat-Bewegung wird anhand der Movement Range begrenzt und pro Zug getrackt

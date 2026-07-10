@@ -1,6 +1,6 @@
 <form class="{{cssClass}} hlw-sheet" autocomplete="off">
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <img class="profile-img" src="{{profileImage}}" title="{{actor.name}}" />
     <div class="header-fields">
       <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Charaktername" /></h1>
       <div class="identity-grid">
@@ -149,6 +149,7 @@
             <span>CD {{item.system.cooldown.value}} / {{item.system.cooldown.max}}</span>
             <span>Range {{item.system.range}}</span>
             <span>{{item.system.damage}}</span>
+            {{#if ../isGM}}<button type="button" class="danger-button" data-delete-skill>X</button>{{/if}}
           </li>
         {{/each}}
       </ol>
@@ -157,12 +158,13 @@
     <div class="tab" data-group="primary" data-tab="insignia">
       <h2>Insignien</h2>
       <div class="insignia-grid">
-        {{#each system.insigniaSlots as |slot key|}}
+        {{#each insigniaSlots as |slot|}}
           <section class="insignia-slot">
-            <img src="{{slot.image}}" data-edit="system.insigniaSlots.{{key}}.image" title="{{slot.name}}" />
-            <label>Name <input name="system.insigniaSlots.{{key}}.name" type="text" value="{{slot.name}}" /></label>
-            <label>Bild <input name="system.insigniaSlots.{{key}}.image" type="text" value="{{slot.image}}" /></label>
-            <label>Beschreibung <textarea name="system.insigniaSlots.{{key}}.description">{{slot.description}}</textarea></label>
+            <label class="insignia-active"><input name="system.progression.activeInsignia" type="radio" value="{{slot.key}}" {{checked slot.active}} /> Aktiv</label>
+            <img src="{{slot.image}}" data-edit="system.insigniaSlots.{{slot.key}}.image" title="{{slot.name}}" />
+            <label>Name <input name="system.insigniaSlots.{{slot.key}}.name" type="text" value="{{slot.name}}" /></label>
+            <label>Bild <input name="system.insigniaSlots.{{slot.key}}.image" type="text" value="{{slot.image}}" /></label>
+            <label>Beschreibung <textarea name="system.insigniaSlots.{{slot.key}}.description">{{slot.description}}</textarea></label>
           </section>
         {{/each}}
       </div>
@@ -173,7 +175,7 @@
       <h3>Waffen</h3>
       <ol class="item-list">
         {{#each itemsByType.weapons as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
             <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
             <img src="{{item.img}}" alt="" />
             <strong>{{item.name}}</strong>
@@ -183,13 +185,15 @@
             <span>R {{item.system.range}}</span>
             <button type="button" data-edit-owned-item>Bearbeiten</button>
             <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
           </li>
         {{/each}}
       </ol>
       <h3>Ruestung</h3>
       <ol class="item-list">
         {{#each itemsByType.armor as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
             <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
             <img src="{{item.img}}" alt="" />
             <strong>{{item.name}}</strong>
@@ -197,13 +201,15 @@
             <span>{{item.system.slot}}</span>
             <button type="button" data-edit-owned-item>Bearbeiten</button>
             <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
           </li>
         {{/each}}
       </ol>
       <h3>Ausrüstung</h3>
       <ol class="item-list">
         {{#each itemsByType.equipment as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
             <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
             <img src="{{item.img}}" alt="" />
             <strong>{{item.name}}</strong>
@@ -211,13 +217,15 @@
             <span>{{item.system.effect}}</span>
             <button type="button" data-edit-owned-item>Bearbeiten</button>
             <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
           </li>
         {{/each}}
       </ol>
       <h3>Verbrauchbares & Material</h3>
       <ol class="item-list">
         {{#each itemsByType.consumables as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
             <span></span>
             <img src="{{item.img}}" alt="" />
             <strong>{{item.name}}</strong>
@@ -225,10 +233,12 @@
             <span>{{item.system.effect}}</span>
             <button type="button" data-edit-owned-item>Bearbeiten</button>
             <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
           </li>
         {{/each}}
         {{#each itemsByType.materials as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
             <span></span>
             <img src="{{item.img}}" alt="" />
             <strong>{{item.name}}</strong>
@@ -236,6 +246,72 @@
             <span>{{item.system.source}}</span>
             <button type="button" data-edit-owned-item>Bearbeiten</button>
             <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
+          </li>
+        {{/each}}
+      </ol>
+      <h3>Naturgegenstände</h3>
+      <ol class="item-list">
+        {{#each itemsByType.natural as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
+            <span></span>
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>x{{item.system.quantity}}</span>
+            <span>{{item.system.source}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
+          </li>
+        {{/each}}
+      </ol>
+      <h3>Mineralien</h3>
+      <ol class="item-list">
+        {{#each itemsByType.minerals as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
+            <span></span>
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>x{{item.system.quantity}}</span>
+            <span>{{item.system.source}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
+          </li>
+        {{/each}}
+      </ol>
+      <h3>Müll</h3>
+      <ol class="item-list">
+        {{#each itemsByType.junk as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
+            <span></span>
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>x{{item.system.quantity}}</span>
+            <span>{{item.system.source}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
+          </li>
+        {{/each}}
+      </ol>
+      <h3>Essen & Trinken</h3>
+      <ol class="item-list">
+        {{#each itemsByType.foodDrink as |item|}}
+          <li class="item-row inventory-row" data-item-id="{{item.id}}" data-show-item-details>
+            <span></span>
+            <img src="{{item.img}}" alt="" />
+            <strong>{{item.name}}</strong>
+            <span>x{{item.system.quantity}}</span>
+            <span>{{item.system.effect}}</span>
+            <button type="button" data-edit-owned-item>Bearbeiten</button>
+            <button type="button" data-give-owned-item>Geben</button>
+            <button type="button" data-consume-owned-item>Verbr.</button>
+            <button type="button" data-discard-owned-item>Weg</button>
           </li>
         {{/each}}
       </ol>
