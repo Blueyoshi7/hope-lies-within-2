@@ -35,7 +35,12 @@
           "hp": { "label": "Lebenspunkte", "value": 10, "max": 10 },
           "movement": { "label": "Bewegungsreichweite", "value": 3, "units": "Tiles" },
           "actionPoints": { "label": "Aktionspunkte", "value": 1, "max": 1 },
+          "gold": { "label": "Gold", "value": 0 },
           "corruption": { "label": "Korruptionswert", "value": 0, "max": 100 }
+        },
+        "defenses": {
+          "physical": { "label": "Physische Verteidigung", "value": 0 },
+          "magical": { "label": "Magische Verteidigung", "value": 0 }
         },
         "affinities": {
           "slash": { "label": "Klinge", "value": 0 },
@@ -56,7 +61,8 @@
           "bonus": { "label": "Bonusaktion", "available": true }
         },
         "combat": {
-          "movementSpent": 0
+          "movementSpent": 0,
+          "defending": false
         },
         "insigniaSlots": {
           "slot1": { "image": "", "name": "", "description": "" },
@@ -100,6 +106,8 @@
         "cost": "",
         "castTime": "",
         "element": "",
+        "damageCategory": "physical",
+        "damageType": "",
         "range": "",
         "damage": "",
         "effect": "",
@@ -119,6 +127,8 @@
         "equipped": false,
         "slot": "",
         "damage": "",
+        "damageCategory": "physical",
+        "damageType": "",
         "element": "",
         "armor": "",
         "range": "",
