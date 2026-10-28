@@ -2,7 +2,7 @@
  {
   "name": "Holz (Bündel)",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/wood/bamboo-brown.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -17,7 +17,7 @@
  {
   "name": "Talg",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/biological/eye-tentacle-green-orange.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -32,7 +32,7 @@
  {
   "name": "Stoff (1 Elle)",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/cloth/ribbon-bow-red.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -47,7 +47,7 @@
  {
   "name": "Garn (Rolle)",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/cloth/cloth-roll-gold-green.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -62,7 +62,7 @@
  {
   "name": "Federn (Bündel)",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/scribal/lens-blue.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -77,7 +77,7 @@
  {
   "name": "Leder (Stück)",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/leather/leather-studded-tan.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -92,7 +92,7 @@
  {
   "name": "Eisenbarren",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/ingot-stack-steel.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -107,7 +107,7 @@
  {
   "name": "Kohle (Sack)",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/stone/masonry-block-cube-pink.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -122,7 +122,7 @@
  {
   "name": "Glasphiole",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/flask-corked-blue-glow.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -137,7 +137,7 @@
  {
   "name": "Mehl (Sack)",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/bread-loaf-sliced-wheat-brown.webp",
   "folder": "HLW/Materialien/Rang E",
   "system": {
    "rank": "E",
@@ -152,7 +152,7 @@
  {
   "name": "Abyss-Splitter",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-navette-purple.webp",
   "folder": "HLW/Abyss-Steine/Rang E",
   "system": {
    "rank": "E",
@@ -168,7 +168,7 @@
  {
   "name": "Kleiner Abyss-Stein",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-oval-purple.webp",
   "folder": "HLW/Abyss-Steine/Rang E",
   "system": {
    "rank": "E",
@@ -184,7 +184,7 @@
  {
   "name": "Mittlerer Abyss-Stein",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-navette-purple.webp",
   "folder": "HLW/Abyss-Steine/Rang D",
   "system": {
    "rank": "D",
@@ -200,7 +200,7 @@
  {
   "name": "Großer Abyss-Stein",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-cushion-violet.webp",
   "folder": "HLW/Abyss-Steine/Rang C",
   "system": {
    "rank": "C",
@@ -216,7 +216,7 @@
  {
   "name": "Abyss-Herz",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-fragments-purple.webp",
   "folder": "HLW/Abyss-Steine/Rang A",
   "system": {
    "rank": "A",
@@ -232,7 +232,7 @@
  {
   "name": "Kern eines Verlorenen",
   "type": "material",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/pearl-purple.webp",
   "folder": "HLW/Abyss-Steine/Rang S",
   "system": {
    "rank": "S",

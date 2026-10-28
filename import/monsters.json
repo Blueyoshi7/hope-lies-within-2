@@ -2,7 +2,7 @@
  {
   "name": "Pinselhörnchen",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/rabbit-movement-glowing-green.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -38,7 +38,7 @@
  {
   "name": "Erdbeermaus",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/beast-horned-scaled-glowing-orange.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -74,7 +74,7 @@
  {
   "name": "Wüsten-Springmaus",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/bull-horned-blue.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -110,7 +110,7 @@
  {
   "name": "Ente",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/birds/duck-green.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -146,7 +146,7 @@
  {
   "name": "Kleinhorn",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/livestock-cow-green.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -182,7 +182,7 @@
  {
   "name": "Streifwiesel",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/bull-horned-blue.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -218,7 +218,7 @@
  {
   "name": "Blubberhirschling",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -254,7 +254,7 @@
  {
   "name": "Glimmkäfer",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/bug-sixlegged-gray.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -290,7 +290,7 @@
  {
   "name": "Nebelohr",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -326,7 +326,7 @@
  {
   "name": "Blattpieper",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/birds/dove-pigeon-flying-white.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -362,7 +362,7 @@
  {
   "name": "Flauschling",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/claws/claw-hooked-barbed.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -398,7 +398,7 @@
  {
   "name": "Moosling",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/claws/pincer-crab-red.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -434,7 +434,7 @@
  {
   "name": "Schnüffelwisch",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/magical/humanoid-horned-rider.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -470,7 +470,7 @@
  {
   "name": "Herzling",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/unholy/demon-fire-imp.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -506,7 +506,7 @@
  {
   "name": "Dolmetscheule",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/birds/corvid-call-sound-glowing.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -542,7 +542,7 @@
  {
   "name": "Fledhase",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/rodent-rat-green.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -592,7 +592,7 @@
  {
   "name": "Pilzpelz-Frettchen",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/unicorn-horned-white.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -642,7 +642,7 @@
  {
   "name": "Zottelziege",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -692,7 +692,7 @@
  {
   "name": "Hallrabe",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/birds/songbird-yellow-flying.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -742,7 +742,7 @@
  {
   "name": "Fellfliege",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/spider-large-white-green.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -792,7 +792,7 @@
  {
   "name": "Blasenmücke",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/tick-cross-glowing-purple.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -842,7 +842,7 @@
  {
   "name": "Funkenkrill",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/fish/fish-bluefin-yellow-blue.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -892,7 +892,7 @@
  {
   "name": "Ameise",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/spider-web-black.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -942,7 +942,7 @@
  {
   "name": "Ratte",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/deer-antlers-green.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -992,7 +992,7 @@
  {
   "name": "Tröpfchen",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/slimes/slime-movement-swirling-blue.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -1042,7 +1042,7 @@
  {
   "name": "Augenklumpen",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/slimes/slime-movement-pseudopods-teal.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -1092,7 +1092,7 @@
  {
   "name": "Kuschelschnecke",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/wasp-swarm-movement.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -1142,7 +1142,7 @@
  {
   "name": "Hornwiesel",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/spirit-deer-herd-blue.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1192,7 +1192,7 @@
  {
   "name": "Geisterdachs",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/spirit-deer-herd-blue.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1242,7 +1242,7 @@
  {
   "name": "Wirrkatze",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/livestock-cow-green.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1292,7 +1292,7 @@
  {
   "name": "Pilzkatze",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/livestock-sheep-green.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1342,7 +1342,7 @@
  {
   "name": "Glutratte",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1392,7 +1392,7 @@
  {
   "name": "Seuchenratte",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1442,7 +1442,7 @@
  {
   "name": "Riesenratte",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/deer-movement-leap-green.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1492,7 +1492,7 @@
  {
   "name": "Wildschwein",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/deer-movement-leap-green.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1542,7 +1542,7 @@
  {
   "name": "Elch",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/cat-hunched-glowing-red.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1592,7 +1592,7 @@
  {
   "name": "Kammraptor-Jungtier",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1642,7 +1642,7 @@
  {
   "name": "Hydra-Schlüpfling",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1692,7 +1692,7 @@
  {
   "name": "Schlafschleimnatter",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/slimes/slime-movement-dripping-purple.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1742,7 +1742,7 @@
  {
   "name": "Dunkelschleim",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/slimes/slime-bubble-teal.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1792,7 +1792,7 @@
  {
   "name": "Rußwicht",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/turtle-shell-glowing-green.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1842,7 +1842,7 @@
  {
   "name": "Speerwicht",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1892,7 +1892,7 @@
  {
   "name": "Winterwelpe",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1942,7 +1942,7 @@
  {
   "name": "Raptor",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/snake-poised-white.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -1992,7 +1992,7 @@
  {
   "name": "Schattenwolf",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/beast-horned-scaled-glowing-orange.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2042,7 +2042,7 @@
  {
   "name": "Chimärchen",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2092,7 +2092,7 @@
  {
   "name": "Zaubersalamander",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/serpent-horned-green.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2142,7 +2142,7 @@
  {
   "name": "Kopierkatze",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2192,7 +2192,7 @@
  {
   "name": "Moornixe",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/fish/squid-kraken-teal.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2242,7 +2242,7 @@
  {
   "name": "Madenschlund",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/ant-strength-green.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2292,7 +2292,7 @@
  {
   "name": "Ameisenkönig",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/bug-sixlegged-gray.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2342,7 +2342,7 @@
  {
   "name": "Schleimgans",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/birds/birds-flock-fly-yellow.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2392,7 +2392,7 @@
  {
   "name": "Flickkeiler",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/deer-movement-leap-green.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2442,7 +2442,7 @@
  {
   "name": "Psilotus",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/magical/spirit-poison-smoke-green.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2492,7 +2492,7 @@
  {
   "name": "Sturmhaar-Geist",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/magical/spirit-fire-orange.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2542,7 +2542,7 @@
  {
   "name": "Allseher",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/eyes/slime-stalks-yellow-purple.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2592,7 +2592,7 @@
  {
   "name": "Kristallspinne",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/webs/web-spider-glowing-pink.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2642,7 +2642,7 @@
  {
   "name": "Quellhirsch",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/unicorn-horned-white.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2692,7 +2692,7 @@
  {
   "name": "Tiefenaal",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/fish/squid-kraken-orange.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2742,7 +2742,7 @@
  {
   "name": "Moosschlund",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/claws/claw-straight-brown.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2792,7 +2792,7 @@
  {
   "name": "Gletscherhüne",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/magical/spirit-fire-yellow.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -2842,7 +2842,7 @@
  {
   "name": "Sumpfhydra",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -2892,7 +2892,7 @@
  {
   "name": "Delirium-Dschinn",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -2942,7 +2942,7 @@
  {
   "name": "Seelensucher",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/magical/humanoid-silhouette-green.webp",
   "folder": "HLW Bestiarium/Rang S",
   "system": {
    "monster": {
@@ -2992,7 +2992,7 @@
  {
   "name": "Abyss-Hummel",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/invertebrates/beetle-grub-larvae-gray.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -3042,7 +3042,7 @@
  {
   "name": "Muskelgans",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/birds/dove-pigeon-flying-white.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -3092,7 +3092,7 @@
  {
   "name": "Stachelglut-Läufer",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/unholy/demon-winged-horned-orange.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -3142,7 +3142,7 @@
  {
   "name": "Knochenhirsch",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/humanoid-cat-skulking-teal.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -3192,7 +3192,7 @@
  {
   "name": "Arturu, der Schattenhirsch",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/spirit-deer-herd-blue.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -3242,7 +3242,7 @@
  {
   "name": "Marakah, der Bluthirsch",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/deer-antlers-blue.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -3292,7 +3292,7 @@
  {
   "name": "Isfar, der verrottende Hirschkönig",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/mammals/bats-movement-flying-purple.webp",
   "folder": "HLW Bestiarium/Rang S",
   "system": {
    "monster": {
@@ -3342,7 +3342,7 @@
  {
   "name": "Sternenschädel",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/eyes/human-single-blue.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -3392,7 +3392,7 @@
  {
   "name": "Leerenrufer",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/tentacles/tentacles-thing-green.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -3442,7 +3442,7 @@
  {
   "name": "Leerenpyramide",
   "type": "monster",
-  "img": "icons/svg/mystery-man-black.svg",
+  "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
   "folder": "HLW Bestiarium/Rang S",
   "system": {
    "monster": {

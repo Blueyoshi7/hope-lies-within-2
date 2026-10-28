@@ -2,7 +2,7 @@
  {
   "name": "Blitzschlag",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolt-strike-beam-pink.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -35,7 +35,7 @@
  {
   "name": "Blutrausch",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-club-red.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -68,7 +68,7 @@
  {
   "name": "Donnerhand",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolt-strike-creature-pink.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -101,7 +101,7 @@
  {
   "name": "Donnerschlag",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolt-strike-explosion-blue.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -134,7 +134,7 @@
  {
   "name": "Doppelstoß",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/hand-grip-axe-strike-orange.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -167,7 +167,7 @@
  {
   "name": "Durchdringender Stoß",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/weapons-crossed-swords-black.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -200,7 +200,7 @@
  {
   "name": "Eisbarriere",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/projectile-ice-shard.webp",
   "folder": "HLW/Skills/Verteidigung/Rang D",
   "system": {
    "rank": "D",
@@ -233,7 +233,7 @@
  {
   "name": "Eishand",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/strike-ice-blade-fang.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -266,7 +266,7 @@
  {
   "name": "Eislanze",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/snowflake-ice-gray.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -299,7 +299,7 @@
  {
   "name": "Eisschlag",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/heart-ice-freeze.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -332,7 +332,7 @@
  {
   "name": "Elementar Schuss",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/arrows-flying-triple-gray.webp",
   "folder": "HLW/Skills/Fernkampf/Rang D",
   "system": {
    "rank": "D",
@@ -365,7 +365,7 @@
  {
   "name": "Erdspike",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-triangle-blue.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -398,7 +398,7 @@
  {
   "name": "Erweiterte Verteidigung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-teal-purple.webp",
   "folder": "HLW/Skills/Verteidigung/Rang D",
   "system": {
    "rank": "D",
@@ -431,7 +431,7 @@
  {
   "name": "Feuerball",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-teal-purple.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -464,7 +464,7 @@
  {
   "name": "Feuerhand",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectile-fireball-smoke-strong-green.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -497,7 +497,7 @@
  {
   "name": "Feuerhieb",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-teal.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -530,7 +530,7 @@
  {
   "name": "Geisterschritt",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/projectile-ice-faceted-gray.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -563,7 +563,7 @@
  {
   "name": "Giftpfeil",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
   "folder": "HLW/Skills/Fernkampf/Rang D",
   "system": {
    "rank": "D",
@@ -596,7 +596,7 @@
  {
   "name": "Heiliger Schlag",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-pink.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -629,7 +629,7 @@
  {
   "name": "Ich bin ein Baum!",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/crosses-trio-red.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -662,7 +662,7 @@
  {
   "name": "Kleine Heilung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-flame-green.webp",
   "folder": "HLW/Skills/Heilung/Rang D",
   "system": {
    "rank": "D",
@@ -695,7 +695,7 @@
  {
   "name": "Magischer Funke",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolt-forked-large-teal-purple.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -728,7 +728,7 @@
  {
   "name": "Opfer",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-hand-gold-green.webp",
   "folder": "HLW/Skills/Heilung/Rang D",
   "system": {
    "rank": "D",
@@ -761,7 +761,7 @@
  {
   "name": "Pfeilregen",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/target-bullseye-arrow-white.webp",
   "folder": "HLW/Skills/Fernkampf/Rang D",
   "system": {
    "rank": "D",
@@ -794,7 +794,7 @@
  {
   "name": "Schattenblick",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/projectile-flame-white-purple.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -827,7 +827,7 @@
  {
   "name": "Schattenhafte Presänz",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/strike-beam-blood-large-red-green.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -860,7 +860,7 @@
  {
   "name": "Schattenhieb",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/projectile-helix-blood-red.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -893,7 +893,7 @@
  {
   "name": "Schattenschnur",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/strike-beam-blood-large-red-teal.webp",
   "folder": "HLW/Skills/Verteidigung/Rang D",
   "system": {
    "rank": "D",
@@ -926,7 +926,7 @@
  {
   "name": "Schattenschritt",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -959,7 +959,7 @@
  {
   "name": "Schattenschuss",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/strike-beam-blood-large-red-teal.webp",
   "folder": "HLW/Skills/Fernkampf/Rang D",
   "system": {
    "rank": "D",
@@ -992,7 +992,7 @@
  {
   "name": "Schnellfeuer",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectile-fireball-smoke-strong-green.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -1025,7 +1025,7 @@
  {
   "name": "Schwung des Krieger",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-flail-spiked-pink.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -1058,7 +1058,7 @@
  {
   "name": "Seelenauge",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/skeleton-worn-skull-tan.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -1091,7 +1091,7 @@
  {
   "name": "Seelengriff",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -1124,7 +1124,7 @@
  {
   "name": "Splitterpfeil",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/target-bullseye-arrow-yellow.webp",
   "folder": "HLW/Skills/Fernkampf/Rang D",
   "system": {
    "rank": "D",
@@ -1157,7 +1157,7 @@
  {
   "name": "Stärke der Natur",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/nature/leaf-elm-beam-green.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -1190,7 +1190,7 @@
  {
   "name": "Steinkanone",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/volcano-explosion-lava-orange.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -1223,7 +1223,7 @@
  {
   "name": "Sturmstoß",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/fist-unarmed-strike-blue-green.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -1256,7 +1256,7 @@
  {
   "name": "Windsprung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/air/wind-stream-purple-blue.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -1289,7 +1289,7 @@
  {
   "name": "Zermalmender Schlag",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/blade-tip-orange.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -1322,7 +1322,7 @@
  {
   "name": "Schnitter",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -1355,7 +1355,7 @@
  {
   "name": "Magnet-Punkt",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectiles-lava-salvo-orange.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -1388,7 +1388,7 @@
  {
   "name": "Stein-Haut",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/laval-stone-orange.webp",
   "folder": "HLW/Skills/Verstärkung/Rang D",
   "system": {
    "rank": "D",
@@ -1421,7 +1421,7 @@
  {
   "name": "Blitzverstärkung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolt-strike-hand-gray.webp",
   "folder": "HLW/Skills/Verstärkung/Rang C",
   "system": {
    "rank": "C",
@@ -1454,7 +1454,7 @@
  {
   "name": "Blutungsschlag",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/unarmed-punch-fist-blue.webp",
   "folder": "HLW/Skills/Nahkampf/Rang C",
   "system": {
    "rank": "C",
@@ -1487,7 +1487,7 @@
  {
   "name": "Bodyslam",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/hand-grip-sword-strike-orange.webp",
   "folder": "HLW/Skills/Nahkampf/Rang C",
   "system": {
    "rank": "C",
@@ -1520,7 +1520,7 @@
  {
   "name": "Durchdringender Pfeil",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/blast-energy-plating-orange.webp",
   "folder": "HLW/Skills/Fernkampf/Rang C",
   "system": {
    "rank": "C",
@@ -1553,7 +1553,7 @@
  {
   "name": "Eisenhaut",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/orb-water-ice-pink.webp",
   "folder": "HLW/Skills/Verteidigung/Rang C",
   "system": {
    "rank": "C",
@@ -1586,7 +1586,7 @@
  {
   "name": "Eisige Explosion",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/projectiles-ice-faceted-shard-teal.webp",
   "folder": "HLW/Skills/Magie/Rang C",
   "system": {
    "rank": "C",
@@ -1619,7 +1619,7 @@
  {
   "name": "Eisverstärkung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/barrier-ice-crystal-wall-jagged-blue.webp",
   "folder": "HLW/Skills/Verstärkung/Rang C",
   "system": {
    "rank": "C",
@@ -1652,7 +1652,7 @@
  {
   "name": "Erdbeben",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/laval-stone-orange.webp",
   "folder": "HLW/Skills/Magie/Rang C",
   "system": {
    "rank": "C",
@@ -1685,7 +1685,7 @@
  {
   "name": "Feuerverstärkung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectile-arrow-fire-orange-yellow.webp",
   "folder": "HLW/Skills/Verstärkung/Rang C",
   "system": {
    "rank": "C",
@@ -1718,7 +1718,7 @@
  {
   "name": "Flammenmeteor",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/explosion-fireball-small-red.webp",
   "folder": "HLW/Skills/Magie/Rang C",
   "system": {
    "rank": "C",
@@ -1751,7 +1751,7 @@
  {
   "name": "Kettenblitz",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolts-forked-large-green.webp",
   "folder": "HLW/Skills/Magie/Rang C",
   "system": {
    "rank": "C",
@@ -1784,7 +1784,7 @@
  {
   "name": "Klingenschild",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-teal-purple.webp",
   "folder": "HLW/Skills/Verteidigung/Rang C",
   "system": {
    "rank": "C",
@@ -1817,7 +1817,7 @@
  {
   "name": "Lichtheilung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/ankh-gold-blue.webp",
   "folder": "HLW/Skills/Heilung/Rang C",
   "system": {
    "rank": "C",
@@ -1850,7 +1850,7 @@
  {
   "name": "Natur-Regen",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/orb-water-transparent.webp",
   "folder": "HLW/Skills/Schwächung/Rang C",
   "system": {
    "rank": "C",
@@ -1883,7 +1883,7 @@
  {
   "name": "Schattenschritt",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/hands-praying-fire-green.webp",
   "folder": "HLW/Skills/Passive/Rang C",
   "system": {
    "rank": "C",
@@ -1916,7 +1916,7 @@
  {
   "name": "Schattentanz",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/energy-smoke-pink.webp",
   "folder": "HLW/Skills/Verteidigung/Rang C",
   "system": {
    "rank": "C",
@@ -1949,7 +1949,7 @@
  {
   "name": "Schildbrecher",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-weapons-orange.webp",
   "folder": "HLW/Skills/Nahkampf/Rang C",
   "system": {
    "rank": "C",
@@ -1982,7 +1982,7 @@
  {
   "name": "Schutz des Glaubens",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
   "folder": "HLW/Skills/Passive/Rang C",
   "system": {
    "rank": "C",
@@ -2015,7 +2015,7 @@
  {
   "name": "Seelenhammer",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-blade-knife-blue-red.webp",
   "folder": "HLW/Skills/Nahkampf/Rang C",
   "system": {
    "rank": "C",
@@ -2048,7 +2048,7 @@
  {
   "name": "Seelenverbindung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/strike-fist-stone-light.webp",
   "folder": "HLW/Skills/Verteidigung/Rang C",
   "system": {
    "rank": "C",
@@ -2081,7 +2081,7 @@
  {
   "name": "Stich des Schattens",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/projectile-flame-white-purple.webp",
   "folder": "HLW/Skills/Nahkampf/Rang C",
   "system": {
    "rank": "C",
@@ -2114,7 +2114,7 @@
  {
   "name": "Tanzende Elemente",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/target-glowing-yellow.webp",
   "folder": "HLW/Skills/Passive/Rang C",
   "system": {
    "rank": "C",
@@ -2147,7 +2147,7 @@
  {
   "name": "Vergifteter Hauch",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectile-stone-boulder-purple.webp",
   "folder": "HLW/Skills/Schwächung/Rang C",
   "system": {
    "rank": "C",
@@ -2180,7 +2180,7 @@
  {
   "name": "Vergifteter Schuss",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/acid/dissolve-bone-skull.webp",
   "folder": "HLW/Skills/Schwächung/Rang C",
   "system": {
    "rank": "C",
@@ -2213,7 +2213,7 @@
  {
   "name": "Wirbelwind",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
   "folder": "HLW/Skills/Nahkampf/Rang C",
   "system": {
    "rank": "C",
@@ -2246,7 +2246,7 @@
  {
   "name": "Arkaner Sturm",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolt-forked-magenta.webp",
   "folder": "HLW/Skills/Magie/Rang B",
   "system": {
    "rank": "B",
@@ -2279,7 +2279,7 @@
  {
   "name": "Aura der Legenden",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/angel-wings-gray.webp",
   "folder": "HLW/Skills/Passive/Rang B",
   "system": {
    "rank": "B",
@@ -2312,7 +2312,7 @@
  {
   "name": "Einzug des Voids",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/energy-smoke-pink.webp",
   "folder": "HLW/Skills/Schwächung/Rang B",
   "system": {
    "rank": "B",
@@ -2345,7 +2345,7 @@
  {
   "name": "Explosiver Schuss",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/bow-arrows-blue.webp",
   "folder": "HLW/Skills/Fernkampf/Rang B",
   "system": {
    "rank": "B",
@@ -2378,7 +2378,7 @@
  {
   "name": "Frostfeuer",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectile-fireball-blue-purple.webp",
   "folder": "HLW/Skills/Magie/Rang B",
   "system": {
    "rank": "B",
@@ -2411,7 +2411,7 @@
  {
   "name": "Heilige Flamme",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/flame-burning-hand-orange.webp",
   "folder": "HLW/Skills/Heilung/Rang B",
   "system": {
    "rank": "B",
@@ -2444,7 +2444,7 @@
  {
   "name": "Himmelszorn",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "folder": "HLW/Skills/Magie/Rang B",
   "system": {
    "rank": "B",
@@ -2477,7 +2477,7 @@
  {
   "name": "Kraft der Titanen",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/target-glowing-yellow.webp",
   "folder": "HLW/Skills/Passive/Rang B",
   "system": {
    "rank": "B",
@@ -2510,7 +2510,7 @@
  {
   "name": "Licht der Gnade",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
   "folder": "HLW/Skills/Passive/Rang B",
   "system": {
    "rank": "B",
@@ -2543,7 +2543,7 @@
  {
   "name": "Licht Salve",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/chalice-glowing-gold.webp",
   "folder": "HLW/Skills/Fernkampf/Rang B",
   "system": {
    "rank": "B",
@@ -2576,7 +2576,7 @@
  {
   "name": "Magiepuls",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/flame-burning-hand-white.webp",
   "folder": "HLW/Skills/Magie/Rang B",
   "system": {
    "rank": "B",
@@ -2609,7 +2609,7 @@
  {
   "name": "Phalanx-Formation",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
   "folder": "HLW/Skills/Verteidigung/Rang B",
   "system": {
    "rank": "B",
@@ -2642,7 +2642,7 @@
  {
   "name": "Säureexplusion",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/acid/dissolve-bone-ribs-skull.webp",
   "folder": "HLW/Skills/Magie/Rang B",
   "system": {
    "rank": "B",
@@ -2675,7 +2675,7 @@
  {
   "name": "Schattenklinge",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/strike-hand-glow-pink.webp",
   "folder": "HLW/Skills/Nahkampf/Rang B",
   "system": {
    "rank": "B",
@@ -2708,7 +2708,7 @@
  {
   "name": "Schwarzes Loch",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-horned-white-purple.webp",
   "folder": "HLW/Skills/Magie/Rang B",
   "system": {
    "rank": "B",
@@ -2741,7 +2741,7 @@
  {
   "name": "Zertrümmerer",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-spear-red.webp",
   "folder": "HLW/Skills/Nahkampf/Rang B",
   "system": {
    "rank": "B",
@@ -2774,7 +2774,7 @@
  {
   "name": "Chronostasit",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/time/arrows-circling-pink.webp",
   "folder": "HLW/Skills/Magie/Rang S",
   "system": {
    "rank": "S",
@@ -2807,7 +2807,7 @@
  {
   "name": "Dimensionstor",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-black-pink.webp",
   "folder": "HLW/Skills/Magie/Rang S",
   "system": {
    "rank": "S",
@@ -2840,7 +2840,7 @@
  {
   "name": "Fürbitte",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp",
   "folder": "HLW/Skills/Magie/Rang S",
   "system": {
    "rank": "S",
@@ -2873,7 +2873,7 @@
  {
   "name": "Göttliche Intervention",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
   "folder": "HLW/Skills/Magie/Rang S",
   "system": {
    "rank": "S",
@@ -2906,7 +2906,7 @@
  {
   "name": "Göttlicher Komet",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/explosion-fireball-large-red-orange.webp",
   "folder": "HLW/Skills/Magie/Rang S",
   "system": {
    "rank": "S",
@@ -2939,7 +2939,7 @@
  {
   "name": "Himmelsfeuer",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/flame-burning-yellow-orange.webp",
   "folder": "HLW/Skills/Magie/Rang S",
   "system": {
    "rank": "S",
@@ -2972,7 +2972,7 @@
  {
   "name": "Korrupter Glaube",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/triangle-glow-blue.webp",
   "folder": "HLW/Skills/Passive/Rang S",
   "system": {
    "rank": "S",
@@ -3005,7 +3005,7 @@
  {
   "name": "Licht des Phönix",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectiles-salvo-trio-orange.webp",
   "folder": "HLW/Skills/Heilung/Rang S",
   "system": {
    "rank": "S",
@@ -3038,7 +3038,7 @@
  {
   "name": "Sturm des Chaos",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolts-forked-large-orange.webp",
   "folder": "HLW/Skills/Magie/Rang S",
   "system": {
    "rank": "S",
@@ -3071,7 +3071,7 @@
  {
   "name": "Teleportation",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/movement/acceleration-speed-tech-blue.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3104,7 +3104,7 @@
  {
   "name": "Jilwer",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/lava-stone-fire-eye.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3137,7 +3137,7 @@
  {
   "name": "Jubelade",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-star-pentagon-magenta.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3170,7 +3170,7 @@
  {
   "name": "Catastravia",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-orange.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3203,7 +3203,7 @@
  {
   "name": "Reelseiden",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-horned-white-purple.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3236,7 +3236,7 @@
  {
   "name": "Nephtear",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-triangle-blue.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3269,7 +3269,7 @@
  {
   "name": "Waldgroose",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/strike-ice-blades.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3302,7 +3302,7 @@
  {
   "name": "Daosdorg",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-rough-white-teal.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3335,7 +3335,7 @@
  {
   "name": "Reamstroha",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3368,7 +3368,7 @@
  {
   "name": "Judradjim",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-triangle-blue.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3401,7 +3401,7 @@
  {
   "name": "Vialathor",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-hook-white-red.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3434,7 +3434,7 @@
  {
   "name": "Diagoldze",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-carved-stone-red.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3467,7 +3467,7 @@
  {
   "name": "Sorganeil",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-green.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3500,7 +3500,7 @@
  {
   "name": "Priox",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-triangle-orange-purple.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3533,7 +3533,7 @@
  {
   "name": "Züshaarge",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/lava-stone-fire-eye.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3566,7 +3566,7 @@
  {
   "name": "Skilldaria",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/crosshair-ringed-gray.webp",
   "folder": "HLW/Skills/Passive/Rang A",
   "system": {
    "rank": "A",
@@ -3599,7 +3599,7 @@
  {
   "name": "Or'ghavr",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/sword-damaged-bent.webp",
   "folder": "HLW/Skills/Nahkampf/Rang SS",
   "system": {
    "rank": "SS",
@@ -3632,7 +3632,7 @@
  {
   "name": "Kha'or'baal",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/barrier-stone-explosion-red.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",
@@ -3665,7 +3665,7 @@
  {
   "name": "Sarath’kil",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-chain-whip-blue.webp",
   "folder": "HLW/Skills/Nahkampf/Rang SS",
   "system": {
    "rank": "SS",
@@ -3698,7 +3698,7 @@
  {
   "name": "Qor'athal",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/hand-light-pink.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",
@@ -3731,7 +3731,7 @@
  {
   "name": "Le'or",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/orb-water-ice-pink.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",
@@ -3764,7 +3764,7 @@
  {
   "name": "Bo'el",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/barrier-stone-brown-green.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",
@@ -3797,7 +3797,7 @@
  {
   "name": "Ha'thohom",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/barrier-ice-crystal-wall-jagged.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",
@@ -3830,7 +3830,7 @@
  {
   "name": "Adlerauge",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
   "folder": "HLW/Skills/Passive/Rang A",
   "system": {
    "rank": "A",
@@ -3863,7 +3863,7 @@
  {
   "name": "Doppelklinge",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
   "folder": "HLW/Skills/Passive/Rang A",
   "system": {
    "rank": "A",
@@ -3896,7 +3896,7 @@
  {
   "name": "Drachenatem",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3929,7 +3929,7 @@
  {
   "name": "Elementare Kombination",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-rough-white-teal.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3962,7 +3962,7 @@
  {
   "name": "Frostblitz",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/barrier-ice-wall-snow.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3995,7 +3995,7 @@
  {
   "name": "Klingentanz",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
   "folder": "HLW/Skills/Passive/Rang B",
   "system": {
    "rank": "B",
@@ -4028,7 +4028,7 @@
  {
   "name": "Knieschlag",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-dagger-arcane-pink.webp",
   "folder": "HLW/Skills/Nahkampf/Rang D",
   "system": {
    "rank": "D",
@@ -4061,7 +4061,7 @@
  {
   "name": "Levitation",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/time/day-night-sunset-sunrise.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -4094,7 +4094,7 @@
  {
   "name": "Zug der Sterne",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
   "folder": "HLW/Skills/Passive/Rang A",
   "system": {
    "rank": "A",
@@ -4127,7 +4127,7 @@
  {
   "name": "Duo-Blade Knifes",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
   "folder": "HLW/Skills/Passive/Rang A",
   "system": {
    "rank": "A",
@@ -4160,7 +4160,7 @@
  {
   "name": "Verzauberung Rot (T1)",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/triangle-glowing-green.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -4193,7 +4193,7 @@
  {
   "name": "Verzauberung Grün (T1)",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/movement/trail-streak-pink.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -4226,7 +4226,7 @@
  {
   "name": "Verzauberung Weiß (T1)",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -4259,7 +4259,7 @@
  {
   "name": "Verzauberung Blau (T1)",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-black-pink.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -4292,7 +4292,7 @@
  {
   "name": "Verzauberung Braun (T1)",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -4325,7 +4325,7 @@
  {
   "name": "Magie-Spruch",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-triangle-magenta.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -4358,7 +4358,7 @@
  {
   "name": "Erdverstärkung",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectile-stone-ball-blue.webp",
   "folder": "HLW/Skills/Magie/Rang C",
   "system": {
    "rank": "C",
@@ -4391,7 +4391,7 @@
  {
   "name": "Naturresonanz",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/nature/wolf-paw-glow-large-green.webp",
   "folder": "HLW/Skills/Verstärkung/Rang C",
   "system": {
    "rank": "C",
@@ -4424,7 +4424,7 @@
  {
   "name": "Fauliger Griff",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
   "folder": "HLW/Skills/Schwächung/Rang C",
   "system": {
    "rank": "C",
@@ -4457,7 +4457,7 @@
  {
   "name": "Regeneration",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/bubbles-air-water-blue.webp",
   "folder": "HLW/Skills/Heilung/Rang C",
   "system": {
    "rank": "C",
@@ -4490,7 +4490,7 @@
  {
   "name": "Stachelregen",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/arrow-barbed-flying-poisoned-green.webp",
   "folder": "HLW/Skills/Fernkampf/Rang C",
   "system": {
    "rank": "C",
@@ -4523,7 +4523,7 @@
  {
   "name": "Efeuklinge",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/social/diplomacy-writing-letter.webp",
   "folder": "HLW/Skills/Verstärkung/Rang C",
   "system": {
    "rank": "C",
@@ -4556,7 +4556,7 @@
  {
   "name": "Naturinstinkt",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/nature/plant-undersea-orb-purple.webp",
   "folder": "HLW/Skills/Passive/Rang C",
   "system": {
    "rank": "C",
@@ -4589,7 +4589,7 @@
  {
   "name": "Sporenwelle",
   "type": "playerSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/waves-water-blue.webp",
   "folder": "HLW/Skills/Schwächung/Rang C",
   "system": {
    "rank": "C",

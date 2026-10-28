@@ -2,7 +2,7 @@
  {
   "name": "Sonnenkornbrot",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/sack-rice-flour-brown.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -18,7 +18,7 @@
  {
   "name": "Windgrass-Bier",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/drinks/pitcher-dripping-white.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -34,7 +34,7 @@
  {
   "name": "(Erd-)Wurzelschnitte",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/cooked-drumstick-glazed-turkey-leg.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -50,7 +50,7 @@
  {
   "name": "Tränenkraut-Vodka",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/drinks/drink-carton.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -66,7 +66,7 @@
  {
   "name": "Nachter-Pizza",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/plate-chicken-grilled-mushroom-brown.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -82,7 +82,7 @@
  {
   "name": "Wasserbeeren-Drink",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/drinks/drink-carton.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -98,7 +98,7 @@
  {
   "name": "Sonnenflimmerbrot",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/donut-baked-frosted.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -114,7 +114,7 @@
  {
   "name": "Nebeltraum-Suppe",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/plate-steak-grilled-brown-green.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -130,7 +130,7 @@
  {
   "name": "Schattenfeuer-Eintopf",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/shank-meat-bone-glazed-brown.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -146,7 +146,7 @@
  {
   "name": "Funkengebräu",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/drinks/alcohol-spirits-bottle-green.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -162,7 +162,7 @@
  {
   "name": "Flüsterkuchen",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/short-ribs-cooked-meat-brown.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -178,7 +178,7 @@
  {
   "name": "Frostblüten-Dim Sum",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/bowl-stew-brown.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -194,7 +194,7 @@
  {
   "name": "Erdwurzen-Brötle",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/soup-broth-bowl-wooden-yellow.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -210,7 +210,7 @@
  {
   "name": "Dämmerblatt-Rollen",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/cheese-cube-orange.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -226,7 +226,7 @@
  {
   "name": "Blumelade",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/ration-canned-tomato.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -242,7 +242,7 @@
  {
   "name": "Schattendorn-Whisky",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/drinks/tea-jug-glowing-brown-pink.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -258,7 +258,7 @@
  {
   "name": "Eiswein",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/drinks/coffee.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -274,7 +274,7 @@
  {
   "name": "Schattenpudding",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/ration-canned-tomato.webp",
   "folder": "HLW/Essen und Trinken/Rang D",
   "system": {
    "rank": "D",
@@ -290,7 +290,7 @@
  {
   "name": "Frostiger Wald-Salat",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/squash-pumpkin-flat-orange.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -306,7 +306,7 @@
  {
   "name": "Lichtgebratener Himmelsweizen",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/plate-pasta-noodles-white-red.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -322,7 +322,7 @@
  {
   "name": "Blutrote Flammenfrucht",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/pear-tomato-yellow.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -338,7 +338,7 @@
  {
   "name": "Wolkenwunderauflauf",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/berries-cream-bowl-mint-red.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -354,7 +354,7 @@
  {
   "name": "Spicy-Orch-Taco",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/soup-broth-bowl-wooden-yellow.webp",
   "folder": "HLW/Essen und Trinken/Rang D",
   "system": {
    "rank": "D",
@@ -370,7 +370,7 @@
  {
   "name": "Feuer-Orchidee-Eintopf",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/candy-taffy-blue-white.webp",
   "folder": "HLW/Essen und Trinken/Rang D",
   "system": {
    "rank": "D",
@@ -386,7 +386,7 @@
  {
   "name": "Gerösteter Schattenpilz",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/mushrooms/umbontae-hot-pink.webp",
   "folder": "HLW/Essen und Trinken/Rang D",
   "system": {
    "rank": "D",
@@ -402,7 +402,7 @@
  {
   "name": "Feuer-Orchidee-Sauce",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
   "folder": "HLW/Essen und Trinken/Rang D",
   "system": {
    "rank": "D",
@@ -418,7 +418,7 @@
  {
   "name": "Erdwurzen-Öl",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/lights/lantern-iron-yellow.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -434,7 +434,7 @@
  {
   "name": "Blutlilien-Pfannkuchen",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/cheese-wedge-swiss-yellow.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -450,7 +450,7 @@
  {
   "name": "Himmelsschale",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/candy-pattie-pink-white.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -466,7 +466,7 @@
  {
   "name": "Zeittraum-Dessert",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/candy-taffy-blue-white.webp",
   "folder": "HLW/Essen und Trinken/Rang D",
   "system": {
    "rank": "D",
@@ -482,7 +482,7 @@
  {
   "name": "Sterngekrönter Nachtaufstrich",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/soup-broth-bowl-wooden-yellow.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",
@@ -498,7 +498,7 @@
  {
   "name": "Phönixranken-Tarte",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/candy-bar.webp",
   "folder": "HLW/Essen und Trinken/Rang C",
   "system": {
    "rank": "C",
@@ -514,7 +514,7 @@
  {
   "name": "Frostige Sternensuppe",
   "type": "foodDrink",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
   "folder": "HLW/Essen und Trinken/Rang E",
   "system": {
    "rank": "E",

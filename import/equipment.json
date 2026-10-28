@@ -2,7 +2,7 @@
  {
   "name": "Rucksack",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/containers/bags/pouch-cloth-pink.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -17,7 +17,7 @@
  {
   "name": "Schlafsack",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/hip-flask.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -32,7 +32,7 @@
  {
   "name": "Zelt (2 Personen)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/rope-wrapped-grey.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -47,7 +47,7 @@
  {
   "name": "Decke",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/corkscrew.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -62,7 +62,7 @@
  {
   "name": "Seil (15 m)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/corkscrew.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -77,7 +77,7 @@
  {
   "name": "Kletterhaken (5 Stück)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/fire-lighter-blue.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -92,7 +92,7 @@
  {
   "name": "Fackel",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/lights/candle-unlit-red.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -107,7 +107,7 @@
  {
   "name": "Laterne",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/lights/candle-unlit-bone-white.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -122,7 +122,7 @@
  {
   "name": "Lampenöl (Flasche)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/materials/feather-colored-red.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -137,7 +137,7 @@
  {
   "name": "Kerzen (5 Stück)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/lights/torch-white.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -152,7 +152,7 @@
  {
   "name": "Feuerstein und Zunder",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/rope-wrapped-tan.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -167,7 +167,7 @@
  {
   "name": "Wasserschlauch",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/bedroll-brown.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -182,7 +182,7 @@
  {
   "name": "Proviant (1 Tagesration)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/meat/kebab-skewer-vegetable-brown.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -197,7 +197,7 @@
  {
   "name": "Kochgeschirr",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/cooking/mill-stone-grey.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -212,7 +212,7 @@
  {
   "name": "Angelzeug",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/fishing/reel-simple-string-tan.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -227,7 +227,7 @@
  {
   "name": "Tierfalle",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/environment/traps/saw-mechanical-toothed-steel-red.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -242,7 +242,7 @@
  {
   "name": "Fangnetz",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/environment/traps/trap-jaw-tan.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -257,7 +257,7 @@
  {
   "name": "Jagdmesser",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-curved-black.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -272,7 +272,7 @@
  {
   "name": "Spitzhacke",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/hand/saw-surgical-steel-grey.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -287,7 +287,7 @@
  {
   "name": "Schaufel",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/hand/shovel-spade-steel-grey.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -302,7 +302,7 @@
  {
   "name": "Wetzstein",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/smithing/tongs-steel-grey.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -317,7 +317,7 @@
  {
   "name": "Holzpfeile (20 Stück)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/ammunition/explosive-rocket-orange.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -332,7 +332,7 @@
  {
   "name": "Eisenpfeile (20 Stück)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/ammunition/ammo-magazine-clip.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -347,7 +347,7 @@
  {
   "name": "Nebeltuch",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/misc/tombstone.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -362,7 +362,7 @@
  {
   "name": "Kompass",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/navigation/compass-plain-blue.webp",
   "folder": "HLW/Abenteurerbedarf/Rang C",
   "system": {
    "rank": "C",
@@ -377,7 +377,7 @@
  {
   "name": "Regionalkarte",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/navigation/hourglass-grey.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -392,7 +392,7 @@
  {
   "name": "Karte von Gaia",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/navigation/spyglass-telescope-waves-blue.webp",
   "folder": "HLW/Abenteurerbedarf/Rang C",
   "system": {
    "rank": "C",
@@ -407,7 +407,7 @@
  {
   "name": "Tinte und Feder",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/scribal/pen-stylus-pencil.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -422,7 +422,7 @@
  {
   "name": "Pergament (5 Bögen)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/scribal/lens-blue.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -437,7 +437,7 @@
  {
   "name": "Spiegel (klein)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/misc/teeth-dentures.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -452,7 +452,7 @@
  {
   "name": "Dietrich-Set",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/hand/shovel-steel.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -467,7 +467,7 @@
  {
   "name": "Kes-Börse",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/containers/bags/satchel-leather-silver-tan.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -482,7 +482,7 @@
  {
   "name": "Ersatz-Gildenkarte",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/navigation/map-marked-brown.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -497,7 +497,7 @@
  {
   "name": "Alchemie-Set",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/laboratory/bowl-powder-red.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -512,7 +512,7 @@
  {
   "name": "Runen-Meißel",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-faceted-diamond-blue.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -527,7 +527,7 @@
  {
   "name": "Rauchbombe",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/thrown/bomb-timer.webp",
   "folder": "HLW/Abenteurerbedarf/Rang E",
   "system": {
    "rank": "E",
@@ -542,7 +542,7 @@
  {
   "name": "Gegengift",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/potion-bottle-corked-stopper-ornate-yellow.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -557,7 +557,7 @@
  {
   "name": "Kleiner Heiltrank",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/potion-tube-corked-glowing-red.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -572,7 +572,7 @@
  {
   "name": "Funkenbombe",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/thrown/throwing-star-quad-steel.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -587,7 +587,7 @@
  {
   "name": "Einfache Schutzrune",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-faceted-diamond-blue.webp",
   "folder": "HLW/Abenteurerbedarf/Rang D",
   "system": {
    "rank": "D",
@@ -602,7 +602,7 @@
  {
   "name": "Heiltrank",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/vial-cork-blue.webp",
   "folder": "HLW/Abenteurerbedarf/Rang C",
   "system": {
    "rank": "C",
@@ -617,7 +617,7 @@
  {
   "name": "Hammer (Werkzeug)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/hand/saw-steel-white.webp",
   "folder": "HLW/Gegenstände/Rang E",
   "system": {
    "rank": "E",
@@ -632,7 +632,7 @@
  {
   "name": "Nägel",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/hand/scale-balances-merchant-brown.webp",
   "folder": "HLW/Gegenstände/Rang E",
   "system": {
    "rank": "E",
@@ -647,7 +647,7 @@
  {
   "name": "Schmiedehammer (Werkzeug)",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/hand/trowel.webp",
   "folder": "HLW/Gegenstände/Rang D",
   "system": {
    "rank": "D",
@@ -662,7 +662,7 @@
  {
   "name": "Magischer Beutel",
   "type": "equipment",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/containers/bags/pouch-leather-leaf-green.webp",
   "folder": "HLW/Gegenstände/Rang B",
   "system": {
    "rank": "B",

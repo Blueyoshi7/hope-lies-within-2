@@ -170,6 +170,10 @@
 
     <div class="tab" data-group="primary" data-tab="skills">
       <h2>Spieler- und Klassenskills</h2>
+      <section class="hlw-skill-kopf">
+        <span>Skill-Slots {{skillSlots.used}} / {{skillSlots.max}} <small>(Klassen-Skills zählen nicht)</small></span>
+        {{#if isGM}}<button type="button" data-geben="skills">Skill geben</button>{{/if}}
+      </section>
       <ol class="item-list">
         {{#each itemsByType.skills as |item|}}
           <li class="item-row {{#unless item.canUse}}is-disabled{{/unless}}" data-item-id="{{item.id}}" draggable="true">
@@ -220,6 +224,7 @@
           <label>GM Kes +/−
             <span><input data-add-gold-amount type="text" placeholder="z. B. 50 SK oder -2 GK" /><button type="button" data-add-gold>Buchen</button></span>
           </label>
+          <button type="button" class="inventory-import-button" data-geben="items">Gegenstand geben</button>
           <button type="button" class="inventory-import-button" data-import-json>JSON importieren</button>
         {{/if}}
       </section>

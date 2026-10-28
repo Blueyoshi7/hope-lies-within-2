@@ -2,7 +2,7 @@
  {
   "name": "Rostiger alter Schlüssel",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/treasure/statue-bust-stone-grey.webp",
   "folder": "HLW/Müll/Rang E",
   "system": {
    "rank": "E",
@@ -17,7 +17,7 @@
  {
   "name": "Halbes Kettenhemd",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/misc/key-gold.webp",
   "folder": "HLW/Müll/Rang E",
   "system": {
    "rank": "E",
@@ -32,7 +32,7 @@
  {
   "name": "Alte Gold-Kes mit Loch",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/ingot-rough-steel.webp",
   "folder": "HLW/Müll/Rang D",
   "system": {
    "rank": "D",
@@ -47,7 +47,7 @@
  {
   "name": "Glas voll Dreck",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/treasure/crown-gold-satin-gems-red.webp",
   "folder": "HLW/Müll/Rang E",
   "system": {
    "rank": "E",
@@ -62,7 +62,7 @@
  {
   "name": "Silberlöffel mit Loch",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/steel-sheet.webp",
   "folder": "HLW/Müll/Rang E",
   "system": {
    "rank": "E",
@@ -77,7 +77,7 @@
  {
   "name": "Verbogene Silbergabel",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/clasp-steel-braid.webp",
   "folder": "HLW/Müll/Rang E",
   "system": {
    "rank": "E",
@@ -92,7 +92,7 @@
  {
   "name": "Verkratzter Silberkelch",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/pin-cottar-steel.webp",
   "folder": "HLW/Müll/Rang D",
   "system": {
    "rank": "D",
@@ -107,7 +107,7 @@
  {
   "name": "Wandteppich mit Mottenlöchern",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/cloth/yarn-skein-brown.webp",
   "folder": "HLW/Müll/Rang C",
   "system": {
    "rank": "C",
@@ -122,7 +122,7 @@
  {
   "name": "Porträt eines Adligen",
   "type": "junk",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/treasure/bust-carved-stone.webp",
   "folder": "HLW/Müll/Rang C",
   "system": {
    "rank": "C",

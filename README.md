@@ -35,7 +35,11 @@ Als GM in der Item-Sidebar auf **HLW JSON Import** klicken (oder im Inventar auf
 | `import/skills.json`, `class-skills.json` | Skills und Klassen-Skills |
 | `import/monsters.json` | Bestiarium als Monster-Actors (Werte nach Rang, Rolle und Größe) |
 
-Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP werden beim Appraisal gewürfelt: im Item-Bogen auf „Würfeln“ klicken.
+Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP werden beim Appraisal gewürfelt: im Item-Bogen auf „Würfeln“ klicken. Jeder Eintrag hat ein passendes Symbol aus Foundrys Bibliothek; ältere Importe holen sich die Bilder mit `game.hlw.aktualisiereBilder()`.
+
+## Skills und Gegenstände geben
+
+Als GM im Charakterbogen: Tab *Skills* → **Skill geben**, Tab *Inventar* → **Gegenstand geben**. Ein Suchfenster listet alle Einträge der Welt; ein Klick legt eine Kopie beim Charakter an. Skill-Slots (Level 1: 3, ab Level 4: 4, 8: 5, 13: 6, 18: 7, 23: 8, 30: 9, 37: 10) werden geprüft, Klassen-Skills zählen nicht. Alternativ einen Eintrag aus der Item-Sidebar auf den Bogen ziehen.
 
 ## NSC-Gespräch
 
@@ -48,7 +52,8 @@ Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP
 Als GM in der Konsole oder per Makro:
 
 ```js
-game.hlw.erstelleLindhain()
+game.hlw.erstelleLindhain()              // neu anlegen
+game.hlw.erstelleLindhain({ neu: true })  // Szene und Ortsliste neu aufbauen, NSC bleiben
 ```
 
 Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts und Gesprächsdaten sowie Ortsnotizen. Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein.

@@ -1124,3 +1124,18 @@
 .hlw-points.is-over { color: var(--hlw-red); font-weight: bold; }
 .monster-panel, .bonus-panel { margin-top: 12px; }
 .monster-panel .form-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+
+/* Skill- und Gegenstand-geben */
+.hlw-skill-kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 10px; color: var(--hlw-muted); }
+.hlw-skill-kopf button { width: auto; padding: 4px 14px; }
+.hlw-geben .window-content { display: flex; flex-direction: column; gap: 8px; padding: 10px; }
+.hlw-geben-kopf { display: flex; gap: 10px; align-items: center; }
+.hlw-geben-kopf input { flex: 1; }
+.hlw-geben-slots { white-space: nowrap; color: var(--hlw-gold); }
+.hlw-geben-hinweis { margin: 0; font-size: 0.8rem; color: var(--hlw-muted); }
+.hlw-geben-liste { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
+.hlw-geben-liste li { display: grid; grid-template-columns: 40px 1fr auto; gap: 10px; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--hlw-border); }
+.hlw-geben-liste li[hidden] { display: none; }
+.hlw-geben-liste img { width: 36px; height: 36px; border: none; border-radius: 4px; }
+.hlw-geben-liste small { display: block; color: var(--hlw-muted); }
+.hlw-geben-liste button { width: auto; padding: 2px 12px; }

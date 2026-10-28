@@ -2,7 +2,7 @@
  {
   "name": "Erzklumpen",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/steel-sheet.webp",
   "folder": "HLW/Mineralien/Rang E",
   "system": {
    "rank": "E",
@@ -17,7 +17,7 @@
  {
   "name": "Moosachat",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-faceted-radiant-teal.webp",
   "folder": "HLW/Mineralien/Rang E",
   "system": {
    "rank": "E",
@@ -32,7 +32,7 @@
  {
   "name": "Erdkern",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-fragments-blue.webp",
   "folder": "HLW/Mineralien/Rang E",
   "system": {
    "rank": "E",
@@ -47,7 +47,7 @@
  {
   "name": "Sonnenkristall",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-fragments-purple.webp",
   "folder": "HLW/Mineralien/Rang E",
   "system": {
    "rank": "E",
@@ -62,7 +62,7 @@
  {
   "name": "Lavaquarz",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/pearl-storm.webp",
   "folder": "HLW/Mineralien/Rang E",
   "system": {
    "rank": "E",
@@ -77,7 +77,7 @@
  {
   "name": "Magisches Erz",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/ingot-silver.webp",
   "folder": "HLW/Mineralien/Rang E",
   "system": {
    "rank": "E",
@@ -92,7 +92,7 @@
  {
   "name": "Klangstein",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-navette-purple-pink.webp",
   "folder": "HLW/Mineralien/Rang D",
   "system": {
    "rank": "D",
@@ -107,7 +107,7 @@
  {
   "name": "Schattenseide",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/pearl-storm.webp",
   "folder": "HLW/Mineralien/Rang D",
   "system": {
    "rank": "D",
@@ -122,7 +122,7 @@
  {
   "name": "Windfederstein",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-faceted-rough-green.webp",
   "folder": "HLW/Mineralien/Rang D",
   "system": {
    "rank": "D",
@@ -137,7 +137,7 @@
  {
   "name": "Abyss Erz",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-raw-rough-purple.webp",
   "folder": "HLW/Mineralien/Rang D",
   "system": {
    "rank": "D",
@@ -152,7 +152,7 @@
  {
   "name": "Eisflimmer",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-cluster-purple.webp",
   "folder": "HLW/Mineralien/Rang D",
   "system": {
    "rank": "D",
@@ -167,7 +167,7 @@
  {
   "name": "Donnerkeil",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-rectangle-red.webp",
   "folder": "HLW/Mineralien/Rang D",
   "system": {
    "rank": "D",
@@ -182,7 +182,7 @@
  {
   "name": "Harmonium",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-round-blue.webp",
   "folder": "HLW/Mineralien/Rang D",
   "system": {
    "rank": "D",
@@ -197,7 +197,7 @@
  {
   "name": "Nachtstein",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-cut-table-green.webp",
   "folder": "HLW/Mineralien/Rang C",
   "system": {
    "rank": "C",
@@ -212,7 +212,7 @@
  {
   "name": "Geisterlichtstein",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-faceted-radiant-blue.webp",
   "folder": "HLW/Mineralien/Rang C",
   "system": {
    "rank": "C",
@@ -227,7 +227,7 @@
  {
   "name": "Athrea's Träne",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-navette-pink.webp",
   "folder": "HLW/Mineralien/Rang C",
   "system": {
    "rank": "C",
@@ -242,7 +242,7 @@
  {
   "name": "Blutstein",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-oval-red.webp",
   "folder": "HLW/Mineralien/Rang C",
   "system": {
    "rank": "C",
@@ -257,7 +257,7 @@
  {
   "name": "Sternenstein",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-round-orange.webp",
   "folder": "HLW/Mineralien/Rang C",
   "system": {
    "rank": "C",
@@ -272,7 +272,7 @@
  {
   "name": "Wahrheitskristall",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/pearl-red-gold.webp",
   "folder": "HLW/Mineralien/Rang C",
   "system": {
    "rank": "C",
@@ -287,7 +287,7 @@
  {
   "name": "Ätherium",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/pearl-pink.webp",
   "folder": "HLW/Mineralien/Rang B",
   "system": {
    "rank": "B",
@@ -302,7 +302,7 @@
  {
   "name": "Abyssalith",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-raw-rough-purple.webp",
   "folder": "HLW/Mineralien/Rang B",
   "system": {
    "rank": "B",
@@ -317,7 +317,7 @@
  {
   "name": "Chaossplitter",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-cut-faceted-princess-purple.webp",
   "folder": "HLW/Mineralien/Rang B",
   "system": {
    "rank": "B",
@@ -332,7 +332,7 @@
  {
   "name": "Zeitsand-Stein",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-rose-red.webp",
   "folder": "HLW/Mineralien/Rang A",
   "system": {
    "rank": "A",
@@ -347,7 +347,7 @@
  {
   "name": "Drachenherz",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/metal/clasp-skull-jeweled-red.webp",
   "folder": "HLW/Mineralien/Rang S",
   "system": {
    "rank": "S",
@@ -362,7 +362,7 @@
  {
   "name": "Göttertränen",
   "type": "mineral",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/pearl-purple-smooth.webp",
   "folder": "HLW/Mineralien/Rang SS",
   "system": {
    "rank": "SS",

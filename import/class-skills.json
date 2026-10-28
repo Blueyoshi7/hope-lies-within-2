@@ -2,7 +2,7 @@
  {
   "name": "Ansturm",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-weapons-orange.webp",
   "folder": "HLW/Klassen-Skills/Kämpfer/Rang D",
   "system": {
    "rank": "D",
@@ -30,7 +30,7 @@
  {
   "name": "Standhaftigkeit",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
   "folder": "HLW/Klassen-Skills/Wächter/Rang D",
   "system": {
    "rank": "D",
@@ -58,7 +58,7 @@
  {
   "name": "Vielseitigkeit",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
   "folder": "HLW/Klassen-Skills/Gladiator/Rang D",
   "system": {
    "rank": "D",
@@ -86,7 +86,7 @@
  {
   "name": "Qual",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-sword-blood-red.webp",
   "folder": "HLW/Klassen-Skills/Barbar/Rang D",
   "system": {
    "rank": "D",
@@ -114,7 +114,7 @@
  {
   "name": "Steinlanze",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/orb-lava-ball-yellow.webp",
   "folder": "HLW/Klassen-Skills/Steinweber/Rang D",
   "system": {
    "rank": "D",
@@ -142,7 +142,7 @@
  {
   "name": "Aura des Glaubens",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/barrier-ice-crystal-wall-green.webp",
   "folder": "HLW/Klassen-Skills/Paladin/Rang D",
   "system": {
    "rank": "D",
@@ -170,7 +170,7 @@
  {
   "name": "Magische Raserei",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/control/sleep-bubble-purple.webp",
   "folder": "HLW/Klassen-Skills/Kampfmagier/Rang D",
   "system": {
    "rank": "D",
@@ -198,7 +198,7 @@
  {
   "name": "Erste Umarmung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectile-spiked-stone-boulder-orange.webp",
   "folder": "HLW/Klassen-Skills/Erlöser/Rang D",
   "system": {
    "rank": "D",
@@ -226,7 +226,7 @@
  {
   "name": "Fluch des Parasiten",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/skeleton-glow-yellow-black.webp",
   "folder": "HLW/Klassen-Skills/Schmarotzer/Rang D",
   "system": {
    "rank": "D",
@@ -254,7 +254,7 @@
  {
   "name": "Schildwache",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-barrier-deflect-teal.webp",
   "folder": "HLW/Klassen-Skills/Magische Wache/Rang D",
   "system": {
    "rank": "D",
@@ -282,7 +282,7 @@
  {
   "name": "Blitzschritt",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/projectile-water-ice-orb.webp",
   "folder": "HLW/Klassen-Skills/Sturmzauberer/Rang D",
   "system": {
    "rank": "D",
@@ -310,7 +310,7 @@
  {
   "name": "Reine Heilung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-area-circle-red-green.webp",
   "folder": "HLW/Klassen-Skills/Weißmagier/Rang D",
   "system": {
    "rank": "D",
@@ -338,7 +338,7 @@
  {
   "name": "Bestienkodex",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/angel-wings-gray.webp",
   "folder": "HLW/Klassen-Skills/Blaumagier/Rang D",
   "system": {
    "rank": "D",
@@ -366,7 +366,7 @@
  {
   "name": "Galaktisches Auge",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
   "folder": "HLW/Klassen-Skills/Astrologe/Rang D",
   "system": {
    "rank": "D",
@@ -394,7 +394,7 @@
  {
   "name": "Nekrotisches Mal",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/undead-skeleton-lich-armor.webp",
   "folder": "HLW/Klassen-Skills/Schwarzmagier/Rang D",
   "system": {
    "rank": "D",
@@ -422,7 +422,7 @@
  {
   "name": "Magische Raserei",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/control/sleep-bubble-purple.webp",
   "folder": "HLW/Klassen-Skills/Kampfmagier/Rang D",
   "system": {
    "rank": "D",
@@ -450,7 +450,7 @@
  {
   "name": "Deins? Meins!",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-horned-white-purple.webp",
   "folder": "HLW/Klassen-Skills/Wissensdieb/Rang D",
   "system": {
    "rank": "D",
@@ -478,7 +478,7 @@
  {
   "name": "Kampfanalyse",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/perception/eye-tendrils-web-purple.webp",
   "folder": "HLW/Klassen-Skills/Taktiker/Rang D",
   "system": {
    "rank": "D",
@@ -506,7 +506,7 @@
  {
   "name": "Energielauf",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectiles-fire-stone-salvo.webp",
   "folder": "HLW/Klassen-Skills/Runenmagier/Rang D",
   "system": {
    "rank": "D",
@@ -534,7 +534,7 @@
  {
   "name": "Adlerauge",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
   "folder": "HLW/Klassen-Skills/Kampfspäher/Rang D",
   "system": {
    "rank": "D",
@@ -562,7 +562,7 @@
  {
   "name": "Tödlicher Schlag",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-weapons-orange.webp",
   "folder": "HLW/Klassen-Skills/Assassine/Rang D",
   "system": {
    "rank": "D",
@@ -590,7 +590,7 @@
  {
   "name": "Präzise Berührung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/shield-damaged-broken-orange.webp",
   "folder": "HLW/Klassen-Skills/Dieb/Rang D",
   "system": {
    "rank": "D",
@@ -618,7 +618,7 @@
  {
   "name": "Magische Tarnung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-green.webp",
   "folder": "HLW/Klassen-Skills/Scout/Rang D",
   "system": {
    "rank": "D",
@@ -646,7 +646,7 @@
  {
   "name": "Schattenversteck",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/strike-beam-blood-large-red-gray.webp",
   "folder": "HLW/Klassen-Skills/Schattentänzer/Rang D",
   "system": {
    "rank": "D",
@@ -674,7 +674,7 @@
  {
   "name": "Heilige Klinge",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-green.webp",
   "folder": "HLW/Klassen-Skills/Klingenpriester/Rang D",
   "system": {
    "rank": "D",
@@ -702,7 +702,7 @@
  {
   "name": "Nebelschuss",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/cannon-barrel-gray.webp",
   "folder": "HLW/Klassen-Skills/Nebeljäger/Rang D",
   "system": {
    "rank": "D",
@@ -730,7 +730,7 @@
  {
   "name": "Sturmschritt",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
   "folder": "HLW/Klassen-Skills/Klingenläufer/Rang D",
   "system": {
    "rank": "D",
@@ -758,7 +758,7 @@
  {
   "name": "Illusionsschlag",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/control/debuff-energy-hold-levitate-pink.webp",
   "folder": "HLW/Klassen-Skills/Trickmage/Rang D",
   "system": {
    "rank": "D",
@@ -786,7 +786,7 @@
  {
   "name": "Heilungsversprechen",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "folder": "HLW/Klassen-Skills/Täuschungs-Kleriker/Rang D",
   "system": {
    "rank": "D",
@@ -814,7 +814,7 @@
  {
   "name": "Hinterhalt",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/cog-glowing-green.webp",
   "folder": "HLW/Klassen-Skills/Waldläufer/Rang D",
   "system": {
    "rank": "D",
@@ -842,7 +842,7 @@
  {
   "name": "Herz der Tiere",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
   "folder": "HLW/Klassen-Skills/Tiermeister/Rang D",
   "system": {
    "rank": "D",
@@ -870,7 +870,7 @@
  {
   "name": "Sellenvergabe",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp",
   "folder": "HLW/Klassen-Skills/Beschwörer/Rang D",
   "system": {
    "rank": "D",
@@ -898,7 +898,7 @@
  {
   "name": "Präzisionsschuss",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/daggers-thrown-salvo-orange.webp",
   "folder": "HLW/Klassen-Skills/Scharfschütze/Rang D",
   "system": {
    "rank": "D",
@@ -926,7 +926,7 @@
  {
   "name": "Kräuter und Gifte",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
   "folder": "HLW/Klassen-Skills/Herbalist/Rang D",
   "system": {
    "rank": "D",
@@ -954,7 +954,7 @@
  {
   "name": "Tosende Bestie",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
   "folder": "HLW/Klassen-Skills/Bestienkrieger/Rang D",
   "system": {
    "rank": "D",
@@ -982,7 +982,7 @@
  {
   "name": "Himmlischer Schauer",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/arrow-barbed-flying-poisoned-green.webp",
   "folder": "HLW/Klassen-Skills/Corrupted-Jäger/Rang D",
   "system": {
    "rank": "D",
@@ -1010,7 +1010,7 @@
  {
   "name": "Netzfalle",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/target-bullseye-arrow-yellow.webp",
   "folder": "HLW/Klassen-Skills/Fallenleger/Rang D",
   "system": {
    "rank": "D",
@@ -1038,7 +1038,7 @@
  {
   "name": "Magiegeboren",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectile-spiked-stone-boulder-purple-yellow.webp",
   "folder": "HLW/Klassen-Skills/Runenschütze/Rang D",
   "system": {
    "rank": "D",
@@ -1066,7 +1066,7 @@
  {
   "name": "Naturinstinkt",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/air/air-burst-spiral-teal-green.webp",
   "folder": "HLW/Klassen-Skills/Ranger/Rang D",
   "system": {
    "rank": "D",
@@ -1094,7 +1094,7 @@
  {
   "name": "Aura des Glaubens",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/barrier-ice-crystal-wall-green.webp",
   "folder": "HLW/Klassen-Skills/Paladin/Rang D",
   "system": {
    "rank": "D",
@@ -1122,7 +1122,7 @@
  {
   "name": "Heilungsversprechen",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "folder": "HLW/Klassen-Skills/Täuschungs-Kleriker/Rang D",
   "system": {
    "rank": "D",
@@ -1150,7 +1150,7 @@
  {
   "name": "Schmerzlinderung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/rune-sigil-green.webp",
   "folder": "HLW/Klassen-Skills/Sanitäter/Rang D",
   "system": {
    "rank": "D",
@@ -1178,7 +1178,7 @@
  {
   "name": "Gnade",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/crosses-trio-red.webp",
   "folder": "HLW/Klassen-Skills/Prophet/Rang D",
   "system": {
    "rank": "D",
@@ -1206,7 +1206,7 @@
  {
   "name": "Göttlicher Schutz",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/projectiles-blades-salvo-yellow.webp",
   "folder": "HLW/Klassen-Skills/Kleriker/Rang D",
   "system": {
    "rank": "D",
@@ -1234,7 +1234,7 @@
  {
   "name": "Schattenschritt",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/hands-praying-fire-green.webp",
   "folder": "HLW/Klassen-Skills/Nachtweber/Rang D",
   "system": {
    "rank": "D",
@@ -1262,7 +1262,7 @@
  {
   "name": "Reine Heilung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-area-circle-red-green.webp",
   "folder": "HLW/Klassen-Skills/Weißmagier/Rang D",
   "system": {
    "rank": "D",
@@ -1290,7 +1290,7 @@
  {
   "name": "Meditation",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-hand-gold-green.webp",
   "folder": "HLW/Klassen-Skills/Mönch/Rang D",
   "system": {
    "rank": "D",
@@ -1318,7 +1318,7 @@
  {
   "name": "Kräuter und Gifte",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
   "folder": "HLW/Klassen-Skills/Herbalist/Rang D",
   "system": {
    "rank": "D",
@@ -1346,7 +1346,7 @@
  {
   "name": "Ragnarök",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-pink.webp",
   "folder": "HLW/Klassen-Skills/Wikinger/Rang A",
   "system": {
    "rank": "A",
@@ -1374,7 +1374,7 @@
  {
   "name": "Ebbe und Flut",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/elemental-water.webp",
   "folder": "HLW/Klassen-Skills/Gezeitenrufer/Rang A",
   "system": {
    "rank": "A",
@@ -1402,7 +1402,7 @@
  {
   "name": "Verhängnis und Verderben",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectile-boulder-debris.webp",
   "folder": "HLW/Klassen-Skills/Todsucher/Rang A",
   "system": {
    "rank": "A",
@@ -1430,7 +1430,7 @@
  {
   "name": "Rasender Schlag",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
   "folder": "HLW/Klassen-Skills/Berserker/Rang C",
   "system": {
    "rank": "C",
@@ -1458,7 +1458,7 @@
  {
   "name": "Meisterliche Waffenführung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/strike-ice-blade-fang.webp",
   "folder": "HLW/Klassen-Skills/Waffenmeister/Rang C",
   "system": {
    "rank": "C",
@@ -1486,7 +1486,7 @@
  {
   "name": "Schattentanz",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolt-forked-large-blue-yellow.webp",
   "folder": "HLW/Klassen-Skills/Klingenschatten/Rang C",
   "system": {
    "rank": "C",
@@ -1514,7 +1514,7 @@
  {
   "name": "Blutopfer",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/skull-cattle-totem-glow-red.webp",
   "folder": "HLW/Klassen-Skills/Blutritter/Rang C",
   "system": {
    "rank": "C",
@@ -1542,7 +1542,7 @@
  {
   "name": "Heilige Intervention",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp",
   "folder": "HLW/Klassen-Skills/Heiliger Ritter/Rang C",
   "system": {
    "rank": "C",
@@ -1570,7 +1570,7 @@
  {
   "name": "Magisches Schild",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/armor-stone-skin.webp",
   "folder": "HLW/Klassen-Skills/Beschützer/Rang C",
   "system": {
    "rank": "C",
@@ -1598,7 +1598,7 @@
  {
   "name": "Inspirierende Ausstrahlung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/time/clock-analog-gray.webp",
   "folder": "HLW/Klassen-Skills/Champion/Rang C",
   "system": {
    "rank": "C",
@@ -1626,7 +1626,7 @@
  {
   "name": "Dunkler Pakt",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/orb-swirling-pink.webp",
   "folder": "HLW/Klassen-Skills/Wächter des Abgrunds/Rang C",
   "system": {
    "rank": "C",
@@ -1654,7 +1654,7 @@
  {
   "name": "Riesiges Abkommen",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/barrier-fire-pink.webp",
   "folder": "HLW/Klassen-Skills/Koloss/Rang C",
   "system": {
    "rank": "C",
@@ -1682,7 +1682,7 @@
  {
   "name": "Dornenrüstung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/nature/root-vine-fire-entangled-hand.webp",
   "folder": "HLW/Klassen-Skills/Eiserne Jungfrau/Rang C",
   "system": {
    "rank": "C",
@@ -1710,7 +1710,7 @@
  {
   "name": "Elementare Meisterschaft",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/tendrils-ice-growth.webp",
   "folder": "HLW/Klassen-Skills/Elementarmagier/Rang C",
   "system": {
    "rank": "C",
@@ -1738,7 +1738,7 @@
  {
   "name": "Echo des Todes",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/skull-humanoid-white-red.webp",
   "folder": "HLW/Klassen-Skills/Todesmagier/Rang C",
   "system": {
    "rank": "C",
@@ -1766,7 +1766,7 @@
  {
   "name": "Magische Meisterschaft",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/projectile-ice-orb-white.webp",
   "folder": "HLW/Klassen-Skills/Erzmagier/Rang C",
   "system": {
    "rank": "C",
@@ -1794,7 +1794,7 @@
  {
   "name": "Level Up",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/projectiles-ice-faceted-teal.webp",
   "folder": "HLW/Klassen-Skills/Blaumagier-Meister/Rang C",
   "system": {
    "rank": "C",
@@ -1822,7 +1822,7 @@
  {
   "name": "Arkane Waffe",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/cross-beam-green.webp",
   "folder": "HLW/Klassen-Skills/Arkaner Krieger/Rang C",
   "system": {
    "rank": "C",
@@ -1850,7 +1850,7 @@
  {
   "name": "Sternenregen",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/water-hand.webp",
   "folder": "HLW/Klassen-Skills/Aspekt der Sterne/Rang C",
   "system": {
    "rank": "C",
@@ -1878,7 +1878,7 @@
  {
   "name": "Phantomschlag",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
   "folder": "HLW/Klassen-Skills/Illusionsklinge/Rang C",
   "system": {
    "rank": "C",
@@ -1906,7 +1906,7 @@
  {
   "name": "Worte der Erleuchtung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/orb-ringed-lava-black-orange.webp",
   "folder": "HLW/Klassen-Skills/Genie/Rang C",
   "system": {
    "rank": "C",
@@ -1934,7 +1934,7 @@
  {
   "name": "Dimensionsriss",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
   "folder": "HLW/Klassen-Skills/Weltenwandler/Rang C",
   "system": {
    "rank": "C",
@@ -1962,7 +1962,7 @@
  {
   "name": "Taktischer Rückzug",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/defensive/shield-hex-purple.webp",
   "folder": "HLW/Klassen-Skills/Kriegssavant/Rang C",
   "system": {
    "rank": "C",
@@ -1990,7 +1990,7 @@
  {
   "name": "Seelenentzug",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp",
   "folder": "HLW/Klassen-Skills/Todesweber/Rang C",
   "system": {
    "rank": "C",
@@ -2018,7 +2018,7 @@
  {
   "name": "Ätherischer Durchschuss",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/blast-jet-stream-embers-orange.webp",
   "folder": "HLW/Klassen-Skills/Phantomschütze/Rang C",
   "system": {
    "rank": "C",
@@ -2046,7 +2046,7 @@
  {
   "name": "Magische Klinge",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-broken-red.webp",
   "folder": "HLW/Klassen-Skills/Soulknife/Rang C",
   "system": {
    "rank": "C",
@@ -2074,7 +2074,7 @@
  {
   "name": "Blutiges Omen",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-glowing-red.webp",
   "folder": "HLW/Klassen-Skills/Dunkler Prophet/Rang C",
   "system": {
    "rank": "C",
@@ -2102,7 +2102,7 @@
  {
   "name": "Heimtückischer Schuss",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp",
   "folder": "HLW/Klassen-Skills/Outlaw/Rang C",
   "system": {
    "rank": "C",
@@ -2130,7 +2130,7 @@
  {
   "name": "Loki",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/unholy/orb-hands-pink.webp",
   "folder": "HLW/Klassen-Skills/Trickster/Rang C",
   "system": {
    "rank": "C",
@@ -2158,7 +2158,7 @@
  {
   "name": "Notration",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/orb-water-ice-pink.webp",
   "folder": "HLW/Klassen-Skills/Survivalist/Rang C",
   "system": {
    "rank": "C",
@@ -2186,7 +2186,7 @@
  {
   "name": "Wirbelwind der Klingen",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/blade-tip-damaged-acid-green.webp",
   "folder": "HLW/Klassen-Skills/Klingenstürmer/Rang C",
   "system": {
    "rank": "C",
@@ -2214,7 +2214,7 @@
  {
   "name": "Arkane Anarchie",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/bubbles-air-water-light.webp",
   "folder": "HLW/Klassen-Skills/Magischer Narr/Rang C",
   "system": {
    "rank": "C",
@@ -2242,7 +2242,7 @@
  {
   "name": "In Gottes Namen",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/skull-weapon-staff-glow-pink.webp",
   "folder": "HLW/Klassen-Skills/Heiliger Gauner/Rang C",
   "system": {
    "rank": "C",
@@ -2270,7 +2270,7 @@
  {
   "name": "Tierische Synergie",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/crosshair-arrowhead-blue.webp",
   "folder": "HLW/Klassen-Skills/Bestienmeister/Rang C",
   "system": {
    "rank": "C",
@@ -2298,7 +2298,7 @@
  {
   "name": "Ruf der Wildnis",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/time/arrows-circling-pink.webp",
   "folder": "HLW/Klassen-Skills/Bestienkönig/Rang C",
   "system": {
    "rank": "C",
@@ -2326,7 +2326,7 @@
  {
   "name": "Pfeil der Nacht",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-green.webp",
   "folder": "HLW/Klassen-Skills/Dark Ranger/Rang C",
   "system": {
    "rank": "C",
@@ -2354,7 +2354,7 @@
  {
   "name": "Beschwören",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/snowflake-ice-snow-white.webp",
   "folder": "HLW/Klassen-Skills/Bestienrufer/Rang C",
   "system": {
    "rank": "C",
@@ -2382,7 +2382,7 @@
  {
   "name": "Natürliche Gestalt (Stein, Wasser, Holz)",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/orb-water-bubbles-teal.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang C",
   "system": {
    "rank": "C",
@@ -2410,7 +2410,7 @@
  {
   "name": "Fesselnde Darbietung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/sonic/scream-wail-shout-teal.webp",
   "folder": "HLW/Klassen-Skills/Virtuose/Rang C",
   "system": {
    "rank": "C",
@@ -2438,7 +2438,7 @@
  {
   "name": "Spurensucher-Instinkt",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/nature/plant-sproutdirt-green.webp",
   "folder": "HLW/Klassen-Skills/Wilderer/Rang C",
   "system": {
    "rank": "C",
@@ -2466,7 +2466,7 @@
  {
   "name": "Verzaubert",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/barrier-lava-stone-orange.webp",
   "folder": "HLW/Klassen-Skills/Albtraumjäger/Rang C",
   "system": {
    "rank": "C",
@@ -2494,7 +2494,7 @@
  {
   "name": "Back in Time",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/time/hourglass-tilted-gray.webp",
   "folder": "HLW/Klassen-Skills/Chrono-Schütze/Rang C",
   "system": {
    "rank": "C",
@@ -2522,7 +2522,7 @@
  {
   "name": "Auszahlung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/ranged/daggers-thrown-salvo-teal.webp",
   "folder": "HLW/Klassen-Skills/Bounty Hunter/Rang C",
   "system": {
    "rank": "C",
@@ -2550,7 +2550,7 @@
  {
   "name": "Licht der Hoffnung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp",
   "folder": "HLW/Klassen-Skills/Lichtbringer/Rang C",
   "system": {
    "rank": "C",
@@ -2578,7 +2578,7 @@
  {
   "name": "Mutagene Mischung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/runes-triangle-blue.webp",
   "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
   "system": {
    "rank": "C",
@@ -2606,7 +2606,7 @@
  {
   "name": "Judgement",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/volcano-explosion-lava-yellow.webp",
   "folder": "HLW/Klassen-Skills/Kreuzritter/Rang C",
   "system": {
    "rank": "C",
@@ -2634,7 +2634,7 @@
  {
   "name": "Verderbende Berührung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
   "folder": "HLW/Klassen-Skills/Dunkler Prophet/Rang C",
   "system": {
    "rank": "C",
@@ -2662,7 +2662,7 @@
  {
   "name": "Aura des Gleichgewichts",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/projectiles-blades-salvo-yellow.webp",
   "folder": "HLW/Klassen-Skills/Schamane/Rang C",
   "system": {
    "rank": "C",
@@ -2690,7 +2690,7 @@
  {
   "name": "Göttliche Welle",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/orb-water-transparent.webp",
   "folder": "HLW/Klassen-Skills/Heiliger/Rang C",
   "system": {
    "rank": "C",
@@ -2718,7 +2718,7 @@
  {
   "name": "Elementare Gestalt (Feuer, Blitz, Eis)",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectile-fireball-smoke-strong-blue.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang C",
   "system": {
    "rank": "C",
@@ -2746,7 +2746,7 @@
  {
   "name": "Göttlicher Bluff",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
   "folder": "HLW/Klassen-Skills/Heiliger Gauner/Rang C",
   "system": {
    "rank": "C",
@@ -2774,7 +2774,7 @@
  {
   "name": "Friedensstifftung",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/ankh-gold-blue.webp",
   "folder": "HLW/Klassen-Skills/Friedenswächter/Rang C",
   "system": {
    "rank": "C",
@@ -2802,7 +2802,7 @@
  {
   "name": "Heiliges Licht",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/heart-cross-green.webp",
   "folder": "HLW/Klassen-Skills/Erzbischof/Rang C",
   "system": {
    "rank": "C",
@@ -2830,7 +2830,7 @@
  {
   "name": "Machtwort",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/life/cross-worn-green.webp",
   "folder": "HLW/Klassen-Skills/Sprecher der Ahnen/Rang A",
   "system": {
    "rank": "A",
@@ -2858,7 +2858,7 @@
  {
   "name": "Athrea's Ruf",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/barrier-stone-explosion-red.webp",
   "folder": "HLW/Klassen-Skills/Prediger von Athrea/Rang C",
   "system": {
    "rank": "C",
@@ -2886,7 +2886,7 @@
  {
   "name": "Athrea's Fragment",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/social/diplomacy-writing-letter.webp",
   "folder": "HLW/Klassen-Skills/Prophet Athreas/Rang S",
   "system": {
    "rank": "S",
@@ -2914,7 +2914,7 @@
  {
   "name": "Klang der Welten",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/sonic/explosion-shock-sound-wave.webp",
   "folder": "HLW/Klassen-Skills/Barde/Rang A",
   "system": {
    "rank": "A",
@@ -2942,7 +2942,7 @@
  {
   "name": "Natürliche Gestalt - Stein",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-blade-scimitar-gray-red.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang B",
   "system": {
    "rank": "B",
@@ -2970,7 +2970,7 @@
  {
   "name": "Natürliche Gestalt - Wasser",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/orb-water-ice-pink.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang B",
   "system": {
    "rank": "B",
@@ -2998,7 +2998,7 @@
  {
   "name": "Natürliche Gestalt - Holz",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/circle-ouroboros.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang B",
   "system": {
    "rank": "B",
@@ -3026,7 +3026,7 @@
  {
   "name": "Rote Bombe",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
   "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
   "system": {
    "rank": "C",
@@ -3054,7 +3054,7 @@
  {
   "name": "Blaue Bombe",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/triangle-glow-purple.webp",
   "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
   "system": {
    "rank": "C",
@@ -3082,7 +3082,7 @@
  {
   "name": "Grüne Bombe",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/symbols/star-rising-purple.webp",
   "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
   "system": {
    "rank": "C",
@@ -3110,7 +3110,7 @@
  {
   "name": "Elementare Gestalt - Feuer",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectiles-salvo-trio-orange.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang B",
   "system": {
    "rank": "B",
@@ -3138,7 +3138,7 @@
  {
   "name": "Elementare Gestalt - Blitz",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/lightning/bolts-strike-salvo-blue.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang B",
   "system": {
    "rank": "B",
@@ -3166,7 +3166,7 @@
  {
   "name": "Elementare Gestalt - Eis",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/water/snowflake-ice-blue.webp",
   "folder": "HLW/Klassen-Skills/Druide/Rang B",
   "system": {
    "rank": "B",
@@ -3194,7 +3194,7 @@
  {
   "name": "Sandgrab",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectiles-magma-stone-orange.webp",
   "folder": "HLW/Klassen-Skills/Sandmagier/Rang B",
   "system": {
    "rank": "B",
@@ -3222,7 +3222,7 @@
  {
   "name": "Arugals Verdammnis",
   "type": "classSkill",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/earth/projectile-spiked-stone-boulder-green.webp",
   "folder": "HLW/Klassen-Skills/Arugals Diener/Rang A",
   "system": {
    "rank": "A",

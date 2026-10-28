@@ -2,7 +2,7 @@
  {
   "name": "Sonnenkorn",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/bread-loaf-glowing-tan.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -17,7 +17,7 @@
  {
   "name": "Windgras",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/thorned-curled-vine-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -32,7 +32,7 @@
  {
   "name": "Wasserbeere",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/mango-ripe-orange.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -47,7 +47,7 @@
  {
   "name": "Spritzapfel",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/pickly-pear-cactus-red-yellow.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -62,7 +62,7 @@
  {
   "name": "Knistererbse",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/bread-loaf-glowing-tan.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -77,7 +77,7 @@
  {
   "name": "Flimmermais",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/sacks-grain-white.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -92,7 +92,7 @@
  {
   "name": "Schattenweizen",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/bread-loaf-wheat-brown.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -107,7 +107,7 @@
  {
   "name": "Flüsterzwiebel",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/radish-alient-blue-teal.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -122,7 +122,7 @@
  {
   "name": "Lichtgerste",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/wheat-gold.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -137,7 +137,7 @@
  {
   "name": "Nebelfarn",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/fern-stem-curved-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -152,7 +152,7 @@
  {
   "name": "Leuchtbeere",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/jalapeno-pepper-chili-orange.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -167,7 +167,7 @@
  {
   "name": "Funkenwurzel",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/spinach-leafy-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -182,7 +182,7 @@
  {
   "name": "Schattenkohl",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/root-beet-bulb-purple.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -197,7 +197,7 @@
  {
   "name": "Lichtsalat",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/garlic-hardneck-purple.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -212,7 +212,7 @@
  {
   "name": "Erdkorn",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/sack-rice-flour-brown.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -227,7 +227,7 @@
  {
   "name": "Eiskorn",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/bread-loaf-boule-tan.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -242,7 +242,7 @@
  {
   "name": "Mondblüte",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/flowers/lily-water-pink.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -257,7 +257,7 @@
  {
   "name": "Wolkenspinat",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/cabbage-nappa-leafy-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -272,7 +272,7 @@
  {
   "name": "Tränenkraut",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/leaf-maple-green-purple.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -287,7 +287,7 @@
  {
   "name": "Erdwurzel",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/root-brown-orange.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -302,7 +302,7 @@
  {
   "name": "Flammenorange",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/grapefruit-citrus-cut-orange.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -317,7 +317,7 @@
  {
   "name": "Frostblüte",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/flowers/buds-red.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -332,7 +332,7 @@
  {
   "name": "Schattenkirsche",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/grapefruit-citrus-cut-orange.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -347,7 +347,7 @@
  {
   "name": "Wispermelone",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/apple-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -362,7 +362,7 @@
  {
   "name": "Schattendorn",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/grass-leaves-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -377,7 +377,7 @@
  {
   "name": "Eisfeige",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/sweetsop-seed-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -392,7 +392,7 @@
  {
   "name": "Sternkarotte",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/vegetable/cabbage-head-red-purple.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -407,7 +407,7 @@
  {
   "name": "Sternmoos",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/dried-pointy-stems-brown.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -422,7 +422,7 @@
  {
   "name": "Dämmerblatt",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/thorned-dried-stem-red.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -437,7 +437,7 @@
  {
   "name": "Himmelsgerste",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/grains/muffin.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -452,7 +452,7 @@
  {
   "name": "Blutlilie",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/flowers/clover.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -467,7 +467,7 @@
  {
   "name": "Zeittrauben",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/olive-pitted-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -482,7 +482,7 @@
  {
   "name": "Flammenkraut",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/fern-sprig-stem-leaf-herb-green.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -497,7 +497,7 @@
  {
   "name": "Himmelsbirne",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/banana-ripe-yellow.webp",
   "folder": "HLW/Pflanzen/Rang E",
   "system": {
    "rank": "E",
@@ -512,7 +512,7 @@
  {
   "name": "Nachtschattenblüte",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/flowers/lotus-violet.webp",
   "folder": "HLW/Pflanzen/Rang D",
   "system": {
    "rank": "D",
@@ -527,7 +527,7 @@
  {
   "name": "Schattenpilz",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/mushrooms/campanulate-bell-shiny-blue.webp",
   "folder": "HLW/Pflanzen/Rang D",
   "system": {
    "rank": "D",
@@ -542,7 +542,7 @@
  {
   "name": "Eisweinranke",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/plants/heart-cordate-leaf-yellow-green.webp",
   "folder": "HLW/Pflanzen/Rang D",
   "system": {
    "rank": "D",
@@ -557,7 +557,7 @@
  {
   "name": "Feuerorchidee",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/flowers/dandelion-pod-blue.webp",
   "folder": "HLW/Pflanzen/Rang C",
   "system": {
    "rank": "C",
@@ -572,7 +572,7 @@
  {
   "name": "Phönixfrucht",
   "type": "natural",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/fruit/lemon-citrus-yellow.webp",
   "folder": "HLW/Pflanzen/Rang C",
   "system": {
    "rank": "C",

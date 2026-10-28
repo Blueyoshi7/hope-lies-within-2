@@ -2,7 +2,7 @@
  {
   "name": "Holz-Breitakt (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/axes/axe-battle-orange.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -24,7 +24,7 @@
  {
   "name": "Stein-Kurzaxt",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/axes/axe-battle-simple.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -46,7 +46,7 @@
  {
   "name": "Mag. Großaxt",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/axes/axe-broad-simple.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -68,7 +68,7 @@
  {
   "name": "Stahl-Breitakt (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/axes/shortaxe-yellow.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -90,7 +90,7 @@
  {
   "name": "Stahl-Kurzaxt",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/axes/axe-broad-simple.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -112,7 +112,7 @@
  {
   "name": "Gilden Bogen",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/shortbow-recurve.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -134,7 +134,7 @@
  {
   "name": "Gebrochener Bogen",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/longbow-recurve-leather-brown.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -156,7 +156,7 @@
  {
   "name": "Holzbogen",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/longbow-leather-green.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -178,7 +178,7 @@
  {
   "name": "Bogen der Präzision",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/longbow-gold-pink.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -200,7 +200,7 @@
  {
   "name": "Köcher des Waldes",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/shortbow-leather.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -222,7 +222,7 @@
  {
   "name": "Kurzbogen",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/shortbow-recurve-leather.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -244,7 +244,7 @@
  {
   "name": "Mag. Silberbogen",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/shortbow-recurve-leather.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -266,7 +266,7 @@
  {
   "name": "Langbogen des Falken",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/bow-ornamental-gold-blue.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -288,7 +288,7 @@
  {
   "name": "Ala’rith (אַלָרִית) „Der Dämmerungsbogen“",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/longbow-recurve-brown.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -310,7 +310,7 @@
  {
   "name": "Gilden Dolch",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-curved-red.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -332,7 +332,7 @@
  {
   "name": "Bronze Dolch",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-bone-worn-black.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -354,7 +354,7 @@
  {
   "name": "Messingdolch",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-straight-blue.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -378,7 +378,7 @@
  {
   "name": "Abgebrochener Dolch",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-serrated-black.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -400,7 +400,7 @@
  {
   "name": "Eisendolch",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-curved-red.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -422,7 +422,7 @@
  {
   "name": "Kunai",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-crooked-red.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -444,7 +444,7 @@
  {
   "name": "Mag. Metalldolch",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/letter-opener.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -466,7 +466,7 @@
  {
   "name": "Wurfdolche der Präzision",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/thrown/bomb-gas-grey-purple.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -488,7 +488,7 @@
  {
   "name": "Mahr’desh (מַהרְדֶש) „Der Seelenspalter“",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/knife-green.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -510,7 +510,7 @@
  {
   "name": "Schattenklinge",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/daggers/dagger-ritual-simple-green.webp",
   "folder": "HLW/Waffen/Rang S",
   "system": {
    "rank": "S",
@@ -532,7 +532,7 @@
  {
   "name": "Holz-Hammer (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/hammers/shorthammer-double-steel.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -554,7 +554,7 @@
  {
   "name": "Mag. Großhammer",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/hammers/hammer-double-stone.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -576,7 +576,7 @@
  {
   "name": "Stahl-Hammer (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/hammers/shorthammer-claw.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -598,7 +598,7 @@
  {
   "name": "Kampfhammer (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/hammers/hammer-double-wood-banded.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -620,7 +620,7 @@
  {
   "name": "Holz-Kampfstab (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/staves/staff-simple.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -642,7 +642,7 @@
  {
   "name": "Mag. Kampfstab",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/staves/staff-skull-feathers-brown.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -664,7 +664,7 @@
  {
   "name": "Stahl-Kampfstab (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/staves/staff-ornate-purple.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -686,7 +686,7 @@
  {
   "name": "Kampfstab (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/staves/staff-skull-feathers-brown.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -708,7 +708,7 @@
  {
   "name": "Gilden Keule",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-barbed.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -730,7 +730,7 @@
  {
   "name": "Holzkeule",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-baton-studded.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -752,7 +752,7 @@
  {
   "name": "Zerbrochene Keule",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-barbed.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -774,7 +774,7 @@
  {
   "name": "Gehärtete Keule",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-barbed-square-black.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -796,7 +796,7 @@
  {
   "name": "Keule der Leichtigkeit",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-heavy-barbed-grey.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -820,7 +820,7 @@
  {
   "name": "Verstärkte Holzkeule",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-barbed-steel.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -842,7 +842,7 @@
  {
   "name": "Donnerkeule",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-barbed-brown.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -864,7 +864,7 @@
  {
   "name": "Kriegskeule der Zerstörung",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-simple-stone-black.webp",
   "folder": "HLW/Waffen/Rang S",
   "system": {
    "rank": "S",
@@ -886,7 +886,7 @@
  {
   "name": "Vha’Lom (וָה׳לוֹם) „Der Sturmhammer“",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/clubs/club-barbed-brown.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -908,7 +908,7 @@
  {
   "name": "Sapax (Kurzaxt - Verflucht - Stein)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/axes/axe-broad-engraved-chipped-blue.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -930,7 +930,7 @@
  {
   "name": "Tarax (Kurzaxt - Verflucht - Stein)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/axes/axe-double-blue.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -952,7 +952,7 @@
  {
   "name": "Gilden Lanze",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/polearms/trident-jeweled-purple.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -974,7 +974,7 @@
  {
   "name": "Bronze Hellebarde",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/polearms/spear-hooked-blue.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -996,7 +996,7 @@
  {
   "name": "Eisen Hellebarde",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/polearms/spear-simple-double.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -1018,7 +1018,7 @@
  {
   "name": "Lanze des Vampirs",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/polearms/spear-simple-jagged.webp",
   "folder": "HLW/Waffen/Rang A",
   "system": {
    "rank": "A",
@@ -1040,7 +1040,7 @@
  {
   "name": "Lanze der Vahaa",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/polearms/spear-barbed-silver.webp",
   "folder": "HLW/Waffen/Rang S",
   "system": {
    "rank": "S",
@@ -1062,7 +1062,7 @@
  {
   "name": "Rha’Varan (רַה׳וָארָן) „Blutgeborene Lanze“",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/polearms/spear-simple-hooked-grey.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -1084,7 +1084,7 @@
  {
   "name": "Gilden Schwert",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/shortsword-guard-gold-red.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -1106,7 +1106,7 @@
  {
   "name": "Bronze Langschwert",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/greatsword-guard-gold-worn.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -1128,7 +1128,7 @@
  {
   "name": "Unbrauchbares Schwert",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/greatsword-crossguard-engraved-green.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -1150,7 +1150,7 @@
  {
   "name": "Eisenschwert",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/shortsword-hooked-blue.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -1172,7 +1172,7 @@
  {
   "name": "Mag. Breitschwert",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/sword-guard-worn.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -1194,7 +1194,7 @@
  {
   "name": "Schwert des Sturms",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/greatsword-guard-split-eyes.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -1216,7 +1216,7 @@
  {
   "name": "Geschmiedetes Stahlschwert",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/greatsword-sheathed.webp",
   "folder": "HLW/Waffen/Rang B",
   "system": {
    "rank": "B",
@@ -1238,7 +1238,7 @@
  {
   "name": "Klinge der Vahaa",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/sword-flanged-lightning.webp",
   "folder": "HLW/Waffen/Rang S",
   "system": {
    "rank": "S",
@@ -1260,7 +1260,7 @@
  {
   "name": "Shara’kath (שַרָה׳קַת) „Klinge des Wächters“",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/scimitar-guard-gold.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -1282,7 +1282,7 @@
  {
   "name": "Thal’Rashan (תַלְרָשָׁן) „Die Dämmerungsklinge“",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/machete.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -1304,7 +1304,7 @@
  {
   "name": "Wurfspeer",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/thrown/throwing-star-tri-steel.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -1326,7 +1326,7 @@
  {
   "name": "Gilden Zauberstab",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/wands/wand-skull-forked.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -1348,7 +1348,7 @@
  {
   "name": "Ve",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/staves/staff-ornate.webp",
   "folder": "HLW/Waffen/Rang D",
   "system": {
    "rank": "D",
@@ -1370,7 +1370,7 @@
  {
   "name": "Zerbrochener Zauberstab",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/wands/wand-skull-horned.webp",
   "folder": "HLW/Waffen/Rang E",
   "system": {
    "rank": "E",
@@ -1392,7 +1392,7 @@
  {
   "name": "Zarath’kul (זַרַתְכּוּל) „Der Schattenbrenner“",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/staves/staff-forest-jewel.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -1414,7 +1414,7 @@
  {
   "name": "Verstärkter Zauberstab der Elemente",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/wands/wand-simple-eye.webp",
   "folder": "HLW/Waffen/Rang C",
   "system": {
    "rank": "C",
@@ -1436,7 +1436,7 @@
  {
   "name": "Arugal",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/greatsword-guard-split-eyes.webp",
   "folder": "HLW/Waffen/Rang SS",
   "system": {
    "rank": "SS",
@@ -1458,7 +1458,7 @@
  {
   "name": "Runenklinge der Nordwacht",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/shortsword-broad-blue.webp",
   "folder": "HLW/Waffen/Rang A",
   "system": {
    "rank": "A",
@@ -1480,7 +1480,7 @@
  {
   "name": "Bogen der Sturmfalken",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/longbow-leather-green.webp",
   "folder": "HLW/Waffen/Rang A",
   "system": {
    "rank": "A",
@@ -1502,7 +1502,7 @@
  {
   "name": "Stab des Gezeitenrufs",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/staves/staff-ornate-blue-jewel.webp",
   "folder": "HLW/Waffen/Rang A",
   "system": {
    "rank": "A",
@@ -1524,7 +1524,7 @@
  {
   "name": "Hammer der Bergkönige (2 Händer)",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/hammers/hammer-mallet-gold.webp",
   "folder": "HLW/Waffen/Rang A",
   "system": {
    "rank": "A",
@@ -1546,7 +1546,7 @@
  {
   "name": "Klinge des Ersten Lichts",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/swords/greatsword-guard-gold-worn.webp",
   "folder": "HLW/Waffen/Rang S",
   "system": {
    "rank": "S",
@@ -1568,7 +1568,7 @@
  {
   "name": "Ätherium-Langbogen",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/bows/longbow-recurve-leather-brown.webp",
   "folder": "HLW/Waffen/Rang S",
   "system": {
    "rank": "S",
@@ -1590,7 +1590,7 @@
  {
   "name": "Zepter der Sternenwacht",
   "type": "weapon",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/wands/wand-gem-pink.webp",
   "folder": "HLW/Waffen/Rang S",
   "system": {
    "rank": "S",

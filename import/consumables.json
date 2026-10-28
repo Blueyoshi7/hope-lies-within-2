@@ -2,7 +2,7 @@
  {
   "name": "Magischer Stein",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/misc/pet-collar-blue.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang E",
   "system": {
    "rank": "E",
@@ -18,7 +18,7 @@
  {
   "name": "Alte-Rune",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-faceted-rough-purple.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang C",
   "system": {
    "rank": "C",
@@ -34,7 +34,7 @@
  {
   "name": "Magischer Staub (Zorr)",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/materials/feathers-brown.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang D",
   "system": {
    "rank": "D",
@@ -50,7 +50,7 @@
  {
   "name": "Magic-Ore",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/misc/pet-collar-spiked-brown.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang E",
   "system": {
    "rank": "E",
@@ -66,7 +66,7 @@
  {
   "name": "Verband",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/medical/medkit-steel.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang E",
   "system": {
    "rank": "E",
@@ -82,7 +82,7 @@
  {
   "name": "Heilkräutersalbe (Nebelfarn)",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/medical/medkit-pills-silver.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang E",
   "system": {
    "rank": "E",
@@ -98,7 +98,7 @@
  {
   "name": "Sternmoos-Salbe",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/medical/medication-pills-red-blue.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang D",
   "system": {
    "rank": "D",
@@ -114,7 +114,7 @@
  {
   "name": "Heilige Bandagen",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/medical/bandage-rough.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang C",
   "system": {
    "rank": "C",
@@ -130,7 +130,7 @@
  {
   "name": "Metallspitzen",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/ammunition/ammunition-energy-magazine.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang D",
   "system": {
    "rank": "D",
@@ -146,7 +146,7 @@
  {
   "name": "Mithrilspitzen",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/weapons/ammunition/ammunition-bullet-round.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang C",
   "system": {
    "rank": "C",
@@ -162,7 +162,7 @@
  {
   "name": "Skill-Orb-Leer",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-brilliant-green.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang C",
   "system": {
    "rank": "C",
@@ -178,7 +178,7 @@
  {
   "name": "Skill-Orb T1",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-square-blue.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang D",
   "system": {
    "rank": "D",
@@ -194,7 +194,7 @@
  {
   "name": "Skill-Orb T2",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-princess-green.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang C",
   "system": {
    "rank": "C",
@@ -210,7 +210,7 @@
  {
   "name": "Skill-Orb T3",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-navette-red.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang B",
   "system": {
    "rank": "B",
@@ -226,7 +226,7 @@
  {
   "name": "Phönixasche",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/materials/hair-tuft-brown.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang SS",
   "system": {
    "rank": "SS",
@@ -242,7 +242,7 @@
  {
   "name": "Großer Heiltrank",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/bottle-bulb-corked-green.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang B",
   "system": {
    "rank": "B",
@@ -258,7 +258,7 @@
  {
   "name": "Starke Schutzrune",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/commodities/gems/gem-rough-oval-green.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang B",
   "system": {
    "rank": "B",
@@ -274,7 +274,7 @@
  {
   "name": "Reinigungselixier",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/bottle-bulb-corked-purple.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang A",
   "system": {
    "rank": "A",
@@ -290,7 +290,7 @@
  {
   "name": "Elixier des Helden",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/bottle-conical-corked-labeled-skull-poison-green.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang A",
   "system": {
    "rank": "A",
@@ -306,7 +306,7 @@
  {
   "name": "Trank der Zeit",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/potion-flask-corked-tied-necklace-teal.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang S",
   "system": {
    "rank": "S",
@@ -322,7 +322,7 @@
  {
   "name": "Sternenstaub-Phiole",
   "type": "consumable",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/consumables/potions/potion-bottle-skull-label-poison-teal.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang S",
   "system": {
    "rank": "S",

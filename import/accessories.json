@@ -2,7 +2,7 @@
  {
   "name": "Ätherium\"s\"-Ring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-faceted-white.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -21,7 +21,7 @@
  {
   "name": "Athreas's-Ohrring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-band-engraved-silver.webp",
   "folder": "HLW/Accessoires/Rang C",
   "system": {
    "rank": "C",
@@ -38,7 +38,7 @@
  {
   "name": "Erdkern-Armband",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/wrist/bracer-banded-leather-green.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -57,7 +57,7 @@
  {
   "name": "Erdkern-Ring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-band-studded.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -76,7 +76,7 @@
  {
   "name": "Erdkern-Kette",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/neck/choker-simple-bone-fangs.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -95,7 +95,7 @@
  {
   "name": "Blutstein-Kette",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/neck/amulet-geometric-green-orange.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -112,7 +112,7 @@
  {
   "name": "Donnerkeil-Ohrring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-band-thin-rounded-gold.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -131,7 +131,7 @@
  {
   "name": "Moosachat-Armband",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/wrist/bracelet-spiked-black.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -148,7 +148,7 @@
  {
   "name": "Moosachat-Kette",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/neck/choker-simple-carved-stone.webp",
   "folder": "HLW/Accessoires/Rang D",
   "system": {
    "rank": "D",
@@ -165,7 +165,7 @@
  {
   "name": "Ätherium\"s\"-Armband",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/wrist/tech-bracer-steel.webp",
   "folder": "HLW/Accessoires/Rang C",
   "system": {
    "rank": "C",
@@ -184,7 +184,7 @@
  {
   "name": "Athreas's-Ring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-faceted-engraved-gold-purple.webp",
   "folder": "HLW/Accessoires/Rang C",
   "system": {
    "rank": "C",
@@ -201,7 +201,7 @@
  {
   "name": "Harmonium-Kette",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/neck/pendant-faceted-blue.webp",
   "folder": "HLW/Accessoires/Rang B",
   "system": {
    "rank": "B",
@@ -218,7 +218,7 @@
  {
   "name": "Schattenseide-Ohrring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-shell-white-blue.webp",
   "folder": "HLW/Accessoires/Rang C",
   "system": {
    "rank": "C",
@@ -237,7 +237,7 @@
  {
   "name": "Zeit-Stein-Ring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-cabochon-engraved-gold-orange.webp",
   "folder": "HLW/Accessoires/Rang A",
   "system": {
    "rank": "A",
@@ -254,7 +254,7 @@
  {
   "name": "Moosachat-Ring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-winged-gold-blue.webp",
   "folder": "HLW/Accessoires/Rang C",
   "system": {
    "rank": "C",
@@ -271,7 +271,7 @@
  {
   "name": "Windfederstein-Armband",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/wrist/bracer-simple-leather-red.webp",
   "folder": "HLW/Accessoires/Rang C",
   "system": {
    "rank": "C",
@@ -288,7 +288,7 @@
  {
   "name": "Ätherium-Kette",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/neck/amulet-carved-stone-eye.webp",
   "folder": "HLW/Accessoires/Rang A",
   "system": {
    "rank": "A",
@@ -307,7 +307,7 @@
  {
   "name": "Athreas's-Kette",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/neck/pendant-round-gold-blue.webp",
   "folder": "HLW/Accessoires/Rang B",
   "system": {
    "rank": "B",
@@ -324,7 +324,7 @@
  {
   "name": "Drachenherz-Ohrring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-cabochon-gold-orange.webp",
   "folder": "HLW/Accessoires/Rang A",
   "system": {
    "rank": "A",
@@ -344,7 +344,7 @@
  {
   "name": "Göttertränen-Armband",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/wrist/bracer-padded-leather.webp",
   "folder": "HLW/Accessoires/Rang A",
   "system": {
    "rank": "A",
@@ -361,7 +361,7 @@
  {
   "name": "Sternenstein-Armband",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/wrist/riot-bracers-blue.webp",
   "folder": "HLW/Accessoires/Rang A",
   "system": {
    "rank": "A",
@@ -380,7 +380,7 @@
  {
   "name": "Windfederstein-Ring",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-band-engraved-scrolls-silver.webp",
   "folder": "HLW/Accessoires/Rang B",
   "system": {
    "rank": "B",
@@ -397,7 +397,7 @@
  {
   "name": "Amulett der Wachsamkeit",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/neck/necklace-simple-round-carved-wood.webp",
   "folder": "HLW/Accessoires/Rang A",
   "system": {
    "rank": "A",
@@ -416,7 +416,7 @@
  {
   "name": "Ring der zweiten Chance",
   "type": "accessory",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/finger/ring-ball-leaves-green.webp",
   "folder": "HLW/Accessoires/Rang S",
   "system": {
    "rank": "S",

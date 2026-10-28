@@ -1,5 +1,6 @@
 import { HopeLiesWithinTalkApp, registerTalk } from "./hlw-talk.js";
 import { erstelleLindhain } from "./hlw-szenen.js";
+import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { WORLD_SKILLS, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes } from "./hlw-regeln.js";
 const HLW = {};
 
@@ -691,6 +692,8 @@ export class HopeLiesWithinActor extends Actor {
     const derived = this.type === "monster" ? berechneMonster(system) : berechneWerte(system, this.items, HLW.klassen);
     system.derived = derived;
     system.resources.hp.max = derived.hpMax;
+    // Alte Charaktere (z. B. 1000 HP aus dem alten System) werden auf das neue Maximum begrenzt.
+    if (numberValue(system.resources.hp.value) > derived.hpMax) system.resources.hp.value = derived.hpMax;
     system.resources.movement.value = derived.movement;
     if (this.type !== "monster") system.resources.inventorySlots.max = derived.inventory;
 
@@ -1187,6 +1190,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.inventoryUsed = countInventorySlots(context.actor.items);
     context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
     context.isMonster = context.actor.type === "monster";
+    context.skillSlots = skillSlots(context.actor);
     context.kesText = kes(context.system.resources?.kes?.value);
     context.pointsOver = numberValue(context.system.derived?.points?.free) < 0;
     return context;
@@ -1278,6 +1282,12 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       const input = html.find("[data-add-gold-amount]");
       this.actor.addGold(input.val());
       input.val("");
+    });
+
+    html.find("[data-geben]").on("click", (event) => {
+      event.preventDefault();
+      if (!game.user?.isGM) return;
+      new HopeLiesWithinGebenApp(this.actor, event.currentTarget.dataset.geben).render({ force: true });
     });
 
     html.find("[data-import-json]").on("click", async (event) => {
@@ -1603,7 +1613,38 @@ async function importAllJsonFiles() {
     results.push(...await importJsonFile(`${basePath}/${fileName}`, fallbackType));
   }
   results.push(...await importMonsters(`${basePath}/monsters.json`));
+  await aktualisiereBilder();
   return results;
+}
+
+// Bilder nachziehen: Eintraege, die noch das Standardbild haben, bekommen das Symbol aus den Importdateien.
+async function aktualisiereBilder() {
+  if (!game.user?.isGM) return 0;
+  const basePath = "systems/hope-lies-within-2/import";
+  const dateien = ["weapons", "armor", "accessories", "equipment", "consumables", "food-drink", "materials", "natural", "minerals", "junk", "skills", "class-skills", "monsters"];
+  const bilder = new Map();
+  for (const datei of dateien) {
+    const response = await fetch(`${basePath}/${datei}.json`);
+    if (!response.ok) continue;
+    for (const entry of await response.json()) bilder.set(`${entry.type}|${entry.name}`, entry.img);
+  }
+  const standard = (img) => !img || /icons\/svg\/(item-bag|mystery-man)/.test(img);
+  let anzahl = 0;
+  const itemUpdates = game.items.filter((i) => standard(i.img) && bilder.has(`${i.type}|${i.name}`)).map((i) => ({ _id: i.id, img: bilder.get(`${i.type}|${i.name}`) }));
+  if (itemUpdates.length) await Item.updateDocuments(itemUpdates);
+  anzahl += itemUpdates.length;
+  for (const actor of game.actors) {
+    const updates = actor.items.filter((i) => standard(i.img) && bilder.has(`${i.type}|${i.name}`)).map((i) => ({ _id: i.id, img: bilder.get(`${i.type}|${i.name}`) }));
+    if (updates.length) await actor.updateEmbeddedDocuments("Item", updates);
+    anzahl += updates.length;
+    const monsterBild = bilder.get(`monster|${actor.name}`);
+    if (actor.type === "monster" && monsterBild && standard(actor.img)) {
+      await actor.update({ img: monsterBild, "prototypeToken.texture.src": monsterBild });
+      anzahl += 1;
+    }
+  }
+  ui.notifications?.info(`${anzahl} Bilder aktualisiert.`);
+  return anzahl;
 }
 
 // Bestiarium: Monster als Actors mit ihrem Angriff als Waffe.
@@ -1676,6 +1717,7 @@ Hooks.once("ready", async () => {
     importJsonFile,
     importAllJson: importAllJsonFiles,
     importMonsters,
+    aktualisiereBilder,
     erstelleLindhain,
     gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor)
   };
