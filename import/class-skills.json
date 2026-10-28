@@ -1,0 +1,3250 @@
+[
+ {
+  "name": "Ansturm",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Kämpfer/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ein wuchtiger Angriff, der Feinde zurückstößt. Gegner wird um 2 Meter zurückgestoßen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Kämpfer",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Standhaftigkeit",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Wächter/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Max HP +2 pro Level.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Wächter",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Vielseitigkeit",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Gladiator/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine zweite Aktion pro Runde; ist sie ein Angriff, macht er halben Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Gladiator",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Qual",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Barbar/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ein brutaler Angriff, der nicht nur physischen Schaden verursacht, sondern auch Schmerzen verursacht.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Barbar",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Steinlanze",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Steinweber/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Du erhälst eine Magische Lanze aus Stein. Diese kann geworfen werden und jederzeit neu erstellt werden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Steinweber",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Aura des Glaubens",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Paladin/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Verbündete im Umkreis des Paladins erhalten +1 auf alle Würfe.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Paladin",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Magische Raserei",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Kampfmagier/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine unkontrollierte magische Explosion, die alle Ziele in der Nähe trifft. Schaden: 1W6",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Kampfmagier",
+   "activation": "active",
+   "damage": "",
+   "damageText": "jeweils 1W6",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Erste Umarmung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Erlöser/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Du umarmst einen sterbenden Verbündeten und stabilisiert ihn sofort mit 1 Lebenspunkt. Diese Fähigkeit kann nur einmal pro Begegnung verwendet werden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Erlöser",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Fluch des Parasiten",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Schmarotzer/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Teilt 50% des erhaltenen Schaden an Verbündete in der Nähe.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Schmarotzer",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Schildwache",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Magische Wache/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Erhöht deine HP um 20. Dein Rüstwert über 8 wird zum Blockwert (Blockwert insgesamt höchstens 8).",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Magische Wache",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Blitzschritt",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Sturmzauberer/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Du teleportierst dich genau 6 sq. in eine gewünschte Richtung und verursachst beim erscheinen bei deiner Landung 1W6 Blitzschaden an allen Gegnern in deinem Umkreis.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Sturmzauberer",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Reine Heilung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Weißmagier/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine leichte Heilung für alle Verbündeten in der Nähe. 1W4 pro Verbündetem",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Weißmagier",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Bestienkodex",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Blaumagier/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Blaumagier kann Skills nur von Monstern lernen, die er selbst im Kampf getötet hat. Einmal pro Kampf kann der Blaumagier einen Gegner analysieren und erfahren, ob dieser eine Fähigkeit bietet, wenn er besiegt wird.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Blaumagier",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Galaktisches Auge",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Astrologe/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter kann die Schwachstelle eines Gegners analysieren. Beim ersten Angriff auf einen neuen Gegner im Kampf wird der Schaden um +1W4 erhöht.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Astrologe",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Instant",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Nekrotisches Mal",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Schwarzmagier/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Belegt einen Gegner mit einem Mal, das bei seinem Tod explodiert und 1W6 Schaden an allen nahegelegenen Tokens macht.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Schwarzmagier",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Magische Raserei",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Kampfmagier/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine unkontrollierte magische Explosion, die alle Ziele in der Nähe trifft. Schaden: 1W6",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Kampfmagier",
+   "activation": "active",
+   "damage": "",
+   "damageText": "jeweils 1W6",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Deins? Meins!",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Wissensdieb/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Kann mit einer geringen Chance einen Skillorb durch die magische Energie eines Gegners erschaffen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Wissensdieb",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Kampfanalyse",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Taktiker/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Verbündete erhalten +3 auf ihren Wurf, solange der Taktiker anwesend ist. 2 mal Pro Kampf einsetzbar",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Taktiker",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Instant",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Energielauf",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Runenmagier/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Natürliche Skills werden doppelt gewirkt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Runenmagier",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Adlerauge",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Kampfspäher/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Erhöht deine Genauigkeit um +2.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Kampfspäher",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Tödlicher Schlag",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Assassine/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ein konzentrierter Angriff, der auf eine Schwachstelle zielt. Gerader Wurf = Max. Roll",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Assassine",
+   "activation": "active",
+   "damage": "1d10",
+   "damageText": "1W10",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Präzise Berührung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Dieb/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ein Nahkampfangriff, der magische Unterstützung erhält und die Rüstung des Feindes ignoriert.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Dieb",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Magische Tarnung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Scout/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Verleiht unsichtbarkeit bis zur nächsten Aktion.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "className": "Scout",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Schattenversteck",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Schattentänzer/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ein dunkler, magischer Angriff, der aus dem Verborgenen kommt. Schaden: 1W6. Zusätzlich: Gegner erleidet -3 HP in der nächsten Runde.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Schattentänzer",
+   "activation": "active",
+   "damage": "1d6+3",
+   "damageText": "1W6 + 3",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Heilige Klinge",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Klingenpriester/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine Nahkampfattacke, die Schaden und zusätzlich Heilung für einen Verbündeten verursacht.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf, Heilung",
+   "className": "Klingenpriester",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Nebelschuss",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Nebeljäger/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ein Pfeilschuss der durch Gegner und verbündete Fliegt und die Seele angreift.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "className": "Nebeljäger",
+   "activation": "active",
+   "damage": "1d6+2",
+   "damageText": "1W6 +2",
+   "damageCategory": "physical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Sturmschritt",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Klingenläufer/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine schnelle Attacke, die 2W6 Schaden verursacht und dich sowie deinen gegner 3 Meter nach vorne bewegt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Klingenläufer",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Illusionsschlag",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Trickmage/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Erzeugt bei einen Random Angriff doppelten Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Trickmage",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Heilungsversprechen",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Täuschungs-Kleriker/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Täuscht eine Heilung vor und fügt stattdessen 2W6 Schaden zu.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Täuschungs-Kleriker",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "physical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Hinterhalt",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Waldläufer/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Spieler kann sich in Natürlichen gegenden Tarnen. (Stealth ohne Bewegung) Der erste Angriff aus einer getarnten Position verursacht +1W4 zusätzlichen Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Waldläufer",
+   "activation": "active",
+   "damage": "1d4",
+   "damageText": "1W4",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Herz der Tiere",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Tiermeister/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Erlaubt es ein Tier als Gefährten zu halten. Mit einem Tiergefährten erhält der Charakter +10 HP",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Tiermeister",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Sellenvergabe",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Beschwörer/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Kann die Kraft seiner Seele beschwören um Gegner anzugreifen oder Verbündete zu heilen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Beschwörer",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Präzisionsschuss",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Scharfschütze/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ein gezielter Fernangriff mit hoher Genauigkeit. Schaden: 1W8.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "className": "Scharfschütze",
+   "activation": "active",
+   "damage": "1d8",
+   "damageText": "1W8",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Kräuter und Gifte",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Herbalist/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Kann alle Kräuter zur Heilung verwenden. Keine magische Waffe wird benötigt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Herbalist",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Tosende Bestie",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Bestienkrieger/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine Nahkampfattacke, die 2W6 Schaden verursacht und Feinde ängstigt, Aber dich in Rage bringt. Rage: Du musst die folgenden 2 Züge mit normalen angriffen die nähesten Ziele angreifen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Bestienkrieger",
+   "activation": "active",
+   "damage": "4d4",
+   "damageText": "4W4",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Himmlischer Schauer",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Corrupted-Jäger/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Täuscht eine Heilung vor und fügt stattdessen 1W6 Schaden in einer 3x3 Sq Fläche zu.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "className": "Corrupted-Jäger",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Netzfalle",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Fallenleger/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Fängt einen Gegner ein, der sich 2 Runden lang nicht bewegen kann.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "className": "Fallenleger",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Magiegeboren",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Runenschütze/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Bei Anfgriffen werden Pfeile aus magischer Kraft erstellt. Es werden keine Pfeile für den Angriff benötigt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Runenschütze",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Naturinstinkt",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Ranger/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Rangers besitzen einen stark ausgebreiteten Naturinstinkt. Naturkunde +2 , Schussschaden +2, Bewegungsgeschwindigkeit +1",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Ranger",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Aura des Glaubens",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Paladin/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Verbündete im Umkreis des Paladins erhalten +1 auf alle Würfe.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Paladin",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Heilungsversprechen",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Täuschungs-Kleriker/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Täuscht eine Heilung vor und fügt stattdessen 2W6 Schaden zu.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Täuschungs-Kleriker",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "physical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Schmerzlinderung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Sanitäter/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Reduziert erlittenen Schaden für dich oder einen Verbündeten 1 Runde um die Hälfte.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Sanitäter",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Instant",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Gnade",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Prophet/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine leichte Heilung für ein einzelnes Ziel. 1W6 Heilung",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Prophet",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Göttlicher Schutz",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Kleriker/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Wenn der Charakter auf 10 HP oder weniger fällt, wird er einmal pro Kampf von einer Aura umgeben, das +10 HP be Ihm und verbündeten wiederherstellt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Kleriker",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Instant",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Schattenschritt",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Nachtweber/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Lässt dich zu einem Schatten auf dem Spielfeld telepotieren, wenn du angegriffen wirst. CD: 3 Runden",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "className": "Nachtweber",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Reine Heilung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Weißmagier/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine leichte Heilung für alle Verbündeten in der Nähe. 1W4 pro Verbündetem",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Weißmagier",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Meditation",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Mönch/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Mönch kann sich in einer kurzen Meditation selbst heilen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Mönch",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Kräuter und Gifte",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Herbalist/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Kann alle Kräuter zur Heilung verwenden. Keine magische Waffe wird benötigt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Herbalist",
+   "activation": "active",
+   "damage": "1d6",
+   "damageText": "1W6",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Ragnarök",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Wikinger/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Je weniger Leben ein Wikinger hat deso mehr Bonusschaden macht er.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Wikinger",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "0-20 Schaden",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Ebbe und Flut",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Gezeitenrufer/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "2 Skills: Ebbe - Ein Verbündeter wird sofort um eine große Menge geheilt.(1W20) Flut - Alle Verbündeten im Wirkungsbereich werden leicht geheilt (2W4)",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Gezeitenrufer",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Verhängnis und Verderben",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Todsucher/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Verhängnis: Markiert das Ziel mit einem Fluch, der über Zeit (5 Runden) Schaden verursacht. (1W4) Verderben: Sobald ein Ziel von Verhängnis betroffen ist, kann Verderben aktiviert werden,der Todsucher kann sich hinter das Ziel teleportieren und macht zusätzlichen Schaden. (1W10)",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Todsucher",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Rasender Schlag",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Berserker/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter kanalisiert seine unterdrückte Wut in einen einzigen, verheerenden Nahkampfangriff. Der Spieler ist dannach 2 Runden lang angriffs und bewegungsunfähig. Angriff ohne Waffe.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Berserker",
+   "activation": "active",
+   "damage": "4d8",
+   "damageText": "4W8",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Meisterliche Waffenführung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Waffenmeister/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Spieler kann jede Waffe führen. Spieler macht bei einem Angriff ohne Skill +5 Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Waffenmeister",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "Schaden +5",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Schattentanz",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Klingenschatten/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter bewegt sich blitzschnell und hinterlässt scheinbar flüchtige Schattenbilder. Er kann sich an einen anderen Ort innerhalb der Reichweite teleportieren und wird für 1 Runde unsichtbar.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Klingenschatten",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Blutopfer",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Blutritter/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler fügt sich eine Wunde zu und Opfert sein Blut um einen Verbündeten für eine Runde zu stärken. 1W20 -> Schaden = zusätzlicher DMG",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Blutritter",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Heilige Intervention",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Heiliger Ritter/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine passive Chance, dass göttliche Gunst einen kritischen Fehlschlag in einen Erfolg umwandelt. Für den Spieler und Verbündete. 1W20 1-10 -> Fehlschlag 11-20 -> Kein Fehlschlag",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Heiliger Ritter",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Magisches Schild",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Beschützer/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Kann den Schaden für einen Verbündeten in der Nähe übernehmen, Schaden +1W6 bei Übernahme. Instant-Cast",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "className": "Beschützer",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Inspirierende Ausstrahlung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Champion/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Eine Fähigkeit, die negative emotionale Zustände bei Verbündeten in der Nähe kurzzeitig aufhebt. (Cleanse)",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Champion",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Dunkler Pakt",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Wächter des Abgrunds/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter schließt einen temporären, riskanten Handel mit den Mächten des Abyss ab, um sofortige Macht zu erlangen, was jedoch negative Konsequenzen für ihn haben kann.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Wächter des Abgrunds",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Riesiges Abkommen",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Koloss/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler vergrößert einen Körper und erhält einen HP Bonus für 5 Runden. Diese vergrößerung Bringt jedoch auch Ihre Nachteile. +100% Max HP",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "className": "Koloss",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1x Tag",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Dornenrüstung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Eiserne Jungfrau/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler erhält einen Natürlichen Brustpanzer aus Dornen. Jeder Gegner, der ihn im Nahkampf angreift, erleidet Schaden. Taunt!",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "className": "Eiserne Jungfrau",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": "Dornenpanzer HP +20, Rüstwert -> Blockwert, Blockwert -> Schaden bei Berührung"
+  }
+ },
+ {
+  "name": "Elementare Meisterschaft",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Elementarmagier/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler erhält meisterhafte Kontrolle über ein der Elementaren Magien. + Schaden und + Rüstwert gegen diesen Magietyp",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Elementarmagier",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": "Feuer (Rot), Blitz(Gelb) oder Eis(Blau) muss vom Spieler gewählt werden, +1W10 schaden +5 Rüstwert"
+  }
+ },
+ {
+  "name": "Echo des Todes",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Todesmagier/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Wenn eine Kreatur neben dem Spieler getötet wird erhält dieser für seinen nächsten Angriff zusätzlichen Schaden. 2W6 zusatz Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Todesmagier",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Magische Meisterschaft",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Erzmagier/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "100%iger Crit +1W10 auf einen Spell deiner Wahl",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Erzmagier",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1x Tag",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Level Up",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Blaumagier-Meister/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Blaumagier Meister lernt schneller aus seinen Erfahrungen. Er erhält einen Bonus auf Erfahrungspunkte aus besiegten Monstern.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Blaumagier-Meister",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Arkane Waffe",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Arkaner Krieger/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler kann jede Waffe führen sowie Magie und Heilungen mit Ihr wirken. (Sofern diese gelernt sind)",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Arkaner Krieger",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Sternenregen",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Aspekt der Sterne/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ruft einen kleinen Meteoritenregen herab, der Schaden an random Tokensauf der Map verursacht.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Aspekt der Sterne",
+   "activation": "active",
+   "damage": "3d6+2",
+   "damageText": "3W6 + 2",
+   "damageCategory": "magical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Phantomschlag",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Illusionsklinge/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler mach neben physischem Schaden mit einem Schwert / Dolch / Lanze  zusätzlich magischen Schaden. 1W10",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Illusionsklinge",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Worte der Erleuchtung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Genie/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Genie spricht Worte der Klarheit und des Mutes. Einem Verbündeten werden alle Furcht-, Verwirrungs- oder Benommenheitseffekte sofort entfernt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Genie",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Dimensionsriss",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Weltenwandler/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter kann einen Riss im Raumgefüge erzeugen, der es ihm ermöglicht, sich selbst oder einen Verbündeten über kurze Distanzen zu teleportieren oder einen Angriff durch den Riss zu leiten.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Weltenwandler",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Taktischer Rückzug",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Kriegssavant/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter kann sich schnell und strategisch aus einer gefährlichen Situation im Kampf zurückziehen. Angriff auf den Spieler wird abgebrochen und der Spieler kann sich einmal frei bewegen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "className": "Kriegssavant",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Seelenentzug",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Todesweber/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Todesweber greift nach der Lebensessenz eines Ziels. Das Ziel erleidet Schaden, und der Todesweber heilt sich um die Hälfte des verursachten Schadens.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Todesweber",
+   "activation": "active",
+   "damage": "3d6",
+   "damageText": "3W6",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Ätherischer Durchschuss",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Phantomschütze/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Phantomschütze feuert einen Pfeil ab, der für den Bruchteil einer Sekunde ätherisch wird. Dieser Schuss ignoriert die Rüstung des Ziels und psychischen Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "className": "Phantomschütze",
+   "activation": "active",
+   "damage": "2d6+2",
+   "damageText": "2W6+2",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Magische Klinge",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Soulknife/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler kann jede Waffe führen sowie Magie und Heilungen mit Ihr wirken. (Sofern diese gelernt sind)",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Soulknife",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Blutiges Omen",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Dunkler Prophet/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der dunkle Prophet kann sein eigenes Leben opfern um seinen eigenen Wurf zu verstärken. Ein durch diese Fähigkeit auf 20 gebrachter Wurf ist nicht als Crit zu werten. (2HP -> +1 Wurf)",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Dunkler Prophet",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Instant",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Heimtückischer Schuss",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Outlaw/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Wenn er einen Fernkampfangriff aus dem Hinterhalt oder gegen ein überraschtes Ziel ausführt, verursacht dieser Angriff zusätzlichen Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Outlaw",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "Schaden +1W10",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Loki",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Trickster/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Erlaub den Teleport zum Schatten eines Tokens auf der Map.  CD 4",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Trickster",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Instant",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Notration",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Survivalist/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Beschafft in einer Notsituation auf wundersame Weise lebensnotwendige Vorräte (Essen, Wasser, einfache Hilfsmittel) für sich und andere.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Survivalist",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Wirbelwind der Klingen",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Klingenstürmer/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter dreht sich mit seiner Waffe(n) in einem schnellen Wirbel, der alle Gegner in seiner unmittelbaren Reichweite angreift. Es erwden hierbei beide Waffen gerechnet.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Klingenstürmer",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Arkane Anarchie",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Magischer Narr/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter entfesselt eine unkontrollierte Welle roher Magie. Dies führt zu einem zufälligen, unvorhersehbaren magischen Effekt, der sowohl Freunde als auch Feinde beeinflussen kann.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Magischer Narr",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 8,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": "1W20 ; 1-7: Schaden an allen Tokens 8-9: Heilung für alle Teammates ; 10-12 Willenskraft wurf von allen Tokens >11 Stunned 2 Runden 13-20 Schaden an allen gegnern."
+  }
+ },
+ {
+  "name": "In Gottes Namen",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Heiliger Gauner/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Stiehlt einen Teil der Seele des Opfers und festigt dessen gestalt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Heiliger Gauner",
+   "activation": "active",
+   "damage": "1d20",
+   "damageText": "1W20",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": "1-7: Tier 1 Item ; 8-15: Tier 2 Item ; 16-20: Tier 3 Item"
+  }
+ },
+ {
+  "name": "Tierische Synergie",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Bestienmeister/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter und sein Tiergefährte arbeiten in perfekter Harmonie zusammen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Bestienmeister",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": "kann bis zu 2 Gefährten haben. (Gemeinsam bis max Lvl des Spielers) diese werden vom Spieler kontrolliert."
+  }
+ },
+ {
+  "name": "Ruf der Wildnis",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Bestienkönig/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter kann einen mächtigen Ruf ausstoßen, der wilde Tiere in der Nähe anlockt und dazu bringt, ihm kurzzeitig zu helfen oder einen bestimmten Bereich anzugreifen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Bestienkönig",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Pfeil der Nacht",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Dark Ranger/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Feuert ein Geschoss ab, das von Dunkelheit und Schatten umhüllt ist. Es verursacht magischen Schaden und kann das Ziel blenden oder dessen Sicht in hellem Licht beeinträchtigen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "className": "Dark Ranger",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Beschwören",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Bestienrufer/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Ruft die Hilfe eines Geistes, eines Tiergeistes oder eines anderen Wesens aus einer anderen Ebene an, das dem Charakter im Kampf beisteht oder eine Aufgabe erfüllt.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Bestienrufer",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": "Welcher Geist beschworen wird: 1-5 Schildkröte 6-10 Eichhörnchen 11-15 Panther 16-19 Adler 20 Braunbär"
+  }
+ },
+ {
+  "name": "Natürliche Gestalt (Stein, Wasser, Holz)",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Spieler erhält die Skills Natürliche Gestallt Stein, Wasser und Holz. Spieler kann keine Waffen und keine Metall ausrüstung mehr verwenden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Druide",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Fesselnde Darbietung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Virtuose/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Durch Gesang, Musik oder Schauspiel kann der Charakter den Status von Zuschauern manipulieren. Dies kann dazu führen, dass diese einen Statuseffekt erhalten.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Virtuose",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": "1W20: 1-5 Alle getroffenen Tokens schlafen ein ; 6-7: Alle feindlichen Tokens aggron den Spieler ; 8-14"
+  }
+ },
+ {
+  "name": "Spurensucher-Instinkt",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Wilderer/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Spieler erhält zusätzliche Sichtweite, Laufweite und einen Bonus auf Naturkunde (+1/+1/+5)",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Wilderer",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Verzaubert",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Albtraumjäger/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter belegt ein Ziel mit einem magischen Fluch oder einer Illusion, die dessen Wahrnehmung oder Fähigkeiten beeinträchtigt. Dadurch kann einen anderen Token verwirrt werden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Albtraumjäger",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Back in Time",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Chrono-Schütze/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter manipuliert kurzzeitig den Fluss der Zeit in einem kleinen Bereich. Dies kann es ihm ermöglichen, eine eigene Aktion rückgängig zu machen oder einem Verbündeten eine zusätzliche Reaktion zu geben.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Chrono-Schütze",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Auszahlung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Bounty Hunter/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Bounty Hunter kann einen gezielten Fernkampfangriff ausführen. Wird der Gegner hiermit getötet erhält dieser eine erhöte Dropchance.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "className": "Bounty Hunter",
+   "activation": "active",
+   "damage": "",
+   "damageText": "2w6",
+   "damageCategory": "physical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "awaken": "Schaden wird ohne Waffe berechnet."
+  }
+ },
+ {
+  "name": "Licht der Hoffnung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Lichtbringer/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Lichtbringer berührt ein Ziel und kann einen magischen Bezauberungs-Effekt von diesem entfernen. Hat das Ziel keinen Bezauberungs-Effekt wird dieses statdessen geheilt. 1W10",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Lichtbringer",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Mutagene Mischung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Spieler erhält die Skills: Rote Bombe, Blaue Bombe und Grüne Bombe Für den Einsatzt muss der Spieler Gegenstände aus seinem Inventar verwandeln.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Alchemist",
+   "activation": "active",
+   "damage": "",
+   "damageText": "3 Skills",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Judgement",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Kreuzritter/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter führt wirkt einen Zauber, der von göttlicher oder gerechter Macht durchdrungen ist. Dies verursacht 2W10 Schaden. Dieser Skill kann mit jeder Waffe ausgeführt werden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Kreuzritter",
+   "activation": "active",
+   "damage": "2d10",
+   "damageText": "2W10",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Verderbende Berührung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Dunkler Prophet/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Spieler Belegt einen anderen Token mit einem Verderbenden Mal. Der Spieler erhält den nächten Schaden auf dem Ziel als Heilung.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Dunkler Prophet",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Aura des Gleichgewichts",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Schamane/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Spieler kann alle Waffen verwenden. Rüstwert -> Blockwert. Spieler kann keine Skills verwenden die Schaden verursachen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Schamane",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "40 HP, 4 Blockwert +4W4 Schaden",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Göttliche Welle",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Heiliger/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Heiliger entfesselt eine Welle reiner, göttlicher Energie um sich herum. Alle Verbündeten in diesem Bereich erhalten sofort 3W6 Heilung.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Heiliger",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Elementare Gestalt (Feuer, Blitz, Eis)",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Druide kann eine elementare Formen herbeirufen und deren Stärken nutzen.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Druide",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Göttlicher Bluff",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Heiliger Gauner/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Heiliger Gauner",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Friedensstifftung",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Friedenswächter/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Charakter versucht alle Wesen zu besänftigen und Konflikte zu deeskalieren. Er erstellt ein Heiliges Feld bei Angriffen innerhalb dieses Feldes erhält der Angreifer vor der Schadensverrechnung selbst Schaden.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Friedenswächter",
+   "activation": "active",
+   "damage": "1d20",
+   "damageText": "1W20",
+   "damageCategory": "magical",
+   "range": 8,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Heiliges Licht",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Erzbischof/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Der Erzbischof strahlt heiliges Licht aus, das zwei Verbündete um 2W6 Lebenspunkte heilt oder zwei Gegnern 2W6 Schaden zufügen kann.",
+   "source": "Klasse",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Erzbischof",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Machtwort",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Sprecher der Ahnen/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "5 Skills; Machtwort:Schmerz ; Heilung ; Barriere ; Magie ; Spieler kann keine anderen Aktiven Skills verwenden.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "",
+   "className": "Sprecher der Ahnen",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Athrea's Ruf",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Prediger von Athrea/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Skills die Heilen werden um 1W6 erhöht.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Prediger von Athrea",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Athrea's Fragment",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Prophet Athreas/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "",
+   "className": "Prophet Athreas",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Klang der Welten",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Barde/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Kann nur Klang Fähigkeiten mit einem Instrument einsetzen. (Bei einem geraden Wurf wir die Fähigkeit genutzt bei einem ungeraden Wurf wird die Fähigkeit zum Gegenteil)",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Barde",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Natürliche Gestalt - Stein",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Nahkampfangriff auf einen Gegner.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Druide",
+   "activation": "active",
+   "damage": "3d6",
+   "damageText": "3W6",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Natürliche Gestalt - Wasser",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Heilt einen Verbündeten.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Druide",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Natürliche Gestalt - Holz",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Fernkampfangriff auf bis zu zwei Gegner.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Druide",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Rote Bombe",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Erhöht den Angriff eines Verbündeten neben dir für 2 Runden um +3.",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Alchemist",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Blaue Bombe",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Erhöht den Rüstwert eines Verbündeten neben dir für 2 Runden um +3.",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Alchemist",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Grüne Bombe",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Alchemist/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Fernkampfangriff auf einen Gegner.",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Alchemist",
+   "activation": "active",
+   "damage": "3d6",
+   "damageText": "3W6",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Elementare Gestalt - Feuer",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Fernkampfangriff auf bis zu zwei Gegner.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Magie",
+   "className": "Druide",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Elementare Gestalt - Blitz",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Laufweite +2 (2 Turns)",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "className": "Druide",
+   "activation": "active",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Elementare Gestalt - Eis",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Druide/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Heilt einen Verbündeten.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "className": "Druide",
+   "activation": "active",
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "magical",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Sandgrab",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Sandmagier/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "(AGL 1W20  Check 17+ Keine Wirkung 16- Spieler kann sich bis zur befreiung nicht bewegen, aber Fernkampf Angriffe nutzen)",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Sandmagier",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "awaken": ""
+  }
+ },
+ {
+  "name": "Arugals Verdammnis",
+  "type": "classSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Klassen-Skills/Arugals Diener/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 0,
+   "price": "nicht verkäuflich",
+   "description": "Arugal wird aus den Schatten beschworen um Lebenskraft zu entziehen und Stärker zu werden.",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Passive",
+   "className": "Arugals Diener",
+   "activation": "passive",
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "awaken": ""
+  }
+ }
+]

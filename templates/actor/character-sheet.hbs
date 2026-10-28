@@ -1,23 +1,37 @@
 <form class="{{cssClass}} hlw-sheet" autocomplete="off">
   <header class="sheet-header">
-    <img class="profile-img" src="{{profileImage}}" title="{{actor.name}}" />
+    <img class="profile-img" src="{{profileImage}}" data-edit="img" title="{{actor.name}}" />
     <div class="header-fields">
       <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Charaktername" /></h1>
-      <div class="identity-grid">
-        <label>Spieler <input name="system.identity.player" type="text" value="{{system.identity.player}}" /></label>
-        <label>Level <input name="system.progression.level" type="number" value="{{system.progression.level}}" /></label>
-        <label>Klasse <input name="system.progression.class" type="text" value="{{system.progression.class}}" /></label>
-        <label>Job <input name="system.progression.job" type="text" value="{{system.progression.job}}" /></label>
-        <label>Titel <input name="system.progression.title" type="text" value="{{system.progression.title}}" /></label>
-        <label>Insignie <input name="system.progression.insignia" type="text" value="{{system.progression.insignia}}" /></label>
-      </div>
+      {{#if isMonster}}
+        <div class="identity-grid">
+          <label>Rang <input name="system.monster.rank" type="text" value="{{system.monster.rank}}" /></label>
+          <label>Rolle <input name="system.monster.role" type="text" value="{{system.monster.role}}" /></label>
+          <label>Größe <input name="system.monster.size" type="text" value="{{system.monster.size}}" /></label>
+          <label>Kategorie <input name="system.monster.category" type="text" value="{{system.monster.category}}" /></label>
+          <label>Corrupted-Stufe <input name="system.monster.corrupted" type="number" value="{{system.monster.corrupted}}" /></label>
+          <label>EXP <input name="system.monster.exp" type="text" value="{{system.monster.exp}}" /></label>
+        </div>
+      {{else}}
+        <div class="identity-grid">
+          <label>Spieler <input name="system.identity.player" type="text" value="{{system.identity.player}}" /></label>
+          <label>Herkunft <input name="system.identity.origin" type="text" value="{{system.identity.origin}}" placeholder="A–D" /></label>
+          <label>Level <input name="system.progression.level" type="number" value="{{system.progression.level}}" /></label>
+          <label>EXP <span><input name="system.progression.exp" type="number" value="{{system.progression.exp}}" /> / {{#if system.derived.expNext}}{{system.derived.expNext}}{{else}}max{{/if}}</span></label>
+          <label>Klasse <input name="system.progression.class" type="text" value="{{system.progression.class}}" placeholder="{{system.derived.suggestedClass}}" /></label>
+          <label>Job <input name="system.progression.job" type="text" value="{{system.progression.job}}" /></label>
+          <label>Titel <input name="system.progression.title" type="text" value="{{system.progression.title}}" /></label>
+          <label>Insignie <input name="system.progression.insignia" type="text" value="{{system.progression.insignia}}" /></label>
+        </div>
+        <p class="hlw-class-hint" title="{{system.derived.suggestedClassEffect}}">Klasse nach Wertverteilung: <strong>{{system.derived.suggestedClass}}</strong></p>
+      {{/if}}
     </div>
   </header>
 
   <nav class="sheet-tabs tabs" data-group="primary">
     <a class="item" data-tab="main">Charakter</a>
     <a class="item" data-tab="skills">Skills</a>
-    <a class="item" data-tab="insignia">Insignien</a>
+    {{#unless isMonster}}<a class="item" data-tab="insignia">Insignien</a>{{/unless}}
     <a class="item" data-tab="inventory">Inventar</a>
     <a class="item" data-tab="notes">Notizen</a>
   </nav>
@@ -26,36 +40,34 @@
     <div class="tab" data-group="primary" data-tab="main">
       <section class="resource-grid">
         <label>Lebenspunkte
-          <span><input name="system.resources.hp.value" type="number" value="{{system.resources.hp.value}}" /> / <input name="system.resources.hp.max" type="number" value="{{system.resources.hp.max}}" /></span>
+          <span><input name="system.resources.hp.value" type="number" value="{{system.resources.hp.value}}" /> / {{system.resources.hp.max}}</span>
         </label>
-        <label>Bewegung
-          <span><input name="system.resources.movement.value" type="number" value="{{system.resources.movement.value}}" /> {{system.resources.movement.units}}</span>
-        </label>
-        <label>Aktionspunkte
-          <span><input name="system.resources.actionPoints.value" type="number" value="{{system.resources.actionPoints.value}}" /> / <input name="system.resources.actionPoints.max" type="number" value="{{system.resources.actionPoints.max}}" /></span>
-        </label>
-        <label>Inventarplätze
-          <span>{{inventoryUsed}} / <input name="system.resources.inventorySlots.max" type="number" value="{{system.resources.inventorySlots.max}}" /></span>
-        </label>
-        <label>Korruption
-          <span><input name="system.resources.corruption.value" type="number" value="{{system.resources.corruption.value}}" /> / <input name="system.resources.corruption.max" type="number" value="{{system.resources.corruption.max}}" /></span>
-        </label>
-      </section>
-
-      <section class="defense-grid">
-        <label>Physische Verteidigung
-          <input name="system.defenses.physical.value" type="number" value="{{system.defenses.physical.value}}" />
-        </label>
-        <label>Magische Verteidigung
-          <input name="system.defenses.magical.value" type="number" value="{{system.defenses.magical.value}}" />
-        </label>
+        <label>Rüstwert (RW)<span><strong>{{system.derived.rw}}</strong></span></label>
+        <label>Magieresistenz (MR)<span><strong>{{system.derived.mr}}</strong></span></label>
+        <label>Blockwert<span><strong>{{system.derived.block}}</strong></span></label>
+        <label>Initiative<span><strong>1W20 + {{system.derived.initiative}}</strong></span></label>
+        <label>Bewegung<span><strong>{{system.derived.movement}} Felder</strong></span></label>
+        {{#unless isMonster}}
+          <label>Inventarplätze<span>{{inventoryUsed}} / {{system.resources.inventorySlots.max}}</span></label>
+          <label>Korruption
+            <span><input name="system.resources.corruption.value" type="number" value="{{system.resources.corruption.value}}" /> / 100 · {{system.derived.corruption.label}}</span>
+          </label>
+        {{/unless}}
       </section>
 
       <section class="action-grid">
         <div class="action-toggle {{#if canAct}}is-ready{{else}}is-spent{{/if}}">
-          <strong>Aktionspunkte</strong>
+          <strong>Aktion</strong>
           <span>{{system.resources.actionPoints.value}} / {{system.resources.actionPoints.max}}</span>
         </div>
+        <button type="button" class="action-toggle {{#if system.actions.quick.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="quick">
+          <strong>Schnellaktion</strong>
+          <span>{{#if system.actions.quick.available}}bereit{{else}}verbraucht{{/if}}</span>
+        </button>
+        <button type="button" class="action-toggle {{#if system.actions.reaction.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="reaction">
+          <strong>Reaktion</strong>
+          <span>{{#if system.actions.reaction.available}}bereit{{else}}verbraucht{{/if}}</span>
+        </button>
         <button type="button" class="action-toggle {{#if system.actions.movement.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="movement">
           <strong>Bewegung</strong>
           <span>{{#if system.actions.movement.available}}bereit{{else}}verbraucht{{/if}}</span>
@@ -71,63 +83,89 @@
         <div class="action-grid">
           <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="attack" {{#unless canAct}}disabled{{/unless}}>
             <strong>Normaler Angriff</strong>
-            <span>1 AP</span>
+            <span>Aktion</span>
           </button>
           <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="item" {{#unless canAct}}disabled{{/unless}}>
-            <strong>Item verwenden</strong>
-            <span>1 AP</span>
+            <strong>Gegenstand benutzen</strong>
+            <span>Aktion</span>
           </button>
           <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="defend" {{#unless canAct}}disabled{{/unless}}>
             <strong>Abwehrhaltung</strong>
-            <span>1 AP</span>
+            <span>RW und MR +2</span>
           </button>
         </div>
       </section>
 
-      <section class="resistance-panel">
-        <h2>Veranlagung</h2>
-        <div class="resistance-grid">
-          {{#each system.affinities as |affinity key|}}
-            <label>
-              <span>{{affinity.label}}</span>
-              <input name="system.affinities.{{key}}.value" type="number" value="{{affinity.value}}" />
-            </label>
-          {{/each}}
-        </div>
-      </section>
-
-      <section class="two-column">
-        <div>
-          <h2>Attribute</h2>
-          <div class="attribute-grid">
-            {{#each system.attributes as |attribute key|}}
-              <label>
-                <span>{{attribute.abbr}}</span>
-                <small>{{attribute.label}}</small>
-                <input name="system.attributes.{{key}}.value" type="number" value="{{attribute.value}}" />
-              </label>
-            {{/each}}
+      {{#if isMonster}}
+        <section class="monster-panel">
+          <h2>Bestiarium-Werte</h2>
+          <div class="form-grid">
+            <label>HP <input name="system.monster.hp" type="number" value="{{system.monster.hp}}" /></label>
+            <label>RW <input name="system.monster.rw" type="number" value="{{system.monster.rw}}" /></label>
+            <label>MR <input name="system.monster.mr" type="number" value="{{system.monster.mr}}" /></label>
+            <label>Genauigkeit <input name="system.monster.acc" type="number" value="{{system.monster.acc}}" /></label>
+            <label>Initiative <input name="system.monster.initiative" type="number" value="{{system.monster.initiative}}" /></label>
+            <label>Bewegung <input name="system.monster.movement" type="number" value="{{system.monster.movement}}" /></label>
+            <label>Reichweite <input name="system.monster.reach" type="number" value="{{system.monster.reach}}" /></label>
+            <label>Probenwert <input name="system.monster.probe" type="number" value="{{system.monster.probe}}" /></label>
           </div>
-        </div>
+          <label class="stacked">Merkmale <input name="system.monster.traits" type="text" value="{{system.monster.traits}}" /></label>
+          <label class="stacked">Lebensraum <input name="system.monster.habitat" type="text" value="{{system.monster.habitat}}" /></label>
+          <label class="stacked">Besonderheit <textarea name="system.monster.special">{{system.monster.special}}</textarea></label>
+        </section>
+      {{else}}
+        <section class="two-column">
+          <div>
+            <h2>Werte</h2>
+            <p class="hlw-points {{#if pointsOver}}is-over{{/if}}">Verteilt {{system.derived.points.used}} von {{system.derived.points.allowed}} · frei {{system.derived.points.free}}</p>
+            <div class="attribute-grid">
+              {{#each system.attributes as |attribute key|}}
+                <label>
+                  <span>{{attribute.abbr}}</span>
+                  <small>{{attribute.label}}</small>
+                  <input name="system.attributes.{{key}}.value" type="number" min="1" max="25" value="{{attribute.value}}" />
+                </label>
+              {{/each}}
+            </div>
+          </div>
 
-        <div>
-          <h2>World-Skills</h2>
-          <div class="world-skill-list">
-            {{#each worldSkills as |skill|}}
-              <div class="world-skill-row">
-                <button type="button" data-roll-world-skill="{{skill.key}}">W20</button>
-                <div>
-                  <strong>{{skill.label}}</strong>
-                  <small>{{skill.attributeLabels}}</small>
+          <div>
+            <h2>World-Skills</h2>
+            <div class="world-skill-list">
+              {{#each worldSkills as |skill|}}
+                <div class="world-skill-row">
+                  <button type="button" data-roll-world-skill="{{skill.key}}">W20</button>
+                  <div>
+                    <strong>{{skill.label}}</strong>
+                    <small>{{skill.attributeLabels}}</small>
+                  </div>
+                  <span>{{skill.base}}</span>
+                  <input name="system.worldSkills.{{skill.key}}.bonus" type="number" value="{{skill.bonus}}" />
+                  <strong>{{skill.total}}</strong>
                 </div>
-                <span>{{skill.base}}</span>
-                <input name="system.worldSkills.{{skill.key}}.bonus" type="number" value="{{skill.bonus}}" />
-                <strong>{{skill.total}}</strong>
-              </div>
-            {{/each}}
+              {{/each}}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      {{/if}}
+
+      {{#if isGM}}
+        <section class="bonus-panel">
+          <h2>Boni (Klasse, Titel, Insignien, GM)</h2>
+          <div class="resistance-grid">
+            <label><span>HP</span><input name="system.bonuses.hp" type="number" value="{{system.bonuses.hp}}" /></label>
+            <label><span>RW</span><input name="system.bonuses.rw" type="number" value="{{system.bonuses.rw}}" /></label>
+            <label><span>MR</span><input name="system.bonuses.mr" type="number" value="{{system.bonuses.mr}}" /></label>
+            <label><span>Blockwert</span><input name="system.bonuses.block" type="number" value="{{system.bonuses.block}}" /></label>
+            <label><span>Genauigkeit</span><input name="system.bonuses.acc" type="number" value="{{system.bonuses.acc}}" /></label>
+            <label><span>Schaden</span><input name="system.bonuses.damage" type="number" value="{{system.bonuses.damage}}" /></label>
+            <label><span>Bewegung</span><input name="system.bonuses.movement" type="number" value="{{system.bonuses.movement}}" /></label>
+            <label><span>Initiative</span><input name="system.bonuses.initiative" type="number" value="{{system.bonuses.initiative}}" /></label>
+            <label><span>Inventar</span><input name="system.bonuses.inventory" type="number" value="{{system.bonuses.inventory}}" /></label>
+            <label><span>Aktionen</span><input name="system.resources.actionPoints.max" type="number" value="{{system.resources.actionPoints.max}}" /></label>
+          </div>
+        </section>
+      {{/if}}
     </div>
 
     <div class="tab" data-group="primary" data-tab="skills">
@@ -168,19 +206,19 @@
       <h2>Inventar</h2>
       <section class="inventory-gold-bar">
         <div>
-          <span>Gold</span>
-          <strong>{{system.resources.gold.value}}</strong>
+          <span>Kes</span>
+          <strong>{{kesText}}</strong>
         </div>
         <div>
           <span>Inventar</span>
           <strong>{{inventoryUsed}} / {{inventoryMax}}</strong>
         </div>
-        <label>Gold geben
-          <span><input data-gold-amount type="number" min="0" placeholder="Betrag" /><button type="button" data-give-gold>Geben</button></span>
+        <label>Kes geben
+          <span><input data-gold-amount type="text" placeholder="z. B. 1 GK 20 SK" /><button type="button" data-give-gold>Geben</button></span>
         </label>
         {{#if isGM}}
-          <label>GM Gold +
-            <span><input data-add-gold-amount type="number" min="0" placeholder="Betrag" /><button type="button" data-add-gold>Hinzufügen</button></span>
+          <label>GM Kes +/−
+            <span><input data-add-gold-amount type="text" placeholder="z. B. 50 SK oder -2 GK" /><button type="button" data-add-gold>Buchen</button></span>
           </label>
           <button type="button" class="inventory-import-button" data-import-json>JSON importieren</button>
         {{/if}}
@@ -204,14 +242,14 @@
           </li>
         {{/each}}
       </ol>
-      <h3>Ruestung</h3>
+      <h3>Rüstung</h3>
       <ol class="item-list">
         {{#each itemsByType.armor as |item|}}
           <li class="item-row inventory-row" data-item-id="{{item.id}}">
             <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
             <img src="{{item.img}}" alt="" />
             <strong>{{item.name}}</strong>
-            <span>RW {{item.system.armor}}</span>
+            <span>HP {{item.system.hp}}{{#if item.system.hpDice}} ({{item.system.hpDice}}){{/if}}</span>
             <span>{{item.system.slot}}</span>
             <button type="button" data-show-item-details>Details</button>
             <button type="button" data-edit-owned-item>Bearbeiten</button>
@@ -245,7 +283,7 @@
             <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
             <img src="{{item.img}}" alt="" />
             <strong>{{item.name}}</strong>
-            <span>Tier {{item.system.tier}}</span>
+            <span>Rang {{item.system.rank}}</span>
             <span>{{item.system.effect}}</span>
             <button type="button" data-show-item-details>Details</button>
             <button type="button" data-edit-owned-item>Bearbeiten</button>

@@ -1,0 +1,46 @@
+﻿Regel;Beschreibung
+Was Jobs sind;Jobs sind das Leben neben dem Abenteuer: Wissen, Handwerk und Einkommen. Sie wirken fast nur außerhalb des Kampfs und stehen nie in Konkurrenz zur Klasse.
+Wie viele;Jeder Charakter hat höchstens 1 Ausbildungsjob (Schule, Magie-Schule oder Lehre) und höchstens 1 erweckten Job.
+Job-Skill;Jeder Job hat einen World-Skill. Der Bonus gilt nur, wenn die Probe zur Arbeit des Jobs passt (ein Koch kocht, kein Koch verhandelt).
+Stufen;T1 Anfänger → T2 Job → T3 Meister. Erweckte Jobs beginnen direkt auf T2.
+Erweckte Jobs;Erwachen durch die angegebene Tat, ohne Unterricht. Wie bei Insignien: Der GM vergibt sie am Ende der Szene, wenn die Tat aus eigenem Antrieb geschah. T3 nur durch eine große Tat.
+Jobwechsel;Ein neuer Ausbildungsjob kostet 1 Jahr Ausbildung (Zeitsprung) und beginnt bei T1. Der alte Job geht verloren.
+Arbeiten;In einem Stadt-Kapitel kann man statt zu Ruhen arbeiten: Job-Probe 15 pro Tag. Erfolg: Lohn der Stufe, natürliche 20: doppelt, Fehlschlag: halber Lohn. Seltene Jobs (mit ★) zahlen das Doppelte.
+Kosten;Hero-Kinder bekommen das Gildenstipendium: Die Gilde zahlt Schule und Magie-Schule. Dafür gilt die Gildenpflicht: 3 Jahre Aufträge für die Gilde. Ohne Stipendium: Schule 60 GK, Magie-Schule 150 GK, Lehre kostenlos.
+Herstellen;Schmied, Runist, Koch und Apotheker stellen Gegenstände her. Regeln, Anleitungen und Rezepte im Tab Herstellen und Kochen.
+
+Stufe;Name;Bonus;Lohn pro Arbeitstag;Aufstieg
+T1;Anfänger;+5 auf den Job-Skill bei Tätigkeiten des Jobs.;5 SK;Abschluss einer Ausbildung (3 Jahre, im Zeitsprung) oder 1 Jahr Ausbildung im Spiel.
+T2;Job;Zusätzlich die T2-Fähigkeit.;12 SK;Gesellenprüfung bei der Gilde: 10 Job-Tätigkeiten im Spiel (GM zählt), dann Probe 25 im Job-Skill, Gebühr 2 GK. Richtwert ab Level 8.
+T3;Meister;Job-Bonus +10 statt +5 und die T3-Fähigkeit.;30 SK;Meisterprüfung: ein Meisterstück oder eine große Tat im Job (GM), Probe 40, Gebühr 20 GK, ab Gildenrang C.
+
+Zeitsprung;Beschreibung
+Überblick;Die Kampagne beginnt Saatwende 792 im Heimatdorf (Prolog, Level 1, 1–2 Sitzungen). Danach gehen die Hero-Kinder nach Illmaris und lernen 3 Jahre. Das eigentliche Abenteuer beginnt Saatwende 795, mit 17–19 Jahren.
+1. Ausbildung wählen;Jeder Spieler wählt einen Ausbildungsjob (Schule, Magie-Schule oder Lehre). Am Ende ist er T1. Die Gruppe kann getrennt lernen, trifft sich aber in Illmaris.
+2. Drei Jahre;Für jedes Jahr: 1 Wertpunkt (Jahr 1 in einen Wert des Job-Skills, Jahr 2 und 3 frei) und 1 Wurf auf die Ereignistabelle (1W20). So steht der Charakter am Ende auf Level 4.
+3. Abschluss;Ein Gilden-Orb mit einem Rang-D-Skill, der zur Ausbildung passt (Skills beginnen bei Rang D). Startkapital 50 SK plus Ersparnisse: Lehre +1 GK, Schule und Magie-Schule +0. Gildenrang F, die Gildenpflicht beginnt.
+4. Erzählen;Jeder Spieler erzählt kurz eine Szene aus jedem Jahr, passend zum Ereignis. Der GM übernimmt Kontakte und Rivalen als NSC in die Kampagne.
+Nach dem Zeitsprung;Das erste Level-Up im Spiel (Level 5) bringt die Basic-Klasse. Erweckte Jobs und Titel können sich aus den Ereignissen ergeben.
+Zeitsprung im Spiel;Für längere Pausen (z. B. Froststille): pro Woche entweder 5 Arbeitstage (Lohn), Training (zählt als 1 Job-Tätigkeit für die Gesellenprüfung) oder Erholung. Lebenskosten pro Monat nach dem Tab Marktsystem. Korruption sinkt wie bei langer Rast um 2 pro Nacht (nie unter die Stufengrenze). Keine EXP, pro Monat 1 Ereigniswurf.
+
+1W20;Ereignis;Folge
+1;Schwerer Unfall bei der Arbeit oder im Unterricht;"Narbe; Titel Unbeholfen oder Ruhig (Wahl des Spielers)."
+2;Ein Lehrer hält dich für unfähig;Rivale: Lehrer (NSC). Gesellenprüfung später −2.
+3;Schulden beim falschen Mann;−1 GK oder eine offene Gefälligkeit an einen Schmuggler aus Kyr.
+4;Krank im Winter;Ein Monat verloren, aber ein Freund aus dem Hospital (Kontakt: Heiler).
+5;Prügelei mit älteren Schülern;Rivale unter den Schülern (NSC, wird auch Abenteurer).
+6;Heimweh, Briefe ins Dorf;Kontakt: jemand im Dorf, der alles erfährt.
+7;Nebenjob in der Hafengegend;+50 SK, Kontakt: Hafenarbeiter.
+8;Erster Ausflug in den Dungeon unter Illmaris;"Kennt die erste Ebene; ein Gegenstand Rang E."
+9;Bücherwurm;Kontakt: Bibliothekar. +1 auf eine Archäologie- oder Religionsprobe pro Kapitel.
+10;Ein ruhiges Jahr;"Nichts Besonderes; +30 SK Ersparnisse."
+11;Freundschaft mit einem Mitschüler;Kontakt: Freund in einem anderen Job (kann später helfen).
+12;Wettkampf der Schulen gewonnen;+1 GK Preisgeld, Ruf in Illmaris.
+13;Ein Meister nimmt dich unter seine Fittiche;Gesellenprüfung später +2.
+14;Begegnung mit einem Wächter;Ein Wächter der Gilde kennt deinen Namen (Kontakt).
+15;Gefährliche Nacht in der Stadt;Der Charakter hat sich gewehrt: Titel Mutig oder Nervös (Wahl des GM).
+16;Liebe oder tiefe Freundschaft;"Wichtiger NSC; verlässt Illmaris vielleicht später."
+17;Gerüchte über das Heimatdorf;Ein Hinweis für die Kampagne (GM).
+18;Ein Fund im Dungeon;Ein Gegenstand Rang D.
+19;Besonderes Talent entdeckt;Bei der Ausbildung: Probe im Job-Skill +2 dauerhaft (zählt zum Job-Bonus).
+20;Ein großer Moment;Wahl: ein erweckter Job, wenn die Tat passt, oder +1 GK und ein Kontakt bei der Gilde.

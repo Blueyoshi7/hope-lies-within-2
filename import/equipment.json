@@ -1,0 +1,677 @@
+[
+ {
+  "name": "Rucksack",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 40,
+   "price": "40 SK",
+   "description": "Fasst die normale Ausrüstung einer Person.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schlafsack",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 30,
+   "price": "30 SK",
+   "description": "Wolle und Leder; für Nächte im Freien.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Zelt (2 Personen)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Leinen und Holzstangen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Decke",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 8,
+   "price": "8 SK",
+   "description": "Einfache Wolldecke.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Seil (15 m)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 15,
+   "price": "15 SK",
+   "description": "Hanfseil.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Kletterhaken (5 Stück)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 20,
+   "price": "20 SK",
+   "description": "Eisenhaken mit Ösen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Fackel",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Brennt etwa eine Stunde.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Laterne",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Mit Glasschutz, windfest.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Lampenöl (Flasche)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Reicht für etwa sechs Stunden Licht.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Kerzen (5 Stück)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Talgkerzen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Feuerstein und Zunder",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Für das Lagerfeuer.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Wasserschlauch",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Fasst etwa zwei Liter.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Proviant (1 Tagesration)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Trockenbrot, Käse, Dörrfleisch.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Kochgeschirr",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "Topf, Pfanne und Löffel fürs Lager.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Angelzeug",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 12,
+   "price": "12 SK",
+   "description": "Schnur, Haken und Rute.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Tierfalle",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 45,
+   "price": "45 SK",
+   "description": "Eisenfalle für kleine bis mittlere Tiere.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Fangnetz",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "Geknüpftes Netz.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Jagdmesser",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 35,
+   "price": "35 SK",
+   "description": "Zum Häuten und Zerlegen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Spitzhacke",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 70,
+   "price": "70 SK",
+   "description": "Für Erz und Gestein.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schaufel",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 30,
+   "price": "30 SK",
+   "description": "Für Gruben und Grabungen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Wetzstein",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Hält Klingen scharf.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Holzpfeile (20 Stück)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 10,
+   "price": "10 SK",
+   "description": "Einfache Pfeile.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Eisenpfeile (20 Stück)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 40,
+   "price": "40 SK",
+   "description": "Mit Eisenspitzen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Nebeltuch",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 15,
+   "price": "15 SK",
+   "description": "Feuchtes Kräutertuch vor Mund und Nase; mindert die Wirkung von Abyss-Nebel kurzzeitig.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Kompass",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "Zuverlässig, außer in der Nähe des Abyss.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Regionalkarte",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 100,
+   "price": "1 GK",
+   "description": "Karte einer Region mit Wegen und Orten.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Karte von Gaia",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 800,
+   "price": "8 GK",
+   "description": "Ganzer Kontinent, Abschrift der Gildenkarte.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Tinte und Feder",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 10,
+   "price": "10 SK",
+   "description": "Für Notizen und Briefe.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Pergament (5 Bögen)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 8,
+   "price": "8 SK",
+   "description": "Zum Schreiben und Zeichnen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Spiegel (klein)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 50,
+   "price": "50 SK",
+   "description": "Poliertes Metall.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Dietrich-Set",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 150,
+   "price": "1 GK 50 SK",
+   "description": "Für Schlösser. Der Besitz ist in Städten verdächtig.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Kes-Börse",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Lederbeutel für Münzen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Ersatz-Gildenkarte",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 50,
+   "price": "50 SK",
+   "description": "Bei Verlust in jedem Gildenhaus erhältlich.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Alchemie-Set",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Werkzeug: Mörser, Phiolen, Brenner.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Runen-Meißel",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 100,
+   "price": "1 GK",
+   "description": "Werkzeug: feine Meißel für Runen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Rauchbombe",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 20,
+   "price": "20 SK",
+   "description": "Neu: Wirft eine Wolke von 2 Feldern Radius; Fernkampf hinein und hinaus −5 für 2 Runden.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Gegengift",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 50,
+   "price": "50 SK",
+   "description": "Neu: Beendet „vergiftet“ sofort.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Kleiner Heiltrank",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 80,
+   "price": "80 SK",
+   "description": "Neu: Heilt 2W6 + 2 HP, als Aktion, auch im Kampf.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Funkenbombe",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 80,
+   "price": "80 SK",
+   "description": "Neu: 2W6 Feuerschaden auf 1 Feld Radius, Genauigkeit wie ein Wurf.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Einfache Schutzrune",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 150,
+   "price": "1 GK 50 SK",
+   "description": "Neu: Auf Rüstung gelegt, Rüstwert +2 für einen Kampf, dann erloschen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Heiltrank",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abenteurerbedarf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 400,
+   "price": "4 GK",
+   "description": "Neu: Heilt 4W6 + 5 HP und beendet „Verwundet“.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Hammer (Werkzeug)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Gegenstände/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 30,
+   "price": "30 SK",
+   "description": "Hammer der verwendet werden kann um gegenstände zu bauen.",
+   "source": "Händler",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Nägel",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Gegenstände/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Nägel die verwendet werden können um Gegenstände herzustellen.",
+   "source": "Händler",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schmiedehammer (Werkzeug)",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Gegenstände/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Ein Hammer der zum Schmieden von Waffen und Rüstungen verwendet wird.",
+   "source": "Händler",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Magischer Beutel",
+  "type": "equipment",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Gegenstände/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "Kann bis zu 10 Magische Steine halten ohne das permanent Abyss-Magie ausströhmt.",
+   "source": "Gilde",
+   "quantity": 1
+  }
+ }
+]

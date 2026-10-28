@@ -1,0 +1,12 @@
+﻿World-Skill;Attribut 1;Attribut 2;Attribut 3;Wofür;Typische Gegenprobe;Änderung;Farbcodes
+Athletik;STR;CON;AGL;Klettern, Schwimmen, Springen, Werfen, Tragen, Rennen über lange Strecken;Athletik (Ringen, Wettlauf);unverändert;#C62828 #8D5524 #2E7D32
+Wortgewandtheit;CHA;EDU;INT;Überreden, Lügen, Verhandeln, Feilschen, Einschüchtern, Reden halten;Scharfsinnigkeit (Lüge durchschauen) oder Willenskraft (Einschüchtern);unverändert;#EF6C00 #546E7A #1565C0
+Erfindergeist;INT;WIS;DEX;Kreative Lösungen, Mechanismen verstehen, improvisieren, Fallen entschärfen;–;unverändert (Spielerbogen hatte SOU statt DEX);#1565C0 #00838F #7B1FA2
+Naturkunde;WIS;AGL;SOU;Pflanzen und Kräuter erkennen, Wetter, Gelände, Wege finden, Sammeln, Überleben in der Wildnis;–;unverändert (Spielerbogen hatte DEX statt WIS);#00838F #2E7D32 #AD1457
+Tierkunde;CHA;SPE;SOU;Tiere beruhigen, reiten, zähmen, Spuren und Verhalten deuten, Jagen;Willenskraft des Tiers;geändert: CHA und SOU statt AGL und WIS;#EF6C00 #F9A825 #AD1457
+Religion;WIS;EDU;SOU;Glaube, Riten, heilige Texte, Segen, Ahnenlehre, Wunder erkennen;–;unverändert (Spielerbogen hatte CHA statt SOU);#00838F #546E7A #AD1457
+Scharfsinnigkeit;INT;SPE;DEX;Wahrnehmen, Suchen, Identifizieren (Appraisal), Lügen durchschauen, Hinweise kombinieren;Heimlichkeit (Versteckte entdecken);unverändert (Spielerbogen hatte SOU statt INT);#1565C0 #F9A825 #7B1FA2
+Archäologie;EDU;STR;WIS;Ruinen und Inschriften, alte Sprachen, Runen, Ausgrabungen, Fallen in Ruinen erkennen;–;geändert: WIS statt CON;#546E7A #C62828 #00838F
+Handwerkskunst;DEX;STR;CON;Schmieden, Bauen, Reparieren, Kochen, Herstellen aller Art;–;unverändert;#7B1FA2 #C62828 #8D5524
+Willenskraft;SOU;CHA;CON;Angst, Schmerz und Bezauberung widerstehen, Korruption aushalten, Durchhalten;Wortgewandtheit (Einschüchtern), Zauber des Gegners;unverändert;#AD1457 #EF6C00 #8D5524
+Heimlichkeit;DEX;AGL;SPE;Schleichen, Verstecken, Taschendiebstahl, Schlösser öffnen, unbemerkt bleiben;Scharfsinnigkeit;neu: fehlte bisher ganz;#7B1FA2 #2E7D32 #F9A825

@@ -1,67 +1,70 @@
-# Hope lies Within 2.0 Foundry System
+# Hope lies Within 2.0 – Foundry VTT System
 
-Dies ist der V1-Prototyp des Foundry-VTT-Systems fuer **Hope lies Within 2.0**.
+Foundry-VTT-System (Version 14) für das Pen-&-Paper **Hope lies Within**, Regelstand **Kanon 2.0**.
 
-## Was V1 kann
+## Installation
 
-- Foundry-Systemmanifest laden
-- Charaktere, NSCs und Monster als Actor-Typen anlegen
-- Attribute und Ressourcen im Character Sheet pflegen
-- World-Skills automatisch aus je drei Attributen plus Bonus berechnen
-- World-Skill-Checks in den Chat wuerfeln
-- Skills, Waffen, Ruestung, Ausruestung, Verbrauchsitems und Materialien als Items anlegen
-- einfache Skill- und Item-Sheets nutzen
-- Aktionspunkte als echte Combat-Ressource verwenden
-- Items, Waffen, Ruestungen und Skills aus JSON-Dateien importieren
-- Import-Ordner automatisch nach Kategorie und Tier erstellen
-- Accessories mit maximal 3 ausgeruesteten Plaetzen und Inventarlimit testen
-
-## Installation zum lokalen Testen
-
-1. Den gesamten Ordner `Foundry Game System HLW` in Foundrys Systemordner kopieren oder verlinken.
-2. Der Ordnername sollte fuer den ersten Test `hope-lies-within-2` sein, weil die Templates unter diesem Systempfad referenziert werden.
-3. Foundry starten.
-4. Beim Erstellen einer Welt das System **Hope lies Within 2.0** auswaehlen.
-5. Einen Actor vom Typ `character` erstellen und das Sheet testen.
-
-## Installation per Manifest-URL
-
-Sobald das System auf GitHub liegt, kannst du in Foundry diese Manifest-URL verwenden:
+In Foundry unter *Game Systems → Install System* diese Manifest-URL eintragen:
 
 ```text
 https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json
 ```
 
-Die genaue Anleitung steht in [MANIFEST_URL_ANLEITUNG.md](MANIFEST_URL_ANLEITUNG.md).
+## Regeln (Kanon 2.0)
 
-## JSON-Import
+- **Werte:** STR, DEX, CON, INT, WIS, CHA, AGL, SPE, EDU, SOU. Jeder Wert startet bei 1. Level 1: 5 freie Punkte + 1 Herkunftspunkt, bis Level 10 +1 pro Level, ab Level 11 +2 pro Level. Der Bogen zeigt verteilte und erlaubte Punkte.
+- **Klasse:** ergibt sich aus der Verteilung der Werte (Basic ab 10 verteilten Punkten, T1 ab 20, T2 ab 40, T3 ab 60). Der Bogen schlägt die passende Klasse automatisch vor.
+- **Kampfwerte:** HP = 20 + 2 × Level + 3 × CON + Rüstungs-HP · Rüstwert = 8 + ⌊(AGL + DEX) ÷ 4⌋ · Magieresistenz = 8 + ⌊(WIS + SOU) ÷ 4⌋ · Blockwert höchstens 8 · Bewegung = 3 + ⌊SPE ÷ 6⌋ · Initiative = 1W20 + ⌊SPE ÷ 2⌋ · Inventar = 10 + STR.
+- **Angriff:** 1W20 + Genauigkeit (⌊Primärwert ÷ 3⌋) gegen Rüstwert (physisch) oder Magieresistenz (magisch). Natürliche 20 verdoppelt die Schadenswürfel, natürliche 1 verfehlt. Schaden = Skill + ausgerüstete Waffe + ⌊Primär ÷ 4⌋ + ⌊Sekundär ÷ 8⌋ − Blockwert, mindestens 1. Heil-Skills heilen ohne Trefferwurf.
+- **Zug:** Bewegung + 1 Aktion + 1 Schnellaktion + 1 Reaktion. Skills mit Einsatz „Schnellaktion“ verbrauchen die Schnellaktion. Abwehrhaltung: RW und MR +2 bis zum nächsten eigenen Zug.
+- **World-Skills (11):** 1W20 + Summe der drei Werte gegen eine Schwierigkeit. Natürliche 20 gelingt immer, natürliche 1 misslingt immer.
+- **Währung:** Kes. 100 Silber-Kes (SK) = 1 Gold-Kes (GK). Eingaben wie „1 GK 20 SK“ funktionieren.
+- **Korruption:** 0–100, Stufen bei 25, 50, 75; 100 ist der Kipppunkt.
 
-Die Importdateien liegen unter `import/`. Als GM kannst du in der Foundry-Konsole importieren:
+Die vollständigen Regeltabellen liegen unter [`docs/regeln`](docs/regeln), die Spielerbücher unter [`docs/spieler`](docs/spieler).
+
+## Daten importieren
+
+Als GM in der Item-Sidebar auf **HLW JSON Import** klicken (oder im Inventar auf „JSON importieren“). Importiert werden in Ordnern nach Kategorie und Rang:
+
+| Datei | Inhalt |
+|---|---|
+| `import/weapons.json`, `armor.json`, `accessories.json` | Ausrüstung mit Schadenswürfel, HP-Würfel und Boni |
+| `import/equipment.json`, `consumables.json`, `food-drink.json`, `materials.json`, `junk.json` | Abenteurerbedarf, Tränke, Gerichte, Grundmaterialien, Abyss-Steine, Müll |
+| `import/natural.json`, `minerals.json` | Pflanzen und Mineralien mit Fundgebiet |
+| `import/skills.json`, `class-skills.json` | Skills und Klassen-Skills |
+| `import/monsters.json` | Bestiarium als Monster-Actors (Werte nach Rang, Rolle und Größe) |
+
+Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP werden beim Appraisal gewürfelt: im Item-Bogen auf „Würfeln“ klicken.
+
+## NSC-Gespräch
+
+- Spieler doppelklicken auf eine NSC-Figur: Ein rahmenloses Fenster zeigt links das Porträt, rechts alles, was die Gruppe über den NSC weiß, und eigene Notizen (pro Spieler gespeichert).
+- Der Name steht für Spieler zuerst als „???“. Jeder kann selbst einen Namen eintragen. Der GM gibt den echten Namen per Haken frei.
+- Der GM öffnet das Gespräch über den Sprechblasen-Knopf im Token-HUD, legt Einträge an, gibt sie frei und kann das Gespräch mit „Allen zeigen“ bei allen öffnen.
+
+## Lindhain (Startdorf)
+
+Als GM in der Konsole oder per Makro:
 
 ```js
-await game.hlw.importAllJson()
+game.hlw.erstelleLindhain()
 ```
 
-Details und Beispielstrukturen stehen in [IMPORT_JSON_ANLEITUNG.md](IMPORT_JSON_ANLEITUNG.md).
+Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts und Gesprächsdaten sowie Ortsnotizen. Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein.
 
-Typische Foundry-Systempfade:
-
-- macOS: `~/Library/Application Support/FoundryVTT/Data/systems/hope-lies-within-2`
-- Windows: `%LOCALAPPDATA%/FoundryVTT/Data/systems/hope-lies-within-2`
-- Linux: `~/.local/share/FoundryVTT/Data/systems/hope-lies-within-2`
-
-## V1-Regelbasis
+## Struktur
 
 ```text
-World-Skill-Check = 1W20 + Attribut 1 + Attribut 2 + Attribut 3 + Bonus
+system.json, template.json   Manifest und Datenmodell
+scripts/hlw.js               Actor, Bögen, Kampf, Import
+scripts/hlw-regeln.js        Regeln aus Kanon 2.0 (Kampfwerte, Punkte, Klassen, Kes)
+scripts/hlw-talk.js          NSC-Gespräch
+scripts/hlw-szenen.js        Szenenaufbau Lindhain
+data/klassen.json            Klassen mit Lvl-Satz
+import/                      Daten für den JSON-Import
+assets/                      Karten, Gebäude, Dächer, NSC-Porträts und Tokens
+docs/                        Spielerbücher und Regeltabellen
 ```
 
-Der Bonus ist in V1 manuell. Automatische Boni aus Jobs, Titeln, Insignien, Ausruestung, Sets und temporaeren Effekten kommen spaeter.
-
-## Naechste sinnvolle Schritte
-
-1. System in Foundry laden und den ersten Charakter erstellen.
-2. World-Skill-Wurf im Chat testen.
-3. Einen Spieler-Skill und eine Waffe als Item anlegen.
-4. Combat Tracker mit einem Charakter und einem Monster testen.
-5. Danach entscheiden, ob als naechstes Cooldown-Automation, Item-Import oder Sheet-Polish kommt.
+Die Daten werden aus den Kanon-2.0-Tabellen erzeugt. GM-Material (Weltgeschichte, Kampagne, Wächter) ist bewusst nicht in diesem öffentlichen Repository.

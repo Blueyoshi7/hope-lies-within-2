@@ -1,0 +1,147 @@
+﻿Name;Rang;Wert (SK);Marktwert;Händler zahlt;Beschreibung;Art / Slot;Fundort;HP;Schadens-Roll (Appraisal);Hinweis
+"Ätherium""s""-Ring";D;180;1 GK 80 SK;72 SK;"Schaden +1; Set: Ätherium-1/3er-Set: Schaden +3";Accessoires;Tier 1 Cache;;;
+Athreas's-Ohrring;C;300;3 GK;1 GK 20 SK;"Verstärkt gewirkte Heilung 1W4; Set: Athrea's-2/3er-Set: Heilung + 1W20 statt Eigeneffekt";Accessoires;Tier 2 Cache;;;
+Erdkern-Armband;D;90;90 SK;36 SK;"Rüstwert +1; Set: Erdkern-1/3er-Set: Rüstwert +1";Accessoires;Tier 1 Cache;;;
+Erdkern-Ring;D;90;90 SK;36 SK;"Rüstwert +1; Set: Erdkern-2/3er-Set: Rüstwert +1";Accessoires;Tier 1 Cache;1W6;;
+Erdkern-Kette;D;120;1 GK 20 SK;48 SK;"Rüstwert +1; Set: Erdkern-3/3er-Set: Rüstwert +1";Accessoires;Tier 1 Cache;1W6;;
+Blutstein-Kette;D;60;60 SK;24 SK;"Keine; Set: Kein Set-Bonus";Accessoires;Tier 1 Cache;2W6;;
+Donnerkeil-Ohrring;D;160;1 GK 60 SK;64 SK;"Genauigkeit +1; Set: Kein Set-Bonus";Accessoires;Tier 1 Cache;;;
+Moosachat-Armband;D;50;50 SK;20 SK;"Naturkunde / Tierkunde +1; Set: Moosachat 1/3er-Set: Naturkunde / Tierkunde +2";Accessoires;Tier 1 Cache;;;
+Moosachat-Kette;D;50;50 SK;20 SK;"Naturkunde / Tierkunde +1; Set: Moosachat 2/3er-Set: Naturkunde / Tierkunde +2";Accessoires;Tier 1 Cache;;;
+"Ätherium""s""-Armband";C;600;6 GK;2 GK 40 SK;"Schaden +2; Set: Ätherium-2/3er-Set: Schaden +3";Accessoires;Tier 2 Cache;;;
+Athreas's-Ring;C;400;4 GK;1 GK 60 SK;"Verstärkt gewirkte Heilung 1W4; Set: Athrea's-1/3er-Set: Heilung + 1W20 statt Eigeneffekt";Accessoires;Tier 2 Cache;;;
+Harmonium-Kette;B;2800;28 GK;11 GK 20 SK;"Verhindert das Ausbrechen der Korruption.; Set: Kein Set-Bonus";Accessoires;Tier 2 Cache;;;
+Schattenseide-Ohrring;C;500;5 GK;2 GK;"Rüstwert +2; Set: Kein Set-Bonus";Accessoires;Tier 2 Cache;;;
+Zeit-Stein-Ring;A;4500;45 GK;18 GK;"EXP +10%; Set: Kein Set-Bonus";Accessoires;Tier 2 Cache;;;
+Moosachat-Ring;C;250;2 GK 50 SK;1 GK;"Naturkunde / Tierkunde +1; Set: Moosachat 3/3er-Set: Naturkunde / Tierkunde +2";Accessoires;Tier 2 Cache;;;
+Windfederstein-Armband;C;500;5 GK;2 GK;"Bewegungsweite +1; Set: Windfederstein-1/2er-Set: Bewegungsweite +1";Accessoires;Tier 2 Cache;;;
+Ätherium-Kette;A;4000;40 GK;16 GK;"Schaden +4; Set: Ätherium-3/3er-Set: Schaden +3";Accessoires;Tier 3 Cache;;;
+Athreas's-Kette;B;1800;18 GK;7 GK 20 SK;"Verstärkt gewirkte Heilung 1W6; Set: Athrea's-3/3er-Set: Heilung + 1W20 statt Eigeneffekt";Accessoires;Tier 3 Cache;;;
+Drachenherz-Ohrring;A;9500;95 GK;38 GK;"Rüstwert +3 / Schaden +3; Set: Kein Set-Bonus";Accessoires;Tier 3 Cache;;;
+Göttertränen-Armband;A;11000;110 GK;44 GK;"Verstärkt gewirkte Heilung +1W20; Set: Kein Set-Bonus";Accessoires;Tier 3 Cache;;;
+Sternenstein-Armband;A;3500;35 GK;14 GK;"Genauigkeit +2; Set: Kein Set-Bonus";Accessoires;Tier 3 Cache;;;
+Windfederstein-Ring;B;1400;14 GK;5 GK 60 SK;"Bewegungsweite +1; Set: Windfederstein-2/2er-Set: Bewegungsweite +1";Accessoires;Tier 3 Cache;;;
+Lederhandschuhe;E;25;25 SK;10 SK;"Keine; Set: Kein Set-Bonus";Arme;Tier 1 Cache;1W6;;
+Reste von Lederhandschuhen;E;2;2 SK;1 SK;Keine;Arme;Tier 1 Cache;;;
+Handschuhe des Heilers;C;500;5 GK;2 GK;"Heilungen von Skills +1W4; Set: Kein Set-Bonus";Arme;Tier 2 Cache;1W6;;
+Verstärkte Lederhandschuhe;C;250;2 GK 50 SK;1 GK;"Keine; Set: Kein Set-Bonus";Arme;Tier 2 Cache;2W6;;
+Sternenstein-Handschuhe;C;600;6 GK;2 GK 40 SK;"Keine; Set: Sternen-1/3er-Set: Skill: Zug der Sterne";Arme;Tier 2 Cache;1W6;;
+Windfeder Arme;C;500;5 GK;2 GK;Set: Windfeder-2/2er-Set: Laufweite +1;Arme;Tier 2 Cache;1W6;;
+Handschuhe der Musik;B;1200;12 GK;4 GK 80 SK;"Keine; Set: Kann jedes Instrument Spielen.";Arme;GM;;;
+Abyssalith-Handschuhe;B;2800;28 GK;11 GK 20 SK;Set: Abysallith-2/2er-Set: Magischer Schaden +4;Arme;Tier 3 Cache;2W6;;
+Handschuhe des Quälers;B;1200;12 GK;4 GK 80 SK;"""-"" 10 HP und ""+"" 5 Schaden; Set: Quälers-2/3er-Set: HP flat 15, Schaden +30 Ersetzt einzelne Effekte";Arme;Tier 3 Cache;;;
+Holz-Breitakt (2 Händer);D;40;40 SK;16 SK;"Keine; Set: Kein Set-Bonus";Axt;Tier 1 Cache;;1D6;
+Stein-Kurzaxt;E;30;30 SK;12 SK;"Keine; Set: Kein Set-Bonus";Axt;Tier 1 Cache;;1D6;
+Mag. Großaxt;C;700;7 GK;2 GK 80 SK;"Erlaubt den Einsatz von Magie mit dieser Waffe.; Set: Kein Set-Bonus";Axt;Tier 2 Cache;;2D6;
+Stahl-Breitakt (2 Händer);C;350;3 GK 50 SK;1 GK 40 SK;"Keine; Set: Kein Set-Bonus";Axt;Tier 2 Cache;;2D6;
+Stahl-Kurzaxt;C;300;3 GK;1 GK 20 SK;"Keine; Set: Kein Set-Bonus";Axt;Tier 2 Cache;;2D6;
+Lederstiefel;E;30;30 SK;12 SK;"Keine; Set: Kein Set-Bonus";Beine;Tier 1 Cache;1W6;;
+Reste von Lederstiefel;E;2;2 SK;1 SK;Keine;Beine;Tier 1 Cache;;;
+Robuste Stiefel;D;200;2 GK;80 SK;"Keine; Set: Kein Set-Bonus";Beine;Tier 2 Cache;2W6;;
+Hose aus Schattenseide;C;500;5 GK;2 GK;"Keine; Set: Schattenseide-2/3er-Set: Duo-Blade Knifes";Beine;Tier 2 Cache;1W6;;
+Arme aus Schattenseide;C;500;5 GK;2 GK;"Keine; Set: Schattenseide-3/3er-Set: Duo-Blade Knifes";Beine;Tier 2 Cache;1W6;;
+Sternenstein-Beine;C;600;6 GK;2 GK 40 SK;"Keine; Set: Sternen-2/3er-Set: Skill: Zug der Sterne";Beine;Tier 2 Cache;1W6;;
+Windfeder Beine;C;500;5 GK;2 GK;Set: Windfeder-1/2er-Set: Laufweite +1;Beine;Tier 2 Cache;1W6;;
+Beine der Musik;B;1200;12 GK;4 GK 80 SK;"Keine; Set: Kann jedes Instrument Spielen.";Beine;GM;;;
+Stiefel der Windläufer;B;2000;20 GK;8 GK;"Laufweite +1; Set: Kein Set-Bonus";Beine;Tier 3 Cache;2W6;;
+Schuhe des Quälers;B;1200;12 GK;4 GK 80 SK;"""-"" 10 HP und ""+"" 5 Schaden; Set: Quälers-3/3er-Set: HP flat 15, Schaden +30 Ersetzt einzelne Effekte";Beine;Tier 3 Cache;;;
+Gilden Bogen;E;30;30 SK;12 SK;"Von der Gilde leihen. Fix 2 DMG; Set: 3 Gold beim Zurückgeben, 4 Gold wenn zerstört";Bogen;Gilde;;0.0;"Leihwaffe der Gilde; der Wert ist das Pfand."
+Gebrochener Bogen;E;3;3 SK;1 SK;"Keine; Set: Kein Set-Bonus";Bogen;Tier 1 Cache;;;
+Holzbogen;D;40;40 SK;16 SK;"Keine; Set: Kein Set-Bonus";Bogen;Tier 1 Cache;;1D6;
+Bogen der Präzision;C;500;5 GK;2 GK;"""+"" 2 Pfeilschaden; Set: Kein Set-Bonus";Bogen;Tier 2 Cache;;2D6;
+Köcher des Waldes;B;900;9 GK;3 GK 60 SK;"Im Köcher entstehen jederzeit 3 Holz-Pfeile.; Set: Kein Set-Bonus";Bogen;GM;;;
+Kurzbogen;C;250;2 GK 50 SK;1 GK;"Keine; Set: Kein Set-Bonus";Bogen;Tier 2 Cache;;2D6;
+Mag. Silberbogen;C;700;7 GK;2 GK 80 SK;"Erlaubt den Einsatz von Magie mit dieser Waffe.; Set: Kein Set-Bonus";Bogen;Tier 2 Cache;;2D6;
+Langbogen des Falken;B;2800;28 GK;11 GK 20 SK;"""+"" 7 Fernkampfschaden; Set: Kein Set-Bonus";Bogen;Tier 3 Cache;;3D6;
+Ala’rith (אַלָרִית) „Der Dämmerungsbogen“;SS;65000;650 GK;260 GK;;Bogen;Abyss;;6W6;Abyss-Artefakt: nur über den Schwarzmarkt handelbar.
+Kettenhemd;D;120;1 GK 20 SK;48 SK;"Rüstwert +1 , Movement -1; Set: Kein Set-Bonus";Brust;Tier 1 Cache;2W6;;
+Lederrobe;D;50;50 SK;20 SK;"Keine; Set: Kein Set-Bonus";Brust;Tier 1 Cache;1W6;;
+Stoffrobe mit Kapuze;D;60;60 SK;24 SK;"Rüstwert +1; Set: Kein Set-Bonus";Brust;Tier 1 Cache;2W6;;
+Reste eines Lederbrustpanzers;E;3;3 SK;1 SK;Keine;Brust;Tier 1 Cache;;;
+Eisenbrustpanzer;C;400;4 GK;1 GK 60 SK;"Keine; Set: Kein Set-Bonus";Brust;Tier 2 Cache;2W6;;
+Robe aus Schattenseide;C;550;5 GK 50 SK;2 GK 20 SK;"Keine; Set: Schattenseide-1/3er-Set: Duo-Blade Knifes";Brust;Tier 2 Cache;1W6;;
+Brust des Unbesiegbaren;B;2800;28 GK;11 GK 20 SK;"HP +3W6; Set: Kein Set-Bonus";Brust;Tier 3 Cache;3W6;;
+Mithril-Brustpanzer;B;2600;26 GK;10 GK 40 SK;"30 HP; Set: Mithril-2/2er-Set: HP +20";Brust;Tier 3 Cache;;;
+Robe des Quälers;B;1200;12 GK;4 GK 80 SK;"""-"" 10 HP und ""+"" 5 Schaden; Set: Quälers-1/3er-Set: HP flat 15, Schaden +30 Ersetzt einzelne Effekte";Brust;Tier 3 Cache;;;
+Gilden Dolch;E;30;30 SK;12 SK;"Von der Gilde leihen. Fix 2 DMG; Set: 3 Gold beim Zurückgeben, 4 Gold wenn zerstört";Dolch;Gilde;;0.0;"Leihwaffe der Gilde; der Wert ist das Pfand."
+Bronze Dolch;D;50;50 SK;20 SK;"Keine; Set: Kein Set-Bonus";Dolch;Tier 1 Cache;;1D6;
+Messingdolch;D;80;80 SK;32 SK;"Schaden +2; Set: Kein Set-Bonus";Dolch;Tier 1 Cache;;1D6;
+Abgebrochener Dolch;E;2;2 SK;1 SK;Keine;Dolch;Tier 1 Cache;;;
+Eisendolch;D;200;2 GK;80 SK;"Keine; Set: Kein Set-Bonus";Dolch;Tier 2 Cache;;2D6;
+Kunai;C;400;4 GK;1 GK 60 SK;"Erlaubt den Einsatz von Magie mit dieser Waffe.; Set: Kein Set-Bonus";Dolch;Tier 2 Cache;;2D6;
+Mag. Metalldolch;C;600;6 GK;2 GK 40 SK;"Erlaubt den Einsatz von Magie mit dieser Waffe.; Set: Kein Set-Bonus";Dolch;Tier 2 Cache;;2D6;
+Wurfdolche der Präzision;B;2500;25 GK;10 GK;"100% Genauigkeit bei Wurfattacken (Kein ACC-Check); Set: Kein Set-Bonus";Dolch;Tier 3 Cache;;3D6;
+Mahr’desh (מַהרְדֶש) „Der Seelenspalter“;SS;65000;650 GK;260 GK;;Dolch;Abyss;;6W6;Abyss-Artefakt: nur über den Schwarzmarkt handelbar.
+Schattenklinge;S;23000;230 GK;92 GK;;Dolch;GM;;4W6+3;
+Holz-Hammer (2 Händer);D;35;35 SK;14 SK;"Keine; Set: Kein Set-Bonus";Hammer;Tier 1 Cache;1W6;1D6;
+Mag. Großhammer;C;700;7 GK;2 GK 80 SK;"Erlaubt den Einsatz von Magie mit dieser Waffe.; Set: Kein Set-Bonus";Hammer;Tier 2 Cache;;2D6;
+Stahl-Hammer (2 Händer);C;350;3 GK 50 SK;1 GK 40 SK;"Keine; Set: Kein Set-Bonus";Hammer;Tier 2 Cache;1W6;2D6;
+Kampfhammer (2 Händer);B;1600;16 GK;6 GK 40 SK;"Keine; Set: Kein Set-Bonus";Hammer;Tier 3 Cache;1W6;3D6;
+Lederhelm;D;35;35 SK;14 SK;"Keine; Set: Kein Set-Bonus";Helm;Tier 1 Cache;1W6;;
+Reste eines Lederhelms;E;2;2 SK;1 SK;Keine;Helm;Tier 1 Cache;;;
+Gehärteter Lederhelm;D;200;2 GK;80 SK;"Keine; Set: Kein Set-Bonus";Helm;Tier 2 Cache;2W6;;
+Ätherium-Mütze;C;600;6 GK;2 GK 40 SK;"""+"" 2 Magischer Schaden; Set: Kein Set-Bonus";Helm;Tier 2 Cache;1W6;;
+Sternenstein-Kopf;C;600;6 GK;2 GK 40 SK;"Keine; Set: Sternen-3/3er-Set: Skill: Zug der Sterne";Helm;Tier 2 Cache;1W6;;
+Kopf der Musik;B;1200;12 GK;4 GK 80 SK;"Keine; Set: Kann jedes Instrument Spielen.";Helm;GM;;;
+Mithril-Helm;B;1800;18 GK;7 GK 20 SK;"20 HP; Set: Mithril-1/2er-Set: HP +20";Helm;Tier 3 Cache;;;
+Stoffrobe;E;30;30 SK;12 SK;"Keine; Set: Kein Set-Bonus";Helm, Brust;Tier 1 Cache;1W6;;
+Reste einer Stoffrobe;E;2;2 SK;1 SK;Keine;Helm, Brust;Tier 1 Cache;;;
+Gefütterte Stoffrobe;D;200;2 GK;80 SK;"Keine; Set: Kein Set-Bonus";Helm, Brust;Tier 2 Cache;2W6;;
+Abyssalith-Robe;B;3000;30 GK;12 GK;Set: Abysallith-1/2er-Set: Magischer Schaden +4;Helm, Brust;Tier 3 Cache;3W6;;
+Holz-Kampfstab (2 Händer);E;20;20 SK;8 SK;"Keine; Set: Kein Set-Bonus";Kampfstab;Tier 1 Cache;;1D6;
+Mag. Kampfstab;C;650;6 GK 50 SK;2 GK 60 SK;"Erlaubt den Einsatz von Magie mit dieser Waffe.; Set: Kein Set-Bonus";Kampfstab;Tier 2 Cache;;2D6;
+Stahl-Kampfstab (2 Händer);C;250;2 GK 50 SK;1 GK;"Keine; Set: Kein Set-Bonus";Kampfstab;Tier 2 Cache;;2D6;
+Kampfstab (2 Händer);B;1200;12 GK;4 GK 80 SK;"Keine; Set: Kein Set-Bonus";Kampfstab;Tier 3 Cache;;3D6;
+Gilden Keule;E;30;30 SK;12 SK;"Von der Gilde leihen. Fix 2 DMG; Set: 3 Gold beim Zurückgeben, 4 Gold wenn zerstört";Keule;Gilde;;0.0;"Leihwaffe der Gilde; der Wert ist das Pfand."
+Holzkeule;E;15;15 SK;6 SK;"Keine; Set: Kein Set-Bonus";Keule;Tier 1 Cache;;1D6;
+Zerbrochene Keule;E;2;2 SK;1 SK;Keine;Keule;Tier 1 Cache;;;
+Gehärtete Keule;D;200;2 GK;80 SK;"Keine; Set: Kein Set-Bonus";Keule;Tier 2 Cache;;2D6;
+Keule der Leichtigkeit;C;500;5 GK;2 GK;"Schaden +3 wenn kein Skill verwendet wird.; Set: Kein Set-Bonus";Keule;Tier 2 Cache;;2D6;
+Verstärkte Holzkeule;C;220;2 GK 20 SK;88 SK;"Keine; Set: Kein Set-Bonus";Keule;Tier 2 Cache;;2D6;
+Donnerkeule;B;3000;30 GK;12 GK;"Erlaubt den Einsatz von Magie mit dieser Waffe. Elektro-Skills +5 Schaden; Set: Kein Set-Bonus";Keule;Tier 3 Cache;;3D6;
+Kriegskeule der Zerstörung;S;22000;220 GK;88 GK;;Keule;GM;;5W6;
+Vha’Lom (וָה׳לוֹם) „Der Sturmhammer“;SS;65000;650 GK;260 GK;;Keule;Abyss;;6W6;Abyss-Artefakt: nur über den Schwarzmarkt handelbar.
+Sapax (Kurzaxt - Verflucht - Stein);B;1000;10 GK;4 GK;"Ausgerüstet erhält der Spieler:  5 Rüstwert, Schaden je nach AGL & SPE Pro Angrif 1W6 schaden am Spieler, Ausgerüstet muss der Spieler die Waffe verw.; Set: Mit seiner Bruderwaffe wird der Fluch aufgehoben";Kurzaxt;GM;;;
+Tarax (Kurzaxt - Verflucht - Stein);B;1000;10 GK;4 GK;"Ausgerüstet erhält der Spieler: 10 HP, Schaden je nach STR & DEX Pro Angrif 1W6 schaden am Spieler, Ausgerüstet muss der Spieler die Waffe verw.; Set: Mit seiner Bruderwaffe wird der Fluch aufgehoben";Kurzaxt;GM;;;
+Gilden Lanze;E;30;30 SK;12 SK;"Von der Gilde leihen. Fix 2 DMG; Set: 3 Gold beim Zurückgeben, 4 Gold wenn zerstört";Lanze;Gilde;;0.0;"Leihwaffe der Gilde; der Wert ist das Pfand."
+Bronze Hellebarde;D;80;80 SK;32 SK;"Keine; Set: Kein Set-Bonus";Lanze;Tier 1 Cache;;1D6;
+Eisen Hellebarde;C;350;3 GK 50 SK;1 GK 40 SK;"Keine; Set: Kein Set-Bonus";Lanze;Tier 2 Cache;;2D6;
+Lanze des Vampirs;A;3800;38 GK;15 GK 20 SK;"1W6 Heilung nach jedem Gegnerkontakt; Set: Kein Set-Bonus";Lanze;Tier 3 Cache;;4W6;
+Lanze der Vahaa;S;26000;260 GK;104 GK;;Lanze;GM;;1W20+7;
+Rha’Varan (רַה׳וָארָן) „Blutgeborene Lanze“;SS;65000;650 GK;260 GK;;Lanze;Abyss;;6W6;Abyss-Artefakt: nur über den Schwarzmarkt handelbar.
+Holzschild;D;40;40 SK;16 SK;"Rüstwert -> Blockwert +2; Set: Kein Set-Bonus";Schild;Tier 1 Cache;;1D4;
+Eisenschild;C;300;3 GK;1 GK 20 SK;"Rüstwert -> Blockwert +4; Set: Kein Set-Bonus";Schild;Tier 2 Cache;2W6;;
+Schild des Glaubens;B;3000;30 GK;12 GK;"Rüstwert -> Blockwert +6 1W6 Heilung nach erfolgreichem Block.; Set: Kein Set-Bonus";Schild;Tier 3 Cache;2W6;;
+Gilden Schwert;E;30;30 SK;12 SK;"Von der Gilde leihen. Fix 2 DMG; Set: 3 Gold beim Zurückgeben, 4 Gold wenn zerstört";Schwert;Gilde;;0.0;"Leihwaffe der Gilde; der Wert ist das Pfand."
+Bronze Langschwert;D;90;90 SK;36 SK;"Keine; Set: Kein Set-Bonus";Schwert;Tier 1 Cache;;1D6;
+Unbrauchbares Schwert;E;3;3 SK;1 SK;Keine;Schwert;Tier 1 Cache;;;
+Eisenschwert;C;350;3 GK 50 SK;1 GK 40 SK;"Keine; Set: Kein Set-Bonus";Schwert;Tier 2 Cache;;2D6;
+Mag. Breitschwert;C;750;7 GK 50 SK;3 GK;"Erlaubt den Einsatz von Magie mit dieser Waffe.; Set: Kein Set-Bonus";Schwert;Tier 2 Cache;;2D6;
+Schwert des Sturms;C;700;7 GK;2 GK 80 SK;"""+"" 3 Fernkampfschaden";Schwert;Tier 2 Cache;;2D6;
+Geschmiedetes Stahlschwert;B;1500;15 GK;6 GK;"Keine; Set: Kein Set-Bonus";Schwert;Tier 3 Cache;;3D6;
+Klinge der Vahaa;S;26000;260 GK;104 GK;;Schwert;GM;;1W20+7;
+Shara’kath (שַרָה׳קַת) „Klinge des Wächters“;SS;70000;700 GK;280 GK;;Schwert;Abyss;;6W6;Abyss-Artefakt: nur über den Schwarzmarkt handelbar.
+Thal’Rashan (תַלְרָשָׁן) „Die Dämmerungsklinge“;SS;65000;650 GK;260 GK;;Schwert;Abyss;;6W6;Abyss-Artefakt: nur über den Schwarzmarkt handelbar.
+Wurfspeer;D;200;2 GK;80 SK;"Keine; Set: Kein Set-Bonus";Speer;Tier 2 Cache;;2D6;
+Gilden Zauberstab;E;30;30 SK;12 SK;"Von der Gilde leihen. Fix 2 DMG; Set: 3 Gold beim Zurückgeben, 4 Gold wenn zerstört";Staff;Gilde;;0.0;"Leihwaffe der Gilde; der Wert ist das Pfand."
+Ve;D;40;40 SK;16 SK;"Keine; Set: Kein Set-Bonus";Staff;Tier 1 Cache;;1D6;
+Zerbrochener Zauberstab;E;2;2 SK;1 SK;Keine;Staff;Tier 1 Cache;;;
+Zarath’kul (זַרַתְכּוּל) „Der Schattenbrenner“;SS;80000;800 GK;320 GK;Der niedrigste Roll des Gegenstands wird als Net-20 gewertet.;Staff;Abyss;1W20;2W20;Abyss-Artefakt: nur über den Schwarzmarkt handelbar.
+Handschuhe der Ahnen;S;42000;420 GK;168 GK;Erlaubt den einsatz von Ahnen-Magie. Verbietet den Einsatz von Neuer oder Heiliger Magie.;Arme;GM;3W6;;
+Verstärkter Zauberstab der Elemente;C;500;5 GK;2 GK;;Staff;Tier 2 Cache;;2D6;
+Wüsten-Robe (Brust, Kopf);C;250;2 GK 50 SK;1 GK;Leichte Kleidung, schützt vor Hitze Rüstwert +2;Brust;Tier 2 Cache;1W6;;
+Wüsten-Beinschutz;D;200;2 GK;80 SK;Leichter Beinschutz, schützt vor Hitze, Rüstwert +1, HP+2;Beine;Tier 2 Cache;;;
+Wüsten-Armschutz;D;200;2 GK;80 SK;Leichter Armschutz, schützt vor Hitze, Rüstwert +1, HP+3;Arme;Tier 2 Cache;;;
+Arugal;SS;;nicht verkäuflich;;"verflucht, Charakter Bound, Charakter kann nicht sterben, entzieht lebewesen im umfeld die Lebenskraft jeder angriff kostet 1/2 stärke des Schadens.; Set: 2026-01-01 00:00:00";;GM;;2W20;Verflucht und charaktergebunden: nicht verkäuflich.
+Runenklinge der Nordwacht;A;8000;80 GK;32 GK;Neu (3.3): +1W6 Schaden gegen Corrupted.;Schwert;Tier 3 Cache;;4W6;Neu (Balancing 3.3)
+Bogen der Sturmfalken;A;8000;80 GK;32 GK;Neu (3.3): Reichweite +2.;Bogen;Tier 3 Cache;;4W6;Neu (Balancing 3.3)
+Stab des Gezeitenrufs;A;9000;90 GK;36 GK;Neu (3.3): Heilungen +1W6.;Staff;Tier 3 Cache;;4W6;Neu (Balancing 3.3)
+Hammer der Bergkönige (2 Händer);A;8500;85 GK;34 GK;Neu (3.3): Treffer stößt 1 Feld zurück.;Hammer;Tier 3 Cache;;4W6+2;Neu (Balancing 3.3)
+Harmonium-Brustpanzer;A;10000;100 GK;40 GK;Neu (3.3): Korruptions-Resistenz +1.;Brust;Tier 3 Cache;4W6;;Neu (Balancing 3.3)
+Eisflimmer-Helm;A;7000;70 GK;28 GK;Neu (3.3): Kälte zählt eine Wärmezone milder.;Helm;Tier 3 Cache;3W6;;Neu (Balancing 3.3)
+Amulett der Wachsamkeit;A;7500;75 GK;30 GK;Neu (3.3): Initiative +3, kann nicht überrascht werden.;Accessoires;Tier 3 Cache;;;Neu (Balancing 3.3)
+Klinge des Ersten Lichts;S;40000;400 GK;160 GK;Neu (3.3): +50 % Schaden gegen Corrupted und Verlorene.;Schwert;Kern-Truhe;;5W6;Neu (Balancing 3.3)
+Ätherium-Langbogen;S;38000;380 GK;152 GK;Neu (3.3): Ignoriert halbe Deckung.;Bogen;Kern-Truhe;;5W6;Neu (Balancing 3.3)
+Zepter der Sternenwacht;S;42000;420 GK;168 GK;Neu (3.3): Einmal pro Kampf ein Zauber ohne Cooldown.;Staff;Kern-Truhe;;5W6;Neu (Balancing 3.3)
+Drachenschuppen-Rüstung;S;45000;450 GK;180 GK;Neu (3.3): Feuerschaden halbiert.;Brust;Kern-Truhe;5W6;;Neu (Balancing 3.3)
+Ring der zweiten Chance;S;35000;350 GK;140 GK;Neu (3.3): Einmal pro Kapitel wird ein Sterbewurf zum Erfolg.;Accessoires;Kern-Truhe;;;Neu (Balancing 3.3)

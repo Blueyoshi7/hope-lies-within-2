@@ -1,0 +1,61 @@
+﻿Stufe;Nr.;Name;Art;Effekt
+1;1;Seit wann hab ich Wurst-Finger?;Negativ;1 Accessoire-Platz ist gesperrt.
+1;2;HYYYPPPPAAAAA;Neutral;Braucht keinen Schlaf mehr, hat aber immer Hunger (Mahlzeiten heilen nur halb).
+1;3;Haaatschiiii;Negativ;Naturkunde −2.
+1;4;Blood for the Blood-God;Neutral;Zieht Energie aus Tötungen: Schaden +1, aber +1 Korruption pro Tötung.
+1;5;Körper … soooo … schwer;Negativ;Bewegung −1.
+1;6;Ich bin Müüüde …;Negativ;Schaden −2.
+1;7;Über was hab ich nochmal nachgedacht?;Negativ;Erfindergeist −2.
+1;8;Meine Arme jucken, wäähh;Negativ;Ausrüstungsteil Arme ist gesperrt.
+1;9;Ahh, mein Rücken …;Neutral;Kann nur noch die getragene Ausrüstung tragen, kein Inventar.
+1;10;Monster sind schon gruselig …;Negativ;Rüstwert −2.
+1;11;Wie ging das nochmal?;Negativ;Skill-Slot 2 ist gesperrt.
+1;12;War das immer schon so schwer?;Negativ;Zweitwaffe / Schild ist gesperrt.
+1;13;Wie ging das nochmal?;Negativ;Skill-Slot 1 ist gesperrt.
+1;14;Ich spüre meine Finger nicht?!;Negativ;Handwerkskunst −2.
+1;15;Brauche ich eine Brille?;Negativ;Genauigkeit −1.
+1;16;Die Stimme;Neutral;Nachts flüstert eine Stimme. Einmal im Kapitel gibt sie einen Hinweis – der GM entscheidet, ob er stimmt.
+1;17;Buh … AHH … diese Albträume;Negativ;Willenskraft −2.
+1;18;Dein Kopf juckt permanent … Ahhhhh;Negativ;Ausrüstungsteil Kopf ist gesperrt.
+1;19;Wie ging das nochmal?;Negativ;Skill-Slot 3 ist gesperrt.
+1;20;Was bin ich eigentlich?;Negativ;Klassen-Skill ist gesperrt.
+2;1;Brüchige Haut;Negativ;Rüstwert −3.
+2;2;Violette Adern;Neutral;"Violette Adern unter der Haut. Wortgewandtheit −3 gegenüber Fremden; Corrupted halten dich kurz für ihresgleichen."
+2;3;Zitternde Hand;Negativ;Zweitwaffe / Schild ist gesperrt.
+2;4;Steinhunger;Negativ;Muss jede Nacht einen Abyss-Splitter berühren (+1 Korruption), sonst Verwundet.
+2;5;Taube Finger;Negativ;Handwerkskunst −5.
+2;6;Verschwommene Welt;Negativ;Genauigkeit −2.
+2;7;Abyss-Sicht;Neutral;Sieht im Dunkeln wie am Tag, aber bei Tageslicht Genauigkeit −2.
+2;8;Dunkle Gedanken;Negativ;Willenskraft −5.
+2;9;Wucherungen;Negativ;Ausrüstungsteile Kopf und Beine sind gesperrt.
+2;10;Löchriges Gedächtnis;Negativ;Skill-Slots 2 und 3 sind gesperrt.
+2;11;Wer war ich?;Negativ;Klassen-Skill und Skill-Slot 4 sind gesperrt.
+2;12;Kalte Hände;Negativ;Heilungen, die du wirkst, heilen −2.
+2;13;Dicke Finger;Negativ;3 Accessoire-Plätze sind gesperrt.
+2;14;Flüstern im Kopf;Negativ;Scharfsinnigkeit −5.
+2;15;Fremde Natur;Negativ;"Naturkunde −5; Tiere fliehen vor dir."
+2;16;Wilder Kern;Neutral;Magischer Schaden +2, aber bei einer gewürfelten 1–2 trifft der Zauber ein zufälliges Ziel.
+2;17;Bleierne Glieder;Negativ;Bewegung −2.
+2;18;Kraftlos;Negativ;Schaden −4.
+2;19;Leerer Kopf;Negativ;Erfindergeist −5.
+2;20;Panzerhaut;Negativ;Ausrüstungsteile Arme und Brust sind gesperrt.
+3;1;Kristallhaut;Neutral;Rüstwert +3, aber Bewegung −1 und Heilung an dir halbiert.
+3;2;Zweiter Herzschlag;Positiv;"Einmal im Kapitel bei 0 HP sofort mit 1 HP aufstehen; danach +5 Korruption."
+3;3;Leere Augen;Negativ;"Violette Augen. Jeder erkennt die Korruption; Wortgewandtheit −8, die Hüter werden gerufen."
+3;4;Fremder Wille;Negativ;Einmal pro Kampf bestimmt der GM eine deiner Aktionen.
+3;5;Abyss-Hunger;Negativ;Essen heilt nicht mehr. Nur Abyss-Steine nähren dich (Splitter = 10 HP, +1 Korruption).
+3;6;Steinwuchs;Negativ;In deiner Brust wächst ein Abyss-Stein. Max. HP −10. Wer dich tötet, findet einen kleinen Abyss-Stein.
+3;7;Schattenklaue;Neutral;Ein Arm wird zur Klaue: Nahkampf +1W6 Schaden, in dieser Hand keine Waffe.
+3;8;Gedächtnisfraß;Negativ;Vergisst einen zufälligen Skill bis zum Kapitelende.
+3;9;Ruf der Tiefe;Negativ;Jede Nacht Willenskraft 25, sonst wandert man im Schlaf nach Norden.
+3;10;Lebendiger Nebel;Negativ;Du verströmst Abyss-Nebel: Verbündete direkt neben dir würfeln am Rundenende Willenskraft 15 oder +1 Korruption.
+3;11;Seelenriss;Negativ;Insignien wirken nicht bis zur nächsten Reinigung.
+3;12;Verfall;Negativ;−1 auf einen zufälligen Wert, solange die Korruption über 50 liegt.
+3;13;Raserei;Negativ;Zu Kampfbeginn Willenskraft 20, sonst Rage für den ganzen Kampf.
+3;14;Abyss-Zunge;Positiv;Versteht Vaarah, die Sprache des Abyss, und Corrupted. Corrupted greifen dich zuletzt an.
+3;15;Kalter Körper;Neutral;Immun gegen Kälte und Gift, Feuer verursacht doppelten Schaden.
+3;16;Fremde Erinnerung;Neutral;Du siehst eine Erinnerung, die nicht deine ist (der GM gibt ein Lore-Fragment, wahr oder falsch).
+3;17;Offene Wunden;Negativ;Jeder Treffer gegen dich verursacht Blutend 1 bis zur Versorgung.
+3;18;Schwere Glieder;Negativ;Bewegung −2, Initiative −3.
+3;19;Gebrochener Kern;Negativ;Alle Skill-Cooldowns +1.
+3;20;Blick aus der Tiefe;Story;Etwas im Abyss wird auf dich aufmerksam (GM-Ereignis in diesem Kapitel).

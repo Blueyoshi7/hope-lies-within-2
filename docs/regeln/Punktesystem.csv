@@ -1,0 +1,28 @@
+﻿Bereich;Regel
+Werte;"Es gibt 10 Werte (STR, DEX, CON, INT, WIS, CHA, AGL, SPE, EDU, SOU). Jeder startet bei 1. Durch verteilte Punkte kann ein Wert höchstens 25 erreichen; Boni von Ausrüstung, Titeln oder Insignien dürfen darüber hinausgehen."
+Charaktererstellung;Level 1: 5 freie Punkte plus 1 Herkunftspunkt aus der Startvariante. Bei der Erstellung höchstens +3 auf einen Wert. Startkapital 50 SK und eine Leihwaffe der Gilde.
+Level-Up;Level 2–10: +1 Wertpunkt pro Level. Ab Level 11: +2 Wertpunkte pro Level. Höchstes Level 40 (75 verteilte Punkte).
+Wann gelevelt wird;EXP sammelt der GM laufend. Das Level-Up passiert beim nächsten Gildenbesuch (City-Chapter) oder mit einem Lvl-up-Orb im Lager (Movement-Chapter).
+Klasse;Die Klasse wird nach jedem Level-Up neu bestimmt (siehe Klassenregeln). Für die Klasse zählen nur verteilte Punkte, keine Boni.
+Skill-Slots;Level 1: 3 · Level 4: 4 · Level 8: 5 · Level 13: 6 · Level 18: 7 · Level 23: 8 · Level 30: 9 · Level 37: 10. Klassen-Skills brauchen keinen Slot. Für einen neuen Skill über dem Limit muss ein alter aufgegeben werden.
+Skill-Meisterung;Jeder Skill hat Lernpunkte (LP, siehe Skills-Tab). Wird er in einem Kampf erfolgreich eingesetzt, bekommt er 1 Übungspunkt (höchstens 1 pro Kampf). Bei LP Übungspunkten erreicht er Stufe 2 (+1 Schaden bzw. Heilung). Bei 3 × LP Stufe 3 (zusätzlich Cooldown −1, mindestens 1).
+Umverteilen;Nur während eines Zeitsprungs (Ausbildung oder Beruf, 3 Jahre): bis zu 5 verteilte Punkte dürfen verschoben werden. Danach wird die Klasse neu bestimmt.
+Insignien;Kommen nicht über Level, sondern durch Taten. Als Richtwert ist die erste ab etwa Level 15 möglich.
+Gildenrang;Richtwert für die Gruppe: F bis Level 4, E 5–9, D 10–15, C 16–22, B 23–29, A 30–35, S ab 36. Aufstieg weiter über Rangpunkte und Prüfungen.
+HP und Kampfwerte;"Siehe Tab Kampfwerte: HP = 20 + 2 × Level + 3 × CON + Rüstungs-HP; dazu Rüstwert, Magieresistenz, Blockwert, Genauigkeit, Bewegung, Initiative."
+
+Startvariante;Herkunftspunkt
+A: Dorfkinder;+1 CON – Harte Arbeit auf dem Hof
+B: Gildenrekruten;+1 EDU – Grundausbildung der Gilde
+C: Überlebende eines Nebelfalls;+1 SOU – Der Abyss-Nebel hat den Kern geweckt
+D: Kinder ruinierter Familien / Flüchtlinge;+1 SPE – Wer flieht, lernt zu rennen
+
+EXP-Quelle;EXP;Hinweis
+Quest abgeschlossen;Rang F 60 · E 90 · D 150 · C 240 · B 360 · A 540 · S 800 · SS 1.200;Pro Spieler, nach Gildenrang der Quest.
+Gegner besiegt;Rang E 5 · D 10 · C 20 · B 35 · A 60 · S 100 · SS 160;Pro Gegner und Spieler, nach Rang des Gegners. Flucht des Gegners zählt halb.
+Boss / Dungeon-Ende;Doppelte Quest-EXP des Dungeon-Rangs;Einmalig pro Dungeon.
+Entdeckung;20 – 100;Neuer Ort, Dungeon-Ebene, Geheimnis, Ahnenrune, Wahrheit über die Welt.
+Große Tat / starkes Rollenspiel;25 – 100;GM-Entscheidung. Auch der Weg zu einer Insignie.
+Kapitelabschluss;100 × Kapitelnummer (höchstens 1.000);Für alle Spieler gleich.
+Handwerk / Kochen;10 pro neuem Rezept;Nur beim ersten erfolgreichen Herstellen.
+Lvl-up-Orb;Sofortiges Level-Up im Lager;Seltene Belohnung (Patch 1.2). Ersetzt den Gildenbesuch für ein Level.

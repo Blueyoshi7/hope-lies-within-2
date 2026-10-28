@@ -1,0 +1,28 @@
+﻿Regel;Beschreibung
+Probe;1W20 + World-Skill-Wert gegen eine Schwierigkeit. Gleich oder höher ist ein Erfolg.
+World-Skill-Wert;"Summe der drei Attribute + Boni (Job, Titel, Ausrüstung, Set, Insignie, Werkzeug, Situation). Es gibt keine eigenen World-Skill-Punkte; spezialisieren kann man sich über Jobs, Ausrüstung und Werkzeug."
+Gegen eine Person;Hat ein NPC oder Gegner einen World-Skill-Wert, ist der Wert die Schwierigkeit (alte GM-Regel „Skill-Level des Ziels“). Bei echten Wettstreiten würfeln beide: 1W20 + Wert gegen 1W20 + Wert, Gleichstand gewinnt der Verteidiger.
+Natürliche 20 / 1;Eine gewürfelte 20 ist immer ein Erfolg, eine gewürfelte 1 immer ein Fehlschlag (beim Titel „Pechsträhne“ zählt jeder 5. Wurf als 1).
+Helfen;Wer sinnvoll hilft, gibt +2 (höchstens +4 von zwei Helfern). Der Helfer muss die Situation erklären können.
+Gruppenprobe;Alle würfeln, schafft mindestens die Hälfte, gelingt es der Gruppe (z. B. gemeinsam schleichen).
+Wiederholen;Eine misslungene Probe darf erst wiederholt werden, wenn sich die Lage ändert (Werkzeug, Hilfe, mehr Zeit).
+Situation;GM-Bonus oder -Malus von −5 bis +5 (gutes Werkzeug +2, Dunkelheit −2, Abyss-Nebel −2, Zeitdruck −2).
+Herstellen und Kochen;Handwerkskunst gegen die Schwierigkeit aus der Erklärung (Patch 1.3.1): sehr gut erklärt 10, gut 20, mittel 30, kaum 40, gar nicht 50.
+
+Schwierigkeit;Wert;Beispiel
+Leicht;10;Über einen Bach springen, einen Händler grüßen
+Mittel;15;Eine Mauer erklettern, ein bekanntes Kraut finden
+Schwer;20;Eine Wache bestechen, eine verwitterte Inschrift lesen
+Sehr schwer;25;Ein gutes Schloss knacken, einen Wolf zähmen
+Meisterhaft;30;Im Sturm segeln, einen Gildenmeister belügen
+Heldenhaft;40;Eine Ahnenrune deuten, über eine Schlucht springen
+Episch;50;Einem uralten Abyss-Wesen ins Gesicht lügen
+Legendär;60;Was in Liedern besungen wird
+
+Level;Hauptskill ca.;Leicht;Mittel;Schwer;Sehr schwer;Meisterhaft;Heldenhaft;Episch;Legendär
+1;7;90 %;65 %;40 %;15 %;5 %;5 %;5 %;5 %
+5;10;95 %;80 %;55 %;30 %;5 %;5 %;5 %;5 %
+13;18;95 %;95 %;95 %;70 %;45 %;5 %;5 %;5 %
+23;32;95 %;95 %;95 %;95 %;95 %;65 %;15 %;5 %
+33;46;95 %;95 %;95 %;95 %;95 %;95 %;85 %;35 %
+40;56;95 %;95 %;95 %;95 %;95 %;95 %;95 %;85 %

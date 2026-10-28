@@ -1,0 +1,53 @@
+﻿Stufen
+Stufe;von;bis;Wirkung
+Rein;0;24;Keine Wirkung.
+Stufe 1 – Gezeichnet;25;49;Zu Kapitelbeginn 1 Wurf auf Tabelle Stufe 1 (gilt das ganze Kapitel).
+Stufe 2 – Befallen;50;74;Zu Kapitelbeginn je 1 Wurf auf Stufe 1 und Stufe 2. Abyss-Skills sind nutzbar. Die Gilde sperrt Dungeons bis zur Reinigung.
+Stufe 3 – Zerrissen;75;99;"Zu Kapitelbeginn je 1 Wurf auf Stufe 1, 2 und 3. Abyss-Skills +1W6. Körperliche Zeichen sind sichtbar; die Hüter wollen dich nach Eldora bringen."
+Kipppunkt;100;100;Sofort Willenskraft-Probe 30 (+5 je Insignie, +5 mit Harmonium). Gelingt sie: Korruption 90 und ein Effekt aus Stufe 3 bleibt dauerhaft. Misslingt sie: Ein Hero wird zum Verlorenen, ein Mensch ohne Kern zum Corrupted. Der Charakter geht an den GM.
+
+Anstieg
+Quelle;Korruption;Hinweis
+Abyss-Nebel im Kampf;+1 pro Runde;Nur wenn die Willenskraft-Probe 15 am Rundenende misslingt (siehe Kampfablauf). Nebeltuch: Probe +5.
+Abyss-Nebel außerhalb des Kampfs;+2 pro Stunde;Nebeltuch halbiert. Im Kern des Abyss +5 pro Stunde.
+Abyss-Stein einsetzen;Splitter +1 · klein +2 · mittel +3 · groß +5 · Abyss-Herz +10 · Kern eines Verlorenen +20;Gilt auch für das Tragen ohne magischen Beutel (pro Tag). Mit Beutel halbiert.
+Zorr;+5 pro Prise;Dazu 1 Stunde Rausch: Werte +2, danach Verwundet.
+Abyss-Skill;+2 pro Einsatz;Ha'thohom +4.
+Abyss-Ausrüstung;+2 pro Kampf;Waffen und Rüstung mit Abyss-Namen oder aus Abyssalith, solange sie ausgerüstet sind.
+Korrupte Nahrung oder Gewässer;+3;Z. B. Wasser oder Fisch aus dem Abyss-Sumpf.
+Kritischer Treffer durch Corrupted;+1;Verlorene +2, die mächtigsten Abyss-Wesen +3 pro Treffer.
+Dunkler Pakt (Wächter des Abgrunds);+1 pro Einsatz;Wie beim Klassen-Skill angegeben.
+Effekt „Blood for the Blood-God“;+1 pro Tötung;Korruptionseffekt Stufe 1, Nr. 4.
+
+Abbau
+Weg;Korruption;Hinweis
+Lange Rast außerhalb von Abyss-Gebieten;−2 pro Nacht;Senkt nie unter die Untergrenze der erreichten Stufe. Stufen verlassen geht nur mit den Mitteln unten.
+Reinigung bei den Hütern;−10, kostet 2 GK Spende;"Einmal pro Kapitel. Die Hüter vermerken dich; ab Stufe 3 wollen sie dich nach Eldora bringen."
+Behandlung bei den Magiologen;−15, kostet 5 GK;Experimentell: bei 1–3 auf 1W20 stattdessen +5.
+Athrea's Träne einnehmen;−5;Verbraucht das Mineral.
+Göttertränen einnehmen;−25;Verbraucht das Mineral. Unterschreitet auch Stufengrenzen.
+Insignie;−2 zu Kapitelbeginn pro Insignie;Insignien sind der reine Feind der Korruption.
+Meditation (Mönch);−1 pro Kapitel zusätzlich;Klassenfähigkeit.
+
+Schutz
+Gegenstand;Wirkung
+Magischer Beutel;Halbiert die Korruption durch getragene Abyss-Steine.
+Harmonium-Kette;Unterdrückt den Wurf auf Tabelle Stufe 1 (die Korruption steigt trotzdem).
+Nebeltuch;Willenskraft-Probe im Abyss-Nebel +5, Nebel-Korruption außerhalb des Kampfs halbiert.
+Insignien;+5 auf die Probe am Kipppunkt und −2 Korruption zu Kapitelbeginn je Insignie.
+
+Folgen in der Welt
+Wer;Reaktion
+Gilde;Korruptionsprüfung für Mitglieder ist Pflicht und kostenlos. Ab Stufe 2 keine Dungeon-Aufträge bis zur Reinigung.
+Hüter;Ab Stufe 3 gilt man als Corrupted und soll nach Eldora gebracht werden (öffentlich: zur Erlösung).
+Volk;Ab Stufe 3 erkennen Fremde die Zeichen. Händler verlangen +50 %, manche Dörfer verweigern Unterkunft.
+
+Typischer Verlauf
+Spielweise;Beispiel;Anstieg;Abbau;Ergebnis
+Vorsichtige Gruppe;Kein Stein-Einsatz, kurz im Nebel;+2 bis +5;−10 durch Rast;bleibt rein
+Gelegentlicher Stein-Einsatz;2–3 kleine Steine im Kampf;+6 bis +10;−10 durch Rast;bleibt meist unter Stufe 1
+Regelmäßige Abyss-Nutzung;Mittlere Steine, Abyss-Ausrüstung;+15 bis +25;−5 bis −15 (Rast, Reinigung);Stufe 2 nach etwa 4–6 Kapiteln
+Abyss-Expedition;Tage im Nebel, Corrupted-Treffer;+30 und mehr;kaum;Stufe 3 in einem Kapitel möglich
+
+Korruptionsresistenz;Korruptionsresistenz = ⌊Willenskraft ÷ 10⌋. Sie wird von jedem Anstieg abgezogen (mindestens +1). So lernt man, mit Korruption umzugehen (Patch 1.3.2).
+Abyss-Skills;Abyss-Skills sind ab Korruption 50 (Stufe 2) nutzbar, Cooldown 5, jeder Einsatz +2 Korruption. Ab Stufe 3 machen sie +1W6 Schaden oder Heilung. Wer sie besitzt, macht sich strafbar.

@@ -1,0 +1,76 @@
+﻿Rundenablauf
+Schritt;Regel
+1. Kampfbeginn;Wer überrascht wird (Heimlichkeit gegen Scharfsinnigkeit), verliert seinen ersten Zug.
+2. Initiative;"Jeder würfelt 1W20 + ⌊SPE ÷ 2⌋. Reihenfolge von hoch nach niedrig; Gleichstand: höherer SPE, dann Spieler vor Gegnern."
+3. Runde;Jeder ist einmal am Zug. Eine Runde sind etwa 6 Sekunden in der Welt.
+4. Zug;Bewegung + 1 Aktion + 1 Schnellaktion, in beliebiger Reihenfolge. Dazu 1 Reaktion pro Runde, auch außerhalb des eigenen Zugs.
+5. Kampfende;Wenn eine Seite besiegt ist, flieht oder aufgibt. Danach vergibt der GM EXP für besiegte Gegner (siehe Punktesystem).
+
+Aktionen
+Name;Art;Wirkung
+Bewegen;Bewegung;Bis zum Bewegungswert in Feldern. Schwieriges Gelände kostet doppelt. Darf vor und nach der Aktion aufgeteilt werden.
+Normaler Angriff;Aktion;Angriff mit der ausgerüsteten Waffe: Waffenschaden + Schadensbonus.
+Skill einsetzen;Aktion;Ein aktiver Skill. Danach läuft sein Cooldown.
+Gegenstand benutzen;Aktion;Verband, Salbe, Trank, Bombe, Rune. Auch an einem Verbündeten direkt neben dir.
+Abwehrhaltung;Aktion;Rüstwert und Magieresistenz +2 bis zum nächsten eigenen Zug.
+Sprinten;Aktion;Zusätzliche Bewegung in Höhe des Bewegungswerts.
+Helfen;Aktion;Ein Verbündeter bekommt +2 auf seinen nächsten Wurf (Angriff oder Probe).
+Stabilisieren;Aktion;Eine Figur am Boden direkt neben dir: Naturkunde-Probe 15 oder ein Heilgegenstand. Bei Erfolg ist sie stabil.
+Verstecken;Aktion;"Heimlichkeit gegen die Scharfsinnigkeit der Gegner; nur mit Deckung oder Dunkelheit."
+Bereithalten;Aktion;Eine Aktion mit Auslöser ansagen („Wenn er die Tür öffnet, schieße ich“). Sie wird als Reaktion ausgeführt.
+Rückzug;Aktion;Bis zum Bewegungswert bewegen, ohne Gelegenheitsangriffe auszulösen.
+Interagieren;Aktion;Tür aufbrechen, Hebel ziehen, Seil kappen, etwas tragen.
+Instant-Skill;Schnellaktion;Skills mit der Zeitangabe „Instant“ (z. B. Windsprung, Schattentanz).
+Waffe wechseln / Gegenstand ziehen;Schnellaktion;Einmal pro Zug.
+Abyss-Stein einsetzen;Schnellaktion;Der nächste Skill in diesem Zug ignoriert seinen Cooldown oder bekommt +1W6. Kostet den Stein und erhöht die Korruption (Werte im Tab Korruption).
+Kurz sprechen, rufen, Zeichen geben;frei;"Ein paar Worte; längere Gespräche kosten die Aktion."
+Gelegenheitsangriff;Reaktion;Ein Gegner verlässt deine Nahkampfreichweite ohne Rückzug: ein normaler Angriff.
+Bereitgehaltene Aktion;Reaktion;Löst aus, wenn der angesagte Auslöser eintritt.
+Reaktions-Skill;Reaktion;Skills, die auf einen Angriff reagieren (z. B. Schattenschritt des Nachtwebers, Magisches Schild des Beschützers).
+
+Zeitangaben
+Angabe;Bedeutung
+1 Turn;Cooldown 1: in jedem eigenen Zug einsetzbar.
+2–5 Turns;Cooldown 2–5: danach 1–4 eigene Züge Pause. Beispiel: „3 Turns“ = Zug 1 einsetzen, Zug 4 wieder.
+Instant;Schnellaktion, Cooldown 1 (einmal pro Zug).
+Perma;"Passiv, immer aktiv; braucht keine Aktion."
+1x Tag / einmal pro Kampf / pro Kapitel;Wie angegeben. Zählt ab dem Morgen, Kampfbeginn bzw. Kapitelbeginn.
+Skill-Meisterung Stufe 3;Senkt den Cooldown um 1 (mindestens 1).
+
+Ressourcen
+Ressource;Regel
+Aktionen;"1 Aktion, 1 Schnellaktion, 1 Reaktion. Der Gladiator (Vielseitigkeit) hat eine zweite Aktion; ist sie ein Angriff, macht er halben Schaden."
+Cooldowns;Die wichtigste Ressource. Es gibt kein Mana: Starke Skills haben lange Cooldowns, schwache sind jederzeit nutzbar.
+Lebenspunkte;Manche Skills kosten eigene HP (Blutopfer, Blutiges Omen, Blutroter Fluch). Kosten zahlt man vor dem Wurf.
+Korruption;Abyss-Skills, Abyss-Steine, korrupte Waffen. Jeder Einsatz erhöht die Korruption (Tab Korruption).
+Verbrauchsgegenstände;Pfeile, Verbände, Salben, Bomben, Runen. Was verbraucht ist, ist weg (Magiegeboren: Pfeile entstehen magisch).
+Begrenzte Effekte;Einmal pro Kampf, Sitzung, Tag oder Kapitel, z. B. Insignien, Trickshot, Erste Umarmung.
+
+Gelände
+Situation;Wirkung
+Halbe Deckung;Rüstwert +2 gegen Fernkampf und Magie.
+Volle Deckung;Kein direktes Ziel.
+Erhöhte Position;Genauigkeit +1 im Fernkampf.
+Schwieriges Gelände;Jedes Feld kostet 2 Bewegung (Sumpf, Schnee, Trümmer).
+Dunkelheit;"Genauigkeit −2 ohne Lichtquelle; Verstecken möglich."
+Abyss-Nebel;"Alle Würfe −2; am Rundenende Willenskraft 15, sonst +1 Korruption."
+Fernkampf im Nahkampf;Genauigkeit −2, wenn ein Gegner direkt neben dir steht.
+Flankieren;+1 Genauigkeit, wenn ein Verbündeter auf der gegenüberliegenden Seite des Ziels steht.
+
+0 HP und Sterben
+Regel;Beschreibung
+Auf 0 HP;Die Figur geht zu Boden (Zustand „Am Boden“). Überschüssiger Schaden verfällt.
+Sterbewurf;Am Anfang jedes eigenen Zugs: 1W20. 10 oder mehr ist ein Erfolg, darunter ein Fehlschlag. Natürliche 20: steht mit 1 HP auf. Natürliche 1: zählt als zwei Fehlschläge.
+Stabil;Drei Erfolge: stabil und bewusstlos. Nach einer Stunde wacht die Figur mit 1 HP auf.
+Schaden am Boden;Jeder Treffer zählt als ein Fehlschlag, ein kritischer Treffer als zwei.
+Heilung am Boden;Jede Heilung weckt die Figur mit den geheilten HP. Sie ist danach „Verwundet“.
+Hilfe;Stabilisieren (Aktion, Naturkunde 15 oder Heilgegenstand) beendet die Sterbewürfe. Erste Umarmung (Erlöser) weckt sofort mit 1 HP.
+Schutz;Insignie des stillen Schutzes, Requiem (Todessänger) und Göttlicher Schutz (Kleriker) können das Fallen verhindern.
+
+Tod
+Regel;Beschreibung
+Tod;Drei Fehlschläge: Die Figur ist tot.
+Wiederbelebung;Nur mit Phönixasche (Rang SS) und nur, solange der Körper vorhanden ist. Danach „Verwundet“ und −1 auf einen Wert nach Wahl des GM für ein Kapitel.
+Gefallene Heroes;Ein Hero, der im Abyss-Nebel stirbt oder mit hoher Korruption, kann nach drei Tagen als Verlorener zurückkehren, wenn sein Körper nicht verbrannt oder den Hütern übergeben wird.
+Neuer Charakter;Ein neuer Charakter startet auf dem Level des Gefallenen minus 2 mit der Grundausrüstung seines Rangs.
+

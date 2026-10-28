@@ -1,1 +1,965 @@
-[]
+[
+ {
+  "name": "Lederhandschuhe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Arme",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Reste von Lederhandschuhen",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Keine",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Arme",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Handschuhe des Heilers",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Heilungen von Skills +1W4; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Arme",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Verstärkte Lederhandschuhe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 250,
+   "price": "2 GK 50 SK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Arme",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Sternenstein-Handschuhe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "Keine; Set: Sternen-1/3er-Set: Skill: Zug der Sterne",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Arme",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Windfeder Arme",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Set: Windfeder-2/2er-Set: Laufweite +1",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Arme",
+   "bonuses": {
+    "movement": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Handschuhe der Musik",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "Keine; Set: Kann jedes Instrument Spielen.",
+   "source": "GM",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Arme",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Abyssalith-Handschuhe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2800,
+   "price": "28 GK",
+   "description": "Set: Abysallith-2/2er-Set: Magischer Schaden +4",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Arme",
+   "bonuses": {
+    "magicBonus": 4
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Handschuhe des Quälers",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "\"-\" 10 HP und \"+\" 5 Schaden; Set: Quälers-2/3er-Set: HP flat 15, Schaden +30 Ersetzt einzelne Effekte",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Arme",
+   "bonuses": {
+    "damageBonus": 30
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Lederstiefel",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 30,
+   "price": "30 SK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Beine",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Reste von Lederstiefel",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Keine",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Beine",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Robuste Stiefel",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Beine",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Hose aus Schattenseide",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Keine; Set: Schattenseide-2/3er-Set: Duo-Blade Knifes",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Beine",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Arme aus Schattenseide",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Keine; Set: Schattenseide-3/3er-Set: Duo-Blade Knifes",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Beine",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Sternenstein-Beine",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "Keine; Set: Sternen-2/3er-Set: Skill: Zug der Sterne",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Beine",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Windfeder Beine",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Set: Windfeder-1/2er-Set: Laufweite +1",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Beine",
+   "bonuses": {
+    "movement": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Beine der Musik",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "Keine; Set: Kann jedes Instrument Spielen.",
+   "source": "GM",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Beine",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Stiefel der Windläufer",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2000,
+   "price": "20 GK",
+   "description": "Laufweite +1; Set: Kein Set-Bonus",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Beine",
+   "bonuses": {
+    "movement": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Schuhe des Quälers",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "\"-\" 10 HP und \"+\" 5 Schaden; Set: Quälers-3/3er-Set: HP flat 15, Schaden +30 Ersetzt einzelne Effekte",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Beine",
+   "bonuses": {
+    "damageBonus": 30
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Kettenhemd",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Rüstwert +1 , Movement -1; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Brust",
+   "bonuses": {
+    "rw": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Lederrobe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 50,
+   "price": "50 SK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Stoffrobe mit Kapuze",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Rüstwert +1; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Brust",
+   "bonuses": {
+    "rw": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Reste eines Lederbrustpanzers",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Keine",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Eisenbrustpanzer",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 400,
+   "price": "4 GK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Robe aus Schattenseide",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Keine; Set: Schattenseide-1/3er-Set: Duo-Blade Knifes",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Brust des Unbesiegbaren",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2800,
+   "price": "28 GK",
+   "description": "HP +3W6; Set: Kein Set-Bonus",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "3d6",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Mithril-Brustpanzer",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2600,
+   "price": "26 GK",
+   "description": "30 HP; Set: Mithril-2/2er-Set: HP +20",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Robe des Quälers",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "\"-\" 10 HP und \"+\" 5 Schaden; Set: Quälers-1/3er-Set: HP flat 15, Schaden +30 Ersetzt einzelne Effekte",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Brust",
+   "bonuses": {
+    "damageBonus": 30
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Lederhelm",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 35,
+   "price": "35 SK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Reste eines Lederhelms",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Keine",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Gehärteter Lederhelm",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Ätherium-Mütze",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "\"+\" 2 Magischer Schaden; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Sternenstein-Kopf",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "Keine; Set: Sternen-3/3er-Set: Skill: Zug der Sterne",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Kopf der Musik",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "Keine; Set: Kann jedes Instrument Spielen.",
+   "source": "GM",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Mithril-Helm",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1800,
+   "price": "18 GK",
+   "description": "20 HP; Set: Mithril-1/2er-Set: HP +20",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Stoffrobe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 30,
+   "price": "30 SK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Helm, Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Reste einer Stoffrobe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Keine",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Helm, Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Gefütterte Stoffrobe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Helm, Brust",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Abyssalith-Robe",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 3000,
+   "price": "30 GK",
+   "description": "Set: Abysallith-1/2er-Set: Magischer Schaden +4",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "3d6",
+   "slot": "Helm, Brust",
+   "bonuses": {
+    "magicBonus": 4
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Holzschild",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 40,
+   "price": "40 SK",
+   "description": "Rüstwert -> Blockwert +2; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Schild",
+   "bonuses": {
+    "block": 2
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Eisenschild",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "Rüstwert -> Blockwert +4; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Schild",
+   "bonuses": {
+    "block": 4
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Schild des Glaubens",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 3000,
+   "price": "30 GK",
+   "description": "Rüstwert -> Blockwert +6 1W6 Heilung nach erfolgreichem Block.; Set: Kein Set-Bonus",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "2d6",
+   "slot": "Schild",
+   "bonuses": {
+    "block": 6
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Handschuhe der Ahnen",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 42000,
+   "price": "420 GK",
+   "description": "Erlaubt den einsatz von Ahnen-Magie. Verbietet den Einsatz von Neuer oder Heiliger Magie.",
+   "source": "GM",
+   "quantity": 1,
+   "hpDice": "3d6",
+   "slot": "Arme",
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Wüsten-Robe (Brust, Kopf)",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 250,
+   "price": "2 GK 50 SK",
+   "description": "Leichte Kleidung, schützt vor Hitze Rüstwert +2",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "1d6",
+   "slot": "Brust",
+   "bonuses": {
+    "rw": 2
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Wüsten-Beinschutz",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Leichter Beinschutz, schützt vor Hitze, Rüstwert +1, HP+2",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Beine",
+   "bonuses": {
+    "rw": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Wüsten-Armschutz",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Leichter Armschutz, schützt vor Hitze, Rüstwert +1, HP+3",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "hpDice": "",
+   "slot": "Arme",
+   "bonuses": {
+    "rw": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Harmonium-Brustpanzer",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 10000,
+   "price": "100 GK",
+   "description": "Neu (3.3): Korruptions-Resistenz +1.",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "4d6",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Eisflimmer-Helm",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 7000,
+   "price": "70 GK",
+   "description": "Neu (3.3): Kälte zählt eine Wärmezone milder.",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "hpDice": "3d6",
+   "slot": "Helm",
+   "bonuses": {},
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Drachenschuppen-Rüstung",
+  "type": "armor",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Rüstung/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 45000,
+   "price": "450 GK",
+   "description": "Neu (3.3): Feuerschaden halbiert.",
+   "source": "Kern-Truhe",
+   "quantity": 1,
+   "hpDice": "5d6",
+   "slot": "Brust",
+   "bonuses": {},
+   "effect": "Neu (Balancing 3.3)"
+  }
+ }
+]

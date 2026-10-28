@@ -1,0 +1,137 @@
+[
+ {
+  "name": "Rostiger alter Schlüssel",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Niemand weiß, wofür er war – er funktioniert für kein Schloss in der Nähe.",
+   "source": "Tier 1 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Halbes Kettenhemd",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Nur ein Teil eines alten Kettenhemdes – es bietet kaum noch Schutz, ber vielleicht könnte es als Schrott verkauft werden.",
+   "source": "Tier 1 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Alte Gold-Kes mit Loch",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 40,
+   "price": "40 SK",
+   "description": "Eine alte Münze, die jemand als Halskette getragen hat, aber jetzt weder modisch noch wertvoll ist.",
+   "source": "Tier 1 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Glas voll Dreck",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Darin befindet sich nur Dreck! Oder?...... ich bekomme den Deckel aber nicht auf.",
+   "source": "Tier 2 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Silberlöffel mit Loch",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "90 % eines prächtigen Löffels. Leider mit einem Loch – suppefreundlich ist er nicht.",
+   "source": "Tier 2 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Verbogene Silbergabel",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 30,
+   "price": "30 SK",
+   "description": "Eine einfache Gabel aus Silber, die durch jahrelangen Gebrauch total verformt ist.",
+   "source": "Tier 2 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Verkratzter Silberkelch",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 150,
+   "price": "1 GK 50 SK",
+   "description": "Ehemals edel, aber durch tiefe Kratzer und Beulen an Wert verloren.",
+   "source": "Tier 3 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Wandteppich mit Mottenlöchern",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 400,
+   "price": "4 GK",
+   "description": "Aufwendig gewebt, doch von Motten zerfressen und voller Flecken.",
+   "source": "Tier 3 Cache",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Porträt eines Adligen",
+  "type": "junk",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Müll/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 250,
+   "price": "2 GK 50 SK",
+   "description": "Ein großformatiges Gemälde in einem edlen Rahmen, aber niemand erkennt diese wunderschöne Person.",
+   "source": "Tier 3 Cache",
+   "quantity": 1
+  }
+ }
+]

@@ -1,0 +1,41 @@
+﻿Level;Neue Wertpunkte;Verteilte Punkte gesamt;EXP bis nächstes Level;EXP gesamt (Beginn des Levels);Sitzungen bis nächstes Level;Skill-Slots;Klassen-Kategorie;Gildenrang (Richtwert);Meilenstein
+1;6;6;110;0;1;3;noch keine;F;Charaktererstellung (5 freie Punkte + 1 Herkunftspunkt)
+2;1;7;110;110;1;3;noch keine;F;
+3;1;8;110;220;1;3;noch keine;F;
+4;1;9;110;330;1;4;noch keine;F;
+5;1;10;240;440;1,5;4;Basic;E;Basic-Klasse (10 verteilte Punkte)
+6;1;11;240;680;1,5;4;Basic;E;
+7;1;12;240;920;1,5;4;Basic;E;
+8;1;13;240;1160;1,5;5;Basic;E;
+9;1;14;240;1400;1,5;5;Basic;E;
+10;1;15;520;1640;2;5;Basic;D;
+11;2;17;520;2160;2;5;Basic;D;Ab jetzt 2 Wertpunkte pro Level
+12;2;19;520;2680;2;5;Basic;D;
+13;2;21;520;3200;2;6;T1;D;T1-Klassen (20 verteilte Punkte)
+14;2;23;520;3720;2;6;T1;D;
+15;2;25;520;4240;2;6;T1;D;Erste Insignie möglich (durch eine Tat, GM)
+16;2;27;800;4760;2;6;T1;C;
+17;2;29;800;5560;2;6;T1;C;
+18;2;31;800;6360;2;7;T1;C;
+19;2;33;800;7160;2;7;T1;C;
+20;2;35;1000;7960;2,5;7;T1;C;
+21;2;37;1000;8960;2,5;7;T1;C;
+22;2;39;1000;9960;2,5;7;T1;C;
+23;2;41;1500;10960;2,5;8;T2;B;T2-Klassen (40 verteilte Punkte)
+24;2;43;1500;12460;2,5;8;T2;B;
+25;2;45;1500;13960;2,5;8;T2;B;
+26;2;47;1500;15460;2,5;8;T2;B;
+27;2;49;1500;16960;2,5;8;T2;B;
+28;2;51;1500;18460;2,5;8;T2;B;
+29;2;53;1500;19960;2,5;8;T2;B;
+30;2;55;2700;21460;3;9;T2;A;
+31;2;57;2700;24160;3;9;T2;A;
+32;2;59;2700;26860;3;9;T2;A;
+33;2;61;2700;29560;3;9;T3;A;T3-Klassen (60 verteilte Punkte)
+34;2;63;2700;32260;3;9;T3;A;
+35;2;65;2700;34960;3;9;T3;A;
+36;2;67;3900;37660;3;9;T3;S;
+37;2;69;3900;41560;3;10;T3;S;
+38;2;71;3900;45460;3;10;T3;S;
+39;2;73;3900;49360;3;10;T3;S;
+40;2;75;–;53260;–;10;T3;S;Höchstes Level

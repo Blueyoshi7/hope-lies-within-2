@@ -1,0 +1,46 @@
+﻿Regel;Beschreibung
+Ziel;"Ein Spieler hält 5–6 Treffer eines gleichrangigen normalen Gegners aus; ein normaler Gegner fällt nach 2–3 Spielertreffern. Ein Standardkampf (4 gegen 4 Normale) dauert 3–4 Runden, ein Boss 6–9 Runden."
+Anfang eines Bandes;Auf dem ersten Level eines Rang-Bandes (Level 1, 5, 10, 16, 23, 30, 36) sind die Spieler am schwächsten: ein Gegner weniger als Spieler oder 2 Diener statt 1 Normalem. Am Ende des Bandes darf es einer mehr sein.
+Genauigkeit;Boni auf Genauigkeit sind am stärksten (jeder Punkt = +5 % Trefferchance). Pro Gegenstand höchstens +2, aus Ausrüstung zusammen höchstens +4.
+Blockwert;Höchstens 8 insgesamt (Schild, Umwandlung aus Rüstwert, Boni). Sonst werden Tanks gegen niedrige Gegner unverwundbar.
+Zusätzliche Aktionen;Eine volle zweite Aktion verdoppelt fast den Schaden. Klassen und Gegenstände geben deshalb nur Schnellaktionen, halbe Angriffe oder „einmal pro Kampf“.
+Cooldown;Skills mit Cooldown 3 oder mehr dürfen etwa das 1,5-Fache eines CD-1-Skills machen (Spalte Skill CD 3+).
+HP-Boni von Klassen;Feste HP-Boni veralten mit dem Level. Neue Boni lieber pro Level (z. B. +2 HP pro Level).
+Prüfen beim Erstellen;Neue Waffe, neuer Skill oder neues Monster: Rang wählen und mit der Richtwerte-Tabelle vergleichen. Mehr als 50 % darüber: Rang hoch oder Wert runter.
+
+Rang;Gruppen-Level;Waffe;Skill CD 1–2;Skill CD 3+;Heilung;Rüstung Brust;Kleine Teile;Accessoire höchstens
+E;1–4;1W6;1W6;2W6;1W6;1W6;–;+1 auf einen Wert
+D;5–9;1W6–2W6;2W4+1;3W6;2W6;2W6;1W6;+1
+C;10–15;2W6;2W6+2;4W6;2W6+2;2W6;1W6;+2 Schaden oder +1 RW
+B;16–22;3W6;3W6+2;5W6;3W6+2;3W6;2W6;+3 Schaden oder +2 RW
+A;23–29;4W6;4W6+2;6W6;4W6+2;4W6;3W6;+4 Schaden, +3 RW oder +2 ACC
+S;30–35;5W6;5W6+3;8W6;5W6+3;5W6;3W6;+5 Schaden, +3 RW oder +2 ACC
+SS;36–40;6W6 (oder 2W20);6W6+4;10W6;6W6+4;6W6;4W6;+6 Schaden, +4 RW oder +2 ACC
+
+Bereich;Name;Alt;Neu;Grund
+Klasse;Wächter (T1);+60 Max HP;+2 Max HP pro Level;+60 waren bei Level 13 fast 70 % mehr HP. Pro Level wächst der Bonus mit (Level 13: +26, Level 40: +80).
+Klasse;Magische Wache (T1);"Rüstwert +3, HP +20; der Rüstwert wird zum Blockwert";"HP +20; der Rüstwert über 8 wird zum Blockwert";Die +3 Rüstwert wurden komplett zu Blockwert und zogen von jedem Treffer 3 ab (zusätzlich).
+Klasse;Gladiator (T1);Eine zusätzliche Aktion im Kampf;"Eine zweite Aktion pro Runde; ist sie ein Angriff, macht er halben Schaden";Eine volle zweite Aktion verdoppelte den Schaden ab Level 13.
+Klasse;Erzmagier (T2);Klassentext: ein Zauber deiner Wahl trifft immer kritisch, +1W10;Einmal am Tag trifft ein Zauber automatisch kritisch, dazu +1W10;"Klassentext und Klassen-Skill (1x Tag) widersprachen sich; der Skill gilt."
+Regel;Blockwert;unbegrenzt;höchstens 8;Schild des Glaubens (+6) plus Umwandlung konnte Treffer von Rang-C-Gegnern fast ganz schlucken.
+Ausrüstung;Sternenstein-Armband (A);Genauigkeit +4;Genauigkeit +2;+4 sind +20 % Trefferchance auf jeden Angriff.
+Ausrüstung;Abyssalith-Set (B);Magischer Schaden +7;Magischer Schaden +4;+7 waren bei Rang B über ein Drittel eines Treffers.
+Ausrüstung;Brust des Unbesiegbaren (B);HP 3W20 (dazu +3W6);HP 3W6 (dazu +3W6);3W20 + 3W6 waren über 40 HP aus einem Teil.
+Ausrüstung;Stiefel der Windläufer (B);HP 1W20;HP 2W6;Beine liegen sonst bei 1W6–2W6.
+Ausrüstung;Schild des Glaubens (B);HP 1W20;HP 2W6;Der Schild hat schon Blockwert +6.
+Ausrüstung;Lanze des Vampirs (A);HP 3W20, kein Schaden;Schaden 4W6, keine HP;Der Würfel stand vermutlich in der falschen Spalte.
+Ausrüstung;Lanze und Klinge der Vahaa (S);Schaden 1W20;Schaden 1W20+7;1W20 war nicht stärker als Rang B (3W6).
+Ausrüstung;Zarath’kul, Arugal (SS);Schaden 1D20;Schaden 2W20;Wie oben, Rang SS.
+Ausrüstung;Schattenklinge, Kriegskeule der Zerstörung (S);kein Schaden;4W6+3 bzw. 5W6;"Fehlte; nach Richtwert S."
+Ausrüstung;6 Abyss-Waffen (SS);kein Schaden;6W6;"Fehlte; nach Richtwert SS. Dazu wie gehabt +2 Korruption pro Kampf."
+Ausrüstung;Neue Gegenstände Rang A und S;6 bzw. 5 Teile;+7 Rang A, +5 Rang S, +6 Verbrauchsgegenstände B–S;Damit Funde ab Level 23 genug Auswahl haben (Prüfliste 3.2).
+Gegner;Rang E (Bestiarium);Schaden 1W6+2;Schaden 1W6+1;Auf Level 1 verlor die Gruppe sonst über 60 % ihrer HP in einem Standardkampf.
+Unverändert;Hüter (Basic) +20 HP;–;bleibt;"Dein Wert. Auf Level 5 stark (+40 %), wächst aber nicht mit; ab Level 15 normal."
+
+Testgruppe;Beschreibung
+Was bekannt ist;Aus den Patches 1.1–1.3.1 und der GM-Info: Die Spielerbögen der Testgruppe (Pat, Hao, Buschi, Silas, Judith) sind leer, es gibt keine aufgeschriebenen Kampfwerte.
+Heilung;Schlaf-Heilung wurde erhöht (Unterkunft 1W10 doppelt) – Heilung war zu knapp. Neu: 1W10 + CON, in Unterkunft doppelt.
+Essen;Rezepte sollten weniger heilen und einfach sein (Tier 1). Neu: 1W6/1W10/1W20 nach Tier, Tier 1 ohne Wirkung.
+Lebenspunkte;Alt: +20 HP pro Level, damit hielt ein Spieler 25+ Treffer aus. Neu: 20 + 2 × Level + 3 × CON + Rüstung (5–6 Treffer).
+Insignien;Die ersten Insignien kamen auf Level 18 vom GM. Neu: durch Taten, ab etwa Level 15.
+Offen;Was ist euch im Spiel aufgefallen (zu leicht, zu schwer, zu lange Kämpfe, starke Klassen)? Das ergänzt die Richtwerte.

@@ -1,99 +1,433 @@
 [
-  {
-    "name": "Ätheriums-Ring",
-    "type": "accessory",
-    "img": "icons/equipment/finger/ring-band-engraved-gold.webp",
-    "system": {
-      "tier": 1,
-      "source": "Tier 1 Cache",
-      "price": "30 Gold",
-      "slot": "Accessory",
-      "effect": "Schaden +1",
-      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
-    }
-  },
-  {
-    "name": "Athreas's-Ohrring",
-    "type": "accessory",
-    "img": "icons/equipment/ear/earring-gold-blue.webp",
-    "system": {
-      "tier": 1,
-      "source": "Tier 2 Cache",
-      "price": "30 Gold",
-      "slot": "Accessory",
-      "effect": "Verstaerkt gewirkte Heilung 1d4",
-      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
-    }
-  },
-  {
-    "name": "Erdkern-Armband",
-    "type": "accessory",
-    "img": "icons/equipment/wrist/bracer-studded-brown.webp",
-    "system": {
-      "tier": 1,
-      "source": "Tier 1 Cache",
-      "price": "12 Gold",
-      "slot": "Accessory",
-      "effect": "Ruestwert +1",
-      "armor": 1,
-      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
-    }
-  },
-  {
-    "name": "Erdkern-Ring",
-    "type": "accessory",
-    "img": "icons/equipment/finger/ring-cabochon-gold-green.webp",
-    "system": {
-      "tier": 1,
-      "source": "Tier 1 Cache",
-      "price": "12 Gold",
-      "slot": "Accessory",
-      "damage": "1d6",
-      "effect": "Ruestwert +1",
-      "armor": 1,
-      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
-    }
-  },
-  {
-    "name": "Erdkern-Kette",
-    "type": "accessory",
-    "img": "icons/equipment/neck/necklace-simple-gold-green.webp",
-    "system": {
-      "tier": 1,
-      "source": "Tier 1 Cache",
-      "price": "30 Gold",
-      "slot": "Accessory",
-      "damage": "1d6",
-      "effect": "Ruestwert +1",
-      "armor": 1,
-      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
-    }
-  },
-  {
-    "name": "Blutstein-Kette",
-    "type": "accessory",
-    "img": "icons/equipment/neck/necklace-simple-red.webp",
-    "system": {
-      "tier": 1,
-      "source": "Tier 1 Cache",
-      "price": "12 Gold",
-      "slot": "Accessory",
-      "damage": "2d6",
-      "effect": "Keine",
-      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
-    }
-  },
-  {
-    "name": "Donnerkeil-Ohrring",
-    "type": "accessory",
-    "img": "icons/equipment/ear/earring-gold-purple.webp",
-    "system": {
-      "tier": 1,
-      "source": "Tier 1 Cache",
-      "price": "30 Gold",
-      "slot": "Accessory",
-      "effect": "Genauigkeit +1",
-      "description": "Ein Accessory. Maximal 3 Accessories koennen gleichzeitig ausgeruestet sein."
-    }
+ {
+  "name": "Ätherium\"s\"-Ring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 180,
+   "price": "1 GK 80 SK",
+   "description": "Schaden +1; Set: Ätherium-1/3er-Set: Schaden +3",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "damageBonus": 1
+   },
+   "effect": ""
   }
+ },
+ {
+  "name": "Athreas's-Ohrring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "Verstärkt gewirkte Heilung 1W4; Set: Athrea's-2/3er-Set: Heilung + 1W20 statt Eigeneffekt",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Erdkern-Armband",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 90,
+   "price": "90 SK",
+   "description": "Rüstwert +1; Set: Erdkern-1/3er-Set: Rüstwert +1",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "rw": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Erdkern-Ring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 90,
+   "price": "90 SK",
+   "description": "Rüstwert +1; Set: Erdkern-2/3er-Set: Rüstwert +1",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "rw": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Erdkern-Kette",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Rüstwert +1; Set: Erdkern-3/3er-Set: Rüstwert +1",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "rw": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Blutstein-Kette",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Keine; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Donnerkeil-Ohrring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 160,
+   "price": "1 GK 60 SK",
+   "description": "Genauigkeit +1; Set: Kein Set-Bonus",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "acc": 1
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Moosachat-Armband",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 50,
+   "price": "50 SK",
+   "description": "Naturkunde / Tierkunde +1; Set: Moosachat 1/3er-Set: Naturkunde / Tierkunde +2",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Moosachat-Kette",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 50,
+   "price": "50 SK",
+   "description": "Naturkunde / Tierkunde +1; Set: Moosachat 2/3er-Set: Naturkunde / Tierkunde +2",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Ätherium\"s\"-Armband",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "Schaden +2; Set: Ätherium-2/3er-Set: Schaden +3",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "damageBonus": 2
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Athreas's-Ring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 400,
+   "price": "4 GK",
+   "description": "Verstärkt gewirkte Heilung 1W4; Set: Athrea's-1/3er-Set: Heilung + 1W20 statt Eigeneffekt",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Harmonium-Kette",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2800,
+   "price": "28 GK",
+   "description": "Verhindert das Ausbrechen der Korruption.; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Schattenseide-Ohrring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Rüstwert +2; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "rw": 2
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Zeit-Stein-Ring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4500,
+   "price": "45 GK",
+   "description": "EXP +10%; Set: Kein Set-Bonus",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Moosachat-Ring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 250,
+   "price": "2 GK 50 SK",
+   "description": "Naturkunde / Tierkunde +1; Set: Moosachat 3/3er-Set: Naturkunde / Tierkunde +2",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Windfederstein-Armband",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Bewegungsweite +1; Set: Windfederstein-1/2er-Set: Bewegungsweite +1",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Ätherium-Kette",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "Schaden +4; Set: Ätherium-3/3er-Set: Schaden +3",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "damageBonus": 4
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Athreas's-Kette",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1800,
+   "price": "18 GK",
+   "description": "Verstärkt gewirkte Heilung 1W6; Set: Athrea's-3/3er-Set: Heilung + 1W20 statt Eigeneffekt",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Drachenherz-Ohrring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 9500,
+   "price": "95 GK",
+   "description": "Rüstwert +3 / Schaden +3; Set: Kein Set-Bonus",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "rw": 3,
+    "damageBonus": 3
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Göttertränen-Armband",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 11000,
+   "price": "110 GK",
+   "description": "Verstärkt gewirkte Heilung +1W20; Set: Kein Set-Bonus",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Sternenstein-Armband",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 3500,
+   "price": "35 GK",
+   "description": "Genauigkeit +2; Set: Kein Set-Bonus",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "acc": 2
+   },
+   "effect": ""
+  }
+ },
+ {
+  "name": "Windfederstein-Ring",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1400,
+   "price": "14 GK",
+   "description": "Bewegungsweite +1; Set: Windfederstein-2/2er-Set: Bewegungsweite +1",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": ""
+  }
+ },
+ {
+  "name": "Amulett der Wachsamkeit",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 7500,
+   "price": "75 GK",
+   "description": "Neu (3.3): Initiative +3, kann nicht überrascht werden.",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "bonuses": {
+    "initiative": 3
+   },
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Ring der zweiten Chance",
+  "type": "accessory",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Accessoires/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 35000,
+   "price": "350 GK",
+   "description": "Neu (3.3): Einmal pro Kapitel wird ein Sterbewurf zum Erfolg.",
+   "source": "Kern-Truhe",
+   "quantity": 1,
+   "bonuses": {},
+   "effect": "Neu (Balancing 3.3)"
+  }
+ }
 ]

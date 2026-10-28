@@ -1,6 +1,10 @@
 {
   "Actor": {
-    "types": ["character", "npc", "monster"],
+    "types": [
+      "character",
+      "npc",
+      "monster"
+    ],
     "templates": {
       "base": {
         "identity": {
@@ -21,93 +25,324 @@
           "activeInsignia": "slot1"
         },
         "attributes": {
-          "str": { "label": "Staerke", "abbr": "STR", "value": 0 },
-          "dex": { "label": "Geschicklichkeit", "abbr": "DEX", "value": 0 },
-          "con": { "label": "Konstitution / Ausdauer", "abbr": "CON", "value": 0 },
-          "int": { "label": "Intelligenz", "abbr": "INT", "value": 0 },
-          "wis": { "label": "Weisheit", "abbr": "WIS", "value": 0 },
-          "cha": { "label": "Charisma", "abbr": "CHA", "value": 0 },
-          "agl": { "label": "Beweglichkeit", "abbr": "AGL", "value": 0 },
-          "spe": { "label": "Geschwindigkeit", "abbr": "SPE", "value": 0 },
-          "edu": { "label": "Bildung", "abbr": "EDU", "value": 0 },
-          "sou": { "label": "Seelenkraft", "abbr": "SOU", "value": 0 }
+          "str": {
+            "label": "Stärke",
+            "abbr": "STR",
+            "value": 1
+          },
+          "dex": {
+            "label": "Geschicklichkeit",
+            "abbr": "DEX",
+            "value": 1
+          },
+          "con": {
+            "label": "Ausdauer",
+            "abbr": "CON",
+            "value": 1
+          },
+          "int": {
+            "label": "Intelligenz",
+            "abbr": "INT",
+            "value": 1
+          },
+          "wis": {
+            "label": "Weisheit",
+            "abbr": "WIS",
+            "value": 1
+          },
+          "cha": {
+            "label": "Charisma",
+            "abbr": "CHA",
+            "value": 1
+          },
+          "agl": {
+            "label": "Beweglichkeit",
+            "abbr": "AGL",
+            "value": 1
+          },
+          "spe": {
+            "label": "Geschwindigkeit",
+            "abbr": "SPE",
+            "value": 1
+          },
+          "edu": {
+            "label": "Bildung",
+            "abbr": "EDU",
+            "value": 1
+          },
+          "sou": {
+            "label": "Seelenkraft",
+            "abbr": "SOU",
+            "value": 1
+          }
         },
         "resources": {
-          "hp": { "label": "Lebenspunkte", "value": 10, "max": 10 },
-          "movement": { "label": "Bewegungsreichweite", "value": 3, "units": "Tiles" },
-          "actionPoints": { "label": "Aktionspunkte", "value": 1, "max": 1 },
-          "gold": { "label": "Gold", "value": 0 },
-          "inventorySlots": { "label": "Inventarplaetze", "value": 0, "max": 20 },
-          "corruption": { "label": "Korruptionswert", "value": 0, "max": 100 }
-        },
-        "defenses": {
-          "physical": { "label": "Physische Verteidigung", "value": 0 },
-          "magical": { "label": "Magische Verteidigung", "value": 0 }
-        },
-        "affinities": {
-          "slash": { "label": "Klinge", "value": 0 },
-          "blunt": { "label": "Stumpf", "value": 0 },
-          "pierce": { "label": "Stich", "value": 0 },
-          "magic": { "label": "Magie", "value": 0 },
-          "fire": { "label": "Feuer", "value": 0 },
-          "ice": { "label": "Eis", "value": 0 },
-          "lightning": { "label": "Blitz", "value": 0 },
-          "earth": { "label": "Erde", "value": 0 },
-          "wind": { "label": "Wind", "value": 0 },
-          "holy": { "label": "Heilig", "value": 0 },
-          "shadow": { "label": "Schatten", "value": 0 }
+          "hp": {
+            "label": "Lebenspunkte",
+            "value": 30,
+            "max": 30
+          },
+          "movement": {
+            "label": "Bewegung",
+            "value": 3,
+            "units": "Felder"
+          },
+          "actionPoints": {
+            "label": "Aktionspunkte",
+            "value": 1,
+            "max": 1
+          },
+          "inventorySlots": {
+            "label": "Inventarplätze",
+            "value": 0,
+            "max": 11
+          },
+          "corruption": {
+            "label": "Korruptionswert",
+            "value": 0,
+            "max": 100
+          },
+          "kes": {
+            "label": "Kes (in Silber-Kes)",
+            "value": 0
+          }
         },
         "actions": {
-          "main": { "label": "Hauptaktion", "available": true },
-          "movement": { "label": "Bewegung", "available": true },
-          "bonus": { "label": "Bonusaktion", "available": true }
+          "main": {
+            "label": "Aktion",
+            "available": true
+          },
+          "quick": {
+            "label": "Schnellaktion",
+            "available": true
+          },
+          "reaction": {
+            "label": "Reaktion",
+            "available": true
+          },
+          "movement": {
+            "label": "Bewegung",
+            "available": true
+          },
+          "bonus": {
+            "label": "Bonusaktion",
+            "available": true
+          }
         },
         "combat": {
           "movementSpent": 0,
           "defending": false
         },
         "insigniaSlots": {
-          "slot1": { "image": "", "name": "", "description": "" },
-          "slot2": { "image": "", "name": "", "description": "" },
-          "slot3": { "image": "", "name": "", "description": "" }
+          "slot1": {
+            "image": "",
+            "name": "",
+            "description": ""
+          },
+          "slot2": {
+            "image": "",
+            "name": "",
+            "description": ""
+          },
+          "slot3": {
+            "image": "",
+            "name": "",
+            "description": ""
+          }
         },
         "worldSkills": {
-          "athletik": { "label": "Athletik", "attributes": ["str", "con", "agl"], "bonus": 0, "total": 0 },
-          "wortgewandtheit": { "label": "Wortgewandtheit", "attributes": ["cha", "edu", "int"], "bonus": 0, "total": 0 },
-          "erfindergeist": { "label": "Erfindergeist", "attributes": ["int", "wis", "dex"], "bonus": 0, "total": 0 },
-          "naturkunde": { "label": "Naturkunde", "attributes": ["wis", "agl", "sou"], "bonus": 0, "total": 0 },
-          "religion": { "label": "Religion", "attributes": ["wis", "edu", "sou"], "bonus": 0, "total": 0 },
-          "scharfsinnigkeit": { "label": "Scharfsinnigkeit", "attributes": ["int", "spe", "dex"], "bonus": 0, "total": 0 },
-          "archaeologie": { "label": "Archaeologie", "attributes": ["str", "con", "edu"], "bonus": 0, "total": 0 },
-          "handwerkskunst": { "label": "Handwerkskunst", "attributes": ["dex", "con", "str"], "bonus": 0, "total": 0 },
-          "willenskraft": { "label": "Willenskraft", "attributes": ["sou", "cha", "con"], "bonus": 0, "total": 0 },
-          "tierkunde": { "label": "Tierkunde", "attributes": ["agl", "spe", "wis"], "bonus": 0, "total": 0 }
+          "athletik": {
+            "label": "Athletik",
+            "attributes": [
+              "str",
+              "con",
+              "agl"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "wortgewandtheit": {
+            "label": "Wortgewandtheit",
+            "attributes": [
+              "cha",
+              "edu",
+              "int"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "erfindergeist": {
+            "label": "Erfindergeist",
+            "attributes": [
+              "int",
+              "wis",
+              "dex"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "naturkunde": {
+            "label": "Naturkunde",
+            "attributes": [
+              "wis",
+              "agl",
+              "sou"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "tierkunde": {
+            "label": "Tierkunde",
+            "attributes": [
+              "cha",
+              "spe",
+              "sou"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "religion": {
+            "label": "Religion",
+            "attributes": [
+              "wis",
+              "edu",
+              "sou"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "scharfsinnigkeit": {
+            "label": "Scharfsinnigkeit",
+            "attributes": [
+              "int",
+              "spe",
+              "dex"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "archaeologie": {
+            "label": "Archäologie",
+            "attributes": [
+              "edu",
+              "str",
+              "wis"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "handwerkskunst": {
+            "label": "Handwerkskunst",
+            "attributes": [
+              "dex",
+              "str",
+              "con"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "willenskraft": {
+            "label": "Willenskraft",
+            "attributes": [
+              "sou",
+              "cha",
+              "con"
+            ],
+            "bonus": 0,
+            "total": 0
+          },
+          "heimlichkeit": {
+            "label": "Heimlichkeit",
+            "attributes": [
+              "dex",
+              "agl",
+              "spe"
+            ],
+            "bonus": 0,
+            "total": 0
+          }
+        },
+        "bonuses": {
+          "hp": 0,
+          "rw": 0,
+          "mr": 0,
+          "block": 0,
+          "acc": 0,
+          "damage": 0,
+          "movement": 0,
+          "initiative": 0,
+          "inventory": 0
+        }
+      },
+      "monster": {
+        "monster": {
+          "rank": "E",
+          "role": "Normal",
+          "size": "Mittel",
+          "category": "",
+          "corrupted": 0,
+          "hp": 18,
+          "rw": 9,
+          "mr": 9,
+          "acc": 0,
+          "damage": "1W6+1",
+          "initiative": 1,
+          "movement": 4,
+          "reach": 1,
+          "probe": 15,
+          "exp": 5,
+          "traits": "",
+          "habitat": "",
+          "special": "",
+          "harmless": false
         }
       }
     },
     "character": {
-      "templates": ["base"]
+      "templates": [
+        "base"
+      ]
     },
     "npc": {
-      "templates": ["base"]
+      "templates": [
+        "base"
+      ]
     },
     "monster": {
-      "templates": ["base"]
+      "templates": [
+        "base",
+        "monster"
+      ]
     }
   },
   "Item": {
-    "types": ["playerSkill", "classSkill", "weapon", "armor", "equipment", "accessory", "consumable", "material", "natural", "mineral", "junk", "foodDrink"],
+    "types": [
+      "playerSkill",
+      "classSkill",
+      "weapon",
+      "armor",
+      "equipment",
+      "accessory",
+      "consumable",
+      "material",
+      "natural",
+      "mineral",
+      "junk",
+      "foodDrink"
+    ],
     "templates": {
       "base": {
         "description": "",
         "source": "",
-        "tier": 1
+        "tier": 1,
+        "rank": "",
+        "priceSk": 0
       },
       "skill": {
         "skillType": "",
         "activation": "active",
         "cost": "",
-        "castTime": "",
+        "castTime": "action",
         "element": "",
         "damageCategory": "physical",
         "damageType": "",
@@ -122,7 +357,12 @@
           "primary": "",
           "secondary": "",
           "tertiary": ""
-        }
+        },
+        "damageText": "",
+        "cooldownText": "",
+        "className": "",
+        "awaken": "",
+        "learningPoints": 0
       },
       "gear": {
         "quantity": 1,
@@ -133,46 +373,94 @@
         "damageCategory": "physical",
         "damageType": "",
         "element": "",
-        "armor": "",
         "range": "",
-        "effect": ""
+        "effect": "",
+        "hp": 0,
+        "hpDice": "",
+        "weaponClass": "melee",
+        "bonuses": {
+          "rw": 0,
+          "mr": 0,
+          "acc": 0,
+          "damageBonus": 0,
+          "magicBonus": 0,
+          "block": 0,
+          "movement": 0,
+          "initiative": 0
+        }
       }
     },
     "playerSkill": {
-      "templates": ["base", "skill"]
+      "templates": [
+        "base",
+        "skill"
+      ]
     },
     "classSkill": {
-      "templates": ["base", "skill"]
+      "templates": [
+        "base",
+        "skill"
+      ]
     },
     "weapon": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "armor": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "equipment": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "accessory": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "consumable": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "material": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "natural": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "mineral": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "junk": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     },
     "foodDrink": {
-      "templates": ["base", "gear"]
+      "templates": [
+        "base",
+        "gear"
+      ]
     }
   }
 }

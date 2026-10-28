@@ -1,233 +1,4622 @@
 [
-  {
-    "name": "Blitzschlag",
-    "type": "playerSkill",
-    "img": "icons/magic/lightning/bolt-strike-blue.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Magie",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "25 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "lightning",
-      "range": 4,
-      "damage": "3 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "INT", "secondary": "WIS", "tertiary": "" },
-      "description": "Waffe: Magisch."
-    }
-  },
-  {
-    "name": "Blutrausch",
-    "type": "playerSkill",
-    "img": "icons/skills/melee/strike-sword-red.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Nahkampf",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "10 Gold",
-      "cost": "1 AP",
-      "damageCategory": "physical",
-      "damageType": "slash",
-      "range": 1,
-      "damage": "2 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "STR", "secondary": "", "tertiary": "" },
-      "effect": "Bei Toetung erneuter Angriff.",
-      "description": "Waffe: Physisch. Bei Toetung erneuter Angriff."
-    }
-  },
-  {
-    "name": "Donnerhand",
-    "type": "playerSkill",
-    "img": "icons/magic/lightning/fist-unarmed-strike-blue.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Magie",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "25 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "lightning",
-      "range": 1,
-      "damage": "1 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "description": "Ohne Waffe."
-    }
-  },
-  {
-    "name": "Donnerschlag",
-    "type": "playerSkill",
-    "img": "icons/magic/lightning/bolt-strike-forked-yellow.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Magie",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "25 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "lightning",
-      "range": 2,
-      "damage": "3 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "EDU", "secondary": "CHA", "tertiary": "" },
-      "description": "Waffe: Magisch."
-    }
-  },
-  {
-    "name": "Doppelstoß",
-    "type": "playerSkill",
-    "img": "icons/skills/melee/strikes-sword-scimitar.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Nahkampf",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "10 Gold",
-      "cost": "1 AP",
-      "damageCategory": "physical",
-      "damageType": "pierce",
-      "range": 1,
-      "damage": "2 + 2d6",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "STR", "secondary": "CON", "tertiary": "" },
-      "description": "Waffe: Physisch."
-    }
-  },
-  {
-    "name": "Durchdringender Stoß",
-    "type": "playerSkill",
-    "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Nahkampf",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "10 Gold",
-      "cost": "1 AP",
-      "damageCategory": "physical",
-      "damageType": "pierce",
-      "range": 1,
-      "damage": "3 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "STR, DEX", "secondary": "CON, SPE", "tertiary": "" },
-      "description": "Waffe: Physisch."
-    }
-  },
-  {
-    "name": "Eisbarriere",
-    "type": "playerSkill",
-    "img": "icons/magic/defensive/barrier-shield-dome-blue.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Verteidigung",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "10 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "ice",
-      "range": 0,
-      "damage": "",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "INT", "secondary": "WIS", "tertiary": "" },
-      "effect": "Der Caster erhaelt ein Schild in Hoehe von 1d6 + Waffe, solange der Caster sich nicht bewegt.",
-      "description": "Der Caster erhaelt ein Schild in Hoehe von 1d6 + Waffe, solange der Caster sich nicht bewegt."
-    }
-  },
-  {
-    "name": "Eishand",
-    "type": "playerSkill",
-    "img": "icons/magic/water/hand-ice-blue.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Magie",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "10 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "ice",
-      "range": 3,
-      "damage": "1 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "description": "Waffe: Magisch."
-    }
-  },
-  {
-    "name": "Eislanze",
-    "type": "playerSkill",
-    "img": "icons/magic/water/projectile-ice-spear-blue.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Magie",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "25 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "ice",
-      "range": 4,
-      "damage": "3 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "INT", "secondary": "WIS", "tertiary": "" },
-      "description": "Waffe: Magisch."
-    }
-  },
-  {
-    "name": "Eisschlag",
-    "type": "playerSkill",
-    "img": "icons/magic/water/fist-ice-blue.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Magie",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 5,
-      "price": "25 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "ice",
-      "range": 2,
-      "damage": "3 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "EDU", "secondary": "CHA", "tertiary": "" },
-      "description": "Waffe: Magisch."
-    }
-  },
-  {
-    "name": "Elementar Schuss",
-    "type": "playerSkill",
-    "img": "icons/magic/fire/projectile-arrow-fire-orange.webp",
-    "system": {
-      "tier": 1,
-      "skillType": "Fernkampf",
-      "activation": "active",
-      "source": "Skill-Orb",
-      "learningPoints": 15,
-      "price": "100 Gold",
-      "cost": "1 AP",
-      "damageCategory": "magical",
-      "damageType": "magic",
-      "range": 4,
-      "damage": "2 + 1d4",
-      "cooldown": { "value": 0, "max": 1 },
-      "scaling": { "primary": "AGL", "secondary": "SOU", "tertiary": "" },
-      "description": "Waffe: Magisch."
-    }
+ {
+  "name": "Blitzschlag",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 3 + 1D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
   }
+ },
+ {
+  "name": "Blutrausch",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 2 + 1D4 (Bei Tötung erneuter Angriff), Range 1.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "2 + 1D4 (Bei Tötung erneuter Angriff)",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Donnerhand",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Ohne Waffe",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1+1d4",
+   "damageText": "1 + 1D4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Donnerschlag",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 3 + 1D4, Range 2.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Doppelstoß",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 2 + 2D6, Range 1.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "2+2d6",
+   "damageText": "2 + 2D6",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Durchdringender Stoß",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 3 + 1D4, Range 1.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR, DEX",
+    "secondary": "CON, SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Eisbarriere",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Der Caster erhält ein Schild in Höhe von 1W6 + Waffe, solange der Caster sich nicht bewegt.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Eishand",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 1 + 1D4, Range 3.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1+1d4",
+   "damageText": "1 + 1D4",
+   "damageCategory": "magical",
+   "range": 3,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Eislanze",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 3 + 1D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Eisschlag",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 3 + 1D4, Range 2.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Elementar Schuss",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Schaden 2 + 1D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "2+1d4",
+   "damageText": "2 + 1D4",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Erdspike",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Ein kleiner Erdspieß schießt aus dem Boden hervor und fügt 1W4 Schaden zu. Kann Gegner kurz aus dem Gleichgewicht bringen.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1d4",
+   "damageText": "1W4",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Erweiterte Verteidigung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "\"Der Benutzer erhält einen magischen Schild, der Ihn vor Schaden beschützt. Reichweite und Dauer wird mit INT/WIS erhöht\"",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1D4 +3 (Schild für den restlichen Kampf)",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "CON",
+    "secondary": "INT",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Feuerball",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 3 + 1D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Feuerhand",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Ohne Waffe.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1+1d4",
+   "damageText": "1 + 1D4",
+   "damageCategory": "physical",
+   "range": 3,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Feuerhieb",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Ohne Waffe.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "physical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Geisterschritt",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Erhöt die Movementweite +1.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Giftpfeil",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 1D4 (Nächster Schaden auf Ziel +3), Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1D4 (Nächster Schaden auf Ziel +3)",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Heiliger Schlag",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 1 + 2D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1+2d4",
+   "damageText": "1 + 2D4",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Ich bin ein Baum!",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Erhält Wurzeln die Rückstoß- oder Verschiebeeffekt verhindern aber das Movement einschrenken (-1). Bei 8 Soul erhält der Spieler beim Stillstehen 1W4 Leben alle 2 Runden.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Kleine Heilung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Heilung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 1D4 Heilung, Range 2.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1D4 Heilung",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Magischer Funke",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Ein kleiner magischer Stoß, der einen Gegner leicht zurückstößt und Schaden anrichtet.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1d4",
+   "damageText": "1W4",
+   "damageCategory": "physical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Opfer",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Heilung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 1D6 (Heilung), Range 1.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1D6 (Heilung)",
+   "damageCategory": "magical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Pfeilregen",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 160,
+   "price": "1 GK 60 SK",
+   "description": "Schaden 3 + 1D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 10,
+   "damage": "3+1d4",
+   "damageText": "3 + 1D4",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenblick",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenhafte Presänz",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Erhält eine dauerhafte +3 auf den Rüstwert.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenhieb",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 1D4 x 1D4, Range 1.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1D4 x 1D4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "DEX",
+    "secondary": "SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenschnur",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Der Gegner wird nach dem treffen von einer magischen dunklen Schnurr fixiert.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1d4",
+   "damageText": "1W4",
+   "damageCategory": "physical",
+   "range": 3,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenschritt",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Ermöglicht eine kurze Teleportation (3 Squares), ohne Schaden zu verursachen, ideal für taktische Positionierung.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenschuss",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Schaden 2 + 1D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "2+1d4",
+   "damageText": "2 + 1D4",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schnellfeuer",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Zusätzlicher Schaden wenn ein Verbündeter direkt neben dir Schaden verursacht",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1.0",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schwung des Krieger",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden gegen 2 hintereinanderstehenden Gegnern",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1+1d4",
+   "damageText": "1 + 1D4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Seelenauge",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Erkennt Fallen und versteckte Gegenstände um den Caster (4 Tiles)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Seelengriff",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 2 + 1D4, Range 8.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "2+1d4",
+   "damageText": "2 + 1D4",
+   "damageCategory": "physical",
+   "range": 8,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Splitterpfeil",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Zwei Gegner die nebeneinander Stehen werden mit je einem Wurf getroffen.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1D4 / 1D4",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Stärke der Natur",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Steinkanone",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Schaden 2W4, Range 2.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "2d4",
+   "damageText": "2W4",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Sturmstoß",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Dash zu einem Gegner und anschließend ein Angriff",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "1d4",
+   "damageText": "1D4",
+   "damageCategory": "physical",
+   "range": 3,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Windsprung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Erlaubt einen Sprung über 10 Felder. (5CD)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "quick",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "Instant",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Zermalmender Schlag",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Mit diesem Skill kann Ore und anderes ohne Pickaxe abgebaut werden. Wie viel erhalten wird ist mit einem W20 festzulegen.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schnitter",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Angriff mit einer Scharfen Klinge auf einen Gegner.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "2d4",
+   "damageText": "2W4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "SPE",
+    "tertiary": "DEX"
+   }
+  }
+ },
+ {
+  "name": "Magnet-Punkt",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 160,
+   "price": "1 GK 60 SK",
+   "description": "Metalle in der nähe werden zu einem festgelegten Punkt gezogen und verursachen dort Schaden.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 10,
+   "damage": "1d4+2",
+   "damageText": "1W4+2",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "SOU",
+    "tertiary": "WIS"
+   }
+  }
+ },
+ {
+  "name": "Stein-Haut",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verstärkung/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Der Spieler kann in den nächsten 2 Runden Je 2 Schaden Blocken. Überzieht die Arme mit Steinen aus der umgebung und schützt den Spieler.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verstärkung",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "CON",
+    "tertiary": "SOU"
+   }
+  }
+ },
+ {
+  "name": "Blitzverstärkung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verstärkung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Überzieht die ausgerüstete Waffe oder die Fäuste mit Blitzmagie. Erhöht den Waffenschaden für 2 Runden um 1W6.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verstärkung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "DEX",
+    "secondary": "SPE",
+    "tertiary": "AGL"
+   }
+  }
+ },
+ {
+  "name": "Blutungsschlag",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Schaden 4D4 (7 Schaden nach der aktiven Runde), Range 1.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "4D4 (7 Schaden nach der aktiven Runde)",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "DEX",
+    "secondary": "SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Bodyslam",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Rammt den Gegner um diesen Wegzustoßen (Schaden ohne Waffe gerechnet)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "1d6",
+   "damageText": "1D6",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": "SPE"
+   }
+  }
+ },
+ {
+  "name": "Durchdringender Pfeil",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Bei einem Gegner in Rüstung doppelter Schaden",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "3+2d6",
+   "damageText": "3 + 2D6",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Eisenhaut",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Schaden 2D6 (Schild für den Kampf)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "2D6 (Schild für den Kampf)",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Eisige Explosion",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Stärkerer Eisball",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "5+2d6",
+   "damageText": "5 + 2D6",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Eisverstärkung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verstärkung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Überzieht die ausgerüstete nahkampfwaffe Waffe oder die Fäuste mit Eismagie. Erhöht den Waffenschaden für 2 Runden um 2W4.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verstärkung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": "EDU"
+   }
+  }
+ },
+ {
+  "name": "Erdbeben",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Schaden 3 + 3D4, Range 4.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "3+3d4",
+   "damageText": "3 + 3D4",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": "STR"
+   }
+  }
+ },
+ {
+  "name": "Feuerverstärkung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verstärkung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Überzieht die ausgerüstete Waffe oder die Fäuste mit Feuermagie. Erhöht den Waffenschaden für 2 Runden um 1W8.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verstärkung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": "INT"
+   }
+  }
+ },
+ {
+  "name": "Flammenmeteor",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Stärkerer - Feuerball mit Erdelement in der mitte",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "5+2d6",
+   "damageText": "5 + 2D6",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Kettenblitz",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Stärkerer Blitz",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "5+2d6",
+   "damageText": "5 + 2D6",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Klingenschild",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Spieler kann 2 Runden nicht angreifen erhält jedoch von Angriffen keinen Schaden (1x pro Kampf einsetztbar, bei doppeltem Einsatzt wird der Skill verloren)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "STR, DEX",
+    "secondary": "CON",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Lichtheilung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Heilung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Schaden 3 + 2D4 (Heilung), Range 2.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "3 + 2D4 (Heilung)",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Natur-Regen",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Schwächung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "ACC der Gegner um Feld sinkt um 5 (+ Feld) 3 Range",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Schwächung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "INT , AGL",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenschritt",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Kurzer Teleport",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "DEX",
+    "secondary": "SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattentanz",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Du tauschst deine Position mit einem Verbündeten deiner Wahl (Radius 5 Felder)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "quick",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "Instant",
+   "scaling": {
+    "primary": "DEX",
+    "secondary": "SPE",
+    "tertiary": "WIS"
+   }
+  }
+ },
+ {
+  "name": "Schildbrecher",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Kann nur gegen Genger mit einem Schild eingesetzt werden",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "5x 1D4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "STR, DEX, EDU",
+    "secondary": "CON, SPE, CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schutz des Glaubens",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Überlebt einen Tödlichen Schlag 1x mit 1 HP (Anschließend wird der Skill verloren)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "quick",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "Instant",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Seelenhammer",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Schaden 5 + 2D4, Range 1.0",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "5+2d4",
+   "damageText": "5 + 2D4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Seelenverbindung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Verbindet die Seele mit einem Gegner oder Verbündeten für diesen Kampf (Schaden und Heilung werden zu 50/50 geteilt)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": 3,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Stich des Schattens",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Bei einem Angriff von Hinten wird der Wurf zu einem 1D20",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "2d4",
+   "damageText": "2D4",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR, DEX",
+    "secondary": "CON, SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Tanzende Elemente",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Schaden 1W4",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 15,
+   "damage": "1d4",
+   "damageText": "1W4",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Vergifteter Hauch",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Schwächung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Waffen und Ausrüstung die du berührst werden immer Vergiftet (Ausrüstung gibt dir 1 Dot-DMG und Waffen geben Gegnern 3 Dot-DMG pro Angriff)",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Schwächung",
+   "activation": "passive",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Vergifteter Schuss",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Schwächung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Vergiftet einen Gegner der Schaden nach abschluss der Runde bekommt",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Schwächung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "3D4 (3 Schaden nach der aktiven Runde)",
+   "damageCategory": "physical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Wirbelwind",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Schaden in einer kleinen Fläche mit Kleiner Range",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "2+1d10",
+   "damageText": "2 + 1D10",
+   "damageCategory": "physical",
+   "range": 3,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Arkaner Sturm",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Aura der Legenden",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1650,
+   "price": "16 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "DEX",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Einzug des Voids",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Schwächung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Schwächung",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Explosiver Schuss",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Frostfeuer",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Heilige Flamme",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Heilung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Himmelszorn",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Kraft der Titanen",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "STR, DEX, EDU, AGL",
+    "secondary": "CON, SPE, CHA, SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Licht der Gnade",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Licht Salve",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Magiepuls",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "Es wird ein gerade magischer Puls voller Arcaner Energie abgefeuert.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "Gerader Strich 2W10",
+   "damageCategory": "magical",
+   "range": 4,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Phalanx-Formation",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verteidigung/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verteidigung",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "CON",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Säureexplusion",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1650,
+   "price": "16 GK 50 SK",
+   "description": "Beschwört eine giftige Säurekugel, die bei Aufprall explodiert und allen Gegnern in einem kleinen Radius Schaden zufügt",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "3+2d6",
+   "damageText": "3+2W6",
+   "damageCategory": "magical",
+   "range": 3,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "SOU",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schattenklinge",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "DEX",
+    "secondary": "SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Schwarzes Loch",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Zertrümmerer",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1950,
+   "price": "19 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": "STR, CON"
+   }
+  }
+ },
+ {
+  "name": "Chronostasit",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "Hält die Zeit 8x8 Felder um den Caster für 1 Runde an. Der Caster kann sich in der Zeit Frei bewegen und 2 Aktionen durchführen.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 8,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Dimensionstor",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Fürbitte",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "Kann einen gefallenen Spieler, mit dem richtigen Gebet wiederbeleben.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 0,
+   "damage": "",
+   "damageText": "One Time use only",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "quick",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "Instant",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Göttliche Intervention",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": "EDU"
+   }
+  }
+ },
+ {
+  "name": "Göttlicher Komet",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": "WIS"
+   }
+  }
+ },
+ {
+  "name": "Himmelsfeuer",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "Ultra Rare Feuer Spell",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "10 x 1D6",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": "CHA"
+   }
+  }
+ },
+ {
+  "name": "Korrupter Glaube",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": "SOU"
+   }
+  }
+ },
+ {
+  "name": "Licht des Phönix",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Heilung/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "CHA",
+    "tertiary": "CON"
+   }
+  }
+ },
+ {
+  "name": "Sturm des Chaos",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 23000,
+   "price": "230 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 0,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": "EDU, CHA, SOU"
+   }
+  }
+ },
+ {
+  "name": "Teleportation",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "quick",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "Instant",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Jilwer",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "High Speed \"Teleport\" auf einen Platz der von Anwender angesehen werden kann. Alleine oder zuzweit (Wenn nebeneinander). Reichweite -> 20%SOU",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Jubelade",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Catastravia",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Lichterpfeile die auf einen ausgewählten Token abgefeuert werden.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "4W6+SOU(-50%)",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Reelseiden",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Nephtear",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Waldgroose",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Es wird ein kleiner Tornado auf einem nahem Feld erschaffen, der allen Tokens im Umkreis schden zufügt.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "1W10+SOU(-50%) p. Token",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Daosdorg",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Reamstroha",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Judradjim",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Vialathor",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Diagoldze",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Sorganeil",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Priox",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Verteidugungshaltung die magischen Schaden abblockt.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "1d20",
+   "damageText": "1W20",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Züshaarge",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Erschafft aus Sand -> Glas durch starke Magiezufur und dieses Glas kann geschossen oder zurückgezogen werden. Durch die geschwindigkeit wird das Glas unsichtbar und splittert nach eintreten.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "4d10",
+   "damageText": "4W10",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Skilldaria",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Erlaubt den gemeinsamen Einsatz mehrerer skills des selben Elements.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Or'ghavr",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 65000,
+   "price": "650 GK",
+   "description": "Die Waffe wird zum violetten Schlund. Nahkampfangriff, 4W8 Schaden; du heilst dich um die Hälfte des Schadens. „Hunger der Tiefe, öffne dein Maul, nimm, was lebt.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "4d8",
+   "damageText": "4W8",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Kha'or'baal",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 65000,
+   "price": "650 GK",
+   "description": "Öffnet für 3 Runden einen Abyss-Schlund (3×3 Felder): 2W8 Schaden pro Runde, Gegner im Feld werden 1 Feld zur Mitte gezogen. Wer im Feld steht, ist im Abyss-Nebel. „Ruf des Abgrunds, öffne dich dem Licht, verschlinge die Tiefe.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "2W8 pro Runde",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Sarath’kil",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 65000,
+   "price": "650 GK",
+   "description": "Ein Speer aus Abyss-Kristall durchbohrt alle Ziele in einer Linie (6 Felder): 5W6 Schaden, Blutend 1W6 für 3 Runden. „Durchbohrender Speer des Zorns, entfessle deine Wut, durchdringe alles.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "5d6",
+   "damageText": "5W6",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Qor'athal",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 65000,
+   "price": "650 GK",
+   "description": "Beschwört für 3 Runden einen Abgrund-Schemen (HP 10 × dein Level, Rüstwert 14). Er greift jede Runde mit 2W8 an und schützt dich. „Beschwörung des Abgrundfürsten, Herr der Dunkelheit, gehe hervor in die Welt.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "2W8 (Schemen)",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Le'or",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 65000,
+   "price": "650 GK",
+   "description": "Falsches Licht: Alle Verbündeten im Umkreis von 3 Feldern heilen 3W8 – jeder Geheilte bekommt +1 Korruption. „Licht ohne Sonne, wärme die Gebrochenen, nimm deinen Preis.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "",
+   "damageText": "Heilung 3W8",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Bo'el",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 65000,
+   "price": "650 GK",
+   "description": "Entzieht einem Ziel 4W6 HP und gibt sie dir. Stirbt das Ziel, hinterlässt es einen Abyss-Stein seiner Größe. „Seele zu Stein, Stein zu Macht, Macht zu mir.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "4d6",
+   "damageText": "4W6",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Ha'thohom",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 65000,
+   "price": "650 GK",
+   "description": "Kernbruch: Explosion im Umkreis von 2 Feldern um dich, 6W6 Schaden an allen. Du selbst erleidest 2W6 und bekommst +4 statt +2 Korruption. „Brich, Herz der Welt, und lass es regnen.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 50,
+   "damage": "6d6",
+   "damageText": "6W6",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Adlerauge",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "100%ige Chance einen Gegenstand zu Identifizieren",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 0,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Doppelklinge",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "Erlaubt den gemeinsamen Einsatz von 2 Waffen. Schaden von beiden Waffen.",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Drachenatem",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 0,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Elementare Kombination",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Erlaubt den Einsatz von 2 Magisch-Elemantar-Skills (Magie) gemeinsam.",
+   "source": "Boss-Drop",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 0,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Turns",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Frostblitz",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Klingentanz",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1500,
+   "price": "15 GK",
+   "description": "",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 25,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Knieschlag",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Nahkampf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 100,
+   "price": "1 GK",
+   "description": "Je mehr Knie'e desto mehr DMG. :D",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Nahkampf",
+   "activation": "active",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "1D4 (+2) (Wenn der Gegner Knie'e hat)",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "1 Turn",
+   "scaling": {
+    "primary": "STR, DEX",
+    "secondary": "SPE",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Levitation",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "Kann etwas für kurze Zeit zum schweben bringen. (Abhängig von INT und WIS)",
+   "source": "Awaken",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "passive",
+   "learningPoints": 5,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Zug der Sterne",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 0,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Duo-Blade Knifes",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Erlaubt den Einsatz von 2 Dolchen gemeinsam mit einem Skill.",
+   "source": "Special",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 0,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "physical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "Perma",
+   "scaling": {
+    "primary": "",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Verzauberung Rot (T1)",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Boostet den Schaden von Angriffen oder Skills mit Nahkmapfwaffen für 2 Runden. Auf dich oder einem anderen Token anwendbar. 1W4",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": "INT"
+   }
+  }
+ },
+ {
+  "name": "Verzauberung Grün (T1)",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Boostet die Laufweite von dir oder einem anderen Token für 2 Runden. +1",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": "INT"
+   }
+  }
+ },
+ {
+  "name": "Verzauberung Weiß (T1)",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Erschaft um dich oder einem anderen Token sofort (instant skill) ein magisches Schild. (Direkt Block Mag.+Melee) 2W4",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": "INT"
+   }
+  }
+ },
+ {
+  "name": "Verzauberung Blau (T1)",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Boostet die Krit.-Rate von dir oder einem anderen Token für 2 Runden. +2",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": "INT"
+   }
+  }
+ },
+ {
+  "name": "Verzauberung Braun (T1)",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Boostet den Schaden von Angriffen oder Skills eines natürlichen Elements für 2 Runden. Auf dich oder einem anderen Token anwendbar. 1W4",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 2,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "EDU",
+    "secondary": "WIS",
+    "tertiary": "INT"
+   }
+  }
+ },
+ {
+  "name": "Magie-Spruch",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 200,
+   "price": "2 GK",
+   "description": "Verringert den Cooldown von On-CD-Spells um 1 Runde. Bei dir oder einem anderen Token.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Turns",
+   "scaling": {
+    "primary": "INT",
+    "secondary": "WIS",
+    "tertiary": "EDU"
+   }
+  }
+ },
+ {
+  "name": "Erdverstärkung",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Magie/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "Überzieht die ausgerüstete Waffe oder die Fäuste mit Erd-/Steinmagie. Erhöht den Waffenschaden für 2 Runden um 2W4.",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Magie",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "damageCategory": "physical",
+   "range": 1,
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Turns",
+   "scaling": {
+    "primary": "STR",
+    "secondary": "SOU",
+    "tertiary": "AGL"
+   }
+  }
+ },
+ {
+  "name": "Naturresonanz",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verstärkung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verstärkung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "AGL",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Fauliger Griff",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Schwächung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Schwächung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "AGL",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Regeneration",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Heilung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Heilung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "AGL",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Stachelregen",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Fernkampf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Fernkampf",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "AGL",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Efeuklinge",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Verstärkung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Verstärkung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "AGL",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Naturinstinkt",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Passive/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Passive",
+   "activation": "passive",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "AGL",
+    "tertiary": ""
+   }
+  }
+ },
+ {
+  "name": "Sporenwelle",
+  "type": "playerSkill",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Skills/Schwächung/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 550,
+   "price": "5 GK 50 SK",
+   "description": "",
+   "source": "Skill-Orb",
+   "quantity": 1,
+   "skillType": "Schwächung",
+   "activation": "active",
+   "learningPoints": 15,
+   "damage": "",
+   "damageText": "",
+   "damageCategory": "magical",
+   "range": "",
+   "castTime": "action",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "",
+   "scaling": {
+    "primary": "SOU",
+    "secondary": "AGL",
+    "tertiary": ""
+   }
+  }
+ }
 ]

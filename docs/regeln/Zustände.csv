@@ -1,0 +1,15 @@
+﻿Zustand;Wirkung;Endet
+Am Boden;Bewusstlos, kann nichts tun. Macht Sterbewürfe (siehe 0 HP).;Heilung, Stabilisieren, 3 Erfolge
+Verwundet;−2 auf alle Würfe.;Lange Rast (eine Nacht Schlaf)
+Liegend;Nahkampf gegen dich +2, Fernkampf gegen dich −2. Aufstehen kostet die halbe Bewegung.;Aufstehen
+Zurückgestoßen;"Um die angegebenen Felder versetzt; gegen eine Wand zusätzlich 1W4 Schaden.";sofort
+Bewegungsunfähig;Bewegung 0 (z. B. Netzfalle, Sandgrab). Aktionen sind erlaubt.;nach Angabe oder Probe
+Betäubt;Verliert die nächste Aktion und Reaktion.;Ende des nächsten eigenen Zugs
+Verwirrt;−2 auf den nächsten Wurf (z. B. „Bildung einprügeln“).;nach dem Wurf
+Verängstigt;Darf sich der Quelle nicht nähern, −2 auf Angriffe gegen sie.;Willenskraft-Probe am Zugende
+Geblendet;Genauigkeit −5, Scharfsinnigkeit −5.;nach Angabe
+Unsichtbar / getarnt;"Angriffe gegen dich −5; dein erster Angriff ist kritisch (Hinterhalt) oder +2.";Nach einem Angriff oder einer lauten Aktion
+Blutend / vergiftet / brennend;Schaden am Zugbeginn wie angegeben (z. B. 1W4 pro Runde).;nach Angabe, Verband oder Gegengift
+Rage;"Muss den nächsten Gegner angreifen; Schaden +2, Rüstwert −2.";Wenn kein Gegner mehr in Reichweite ist
+Bezaubert;Greift die Quelle nicht an und hält sie für einen Freund.;Schaden durch die Quelle oder Willenskraft-Probe
+Markiert / verflucht;Effekt wie beim Skill angegeben (z. B. Nekrotisches Mal, Verhängnis).;nach Angabe

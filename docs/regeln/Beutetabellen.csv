@@ -1,0 +1,78 @@
+﻿Regel;Beschreibung
+Drei Arten Beute;1. Teile: was man aus einer Kreatur gewinnt (Fell, Klauen, Essenz). 2. Fund: was eine Kreatur bei sich hat oder in ihrem Lager liegt (Kes, Gegenstände). 3. Abyss-Steine aus Corrupted, Abyss-Wesen und Verlorenen.
+Ränge passen zum Markt;"Ein Gegner lässt Dinge seines Rangs fallen. Der Rang einer Beute ist derselbe wie im Markt (Preisbänder E bis SS); der GM wählt den Gegenstand im passenden Tab und Rang oder würfelt eine Zeile."
+Teile gewinnen;Nach dem Kampf, 10 Minuten pro Kreatur: Tierkunde (Tiere, Bestien) oder Naturkunde (alles andere) gegen den Probenwert der Kreatur −5. Erfolg: Normal 1 Teil, Elite 2, Boss 4. Um 10+ übertroffen: doppelt. Diener: 1 Teil pro 4 Diener. Ohne Probe (nur Fleisch, Fell grob abziehen): halber Wert.
+Fundwurf;Pro besiegtem Gegner, der etwas bei sich tragen kann (Menschen, Verlorene, Bestien mit Hort, Elite, Boss), 1W20 auf die Fundtabelle. Normale Tiere haben keinen Fund, nur Teile. Diener würfeln nicht.
+Boni auf den Fundwurf;Elite +3. Bounty Hunter (Auszahlung) +3 für das so besiegte Ziel. Glücksritter: einmal pro Kapitel ein Fund einen Rang besser. Natürliche 20: Gegenstand einen Rang höher.
+Bosse;Bosse würfeln nicht auf die Fundtabelle, sondern bekommen die Boss-Beute (immer).
+Truhen;Truhen in Dungeons und Ruinen sind die alten „Tier 1/2/3 Caches“. Inhalt nach der Truhentabelle, Gegenstände aus den Tabs mit dem Fundort dieses Caches.
+Quests;"Was bei einem Gilden-Auftrag gefunden wird, gehört der Gilde (Regel aus der GM-Info); die Gruppe bekommt die Belohnung. Im Dungeon gehört der Gruppe alles."
+Untersuchen;Unbekannte Gegenstände: Scharfsinnigkeit (Appraisal) gegen den Probenwert ihres Rangs, oder Appraisal bei der Gilde (siehe Dienstleistungen).
+
+Rang;Kes (Fundwurf);Wert eines Teils
+E;1W10 SK;4 SK
+D;3W10 SK;15 SK
+C;1W6 × 20 SK;60 SK
+B;1W6 GK;2 GK 50 SK
+A;3W6 GK;10 GK
+S;1W6 × 10 GK;40 GK
+SS;1W10 × 20 GK;150 GK
+
+Kategorie;Teil;Verwendung
+Tier;Fell, Leder und Fleisch;"Leder für Rüstung und Taschen; Fleisch = 2 Portionen (sättigt) pro Teil."
+Bestie;Klauen, Zähne, Schuppen;Material für Waffen, Pfeilspitzen und Schmuck.
+Schleim;Schleimgel;"Klebstoff, Gegengift, Schmiermittel; Apotheker zahlen gut."
+Geist;Geistessenz (in einer Phiole);Runen, Heiltränke, Zutat für magische Ausrüstung. Ohne Glasphiole verfliegt sie.
+Elementar;Elementkern (Feuer, Eis, Blitz …);"Elementare Waffen und Runen; ersetzt beim Herstellen ein Mineral desselben Rangs."
+Untot;Knochenstaub und Grabtuch;"Runen, Flüche; die Hüter kaufen ihn zum doppelten Preis, um ihn zu verbrennen."
+Corrupted;Kristallhaut;"Wie die Teile des Grundtiers; zusätzlich Abyss-Stein (siehe unten). Berühren ohne Handschuh: +1 Korruption."
+Abyss-Wesen;Leerenstaub;Nur auf dem Schwarzmarkt (Kyr). Wird zu Zorr verarbeitet.
+
+Fundwurf 1W20;Ergebnis
+1–9;Nichts außer Teilen.
+10–14;Kes nach Rang (siehe Spalte Kes).
+15–17;Kes und ein Verbrauchsgegenstand oder Material einen Rang tiefer.
+18–19;Ein Gegenstand des Rangs (Gegenstandswurf).
+20+;Kes und ein Gegenstand des Rangs (Gegenstandswurf). Natürliche 20: einen Rang höher.
+
+Gegenstandswurf 1W6;Tab
+1–2;Verbrauchsgegenstände (gibt es den Rang dort nicht: Abenteurerbedarf, sonst Mineralien)
+3;Mineralien oder Pflanzen (nach Lebensraum der Kreatur)
+4–5;Ausrüstung (Fundort Cache oder Abyss nur von Corrupted)
+6;Skill-Orb mit einem Skill des Rangs (Tab Skills, Fundort Skill-Orb). Rang E hat keine Skills: dann ein leerer Skill-Orb-Splitter (Wert 10 SK) oder Ausrüstung.
+
+Boss;Beute
+Immer;Kes nach Rang × 5 und ein Gegenstand des Rangs (Gegenstandswurf).
+Dazu 1W20: 1–10;Ein weiterer Gegenstand des Rangs.
+11–17;Ein Skill-Orb mit einem Boss-Drop-Skill (Tab Skills, Fundort Boss-Drop), Rang des Bosses oder einen tiefer.
+18–20;Ein Gegenstand einen Rang höher.
+Dungeon-Boss;Zusätzlich die Kern-Truhe des Dungeons (siehe Truhen) und doppelte Quest-EXP (Punktesystem).
+
+Truhe;Wo;Inhalt;Kes
+Tier 1 Cache;Dungeons und Ruinen Rang F–E, verlassene Lager;1W3 Gegenstände Rang E–D (Fundort „Tier 1 Cache“);2W20 SK
+Tier 2 Cache;Dungeons Rang D–C, Ruinen im Norden;1W3 Gegenstände Rang D–C (Fundort „Tier 2 Cache“);1W6 GK
+Tier 3 Cache;Dungeons Rang B und höher, alte Runenstätten;1W3 Gegenstände Rang C–B (Fundort „Tier 3 Cache“);3W6 GK
+Kern-Truhe;Am Ende jedes Dungeons, nach dem Boss;1 Gegenstand im Rang des Dungeons + 1W2 Gegenstände einen Rang tiefer;Kes des Dungeon-Rangs × 10
+Abyss-Truhe;In Corrupted-Nestern und im Abyss;"1 Abyss-Ausrüstung (Fundort „Abyss“) oder 1W4 Abyss-Steine; Öffnen: Willenskraft 30 oder +3 Korruption";–
+GM-Schatz;Nur vom GM gesetzt;Gegenstände mit Fundort „GM“ (legendäre Stücke, SS);–
+Fallen;Jede dritte Truhe in Dungeons ist gesichert: Scharfsinnigkeit gegen den Probenwert des Dungeon-Rangs, entschärfen mit Erfindergeist (gleiche Schwierigkeit). Auslösen: Schaden wie ein normaler Gegner des Rangs.
+
+Abyss-Steine;Beschreibung
+Wer Steine trägt;Nur Corrupted, Abyss-Wesen, Verlorene und Wächter. Normale Tiere und Monster nie.
+Herauslösen;Naturkunde gegen den Probenwert der Kreatur. Misslingt es, zerspringt der Stein in 1W4 Splitter. Ohne magischen Beutel zählt das Tragen wie ein Einsatz (Tab Korruption).
+Gildenpakt;"Abyss-Steine gehören der Gilde. Sie zahlt den Gildenpreis; der Schwarzmarkt (Kyr) zahlt mehr, ist aber strafbar."
+Kern eines Verlorenen;Immer, wenn ein Verlorener fällt. Die Hüter fordern ihn für Eldora.
+
+Herkunft;Diener;Normal winzig/klein;Normal mittel;Normal groß/riesig;Elite;Boss
+Corrupted Stufe 1;–;15+ auf 1W20: Splitter;15+: Kleiner Stein;15+: Kleiner Stein;Kleiner Stein;Mittlerer Stein
+Corrupted Stufe 2;1 Splitter pro 4 Diener;Splitter;Kleiner Stein;Mittlerer Stein;Mittlerer Stein;Großer Stein
+Corrupted Stufe 3 / Abyss-Wesen;Splitter;Kleiner Stein;Mittlerer Stein;Großer Stein;Großer Stein;Abyss-Herz
+Verlorener;–;–;Kern eines Verlorenen;Kern eines Verlorenen;Kern eines Verlorenen + 1W4 Splitter;–
+
+Tab;E;D;C;B;A;S;SS
+Ausrüstung;22;29;39;25;13;10;8
+Verbrauchsgegenstände;30;10;6;3;2;2;1
+Abenteurerbedarf;31;17;3;0;0;0;0
+Mineralien;6;7;6;3;1;1;1
+Pflanzen;34;3;2;0;0;0;0
+Skills;0;50;33;17;24;9;7

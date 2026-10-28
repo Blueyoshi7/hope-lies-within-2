@@ -1,56 +1,530 @@
 [
-  {
-    "name": "Sonnenkornbrot",
-    "type": "foodDrink",
-    "img": "icons/consumables/grains/bread-loaf-boule-rustic-brown.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "10 Gold", "quantity": 1, "effect": "Nahrung", "description": "Brot aus Sonnenkorn" }
-  },
-  {
-    "name": "Windgrass-Bier",
-    "type": "foodDrink",
-    "img": "icons/consumables/drinks/ale-mug-brown.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "15 Gold", "quantity": 1, "effect": "Nahrung", "description": "Bier aus Windgras. Betrunken +1." }
-  },
-  {
-    "name": "(Erd-)Wurzelschnitte",
-    "type": "foodDrink",
-    "img": "icons/consumables/food/pie-cooked-brown.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Eine Schnitte mit Erdwurzelfuelle." }
-  },
-  {
-    "name": "Tränenkraut-Vodka",
-    "type": "foodDrink",
-    "img": "icons/consumables/drinks/bottle-corked-blue.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Vodka aus Traenenkraut. Betrunken +2." }
-  },
-  {
-    "name": "Nachter-Pizza",
-    "type": "foodDrink",
-    "img": "icons/consumables/food/pizza-slice-yellow.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Sonnenkornteig belegt mit Nachtschattenbluete." }
-  },
-  {
-    "name": "Wasserbeeren-Drink",
-    "type": "foodDrink",
-    "img": "icons/consumables/drinks/glass-blue.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "25 Gold", "quantity": 1, "effect": "Nahrung", "description": "Ein Trinken aus Wasserbeeren. Saettigt mehr als man denkt." }
-  },
-  {
-    "name": "Wasserbeeren-Drink klein",
-    "type": "foodDrink",
-    "img": "icons/consumables/drinks/glass-blue.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "5 Gold", "quantity": 1, "effect": "Nahrung", "description": "Ein Trinken aus Wasserbeeren. Saettigt mehr als man denkt." }
-  },
-  {
-    "name": "Sonnenflimmerbrot",
-    "type": "foodDrink",
-    "img": "icons/consumables/grains/bread-loaf-boule-rustic-brown.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "5 Gold", "quantity": 1, "effect": "Nahrung", "description": "Ein rustikales, nahrhaftes Brot mit einer leicht suesslichen Note vom Sonnenkorn." }
-  },
-  {
-    "name": "Nebeltraum-Suppe",
-    "type": "foodDrink",
-    "img": "icons/consumables/soup/bowl-broth-green.webp",
-    "system": { "tier": 1, "source": "Haendler", "price": "3 Gold", "quantity": 1, "effect": "Nahrung", "description": "Eine beruhigende, hellgruene Suppe mit einem sanften, erdigen Aroma vom Nebelfarn." }
+ {
+  "name": "Sonnenkornbrot",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Brot aus Sonnenkorn",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
   }
+ },
+ {
+  "name": "Windgrass-Bier",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "\"Bier\" aus Windgras (Betrunken +1)",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6. Alkohol."
+  }
+ },
+ {
+  "name": "(Erd-)Wurzelschnitte",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Eine Schnitte mit Erdwurzelfülle",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Tränenkraut-Vodka",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Vodka aus Tränenkraut (Betrunken +2)",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6. Alkohol."
+  }
+ },
+ {
+  "name": "Nachter-Pizza",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Sonnenkornteig belegt mit Nachtschattenblüte",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Wasserbeeren-Drink",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Ein Trinken aus Wasserbeeren Sättigt mehr als man denkt.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Sonnenflimmerbrot",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Ein rustikales, nahrhaftes Brot mit einer leicht süßlichen Note vom Sonnenkorn.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Nebeltraum-Suppe",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Eine beruhigende, hellgrüne Suppe mit einem sanften, erdigen Aroma vom Nebelfarn.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Schattenfeuer-Eintopf",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 10,
+   "price": "10 SK",
+   "description": "Ein herzhafter, tiefdunkler Eintopf mit einem rauchigen Aroma vom gedünsteten Schattenkohl.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Funkengebräu",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Ein erfrischendes, prickelndes Getränk mit einer leuchtenden Farbe.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Flüsterkuchen",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Überraschend süße, kleine Kuchen mit einem milden, kaum wahrnehmbaren Zwiebelaroma.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 1, heilt 1W6."
+  }
+ },
+ {
+  "name": "Frostblüten-Dim Sum",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Sonnenkornteig gefüllt mit gedämpften Frostblüten.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Kühlt: Hitze zählt eine Wärmezone milder."
+  }
+ },
+ {
+  "name": "Erdwurzen-Brötle",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Brötchen aus Erdwurzelteig",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Athletik +2."
+  }
+ },
+ {
+  "name": "Dämmerblatt-Rollen",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 12,
+   "price": "12 SK",
+   "description": "Gebratene Rollen aus Dämmerblatt",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Heimlichkeit +2 in Dämmerung und Nacht."
+  }
+ },
+ {
+  "name": "Blumelade",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Marmelade oder Jello aus unterschiedlichen Blüten",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Wortgewandtheit +2."
+  }
+ },
+ {
+  "name": "Schattendorn-Whisky",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 10,
+   "price": "10 SK",
+   "description": "\"Whiskey\" aus Nachtschattendornen (Betrunken +2)",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Immun gegen Verängstigt; Initiative −1. Alkohol."
+  }
+ },
+ {
+  "name": "Eiswein",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 8,
+   "price": "8 SK",
+   "description": "Wein aus fermentierten Frostblüten",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Kühlt: Hitze zählt eine Wärmezone milder; Willenskraft +2. Alkohol."
+  }
+ },
+ {
+  "name": "Schattenpudding",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 34,
+   "price": "34 SK",
+   "description": "Ein dekadenter, tiefvioletter Pudding mit einem komplexen Geschmacksprofil.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Willenskraft +3 gegen Abyss-Nebel."
+  }
+ },
+ {
+  "name": "Frostiger Wald-Salat",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Ein erfrischender, knackiger Salat mit einem Hauch von Winterwald.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Naturkunde +2."
+  }
+ },
+ {
+  "name": "Lichtgebratener Himmelsweizen",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 9,
+   "price": "9 SK",
+   "description": "Ein elegantes Gericht mit einer leichten, luftigen Textur.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Scharfsinnigkeit +2."
+  }
+ },
+ {
+  "name": "Blutrote Flammenfrucht",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 8,
+   "price": "8 SK",
+   "description": "Eine intensive, süß-saure Delikatesse mit einem feurigen Nachgeschmack.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Innere Wärme: Kälte zählt eine Wärmezone milder."
+  }
+ },
+ {
+  "name": "Wolkenwunderauflauf",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Ein leichter, fluffiger Auflauf mit einem subtilen Waldaroma.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Bewegung +1."
+  }
+ },
+ {
+  "name": "Spicy-Orch-Taco",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 46,
+   "price": "46 SK",
+   "description": "Sonnenkorntaco gefüllt mit Feuerorchideen",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Nahkampfschaden +2, aber Wortgewandtheit −2 (Schweiß und Tränen)."
+  }
+ },
+ {
+  "name": "Feuer-Orchidee-Eintopf",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 134,
+   "price": "1 GK 34 SK",
+   "description": "Eintop aus Feuer-Orchidee-Sauce und anderen Zutaten",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Kälte und Frost wirken nicht (Wärmezonen Kühl bis Eis zählen als Mild); Feuer-Skills +1 Schaden."
+  }
+ },
+ {
+  "name": "Gerösteter Schattenpilz",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 150,
+   "price": "1 GK 50 SK",
+   "description": "Schattenpilz geröstet",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Kein Malus durch Dunkelheit; Heimlichkeit +2."
+  }
+ },
+ {
+  "name": "Feuer-Orchidee-Sauce",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 118,
+   "price": "1 GK 18 SK",
+   "description": "Sauce aus Feuerorchidee",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Initiative +3."
+  }
+ },
+ {
+  "name": "Erdwurzen-Öl",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 29,
+   "price": "29 SK",
+   "description": "Öl gepresst aus Erdwurzeln",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Rüstwert +1."
+  }
+ },
+ {
+  "name": "Blutlilien-Pfannkuchen",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 21,
+   "price": "21 SK",
+   "description": "Sonnenkorn pfannkuchen mit Blutlilien-Füllung",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Maximale HP +5 für den Tag."
+  }
+ },
+ {
+  "name": "Himmelsschale",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 12,
+   "price": "12 SK",
+   "description": "Eine einfache, aber exquisite Speise, die den Gaumen mit einem harmonischen Zusammenspiel von Texturen und Aromen verwöhnt.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Willenskraft +3; Korruptions-Resistenz +1."
+  }
+ },
+ {
+  "name": "Zeittraum-Dessert",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 32,
+   "price": "32 SK",
+   "description": "Ein mystisches Dessert mit einem komplexen Geschmacksprofil.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Einmal an diesem Tag einen eigenen Wurf wiederholen."
+  }
+ },
+ {
+  "name": "Sterngekrönter Nachtaufstrich",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Ein eleganter und dekadenter Aufstrich mit einer leuchtenden Farbe.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Erfindergeist +2."
+  }
+ },
+ {
+  "name": "Phönixranken-Tarte",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 788,
+   "price": "7 GK 88 SK",
+   "description": "Eine außergewöhnliche Tarte mit einem intensiven Geschmackserlebnis.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Fällt man an diesem Tag auf 0 HP, steht man sofort mit 1W10 HP wieder auf (einmal)."
+  }
+ },
+ {
+  "name": "Frostige Sternensuppe",
+  "type": "foodDrink",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Essen und Trinken/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Eine ungewöhnliche, aber faszinierende Suppe mit einem frostigen Hauch.",
+   "source": "Händler",
+   "quantity": 1,
+   "effect": "Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Magieresistenz +1."
+  }
+ }
 ]

@@ -1,0 +1,3492 @@
+[
+ {
+  "name": "Pinselhörnchen",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Wälder",
+    "special": "Tarnt sich perfekt in Rinde (Scharfsinnigkeit 20 zum Finden). Fell 2 SK.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Erdbeermaus",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Wiesen, Felder",
+    "special": "Riecht süß; Köder für größere Tiere.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Wüsten-Springmaus",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 7,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos, Schnell",
+    "habitat": "Suna-Wüste",
+    "special": "Wo sie leben, ist Wasser in der Nähe (Naturkunde +2 beim Wassersuchen).",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Ente",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 18,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Seen, Flüsse",
+    "special": "Gutes Jagdwild (2 Portionen Fleisch).",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 18,
+     "max": 18
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Kleinhorn",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 7,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos, Schnell",
+    "habitat": "lichte Wälder",
+    "special": "Ein winziges Lichtwesen. Wer eines schützt, hat bis Kapitelende +1 auf Religion (GM).",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Streifwiesel",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 18,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 6,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos, Schnell",
+    "habitat": "Wiesen, Wälder",
+    "special": "Fell 3 SK.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 18,
+     "max": 18
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Blubberhirschling",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Bäche, Sümpfe",
+    "special": "Zeigt sauberes Wasser an.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Glimmkäfer",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Wälder bei Nacht",
+    "special": "Ein Glas voller Glimmkäfer leuchtet wie eine Kerze (1 Nacht).",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Nebelohr",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 18,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Nebelige Täler",
+    "special": "Hört Abyss-Nebel kommen: wird unruhig, bevor er auftaucht.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 18,
+     "max": 18
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Blattpieper",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos, Flieger",
+    "habitat": "Wälder",
+    "special": "Federn als Grundmaterial (Federn).",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Flauschling",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos, Flieger",
+    "habitat": "Hochland, Wind",
+    "special": "Schwebt in Schwärmen; Kinder lieben sie.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Moosling",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 18,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "feuchte Wälder",
+    "special": "Trägt Sternmoos auf dem Rücken (1 Sternmoos, wenn man es freundlich lockt).",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 18,
+     "max": 18
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Schnüffelwisch",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Wälder, Gärten",
+    "special": "Schnüffelt Magie: niest bei magischen Gegenständen in 3 Feldern.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Herzling",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Untot",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "–",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos",
+    "habitat": "Friedhöfe, Ruinen",
+    "special": "Kuschelt sich an: Wer ihn trägt, hat auf seinen niedrigsten Wert +1 (zählt nicht für die Klasse). Harmlos und treu.",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Dolmetscheule",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "–",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": "– (Jagd)",
+    "traits": "Harmlos, Flieger",
+    "habitat": "alte Wälder, Ruinen",
+    "special": "Übersetzt jede Sprache, aber nicht zuverlässig: Pro Satz würfelt der GM, ob er stimmt (1W20, 1–5 falsch). Kann als Begleiter gezähmt werden (Tierkunde 25).",
+    "harmless": true
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": []
+ },
+ {
+  "name": "Fledhase",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6+1",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": 5,
+    "traits": "Flieger",
+    "habitat": "Wälder bei Nacht",
+    "special": "Heilt sich um den halben Schaden seines Bisses.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Blutbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6+1",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Pilzpelz-Frettchen",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6+1",
+    "initiative": 1,
+    "movement": 7,
+    "reach": 1,
+    "probe": 15,
+    "exp": 5,
+    "traits": "Schnell",
+    "habitat": "Unterholz, Höhleneingänge",
+    "special": "Reaktion einmal pro Kampf: Sporenwolke, 1 Feld, Athletik 15 oder vergiftet. Fell enthält Pilzflechte (Zutat).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Biss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6+1",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Zottelziege",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 18,
+    "rw": 9,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6+1",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": 5,
+    "traits": "–",
+    "habitat": "Berge, Hochland",
+    "special": "Treffer stößt 1 Feld zurück.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 18,
+     "max": 18
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Hornstoß",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6+1",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Hallrabe",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6+1",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": 5,
+    "traits": "Flieger",
+    "habitat": "Städte, Schlachtfelder",
+    "special": "Einmal pro Kampf ein greller Schrei: alle in 2 Feldern Willenskraft 15 oder Betäubt.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schnabel",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6+1",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Fellfliege",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Diener",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 4,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": 1,
+    "traits": "Flieger",
+    "habitat": "Sümpfe, Sommer",
+    "special": "Tritt in Schwärmen von 4–8 auf.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 4,
+     "max": 4
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Stich",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Blasenmücke",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Diener",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 7,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": 1,
+    "traits": "Flieger, Gift, Explodiert",
+    "habitat": "Sümpfe",
+    "special": "Platzt beim Tod und vergiftet die Umgebung.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 7,
+     "max": 7
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Stich",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Funkenkrill",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Diener",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 4,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": 1,
+    "traits": "Element (Blitz)",
+    "habitat": "Küste, Meer",
+    "special": "Schwärme im Wasser: wer schwimmt, wird von 1W4 angegriffen.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 4,
+     "max": 4
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Stromstoß",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Ameise",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Diener",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 7,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": 1,
+    "traits": "Rudel, Panzer",
+    "habitat": "Wälder, Wiesen",
+    "special": "Kommt nie allein.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 7,
+     "max": 7
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Zangenbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Ratte",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Diener",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 7,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": 1,
+    "traits": "Rudel",
+    "habitat": "Kanäle, Keller",
+    "special": "–",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 7,
+     "max": 7
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Biss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Tröpfchen",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Diener",
+    "size": "Winzig",
+    "category": "Schleim",
+    "corrupted": 0,
+    "hp": 4,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": 1,
+    "traits": "Schleim",
+    "habitat": "Höhlen, Dungeons",
+    "special": "Mehrere Tröpfchen können zu einem Schleimklumpen verschmelzen.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 4,
+     "max": 4
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Ätzen",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Augenklumpen",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Schleim",
+    "corrupted": 0,
+    "hp": 18,
+    "rw": 10,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6+1",
+    "initiative": 1,
+    "movement": 4,
+    "reach": 1,
+    "probe": 15,
+    "exp": 5,
+    "traits": "Schleim",
+    "habitat": "Dungeons, Kanäle",
+    "special": "Kann nicht überrascht werden (Augen überall).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 18,
+     "max": 18
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schleimschlag",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6+1",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Kuschelschnecke",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang E",
+  "system": {
+   "monster": {
+    "rank": "E",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 9,
+    "rw": 11,
+    "mr": 9,
+    "acc": 0,
+    "damage": "1W6+1",
+    "initiative": 1,
+    "movement": 5,
+    "reach": 1,
+    "probe": 15,
+    "exp": 5,
+    "traits": "Gift",
+    "habitat": "feuchte Höhlen",
+    "special": "Treffer: Bewegungsunfähig, bis man sich befreit (Athletik 15); danach Athletik 15 oder vergiftet.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 9,
+     "max": 9
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Umarmung",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6+1",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Hornwiesel",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 6,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Schnell",
+    "habitat": "Hochland, helle Wälder",
+    "special": "Weißes Fell 30 SK.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Geweihstoß",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Geisterdachs",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 10,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Gräber",
+    "habitat": "kalte Wälder, Norden",
+    "special": "Augen leuchten türkis: sieht Unsichtbares.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Klauen",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Wirrkatze",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 13,
+    "rw": 12,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 7,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Schnell",
+    "habitat": "Städte, Märkte",
+    "special": "Treffer: Willenskraft 20 oder Verwirrt. Stiehlt glitzernde Dinge.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 13,
+     "max": 13
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Kratzen",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Pilzkatze",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Gift",
+    "habitat": "Pilzwälder",
+    "special": "Fliegenpilz-Kappe; vergiftet bei Treffer.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Sporenkralle",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Glutratte",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Element (Feuer)",
+    "habitat": "Vulkane, Schmieden, Glutzone",
+    "special": "Hinterlässt brennende Spuren.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Glutbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Seuchenratte",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Untot",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Gift, Rudel",
+    "habitat": "Kanäle, verlassene Städte",
+    "special": "Grün leuchtend, halb Skelett. Biss: vergiftet, Heilung wirkt halb, bis geheilt.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Seuchenbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Riesenratte",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Elite",
+    "size": "Mittel",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 78,
+    "rw": 11,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W6+4",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 30,
+    "traits": "Rudel",
+    "habitat": "Kanäle, Dungeons",
+    "special": "Anführer eines Rattenrudels (1W6 Ratten).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 78,
+     "max": 78
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Nagezahn",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Wildschwein",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 10,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Rudel",
+    "habitat": "Wälder",
+    "special": "Ansturm: 3 Felder gerade Linie, dann +1 Würfel Schaden. Tritt als Rotte auf.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Hauer",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Elch",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Groß",
+    "category": "Tier",
+    "corrupted": 0,
+    "hp": 32,
+    "rw": 9,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 2,
+    "probe": 20,
+    "exp": 10,
+    "traits": "–",
+    "habitat": "Nördliche Wälder",
+    "special": "Greift nur an, wenn bedrängt. 6 Portionen Fleisch.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 32,
+     "max": 32
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Geweih",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Kammraptor-Jungtier",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Diener",
+    "size": "Klein",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 10,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "1W6+2",
+    "initiative": 2,
+    "movement": 6,
+    "reach": 1,
+    "probe": 20,
+    "exp": 2,
+    "traits": "Rudel, Schnell",
+    "habitat": "Steppe, Dschungel",
+    "special": "Ruft den erwachsenen Raptor, wenn verletzt.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 10,
+     "max": 10
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Biss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "1d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Hydra-Schlüpfling",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Gift",
+    "habitat": "Sümpfe",
+    "special": "Zwei Köpfe: zwei Angriffe mit halbem Schaden statt einem.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Doppelbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Schlafschleimnatter",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Schleim",
+    "corrupted": 0,
+    "hp": 13,
+    "rw": 12,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 5,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Schleim",
+    "habitat": "Sümpfe, Höhlen",
+    "special": "Treffer: Willenskraft 20 oder schläft ein (Betäubt, bis man geweckt wird).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 13,
+     "max": 13
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Biss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Dunkelschleim",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Schleim",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Schleim, Schatten",
+    "habitat": "Dungeons",
+    "special": "Drei leuchtende Augen; im Licht träge.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schattenschleim",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Rußwicht",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Schatten, Element (Feuer)",
+    "habitat": "Ruinen, Kamine",
+    "special": "Löscht Lichtquellen in 2 Feldern (Aktion).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Rußkralle",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Speerwicht",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 26,
+    "rw": 11,
+    "mr": 10,
+    "acc": 1,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 10,
+    "traits": "Flieger, Element (Feuer)",
+    "habitat": "Glutzone, Vulkane",
+    "special": "Fernkampf 4 Felder.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 26,
+     "max": 26
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Glutspeer",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Winterwelpe",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Elite",
+    "size": "Winzig",
+    "category": "Elementar",
+    "corrupted": 0,
+    "hp": 39,
+    "rw": 13,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W6+4",
+    "initiative": 2,
+    "movement": 5,
+    "reach": 1,
+    "probe": 20,
+    "exp": 30,
+    "traits": "Element (Eis)",
+    "habitat": "Eiszone, Deep North",
+    "special": "Treffer: Bewegung −2 bis zum nächsten Zug. Folgt Gruppen mit Feuer.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 39,
+     "max": 39
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Frostbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d6+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Raptor",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 38,
+    "rw": 11,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 6,
+    "reach": 1,
+    "probe": 25,
+    "exp": 20,
+    "traits": "Rudel, Schnell",
+    "habitat": "Steppe, Dschungel",
+    "special": "Springt 3 Felder ohne Gelegenheitsangriffe.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 38,
+     "max": 38
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Sichelkralle",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Schattenwolf",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 38,
+    "rw": 11,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 1,
+    "probe": 25,
+    "exp": 20,
+    "traits": "Rudel, Schatten",
+    "habitat": "Nördliche Wälder, Nacht",
+    "special": "",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 38,
+     "max": 38
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schattenbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Chimärchen",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 19,
+    "rw": 13,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 5,
+    "reach": 1,
+    "probe": 25,
+    "exp": 20,
+    "traits": "Element (zufällig)",
+    "habitat": "Ruinen, Dungeons",
+    "special": "Jede Runde wählt der GM Feuer, Gift oder Blitz.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 19,
+     "max": 19
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Dreifachbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Zaubersalamander",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Klein",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 38,
+    "rw": 12,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 1,
+    "probe": 25,
+    "exp": 20,
+    "traits": "Element (Feuer)",
+    "habitat": "Magische Orte, Illmaris",
+    "special": "Greift gegen die Magieresistenz an, Reichweite 4.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 38,
+     "max": 38
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Zauberfunke",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Kopierkatze",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Winzig",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 19,
+    "rw": 13,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 5,
+    "reach": 1,
+    "probe": 25,
+    "exp": 20,
+    "traits": "Schatten",
+    "habitat": "Städte, Dungeons",
+    "special": "Gestaltwandler: nimmt die Gestalt einer Figur an, die sie gesehen hat (Scharfsinnigkeit 25 zum Durchschauen).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 19,
+     "max": 19
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schattenkralle",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Moornixe",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 38,
+    "rw": 11,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 1,
+    "probe": 25,
+    "exp": 20,
+    "traits": "–",
+    "habitat": "Sümpfe, Moore",
+    "special": "Gesang (Aktion): Willenskraft 25 oder Bezaubert und läuft ins Wasser.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 38,
+     "max": 38
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Krallen",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Madenschlund",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 38,
+    "rw": 11,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 1,
+    "probe": 25,
+    "exp": 20,
+    "traits": "Gift, Gräber",
+    "habitat": "Pilzhöhlen",
+    "special": "Treffer: verschlingt ein kleines Ziel (Bewegungsunfähig, 1W6 pro Runde, Athletik 25).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 38,
+     "max": 38
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schlund",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Ameisenkönig",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 142,
+    "rw": 11,
+    "mr": 12,
+    "acc": 3,
+    "damage": "2W8+7",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 2,
+    "probe": 25,
+    "exp": 60,
+    "traits": "Beschwörer, Panzer",
+    "habitat": "Ameisenbaue",
+    "special": "Ruft Ameisen. Solange Ameisen leben, Blockwert +2 zusätzlich.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 142,
+     "max": 142
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Königszange",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+7",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Schleimgans",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Elite",
+    "size": "Klein",
+    "category": "Schleim",
+    "corrupted": 0,
+    "hp": 114,
+    "rw": 13,
+    "mr": 12,
+    "acc": 3,
+    "damage": "2W8+7",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 1,
+    "probe": 25,
+    "exp": 60,
+    "traits": "Schleim",
+    "habitat": "Sümpfe, Kanäle",
+    "special": "Säurezischen, Kegel 3 Felder, Cooldown 3: Schaden ×2, Athletik 25 halbiert.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 114,
+     "max": 114
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "3 Schleimschnäbel (Säure)",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+7",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Flickkeiler",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Untot",
+    "corrupted": 0,
+    "hp": 142,
+    "rw": 11,
+    "mr": 12,
+    "acc": 3,
+    "damage": "2W8+7",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 2,
+    "probe": 25,
+    "exp": 60,
+    "traits": "–",
+    "habitat": "Verlassene Höfe, alte Schlachtfelder",
+    "special": "Zusammengenähter Keiler. Fällt er, steht er einmal mit 10 HP wieder auf (Nähte halten).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 142,
+     "max": 142
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Genähte Hauer",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+7",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Psilotus",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 50,
+    "rw": 13,
+    "mr": 12,
+    "acc": 3,
+    "damage": "3W8+4",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 1,
+    "probe": 30,
+    "exp": 35,
+    "traits": "–",
+    "habitat": "Pilzwälder, Dungeons",
+    "special": "Treffer: Willenskraft 30 oder Verwirrt.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 50,
+     "max": 50
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Gedankenstoß (gegen MR)",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "3d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "magical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Sturmhaar-Geist",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 50,
+    "rw": 13,
+    "mr": 12,
+    "acc": 3,
+    "damage": "3W8+4",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 1,
+    "probe": 30,
+    "exp": 35,
+    "traits": "Flieger, Element (Blitz)",
+    "habitat": "Hochland bei Sturm",
+    "special": "Trifft 2 Ziele nebeneinander.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 50,
+     "max": 50
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Blitzmähne",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "3d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Allseher",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Elite",
+    "size": "Mittel",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 150,
+    "rw": 14,
+    "mr": 13,
+    "acc": 4,
+    "damage": "4W8+4",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 1,
+    "probe": 30,
+    "exp": 105,
+    "traits": "Flieger",
+    "habitat": "Dungeons, Kristallhöhlen",
+    "special": "Jede Runde ein anderer Strahl: Geblendet, Bewegungsunfähig oder Schaden. Kann nicht überrascht werden.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 150,
+     "max": 150
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Augenstrahl (gegen MR)",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "magical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Kristallspinne",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 188,
+    "rw": 13,
+    "mr": 13,
+    "acc": 4,
+    "damage": "4W8+4",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 2,
+    "probe": 30,
+    "exp": 105,
+    "traits": "Gift, Panzer",
+    "habitat": "Kristallhöhlen",
+    "special": "Netz (Aktion): 2×2 Felder Bewegungsunfähig, Athletik 30.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 188,
+     "max": 188
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Kristallbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d8+4",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Quellhirsch",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 188,
+    "rw": 13,
+    "mr": 13,
+    "acc": 4,
+    "damage": "4W8+4",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 2,
+    "probe": 30,
+    "exp": 105,
+    "traits": "Element (Wasser)",
+    "habitat": "Heilige Quellen",
+    "special": "Hütet Quellen und greift nur an, wenn sie bedroht werden. Wer ihn verschont und die Quelle schützt, wird einmal voll geheilt.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 188,
+     "max": 188
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Geweih",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d8+4",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Tiefenaal",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Elite",
+    "size": "Riesig",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 225,
+    "rw": 12,
+    "mr": 13,
+    "acc": 4,
+    "damage": "4W8+4",
+    "initiative": 4,
+    "movement": 5,
+    "reach": 3,
+    "probe": 30,
+    "exp": 105,
+    "traits": "–",
+    "habitat": "Küste, Meer, tiefe Seen",
+    "special": "Umschlingt Boote: Athletik 30 oder kentern.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 225,
+     "max": 225
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schlingbiss",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d8+4",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Moosschlund",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Elite",
+    "size": "Riesig",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 225,
+    "rw": 12,
+    "mr": 13,
+    "acc": 4,
+    "damage": "4W8+4",
+    "initiative": 4,
+    "movement": 5,
+    "reach": 3,
+    "probe": 30,
+    "exp": 105,
+    "traits": "Regeneration",
+    "habitat": "Höhlen, Urwälder",
+    "special": "Schläft meist. Wecken ist eine Heimlichkeit-Probe 30 wert.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 225,
+     "max": 225
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Mooskralle",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d8+4",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Gletscherhüne",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang A",
+  "system": {
+   "monster": {
+    "rank": "A",
+    "role": "Elite",
+    "size": "Riesig",
+    "category": "Elementar",
+    "corrupted": 0,
+    "hp": 279,
+    "rw": 14,
+    "mr": 15,
+    "acc": 6,
+    "damage": "4W10+6",
+    "initiative": 5,
+    "movement": 5,
+    "reach": 3,
+    "probe": 40,
+    "exp": 180,
+    "traits": "Element (Eis), Panzer",
+    "habitat": "Eiszone, Deep North",
+    "special": "Im Körper steckt ein altes Schwert (Beute, Rang B).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 279,
+     "max": 279
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Eisfaust",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d10+6",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Sumpfhydra",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang A",
+  "system": {
+   "monster": {
+    "rank": "A",
+    "role": "Boss",
+    "size": "Riesig",
+    "category": "Bestie",
+    "corrupted": 0,
+    "hp": 496,
+    "rw": 15,
+    "mr": 16,
+    "acc": 7,
+    "damage": "4W10+12",
+    "initiative": 5,
+    "movement": 5,
+    "reach": 3,
+    "probe": 40,
+    "exp": "Boss-Regel",
+    "traits": "Gift, Regeneration",
+    "habitat": "Große Sümpfe",
+    "special": "Jeder Kopf ein eigener Angriff (halber Schaden). Ein abgetrennter Kopf (40 Schaden auf einen Kopf) wächst doppelt nach, außer Feuer verschließt die Wunde.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 496,
+     "max": 496
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "5 Köpfe",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d10+12",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Delirium-Dschinn",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang A",
+  "system": {
+   "monster": {
+    "rank": "A",
+    "role": "Boss",
+    "size": "Riesig",
+    "category": "Elementar",
+    "corrupted": 0,
+    "hp": 496,
+    "rw": 15,
+    "mr": 16,
+    "acc": 7,
+    "damage": "4W10+12",
+    "initiative": 5,
+    "movement": 5,
+    "reach": 3,
+    "probe": 40,
+    "exp": "Boss-Regel",
+    "traits": "Flieger, Element (Feuer)",
+    "habitat": "Wüste, Ruinen alter Magie",
+    "special": "Roter Rauch, 3 Felder: Willenskraft 40 oder Verwirrt. Erfüllt einen Wunsch, wenn man ihn besiegt, aber verdreht.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 496,
+     "max": 496
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Wahnrauch (gegen MR)",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d10+12",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "magical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Seelensucher",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang S",
+  "system": {
+   "monster": {
+    "rank": "S",
+    "role": "Elite",
+    "size": "Riesig",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 351,
+    "rw": 15,
+    "mr": 17,
+    "acc": 7,
+    "damage": "5W10+8",
+    "initiative": 6,
+    "movement": 5,
+    "reach": 3,
+    "probe": 50,
+    "exp": 300,
+    "traits": "Flieger",
+    "habitat": "Schlachtfelder, Eldora",
+    "special": "Sammelt die Seelen Gefallener. Wer bei ihm stirbt, kann nicht wiederbelebt werden. Neutral: greift nur an, wer ihn stört.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 351,
+     "max": 351
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Seelengriff (gegen MR)",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "5d10+8",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "magical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Abyss-Hummel",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Groß",
+    "category": "Corrupted",
+    "corrupted": 1,
+    "hp": 59,
+    "rw": 10,
+    "mr": 11,
+    "acc": 3,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 2,
+    "probe": 25,
+    "exp": 20,
+    "traits": "Flieger, Gift",
+    "habitat": "Wiesen am Nebelrand",
+    "special": "Mutierte Biene. Stirbt sie, platzt ein Splitter heraus.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 59,
+     "max": 59
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Stachel",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "2d8+4",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Muskelgans",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Boss",
+    "size": "Groß",
+    "category": "Corrupted",
+    "corrupted": 2,
+    "hp": 304,
+    "rw": 12,
+    "mr": 13,
+    "acc": 5,
+    "damage": "3W8+6",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 2,
+    "probe": 25,
+    "exp": "Boss-Regel",
+    "traits": "–",
+    "habitat": "Teiche bei Abyss-Rissen",
+    "special": "Die legendäre Ente. Quak der Verdammnis (Aktion): alle in 3 Feldern zurückgestoßen 2.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 304,
+     "max": 304
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Flügelschlag",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "3d8+6",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Stachelglut-Läufer",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Elite",
+    "size": "Klein",
+    "category": "Corrupted",
+    "corrupted": 2,
+    "hp": 171,
+    "rw": 13,
+    "mr": 12,
+    "acc": 4,
+    "damage": "4W8+4",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 1,
+    "probe": 25,
+    "exp": 105,
+    "traits": "Schatten, Element (Feuer)",
+    "habitat": "Nebelrand, verbrannte Wälder",
+    "special": "Auf Stelzenbeinen: Bewegung +2, ignoriert schwieriges Gelände.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 171,
+     "max": 171
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Stachelstoß",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Knochenhirsch",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Corrupted",
+    "corrupted": 2,
+    "hp": 281,
+    "rw": 13,
+    "mr": 13,
+    "acc": 5,
+    "damage": "5W8+5",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 2,
+    "probe": 30,
+    "exp": 180,
+    "traits": "Schatten",
+    "habitat": "Nördliche Wälder",
+    "special": "Hirschschädel, dunkler Nebel. Jagt nachts.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 281,
+     "max": 281
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schädelstoß",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "5d8+5",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Arturu, der Schattenhirsch",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Corrupted",
+    "corrupted": 2,
+    "hp": 281,
+    "rw": 13,
+    "mr": 13,
+    "acc": 5,
+    "damage": "5W8+5",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 2,
+    "probe": 30,
+    "exp": 180,
+    "traits": "Schatten",
+    "habitat": "Wald der Zauberer",
+    "special": "Blau leuchtendes Gesicht. Ein Teil der Hirsch-Gruppe (Arturu, Marakah, Isfar).",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 281,
+     "max": 281
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Schattengeweih",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "5d8+5",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Marakah, der Bluthirsch",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang A",
+  "system": {
+   "monster": {
+    "rank": "A",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Corrupted",
+    "corrupted": 2,
+    "hp": 349,
+    "rw": 15,
+    "mr": 15,
+    "acc": 7,
+    "damage": "5W10+8",
+    "initiative": 5,
+    "movement": 4,
+    "reach": 2,
+    "probe": 40,
+    "exp": 300,
+    "traits": "–",
+    "habitat": "Wald der Zauberer",
+    "special": "Treffer: Blutend 1W8 für 3 Runden.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 349,
+     "max": 349
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Blutgeweih",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "5d10+8",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Isfar, der verrottende Hirschkönig",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang S",
+  "system": {
+   "monster": {
+    "rank": "S",
+    "role": "Boss",
+    "size": "Riesig",
+    "category": "Corrupted",
+    "corrupted": 3,
+    "hp": 624,
+    "rw": 16,
+    "mr": 18,
+    "acc": 9,
+    "damage": "6W10+9",
+    "initiative": 6,
+    "movement": 5,
+    "reach": 3,
+    "probe": 50,
+    "exp": "Boss-Regel",
+    "traits": "Regeneration",
+    "habitat": "Herz des Waldes der Zauberer",
+    "special": "Herr der Hirsche. Ruft Arturu und Marakah in Phase 2.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 624,
+     "max": 624
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Moderhuf",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "6d10+9",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Sternenschädel",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang B",
+  "system": {
+   "monster": {
+    "rank": "B",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Abyss-Wesen",
+    "corrupted": 0,
+    "hp": 50,
+    "rw": 13,
+    "mr": 12,
+    "acc": 3,
+    "damage": "3W8+4",
+    "initiative": 4,
+    "movement": 4,
+    "reach": 1,
+    "probe": 30,
+    "exp": 35,
+    "traits": "Abyss-Aura",
+    "habitat": "Abyss, Risse",
+    "special": "Im Kopf ein Sternenhimmel. Kritische Treffer +1 Korruption.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 50,
+     "max": 50
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Leerenblick (gegen MR)",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "3d8+4",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "magical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Leerenrufer",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang A",
+  "system": {
+   "monster": {
+    "rank": "A",
+    "role": "Elite",
+    "size": "Groß",
+    "category": "Abyss-Wesen",
+    "corrupted": 0,
+    "hp": 232,
+    "rw": 15,
+    "mr": 15,
+    "acc": 6,
+    "damage": "4W10+6",
+    "initiative": 5,
+    "movement": 4,
+    "reach": 2,
+    "probe": 40,
+    "exp": 180,
+    "traits": "Abyss-Aura, Beschwörer",
+    "habitat": "Abyss, Kristallfelder",
+    "special": "Ruft Sternenschädel. Kritische Treffer +2 Korruption.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 232,
+     "max": 232
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Wurzelgriff",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "4d10+6",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1
+    }
+   }
+  ]
+ },
+ {
+  "name": "Leerenpyramide",
+  "type": "monster",
+  "img": "icons/svg/mystery-man-black.svg",
+  "folder": "HLW Bestiarium/Rang S",
+  "system": {
+   "monster": {
+    "rank": "S",
+    "role": "Boss",
+    "size": "Riesig",
+    "category": "Abyss-Wesen",
+    "corrupted": 0,
+    "hp": 624,
+    "rw": 16,
+    "mr": 18,
+    "acc": 8,
+    "damage": "6W10+9",
+    "initiative": 6,
+    "movement": 5,
+    "reach": 3,
+    "probe": 50,
+    "exp": "Boss-Regel",
+    "traits": "Abyss-Aura, Flieger",
+    "habitat": "Tiefer Abyss",
+    "special": "Ein schwebendes Dreieck mit einem Kosmos darin. Jede Runde öffnet sich 1 Feld Abyss-Nebel. Kritische Treffer +3 Korruption.",
+    "harmless": false
+   },
+   "resources": {
+    "hp": {
+     "value": 624,
+     "max": 624
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Kosmosstrahl (gegen MR)",
+    "type": "weapon",
+    "img": "icons/svg/sword.svg",
+    "system": {
+     "damage": "6d10+9",
+     "range": 3,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "magical",
+     "quantity": 1
+    }
+   }
+  ]
+ }
+]

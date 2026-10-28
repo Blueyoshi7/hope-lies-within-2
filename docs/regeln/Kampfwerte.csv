@@ -1,0 +1,20 @@
+﻿Wert;Formel;Erklärung;Attribute
+Lebenspunkte (HP);20 + 2 × Level + 3 × CON + Rüstungs-HP + Boni;Rüstungs-HP sind die HP-Würfe der getragenen Rüstungsteile (beim Appraisal gewürfelt, z. B. Kettenhemd 2W6). Boni z. B. Hüter +20.;CON
+Rüstwert (RW);8 + ⌊(AGL + DEX) ÷ 4⌋ + Rüstwert der Ausrüstung + Boni;Gegen diesen Wert würfelt, wer dich physisch treffen will.;AGL, DEX
+Magieresistenz (MR);8 + ⌊(WIS + SOU) ÷ 4⌋ + Boni;Gegen diesen Wert würfelt, wer dich mit Magie treffen will.;WIS, SOU
+Blockwert (BW);Schildbonus + umgewandelter Rüstwert;Jeder erhaltene Treffer wird um den Blockwert verringert (mindestens 1 Schaden). Schilde geben ihn direkt (Holzschild +2, Eisenschild +4, Schild des Glaubens +6). Wo „Rüstwert wird zu Blockwert“ steht, wird alles über 8 Rüstwert zu Blockwert und der Rüstwert sinkt auf 8. Höchstens 8 insgesamt (Fahrplan 3.3).;–
+Genauigkeit (ACC);⌊Primärwert des Angriffs ÷ 3⌋ + Boni;Primärwert = erster Wert in der Skalierung des Skills. Normaler Angriff: Nahkampf STR oder DEX (der höhere), Fernkampf AGL, Zauberstab INT.;je nach Angriff
+Treffer;1W20 + ACC ≥ RW (physisch) bzw. MR (magisch);Natürliche 20: kritischer Treffer, Würfelschaden doppelt. Natürliche 1: daneben.;–
+Schaden;Skillschaden + Waffenschaden + Schadensbonus − Blockwert des Ziels;Schadensbonus = ⌊Primärwert ÷ 4⌋ + ⌊Sekundärwert ÷ 8⌋. Heilungen bekommen denselben Bonus.;je nach Skill
+Bewegung;3 + ⌊SPE ÷ 6⌋ + Boni (Felder pro Zug);Boni z. B. Windfederstein +1, Kettenhemd −1.;SPE
+Initiative;1W20 + ⌊SPE ÷ 2⌋ + Boni;Höchster Wert beginnt. Gauner +1.;SPE
+Inventarplätze;10 + STR;Insignie der Transportation hebt die Grenze auf.;STR
+Erholung;Schlaf im Freien: 1W10 + CON HP · in einer Unterkunft doppelt;Unterkunft im City-Chapter wie in Patch 1.2. Essen heilt zusätzlich nach Rezept.;CON
+
+Charakter;Level;Werte;HP;RW;MR;ACC;Schadensbonus;Bewegung;Initiative;Inventar
+Hüterin (Tank);1;CON 4, STR 3, AGL 2, DEX 1, SPE 1, WIS 1, SOU 1 · Rüstung +0 HP / +0 RW;34;8;8;1;0;3;1W20 + 0;13
+Magier;1;INT 4, WIS 3, SOU 2, CON 1, AGL 1, DEX 1, SPE 1 · Rüstung +0 HP / +0 RW;25;8;9;1;1;3;1W20 + 0;11
+Kämpferin, Level 13;13;STR 9, CON 6, AGL 4, DEX 3, SPE 2, WIS 2, SOU 2 · Rüstung +24 HP / +2 RW;88;11;9;3;2;3;1W20 + 1;19
+Sturmzauberer, Level 13;13;INT 9, SPE 6, WIS 4, SOU 3, CON 2, AGL 2, DEX 2 · Rüstung +14 HP / +1 RW;66;10;9;3;2;4;1W20 + 3;11
+Wikinger, Level 40;40;STR 25, CON 20, SOU 12, SPE 9, AGL 8, DEX 5, WIS 3 · Rüstung +60 HP / +4 RW;220;15;11;8;6;4;1W20 + 4;35
+Gezeitenrufer, Level 40;40;SOU 25, INT 20, WIS 14, AGL 9, CON 8, DEX 3, SPE 3 · Rüstung +40 HP / +2 RW;164;13;17;8;6;3;1W20 + 1;11

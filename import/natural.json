@@ -1,0 +1,587 @@
+[
+ {
+  "name": "Sonnenkorn",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Ein leuchtend gelbes Getreide, das in vielen Regionen wächst und oft als Grundnahrungsmittel dient.",
+   "source": "Zentrale Ebene, Zentrale Südliche Ebene, Süd-West-Küste, Abruth-Spitze, Suna-Wüste, Arkaner Sumpf",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Windgras",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Ein silbrig glänzendes Gras, das in den hohen Ebenen wächst und als Futter für magische Kreaturen dient.",
+   "source": "Thalan-Plateau, Nördliches Plateau, Heiliges Land, Doreh-Bergpass, Nithor-Spitze, Übergang Eldoras",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Wasserbeere",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Eine blaue Beere, die in sumpfigen Gebieten vorkommt und zur Herstellung von Heiltränken verwendet wird",
+   "source": "Arkaner Sumpf, Abyss-Sumpf, Lunar-Küstenweg, Übergang Eldoras",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Spritzapfel",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Ein Apfel, der beim Reinbeißen sprudelndes Wasser freisetzt. Erfrischend.",
+   "source": "Abruth-Spitze, Zentrale Ebene, Thalan-Plateau, Valmorea-Arkan-Grenze, Arkaner Sumpf, Wald der Zauberer",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Knistererbse",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Grüne Erbsen, die beim Kauen knistern und ein prickelndes Gefühl hinterlassen.",
+   "source": "Zentrale Nördliche Ebene, Nithor-Spitze, Thalan-Plateau, Abruth-Spitze, Zentrale Ebene, Valmorea-Arkan-Grenze",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Flimmermais",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Mais, dessen Körner im Licht schimmern. Beim Rösten entstehen magische Funken.",
+   "source": "Zentrale Südliche Ebene, Suna-Wüste, Heiliges Land, Südliche Ebene, Berge der Antike, Arkaner Sumpf",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schattenweizen",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Dunkler Weizen, der auch in tiefem Schatten wächst. Herb im Geschmack.",
+   "source": "Zentrale Nördliche Ebene, Nithor-Spitze, Thalan-Plateau, Doreh-Bergpass, Luro-Ebene, Bruch Stein",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Flüsterzwiebel",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Eine Zwiebel, die Geräusche in ihrer Nähe verstärkt. Kann auch als Hörverstärker verwendet werden.",
+   "source": "Zentrale Nördliche Ebene, Nithor-Spitze, Thalan-Plateau, Zentrale Ebene, Abruth-Spitze, Luro-Ebene",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Lichtgerste",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Gerste, die kleine Lichtstrahlen abgibt. Beim Brauen entsteht leuchtendes Bier.",
+   "source": "Abruth-Spitze, Zentrale Ebene, Thalan-Plateau, Zentrale Südliche Ebene, Valmorea-Arkan-Grenze, Arkaner Sumpf",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Nebelfarn",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Ein zarter Farn, der in nebeligen Wäldern gedeiht und oft für Tränke genutzt wird, die das Gedächtnis verbessern.",
+   "source": "Lunar-Küstenweg, Wald der Zauberer, Abyss-Sumpf, Nördliches Niederland, Zentrale östliche Küste, Alkah-Berge",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Leuchtbeere",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Eine kleine, kirschartige Frucht, die bei Dunkelheit leicht glimmt. Süß-säuerlich.",
+   "source": "Wald der Zauberer, Verwunschene Küste, Zentrale östliche Küste, Abyss-Sumpf, Valmorea-Zentral-Wald, Lunar-Küstenweg",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Funkenwurzel",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Eine orangefarbene Wurzel, die beim Zerkleinern kleine Funken erzeugt. Ideal zum Kochen.",
+   "source": "Suna-Wüste, Zentrale Südliche Ebene, Südliche Ebene, Arkaner Sumpf, Heiliges Land, Berge der Antike",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schattenkohl",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Dunkelgrüne Kohlblätter, die gut im Schatten wachsen. Leicht bitterer Geschmack.",
+   "source": "Abyss-Sumpf, Bergkette, Lunar-Küstenweg, Süd-Östliche Küste, Süd-West-Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Lichtsalat",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Eine Salatpflanze, deren Blätter in der Sonne leuchten. Fördert Heilung von Sonnenbrand.",
+   "source": "Zentrale Ebene, Arkaner Sumpf, Valmorea-Zentral-Wald, Wald der Zauberer, Valmorea-Arkan-Grenze, Thalan-Plateau",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Erdkorn",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Ein schweres, nahrhaftes Korn, das für Erdmagie verstärkend wirkt.",
+   "source": "Zentrale Nördliche Ebene, Nithor-Spitze, Zentrale Ebene, Thalan-Plateau, Luro-Ebene, Doreh-Bergpass",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Eiskorn",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "",
+   "source": "Nördliches Plateau, Nördliche Eis-Wüste, Nördlicher Übergang, Tiefer Norden, Eis-Wald, Nördliches Niederland",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Mondblüte",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Eine weiße Blume, die nur nachts blüht und für ihre beruhigenden Heilkräfte bekannt ist.",
+   "source": "Zentrale Nördliche Ebene, Abruth-Spitze, Thalan-Plateau, Nithor-Spitze, Wald der Zauberer, Zentrale Ebene",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Wolkenspinat",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Leicht und fluffig, wiegt fast nichts. Wirkt beruhigend.",
+   "source": "Bergkette, Alkah-Berge, Süd-West-Küste, Lunar-Küstenweg, Übergang Eldoras, Heiliges Land",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Tränenkraut",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Eine Pflanze, die nur in verborgenen Tälern wächst und Tränen als Tautropfen bildet, die zur Heilung emotionaler Wunden verwendet werden.",
+   "source": "Nithor-Spitze, Süd-West-Küste, Plateau der Kyr, Tief-Nördliche Berge, Bergkette, Schloss Alagath",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Erdwurzel",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Eine tief unter der Erde wachsende Wurzel, die für ihre erdverbundenen Magieeigenschaften bekannt ist.",
+   "source": "Nördliches Plateau, Thalan-Plateau, Heiliges Land, Doreh-Bergpass, Nithor-Spitze, Übergang Eldoras",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Flammenorange",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 4,
+   "price": "4 SK",
+   "description": "Orangen mit einer warmen, scharf-würzigen Note. Ihre Schale leuchtet leicht in der Dunkelheit.",
+   "source": "Suna-Wüste, Übergang Eldoras, Heiliges Land, Süd-West-Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Frostblüte",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Eine zarte Blume, die in eisigen Gebieten wächst und bei der Herstellung von Kälteresistenztränken eingesetzt wird.",
+   "source": "Eis-Wald, Nördliches Plateau, Nördlicher Übergang, Nördliches Niederland, Nördliche Eis-Wüste, Tiefer Norden",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schattenkirsche",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Dunkelviolette Kirschen, die kurzzeitig die Nachtsicht verbessern.",
+   "source": "Valmorea-Zentral-Wald, Wald der Zauberer, Zentrale östliche Küste, Abruth-Spitze, Zentrale Südliche Ebene, Thalan-Plateau",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Wispermelone",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Eine kleine Melone, die ein leises Summen von sich gibt, wenn sie reif ist.",
+   "source": "Suna-Wüste, Zentrale Südliche Ebene, Südliche Ebene, Süd-West-Küste, Übergang Eldoras, Lunar-Küstenweg",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schattendorn",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Ein dorniger Strauch, der in dunklen Wäldern wächst und zur Herstellung von Giften verwendet wird.",
+   "source": "Eis-Wald, Wald der Zauberer, Valmorea-Zentral-Wald, Übergang Eldoras",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Eisfeige",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Eine Feige, deren Inneres eisig kühl ist und Verbrennungen lindern kann.",
+   "source": "Nord-Östliche Küste, Plateau der Kyr, Verwunschene Küste, Nördliches Niederland, Abyss-Sumpf",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Sternkarotte",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 6,
+   "price": "6 SK",
+   "description": "Eine Karotte, deren Inneres wie ein Sternenhimmel glitzert. Fördert Klarträume.",
+   "source": "Abruth-Spitze, Süd-West-Küste, Arastra, Lunar-Küstenweg, Süd-Östliche Küste, Zentrale Südliche Ebene",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Sternmoos",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 10,
+   "price": "10 SK",
+   "description": "Ein Moos, das in den höchsten Bergen wächst und für seine leuchtenden, sternförmigen Blätter bekannt ist, die in Tränken zur Stärkung von Ausdauer verwendet werden.",
+   "source": "Tief-Nördliche Berge, Schloss Alagath, Plateau der Kyr, Alkah-Berge, Übergang Eldoras, Bergkette",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Dämmerblatt",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 12,
+   "price": "12 SK",
+   "description": "Ein purpurfarbenes Blattgewächs, das nur in der Dämmerung wächst und bei der Herstellung von Unsichtbarkeitstränken verwendet wird.",
+   "source": "Tiefer Norden, Nördliche Eis-Wüste, Nord-Östliche Küste, Ebene des Abyss, Tief-Nördliche Berge, Eis-Wald",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Himmelsgerste",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 12,
+   "price": "12 SK",
+   "description": "Ein Getreide, das in hohen Lagen wächst. Verleiht kurzzeitig erhöhte Ausdauer.",
+   "source": "Thalan-Plateau, Südliche Ebene, Heiliges Land, Nithor-Spitze, Valmorea-Arkan-Grenze, Süd-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Blutlilie",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 15,
+   "price": "15 SK",
+   "description": "Eine seltene, blutrote Blume, die in Kriegsgebieten wächst und in Ritualen zur Verstärkung von Kampfkraft genutzt wird.",
+   "source": "Nord-Östliche Küste, Valmorea-Arkan-Grenze",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Zeittrauben",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 15,
+   "price": "15 SK",
+   "description": "Jede Traube schmeckt anders, abhängig von der Tageszeit, zu der sie gepflückt wurde.",
+   "source": "Heiliges Land, Süd-Östliche Küste, Valmorea-Arkan-Grenze, Süd-West-Küste, Übergang Eldoras, Berge der Antike",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Flammenkraut",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 20,
+   "price": "20 SK",
+   "description": "Ein feuriges, rotes Kraut, das häufig in Vulkanregionen wächst und als Gewürz oder in Alchemie verwendet wird.",
+   "source": "Übergang Eldoras, Berge der Antike, Süd-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Himmelsbirne",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 20,
+   "price": "20 SK",
+   "description": "Schwebt leicht in der Luft, wenn sie am Baum hängt. Gewährt das Gefühl von Schwerelosigkeit.",
+   "source": "Zentrale Ebene, Valmorea-Arkan-Grenze, Wald der Zauberer, Valmorea-Zentral-Wald, Thalan-Plateau, Lunar-Küstenweg",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Nachtschattenblüte",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 40,
+   "price": "40 SK",
+   "description": "Eine tiefblaue Blume, die nur unter einem Vollmond blüht und für ihre starken, magischen Schutzkräfte bekannt ist.",
+   "source": "Suna-Wüste, Übergang Eldoras, Wald der Zauberer, Zentrale östliche Küste, Zentrale Südliche Ebene, Abruth-Spitze",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schattenpilz",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 50,
+   "price": "50 SK",
+   "description": "Ein schwarzer Pilz, der in tiefen Höhlen wächst und zur Herstellung von starken Giften und Schattenmagie verwendet wird.",
+   "source": "Abyss-Sumpf, Alkah-Berge, Bergkette, Übergang Eldoras, Süd-West-Küste, Berge der Antike",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Eisweinranke",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Eine gefrorene Ranke, die nur in den tiefsten Gletschern wächst und zur Verstärkung von Frostmagie genutzt wird.",
+   "source": "Plateau der Kyr, Tief-Nördliche Berge, Schloss Alagath, Alkah-Berge, Süd-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Feuerorchidee",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "Eine feurige Orchidee, die in aktiven Vulkanen wächst und nur von den mutigsten Abenteurern gesammelt wird, um mächtige Feuermagie zu entfesseln.",
+   "source": "Übergang Eldoras, Berge der Antike, Süd-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Phönixfrucht",
+  "type": "natural",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Pflanzen/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Eine glühend rote Frucht, die einmal pro Jahr wächst. Verleiht kurzzeitig feuerresistente Haut. Schmeckt wie Kiwi.",
+   "source": "Übergang Eldoras, Süd-Östliche Küste, Berge der Antike, Zentrale Südliche Ebene",
+   "quantity": 1
+  }
+ }
+]

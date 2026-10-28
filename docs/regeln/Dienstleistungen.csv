@@ -1,0 +1,40 @@
+﻿Name;Rang;Wert (SK);Marktwert;Beschreibung;Kategorie
+Schlafsaal (1 Nacht);E;2;2 SK;Strohlager im Gemeinschaftsraum.;Unterkunft
+Einzelzimmer (1 Nacht);E;6;6 SK;Einfaches Zimmer mit Bett.;Unterkunft
+Gutes Zimmer (1 Nacht);E;20;20 SK;Mit Bad und Frühstück.;Unterkunft
+Gildenquartier (1 Nacht);E;0;kostenlos;Für Gildenmitglieder in Städten frei (City-Chapter).;Unterkunft
+Einfache Mahlzeit;E;2;2 SK;Suppe und Brot.;Verpflegung
+Warme Tavernenmahlzeit;E;4;4 SK;Eintopf, Brot, ein Getränk.;Verpflegung
+Festmahl;E;25;25 SK;Mehrere Gänge, Wein.;Verpflegung
+Krug Bier;E;1;1 SK;Windgras-Bier.;Verpflegung
+Krug Wein;E;3;3 SK;Hauswein.;Verpflegung
+Kutsche (pro Reisetag);E;4;4 SK;Doppelt so schnell wie zu Fuß.;Reisen
+Fähre / kurze Überfahrt;E;8;8 SK;Z. B. über den Golf von Illmaris.;Reisen
+Schiffspassage (pro Tag);E;10;10 SK;Inklusive Verpflegung an Bord.;Reisen
+Mit einer Karawane reisen (pro Tag);E;3;3 SK;Sicherer, aber langsam.;Reisen
+Packesel;C;300;3 GK;Trägt Gepäck.;Tiere
+Maultier;C;600;6 GK;Zäh und trittsicher.;Tiere
+Reitpferd;B;1500;15 GK;Mit Sattel und Zaumzeug.;Tiere
+Schlachtross;A;6000;60 GK;Ausgebildet für den Kampf.;Tiere
+Stallplatz (1 Nacht);E;2;2 SK;;Tiere
+Futter (1 Tag);E;1;1 SK;;Tiere
+Appraisal (pro Gegenstand);E;20;20 SK;Untersuchung eines Gegenstands durch die Gilde.;Gilde
+Rangprüfung C;D;200;2 GK;Prüfungsgebühr.;Gilde
+Rangprüfung B;C;800;8 GK;Prüfungsgebühr.;Gilde
+Rangprüfung A;B;2500;25 GK;Prüfungsgebühr.;Gilde
+Rangprüfung S;A;10000;100 GK;Prüfungsgebühr.;Gilde
+Gildenlager (1 Season);D;100;1 GK;Ein verschlossenes Fach im Gildenhaus.;Gilde
+Leihwaffe (Pfand);E;30;30 SK;Pfand wird bei Rückgabe erstattet.;Gilde
+Heiler: leichte Wunde;E;10;10 SK;;Heilung
+Heiler: schwere Wunde;D;80;80 SK;;Heilung
+Korruptionsprüfung bei den Magiologen;D;100;1 GK;Bei der Gilde für Mitglieder kostenlos und Pflicht.;Heilung
+Segen der Hüter (Spende);E;5;5 SK;Üblich vor langen Reisen.;Heilung
+Waffe schleifen;E;5;5 SK;;Handwerk
+Rüstung ausbessern;E;30;30 SK;Bei schweren Schäden bis 2 GK.;Handwerk
+Auftragsarbeit beim Schmied (Grundgebühr);D;50;50 SK;"Grundgebühr; dazu kommen Materialwert plus etwa 30 %.";Handwerk
+Lehre (3 Jahre);E;0;kostenlos;Lehrlinge arbeiten gegen Kost und Logis.;Ausbildung
+Schule in Illmaris (3 Jahre);A;6000;60 GK;Gebühr für die gesamte Ausbildung. Hero-Kinder: Gildenstipendium (siehe Jobs).;Ausbildung
+Magie-Schule oder Runen-Ausbildung (3 Jahre);S;15000;150 GK;Sehr wenige Lehrmeister auf Gaia. Hero-Kinder: Gildenstipendium.;Ausbildung
+Bote (Brief, pro Reisetag Strecke);E;3;3 SK;;Sonstiges
+Informant;E;30;30 SK;Je nach Information 10 SK bis 1 GK.;Sonstiges
+Bestechung einer Stadtwache;E;20;20 SK;Riskant.;Sonstiges

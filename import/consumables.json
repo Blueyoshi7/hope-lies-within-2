@@ -1,0 +1,338 @@
+[
+ {
+  "name": "Magischer Stein",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "Universales Produkt für Magie, Alchemie, Highs und Lows.",
+   "source": "Monster Drop",
+   "quantity": 1,
+   "effect": "Entspricht einem kleinen Abyss-Stein (siehe Tab Abyss-Steine)."
+  }
+ },
+ {
+  "name": "Alte-Rune",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 800,
+   "price": "8 GK",
+   "description": "Eine Rune aus alter Zeit. Erlaubt es dem Anwender einmalig zu einer bereits erlernte Klasse zu wechseln.",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Magischer Staub (Zorr)",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Pulverisierter Magischer Stein der mit der Nase, für einen Drogentripp aufgenommen wIrd. (VERY Addictive)",
+   "source": "Special",
+   "quantity": 1,
+   "effect": "Preis pro Prise. Illegal, nur auf dem Schwarzmarkt."
+  }
+ },
+ {
+  "name": "Magic-Ore",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "Ore das in Dungeons abgebaut werden kann. Das Ore kann von Schmieden geschmolzen und weiterverarbeitet werden. Benötigt für Waffen und Rüstungen.",
+   "source": "Naturfund",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Verband",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 8,
+   "price": "8 SK",
+   "description": "1W6 Heilung auf dich oder ein Ziel neben dir.",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Heilkräutersalbe (Nebelfarn)",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 15,
+   "price": "15 SK",
+   "description": "2W3 Heilung auf dich oder ein Ziel neben dir.",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Sternmoos-Salbe",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "3W6 Heilung auf dich oder ein Ziel neben dir.",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Heilige Bandagen",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 400,
+   "price": "4 GK",
+   "description": "1W20 Heilung an dir oder einem nahen Spieler",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Metallspitzen",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Verstärkt Angriffe von Bögen. Schaden +2",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "effect": "Preis pro Bündel (10 Stück)."
+  }
+ },
+ {
+  "name": "Mithrilspitzen",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 500,
+   "price": "5 GK",
+   "description": "Verstärkt Angriffe von Bögen. Schaden +5",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "effect": "Preis pro Bündel (10 Stück)."
+  }
+ },
+ {
+  "name": "Skill-Orb-Leer",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "Ein leerer Skill-Orb in den ein bereits gelernter Skill übertragen werden kann (Skill wird verlernt).",
+   "source": "Special",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Skill-Orb T1",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 150,
+   "price": "1 GK 50 SK",
+   "description": "Erlaubt das lernen eines T1 Skills",
+   "source": "Tier 1 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Skill-Orb T2",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "Erlaubt das lernen eines T2 Skills",
+   "source": "Tier 2 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Skill-Orb T3",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2500,
+   "price": "25 GK",
+   "description": "Erlaubt das lernen eines T3 Skills",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "effect": ""
+  }
+ },
+ {
+  "name": "Phönixasche",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 100000,
+   "price": "1000 GK",
+   "description": "Kann einen Spieler wiederbeleben (Leiche muss vorhanden sein)",
+   "source": "Naturfund",
+   "quantity": 1,
+   "effect": "Wird praktisch nie gehandelt; Sammler und Adelshäuser zahlen jeden Preis."
+  }
+ },
+ {
+  "name": "Großer Heiltrank",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "Neu (3.3): Heilt 6W6 + 10 HP, als Aktion, beendet „Verwundet“.",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Starke Schutzrune",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1500,
+   "price": "15 GK",
+   "description": "Neu (3.3): Rüstwert +3 für einen Kampf.",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Reinigungselixier",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "Neu (3.3): Korruption −15 (nicht unter die Stufengrenze).",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Elixier des Helden",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 6000,
+   "price": "60 GK",
+   "description": "Neu (3.3): Volle HP, beendet alle Zustände.",
+   "source": "Tier 3 Cache",
+   "quantity": 1,
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Trank der Zeit",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 20000,
+   "price": "200 GK",
+   "description": "Neu (3.3): 3 Runden lang eine zusätzliche Schnellaktion pro Runde.",
+   "source": "Kern-Truhe",
+   "quantity": 1,
+   "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "Sternenstaub-Phiole",
+  "type": "consumable",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Verbrauchsgegenstände/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 30000,
+   "price": "300 GK",
+   "description": "Neu (3.3): Ein Skill hat für diesen Kampf Cooldown 1.",
+   "source": "Kern-Truhe",
+   "quantity": 1,
+   "effect": "Neu (Balancing 3.3)"
+  }
+ }
+]

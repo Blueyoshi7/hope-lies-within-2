@@ -1,0 +1,48 @@
+﻿Regel;Beschreibung
+Herstellen;Wer eine Anleitung oder ein Rezept kennt, die Materialien und das Werkzeug hat, macht eine Probe gegen die Schwierigkeit des Rangs. Das Ergebnis bestimmt die Qualität.
+Proben;Waffen, Rüstung, Pfeile, Werkzeug und Kochen: Handwerkskunst. Salben, Tränke, Gifte: Naturkunde. Runen: Archäologie. Job-Bonus zählt, wenn es der eigene Job ist.
+Eigene Erfindungen;Patch 1.3.1 bleibt: Der Spieler beschreibt, wie er es macht. Der GM legt nach der Erklärung die Schwierigkeit fest: 10 sehr genau (oder der GM mag die Idee), 20 gut, 30 mittel, 40 kaum, 50 gar nicht („ich kann das einfach“). Rang und Wirkung legt der GM fest. Gelingt es, wird es ein normales Rezept des Rangs.
+Wer darf was;Ohne passenden Job nur Rang E. Job T1: Rang E mit Job-Bonus. Job T2: bis Rang D. Job T3: bis Rang B. Rang A, S und SS lassen sich nicht herstellen, nur finden (Dungeons, Bosse) oder bei legendären Meistern in Auftrag geben (Quest).
+Material;Richtwert: Materialien kosten etwa 40 % des Marktwerts. Herstellen spart also Geld, ist aber keine Gelddruckmaschine: Händler zahlen ebenfalls 40 %. Gewinn macht, wer Zutaten selbst sammelt oder abbaut.
+Alles aus der Ausrüstung;Jede Waffe und Rüstung aus dem Tab Ausrüstung darf hergestellt werden, wenn Job und Rang passen: Material 40 % des Werts in passenden Mineralien und Grundmaterialien, Probe und Zeit nach Rang. Abyss-Waffen nie.
+Werkzeug und Ort;Lager: Kochen und Rang E. Für mehr braucht man eine Werkstatt: Schmiede, Alchemie-Labor oder Runen-Werkbank in einer Stadt (mieten, siehe Werkzeug) oder eine eigene.
+Reparieren;Handwerkskunst 15, Material 10 % des Werts, 1 Stunde. Beschädigte Ausrüstung (z. B. nach einer natürlichen 1) ist danach wieder voll nutzbar.
+Zerlegen;Ausrüstung oder Müll zerlegen: Handwerkskunst 15, man erhält Grundmaterial im Wert von 25 % (Metall, Stoff, Holz). Abyss-Gegenstände zerlegen: +2 Korruption.
+Rezepte bekommen;Händler und Gasthäuser (Rezeptkarte T1 20 SK, T2 1 GK, T3 5 GK), Belohnungen, Bücher, Ausbildung (Koch-Lehrling: 3 Rezepte) oder selbst erfinden. Das erste Gelingen eines neuen Rezepts gibt 10 EXP.
+Aufschreiben;Alle Rezepte stehen auf der Gildenkarte unter „Rezepte“. Verlorene Rezeptkarten sind nicht schlimm: Gekonnt ist gekonnt.
+
+Rang;Schwierigkeit;Zeit;Wer darf
+E;15;1 Stunde;jeder
+D;20;4 Stunden;Job T2
+C;30;1 Tag;Job T3
+B;40;3 Tage;Job T3
+A–SS;–;–;nicht herstellbar (nur Funde, legendäre Meister)
+
+Ergebnis;Herstellen;Kochen
+Natürliche 1 oder um 10+ verfehlt;Misslungen: Material verloren.;Verbrannt: Zutaten verloren.
+Verfehlt;Halb fertig: die Hälfte des Materials ist verloren, neuer Versuch möglich.;Essbar, sättigt, heilt aber nicht.
+Geschafft;Normale Qualität.;Normale Heilung und Wirkung.
+Um 10+ übertroffen;Gute Qualität: Wert +50 % und ein kleiner Bonus (GM), z. B. Pfeile +1 Schaden, Salbe +2 Heilung.;Köstlich: Heilung ist das Maximum des Würfels.
+Natürliche 20 und geschafft;Meisterwerk: Wert ×2, Bonus wie gute Qualität, darf einen Namen tragen.;Meistermahl: maximale Heilung und doppelte Wirkungsdauer.
+
+Werkzeug;Preis (SK);Wofür
+Kochgeschirr;25;Kochen im Lager (bereits im Abenteurerbedarf).
+Hammer (Werkzeug);30;Holz, Leder, einfache Herstellung (Items).
+Schmiedehammer (Werkzeug);120;Waffen und Rüstung, braucht eine Schmiede (Items).
+Alchemie-Set;60;Mörser, Phiolen, Brenner. Salben und Tränke im Lager bis Rang D.
+Runen-Meißel;100;Feine Meißel und Ritzwerkzeug für Runen.
+Schmiede mieten;30;Pro Tag, in jeder größeren Stadt.
+Alchemie-Labor mieten;50;"Pro Tag; nötig ab Rang C."
+Runen-Werkbank mieten;100;"Pro Tag; nur in Illmaris und bei der Gilde."
+
+Kochen;Beschreibung
+Kochen;"Rezept, Zutaten, Kochgeschirr und ein Feuer. Probe Handwerkskunst gegen die Schwierigkeit des Rezept-Tiers. Ein Rezept ergibt 4 Portionen (Koch T2: 6; Phönixranken-Tarte nur 1)."
+Preis;Eine Portion kostet beim Wirt die Zutaten ÷ 4 × 1,5. Wer selbst sammelt und kocht, isst also billig.
+Schwierigkeit und Dauer;Tier 1: 15, eine halbe Stunde. Tier 2: 25, eine Stunde. Tier 3: 35, zwei Stunden.
+Heilung;Eine Portion heilt nach dem Tier (Patch: Erfolgsbereiche 0–6, 0–10, 0–20): Tier 1 1W6, Tier 2 1W10, Tier 3 1W20. Essen dauert 10 Minuten und geht nicht im Kampf.
+Wirkung;Tier 1 heilt nur (Patch: einfach gehalten). Tier 2 und 3 haben eine Wirkung: Tier 2 bis zur nächsten Rast (etwa 8 Stunden), Tier 3 einen ganzen Tag. Es wirkt immer nur das zuletzt gegessene Gericht.
+Satt;Höchstens 2 Mahlzeiten mit Heilung pro Tag. Proviant und Rohes sättigen nur (Titel Feingeist: Gekauftes heilt halb).
+Getränke;Getränke zählen als Mahlzeit. Nach 3 alkoholischen Getränken an einem Abend: betrunken bis zum Schlaf (Willenskraft +2, alle DEX- und AGL-Proben −3).
+Gekauft;Speisen vom Händler oder Gasthaus haben immer normale Qualität.
+Eigene Rezepte;"Erlaubt und erwünscht (Patch). Der Spieler beschreibt Zutaten und Zubereitung; Schwierigkeit nach Erklärung 10–50. Gelingt es gut (um 10+ übertroffen), legt der GM das Rezept eine Stufe heilsamer fest."
+Koch-Job;Koch-Lehrling: Kochen +5 und 3 Rezepte. Koch: 6 Portionen pro Rezept, Heilung +2 pro Portion, 3 weitere Rezepte. Meisterkoch: Festmahl einmal pro Kapitel.

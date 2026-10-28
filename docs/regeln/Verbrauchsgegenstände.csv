@@ -1,0 +1,55 @@
+﻿Name;Rang;Wert (SK);Marktwert;Händler zahlt;Beschreibung;Art;Nutzen;Fundort;Hinweis
+Sonnenkornbrot;E;3;3 SK;1 SK;Brot aus Sonnenkorn;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Windgrass-Bier;E;2;2 SK;1 SK;"""Bier"" aus Windgras (Betrunken +1)";Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6. Alkohol.
+(Erd-)Wurzelschnitte;E;4;4 SK;2 SK;Eine Schnitte mit Erdwurzelfülle;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Tränenkraut-Vodka;E;4;4 SK;2 SK;Vodka aus Tränenkraut (Betrunken +2);Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6. Alkohol.
+Nachter-Pizza;E;4;4 SK;2 SK;Sonnenkornteig belegt mit Nachtschattenblüte;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Wasserbeeren-Drink;E;2;2 SK;1 SK;Ein Trinken aus Wasserbeeren Sättigt mehr als man denkt.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Sonnenflimmerbrot;E;2;2 SK;1 SK;Ein rustikales, nahrhaftes Brot mit einer leicht süßlichen Note vom Sonnenkorn.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Nebeltraum-Suppe;E;3;3 SK;1 SK;Eine beruhigende, hellgrüne Suppe mit einem sanften, erdigen Aroma vom Nebelfarn.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Schattenfeuer-Eintopf;E;10;10 SK;4 SK;Ein herzhafter, tiefdunkler Eintopf mit einem rauchigen Aroma vom gedünsteten Schattenkohl.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Funkengebräu;E;2;2 SK;1 SK;Ein erfrischendes, prickelndes Getränk mit einer leuchtenden Farbe.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Flüsterkuchen;E;3;3 SK;1 SK;Überraschend süße, kleine Kuchen mit einem milden, kaum wahrnehmbaren Zwiebelaroma.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 1, heilt 1W6.
+Frostblüten-Dim Sum;E;4;4 SK;2 SK;Sonnenkornteig gefüllt mit gedämpften Frostblüten.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Kühlt: Hitze zählt eine Wärmezone milder.
+Erdwurzen-Brötle;E;5;5 SK;2 SK;Brötchen aus Erdwurzelteig;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Athletik +2.
+Dämmerblatt-Rollen;E;12;12 SK;5 SK;Gebratene Rollen aus Dämmerblatt;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Heimlichkeit +2 in Dämmerung und Nacht.
+Blumelade;E;5;5 SK;2 SK;Marmelade oder Jello aus unterschiedlichen Blüten;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Wortgewandtheit +2.
+Schattendorn-Whisky;E;10;10 SK;4 SK;"""Whiskey"" aus Nachtschattendornen (Betrunken +2)";Essen / Trinken;Nahrung;Händler;"Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Immun gegen Verängstigt; Initiative −1. Alkohol."
+Eiswein;E;8;8 SK;3 SK;Wein aus fermentierten Frostblüten;Essen / Trinken;Nahrung;Händler;"Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Kühlt: Hitze zählt eine Wärmezone milder; Willenskraft +2. Alkohol."
+Schattenpudding;D;34;34 SK;14 SK;Ein dekadenter, tiefvioletter Pudding mit einem komplexen Geschmacksprofil.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Willenskraft +3 gegen Abyss-Nebel.
+Frostiger Wald-Salat;E;6;6 SK;2 SK;Ein erfrischender, knackiger Salat mit einem Hauch von Winterwald.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Naturkunde +2.
+Lichtgebratener Himmelsweizen;E;9;9 SK;4 SK;Ein elegantes Gericht mit einer leichten, luftigen Textur.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Scharfsinnigkeit +2.
+Blutrote Flammenfrucht;E;8;8 SK;3 SK;Eine intensive, süß-saure Delikatesse mit einem feurigen Nachgeschmack.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Innere Wärme: Kälte zählt eine Wärmezone milder.
+Wolkenwunderauflauf;E;6;6 SK;2 SK;Ein leichter, fluffiger Auflauf mit einem subtilen Waldaroma.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Bewegung +1.
+Spicy-Orch-Taco;D;46;46 SK;18 SK;Sonnenkorntaco gefüllt mit Feuerorchideen;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Nahkampfschaden +2, aber Wortgewandtheit −2 (Schweiß und Tränen).
+Feuer-Orchidee-Eintopf;D;134;1 GK 34 SK;54 SK;Eintop aus Feuer-Orchidee-Sauce und anderen Zutaten;Essen / Trinken;Nahrung;Händler;"Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Kälte und Frost wirken nicht (Wärmezonen Kühl bis Eis zählen als Mild); Feuer-Skills +1 Schaden."
+Gerösteter Schattenpilz;D;150;1 GK 50 SK;60 SK;Schattenpilz geröstet;Essen / Trinken;Nahrung;Händler;"Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Kein Malus durch Dunkelheit; Heimlichkeit +2."
+Feuer-Orchidee-Sauce;D;118;1 GK 18 SK;47 SK;Sauce aus Feuerorchidee;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Initiative +3.
+Erdwurzen-Öl;E;29;29 SK;12 SK;Öl gepresst aus Erdwurzeln;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Rüstwert +1.
+Blutlilien-Pfannkuchen;E;21;21 SK;8 SK;Sonnenkorn pfannkuchen mit Blutlilien-Füllung;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Maximale HP +5 für den Tag.
+Himmelsschale;E;12;12 SK;5 SK;Eine einfache, aber exquisite Speise, die den Gaumen mit einem harmonischen Zusammenspiel von Texturen und Aromen verwöhnt.;Essen / Trinken;Nahrung;Händler;"Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Willenskraft +3; Korruptions-Resistenz +1."
+Zeittraum-Dessert;D;32;32 SK;13 SK;Ein mystisches Dessert mit einem komplexen Geschmacksprofil.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Einmal an diesem Tag einen eigenen Wurf wiederholen.
+Sterngekrönter Nachtaufstrich;E;5;5 SK;2 SK;Ein eleganter und dekadenter Aufstrich mit einer leuchtenden Farbe.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Erfindergeist +2.
+Phönixranken-Tarte;C;788;7 GK 88 SK;3 GK 15 SK;Eine außergewöhnliche Tarte mit einem intensiven Geschmackserlebnis.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 3, heilt 1W20. Wirkung: Fällt man an diesem Tag auf 0 HP, steht man sofort mit 1W10 HP wieder auf (einmal).
+Frostige Sternensuppe;E;6;6 SK;2 SK;Eine ungewöhnliche, aber faszinierende Suppe mit einem frostigen Hauch.;Essen / Trinken;Nahrung;Händler;Preis pro Portion. Tier 2, heilt 1W10. Wirkung: Magieresistenz +1.
+Magischer Stein;E;25;25 SK;10 SK;Universales Produkt für Magie, Alchemie, Highs und Lows.;Verbrauchsgegenstand;Allgemein;Monster Drop;Entspricht einem kleinen Abyss-Stein (siehe Tab Abyss-Steine).
+Alte-Rune;C;800;8 GK;3 GK 20 SK;Eine Rune aus alter Zeit. Erlaubt es dem Anwender einmalig zu einer bereits erlernte Klasse zu wechseln.;Verbrauchsgegenstand;Allgemein;Tier 1 Cache;
+Magischer Staub (Zorr);D;60;60 SK;24 SK;Pulverisierter Magischer Stein der mit der Nase, für einen Drogentripp aufgenommen wIrd. (VERY Addictive);Verbrauchsgegenstand;Droge;Special;Preis pro Prise. Illegal, nur auf dem Schwarzmarkt.
+Magic-Ore;E;25;25 SK;10 SK;Ore das in Dungeons abgebaut werden kann. Das Ore kann von Schmieden geschmolzen und weiterverarbeitet werden. Benötigt für Waffen und Rüstungen.;Verbrauchsgegenstand;Gold;Naturfund;
+Verband;E;8;8 SK;3 SK;1W6 Heilung auf dich oder ein Ziel neben dir.;Verbrauchsgegenstand;Heilung;Tier 1 Cache;
+Heilkräutersalbe (Nebelfarn);E;15;15 SK;6 SK;2W3 Heilung auf dich oder ein Ziel neben dir.;Verbrauchsgegenstand;Heilung;Tier 1 Cache;
+Sternmoos-Salbe;D;60;60 SK;24 SK;3W6 Heilung auf dich oder ein Ziel neben dir.;Verbrauchsgegenstand;Heilung;Tier 2 Cache;
+Heilige Bandagen;C;400;4 GK;1 GK 60 SK;1W20 Heilung an dir oder einem nahen Spieler;Verbrauchsgegenstand;Heilung;Tier 3 Cache;
+Metallspitzen;D;60;60 SK;24 SK;Verstärkt Angriffe von Bögen. Schaden +2;Verbrauchsgegenstand;Schaden;Tier 2 Cache;Preis pro Bündel (10 Stück).
+Mithrilspitzen;C;500;5 GK;2 GK;Verstärkt Angriffe von Bögen. Schaden +5;Verbrauchsgegenstand;Schaden;Tier 3 Cache;Preis pro Bündel (10 Stück).
+Skill-Orb-Leer;C;300;3 GK;1 GK 20 SK;Ein leerer Skill-Orb in den ein bereits gelernter Skill übertragen werden kann (Skill wird verlernt).;Verbrauchsgegenstand;Skills;Special;
+Skill-Orb T1;D;150;1 GK 50 SK;60 SK;Erlaubt das lernen eines T1 Skills;Verbrauchsgegenstand;Skills;Tier 1 Cache;
+Skill-Orb T2;C;600;6 GK;2 GK 40 SK;Erlaubt das lernen eines T2 Skills;Verbrauchsgegenstand;Skills;Tier 2 Cache;
+Skill-Orb T3;B;2500;25 GK;10 GK;Erlaubt das lernen eines T3 Skills;Verbrauchsgegenstand;Skills;Tier 3 Cache;
+Phönixasche;SS;100000;1000 GK;400 GK;Kann einen Spieler wiederbeleben (Leiche muss vorhanden sein);Verbrauchsgegenstand;Wiederbelebung;Naturfund;"Wird praktisch nie gehandelt; Sammler und Adelshäuser zahlen jeden Preis."
+Großer Heiltrank;B;1200;12 GK;4 GK 80 SK;Neu (3.3): Heilt 6W6 + 10 HP, als Aktion, beendet „Verwundet“.;Verbrauchsgegenstand;Trank / Rune;Tier 3 Cache;Neu (Balancing 3.3)
+Starke Schutzrune;B;1500;15 GK;6 GK;Neu (3.3): Rüstwert +3 für einen Kampf.;Verbrauchsgegenstand;Trank / Rune;Tier 3 Cache;Neu (Balancing 3.3)
+Reinigungselixier;A;4000;40 GK;16 GK;Neu (3.3): Korruption −15 (nicht unter die Stufengrenze).;Verbrauchsgegenstand;Trank / Rune;Tier 3 Cache;Neu (Balancing 3.3)
+Elixier des Helden;A;6000;60 GK;24 GK;Neu (3.3): Volle HP, beendet alle Zustände.;Verbrauchsgegenstand;Trank / Rune;Tier 3 Cache;Neu (Balancing 3.3)
+Trank der Zeit;S;20000;200 GK;80 GK;Neu (3.3): 3 Runden lang eine zusätzliche Schnellaktion pro Runde.;Verbrauchsgegenstand;Trank / Rune;Kern-Truhe;Neu (Balancing 3.3)
+Sternenstaub-Phiole;S;30000;300 GK;120 GK;Neu (3.3): Ein Skill hat für diesen Kampf Cooldown 1.;Verbrauchsgegenstand;Trank / Rune;Kern-Truhe;Neu (Balancing 3.3)

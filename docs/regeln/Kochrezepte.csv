@@ -1,0 +1,34 @@
+﻿Rezept;Tier;Rang;Art;Schwierigkeit;Zutaten (4 Portionen);Heilung pro Portion;Wirkung;Preis pro Portion (SK);Quelle
+(Erd-)Wurzelschnitte;Tier 1;E;Speise;15;2 Sonnenkorn, 2 Erdwurzel, 1 Windgras;1W6;–;4;Karte
+Flüsterkuchen;Tier 1;E;Speise;15;1 Flüsterzwiebel, 1 Wasserbeere, 1 Wispermelone;1W6;–;3;Karte
+Funkengebräu;Tier 1;E;Getränk;15;1 Funkenwurzel, 1 Wasserbeere, 1 Leuchtbeere;1W6;–;2;Karte
+Nachter-Pizza;Tier 1;E;Speise;15;2 Sonnenkorn, 1 Mondblüte, 2 Wasserbeere, 1 Tränenkraut;1W6;–;4;Karte
+Nebeltraum-Suppe;Tier 1;E;Speise;15;1 Nebelfarn, 1 Tränenkraut, 1 Leuchtbeere, 1 Wasserbeere;1W6;–;3;Karte
+Schattenfeuer-Eintopf;Tier 1;E;Speise;15;1 Schattenkohl, 1 Flammenkraut, 1 Schattenkirsche, 1 Wasserbeere;1W6;–;10;Karte
+Sonnenflimmerbrot;Tier 1;E;Speise;15;1 Sonnenkorn, 1 Flimmermais, 1 Funkenwurzel;1W6;–;2;Karte
+Sonnenkornbrot;Tier 1;E;Speise;15;3 Sonnenkorn, 1 Tränenkraut, 1 Wasserbeere;1W6;–;3;Karte
+Tränenkraut-Vodka;Tier 1;E;Getränk (Alkohol);15;2 Tränenkraut, 2 Wasserbeere, 1 Nebelfarn;1W6;–;4;Karte
+Wasserbeeren-Drink;Tier 1;E;Getränk;15;2 Wasserbeere, 1 Windgras, 1 Mondblüte;1W6;–;2;Karte
+Windgras-Bier;Tier 1;E;Getränk (Alkohol);15;2 Windgras, 1 Wasserbeere, 1 Nebelfarn;1W6;–;2;Karte
+Blumelade;Tier 2;E;Speise;25;1 Mondblüte, 1 Frostblüte, 1 Schattendorn;1W10;Wortgewandtheit +2.;5;Karte
+Blutrote Flammenfrucht;Tier 2;E;Speise;25;1 Blutlilie, 1 Flammenorange, 1 Wasserbeere;1W10;Innere Wärme: Kälte zählt eine Wärmezone milder.;8;Karte
+Dämmerblatt-Rollen;Tier 2;E;Speise;25;2 Dämmerblatt, 1 Tränenkraut, 1 Mondblüte;1W10;Heimlichkeit +2 in Dämmerung und Nacht.;12;Karte
+Eiswein;Tier 2;E;Getränk (Alkohol);25;3 Frostblüte, 1 Windgras, 1 Mondblüte, 2 Wasserbeere;1W10;"Kühlt: Hitze zählt eine Wärmezone milder; Willenskraft +2.";8;Karte
+Erdwurzen-Brötle;Tier 2;E;Speise;25;2 Erdwurzel, 2 Sonnenkorn, 2 Windgras, 2 Wasserbeere;1W10;Athletik +2.;5;Karte
+Frostblüten-Dim Sum;Tier 2;E;Speise;25;1 Sonnenkorn, 2 Frostblüte, 1 Wasserbeere;1W10;Kühlt: Hitze zählt eine Wärmezone milder.;4;Karte
+Frostige Sternensuppe;Tier 2;E;Speise;25;1 Eiskorn, 1 Frostblüte, 1 Sternkarotte, 2 Wasserbeere;1W10;Magieresistenz +1.;6;neu (ohne Karte)
+Frostiger Wald-Salat;Tier 2;E;Speise;25;1 Frostblüte, 1 Eisfeige, 1 Wispermelone;1W10;Naturkunde +2.;6;Karte
+Lichtgebratener Himmelsweizen;Tier 2;E;Speise;25;1 Lichtgerste, 1 Wolkenspinat, 1 Himmelsbirne;1W10;Scharfsinnigkeit +2.;9;Karte
+Schattendorn-Whisky;Tier 2;E;Getränk (Alkohol);25;2 Schattendorn, 1 Tränenkraut, 1 Frostblüte, 1 Blumelade;1W10;"Immun gegen Verängstigt; Initiative −1.";10;Karte
+Schattenpudding;Tier 2;D;Speise;25;1 Schattenpilz, 1 Wasserbeere, 1 Nachtschattenblüte;1W10;Willenskraft +3 gegen Abyss-Nebel.;34;Karte
+Sterngekrönter Nachtaufstrich;Tier 2;E;Speise;25;1 Sternkarotte, 1 Schattenkirsche, 1 Mondblüte;1W10;Erfindergeist +2.;5;neu (ohne Karte)
+Wolkenwunderauflauf;Tier 2;E;Speise;25;1 Wolkenspinat, 1 Lichtgerste, 1 Sternmoos, 1 Wasserbeere;1W10;Bewegung +1.;6;Karte
+Blutlilien-Pfannkuchen;Tier 3;E;Speise;35;1 Sonnenkorn, 3 Blutlilie, 2 Tränenkraut, 1 Mondblüte;1W20;Maximale HP +5 für den Tag.;21;Karte
+Erdwurzen-Öl;Tier 3;E;Speise;35;3 Erdwurzel, 1 Frostblüte, 1 Eisweinranke;1W20;Rüstwert +1.;29;Karte
+Feuer-Orchidee-Eintopf;Tier 3;D;Speise;35;1 Feuerorchidee, 1 Schattenpilz, 2 Wasserbeere, 1 Frostblüte, 1 Windgras;1W20;"Kälte und Frost wirken nicht (Wärmezonen Kühl bis Eis zählen als Mild); Feuer-Skills +1 Schaden.";134;Karte
+Feuer-Orchidee-Sauce;Tier 3;D;Speise;35;1 Feuerorchidee, 1 Blutlilie, 1 Sonnenkorn;1W20;Initiative +3.;118;Karte
+Gerösteter Schattenpilz;Tier 3;D;Speise;35;2 Schattenpilz, 1 Feuerorchidee, 1 Sonnenkorn;1W20;"Kein Malus durch Dunkelheit; Heimlichkeit +2.";150;Karte
+Himmelsschale;Tier 3;E;Speise;35;1 Himmelsgerste, 1 Himmelsbirne;1W20;"Willenskraft +3; Korruptions-Resistenz +1.";12;Karte
+Phönixranken-Tarte;Tier 3;C;Speise;35;1 Phönixfrucht, 2 Sonnenkorn, 1 Himmelsbirne, 1 Mondblüte;1W20;Fällt man an diesem Tag auf 0 HP, steht man sofort mit 1W10 HP wieder auf (einmal).;788;neu (ohne Karte)
+Spicy-Orch-Taco;Tier 3;D;Speise;35;2 Sonnenkorn, 1 Flammenorange, 1 Feuer-Orchidee-Sauce;1W20;Nahkampfschaden +2, aber Wortgewandtheit −2 (Schweiß und Tränen).;46;neu (ohne Karte)
+Zeitraum-Dessert;Tier 3;D;Speise;35;3 Zeittraube, 1 Nachtschattenblüte, 1 Wasserbeere;1W20;Einmal an diesem Tag einen eigenen Wurf wiederholen.;32;Karte

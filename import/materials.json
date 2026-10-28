@@ -1,0 +1,248 @@
+[
+ {
+  "name": "Holz (Bündel)",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Grundmaterial: Stangen und Scheite.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Talg",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Grundmaterial: Fett für Fackeln, Salben und Kerzen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Stoff (1 Elle)",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Grundmaterial: Leinen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Garn (Rolle)",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 1,
+   "price": "1 SK",
+   "description": "Grundmaterial: zum Nähen und Knüpfen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Federn (Bündel)",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Grundmaterial: genug für 20 Pfeile.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Leder (Stück)",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Grundmaterial: gegerbte Haut.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Eisenbarren",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 12,
+   "price": "12 SK",
+   "description": "Grundmaterial: aus 4 Erzklumpen geschmolzen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Kohle (Sack)",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Grundmaterial: für die Schmiede.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Glasphiole",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Grundmaterial: für Tränke und Öle.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Mehl (Sack)",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Materialien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 2,
+   "price": "2 SK",
+   "description": "Grundmaterial: aus Sonnenkorn oder Erdkorn gemahlen.",
+   "source": "",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Abyss-Splitter",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abyss-Steine/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 5,
+   "price": "5 SK",
+   "description": "Erbsengroß, schwach violett. Reicht für einen einzelnen kleinen Zauber.",
+   "source": "",
+   "quantity": 1,
+   "effect": "Kleine Corrupted: Ratten, Insekten, Schleime"
+  }
+ },
+ {
+  "name": "Kleiner Abyss-Stein",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abyss-Steine/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "Haselnussgroß. Grundlage für Zorr (3 Prisen pro Stein).",
+   "source": "",
+   "quantity": 1,
+   "effect": "Corrupted Tiere: Wölfe, Ziegen, Raben"
+  }
+ },
+ {
+  "name": "Mittlerer Abyss-Stein",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abyss-Steine/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 150,
+   "price": "1 GK 50 SK",
+   "description": "Faustgroß, pulsiert. Nur mit magischem Beutel sicher zu tragen.",
+   "source": "",
+   "quantity": 1,
+   "effect": "Große Corrupted, korrumpierte Menschen"
+  }
+ },
+ {
+  "name": "Großer Abyss-Stein",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abyss-Steine/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 800,
+   "price": "8 GK",
+   "description": "Kopfgroß und schwer. Verursacht beim Tragen Albträume.",
+   "source": "",
+   "quantity": 1,
+   "effect": "Elite-Corrupted, kleine Dungeon-Bosse"
+  }
+ },
+ {
+  "name": "Abyss-Herz",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abyss-Steine/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "Schlägt wie ein Herz. Der Gildenpakt verlangt die sofortige Abgabe.",
+   "source": "",
+   "quantity": 1,
+   "effect": "Dungeon-Bosse"
+  }
+ },
+ {
+  "name": "Kern eines Verlorenen",
+  "type": "material",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Abyss-Steine/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 15000,
+   "price": "150 GK",
+   "description": "Hell leuchtend, fast durchsichtig. Die Hüter fordern ihn für Eldora.",
+   "source": "",
+   "quantity": 1,
+   "effect": "Verlorene (korrumpierte Heroes)"
+  }
+ }
+]

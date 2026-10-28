@@ -1,0 +1,43 @@
+﻿Name;Rang;Marktwert;Art;Vorteil;Nachteil;Auslöser (GM)
+Verhext;D;nicht verkäuflich;Wesen;Magieresistenz +2 (er hat schon zu viel abbekommen).;Einmal pro Sitzung trifft ein eigener Skill ein zufälliges Ziel (der GM wählt den Moment).;Wiederholt von Flüchen getroffen oder magische Unfälle verursacht.
+Adrenalinjunkie;C;nicht verkäuflich;Wesen;Unter halben HP: Schaden +2 und Initiative +2.;Kein Rückzug und keine Abwehrhaltung, solange Gegner in Sicht sind.;Sucht immer die gefährlichste Lösung.
+Morgenmuffel;D;nicht verkäuflich;Wesen;Ab der Dämmerung Scharfsinnigkeit +2.;Morgens Initiative −5 und Wortgewandtheit −2.;Verschläft, ist morgens unausstehlich.
+Inspiriert;C;nicht verkäuflich;Phase;Erfindergeist +3 und einmal im Kapitel eine Idee vom GM.;Ungeduldig: Proben, die Stunden dauern, −2.;Hat eine geniale Idee umgesetzt.
+Unbeholfen;E;nicht verkäuflich;Wesen;Wird unterschätzt: Gegner greifen dich zuletzt an, wenn andere in Reichweite sind.;"Athletik −2; bei einer natürlichen 1 im Kampf fällt die Waffe.";Stolpert ständig, lässt Dinge fallen.
+Übermotiviert;D;nicht verkäuflich;Phase;Erster Wurf jedes Kampfs +2, Bewegung +1.;Nach einem misslungenen Wurf ist der nächste −2 (Frust).;Will nach einem Erfolg sofort mehr.
+Glückspilz;C;nicht verkäuflich;Wesen;Einmal pro Sitzung eine gewürfelte 1 neu würfeln.;Neider: Händler verlangen +10 %.;Hat auffällig oft Glück.
+Pechsträhne;E;nicht verkäuflich;Wesen;Nach jeder natürlichen 1 ist der nächste Wurf +5 („Jetzt erst recht“).;Jeder 5. Wurf ist eine natürliche 1 (dein Originaltext).;Hat auffällig oft Pech.
+Blitzmerker;D;nicht verkäuflich;Wesen;Wenn er es endlich merkt, dann richtig: Wiederholt er eine misslungene Scharfsinnigkeit-Probe, +5.;"Erster Versuch einer Scharfsinnigkeit-Probe −2; wird bei Überraschung immer überrascht.";Bemerkt Dinge immer als Letzter.
+Langschläfer;D;nicht verkäuflich;Wesen;Erholung durch Schlaf +50 %.;Bei nächtlichen Überfällen verliert er den ersten Zug.;Ist morgens nicht wachzukriegen.
+Nachdenklich;D;nicht verkäuflich;Wesen;Außerhalb des Kampfs Erfindergeist und Archäologie +2, wenn er sich Zeit lässt.;Initiative −2.;Denkt lange nach, bevor er handelt.
+Muskelprotz;D;nicht verkäuflich;Wesen;Athletik +3, Inventar +3.;Wortgewandtheit −2 (außer beim Einschüchtern), Heimlichkeit −2.;Löst Probleme bevorzugt mit Kraft.
+Feingeist;D;nicht verkäuflich;Wesen;Wortgewandtheit +2 bei Gebildeten und Adel, Handwerkskunst +2 beim Kochen und bei Kunst.;"In Sümpfen, Kanälen und Dungeons Willenskraft −2; schlechtes Essen heilt nur halb.";Legt Wert auf Kultur, Sauberkeit und gutes Essen.
+Nervös;D;nicht verkäuflich;Wesen;Initiative +3.;Willenskraft −2, beim Lügen Wortgewandtheit −3.;Zittert, plappert, schreckt bei jedem Geräusch auf.
+Ruhig;C;nicht verkäuflich;Wesen;Willenskraft +3, lässt sich nicht einschüchtern.;Initiative −2.;Bleibt auch in Gefahr gelassen.
+Hastig;D;nicht verkäuflich;Wesen;Bewegung +1, Initiative +2.;Proben, die Zeit brauchen, −3.;Macht alles schnell und schlampig.
+Verwirrt;E;nicht verkäuflich;Phase;Unberechenbar: Gegner haben −1 Genauigkeit gegen dich.;"Erfindergeist und Scharfsinnigkeit −3; einmal pro Sitzung vergisst er einen Plan.";Nach einem Schock, einer Vision oder einem Schlag auf den Kopf.
+Erschöpft;E;nicht verkäuflich;Phase;Beim nächsten Schlaf zusätzlich +CON HP Erholung.;−1 auf alle Würfe, Bewegung −1. Endet nach zwei ruhigen Nächten.;Nach Gewaltmärschen, Nachtwachen oder Kämpfen ohne Pause.
+Inspirationslos;E;nicht verkäuflich;Phase;Nüchtern: Willenskraft +2 gegen Bezauberung und Illusionen.;Erfindergeist −3.;Nach einem großen Misserfolg.
+Motiviert;C;nicht verkäuflich;Phase;+1 auf alle Proben, einmal pro Kampf zusätzlich 2 Felder Bewegung.;Endet sofort bei der ersten natürlichen 1.;Nach einer Ermutigung oder einem Sieg.
+Mutig;C;nicht verkäuflich;Wesen;Immun gegen Verängstigt, Genauigkeit +1 gegen größere Gegner.;Kein Rückzug, solange ein Verbündeter noch kämpft.;Stellt sich immer nach vorn.
+Tollpatschig;E;nicht verkäuflich;Wesen;Glück im Unglück: einmal pro Sitzung wird ein Patzer zu einem zufälligen Erfolg (GM).;Natürliche 1 und 2 sind Patzer, Heimlichkeit −3.;Richtet regelmäßig Chaos an.
+Geschickt;C;nicht verkäuflich;Wesen;Handwerkskunst und Heimlichkeit +2.;Perfektionist: Herstellen dauert doppelt so lange.;Macht feine Arbeit mit den Händen.
+Unglücksrabe;E;nicht verkäuflich;Wesen;Gegner unterschätzen dich: Der erste Angriff gegen dich im Kampf hat −2.;Einmal pro Sitzung macht der GM einen gelungenen Wurf zum Fehlschlag.;Was schiefgehen kann, geht bei ihm schief.
+Glücksritter;C;nicht verkäuflich;Wesen;"Einmal pro Kapitel ist ein Fund einen Rang besser; Glücksspiel +3.";Muss jede Gelegenheit zum Glücksspiel nutzen (Willenskraft 15).;Setzt gern alles auf eine Karte.
+Einsiedler;D;nicht verkäuflich;Wesen;Naturkunde und Willenskraft +2, Erholung in der Wildnis wie in einer Unterkunft.;In Städten Wortgewandtheit −3, Händler verlangen +10 %.;Meidet Menschen und Städte.
+Retter von …;C;nicht verkäuflich;Ruf;In diesem Ort Unterkunft und Essen frei, Wortgewandtheit +2 in der Region.;Die Leute erwarten, dass du wieder hilfst.;Einen Ort vor einer Gefahr gerettet.
+Dungeonbrecher;C;nicht verkäuflich;Ruf;Die Gilde bevorzugt dich: Quest-Belohnungen +10 %.;Rivalisierende Gruppen sehen dich als Konkurrenz.;Einen Dungeon bis zum Kern bezwungen.
+Nebeltöter;C;nicht verkäuflich;Ruf;+1 Schaden gegen Corrupted.;Die Magiologen wollen deine Funde und Erfahrungen.;50 Corrupted besiegt.
+Freund der Gilde;C;nicht verkäuflich;Ruf;Appraisal kostenlos, Gildenlager frei.;Die Gilde schickt dich zuerst in Notfälle.;20 Gilden-Aufträge erledigt.
+Abyss-Gänger;D;nicht verkäuflich;Ruf;Willenskraft +2 gegen Abyss-Nebel.;Die Hüter misstrauen dir (Religion −2 im Umgang mit ihnen).;Mehrere Tage im Abyss überlebt.
+Ahnenfreund;D;nicht verkäuflich;Ruf;Archäologie +2, im Norden überall willkommen.;Im Süden gilt das als Aberglaube.;Eine Ahnenstätte entdeckt und mit Respekt behandelt.
+Liebling der Hüter;D;nicht verkäuflich;Ruf;Reinigung zum halben Preis, leichterer Zugang zum Übergang Eldoras.;Die Hüter beobachten dich genau.;Den Hütern großen Dienst erwiesen.
+Gesucht;E;nicht verkäuflich;Ruf;Auf dem Schwarzmarkt +10 % beim Verkauf.;Stadtwachen sind feindlich, manche Gildenhäuser verweigern Aufträge.;Ein bekanntes Verbrechen begangen.
+
+Regel;Beschreibung
+Was Titel sind;Rollenspiel-Marker auf der Gildenkarte. Jeder Titel hat einen Vorteil und einen Nachteil – Titel belohnen gutes Rollenspiel, nicht Optimierung.
+Wesenstitel;Höchstens 1. Der GM vergibt ihn, wenn ein Charakter ein Verhalten über 2–3 Sitzungen zeigt, oder auf Wunsch des Spielers, wenn es passt. Er wechselt, wenn sich das Verhalten ändert.
+Phasentitel;Höchstens 1. Kommt durch ein Ereignis (Erfolg, Rückschlag, Erschöpfung) und gilt bis Kapitelende, wenn nichts anderes steht.
+Ruftitel;"Beliebig viele. Durch Taten in der Welt verdient; wirken meist in einer Region oder bei einer Gruppe und können verloren gehen."
+Ändern;Titel ändert nur der GM, am besten zu Kapitelbeginn oder beim Gildenbesuch.
+Rang;Nach dem Wert für den Charakter: C (lohnend), D (ausgeglichen), E (eher Last). Nicht verkäuflich.

@@ -1,0 +1,52 @@
+﻿Name;Rang;Wert (SK);Marktwert;Händler zahlt;Beschreibung;Hinweis
+Rucksack;D;40;40 SK;16 SK;Fasst die normale Ausrüstung einer Person.;
+Schlafsack;E;30;30 SK;12 SK;"Wolle und Leder; für Nächte im Freien.";
+Zelt (2 Personen);D;120;1 GK 20 SK;48 SK;Leinen und Holzstangen.;
+Decke;E;8;8 SK;3 SK;Einfache Wolldecke.;
+Seil (15 m);E;15;15 SK;6 SK;Hanfseil.;
+Kletterhaken (5 Stück);E;20;20 SK;8 SK;Eisenhaken mit Ösen.;
+Fackel;E;1;1 SK;1 SK;Brennt etwa eine Stunde.;
+Laterne;D;60;60 SK;24 SK;Mit Glasschutz, windfest.;
+Lampenöl (Flasche);E;3;3 SK;1 SK;Reicht für etwa sechs Stunden Licht.;
+Kerzen (5 Stück);E;3;3 SK;1 SK;Talgkerzen.;
+Feuerstein und Zunder;E;5;5 SK;2 SK;Für das Lagerfeuer.;
+Wasserschlauch;E;6;6 SK;2 SK;Fasst etwa zwei Liter.;
+Proviant (1 Tagesration);E;4;4 SK;2 SK;Trockenbrot, Käse, Dörrfleisch.;
+Kochgeschirr;E;25;25 SK;10 SK;Topf, Pfanne und Löffel fürs Lager.;
+Angelzeug;E;12;12 SK;5 SK;Schnur, Haken und Rute.;
+Tierfalle;D;45;45 SK;18 SK;Eisenfalle für kleine bis mittlere Tiere.;
+Fangnetz;E;25;25 SK;10 SK;Geknüpftes Netz.;
+Jagdmesser;D;35;35 SK;14 SK;Zum Häuten und Zerlegen.;
+Spitzhacke;D;70;70 SK;28 SK;Für Erz und Gestein.;
+Schaufel;E;30;30 SK;12 SK;Für Gruben und Grabungen.;
+Wetzstein;E;4;4 SK;2 SK;Hält Klingen scharf.;
+Holzpfeile (20 Stück);E;10;10 SK;4 SK;Einfache Pfeile.;
+Eisenpfeile (20 Stück);D;40;40 SK;16 SK;Mit Eisenspitzen.;
+Nebeltuch;E;15;15 SK;6 SK;"Feuchtes Kräutertuch vor Mund und Nase; mindert die Wirkung von Abyss-Nebel kurzzeitig.";
+Kompass;C;300;3 GK;1 GK 20 SK;Zuverlässig, außer in der Nähe des Abyss.;
+Regionalkarte;D;100;1 GK;40 SK;Karte einer Region mit Wegen und Orten.;
+Karte von Gaia;C;800;8 GK;3 GK 20 SK;Ganzer Kontinent, Abschrift der Gildenkarte.;
+Tinte und Feder;E;10;10 SK;4 SK;Für Notizen und Briefe.;
+Pergament (5 Bögen);E;8;8 SK;3 SK;Zum Schreiben und Zeichnen.;
+Spiegel (klein);D;50;50 SK;20 SK;Poliertes Metall.;
+Dietrich-Set;D;150;1 GK 50 SK;60 SK;Für Schlösser. Der Besitz ist in Städten verdächtig.;
+Kes-Börse;E;5;5 SK;2 SK;Lederbeutel für Münzen.;
+Ersatz-Gildenkarte;D;50;50 SK;20 SK;Bei Verlust in jedem Gildenhaus erhältlich.;
+Holz (Bündel);E;1;1 SK;1 SK;Grundmaterial: Stangen und Scheite.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Talg;E;1;1 SK;1 SK;Grundmaterial: Fett für Fackeln, Salben und Kerzen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Stoff (1 Elle);E;2;2 SK;1 SK;Grundmaterial: Leinen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Garn (Rolle);E;1;1 SK;1 SK;Grundmaterial: zum Nähen und Knüpfen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Federn (Bündel);E;2;2 SK;1 SK;Grundmaterial: genug für 20 Pfeile.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Leder (Stück);E;5;5 SK;2 SK;Grundmaterial: gegerbte Haut.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Eisenbarren;E;12;12 SK;5 SK;Grundmaterial: aus 4 Erzklumpen geschmolzen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Kohle (Sack);E;2;2 SK;1 SK;Grundmaterial: für die Schmiede.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Glasphiole;E;3;3 SK;1 SK;Grundmaterial: für Tränke und Öle.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Mehl (Sack);E;2;2 SK;1 SK;Grundmaterial: aus Sonnenkorn oder Erdkorn gemahlen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Alchemie-Set;D;60;60 SK;24 SK;Werkzeug: Mörser, Phiolen, Brenner.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Runen-Meißel;D;100;1 GK;40 SK;Werkzeug: feine Meißel für Runen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Rauchbombe;E;20;20 SK;8 SK;"Neu: Wirft eine Wolke von 2 Feldern Radius; Fernkampf hinein und hinaus −5 für 2 Runden.";Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Gegengift;D;50;50 SK;20 SK;Neu: Beendet „vergiftet“ sofort.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Kleiner Heiltrank;D;80;80 SK;32 SK;Neu: Heilt 2W6 + 2 HP, als Aktion, auch im Kampf.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Funkenbombe;D;80;80 SK;32 SK;Neu: 2W6 Feuerschaden auf 1 Feld Radius, Genauigkeit wie ein Wurf.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Einfache Schutzrune;D;150;1 GK 50 SK;60 SK;Neu: Auf Rüstung gelegt, Rüstwert +2 für einen Kampf, dann erloschen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
+Heiltrank;C;400;4 GK;1 GK 60 SK;Neu: Heilt 4W6 + 5 HP und beendet „Verwundet“.;Neu (2.5): herstellbar, siehe Herstellen und Kochen

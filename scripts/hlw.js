@@ -1,3 +1,6 @@
+import { HopeLiesWithinTalkApp, registerTalk } from "./hlw-talk.js";
+import { erstelleLindhain } from "./hlw-szenen.js";
+import { WORLD_SKILLS, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes } from "./hlw-regeln.js";
 const HLW = {};
 
 HLW.attributeLabels = {
@@ -13,20 +16,9 @@ HLW.attributeLabels = {
   sou: "SOU"
 };
 
-HLW.worldSkills = {
-  athletik: { label: "Athletik", attributes: ["str", "con", "agl"] },
-  wortgewandtheit: { label: "Wortgewandtheit", attributes: ["cha", "edu", "int"] },
-  erfindergeist: { label: "Erfindergeist", attributes: ["int", "wis", "dex"] },
-  naturkunde: { label: "Naturkunde", attributes: ["wis", "agl", "sou"] },
-  religion: { label: "Religion", attributes: ["wis", "edu", "sou"] },
-  scharfsinnigkeit: { label: "Scharfsinnigkeit", attributes: ["int", "spe", "dex"] },
-  archaeologie: { label: "Archaeologie", attributes: ["str", "con", "edu"] },
-  handwerkskunst: { label: "Handwerkskunst", attributes: ["dex", "con", "str"] },
-  willenskraft: { label: "Willenskraft", attributes: ["sou", "cha", "con"] },
-  tierkunde: { label: "Tierkunde", attributes: ["agl", "spe", "wis"] }
-};
+HLW.worldSkills = WORLD_SKILLS;
 
-HLW.initiativeFormula = "1d20 + @attributes.spe.value";
+HLW.initiativeFormula = "1d20 + @derived.initiative";
 HLW.elementLabels = {
   slash: "Klinge",
   blunt: "Stumpf",
@@ -41,24 +33,12 @@ HLW.elementLabels = {
   holy: "Heilig",
   shadow: "Schatten"
 };
-HLW.affinityDefaults = {
-  slash: { label: "Klinge", value: 0 },
-  blunt: { label: "Stumpf", value: 0 },
-  pierce: { label: "Stich", value: 0 },
-  magic: { label: "Magie", value: 0 },
-  fire: { label: "Feuer", value: 0 },
-  ice: { label: "Eis", value: 0 },
-  lightning: { label: "Blitz", value: 0 },
-  earth: { label: "Erde", value: 0 },
-  wind: { label: "Wind", value: 0 },
-  holy: { label: "Heilig", value: 0 },
-  shadow: { label: "Schatten", value: 0 }
-};
 HLW.insigniaSlotDefaults = {
   slot1: { image: "", name: "", description: "" },
   slot2: { image: "", name: "", description: "" },
   slot3: { image: "", name: "", description: "" }
 };
+HLW.klassen = [];
 HLW.pendingSkill = null;
 HLW.rangeGraphics = null;
 HLW.movementGraphics = null;
@@ -136,6 +116,8 @@ function normalizeElement(value, fallbackText = "") {
 }
 
 function normalizeDamageCategory(value, fallbackText = "") {
+  // Ein ausdruecklich gesetzter Wert gilt; nur ohne Angabe wird aus dem Text geraten (sonst waere z. B. „Eisenschwert“ magisch).
+  if (["physical", "magical"].includes(value)) return value;
   const text = `${value ?? ""} ${fallbackText ?? ""}`.toLowerCase();
   if (text.includes("mag") || text.includes("zauber") || text.includes("spell") || text.includes("feuer") || text.includes("eis") || text.includes("holy") || text.includes("heilig")) return "magical";
   return "physical";
@@ -152,44 +134,6 @@ function getTokenDistanceInTiles(sourceToken, targetToken) {
 function getPointDistanceInTiles(from, to) {
   const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
   return Math.hypot(to.x - from.x, to.y - from.y) / gridSize;
-}
-
-function getAffinity(actor, element) {
-  const affinities = actor.system?.affinities ?? actor.system?.resistances ?? {};
-  return numberValue(affinities[element]?.value);
-}
-
-function getDefensiveAffinity(actor, element) {
-  const elementAffinity = getAffinity(actor, element);
-  const magicAffinity = getAffinity(actor, "magic");
-  if (["fire", "ice", "lightning", "earth", "wind", "holy", "shadow"].includes(element)) {
-    return Math.max(elementAffinity, magicAffinity);
-  }
-  return elementAffinity || getAffinity(actor, "physical");
-}
-
-function getDefenseValue(actor, damageCategory) {
-  const key = damageCategory === "magical" ? "magical" : "physical";
-  const base = numberValue(actor.system?.defenses?.[key]?.value);
-  const defendingBonus = boolValue(actor.system?.combat?.defending) ? 1 : 0;
-  return base + defendingBonus;
-}
-
-function prepareAffinities(system) {
-  const oldResistances = system.resistances ?? {};
-  const current = system.affinities ?? {};
-  const prepared = {};
-
-  for (const [key, defaults] of Object.entries(HLW.affinityDefaults)) {
-    const oldValue = oldResistances[key]?.value;
-    const currentValue = current[key]?.value;
-    prepared[key] = {
-      label: defaults.label,
-      value: numberValue(currentValue ?? oldValue ?? defaults.value)
-    };
-  }
-
-  return prepared;
 }
 
 function prepareInsigniaSlots(system) {
@@ -225,7 +169,7 @@ function getInsigniaSlotList(system) {
 
 function prepareResources(system) {
   const resources = system.resources ?? {};
-  resources.gold = resources.gold ?? { label: "Gold", value: 0 };
+  resources.kes = resources.kes ?? { label: "Kes (in Silber-Kes)", value: 0 };
   resources.inventorySlots = resources.inventorySlots ?? { label: "Inventarplaetze", value: 0, max: 20 };
   return resources;
 }
@@ -270,6 +214,36 @@ async function spendActionPoints(actor, amount = 1) {
   return true;
 }
 
+function isQuickItem(item) {
+  return String(item?.system?.castTime ?? "").toLowerCase() === "quick";
+}
+
+function canUseItemAction(actor, item) {
+  if (isQuickItem(item)) return actor.system?.actions?.quick?.available !== false;
+  return hasActionPoints(actor);
+}
+
+async function spendItemAction(actor, item) {
+  if (isQuickItem(item)) {
+    await actor.update({ "system.actions.quick.available": false });
+    return true;
+  }
+  return spendActionPoints(actor);
+}
+
+function isHealingItem(item) {
+  return /heil/i.test(`${item?.system?.skillType ?? ""} ${item?.system?.damageCategory ?? ""}`);
+}
+
+function isValidFormula(formula) {
+  if (!formula) return false;
+  try {
+    return Roll.validate(formula);
+  } catch (error) {
+    return false;
+  }
+}
+
 function isPassiveItem(item) {
   const activation = String(item.system?.activation ?? "").toLowerCase();
   return activation === "passive" || boolValue(item.system?.passive);
@@ -277,20 +251,6 @@ function isPassiveItem(item) {
 
 function getActivationLabel(item) {
   return isPassiveItem(item) ? "Passiv" : "Aktiv";
-}
-
-function prepareDefenses(system) {
-  const current = system.defenses ?? {};
-  return {
-    physical: {
-      label: "Physische Verteidigung",
-      value: numberValue(current.physical?.value)
-    },
-    magical: {
-      label: "Magische Verteidigung",
-      value: numberValue(current.magical?.value)
-    }
-  };
 }
 
 function showCombatOverlay(combat, mode = "start", actorName = "") {
@@ -394,7 +354,7 @@ function drawSkillRange(sourceToken, rangeLimit, skillName, rawRange = rangeLimi
 
   const help = document.createElement("div");
   help.className = "hlw-range-help";
-  help.innerText = `${skillName}: Ziel waehlen (${rawRange || rangeLimit} Tiles). Button erneut klicken bricht ab.`;
+  help.innerText = `${skillName}: Ziel waehlen (${rawRange || rangeLimit} Felder). Button erneut klicken bricht ab.`;
   document.body.appendChild(help);
   HLW.rangeHelp = help;
 }
@@ -426,7 +386,7 @@ function showTargetPicker(actor, item, sourceToken, rangeLimit) {
           <small>${escapeHtml(getTokenGridLabel(token, index))}</small>
         </span>
         <span>
-          <strong>${distance.toFixed(1)} Tiles</strong>
+          <strong>${distance.toFixed(1)} Felder</strong>
           <small>HP ${numberValue(token.actor?.system?.resources?.hp?.value)} / ${numberValue(token.actor?.system?.resources?.hp?.max)}</small>
         </span>
       </button>
@@ -538,6 +498,7 @@ function getUsableCombatItems(actor) {
       damageCategory: normalizeDamageCategory(item.system?.damageCategory, `${item.system?.skillType} ${item.system?.element}`),
       equipped: boolValue(item.system?.equipped),
       isPassive: isPassiveItem(item),
+      usable: canUseItemAction(actor, item),
       pending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id
     }));
 }
@@ -570,7 +531,7 @@ function renderCombatHud() {
   const skills = getUsableCombatItems(actor);
   const skillButtons = skills.length
     ? skills.map((item) => `
-      <button type="button" class="hlw-hud-skill ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" ${(!canAct || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
+      <button type="button" class="hlw-hud-skill ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" ${(!item.usable || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
         <strong>${escapeHtml(item.pending ? "Abbrechen" : item.name)}${item.equipped ? " [E]" : ""}</strong>
         <span>${escapeHtml(HLW.damageCategories[item.damageCategory] ?? item.damageCategory)} | ${escapeHtml(item.element || "Typ")} | R ${item.range || "-"} | ${escapeHtml(item.damage)}</span>
         <small>${item.cooldown > 0 ? `CD ${item.cooldown}/${item.maxCooldown}` : "bereit"}</small>
@@ -591,8 +552,9 @@ function renderCombatHud() {
     <section class="hlw-hud-stats">
       <div><span>HP</span><strong>${numberValue(hp.value)} / ${numberValue(hp.max)}</strong></div>
       <div><span>Bewegung</span><strong>${movementLeft.toFixed(1)} / ${movementMax}</strong></div>
-      <div><span>Aktionspunkte</span><strong>${numberValue(actionPoints.value)} / ${numberValue(actionPoints.max)}</strong></div>
-      <div><span>Status</span><strong>${canAct ? "bereit" : "verbraucht"}</strong></div>
+      <div><span>Aktion</span><strong>${numberValue(actionPoints.value)} / ${numberValue(actionPoints.max)}</strong></div>
+      <div><span>Schnellaktion</span><strong>${actor.system?.actions?.quick?.available === false ? "verbraucht" : "bereit"}</strong></div>
+      <div><span>RW / MR</span><strong>${numberValue(actor.system?.derived?.rw)} / ${numberValue(actor.system?.derived?.mr)}</strong></div>
     </section>
     <section class="hlw-hud-actions">
       <button type="button" data-hud-standard="attack" ${canAct ? "" : "disabled"}>Angriff</button>
@@ -662,6 +624,8 @@ async function resetActorTurnState(actor) {
     "system.actions.main.available": true,
     "system.actions.movement.available": true,
     "system.actions.bonus.available": true,
+    "system.actions.quick.available": true,
+    "system.actions.reaction.available": true,
     "system.resources.actionPoints.value": maxActionPoints,
     "system.combat.movementSpent": 0,
     "system.combat.defending": false
@@ -696,10 +660,18 @@ function handleCombatTurnChange(combat) {
 }
 
 export class HopeLiesWithinActor extends Actor {
+  async _onCreate(data, options, userId) {
+    await super._onCreate?.(data, options, userId);
+    if (game.user?.id !== userId) return;
+    const max = numberValue(this.system?.derived?.hpMax);
+    if (max > 0 && numberValue(this.system?.resources?.hp?.value) !== max) await this.update({ "system.resources.hp.value": max });
+  }
+
   getRollData() {
     const data = super.getRollData();
     data.attributes = this.system.attributes ?? {};
     data.resources = this.system.resources ?? {};
+    data.derived = this.system.derived ?? {};
     return data;
   }
 
@@ -709,16 +681,21 @@ export class HopeLiesWithinActor extends Actor {
     const system = this.system;
     if (!system?.attributes || !system?.worldSkills) return;
 
-    system.affinities = prepareAffinities(system);
     system.insigniaSlots = prepareInsigniaSlots(system);
     system.progression.activeInsignia = system.progression.activeInsignia || "slot1";
     system.resources = prepareResources(system);
-    system.defenses = prepareDefenses(system);
     system.combat = system.combat ?? {};
     system.combat.defending = boolValue(system.combat.defending);
 
+    // Kampfwerte nach Kanon 2.0 (Tab Kampfwerte): HP, Ruestwert, Magieresistenz, Blockwert, Bewegung, Initiative, Inventar.
+    const derived = this.type === "monster" ? berechneMonster(system) : berechneWerte(system, this.items, HLW.klassen);
+    system.derived = derived;
+    system.resources.hp.max = derived.hpMax;
+    system.resources.movement.value = derived.movement;
+    if (this.type !== "monster") system.resources.inventorySlots.max = derived.inventory;
+
     for (const [key, definition] of Object.entries(HLW.worldSkills)) {
-      const current = system.worldSkills[key] ?? {};
+      const current = system.worldSkills[key] ?? { bonus: 0 };
       const base = definition.attributes.reduce((sum, attributeKey) => {
         return sum + numberValue(system.attributes?.[attributeKey]?.value);
       }, 0);
@@ -740,9 +717,12 @@ export class HopeLiesWithinActor extends Actor {
     const formula = `1d20 + ${total}`;
     const roll = await new Roll(formula, this.getRollData()).evaluate();
 
+    // Kanon 2.0: natuerliche 20 gelingt immer, natuerliche 1 misslingt immer.
+    const natur = numberValue(roll.dice?.[0]?.total);
+    const hinweis = natur === 20 ? " · <strong>Natürliche 20: Erfolg</strong>" : natur === 1 ? " · <strong>Natürliche 1: Fehlschlag</strong>" : "";
     await roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      flavor: `<strong>${skill.label}</strong> (${skill.attributes.map((key) => HLW.attributeLabels[key]).join(" + ")})`
+      flavor: `<strong>${skill.label}</strong> (${skill.attributes.map((key) => HLW.attributeLabels[key]).join(" + ")})${hinweis}`
     });
   }
 
@@ -796,7 +776,7 @@ export class HopeLiesWithinActor extends Actor {
     if (actionType === "defend") {
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: this }),
-        content: `<div class="hlw-chat-card"><h2>Abwehrhaltung</h2><p>${escapeHtml(this.name)} erhoeht physische und magische Verteidigung bis zum naechsten eigenen Zug um 1.</p></div>`
+        content: `<div class="hlw-chat-card"><h2>Abwehrhaltung</h2><p>${escapeHtml(this.name)} bekommt bis zum naechsten eigenen Zug Rüstwert und Magieresistenz +2.</p></div>`
       });
       await this.update({ "system.combat.defending": true });
       await spendActionPoints(this);
@@ -840,13 +820,13 @@ export class HopeLiesWithinActor extends Actor {
     const item = this.items.get(itemId);
     if (!item) return;
 
-    const price = item.system?.price ?? item.system?.goldValue ?? "-";
+    const price = item.system?.priceSk ? kes(item.system.priceSk) : item.system?.price || "-";
     const quantity = Math.max(numberValue(item.system?.quantity), 1);
     const description = item.system?.description || item.system?.effect || "Keine Beschreibung.";
     const gmRows = game.user?.isGM ? `
-      <dt>Tier</dt><dd>${normalizeTier(item.system?.tier ?? item.system?.importTier ?? item.system?.sourceTier)}</dd>
+      <dt>Rang</dt><dd>${escapeHtml(item.system?.rank || "-")}</dd>
       <dt>Fundort</dt><dd>${escapeHtml(item.system?.source || "-")}</dd>
-      <dt>Preisvorschlag</dt><dd>${escapeHtml(price)}</dd>
+      <dt>Marktwert</dt><dd>${escapeHtml(price)}</dd>
     ` : "";
     const content = `
       <div class="hlw-item-detail">
@@ -939,7 +919,7 @@ export class HopeLiesWithinActor extends Actor {
   }
 
   async giveGoldToTarget(amount) {
-    const value = Math.max(Math.floor(numberValue(amount)), 0);
+    const value = Math.abs(parseKes(amount));
     if (value <= 0) return;
 
     const targetToken = Array.from(game.user?.targets ?? []).find((token) => token.actor && token.actor.id !== this.id);
@@ -948,30 +928,30 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    const ownGold = numberValue(this.system?.resources?.gold?.value);
-    if (ownGold < value) {
-      ui.notifications?.warn("Nicht genug Gold.");
+    const own = numberValue(this.system?.resources?.kes?.value);
+    if (own < value) {
+      ui.notifications?.warn("Nicht genug Kes.");
       return;
     }
 
-    const targetGold = numberValue(targetToken.actor.system?.resources?.gold?.value);
-    await this.update({ "system.resources.gold.value": ownGold - value });
-    await targetToken.actor.update({ "system.resources.gold.value": targetGold + value });
-    ui.notifications?.info(`${value} Gold an ${targetToken.name} gegeben.`);
+    const target = numberValue(targetToken.actor.system?.resources?.kes?.value);
+    await this.update({ "system.resources.kes.value": own - value });
+    await targetToken.actor.update({ "system.resources.kes.value": target + value });
+    ui.notifications?.info(`${kes(value)} an ${targetToken.name} gegeben.`);
   }
 
   async addGold(amount) {
     if (!game.user?.isGM) {
-      ui.notifications?.warn("Nur der GM kann Gold frei hinzufuegen.");
+      ui.notifications?.warn("Nur der GM kann Kes frei hinzufuegen.");
       return;
     }
 
-    const value = Math.max(Math.floor(numberValue(amount)), 0);
-    if (value <= 0) return;
+    const value = parseKes(amount);
+    if (!value) return;
 
-    const currentGold = numberValue(this.system?.resources?.gold?.value);
-    await this.update({ "system.resources.gold.value": currentGold + value });
-    ui.notifications?.info(`${value} Gold zu ${this.name} hinzugefuegt.`);
+    const current = numberValue(this.system?.resources?.kes?.value);
+    await this.update({ "system.resources.kes.value": Math.max(current + value, 0) });
+    ui.notifications?.info(`${value < 0 ? "−" : "+"}${kes(Math.abs(value))} bei ${this.name} gebucht.`);
   }
 
   startSkillTargeting(itemId) {
@@ -1000,13 +980,13 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    if (!hasActionPoints(this)) {
-      ui.notifications?.warn("Nicht genug Aktionspunkte.");
+    if (!canUseItemAction(this, item)) {
+      ui.notifications?.warn(isQuickItem(item) ? "Die Schnellaktion ist schon verbraucht." : "Die Aktion ist schon verbraucht.");
       return;
     }
 
     const damageFormula = normalizeFormula(item.system?.damage);
-    const hasDamage = damageFormula && !["-", "xxx", "n/a"].includes(damageFormula.toLowerCase());
+    const hasDamage = isValidFormula(damageFormula);
     const sourceToken = getSourceTokenForActor(this);
 
     if (hasDamage) {
@@ -1047,15 +1027,16 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    if (!hasActionPoints(this)) {
-      ui.notifications?.warn("Nicht genug Aktionspunkte.");
+    if (!canUseItemAction(this, item)) {
+      ui.notifications?.warn(isQuickItem(item) ? "Die Schnellaktion ist schon verbraucht." : "Die Aktion ist schon verbraucht.");
       return;
     }
 
     const damageFormula = normalizeFormula(item.system?.damage);
-    const hasDamage = damageFormula && !["-", "xxx", "n/a"].includes(damageFormula.toLowerCase());
+    const hasDamage = isValidFormula(damageFormula);
+    const healing = isHealingItem(item);
     const sourceToken = getPendingSourceToken(this);
-    let damageResult = null;
+    let result = null;
 
     if (hasDamage) {
       if (!sourceToken) {
@@ -1072,61 +1053,79 @@ export class HopeLiesWithinActor extends Actor {
         targetToken = targets[0];
       }
 
-      const rawRange = parseRange(item.system?.range);
       const rangeLimit = getEffectiveRangeInTiles(item.system?.range);
       const distance = getTokenDistanceInTiles(sourceToken, targetToken);
-
-      if (rangeLimit > 0 && distance > rangeLimit) {
-        ui.notifications?.warn(`${targetToken.name} ist ausser Reichweite (${distance.toFixed(1)} / ${rangeLimit} Tiles).`);
+      if (rangeLimit > 0 && distance > rangeLimit + 0.01) {
+        ui.notifications?.warn(`${targetToken.name} ist ausser Reichweite (${distance.toFixed(1)} / ${rangeLimit} Felder).`);
         return;
       }
 
-      const damageCategory = normalizeDamageCategory(item.system?.damageCategory, `${item.system?.skillType} ${item.system?.element} ${item.name}`);
-      const element = normalizeElement(item.system?.damageType || item.system?.element, `${item.system?.skillType} ${item.name}`);
-      const roll = await new Roll(damageFormula, this.getRollData()).evaluate();
-      const attackAffinity = getAffinity(this, element);
-      const defenseAffinity = getDefensiveAffinity(targetToken.actor, element);
-      const defenseValue = getDefenseValue(targetToken.actor, damageCategory);
-      const finalDamage = Math.max(numberValue(roll.total) + attackAffinity - defenseAffinity - defenseValue, 0);
-      const currentHp = numberValue(targetToken.actor?.system?.resources?.hp?.value);
-      const nextHp = Math.max(currentHp - finalDamage, 0);
-      let defeated = false;
+      // Kanon 2.0: Schaden = Skillschaden + Waffenschaden + Schadensbonus − Blockwert des Ziels (mindestens 1).
+      const werte = angriffsWerte(this, item);
+      const magisch = normalizeDamageCategory(item.system?.damageCategory, `${item.system?.skillType} ${item.name}`) === "magical";
+      const waffe = item.type !== "weapon" && !healing && this.type !== "monster"
+        ? this.items.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped))
+        : null;
+      const waffenFormel = waffe ? normalizeFormula(waffe.system?.damage) : "";
+      const teile = [damageFormula, waffenFormel].filter(isValidFormula).map((f) => `(${f})`);
+      const formel = `${teile.join(" + ")}${werte.bonus ? ` + ${werte.bonus}` : ""}`;
+      const target = targetToken.actor;
+      const targetDerived = target?.system?.derived ?? {};
+      const currentHp = numberValue(target?.system?.resources?.hp?.value);
+      result = { targetName: targetToken.name, targetIsMonster: target?.type === "monster", distance, range: rangeLimit, healing, magisch, waffe: waffe?.name, werte };
 
-      if (targetToken.actor) {
-        await targetToken.actor.update({
-          "system.resources.hp.value": nextHp
-        });
+      if (healing) {
+        const roll = await new Roll(formel, this.getRollData()).evaluate();
+        const maxHp = numberValue(target?.system?.resources?.hp?.max) || currentHp + roll.total;
+        const nextHp = Math.min(currentHp + numberValue(roll.total), maxHp);
+        if (target) await target.update({ "system.resources.hp.value": nextHp });
+        Object.assign(result, { roll, amount: nextHp - currentHp, nextHp });
+      } else {
+        const verteidigung = numberValue(magisch ? targetDerived.mr : targetDerived.rw) || 10;
+        const angriff = await new Roll(`1d20 + ${werte.acc}`).evaluate();
+        const natur = numberValue(angriff.dice?.[0]?.total);
+        const kritisch = natur === 20;
+        const patzer = natur === 1;
+        const trifft = !patzer && (kritisch || angriff.total >= verteidigung);
+        Object.assign(result, { angriff, natur, kritisch, patzer, trifft, verteidigung, verteidigungsArt: magisch ? "MR" : "RW" });
 
-        defeated = nextHp <= 0;
-        if (defeated && game.combat) {
-          const combatant = game.combat.combatants.find((entry) => entry.tokenId === targetToken.document?.id || entry.actor?.id === targetToken.actor?.id);
-          if (combatant) await combatant.update({ defeated: true });
+        if (trifft) {
+          let roll = new Roll(formel, this.getRollData());
+          if (kritisch) roll = roll.alter(2, 0);
+          await roll.evaluate();
+          const block = numberValue(targetDerived.block);
+          const finalDamage = Math.max(numberValue(roll.total) - block, 1);
+          const nextHp = Math.max(currentHp - finalDamage, 0);
+          if (target) await target.update({ "system.resources.hp.value": nextHp });
+          let defeated = false;
+          if (nextHp <= 0 && target) {
+            defeated = true;
+            const combatant = game.combat?.combatants.find((entry) => entry.tokenId === targetToken.document?.id || entry.actor?.id === target.id);
+            if (combatant && target.type === "monster") await combatant.update({ defeated: true });
+          }
+          Object.assign(result, { roll, block, finalDamage, nextHp, defeated });
         }
       }
-
-      damageResult = {
-        targetName: targetToken.name,
-        rawRange,
-        range: rangeLimit,
-        distance,
-        damageCategory,
-        element,
-        roll,
-        attackAffinity,
-        defenseAffinity,
-        defenseValue,
-        finalDamage,
-        defeated
-      };
     }
 
-    const skillType = escapeHtml(item.system?.skillType);
-    const cost = escapeHtml(item.system?.cost);
+    const skillType = escapeHtml(item.system?.skillType || HLW.itemTypeLabels[item.type] || "");
     const range = escapeHtml(item.system?.range);
-    const damage = escapeHtml(item.system?.damage);
-    const categoryLabel = escapeHtml(HLW.damageCategories[damageResult?.damageCategory] ?? HLW.damageCategories[normalizeDamageCategory(item.system?.damageCategory)] ?? "-");
-    const elementLabel = escapeHtml(HLW.elementLabels[damageResult?.element] ?? item.system?.damageType ?? item.system?.element ?? "-");
+    const damage = escapeHtml(item.system?.damageText || item.system?.damage);
     const effect = escapeHtml(item.system?.effect || item.system?.description);
+    let ergebnis = "";
+    if (result?.healing) {
+      ergebnis = `<dt>Ziel</dt><dd>${escapeHtml(result.targetName)}</dd>
+        <dt>Heilung</dt><dd>${result.roll.formula} = <strong>${result.roll.total}</strong> (${result.amount} geheilt)</dd>`;
+    } else if (result) {
+      const wurf = `${result.natur} + ${result.werte.acc} = ${result.angriff.total} gegen ${result.verteidigungsArt} ${result.verteidigung}`;
+      const status = result.kritisch ? "Kritischer Treffer" : result.patzer ? "Natürliche 1: daneben" : result.trifft ? "Treffer" : "Verfehlt";
+      ergebnis = `<dt>Ziel</dt><dd>${escapeHtml(result.targetName)} (${result.distance.toFixed(1)} Felder)</dd>
+        <dt>Angriff</dt><dd>${wurf}</dd>
+        <dt>Ergebnis</dt><dd><strong>${status}</strong></dd>
+        ${result.trifft ? `<dt>Schaden</dt><dd>${result.roll.formula} = ${result.roll.total}${result.block ? ` − Blockwert ${result.block}` : ""}</dd>
+        <dt>Finaler Schaden</dt><dd><strong>${result.finalDamage}</strong></dd>` : ""}
+        ${result.defeated ? `<dt>Status</dt><dd><strong>${result.targetIsMonster ? "Besiegt" : "Am Boden (Sterbewürfe)"}</strong></dd>` : ""}`;
+    }
 
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -1134,28 +1133,12 @@ export class HopeLiesWithinActor extends Actor {
         <div class="hlw-chat-card">
           <h2>${escapeHtml(item.name)}</h2>
           <dl>
-            <dt>Art</dt><dd>${skillType || "-"}</dd>
-            <dt>Kosten</dt><dd>${cost || "-"}</dd>
-            <dt>Kategorie</dt><dd>${categoryLabel || "-"}</dd>
-            <dt>Element</dt><dd>${elementLabel || "-"}</dd>
-            <dt>Range</dt><dd>${range || "-"}</dd>
-            <dt>Schaden / Heilung</dt><dd>${damage || "-"}</dd>
+            <dt>Art</dt><dd>${skillType || "-"}${isQuickItem(item) ? " · Schnellaktion" : ""}</dd>
+            <dt>Reichweite</dt><dd>${range || "-"}</dd>
+            <dt>${result?.healing ? "Heilung" : "Schaden"}</dt><dd>${damage || "-"}${result?.waffe ? ` + ${escapeHtml(result.waffe)}` : ""}</dd>
             <dt>Cooldown</dt><dd>${maxCooldown || 0} Zug(e)</dd>
+            ${ergebnis}
           </dl>
-          ${damageResult ? `
-            <hr>
-            <dl>
-              <dt>Ziel</dt><dd>${escapeHtml(damageResult.targetName)}</dd>
-              <dt>Distanz</dt><dd>${damageResult.distance.toFixed(1)} / ${damageResult.range.toFixed(1)} Tiles</dd>
-              <dt>Range-Wert</dt><dd>${damageResult.rawRange || "-"}</dd>
-              <dt>Wurf</dt><dd>${damageResult.roll.total}</dd>
-              <dt>Veranlagung Angriff</dt><dd>+${damageResult.attackAffinity}</dd>
-              <dt>Veranlagung Ziel</dt><dd>-${damageResult.defenseAffinity}</dd>
-              <dt>Verteidigung</dt><dd>-${damageResult.defenseValue}</dd>
-              <dt>Finaler Schaden</dt><dd><strong>${damageResult.finalDamage}</strong></dd>
-              ${damageResult.defeated ? `<dt>Status</dt><dd><strong>Besiegt</strong></dd>` : ""}
-            </dl>
-          ` : ""}
           ${effect ? `<p>${effect}</p>` : ""}
         </div>
       `
@@ -1165,7 +1148,7 @@ export class HopeLiesWithinActor extends Actor {
       await item.update({ "system.cooldown.value": maxCooldown });
     }
 
-    await spendActionPoints(this);
+    await spendItemAction(this, item);
     clearPendingSkill();
     renderCombatHud();
   }
@@ -1203,6 +1186,9 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.canAct = hasActionPoints(context.actor);
     context.inventoryUsed = countInventorySlots(context.actor.items);
     context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
+    context.isMonster = context.actor.type === "monster";
+    context.kesText = kes(context.system.resources?.kes?.value);
+    context.pointsOver = numberValue(context.system.derived?.points?.free) < 0;
     return context;
   }
 
@@ -1403,11 +1389,24 @@ export class HopeLiesWithinItemSheet extends (BaseItemSheet ?? class {}) {
     context.isSkill = ["playerSkill", "classSkill"].includes(context.item.type);
     context.isGear = !context.isSkill;
     context.isGM = game.user?.isGM;
+    context.isArmor = context.item.type === "armor";
+    context.isWeapon = context.item.type === "weapon";
+    context.priceText = context.system.priceSk ? kes(context.system.priceSk) : context.system.price;
     return context;
   }
 
   activateListeners(html) {
     super.activateListeners(html);
+
+    // Appraisal: Ruestungs-HP werden einmal gewuerfelt und dann fest eingetragen.
+    html.find("[data-roll-item-hp]").on("click", async (event) => {
+      event.preventDefault();
+      const formula = normalizeFormula(this.item.system?.hpDice);
+      if (!isValidFormula(formula)) return ui.notifications?.warn("Kein gültiger HP-Würfel eingetragen.");
+      const roll = await new Roll(formula).evaluate();
+      await this.item.update({ "system.hp": roll.total });
+      await roll.toMessage({ flavor: `Appraisal: ${escapeHtml(this.item.name)} (HP ${formula})` });
+    });
 
     html.find("[data-delete-item]").on("click", async (event) => {
       event.preventDefault();
@@ -1529,7 +1528,7 @@ function getImportFolderPath(itemData) {
   return `HLW Import/${category}/Tier ${tier}`;
 }
 
-async function ensureItemFolderPath(path) {
+async function ensureItemFolderPath(path, type = "Item") {
   const parts = String(path ?? "").split("/").map((part) => part.trim()).filter(Boolean);
   let parent = null;
 
@@ -1537,12 +1536,12 @@ async function ensureItemFolderPath(path) {
     const existing = game.folders?.find((folder) => {
       const parentId = parent?.id ?? null;
       const folderParentId = folder.folder?.id ?? folder.folder ?? null;
-      return folder.type === "Item" && folder.name === name && folderParentId === parentId;
+      return folder.type === type && folder.name === name && folderParentId === parentId;
     });
 
     parent = existing ?? await Folder.create({
       name,
-      type: "Item",
+      type,
       folder: parent?.id ?? null
     });
   }
@@ -1585,19 +1584,51 @@ async function importJsonFile(path, fallbackType = "equipment") {
 async function importAllJsonFiles() {
   const basePath = "systems/hope-lies-within-2/import";
   const imports = [
-    ["items.json", "equipment"],
-    ["accessories.json", "accessory"],
     ["weapons.json", "weapon"],
     ["armor.json", "armor"],
+    ["accessories.json", "accessory"],
+    ["equipment.json", "equipment"],
+    ["consumables.json", "consumable"],
     ["food-drink.json", "foodDrink"],
-    ["skills.json", "playerSkill"]
+    ["materials.json", "material"],
+    ["natural.json", "natural"],
+    ["minerals.json", "mineral"],
+    ["junk.json", "junk"],
+    ["skills.json", "playerSkill"],
+    ["class-skills.json", "classSkill"]
   ];
 
   const results = [];
   for (const [fileName, fallbackType] of imports) {
     results.push(...await importJsonFile(`${basePath}/${fileName}`, fallbackType));
   }
+  results.push(...await importMonsters(`${basePath}/monsters.json`));
   return results;
+}
+
+// Bestiarium: Monster als Actors mit ihrem Angriff als Waffe.
+async function importMonsters(path) {
+  if (!game.user?.isGM) return [];
+  const response = await fetch(path);
+  if (!response.ok) return [];
+  const entries = await response.json();
+  const documents = [];
+  for (const entry of entries) {
+    if (game.actors?.find((actor) => actor.name === entry.name && actor.type === "monster")) continue;
+    const folder = await ensureItemFolderPath(entry.folder, "Actor");
+    documents.push({
+      name: entry.name,
+      type: "monster",
+      img: entry.img,
+      folder: folder?.id,
+      system: entry.system,
+      items: entry.items ?? [],
+      prototypeToken: { name: entry.name, disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE, texture: { src: entry.img } }
+    });
+  }
+  const created = documents.length ? await Actor.createDocuments(documents) : [];
+  ui.notifications?.info(`${created.length} Monster aus dem Bestiarium importiert.`);
+  return created;
 }
 
 Hooks.once("init", () => {
@@ -1632,11 +1663,23 @@ Hooks.once("init", () => {
   }
 });
 
-Hooks.once("ready", () => {
+Hooks.once("ready", async () => {
+  // Klassenliste fuer die automatische Klassenzuteilung (Lvl-Saetze aus Kanon 2.0)
+  try {
+    HLW.klassen = await (await fetch("systems/hope-lies-within-2/data/klassen.json")).json();
+    for (const actor of game.actors ?? []) actor.prepareData();
+  } catch (error) {
+    console.warn("Hope lies Within 2.0 | Klassenliste nicht geladen", error);
+  }
+
   game.hlw = {
     importJsonFile,
-    importAllJson: importAllJsonFiles
+    importAllJson: importAllJsonFiles,
+    importMonsters,
+    erstelleLindhain,
+    gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor)
   };
+  registerTalk();
 
   game.socket.on("system.hope-lies-within-2", async (data) => {
     if (!game.user?.isGM) return;
@@ -1770,7 +1813,7 @@ Hooks.on("preUpdateToken", (tokenDocument, changes) => {
   const remaining = Math.max(limit - spent, 0);
 
   if (limit > 0 && distance > remaining + 0.01) {
-    ui.notifications?.warn(`Bewegungslimit erreicht: ${remaining.toFixed(1)} Tiles uebrig.`);
+    ui.notifications?.warn(`Bewegungslimit erreicht: ${remaining.toFixed(1)} Felder uebrig.`);
     return false;
   }
 

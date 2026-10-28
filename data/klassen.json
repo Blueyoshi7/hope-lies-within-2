@@ -1,0 +1,1445 @@
+[
+ {
+  "name": "Krieger",
+  "category": "Basic",
+  "req": {
+   "STR": 5
+  },
+  "skill": "Kampfgeist",
+  "effect": "Bei aktiven Nahkampfangriffen +1 Schaden.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Hüter",
+  "category": "Basic",
+  "req": {
+   "CON": 5
+  },
+  "skill": "Zähigkeit",
+  "effect": "+20 Max HP.",
+  "role": "Tank"
+ },
+ {
+  "name": "Magier",
+  "category": "Basic",
+  "req": {
+   "INT": 5
+  },
+  "skill": "Magisches Gespür",
+  "effect": "Bei aktiven magischen Angriffen +1 Schaden.",
+  "role": "Magie"
+ },
+ {
+  "name": "Gelehrter",
+  "category": "Basic",
+  "req": {
+   "WIS": 5
+  },
+  "skill": "„Das hab ich schon mal gesehen“",
+  "effect": "Einmal pro Kampf: Der GM nennt eine Schwäche, Resistenz oder Besonderheit eines Gegners.",
+  "role": "Support"
+ },
+ {
+  "name": "Schurke",
+  "category": "Basic",
+  "req": {
+   "DEX": 5
+  },
+  "skill": "Klingenhand",
+  "effect": "Bei Angriffen mit einem Dolch +1 Schaden.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Gauner",
+  "category": "Basic",
+  "req": {
+   "SPE": 5
+  },
+  "skill": "Flinke Füße",
+  "effect": "Aktionsgeschwindigkeit +1 (Initiative +1).",
+  "role": "Support"
+ },
+ {
+  "name": "Schütze",
+  "category": "Basic",
+  "req": {
+   "AGL": 5
+  },
+  "skill": "„Trickshot“",
+  "effect": "Einmal pro Kampf: Ein Fernkampfangriff prallt ab und trifft ein zweites Ziel innerhalb von 3 Feldern mit vollem Schaden.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Tierbändiger",
+  "category": "Basic",
+  "req": {
+   "SOU": 5
+  },
+  "skill": "Ruhige Hand",
+  "effect": "Bei aktiven Fernkampfangriffen +1 Schaden.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Pfarrer",
+  "category": "Basic",
+  "req": {
+   "CHA": 5
+  },
+  "skill": "Wortgewandt",
+  "effect": "World-Skill Wortgewandtheit +1.",
+  "role": "Support"
+ },
+ {
+  "name": "Priester",
+  "category": "Basic",
+  "req": {
+   "EDU": 5
+  },
+  "skill": "„Bildung einprügeln“",
+  "effect": "Einmal pro Kampf: Schlag mit einem schweren Buch, 1W4 Schaden; das Ziel hat −2 auf seinen nächsten Wurf.",
+  "role": "Support"
+ },
+ {
+  "name": "Prophet",
+  "category": "T1",
+  "req": {
+   "CHA": 8,
+   "WIS": 5
+  },
+  "skill": "Gnade",
+  "effect": "Leichte Heilung für ein Ziel: 1W6 HP.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Täuschungs-Kleriker",
+  "category": "T1",
+  "req": {
+   "CHA": 7,
+   "SPE": 7
+  },
+  "skill": "Heilungsversprechen",
+  "effect": "Täuscht eine Heilung vor und fügt stattdessen 2W6 Schaden zu.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Sanitäter",
+  "category": "T1",
+  "req": {
+   "CHA": 8,
+   "DEX": 5
+  },
+  "skill": "Schmerzlinderung",
+  "effect": "Halbiert eine Runde lang den Schaden, den du oder ein Verbündeter erleidet.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Paladin",
+  "category": "T1",
+  "req": {
+   "CHA": 7,
+   "STR": 7
+  },
+  "skill": "Aura des Glaubens",
+  "effect": "Verbündete im Umkreis erhalten +1 auf alle Würfe.",
+  "role": "Tank"
+ },
+ {
+  "name": "Prediger von Athrea",
+  "category": "T1",
+  "req": {
+   "CHA": 8,
+   "EDU": 5
+  },
+  "skill": "Athreas Ruf",
+  "effect": "Heilende Skills heilen +1W6 zusätzlich.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Kleriker",
+  "category": "T1",
+  "req": {
+   "EDU": 8,
+   "CON": 5
+  },
+  "skill": "Göttlicher Schutz",
+  "effect": "Fällt der Charakter auf 10 HP oder weniger, schützt ihn einmal pro Kampf eine Aura mit +10 HP.",
+  "role": "Tank"
+ },
+ {
+  "name": "Mönch",
+  "category": "T1",
+  "req": {
+   "EDU": 8,
+   "AGL": 5
+  },
+  "skill": "Meditation",
+  "effect": "Eine Aktion lang meditieren: 2W6 HP Selbstheilung.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Nachtweber",
+  "category": "T1",
+  "req": {
+   "EDU": 8,
+   "DEX": 5
+  },
+  "skill": "Schattenschritt",
+  "effect": "Wird der Charakter angegriffen, teleportiert er sich zu einem Schatten auf dem Feld. CD 3 Runden.",
+  "role": "Support"
+ },
+ {
+  "name": "Herbalist",
+  "category": "T1",
+  "req": {
+   "EDU": 7,
+   "SOU": 7
+  },
+  "skill": "Kräuter und Gifte",
+  "effect": "Kann alle Kräuter zur Heilung oder als Gift verwenden, ohne magische Waffe.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Weißmagier",
+  "category": "T1",
+  "req": {
+   "EDU": 7,
+   "WIS": 7
+  },
+  "skill": "Reine Heilung",
+  "effect": "Heilt alle Verbündeten in der Nähe um je 1W4.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Kämpfer",
+  "category": "T1",
+  "req": {
+   "STR": 8,
+   "CON": 5
+  },
+  "skill": "Ansturm",
+  "effect": "Wuchtiger Angriff, 1W6 Schaden, stößt das Ziel 2 Felder zurück.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Sturmweber",
+  "category": "T1",
+  "req": {
+   "STR": 8,
+   "AGL": 5
+  },
+  "skill": "Blitzpfeil",
+  "effect": "Ein mit Blitz geladener Wurf- oder Pfeilangriff, 1W6 + 2 Schaden.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Barbar",
+  "category": "T1",
+  "req": {
+   "STR": 8,
+   "SPE": 5
+  },
+  "skill": "Qual",
+  "effect": "Brutaler Angriff, 2W6 Schaden; das Ziel hat −1 auf seinen nächsten Wurf.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Kampfmagier",
+  "category": "T1",
+  "req": {
+   "STR": 7,
+   "INT": 7
+  },
+  "skill": "Magische Raserei",
+  "effect": "Unkontrollierte Explosion: 1W6 Schaden an allen Zielen direkt neben dir.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Wächter",
+  "category": "T1",
+  "req": {
+   "CON": 8,
+   "STR": 5
+  },
+  "skill": "Standhaftigkeit",
+  "effect": "+2 Max HP pro Level.",
+  "role": "Tank"
+ },
+ {
+  "name": "Gladiator",
+  "category": "T1",
+  "req": {
+   "CON": 8,
+   "AGL": 5
+  },
+  "skill": "Vielseitigkeit",
+  "effect": "Eine zweite Aktion pro Runde; ist sie ein Angriff, macht er halben Schaden.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Schmarotzer",
+  "category": "T1",
+  "req": {
+   "CON": 8,
+   "SOU": 5
+  },
+  "skill": "Fluch des Parasiten",
+  "effect": "Teilt 50 % des erhaltenen Schadens auf Verbündete in der Nähe auf.",
+  "role": "Tank"
+ },
+ {
+  "name": "Erlöser",
+  "category": "T1",
+  "req": {
+   "CON": 8,
+   "CHA": 5
+  },
+  "skill": "Erste Umarmung",
+  "effect": "Stabilisiert einen sterbenden Verbündeten sofort mit 1 HP. Einmal pro Kampf.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Magische Wache",
+  "category": "T1",
+  "req": {
+   "CON": 8,
+   "INT": 5
+  },
+  "skill": "Schildwache",
+  "effect": "HP +20; der Rüstwert über 8 wird zum Blockwert.",
+  "role": "Tank"
+ },
+ {
+  "name": "Schwarzmagier",
+  "category": "T1",
+  "req": {
+   "INT": 8,
+   "SOU": 5
+  },
+  "skill": "Nekrotisches Mal",
+  "effect": "Markiert einen Gegner; stirbt er, explodiert das Mal (1W6 an allen Nahen).",
+  "role": "Magie"
+ },
+ {
+  "name": "Sturmzauberer",
+  "category": "T1",
+  "req": {
+   "INT": 8,
+   "SPE": 5
+  },
+  "skill": "Blitzschritt",
+  "effect": "Teleport genau 6 Felder, bei der Landung 1W6 Blitzschaden in der Nähe.",
+  "role": "Magie"
+ },
+ {
+  "name": "Blaumagier",
+  "category": "T1",
+  "req": {
+   "INT": 8,
+   "AGL": 5
+  },
+  "skill": "Bestienkodex",
+  "effect": "Lernt Skills nur von Monstern, die er selbst getötet hat; einmal pro Kampf einen davon kopieren.",
+  "role": "Magie"
+ },
+ {
+  "name": "Steinweber",
+  "category": "T1",
+  "req": {
+   "INT": 8,
+   "EDU": 5
+  },
+  "skill": "Steinlanze",
+  "effect": "Erschafft eine Lanze aus Stein, die geworfen und jederzeit neu geformt werden kann.",
+  "role": "Magie"
+ },
+ {
+  "name": "Wissensdieb",
+  "category": "T1",
+  "req": {
+   "WIS": 8,
+   "DEX": 5
+  },
+  "skill": "Deins? Meins!",
+  "effect": "Kann mit geringer Chance aus der Magie eines Gegners einen Skill-Orb erschaffen.",
+  "role": "Support"
+ },
+ {
+  "name": "Runenmagier",
+  "category": "T1",
+  "req": {
+   "WIS": 8,
+   "SOU": 5
+  },
+  "skill": "Energielauf",
+  "effect": "Natürliche Skills werden doppelt gewirkt.",
+  "role": "Magie"
+ },
+ {
+  "name": "Taktiker",
+  "category": "T1",
+  "req": {
+   "WIS": 8,
+   "SPE": 5
+  },
+  "skill": "Kampfanalyse",
+  "effect": "Zweimal pro Kampf: Verbündete erhalten +3 auf ihren nächsten Wurf.",
+  "role": "Support"
+ },
+ {
+  "name": "Astrologe",
+  "category": "T1",
+  "req": {
+   "WIS": 8,
+   "INT": 5
+  },
+  "skill": "Galaktisches Auge",
+  "effect": "Analysiert die Schwachstelle eines Gegners: der erste Angriff darauf ist ein kritischer Treffer.",
+  "role": "Support"
+ },
+ {
+  "name": "Schattentänzer",
+  "category": "T1",
+  "req": {
+   "DEX": 8,
+   "AGL": 5
+  },
+  "skill": "Schattenversteck",
+  "effect": "Angriff aus dem Verborgenen, 1W6 Schaden, das Ziel verliert zusätzlich 3 HP.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Kampfspäher",
+  "category": "T1",
+  "req": {
+   "DEX": 8,
+   "CON": 5
+  },
+  "skill": "Adlerauge",
+  "effect": "Genauigkeit +2.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Klingenpriester",
+  "category": "T1",
+  "req": {
+   "DEX": 8,
+   "EDU": 5
+  },
+  "skill": "Heilige Klinge",
+  "effect": "Nahkampfangriff, der Schaden verursacht und einen Verbündeten um 1W4 heilt.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Nebeljäger",
+  "category": "T1",
+  "req": {
+   "DEX": 8,
+   "SOU": 5
+  },
+  "skill": "Nebelschuss",
+  "effect": "Ein Schuss, der durch Gegner und Verbündete fliegt und die Seele trifft (ignoriert Rüstung).",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Assassine",
+  "category": "T1",
+  "req": {
+   "DEX": 8,
+   "SPE": 5
+  },
+  "skill": "Tödlicher Schlag",
+  "effect": "Gezielter Angriff auf eine Schwachstelle: ein gerader Wurf zählt als maximaler Schaden.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Trickmage",
+  "category": "T1",
+  "req": {
+   "SPE": 8,
+   "INT": 5
+  },
+  "skill": "Illusionsschlag",
+  "effect": "Ein zufälliger Angriff pro Kampf verursacht doppelten Schaden.",
+  "role": "Magie"
+ },
+ {
+  "name": "Klingenläufer",
+  "category": "T1",
+  "req": {
+   "SPE": 8,
+   "AGL": 5
+  },
+  "skill": "Sturmschritt",
+  "effect": "Schnelle Attacke, 2W6 Schaden, du und das Ziel bewegt euch 3 Felder nach vorne.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Scout",
+  "category": "T1",
+  "req": {
+   "SPE": 8,
+   "SOU": 5
+  },
+  "skill": "Magische Tarnung",
+  "effect": "Unsichtbar bis zur nächsten eigenen Aktion.",
+  "role": "Support"
+ },
+ {
+  "name": "Dieb",
+  "category": "T1",
+  "req": {
+   "SPE": 8,
+   "DEX": 5
+  },
+  "skill": "Präzise Berührung",
+  "effect": "Nahkampfangriff, der die Rüstung des Ziels ignoriert.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Bestienkrieger",
+  "category": "T1",
+  "req": {
+   "SOU": 8,
+   "STR": 5
+  },
+  "skill": "Tosende Bestie",
+  "effect": "2W6 Nahkampfschaden, Gegner geraten in Angst; du verfällst in Rage.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Tiermeister",
+  "category": "T1",
+  "req": {
+   "SOU": 8,
+   "AGL": 5
+  },
+  "skill": "Herz der Tiere",
+  "effect": "Darf einen Tiergefährten halten; mit Gefährte +10 HP.",
+  "role": "Support"
+ },
+ {
+  "name": "Waldläufer",
+  "category": "T1",
+  "req": {
+   "SOU": 8,
+   "DEX": 5
+  },
+  "skill": "Hinterhalt",
+  "effect": "Tarnt sich in natürlicher Umgebung; der erste Angriff aus der Tarnung ist kritisch.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Beschwörer",
+  "category": "T1",
+  "req": {
+   "SOU": 8,
+   "CHA": 5
+  },
+  "skill": "Seelenvergabe",
+  "effect": "Beschwört die Kraft der eigenen Seele, um Gegner anzugreifen (1W6) oder Verbündete zu heilen (1W6).",
+  "role": "Magie"
+ },
+ {
+  "name": "Scharfschütze",
+  "category": "T1",
+  "req": {
+   "AGL": 8,
+   "DEX": 5
+  },
+  "skill": "Präzisionsschuss",
+  "effect": "Gezielter Fernangriff mit hoher Genauigkeit, 1W8 Schaden.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Ranger",
+  "category": "T1",
+  "req": {
+   "AGL": 8,
+   "SOU": 5
+  },
+  "skill": "Naturinstinkt",
+  "effect": "Naturkunde +2, Schussschaden +2, Bewegung +1.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Runenschütze",
+  "category": "T1",
+  "req": {
+   "AGL": 8,
+   "INT": 5
+  },
+  "skill": "Magiegeboren",
+  "effect": "Pfeile entstehen aus magischer Kraft; es werden keine Pfeile verbraucht.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Fallenleger",
+  "category": "T1",
+  "req": {
+   "AGL": 8,
+   "WIS": 5
+  },
+  "skill": "Netzfalle",
+  "effect": "Fängt einen Gegner ein; er kann sich 2 Runden nicht bewegen.",
+  "role": "Support"
+ },
+ {
+  "name": "Corrupted-Jäger",
+  "category": "T1",
+  "req": {
+   "AGL": 8,
+   "SPE": 5
+  },
+  "skill": "Abyss-Gespür",
+  "effect": "Spürt Corrupted im Umkreis von 10 Feldern; +2 Schaden gegen Corrupted.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Heiliger",
+  "category": "T2",
+  "req": {
+   "EDU": 14,
+   "SOU": 11,
+   "CHA": 8
+  },
+  "skill": "Göttliche Welle",
+  "effect": "Eine Welle göttlicher Energie heilt alle Verbündeten im Bereich um 2W6.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Druide",
+  "category": "T2",
+  "req": {
+   "EDU": 12,
+   "SOU": 12,
+   "AGL": 8
+  },
+  "skill": "Natürliche Gestalt",
+  "effect": "Verwandelt sich in Stein-, Wasser- oder Holzgestalt (Nahkampf, Heilung oder Fernkampf); in Gestalt keine Waffen.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Heiliger Gauner",
+  "category": "T2",
+  "req": {
+   "EDU": 12,
+   "SPE": 12,
+   "CHA": 8
+  },
+  "skill": "Göttlicher Bluff",
+  "effect": "Täuscht göttliches Eingreifen vor: Gegner verlieren ihre nächste Aktion (Wurf gegen Willenskraft).",
+  "role": "Support"
+ },
+ {
+  "name": "Friedenswächter",
+  "category": "T2",
+  "req": {
+   "EDU": 14,
+   "CON": 11,
+   "WIS": 8
+  },
+  "skill": "Friedensstiftung",
+  "effect": "Erschafft ein heiliges Feld (3×3), in dem 2 Runden niemand Schaden verursachen kann.",
+  "role": "Tank"
+ },
+ {
+  "name": "Erzbischof",
+  "category": "T2",
+  "req": {
+   "EDU": 14,
+   "CHA": 11,
+   "WIS": 8
+  },
+  "skill": "Heiliges Licht",
+  "effect": "Heilt zwei Verbündete um je 2W6 oder fügt zwei Gegnern je 2W6 heiligen Schaden zu.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Berserker",
+  "category": "T2",
+  "req": {
+   "STR": 14,
+   "CON": 11,
+   "SPE": 8
+  },
+  "skill": "Rasender Schlag",
+  "effect": "Kanalisiert Wut in einen Angriff: Schaden +1W6 für jeden fehlenden Viertel-HP-Balken.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Waffenmeister",
+  "category": "T2",
+  "req": {
+   "STR": 14,
+   "DEX": 11,
+   "CON": 8
+  },
+  "skill": "Meisterliche Waffenführung",
+  "effect": "Führt jede Waffe; Angriffe ohne Skill +5 Schaden.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Heiliger Ritter",
+  "category": "T2",
+  "req": {
+   "STR": 14,
+   "CHA": 11,
+   "SOU": 8
+  },
+  "skill": "Heilige Intervention",
+  "effect": "Chance, dass ein kritischer Fehlschlag in einen Erfolg verwandelt wird (bei 1W20 ≥ 15).",
+  "role": "Tank"
+ },
+ {
+  "name": "Klingenschatten",
+  "category": "T2",
+  "req": {
+   "STR": 14,
+   "SPE": 11,
+   "DEX": 8
+  },
+  "skill": "Schattentanz",
+  "effect": "Bewegt sich blitzschnell zwischen Gegnern und greift bis zu 3 Ziele mit je 1W6 an.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Blutritter",
+  "category": "T2",
+  "req": {
+   "STR": 14,
+   "SOU": 11,
+   "INT": 8
+  },
+  "skill": "Blutopfer",
+  "effect": "Opfert eigene HP, um einen Verbündeten eine Runde um 1W20 Schaden zu stärken.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Champion",
+  "category": "T2",
+  "req": {
+   "CON": 14,
+   "STR": 11,
+   "CHA": 8
+  },
+  "skill": "Inspirierende Ausstrahlung",
+  "effect": "Hebt Furcht, Verwirrung und ähnliche Zustände bei Verbündeten in der Nähe auf.",
+  "role": "Tank"
+ },
+ {
+  "name": "Beschützer",
+  "category": "T2",
+  "req": {
+   "CON": 14,
+   "EDU": 11,
+   "STR": 8
+  },
+  "skill": "Magisches Schild",
+  "effect": "Übernimmt sofort den Schaden für einen Verbündeten in der Nähe (+1W6 zusätzlicher Schaden für sich).",
+  "role": "Tank"
+ },
+ {
+  "name": "Wächter des Abgrunds",
+  "category": "T2",
+  "req": {
+   "CON": 14,
+   "SOU": 11,
+   "INT": 8
+  },
+  "skill": "Dunkler Pakt",
+  "effect": "Riskanter Handel mit dem Abyss: sofortige Macht (+5 Schaden, +20 HP für 3 Runden), danach +1 Korruption.",
+  "role": "Tank"
+ },
+ {
+  "name": "Eiserne Jungfrau",
+  "category": "T2",
+  "req": {
+   "CON": 14,
+   "DEX": 11,
+   "STR": 8
+  },
+  "skill": "Dornenrüstung",
+  "effect": "Natürlicher Dornenpanzer: Wer im Nahkampf angreift, erleidet 1W6 Schaden.",
+  "role": "Tank"
+ },
+ {
+  "name": "Koloss",
+  "category": "T2",
+  "req": {
+   "CON": 14,
+   "STR": 11,
+   "AGL": 8
+  },
+  "skill": "Riesiges Abkommen",
+  "effect": "Wächst für 5 Runden: +30 HP, aber Bewegung −1.",
+  "role": "Tank"
+ },
+ {
+  "name": "Erzmagier",
+  "category": "T2",
+  "req": {
+   "INT": 14,
+   "WIS": 11,
+   "EDU": 8
+  },
+  "skill": "Magische Meisterschaft",
+  "effect": "Einmal am Tag trifft ein Zauber deiner Wahl automatisch kritisch, +1W10.",
+  "role": "Magie"
+ },
+ {
+  "name": "Todesmagier",
+  "category": "T2",
+  "req": {
+   "INT": 14,
+   "SOU": 11,
+   "WIS": 8
+  },
+  "skill": "Echo des Todes",
+  "effect": "Stirbt eine Kreatur neben dir, verursacht dein nächster Angriff +1W6 Schaden.",
+  "role": "Magie"
+ },
+ {
+  "name": "Elementarmagier",
+  "category": "T2",
+  "req": {
+   "INT": 14,
+   "EDU": 11,
+   "SOU": 8
+  },
+  "skill": "Elementare Meisterschaft",
+  "effect": "Meisterschaft über ein Element: +2 Schaden mit diesem Element, +2 Rüstwert dagegen.",
+  "role": "Magie"
+ },
+ {
+  "name": "Blaumagier-Meister",
+  "category": "T2",
+  "req": {
+   "INT": 14,
+   "AGL": 11,
+   "WIS": 8
+  },
+  "skill": "Level Up",
+  "effect": "Lernt schneller: +10 % Erfahrungspunkte, kann zwei Monster-Skills gleichzeitig halten.",
+  "role": "Magie"
+ },
+ {
+  "name": "Arkaner Krieger",
+  "category": "T2",
+  "req": {
+   "INT": 14,
+   "STR": 11,
+   "CON": 8
+  },
+  "skill": "Arkane Waffe",
+  "effect": "Führt jede Waffe und wirkt Magie und Heilungen damit.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Genie",
+  "category": "T2",
+  "req": {
+   "WIS": 14,
+   "INT": 11,
+   "EDU": 8
+  },
+  "skill": "Worte der Erleuchtung",
+  "effect": "Entfernt bei einem Verbündeten alle Furcht-, Verwirrungs- und Bezauberungseffekte.",
+  "role": "Support"
+ },
+ {
+  "name": "Illusionsklinge",
+  "category": "T2",
+  "req": {
+   "WIS": 14,
+   "DEX": 11,
+   "CHA": 8
+  },
+  "skill": "Phantomschlag",
+  "effect": "Angriffe mit Schwert, Dolch oder Lanze verursachen zusätzlich 1W10 magischen Schaden.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Weltenwandler",
+  "category": "T2",
+  "req": {
+   "WIS": 14,
+   "SOU": 11,
+   "SPE": 8
+  },
+  "skill": "Dimensionsriss",
+  "effect": "Öffnet einen Riss, durch den du oder ein Verbündeter bis zu 10 Felder weit reist.",
+  "role": "Support"
+ },
+ {
+  "name": "Kriegssavant",
+  "category": "T2",
+  "req": {
+   "WIS": 14,
+   "SPE": 11,
+   "STR": 8
+  },
+  "skill": "Taktischer Rückzug",
+  "effect": "Die ganze Gruppe zieht sich ohne Gelegenheitsangriffe 3 Felder zurück.",
+  "role": "Support"
+ },
+ {
+  "name": "Aspekt der Sterne",
+  "category": "T2",
+  "req": {
+   "WIS": 14,
+   "INT": 11,
+   "SOU": 8
+  },
+  "skill": "Sternenregen",
+  "effect": "Ein kleiner Meteoritenregen trifft zufällige Tokens auf der Karte (je 2W6).",
+  "role": "Magie"
+ },
+ {
+  "name": "Soulknife",
+  "category": "T2",
+  "req": {
+   "DEX": 14,
+   "SOU": 11,
+   "INT": 8
+  },
+  "skill": "Magische Klinge",
+  "effect": "Führt jede Waffe und wirkt Magie und Heilungen damit.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Outlaw",
+  "category": "T2",
+  "req": {
+   "DEX": 14,
+   "SPE": 11,
+   "CHA": 8
+  },
+  "skill": "Heimtückischer Schuss",
+  "effect": "Fernkampf aus dem Hinterhalt oder gegen überraschte Ziele verursacht doppelten Schaden.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Dunkler Prophet",
+  "category": "T2",
+  "req": {
+   "DEX": 12,
+   "CHA": 12,
+   "SOU": 8
+  },
+  "skill": "Blutiges Omen",
+  "effect": "Opfert eigene HP, um einen eigenen Wurf zu verstärken (+1 pro 2 HP).",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Phantomschütze",
+  "category": "T2",
+  "req": {
+   "DEX": 14,
+   "AGL": 11,
+   "SOU": 8
+  },
+  "skill": "Ätherischer Durchschuss",
+  "effect": "Ein Pfeil wird kurz ätherisch und ignoriert Rüstung und Deckung.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Todesweber",
+  "category": "T2",
+  "req": {
+   "DEX": 14,
+   "SOU": 11,
+   "SPE": 8
+  },
+  "skill": "Seelenentzug",
+  "effect": "Entzieht einem Ziel Lebenskraft: 2W6 Schaden, du heilst dich um die Hälfte.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Magischer Narr",
+  "category": "T2",
+  "req": {
+   "SPE": 14,
+   "INT": 11,
+   "CHA": 8
+  },
+  "skill": "Arkane Anarchie",
+  "effect": "Entfesselt rohe Magie mit einem zufälligen Effekt (Wurf auf die Narrentabelle).",
+  "role": "Magie"
+ },
+ {
+  "name": "Klingenstürmer",
+  "category": "T2",
+  "req": {
+   "SPE": 14,
+   "STR": 11,
+   "DEX": 8
+  },
+  "skill": "Wirbelwind der Klingen",
+  "effect": "Wirbelangriff gegen alle Gegner direkt neben dir, je 2W6.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Trickster",
+  "category": "T2",
+  "req": {
+   "SPE": 14,
+   "CHA": 11,
+   "DEX": 8
+  },
+  "skill": "Loki",
+  "effect": "Teleport zum Schatten eines beliebigen Tokens auf der Karte. CD 4.",
+  "role": "Support"
+ },
+ {
+  "name": "Survivalist",
+  "category": "T2",
+  "req": {
+   "SPE": 14,
+   "CON": 11,
+   "WIS": 8
+  },
+  "skill": "Notration",
+  "effect": "Beschafft in Notsituationen auf wundersame Weise Essen, Wasser oder einfache Hilfsmittel.",
+  "role": "Support"
+ },
+ {
+  "name": "Bestienkönig",
+  "category": "T2",
+  "req": {
+   "SOU": 14,
+   "CHA": 11,
+   "STR": 8
+  },
+  "skill": "Ruf der Wildnis",
+  "effect": "Lockt wilde Tiere an, die kurzzeitig für dich kämpfen.",
+  "role": "Support"
+ },
+ {
+  "name": "Bestienmeister",
+  "category": "T2",
+  "req": {
+   "SOU": 14,
+   "AGL": 11,
+   "CON": 8
+  },
+  "skill": "Tierische Synergie",
+  "effect": "Du und dein Tiergefährte greifen in derselben Aktion an.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Dark Ranger",
+  "category": "T2",
+  "req": {
+   "SOU": 14,
+   "DEX": 11,
+   "AGL": 8
+  },
+  "skill": "Pfeil der Nacht",
+  "effect": "Ein in Schatten gehülltes Geschoss: magischer Schaden 2W6, kann blenden.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Bestienrufer",
+  "category": "T2",
+  "req": {
+   "SOU": 14,
+   "INT": 11,
+   "CHA": 8
+  },
+  "skill": "Beschwören",
+  "effect": "Ruft einen Geist oder Tiergeist aus einer anderen Ebene, der 3 Runden hilft.",
+  "role": "Magie"
+ },
+ {
+  "name": "Virtuose",
+  "category": "T2",
+  "req": {
+   "AGL": 14,
+   "CHA": 11,
+   "DEX": 8
+  },
+  "skill": "Fesselnde Darbietung",
+  "effect": "Gesang, Musik oder Schauspiel verändern den Zustand der Zuhörer (beruhigen, ablenken, anstacheln).",
+  "role": "Support"
+ },
+ {
+  "name": "Wilderer",
+  "category": "T2",
+  "req": {
+   "AGL": 14,
+   "SOU": 11,
+   "SPE": 8
+  },
+  "skill": "Spurensucher-Instinkt",
+  "effect": "Sichtweite +1, Laufweite +1, Naturkunde +5.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Bounty Hunter",
+  "category": "T2",
+  "req": {
+   "AGL": 14,
+   "SPE": 11,
+   "WIS": 8
+  },
+  "skill": "Auszahlung",
+  "effect": "Gezielter Fernkampfangriff; tötet er das Ziel, gibt es zusätzliche Beute.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Albtraumjäger",
+  "category": "T2",
+  "req": {
+   "AGL": 14,
+   "INT": 11,
+   "SOU": 8
+  },
+  "skill": "Verzaubert",
+  "effect": "Belegt ein Ziel mit einem Fluch, der seine Wahrnehmung verzerrt (−3 auf Würfe, 2 Runden).",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Chrono-Schütze",
+  "category": "T2",
+  "req": {
+   "AGL": 14,
+   "WIS": 11,
+   "SPE": 8
+  },
+  "skill": "Back in Time",
+  "effect": "Manipuliert kurz die Zeit: einen eigenen Schuss wiederholen oder eine Bewegung rückgängig machen.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Lichtbringer",
+  "category": "T2",
+  "req": {
+   "CHA": 14,
+   "EDU": 11,
+   "SOU": 8
+  },
+  "skill": "Licht der Hoffnung",
+  "effect": "Entfernt einen Bezauberungseffekt von einem Ziel und heilt es um 1W6.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Schamane",
+  "category": "T2",
+  "req": {
+   "CHA": 14,
+   "SOU": 11,
+   "WIS": 8
+  },
+  "skill": "Aura des Gleichgewichts",
+  "effect": "Kann alle Waffen nutzen, Rüstwert wird Blockwert; heilt und schützt statt Schaden zu verursachen.",
+  "role": "Support"
+ },
+ {
+  "name": "Alchemist",
+  "category": "T2",
+  "req": {
+   "CHA": 14,
+   "DEX": 11,
+   "EDU": 8
+  },
+  "skill": "Bomben",
+  "effect": "Rote Bombe (+3 Angriff), Blaue Bombe (+3 Rüstwert) oder Grüne Bombe (Fernkampfangriff); benötigt Zutaten.",
+  "role": "Support"
+ },
+ {
+  "name": "Kreuzritter",
+  "category": "T2",
+  "req": {
+   "CHA": 14,
+   "STR": 11,
+   "EDU": 8
+  },
+  "skill": "Judgement",
+  "effect": "Ein Zauber göttlicher Gerechtigkeit: 2W6 heiliger Schaden, doppelt gegen Corrupted.",
+  "role": "Hybrid"
+ },
+ {
+  "name": "Wikinger",
+  "category": "T3",
+  "req": {
+   "STR": 18,
+   "CON": 14,
+   "SOU": 10,
+   "SPE": 6
+  },
+  "skill": "Ragnarök",
+  "effect": "Je weniger HP, desto stärker: +1 Schaden für je 10 % fehlende HP.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Schlächter",
+  "category": "T3",
+  "req": {
+   "STR": 18,
+   "SPE": 14,
+   "DEX": 10,
+   "CON": 6
+  },
+  "skill": "Blutiger Zorn",
+  "effect": "Nach jedem Kill sofort ein weiterer Angriff mit +1W6 (höchstens zweimal pro Runde).",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Wächter von Bahl",
+  "category": "T3",
+  "req": {
+   "CON": 18,
+   "STR": 14,
+   "EDU": 10,
+   "SOU": 6
+  },
+  "skill": "Quahl",
+  "effect": "Zieht 2 Runden alle Angriffe im Umkreis von 3 Feldern auf sich; erlittener Schaden halbiert.",
+  "role": "Tank"
+ },
+ {
+  "name": "Kampfmeister",
+  "category": "T3",
+  "req": {
+   "CON": 18,
+   "AGL": 14,
+   "DEX": 10,
+   "STR": 6
+  },
+  "skill": "Leichtfüßigkeit",
+  "effect": "Bewegung +2; einmal pro Runde einen Nahkampftreffer ignorieren (1W20 ≥ 12).",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Rotmagier",
+  "category": "T3",
+  "req": {
+   "INT": 18,
+   "CHA": 14,
+   "SOU": 10,
+   "EDU": 6
+  },
+  "skill": "Arkanes Element",
+  "effect": "Verbindet zwei gelernte Element-Zauber zu einem (Schaden beider, 1 Aktion). CD 3.",
+  "role": "Magie"
+ },
+ {
+  "name": "Sturmmystiker",
+  "category": "T3",
+  "req": {
+   "INT": 18,
+   "SPE": 14,
+   "AGL": 10,
+   "WIS": 6
+  },
+  "skill": "Magische Wut",
+  "effect": "Jeder Zauber erhöht den nächsten um +2 Schaden (bis +10); verfällt, wenn eine Runde nicht gezaubert wird.",
+  "role": "Magie"
+ },
+ {
+  "name": "Sternenorakel",
+  "category": "T3",
+  "req": {
+   "WIS": 18,
+   "INT": 14,
+   "SOU": 10,
+   "EDU": 6
+  },
+  "skill": "Singularität",
+  "effect": "Zieht alle Gegner im Umkreis von 3 Feldern auf einen Punkt, 3W6 Schaden. CD 5.",
+  "role": "Magie"
+ },
+ {
+  "name": "Visionär",
+  "category": "T3",
+  "req": {
+   "WIS": 18,
+   "CHA": 14,
+   "INT": 10,
+   "SPE": 6
+  },
+  "skill": "Signatur",
+  "effect": "Einmal pro Kampf: Der GM verrät die nächste Aktion eines Gegners, oder ein Verbündeter wiederholt einen Wurf.",
+  "role": "Support"
+ },
+ {
+  "name": "Klingentänzer",
+  "category": "T3",
+  "req": {
+   "DEX": 18,
+   "AGL": 14,
+   "SPE": 10,
+   "CHA": 6
+  },
+  "skill": "Tanzende Klinge",
+  "effect": "Zwei schwebende Klingen greifen jede Runde automatisch an (je 1W6).",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Albtraumweber",
+  "category": "T3",
+  "req": {
+   "DEX": 18,
+   "SOU": 14,
+   "INT": 10,
+   "WIS": 6
+  },
+  "skill": "Verwüstung",
+  "effect": "Das Ziel durchlebt 3 Runden Albträume: −3 auf alle Würfe, 1W6 Schaden pro Runde.",
+  "role": "Magie"
+ },
+ {
+  "name": "Geistwanderer",
+  "category": "T3",
+  "req": {
+   "SPE": 18,
+   "SOU": 14,
+   "WIS": 10,
+   "DEX": 6
+  },
+  "skill": "Ruf der Schmerzen",
+  "effect": "Verlässt 2 Runden den Körper: unangreifbar, geht durch Wände, Angriff 2W6 direkt auf die Seele.",
+  "role": "Support"
+ },
+ {
+  "name": "Todsucher",
+  "category": "T3",
+  "req": {
+   "SPE": 18,
+   "STR": 14,
+   "CON": 10,
+   "SOU": 6
+  },
+  "skill": "Verhängnis und Verderben",
+  "effect": "Verhängnis: Fluch, 1W4 Schaden pro Runde für 5 Runden. Verderben: lässt den Fluch sofort mit 3W6 explodieren.",
+  "role": "Nahkampf"
+ },
+ {
+  "name": "Seelengefährte",
+  "category": "T3",
+  "req": {
+   "SOU": 18,
+   "CHA": 14,
+   "AGL": 10,
+   "CON": 6
+  },
+  "skill": "Fokussierung",
+  "effect": "Bindet sich an einen Verbündeten: ihr teilt die HP und erhaltet beide +2 auf Würfe.",
+  "role": "Support"
+ },
+ {
+  "name": "Gezeitenrufer",
+  "category": "T3",
+  "req": {
+   "SOU": 18,
+   "INT": 14,
+   "WIS": 10,
+   "AGL": 6
+  },
+  "skill": "Ebbe und Flut",
+  "effect": "Ebbe: ein Verbündeter heilt 1W20. Flut: alle Verbündeten im Wirkbereich heilen 1W6.",
+  "role": "Heilung"
+ },
+ {
+  "name": "Arkanjäger",
+  "category": "T3",
+  "req": {
+   "AGL": 18,
+   "INT": 14,
+   "DEX": 10,
+   "SOU": 6
+  },
+  "skill": "Magischer Pfeilregen",
+  "effect": "Pfeilregen auf ein 3×3-Feld, 2W6 magischer Schaden. CD 3.",
+  "role": "Fernkampf"
+ },
+ {
+  "name": "Sandmagier",
+  "category": "T3",
+  "req": {
+   "AGL": 18,
+   "INT": 14,
+   "CON": 10,
+   "WIS": 6
+  },
+  "skill": "Sandgrab",
+  "effect": "Ziel versinkt im Sand (AGL-Probe 17+ zum Entkommen); bis dahin bewegungsunfähig.",
+  "role": "Magie"
+ },
+ {
+  "name": "Barde",
+  "category": "T3",
+  "req": {
+   "CHA": 18,
+   "AGL": 14,
+   "SOU": 10,
+   "DEX": 6
+  },
+  "skill": "Klang der Welten",
+  "effect": "Klangfähigkeiten mit einem Instrument; bei geradem Wurf wirken sie auf alle Verbündeten.",
+  "role": "Support"
+ },
+ {
+  "name": "Todessänger",
+  "category": "T3",
+  "req": {
+   "CHA": 18,
+   "SOU": 14,
+   "INT": 10,
+   "WIS": 6
+  },
+  "skill": "Requiem",
+  "effect": "Lied für 3 Runden: Gegner −2 Schaden; Verbündete, die in dieser Zeit fallen, bleiben mit 1 HP stehen.",
+  "role": "Support"
+ },
+ {
+  "name": "Scharlachpriester",
+  "category": "T3",
+  "req": {
+   "EDU": 18,
+   "SOU": 14,
+   "CHA": 10,
+   "STR": 6
+  },
+  "skill": "Blutroter Fluch",
+  "effect": "Opfert 1W6 HP: Das Ziel erleidet 2 Runden doppelten Schaden und kann nicht geheilt werden.",
+  "role": "Magie"
+ },
+ {
+  "name": "Sprecher der Ahnen",
+  "category": "T3",
+  "req": {
+   "EDU": 18,
+   "WIS": 14,
+   "SOU": 10,
+   "CHA": 6
+  },
+  "skill": "Machtwort",
+  "effect": "Fünf Machtworte (Schmerz, Heilung, Barriere, Magie, Halt); dafür keine anderen aktiven Skills.",
+  "role": "Support"
+ },
+ {
+  "name": "Prophet Athreas",
+  "category": "Story",
+  "req": {
+   "EDU": 16,
+   "SOU": 16,
+   "WIS": 12
+  },
+  "skill": "Athreas Fragment",
+  "effect": "Nur für Nachkommen der echten Priesterin Athrea. Einmal pro Kapitel eine wahre Vision; immun gegen fremde Visionen und Bezauberung.",
+  "role": "Support"
+ },
+ {
+  "name": "Arugals Diener",
+  "category": "Story",
+  "req": {
+   "SOU": 16,
+   "STR": 14,
+   "CON": 12
+  },
+  "skill": "Arugals Verdammnis",
+  "effect": "Nur über die verfluchte Waffe Arugal. Arugal wird aus den Schatten beschworen, entzieht Lebenskraft und wird stärker.",
+  "role": "Nahkampf"
+ }
+]

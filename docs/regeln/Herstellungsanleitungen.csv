@@ -1,0 +1,22 @@
+﻿Gegenstand;Rang;Probe;Material;Zeit;Wert / Hinweis
+Holzpfeile (20 Stück);E;Handwerkskunst 15;2 Holz, 1 Federn;1 Stunde;Wert 10 SK.
+Fackeln (5 Stück);E;Handwerkskunst 15;1 Holz, 1 Talg;1 Stunde;Wert 5 SK.
+Verband;E;Naturkunde 15;1 Stoff, 1 Windgras;1 Stunde;Wert 8 SK.
+Heilkräutersalbe (Nebelfarn);E;Naturkunde 15;2 Nebelfarn, 1 Wasserbeere, 1 Talg;1 Stunde;Wert 15 SK.
+Proviant (4 Tagesrationen);E;Handwerkskunst 15;1 Mehl, 2 Sonnenkorn, 2 Erdkorn;1 Stunde;Wert 16 SK. Heilt nicht, sättigt.
+Fangnetz;E;Handwerkskunst 15;5 Garn, 1 Talg;1 Stunde;Wert 25 SK.
+Rauchbombe;E;Naturkunde 15;1 Glasphiole, 2 Schattenkohl, 1 Kohle;1 Stunde;Wert 20 SK.
+Eisenbarren;E;Handwerkskunst 15;4 Erzklumpen, 1 Kohle;1 Stunde;Wert 12 SK. Braucht eine Schmiede.
+Eisenpfeile (20 Stück);D;Handwerkskunst 20;1 Eisenbarren, 2 Holz, 1 Federn;4 Stunden;Wert 40 SK. Schmied T2.
+Tierfalle;D;Handwerkskunst 20;1 Eisenbarren, 2 Holz, 2 Garn;4 Stunden;Wert 45 SK. Schmied T2.
+Metallspitzen (10 Stück);D;Handwerkskunst 20;2 Eisenbarren;4 Stunden;Wert 60 SK. Schmied T2.
+Laterne;D;Handwerkskunst 20;1 Eisenbarren, 2 Glasphiole, 1 Talg;4 Stunden;Wert 60 SK. Schmied T2.
+Gegengift;D;Naturkunde 20;1 Glasphiole, 1 Tränenkraut;4 Stunden;Wert 50 SK. Apotheker T2.
+Sternmoos-Salbe;D;Naturkunde 20;2 Sternmoos, 1 Talg, 1 Glasphiole;4 Stunden;Wert 60 SK. Apotheker T2.
+Kleiner Heiltrank;D;Naturkunde 20;1 Glasphiole, 1 Blutlilie, 1 Mondblüte, 2 Nebelfarn;4 Stunden;Wert 80 SK. Apotheker T2.
+Funkenbombe;D;Naturkunde 20;1 Glasphiole, 1 Flammenkraut, 2 Funkenwurzel;4 Stunden;Wert 80 SK. Apotheker T2.
+Einfache Schutzrune;D;Archäologie 20;1 Magisches Erz, 2 Moosachat;4 Stunden;Wert 1 GK 50 SK. Runist T2.
+Heiltrank;C;Naturkunde 30;1 Glasphiole, 2 Blutlilie, 1 Schattenpilz, 2 Sternmoos;1 Tag;Wert 4 GK. Apotheker T3.
+Heilige Bandagen;C;Naturkunde 30;5 Verband, 5 Sternmoos, 4 Blutlilie, Tempelsegen;1 Tag;"Wert 4 GK. Apotheker T3; den Segen gibt jeder Tempel (Tempelmönch: selbst)."
+Mithrilspitzen (10 Stück);C;Handwerkskunst 30;1 Metallspitzen (10), 2 Windfederstein;1 Tag;Wert 5 GK. Schmied T3.
+Alte-Rune;C;Archäologie 30;2 Harmonium, 1 Klangstein;1 Tag;Wert 8 GK. Runist T3.

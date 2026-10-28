@@ -1,0 +1,377 @@
+[
+ {
+  "name": "Erzklumpen",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 3,
+   "price": "3 SK",
+   "description": "Wird zur Herrstellung von T1 Ausrüstung und T1 Waffen verwendet.",
+   "source": "Dungeons / Minen (Abbau)",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Moosachat",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 10,
+   "price": "10 SK",
+   "description": "Grünlich-braun, durchzogen von feinen, moosartigen Linien. Verleiht eine Verbindung zur Natur, erleichtert das Verständnis von Pflanzen und Tieren.",
+   "source": "Süd-West-Küste, Lunar-Küstenweg, Übergang Eldoras, Suna-Wüste, Heiliges Land, Abyss-Sumpf",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Erdkern",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 12,
+   "price": "12 SK",
+   "description": "Braun-grau, dicht, fühlt sich schwer an. Verleiht dem Träger Standfestigkeit und Widerstand gegen Erdmagie.",
+   "source": "Nördliches Plateau, Thalan-Plateau, Plateau der Kyr, Doreh-Bergpass, Heiliges Land, Nithor-Spitze",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Sonnenkristall",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 15,
+   "price": "15 SK",
+   "description": "Goldgelb, facettiert, strahlt Wärme aus. Speichert Sonnenenergie, kann zur Erzeugung von Wärme und schwachem Licht verwendet werden.",
+   "source": "Südliche Ebene, Suna-Wüste, Zentrale Südliche Ebene",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Lavaquarz",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 15,
+   "price": "15 SK",
+   "description": "Orange-rot, durchscheinend, enthält kleine, dunkle Einschlüsse. Speichert Wärme und kann in kalten Umgebungen eine angenehme Wärme ausstrahlen.",
+   "source": "Alkah-Berge, Tief-Nördliche Berge, Übergang Eldoras, Berge der Antike, Süd-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Magisches Erz",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang E",
+  "system": {
+   "rank": "E",
+   "tier": 1,
+   "priceSk": 25,
+   "price": "25 SK",
+   "description": "Wird zur Herrstellung von T2 Ausrüstung und T2 Waffen verwendet.",
+   "source": "Dungeons / Minen (Abbau)",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Klangstein",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Hellblau, , vibriert leicht. Kann verwendet werden, um Schallwellen zu verstärken oder zu manipulieren.",
+   "source": "Nördliches Plateau, Ebene des Abyss, Bruch Stein",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Schattenseide",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 70,
+   "price": "70 SK",
+   "description": "Schwarz, faserartig, fühlt sich sehr leicht und weich an. Kann zu extrem leichten und haltbaren Stoffen verarbeitet werden, die Schatten gut absorbieren.",
+   "source": "Eis-Wald, Valmorea-Zentral-Wald, Wald der Zauberer, Übergang Eldoras, Alkah-Berge, Bergkette",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Windfederstein",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 80,
+   "price": "80 SK",
+   "description": "Hellgrau, leicht, mit feinen, wirbelartigen Linien. Erleichtert Bewegungen, verleiht dem Träger temporär erhöhte Geschwindigkeit.",
+   "source": "Thalan-Plateau, Plateau der Kyr, Kern des Abyss, Nördliches Plateau, Heiliges Land, Doreh-Bergpass",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Abyss Erz",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 80,
+   "price": "80 SK",
+   "description": "Wird zur Herrstellung von T3 Ausrüstung und T3 Waffen verwendet.",
+   "source": "Dungeons / Minen (Abbau)",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Eisflimmer",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 90,
+   "price": "90 SK",
+   "description": "Bläulich-weiß, zerbrechlich, fühlt sich extrem kalt an. Kann verwendet werden, um temporär Kälte zu erzeugen oder bestehende Kälte zu verstärken.",
+   "source": "Plateau der Kyr, Tief-Nördliche Berge, Schloss Alagath, Nord-Östliche Küste, Ebene des Abyss, Nördliche Eis-Wüste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Donnerkeil",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 100,
+   "price": "1 GK",
+   "description": "Gelb, mit blitzartigen Einschlüssen, fühlt sich elektrisch an. Kann verwendet werden, um elektrische Energie zu erzeugen oder Blitze zu lenken.",
+   "source": "Tiefer Norden, Schloss Alagath, Ebene des Abyss, Tief-Nördliche Berge, Nördliche Eis-Wüste, Nord-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Harmonium",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 120,
+   "price": "1 GK 20 SK",
+   "description": "Pink leuchtend, klingt leicht, wenn es bewegt wird. Verstärkt heilende Magie und spirituelle Verbindungen.",
+   "source": "Nördliches Plateau, Heiliges Land",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Nachtstein",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "Tiefschwarz, matt, absorbiert Licht. Absorbiert Licht und schwache magische Energien, verleiht im Dunkeln leichtes Sehen.",
+   "source": "Plateau der Kyr, Thalan-Plateau, Doreh-Bergpass, Schloss Alagath, Tief-Nördliche Berge, Alkah-Berge",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Geisterlichtstein",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "schimmert von Blau bis Dunkelrot, fühlt sich leicht an. Kann verwendet werden, um schwaches, ätherisches Licht zu erzeugen und Geister wahrzunehmen.",
+   "source": "Bruch Stein, Nord-Östliche Küste, Valmorea-Arkan-Grenze",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Athrea's Träne",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 400,
+   "price": "4 GK",
+   "description": "Smaragdgrün, tropfenförmig, fühlt sich kühl an. Besitzt heilende Eigenschaften, beschleunigt die Wundheilung und lindert Schmerzen.",
+   "source": "Heiliges Land",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Blutstein",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 400,
+   "price": "4 GK",
+   "description": "Dunkelrot, fast schwarz, fühlt sich leicht klebrig an. Verstärkt blutmagische Rituale, kann zur Heilung durch Blut verwendet werden (gefährlich!).",
+   "source": "Nord-Östliche Küste, Valmorea-Arkan-Grenze",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Sternenstein",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "Orange, leuchtet Gelb im inneren. Kann zur Verzauberung von Gegenständen mit astralen Eigenschaften verwendet werden.",
+   "source": "Nördliche Eis-Wüste, Zentrale Nördliche Ebene",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Wahrheitskristall",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 700,
+   "price": "7 GK",
+   "description": "Dunkel-Violett mit rotem Kern, reflektiert Bilder leicht verzerrt. Verleiht dem Betrachter die Fähigkeit, Lügen zu erkennen (schwächer Effekt bei geübten Lügnern).",
+   "source": "Süd-West-Küste, Bergkette, Lunar-Küstenweg",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Ätherium",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1500,
+   "price": "15 GK",
+   "description": "Leuchtend blau, kristalline Formationen, pulsiert leicht. Verstärkt arkane Magie, erhöht die Mana-Regeneration.",
+   "source": "Tiefer Norden, Ebene des Abyss, Zentrale Nördliche Ebene, Schloss Alagath, Nördliche Eis-Wüste, Nord-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Abyssalith",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2000,
+   "price": "20 GK",
+   "description": "Dunkelviolett, von feinen, roten Rissen durchzogen, strahlt leise Kälte aus. Verstärkt dunkle Magie, kann bei längerer Berührung zu mentaler Erschöpfung führen.",
+   "source": "Ebene des Abyss, Kern des Abyss, Schloss Alagath, Tiefer Norden",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Chaossplitter",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 2500,
+   "price": "25 GK",
+   "description": "Unregelmäßig geformt, wechselt ständig zwischen Rot und Schwarz, fühlt sich unberechenbar an. Besitzt unvorhersehbare magische Eigenschaften, kann zu zufälligen Effekten führen.",
+   "source": "Nord-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Zeitsand-Stein",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "Grau-Blau, fließt sehr langsam, fühlt sich körnig an. Kann in geringen Mengen verwendet werden, um den Fluss der Zeit in einem kleinen Bereich leicht zu beeinflussen (sehr instabil!).",
+   "source": "Tiefer Norden, Ebene des Abyss, Schloss Alagath, Nördliche Eis-Wüste, Tief-Nördliche Berge, Nord-Östliche Küste",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Drachenherz",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 30000,
+   "price": "300 GK",
+   "description": "Tiefrot, glühend, fühlt sich warm an. Verleiht dem Träger temporär erhöhte Stärke und Widerstandsfähigkeit.",
+   "source": "Süd-Östliche Küste, Übergang Eldoras, Berge der Antike",
+   "quantity": 1
+  }
+ },
+ {
+  "name": "Göttertränen",
+  "type": "mineral",
+  "img": "icons/svg/item-bag.svg",
+  "folder": "HLW/Mineralien/Rang SS",
+  "system": {
+   "rank": "SS",
+   "tier": 7,
+   "priceSk": 80000,
+   "price": "800 GK",
+   "description": "Kristallklar, leuchtet in allen Farben des Regenbogens, fühlt sich rein an. Besitzt starke heilende und reinigende Eigenschaften, kann temporär magische Fähigkeiten verstärken.",
+   "source": "Heiliges Land",
+   "quantity": 1
+  }
+ }
+]
