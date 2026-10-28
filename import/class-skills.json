@@ -142,7 +142,7 @@
  {
   "name": "Aura des Glaubens",
   "type": "classSkill",
-  "img": "icons/magic/water/barrier-ice-crystal-wall-green.webp",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
   "folder": "HLW/Klassen-Skills/Paladin/Rang D",
   "system": {
    "rank": "D",
@@ -198,7 +198,7 @@
  {
   "name": "Erste Umarmung",
   "type": "classSkill",
-  "img": "icons/magic/earth/projectile-spiked-stone-boulder-orange.webp",
+  "img": "icons/magic/life/heart-cross-strong-green.webp",
   "folder": "HLW/Klassen-Skills/Erlöser/Rang D",
   "system": {
    "rank": "D",
@@ -282,7 +282,7 @@
  {
   "name": "Blitzschritt",
   "type": "classSkill",
-  "img": "icons/magic/water/projectile-water-ice-orb.webp",
+  "img": "icons/magic/lightning/bolt-forked-large-orange-purple.webp",
   "folder": "HLW/Klassen-Skills/Sturmzauberer/Rang D",
   "system": {
    "rank": "D",
@@ -506,7 +506,7 @@
  {
   "name": "Energielauf",
   "type": "classSkill",
-  "img": "icons/magic/earth/projectiles-fire-stone-salvo.webp",
+  "img": "icons/magic/movement/pinwheel-turning-blue.webp",
   "folder": "HLW/Klassen-Skills/Runenmagier/Rang D",
   "system": {
    "rank": "D",
@@ -1038,7 +1038,7 @@
  {
   "name": "Magiegeboren",
   "type": "classSkill",
-  "img": "icons/magic/earth/projectile-spiked-stone-boulder-purple-yellow.webp",
+  "img": "icons/skills/targeting/crosshair-ringed-gray.webp",
   "folder": "HLW/Klassen-Skills/Runenschütze/Rang D",
   "system": {
    "rank": "D",
@@ -1094,7 +1094,7 @@
  {
   "name": "Aura des Glaubens",
   "type": "classSkill",
-  "img": "icons/magic/water/barrier-ice-crystal-wall-green.webp",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
   "folder": "HLW/Klassen-Skills/Paladin/Rang D",
   "system": {
    "rank": "D",
@@ -1402,7 +1402,7 @@
  {
   "name": "Verhängnis und Verderben",
   "type": "classSkill",
-  "img": "icons/magic/earth/projectile-boulder-debris.webp",
+  "img": "icons/magic/death/skull-humanoid-white-red.webp",
   "folder": "HLW/Klassen-Skills/Todsucher/Rang A",
   "system": {
    "rank": "A",
@@ -1458,7 +1458,7 @@
  {
   "name": "Meisterliche Waffenführung",
   "type": "classSkill",
-  "img": "icons/magic/water/strike-ice-blade-fang.webp",
+  "img": "icons/skills/targeting/target-strike-gray.webp",
   "folder": "HLW/Klassen-Skills/Waffenmeister/Rang C",
   "system": {
    "rank": "C",
@@ -1710,7 +1710,7 @@
  {
   "name": "Elementare Meisterschaft",
   "type": "classSkill",
-  "img": "icons/magic/water/tendrils-ice-growth.webp",
+  "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
   "folder": "HLW/Klassen-Skills/Elementarmagier/Rang C",
   "system": {
    "rank": "C",
@@ -1766,7 +1766,7 @@
  {
   "name": "Magische Meisterschaft",
   "type": "classSkill",
-  "img": "icons/magic/water/projectile-ice-orb-white.webp",
+  "img": "icons/magic/symbols/question-stone-yellow.webp",
   "folder": "HLW/Klassen-Skills/Erzmagier/Rang C",
   "system": {
    "rank": "C",
@@ -1794,7 +1794,7 @@
  {
   "name": "Level Up",
   "type": "classSkill",
-  "img": "icons/magic/water/projectiles-ice-faceted-teal.webp",
+  "img": "icons/magic/holy/saint-glass-portrait-halo.webp",
   "folder": "HLW/Klassen-Skills/Blaumagier-Meister/Rang C",
   "system": {
    "rank": "C",
@@ -1906,7 +1906,7 @@
  {
   "name": "Worte der Erleuchtung",
   "type": "classSkill",
-  "img": "icons/magic/earth/orb-ringed-lava-black-orange.webp",
+  "img": "icons/magic/control/encase-creature-humanoid-hold.webp",
   "folder": "HLW/Klassen-Skills/Genie/Rang C",
   "system": {
    "rank": "C",
@@ -2158,7 +2158,7 @@
  {
   "name": "Notration",
   "type": "classSkill",
-  "img": "icons/magic/water/orb-water-ice-pink.webp",
+  "img": "icons/magic/water/bubbles-air-water-pink.webp",
   "folder": "HLW/Klassen-Skills/Survivalist/Rang C",
   "system": {
    "rank": "C",
@@ -2354,7 +2354,7 @@
  {
   "name": "Beschwören",
   "type": "classSkill",
-  "img": "icons/magic/water/snowflake-ice-snow-white.webp",
+  "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
   "folder": "HLW/Klassen-Skills/Bestienrufer/Rang C",
   "system": {
    "rank": "C",
@@ -2466,7 +2466,7 @@
  {
   "name": "Verzaubert",
   "type": "classSkill",
-  "img": "icons/magic/earth/barrier-lava-stone-orange.webp",
+  "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
   "folder": "HLW/Klassen-Skills/Albtraumjäger/Rang C",
   "system": {
    "rank": "C",
@@ -2606,7 +2606,7 @@
  {
   "name": "Judgement",
   "type": "classSkill",
-  "img": "icons/magic/earth/volcano-explosion-lava-yellow.webp",
+  "img": "icons/magic/holy/chalice-glowing-gold.webp",
   "folder": "HLW/Klassen-Skills/Kreuzritter/Rang C",
   "system": {
    "rank": "C",
@@ -2634,7 +2634,7 @@
  {
   "name": "Verderbende Berührung",
   "type": "classSkill",
-  "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+  "img": "icons/magic/life/heart-hand-gold-green.webp",
   "folder": "HLW/Klassen-Skills/Dunkler Prophet/Rang C",
   "system": {
    "rank": "C",
@@ -2858,7 +2858,7 @@
  {
   "name": "Athrea's Ruf",
   "type": "classSkill",
-  "img": "icons/magic/earth/barrier-stone-explosion-red.webp",
+  "img": "icons/magic/life/heart-cross-blue.webp",
   "folder": "HLW/Klassen-Skills/Prediger von Athrea/Rang C",
   "system": {
    "rank": "C",
@@ -3222,7 +3222,7 @@
  {
   "name": "Arugals Verdammnis",
   "type": "classSkill",
-  "img": "icons/magic/earth/projectile-spiked-stone-boulder-green.webp",
+  "img": "icons/magic/life/heart-shadow-red.webp",
   "folder": "HLW/Klassen-Skills/Arugals Diener/Rang A",
   "system": {
    "rank": "A",

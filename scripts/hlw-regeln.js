@@ -120,6 +120,7 @@ export function berechneWerte(system, items, klassen) {
   const klasse = klasseVorschlag(system, klassen);
 
   const derived = {
+    suggestedClassName: klasse?.name ?? "",
     level: L,
     hpMax: 20 + 2 * L + 3 * a("con") + g.hp + zahl(b.hp),
     rw: 8 + Math.floor((a("agl") + a("dex")) / 4) + g.rw + zahl(b.rw) + abwehr,

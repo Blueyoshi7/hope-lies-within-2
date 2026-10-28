@@ -1,4 +1,4 @@
-import { HopeLiesWithinTalkApp, registerTalk } from "./hlw-talk.js";
+import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings } from "./hlw-talk.js";
 import { erstelleLindhain } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { WORLD_SKILLS, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes } from "./hlw-regeln.js";
@@ -712,6 +712,39 @@ export class HopeLiesWithinActor extends Actor {
     }
   }
 
+  // Klassen-Skills der gewaehlten Klasse geben. Skills frueherer Klassen bleiben (Klassenregeln).
+  async erhalteKlassenSkills(klassenName) {
+    if (!klassenName) return [];
+    const klasse = HLW.klassen.find((k) => k.name === klassenName);
+    const vorhanden = new Set(this.items.filter((i) => i.type === "classSkill").map((i) => i.name));
+    let neu = (game.items?.contents ?? [])
+      // Awaken-Skills kommen nicht automatisch: sie werden erst durch ihre Bedingung freigeschaltet (GM gibt sie per „Skill geben“).
+      .filter((i) => i.type === "classSkill" && i.system?.className === klassenName && !vorhanden.has(i.name))
+      .filter((i) => !i.system?.awaken && i.system?.source !== "Awaken")
+      .map((i) => {
+        const data = i.toObject();
+        delete data._id;
+        delete data.folder;
+        return data;
+      });
+    const hatSkill = this.items.some((i) => i.type === "classSkill" && i.system?.className === klassenName);
+    if (!neu.length && !hatSkill && klasse && !vorhanden.has(klasse.skill)) {
+      // Klasse ohne eigenes Skill-Item (z. B. die Basic-Klassen): Skill aus der Klassenliste anlegen.
+      const rang = { Basic: "E", T1: "D", T2: "C", T3: "B", Story: "A" }[klasse.category] ?? "";
+      const aktiv = /\dW\d|einmal|pro kampf|aktion/i.test(klasse.effect);
+      neu = [{
+        name: klasse.skill,
+        type: "classSkill",
+        img: klasse.img || "icons/magic/symbols/question-stone-yellow.webp",
+        system: { className: klasse.name, skillType: klasse.role, rank: rang, activation: aktiv ? "active" : "passive", effect: klasse.effect, description: `${klasse.name} (${klasse.category}): ${klasse.effect}`, price: "nicht verkäuflich" }
+      }];
+    }
+    if (!neu.length) return [];
+    const created = await this.createEmbeddedDocuments("Item", neu);
+    ui.notifications?.info(`${this.name} erhält: ${created.map((i) => i.name).join(", ")}`);
+    return created;
+  }
+
   async rollWorldSkill(skillKey) {
     const skill = this.system.worldSkills?.[skillKey];
     if (!skill) return;
@@ -1191,6 +1224,19 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
     context.isMonster = context.actor.type === "monster";
     context.skillSlots = skillSlots(context.actor);
+    // Klassen-Auswahl fuer den GM: alle Klassen nach Kategorie, der Vorschlag aus der Wertverteilung ist markiert.
+    const vorschlag = context.system.derived?.suggestedClassName ?? "";
+    const aktuell = context.system.progression?.class ?? "";
+    context.klasseAnzeige = aktuell || context.system.derived?.suggestedClass || "";
+    context.klassenGruppen = ["Basic", "T1", "T2", "T3", "Story"].map((kategorie) => ({
+      kategorie,
+      klassen: HLW.klassen.filter((k) => k.category === kategorie).map((k) => ({
+        name: k.name,
+        label: `${k.name}${k.name === vorschlag ? " ★ Vorschlag" : ""}`,
+        selected: k.name === aktuell
+      }))
+    })).filter((gruppe) => gruppe.klassen.length);
+    context.vorschlagLabel = vorschlag ? `— automatisch: ${vorschlag} —` : "— automatisch (noch keine Klasse) —";
     context.kesText = kes(context.system.resources?.kes?.value);
     context.pointsOver = numberValue(context.system.derived?.points?.free) < 0;
     return context;
@@ -1618,7 +1664,8 @@ async function importAllJsonFiles() {
 }
 
 // Bilder nachziehen: Eintraege, die noch das Standardbild haben, bekommen das Symbol aus den Importdateien.
-async function aktualisiereBilder() {
+// Mit { alle: true } werden auch schon gesetzte Symbole aus Foundrys Bibliothek durch die aktuelle Zuordnung ersetzt.
+async function aktualisiereBilder({ alle = false } = {}) {
   if (!game.user?.isGM) return 0;
   const basePath = "systems/hope-lies-within-2/import";
   const dateien = ["weapons", "armor", "accessories", "equipment", "consumables", "food-drink", "materials", "natural", "minerals", "junk", "skills", "class-skills", "monsters"];
@@ -1628,7 +1675,7 @@ async function aktualisiereBilder() {
     if (!response.ok) continue;
     for (const entry of await response.json()) bilder.set(`${entry.type}|${entry.name}`, entry.img);
   }
-  const standard = (img) => !img || /icons\/svg\/(item-bag|mystery-man)/.test(img);
+  const standard = (img) => !img || /icons\/svg\/(item-bag|mystery-man)/.test(img) || (alle && /^icons\//.test(img));
   let anzahl = 0;
   const itemUpdates = game.items.filter((i) => standard(i.img) && bilder.has(`${i.type}|${i.name}`)).map((i) => ({ _id: i.id, img: bilder.get(`${i.type}|${i.name}`) }));
   if (itemUpdates.length) await Item.updateDocuments(itemUpdates);
@@ -1676,6 +1723,7 @@ Hooks.once("init", () => {
   console.log("Hope lies Within 2.0 | Initialisiere System");
 
   CONFIG.HLW = HLW;
+  registerTalkSettings();
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -1916,6 +1964,13 @@ Hooks.on("updateToken", async (tokenDocument, changes) => {
   }
 
   window.setTimeout(renderCombatHud, 50);
+});
+
+// GM waehlt eine Klasse im Bogen: Klassen-Skill direkt beim Charakter anlegen.
+Hooks.on("updateActor", (actor, changes, options, userId) => {
+  if (userId !== game.user?.id) return;
+  if (!foundry.utils.hasProperty(changes, "system.progression.class")) return;
+  actor.erhalteKlassenSkills(foundry.utils.getProperty(changes, "system.progression.class"));
 });
 
 Hooks.on("updateActor", (actor) => {

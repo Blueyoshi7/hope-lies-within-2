@@ -158,10 +158,7 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     });
     root.querySelector("input[name='role']")?.addEventListener("change", (event) => this._updateTalk({ role: event.currentTarget.value }));
     root.querySelector("[data-hlw='portrait']")?.addEventListener("click", () => this._pickPortrait());
-    root.querySelector("[data-hlw='show']")?.addEventListener("click", () => {
-      game.socket.emit(SOCKET, { type: "talkOpen", actorId: this.actor.id });
-      ui.notifications?.info(`Gespräch mit ${this.actor.name} wird allen gezeigt.`);
-    });
+    root.querySelector("[data-hlw='show']")?.addEventListener("click", () => zeigeAllen(this.actor));
     root.querySelector("[data-hlw='hide']")?.addEventListener("click", () => game.socket.emit(SOCKET, { type: "talkClose", actorId: this.actor.id }));
   }
 
@@ -207,17 +204,38 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
   }
 }
 
+// Weltweite Einstellung: duerfen Spieler Gespraeche selbst per Doppelklick oeffnen? Standard: nein, der GM oeffnet sie.
+export function registerTalkSettings() {
+  game.settings.register(SYSTEM_ID, "spielerGespraeche", {
+    name: "Spieler öffnen NSC-Gespräche selbst",
+    hint: "Aus: Spieler sprechen den NSC am Tisch an, und du öffnest das Gespräch über das Token-HUD (Sprechblase oder „Allen zeigen“). An: Spieler öffnen es per Doppelklick auf die NSC-Figur.",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false
+  });
+}
+
+export function zeigeAllen(actor) {
+  game.socket.emit(SOCKET, { type: "talkOpen", actorId: actor.id });
+  HopeLiesWithinTalkApp.openFor(actor);
+  ui.notifications?.info(`Gespräch mit ${actor.name} wird allen gezeigt.`);
+}
+
 export function registerTalk() {
   game.socket.on(SOCKET, (data) => {
     if (data?.type === "talkOpen" && !game.user?.isGM) HopeLiesWithinTalkApp.openFor(game.actors.get(data.actorId));
     if (data?.type === "talkClose") HopeLiesWithinTalkApp.closeFor(data.actorId);
   });
 
-  // Doppelklick eines Spielers auf eine NSC-Figur oeffnet das Gespraech statt des Bogens.
+  // Doppelklick eines Spielers auf eine NSC-Figur: Gespraech nur, wenn der GM es erlaubt; sonst ein Hinweis statt des Bogens.
   const TokenClass = CONFIG.Token.objectClass;
   const originalDoubleClick = TokenClass.prototype._onClickLeft2;
   TokenClass.prototype._onClickLeft2 = function (event) {
-    if (!game.user?.isGM && hasTalk(this.actor)) return HopeLiesWithinTalkApp.openFor(this.actor);
+    if (!game.user?.isGM && hasTalk(this.actor)) {
+      if (game.settings.get(SYSTEM_ID, "spielerGespraeche")) return HopeLiesWithinTalkApp.openFor(this.actor);
+      return ui.notifications?.info("Sprich die Person am Tisch an. Der GM öffnet das Gespräch.");
+    }
     return originalDoubleClick.call(this, event);
   };
 
@@ -228,7 +246,7 @@ export function registerTalk() {
   });
 }
 
-// GM: Knopf im Token-HUD von NSC-Figuren.
+// GM: zwei Knoepfe im Token-HUD von NSC-Figuren: Sprechblase = nur fuer dich oeffnen, Personen = sofort allen zeigen.
 Hooks.on("renderTokenHUD", (hud, html) => {
   if (!game.user?.isGM) return;
   const actor = hud.object?.actor;
@@ -236,16 +254,20 @@ Hooks.on("renderTokenHUD", (hud, html) => {
   const root = html?.[0] ?? html;
   const column = root?.querySelector?.(".col.left") ?? root;
   if (!column || column.querySelector("[data-hlw-talk]")) return;
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "control-icon";
-  button.dataset.hlwTalk = "true";
-  button.title = "Gespräch öffnen";
-  button.innerHTML = '<i class="fa-solid fa-comments"></i>';
-  button.addEventListener("click", async (event) => {
-    event.preventDefault();
-    if (!actor.getFlag(SYSTEM_ID, "talk")) await actor.setFlag(SYSTEM_ID, "talk", { portrait: actor.img, role: "", facts: [] });
-    HopeLiesWithinTalkApp.openFor(actor);
-  });
-  column.appendChild(button);
+  const knopf = (icon, titel, aktion) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "control-icon";
+    button.dataset.hlwTalk = "true";
+    button.title = titel;
+    button.innerHTML = `<i class="fa-solid ${icon}"></i>`;
+    button.addEventListener("click", async (event) => {
+      event.preventDefault();
+      if (!actor.getFlag(SYSTEM_ID, "talk")) await actor.setFlag(SYSTEM_ID, "talk", { portrait: actor.img, role: "", facts: [] });
+      aktion();
+    });
+    column.appendChild(button);
+  };
+  knopf("fa-comments", "Gespräch öffnen (nur für dich)", () => HopeLiesWithinTalkApp.openFor(actor));
+  knopf("fa-users", "Gespräch allen zeigen", () => zeigeAllen(actor));
 });

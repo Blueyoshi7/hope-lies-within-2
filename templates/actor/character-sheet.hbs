@@ -18,7 +18,20 @@
           <label>Herkunft <input name="system.identity.origin" type="text" value="{{system.identity.origin}}" placeholder="A–D" /></label>
           <label>Level <input name="system.progression.level" type="number" value="{{system.progression.level}}" /></label>
           <label>EXP <span><input name="system.progression.exp" type="number" value="{{system.progression.exp}}" /> / {{#if system.derived.expNext}}{{system.derived.expNext}}{{else}}max{{/if}}</span></label>
-          <label>Klasse <input name="system.progression.class" type="text" value="{{system.progression.class}}" placeholder="{{system.derived.suggestedClass}}" /></label>
+          <label>Klasse
+            {{#if isGM}}
+              <select name="system.progression.class">
+                <option value="">{{vorschlagLabel}}</option>
+                {{#each klassenGruppen as |gruppe|}}
+                  <optgroup label="{{gruppe.kategorie}}">
+                    {{#each gruppe.klassen as |k|}}<option value="{{k.name}}" {{#if k.selected}}selected{{/if}}>{{k.label}}</option>{{/each}}
+                  </optgroup>
+                {{/each}}
+              </select>
+            {{else}}
+              <input type="text" value="{{klasseAnzeige}}" disabled />
+            {{/if}}
+          </label>
           <label>Job <input name="system.progression.job" type="text" value="{{system.progression.job}}" /></label>
           <label>Titel <input name="system.progression.title" type="text" value="{{system.progression.title}}" /></label>
           <label>Insignie <input name="system.progression.insignia" type="text" value="{{system.progression.insignia}}" /></label>

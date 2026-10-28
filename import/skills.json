@@ -530,7 +530,7 @@
  {
   "name": "Geisterschritt",
   "type": "playerSkill",
-  "img": "icons/magic/water/projectile-ice-faceted-gray.webp",
+  "img": "icons/magic/movement/acceleration-speed-tech-blue.webp",
   "folder": "HLW/Skills/Passive/Rang D",
   "system": {
    "rank": "D",
@@ -1355,7 +1355,7 @@
  {
   "name": "Magnet-Punkt",
   "type": "playerSkill",
-  "img": "icons/magic/earth/projectiles-lava-salvo-orange.webp",
+  "img": "icons/magic/symbols/runes-star-pentagon-magenta.webp",
   "folder": "HLW/Skills/Magie/Rang D",
   "system": {
    "rank": "D",
@@ -1553,7 +1553,7 @@
  {
   "name": "Eisenhaut",
   "type": "playerSkill",
-  "img": "icons/magic/water/orb-water-ice-pink.webp",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-teal-purple.webp",
   "folder": "HLW/Skills/Verteidigung/Rang C",
   "system": {
    "rank": "C",
@@ -2048,7 +2048,7 @@
  {
   "name": "Seelenverbindung",
   "type": "playerSkill",
-  "img": "icons/magic/earth/strike-fist-stone-light.webp",
+  "img": "icons/magic/life/cross-yellow-green.webp",
   "folder": "HLW/Skills/Verteidigung/Rang C",
   "system": {
    "rank": "C",
@@ -2147,7 +2147,7 @@
  {
   "name": "Vergifteter Hauch",
   "type": "playerSkill",
-  "img": "icons/magic/earth/projectile-stone-boulder-purple.webp",
+  "img": "icons/magic/acid/projectile-beams-salvo-green.webp",
   "folder": "HLW/Skills/Schwächung/Rang C",
   "system": {
    "rank": "C",
@@ -3104,7 +3104,7 @@
  {
   "name": "Jilwer",
   "type": "playerSkill",
-  "img": "icons/magic/earth/lava-stone-fire-eye.webp",
+  "img": "icons/magic/movement/abstract-ribbons-red-orange.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3269,7 +3269,7 @@
  {
   "name": "Waldgroose",
   "type": "playerSkill",
-  "img": "icons/magic/water/strike-ice-blades.webp",
+  "img": "icons/magic/air/air-burst-spiral-pink.webp",
   "folder": "HLW/Skills/Magie/Rang A",
   "system": {
    "rank": "A",
@@ -3632,7 +3632,7 @@
  {
   "name": "Kha'or'baal",
   "type": "playerSkill",
-  "img": "icons/magic/earth/barrier-stone-explosion-red.webp",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",
@@ -3731,7 +3731,7 @@
  {
   "name": "Le'or",
   "type": "playerSkill",
-  "img": "icons/magic/water/orb-water-ice-pink.webp",
+  "img": "icons/magic/life/cross-yellow-green.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",
@@ -3797,7 +3797,7 @@
  {
   "name": "Ha'thohom",
   "type": "playerSkill",
-  "img": "icons/magic/water/barrier-ice-crystal-wall-jagged.webp",
+  "img": "icons/magic/symbols/runes-star-orange-purple.webp",
   "folder": "HLW/Skills/Magie/Rang SS",
   "system": {
    "rank": "SS",

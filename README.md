@@ -13,7 +13,7 @@ https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json
 ## Regeln (Kanon 2.0)
 
 - **Werte:** STR, DEX, CON, INT, WIS, CHA, AGL, SPE, EDU, SOU. Jeder Wert startet bei 1. Level 1: 5 freie Punkte + 1 Herkunftspunkt, bis Level 10 +1 pro Level, ab Level 11 +2 pro Level. Der Bogen zeigt verteilte und erlaubte Punkte.
-- **Klasse:** ergibt sich aus der Verteilung der Werte (Basic ab 10 verteilten Punkten, T1 ab 20, T2 ab 40, T3 ab 60). Der Bogen schlägt die passende Klasse automatisch vor.
+- **Klasse:** ergibt sich aus der Verteilung der Werte (Basic ab 10 verteilten Punkten, T1 ab 20, T2 ab 40, T3 ab 60). Der GM wählt sie im Bogen aus einem Dropdown mit allen Klassen; der Vorschlag aus der Wertverteilung ist mit ★ markiert (Story- und Sonderklassen sind ebenfalls wählbar). Beim Wählen bekommt der Charakter den Klassen-Skill; Skills früherer Klassen bleiben erhalten.
 - **Kampfwerte:** HP = 20 + 2 × Level + 3 × CON + Rüstungs-HP · Rüstwert = 8 + ⌊(AGL + DEX) ÷ 4⌋ · Magieresistenz = 8 + ⌊(WIS + SOU) ÷ 4⌋ · Blockwert höchstens 8 · Bewegung = 3 + ⌊SPE ÷ 6⌋ · Initiative = 1W20 + ⌊SPE ÷ 2⌋ · Inventar = 10 + STR.
 - **Angriff:** 1W20 + Genauigkeit (⌊Primärwert ÷ 3⌋) gegen Rüstwert (physisch) oder Magieresistenz (magisch). Natürliche 20 verdoppelt die Schadenswürfel, natürliche 1 verfehlt. Schaden = Skill + ausgerüstete Waffe + ⌊Primär ÷ 4⌋ + ⌊Sekundär ÷ 8⌋ − Blockwert, mindestens 1. Heil-Skills heilen ohne Trefferwurf.
 - **Zug:** Bewegung + 1 Aktion + 1 Schnellaktion + 1 Reaktion. Skills mit Einsatz „Schnellaktion“ verbrauchen die Schnellaktion. Abwehrhaltung: RW und MR +2 bis zum nächsten eigenen Zug.
@@ -35,7 +35,7 @@ Als GM in der Item-Sidebar auf **HLW JSON Import** klicken (oder im Inventar auf
 | `import/skills.json`, `class-skills.json` | Skills und Klassen-Skills |
 | `import/monsters.json` | Bestiarium als Monster-Actors (Werte nach Rang, Rolle und Größe) |
 
-Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP werden beim Appraisal gewürfelt: im Item-Bogen auf „Würfeln“ klicken. Jeder Eintrag hat ein passendes Symbol aus Foundrys Bibliothek; ältere Importe holen sich die Bilder mit `game.hlw.aktualisiereBilder()`.
+Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP werden beim Appraisal gewürfelt: im Item-Bogen auf „Würfeln“ klicken. Jeder Eintrag hat ein passendes Symbol aus Foundrys Bibliothek; ältere Importe holen sich die Bilder mit `game.hlw.aktualisiereBilder()`; `game.hlw.aktualisiereBilder({ alle: true })` ersetzt auch schon gesetzte Symbole durch die aktuelle Zuordnung.
 
 ## Skills und Gegenstände geben
 
@@ -43,7 +43,9 @@ Als GM im Charakterbogen: Tab *Skills* → **Skill geben**, Tab *Inventar* → *
 
 ## NSC-Gespräch
 
-- Spieler doppelklicken auf eine NSC-Figur: Ein rahmenloses Fenster zeigt links das Porträt, rechts alles, was die Gruppe über den NSC weiß, und eigene Notizen (pro Spieler gespeichert).
+- Der GM öffnet Gespräche: im Token-HUD der NSC-Figur öffnet die **Sprechblase** das Fenster nur für dich, das **Personen-Symbol** zeigt es sofort allen. So kannst du entscheiden, ob die Gruppe überhaupt eine Antwort bekommt.
+- Das Fenster ist rahmenlos: links das Porträt, rechts alles, was die Gruppe über den NSC weiß, darunter eigene Notizen (pro Spieler gespeichert).
+- Optional (Spieleinstellungen → „Spieler öffnen NSC-Gespräche selbst“): Spieler dürfen das Gespräch per Doppelklick selbst öffnen. Standard ist aus; dann bekommen Spieler beim Doppelklick nur den Hinweis, die Person am Tisch anzusprechen.
 - Der Name steht für Spieler zuerst als „???“. Jeder kann selbst einen Namen eintragen. Der GM gibt den echten Namen per Haken frei.
 - Der GM öffnet das Gespräch über den Sprechblasen-Knopf im Token-HUD, legt Einträge an, gibt sie frei und kann das Gespräch mit „Allen zeigen“ bei allen öffnen.
 

@@ -7,7 +7,8 @@
   },
   "skill": "Kampfgeist",
   "effect": "Bei aktiven Nahkampfangriffen +1 Schaden.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-blade-hooked-blue-red.webp"
  },
  {
   "name": "Hüter",
@@ -17,7 +18,8 @@
   },
   "skill": "Zähigkeit",
   "effect": "+20 Max HP.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/defensive/barrier-shield-dome-blue-purple.webp"
  },
  {
   "name": "Magier",
@@ -27,7 +29,8 @@
   },
   "skill": "Magisches Gespür",
   "effect": "Bei aktiven magischen Angriffen +1 Schaden.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/runes-triangle-blue.webp"
  },
  {
   "name": "Gelehrter",
@@ -37,7 +40,8 @@
   },
   "skill": "„Das hab ich schon mal gesehen“",
   "effect": "Einmal pro Kampf: Der GM nennt eine Schwäche, Resistenz oder Besonderheit eines Gegners.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-bars-yellow.webp"
  },
  {
   "name": "Schurke",
@@ -47,7 +51,8 @@
   },
   "skill": "Klingenhand",
   "effect": "Bei Angriffen mit einem Dolch +1 Schaden.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-flail-spiked-red.webp"
  },
  {
   "name": "Gauner",
@@ -57,7 +62,8 @@
   },
   "skill": "Flinke Füße",
   "effect": "Aktionsgeschwindigkeit +1 (Initiative +1).",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/air/weather-clouds-rainbow.webp"
  },
  {
   "name": "Schütze",
@@ -67,7 +73,8 @@
   },
   "skill": "„Trickshot“",
   "effect": "Einmal pro Kampf: Ein Fernkampfangriff prallt ab und trifft ein zweites Ziel innerhalb von 3 Feldern mit vollem Schaden.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/arrow-gem-flying-poisoned-green.webp"
  },
  {
   "name": "Tierbändiger",
@@ -77,7 +84,8 @@
   },
   "skill": "Ruhige Hand",
   "effect": "Bei aktiven Fernkampfangriffen +1 Schaden.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/bow-arrows-blue.webp"
  },
  {
   "name": "Pfarrer",
@@ -87,7 +95,8 @@
   },
   "skill": "Wortgewandt",
   "effect": "World-Skill Wortgewandtheit +1.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp"
  },
  {
   "name": "Priester",
@@ -97,7 +106,8 @@
   },
   "skill": "„Bildung einprügeln“",
   "effect": "Einmal pro Kampf: Schlag mit einem schweren Buch, 1W4 Schaden; das Ziel hat −2 auf seinen nächsten Wurf.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/target-glowing-yellow.webp"
  },
  {
   "name": "Prophet",
@@ -108,7 +118,8 @@
   },
   "skill": "Gnade",
   "effect": "Leichte Heilung für ein Ziel: 1W6 HP.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/crosses-trio-red.webp"
  },
  {
   "name": "Täuschungs-Kleriker",
@@ -119,7 +130,8 @@
   },
   "skill": "Heilungsversprechen",
   "effect": "Täuscht eine Heilung vor und fügt stattdessen 2W6 Schaden zu.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/life/cross-embers-glow-yellow-purple.webp"
  },
  {
   "name": "Sanitäter",
@@ -130,7 +142,8 @@
   },
   "skill": "Schmerzlinderung",
   "effect": "Halbiert eine Runde lang den Schaden, den du oder ein Verbündeter erleidet.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/heart-cross-strong-flame-purple-orange.webp"
  },
  {
   "name": "Paladin",
@@ -141,7 +154,8 @@
   },
   "skill": "Aura des Glaubens",
   "effect": "Verbündete im Umkreis erhalten +1 auf alle Würfe.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp"
  },
  {
   "name": "Prediger von Athrea",
@@ -152,7 +166,8 @@
   },
   "skill": "Athreas Ruf",
   "effect": "Heilende Skills heilen +1W6 zusätzlich.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/heart-hand-gold-green-light.webp"
  },
  {
   "name": "Kleriker",
@@ -163,7 +178,8 @@
   },
   "skill": "Göttlicher Schutz",
   "effect": "Fällt der Charakter auf 10 HP oder weniger, schützt ihn einmal pro Kampf eine Aura mit +10 HP.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
  },
  {
   "name": "Mönch",
@@ -174,7 +190,8 @@
   },
   "skill": "Meditation",
   "effect": "Eine Aktion lang meditieren: 2W6 HP Selbstheilung.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-dagger-blood-red.webp"
  },
  {
   "name": "Nachtweber",
@@ -185,7 +202,8 @@
   },
   "skill": "Schattenschritt",
   "effect": "Wird der Charakter angegriffen, teleportiert er sich zu einem Schatten auf dem Feld. CD 3 Runden.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/unholy/hands-praying-fire-green.webp"
  },
  {
   "name": "Herbalist",
@@ -196,7 +214,8 @@
   },
   "skill": "Kräuter und Gifte",
   "effect": "Kann alle Kräuter zur Heilung oder als Gift verwenden, ohne magische Waffe.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/heart-cross-strong-purple-orange.webp"
  },
  {
   "name": "Weißmagier",
@@ -207,7 +226,8 @@
   },
   "skill": "Reine Heilung",
   "effect": "Heilt alle Verbündeten in der Nähe um je 1W4.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/heart-area-circle-red-green.webp"
  },
  {
   "name": "Kämpfer",
@@ -218,7 +238,8 @@
   },
   "skill": "Ansturm",
   "effect": "Wuchtiger Angriff, 1W6 Schaden, stößt das Ziel 2 Felder zurück.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-weapons-orange.webp"
  },
  {
   "name": "Sturmweber",
@@ -229,7 +250,8 @@
   },
   "skill": "Blitzpfeil",
   "effect": "Ein mit Blitz geladener Wurf- oder Pfeilangriff, 1W6 + 2 Schaden.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/lightning/projectile-orb-blue.webp"
  },
  {
   "name": "Barbar",
@@ -240,7 +262,8 @@
   },
   "skill": "Qual",
   "effect": "Brutaler Angriff, 2W6 Schaden; das Ziel hat −1 auf seinen nächsten Wurf.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-sword-blood-red.webp"
  },
  {
   "name": "Kampfmagier",
@@ -251,7 +274,8 @@
   },
   "skill": "Magische Raserei",
   "effect": "Unkontrollierte Explosion: 1W6 Schaden an allen Zielen direkt neben dir.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/control/sleep-bubble-purple.webp"
  },
  {
   "name": "Wächter",
@@ -262,7 +286,8 @@
   },
   "skill": "Standhaftigkeit",
   "effect": "+2 Max HP pro Level.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-green.webp"
  },
  {
   "name": "Gladiator",
@@ -273,7 +298,8 @@
   },
   "skill": "Vielseitigkeit",
   "effect": "Eine zweite Aktion pro Runde; ist sie ein Angriff, macht er halben Schaden.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-axe-red.webp"
  },
  {
   "name": "Schmarotzer",
@@ -284,7 +310,8 @@
   },
   "skill": "Fluch des Parasiten",
   "effect": "Teilt 50 % des erhaltenen Schadens auf Verbündete in der Nähe auf.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/death/skeleton-glow-yellow-black.webp"
  },
  {
   "name": "Erlöser",
@@ -295,7 +322,8 @@
   },
   "skill": "Erste Umarmung",
   "effect": "Stabilisiert einen sterbenden Verbündeten sofort mit 1 HP. Einmal pro Kampf.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/heart-cross-strong-green.webp"
  },
  {
   "name": "Magische Wache",
@@ -306,7 +334,8 @@
   },
   "skill": "Schildwache",
   "effect": "HP +20; der Rüstwert über 8 wird zum Blockwert.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/defensive/shield-barrier-deflect-teal.webp"
  },
  {
   "name": "Schwarzmagier",
@@ -317,7 +346,8 @@
   },
   "skill": "Nekrotisches Mal",
   "effect": "Markiert einen Gegner; stirbt er, explodiert das Mal (1W6 an allen Nahen).",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/death/undead-skeleton-lich-armor.webp"
  },
  {
   "name": "Sturmzauberer",
@@ -328,7 +358,8 @@
   },
   "skill": "Blitzschritt",
   "effect": "Teleport genau 6 Felder, bei der Landung 1W6 Blitzschaden in der Nähe.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/lightning/bolt-forked-large-orange-purple.webp"
  },
  {
   "name": "Blaumagier",
@@ -339,7 +370,8 @@
   },
   "skill": "Bestienkodex",
   "effect": "Lernt Skills nur von Monstern, die er selbst getötet hat; einmal pro Kampf einen davon kopieren.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/holy/angel-wings-gray.webp"
  },
  {
   "name": "Steinweber",
@@ -350,7 +382,8 @@
   },
   "skill": "Steinlanze",
   "effect": "Erschafft eine Lanze aus Stein, die geworfen und jederzeit neu geformt werden kann.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/earth/orb-lava-ball-yellow.webp"
  },
  {
   "name": "Wissensdieb",
@@ -361,7 +394,8 @@
   },
   "skill": "Deins? Meins!",
   "effect": "Kann mit geringer Chance aus der Magie eines Gegners einen Skill-Orb erschaffen.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp"
  },
  {
   "name": "Runenmagier",
@@ -372,7 +406,8 @@
   },
   "skill": "Energielauf",
   "effect": "Natürliche Skills werden doppelt gewirkt.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/movement/pinwheel-turning-blue.webp"
  },
  {
   "name": "Taktiker",
@@ -383,7 +418,8 @@
   },
   "skill": "Kampfanalyse",
   "effect": "Zweimal pro Kampf: Verbündete erhalten +3 auf ihren nächsten Wurf.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/perception/eye-tendrils-web-purple.webp"
  },
  {
   "name": "Astrologe",
@@ -394,7 +430,8 @@
   },
   "skill": "Galaktisches Auge",
   "effect": "Analysiert die Schwachstelle eines Gegners: der erste Angriff darauf ist ein kritischer Treffer.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp"
  },
  {
   "name": "Schattentänzer",
@@ -405,7 +442,8 @@
   },
   "skill": "Schattenversteck",
   "effect": "Angriff aus dem Verborgenen, 1W6 Schaden, das Ziel verliert zusätzlich 3 HP.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/magic/unholy/strike-beam-blood-large-red-gray.webp"
  },
  {
   "name": "Kampfspäher",
@@ -416,7 +454,8 @@
   },
   "skill": "Adlerauge",
   "effect": "Genauigkeit +2.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/person-archery-bow-attack-orange.webp"
  },
  {
   "name": "Klingenpriester",
@@ -427,7 +466,8 @@
   },
   "skill": "Heilige Klinge",
   "effect": "Nahkampfangriff, der Schaden verursacht und einen Verbündeten um 1W4 heilt.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/life/heart-cross-green.webp"
  },
  {
   "name": "Nebeljäger",
@@ -438,7 +478,8 @@
   },
   "skill": "Nebelschuss",
   "effect": "Ein Schuss, der durch Gegner und Verbündete fliegt und die Seele trifft (ignoriert Rüstung).",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/cannon-barrel-gray.webp"
  },
  {
   "name": "Assassine",
@@ -449,7 +490,8 @@
   },
   "skill": "Tödlicher Schlag",
   "effect": "Gezielter Angriff auf eine Schwachstelle: ein gerader Wurf zählt als maximaler Schaden.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-weapons-orange.webp"
  },
  {
   "name": "Trickmage",
@@ -460,7 +502,8 @@
   },
   "skill": "Illusionsschlag",
   "effect": "Ein zufälliger Angriff pro Kampf verursacht doppelten Schaden.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/control/debuff-energy-hold-levitate-pink.webp"
  },
  {
   "name": "Klingenläufer",
@@ -471,7 +514,8 @@
   },
   "skill": "Sturmschritt",
   "effect": "Schnelle Attacke, 2W6 Schaden, du und das Ziel bewegt euch 3 Felder nach vorne.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp"
  },
  {
   "name": "Scout",
@@ -482,7 +526,8 @@
   },
   "skill": "Magische Tarnung",
   "effect": "Unsichtbar bis zur nächsten eigenen Aktion.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp"
  },
  {
   "name": "Dieb",
@@ -493,7 +538,8 @@
   },
   "skill": "Präzise Berührung",
   "effect": "Nahkampfangriff, der die Rüstung des Ziels ignoriert.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/shield-damaged-broken-orange.webp"
  },
  {
   "name": "Bestienkrieger",
@@ -504,7 +550,8 @@
   },
   "skill": "Tosende Bestie",
   "effect": "2W6 Nahkampfschaden, Gegner geraten in Angst; du verfällst in Rage.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp"
  },
  {
   "name": "Tiermeister",
@@ -515,7 +562,8 @@
   },
   "skill": "Herz der Tiere",
   "effect": "Darf einen Tiergefährten halten; mit Gefährte +10 HP.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp"
  },
  {
   "name": "Waldläufer",
@@ -526,7 +574,8 @@
   },
   "skill": "Hinterhalt",
   "effect": "Tarnt sich in natürlicher Umgebung; der erste Angriff aus der Tarnung ist kritisch.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/bomb-grenade-thrown-orange.webp"
  },
  {
   "name": "Beschwörer",
@@ -537,7 +586,8 @@
   },
   "skill": "Seelenvergabe",
   "effect": "Beschwört die Kraft der eigenen Seele, um Gegner anzugreifen (1W6) oder Verbündete zu heilen (1W6).",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/life/heart-hand-gold-green.webp"
  },
  {
   "name": "Scharfschütze",
@@ -548,7 +598,8 @@
   },
   "skill": "Präzisionsschuss",
   "effect": "Gezielter Fernangriff mit hoher Genauigkeit, 1W8 Schaden.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/daggers-thrown-salvo-orange.webp"
  },
  {
   "name": "Ranger",
@@ -559,7 +610,8 @@
   },
   "skill": "Naturinstinkt",
   "effect": "Naturkunde +2, Schussschaden +2, Bewegung +1.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/target-bullseye-archer-orange.webp"
  },
  {
   "name": "Runenschütze",
@@ -570,7 +622,8 @@
   },
   "skill": "Magiegeboren",
   "effect": "Pfeile entstehen aus magischer Kraft; es werden keine Pfeile verbraucht.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/bullets-triple-ball-orange.webp"
  },
  {
   "name": "Fallenleger",
@@ -581,7 +634,8 @@
   },
   "skill": "Netzfalle",
   "effect": "Fängt einen Gegner ein; er kann sich 2 Runden nicht bewegen.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-arrowhead-blue.webp"
  },
  {
   "name": "Corrupted-Jäger",
@@ -592,7 +646,8 @@
   },
   "skill": "Abyss-Gespür",
   "effect": "Spürt Corrupted im Umkreis von 10 Feldern; +2 Schaden gegen Corrupted.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/projectile-spiral-gray.webp"
  },
  {
   "name": "Heiliger",
@@ -604,7 +659,8 @@
   },
   "skill": "Göttliche Welle",
   "effect": "Eine Welle göttlicher Energie heilt alle Verbündeten im Bereich um 2W6.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/water/orb-water-transparent.webp"
  },
  {
   "name": "Druide",
@@ -616,7 +672,8 @@
   },
   "skill": "Natürliche Gestalt",
   "effect": "Verwandelt sich in Stein-, Wasser- oder Holzgestalt (Nahkampf, Heilung oder Fernkampf); in Gestalt keine Waffen.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/water/projectile-water-rings.webp"
  },
  {
   "name": "Heiliger Gauner",
@@ -628,7 +685,8 @@
   },
   "skill": "Göttlicher Bluff",
   "effect": "Täuscht göttliches Eingreifen vor: Gegner verlieren ihre nächste Aktion (Wurf gegen Willenskraft).",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/holy/meditation-chi-focus-blue.webp"
  },
  {
   "name": "Friedenswächter",
@@ -640,7 +698,8 @@
   },
   "skill": "Friedensstiftung",
   "effect": "Erschafft ein heiliges Feld (3×3), in dem 2 Runden niemand Schaden verursachen kann.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/life/cross-yellow-green.webp"
  },
  {
   "name": "Erzbischof",
@@ -652,7 +711,8 @@
   },
   "skill": "Heiliges Licht",
   "effect": "Heilt zwei Verbündete um je 2W6 oder fügt zwei Gegnern je 2W6 heiligen Schaden zu.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/heart-cross-green.webp"
  },
  {
   "name": "Berserker",
@@ -664,7 +724,8 @@
   },
   "skill": "Rasender Schlag",
   "effect": "Kanalisiert Wut in einen Angriff: Schaden +1W6 für jeden fehlenden Viertel-HP-Balken.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-polearm-glowing-white.webp"
  },
  {
   "name": "Waffenmeister",
@@ -676,7 +737,8 @@
   },
   "skill": "Meisterliche Waffenführung",
   "effect": "Führt jede Waffe; Angriffe ohne Skill +5 Schaden.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/sword-damaged-broken-orange.webp"
  },
  {
   "name": "Heiliger Ritter",
@@ -688,7 +750,8 @@
   },
   "skill": "Heilige Intervention",
   "effect": "Chance, dass ein kritischer Fehlschlag in einen Erfolg verwandelt wird (bei 1W20 ≥ 15).",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp"
  },
  {
   "name": "Klingenschatten",
@@ -700,7 +763,8 @@
   },
   "skill": "Schattentanz",
   "effect": "Bewegt sich blitzschnell zwischen Gegnern und greift bis zu 3 Ziele mit je 1W6 an.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/magic/lightning/bolt-forked-large-blue-yellow.webp"
  },
  {
   "name": "Blutritter",
@@ -712,7 +776,8 @@
   },
   "skill": "Blutopfer",
   "effect": "Opfert eigene HP, um einen Verbündeten eine Runde um 1W20 Schaden zu stärken.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/death/skull-cattle-totem-glow-red.webp"
  },
  {
   "name": "Champion",
@@ -724,7 +789,8 @@
   },
   "skill": "Inspirierende Ausstrahlung",
   "effect": "Hebt Furcht, Verwirrung und ähnliche Zustände bei Verbündeten in der Nähe auf.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/control/silhouette-hold-change-blue.webp"
  },
  {
   "name": "Beschützer",
@@ -736,7 +802,8 @@
   },
   "skill": "Magisches Schild",
   "effect": "Übernimmt sofort den Schaden für einen Verbündeten in der Nähe (+1W6 zusätzlicher Schaden für sich).",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/defensive/armor-stone-skin.webp"
  },
  {
   "name": "Wächter des Abgrunds",
@@ -748,7 +815,8 @@
   },
   "skill": "Dunkler Pakt",
   "effect": "Riskanter Handel mit dem Abyss: sofortige Macht (+5 Schaden, +20 HP für 3 Runden), danach +1 Korruption.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/unholy/orb-swirling-pink.webp"
  },
  {
   "name": "Eiserne Jungfrau",
@@ -760,7 +828,8 @@
   },
   "skill": "Dornenrüstung",
   "effect": "Natürlicher Dornenpanzer: Wer im Nahkampf angreift, erleidet 1W6 Schaden.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/nature/root-vine-fire-entangled-hand.webp"
  },
  {
   "name": "Koloss",
@@ -772,7 +841,8 @@
   },
   "skill": "Riesiges Abkommen",
   "effect": "Wächst für 5 Runden: +30 HP, aber Bewegung −1.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/defensive/shield-hex-gold.webp"
  },
  {
   "name": "Erzmagier",
@@ -784,7 +854,8 @@
   },
   "skill": "Magische Meisterschaft",
   "effect": "Einmal am Tag trifft ein Zauber deiner Wahl automatisch kritisch, +1W10.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/question-stone-yellow.webp"
  },
  {
   "name": "Todesmagier",
@@ -796,7 +867,8 @@
   },
   "skill": "Echo des Todes",
   "effect": "Stirbt eine Kreatur neben dir, verursacht dein nächster Angriff +1W6 Schaden.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/death/skull-humanoid-white-red.webp"
  },
  {
   "name": "Elementarmagier",
@@ -808,7 +880,8 @@
   },
   "skill": "Elementare Meisterschaft",
   "effect": "Meisterschaft über ein Element: +2 Schaden mit diesem Element, +2 Rüstwert dagegen.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/rune-sigil-rough-white-teal.webp"
  },
  {
   "name": "Blaumagier-Meister",
@@ -820,7 +893,8 @@
   },
   "skill": "Level Up",
   "effect": "Lernt schneller: +10 % Erfahrungspunkte, kann zwei Monster-Skills gleichzeitig halten.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/time/hourglass-brown-orange.webp"
  },
  {
   "name": "Arkaner Krieger",
@@ -832,7 +906,8 @@
   },
   "skill": "Arkane Waffe",
   "effect": "Führt jede Waffe und wirkt Magie und Heilungen damit.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/life/cross-beam-green.webp"
  },
  {
   "name": "Genie",
@@ -844,7 +919,8 @@
   },
   "skill": "Worte der Erleuchtung",
   "effect": "Entfernt bei einem Verbündeten alle Furcht-, Verwirrungs- und Bezauberungseffekte.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/control/encase-creature-humanoid-hold.webp"
  },
  {
   "name": "Illusionsklinge",
@@ -856,7 +932,8 @@
   },
   "skill": "Phantomschlag",
   "effect": "Angriffe mit Schwert, Dolch oder Lanze verursachen zusätzlich 1W10 magischen Schaden.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp"
  },
  {
   "name": "Weltenwandler",
@@ -868,7 +945,8 @@
   },
   "skill": "Dimensionsriss",
   "effect": "Öffnet einen Riss, durch den du oder ein Verbündeter bis zu 10 Felder weit reist.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-hex-red.webp"
  },
  {
   "name": "Kriegssavant",
@@ -880,7 +958,8 @@
   },
   "skill": "Taktischer Rückzug",
   "effect": "Die ganze Gruppe zieht sich ohne Gelegenheitsangriffe 3 Felder zurück.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp"
  },
  {
   "name": "Aspekt der Sterne",
@@ -892,7 +971,8 @@
   },
   "skill": "Sternenregen",
   "effect": "Ein kleiner Meteoritenregen trifft zufällige Tokens auf der Karte (je 2W6).",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/water/water-hand.webp"
  },
  {
   "name": "Soulknife",
@@ -904,7 +984,8 @@
   },
   "skill": "Magische Klinge",
   "effect": "Führt jede Waffe und wirkt Magie und Heilungen damit.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/life/heart-broken-red.webp"
  },
  {
   "name": "Outlaw",
@@ -916,7 +997,8 @@
   },
   "skill": "Heimtückischer Schuss",
   "effect": "Fernkampf aus dem Hinterhalt oder gegen überraschte Ziele verursacht doppelten Schaden.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/bullet-sparks-yellow.webp"
  },
  {
   "name": "Dunkler Prophet",
@@ -928,7 +1010,8 @@
   },
   "skill": "Blutiges Omen",
   "effect": "Opfert eigene HP, um einen eigenen Wurf zu verstärken (+1 pro 2 HP).",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/death/hand-withered-gray.webp"
  },
  {
   "name": "Phantomschütze",
@@ -940,7 +1023,8 @@
   },
   "skill": "Ätherischer Durchschuss",
   "effect": "Ein Pfeil wird kurz ätherisch und ignoriert Rüstung und Deckung.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/bomb-grenade-thrown-stars-orange.webp"
  },
  {
   "name": "Todesweber",
@@ -952,7 +1036,8 @@
   },
   "skill": "Seelenentzug",
   "effect": "Entzieht einem Ziel Lebenskraft: 2W6 Schaden, du heilst dich um die Hälfte.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-sword-gray.webp"
  },
  {
   "name": "Magischer Narr",
@@ -964,7 +1049,8 @@
   },
   "skill": "Arkane Anarchie",
   "effect": "Entfesselt rohe Magie mit einem zufälligen Effekt (Wurf auf die Narrentabelle).",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/rune-sigil-green.webp"
  },
  {
   "name": "Klingenstürmer",
@@ -976,7 +1062,8 @@
   },
   "skill": "Wirbelwind der Klingen",
   "effect": "Wirbelangriff gegen alle Gegner direkt neben dir, je 2W6.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/blade-tip-damaged-acid-green.webp"
  },
  {
   "name": "Trickster",
@@ -988,7 +1075,8 @@
   },
   "skill": "Loki",
   "effect": "Teleport zum Schatten eines beliebigen Tokens auf der Karte. CD 4.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/unholy/orb-hands-pink.webp"
  },
  {
   "name": "Survivalist",
@@ -1000,7 +1088,8 @@
   },
   "skill": "Notration",
   "effect": "Beschafft in Notsituationen auf wundersame Weise Essen, Wasser oder einfache Hilfsmittel.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/water/bubbles-air-water-pink.webp"
  },
  {
   "name": "Bestienkönig",
@@ -1012,7 +1101,8 @@
   },
   "skill": "Ruf der Wildnis",
   "effect": "Lockt wilde Tiere an, die kurzzeitig für dich kämpfen.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/time/arrows-circling-pink.webp"
  },
  {
   "name": "Bestienmeister",
@@ -1024,7 +1114,8 @@
   },
   "skill": "Tierische Synergie",
   "effect": "Du und dein Tiergefährte greifen in derselben Aktion an.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/strike-dagger-poison-dripping-green.webp"
  },
  {
   "name": "Dark Ranger",
@@ -1036,7 +1127,8 @@
   },
   "skill": "Pfeil der Nacht",
   "effect": "Ein in Schatten gehülltes Geschoss: magischer Schaden 2W6, kann blenden.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/magic/unholy/orb-swirling-pink.webp"
  },
  {
   "name": "Bestienrufer",
@@ -1048,7 +1140,8 @@
   },
   "skill": "Beschwören",
   "effect": "Ruft einen Geist oder Tiergeist aus einer anderen Ebene, der 3 Runden hilft.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/sonic/explosion-impact-shock-wave.webp"
  },
  {
   "name": "Virtuose",
@@ -1060,7 +1153,8 @@
   },
   "skill": "Fesselnde Darbietung",
   "effect": "Gesang, Musik oder Schauspiel verändern den Zustand der Zuhörer (beruhigen, ablenken, anstacheln).",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/sonic/scream-wail-shout-teal.webp"
  },
  {
   "name": "Wilderer",
@@ -1072,7 +1166,8 @@
   },
   "skill": "Spurensucher-Instinkt",
   "effect": "Sichtweite +1, Laufweite +1, Naturkunde +5.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/bomb-grenade-thrown-gray.webp"
  },
  {
   "name": "Bounty Hunter",
@@ -1084,7 +1179,8 @@
   },
   "skill": "Auszahlung",
   "effect": "Gezielter Fernkampfangriff; tötet er das Ziel, gibt es zusätzliche Beute.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/daggers-thrown-salvo-teal.webp"
  },
  {
   "name": "Albtraumjäger",
@@ -1096,7 +1192,8 @@
   },
   "skill": "Verzaubert",
   "effect": "Belegt ein Ziel mit einem Fluch, der seine Wahrnehmung verzerrt (−3 auf Würfe, 2 Runden).",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/target-bullseye-arrow-glowing.webp"
  },
  {
   "name": "Chrono-Schütze",
@@ -1108,7 +1205,8 @@
   },
   "skill": "Back in Time",
   "effect": "Manipuliert kurz die Zeit: einen eigenen Schuss wiederholen oder eine Bewegung rückgängig machen.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/arrow-strike-glowing-teal.webp"
  },
  {
   "name": "Lichtbringer",
@@ -1120,7 +1218,8 @@
   },
   "skill": "Licht der Hoffnung",
   "effect": "Entfernt einen Bezauberungseffekt von einem Ziel und heilt es um 1W6.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp"
  },
  {
   "name": "Schamane",
@@ -1132,7 +1231,8 @@
   },
   "skill": "Aura des Gleichgewichts",
   "effect": "Kann alle Waffen nutzen, Rüstwert wird Blockwert; heilt und schützt statt Schaden zu verursachen.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/life/cross-beam-green.webp"
  },
  {
   "name": "Alchemist",
@@ -1144,7 +1244,8 @@
   },
   "skill": "Bomben",
   "effect": "Rote Bombe (+3 Angriff), Blaue Bombe (+3 Rüstwert) oder Grüne Bombe (Fernkampfangriff); benötigt Zutaten.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-bars-yellow.webp"
  },
  {
   "name": "Kreuzritter",
@@ -1156,7 +1257,8 @@
   },
   "skill": "Judgement",
   "effect": "Ein Zauber göttlicher Gerechtigkeit: 2W6 heiliger Schaden, doppelt gegen Corrupted.",
-  "role": "Hybrid"
+  "role": "Hybrid",
+  "img": "icons/magic/life/heart-broken-red.webp"
  },
  {
   "name": "Wikinger",
@@ -1169,7 +1271,8 @@
   },
   "skill": "Ragnarök",
   "effect": "Je weniger HP, desto stärker: +1 Schaden für je 10 % fehlende HP.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp"
  },
  {
   "name": "Schlächter",
@@ -1182,7 +1285,8 @@
   },
   "skill": "Blutiger Zorn",
   "effect": "Nach jedem Kill sofort ein weiterer Angriff mit +1W6 (höchstens zweimal pro Runde).",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/weapons-crossed-swords-black.webp"
  },
  {
   "name": "Wächter von Bahl",
@@ -1195,7 +1299,8 @@
   },
   "skill": "Quahl",
   "effect": "Zieht 2 Runden alle Angriffe im Umkreis von 3 Feldern auf sich; erlittener Schaden halbiert.",
-  "role": "Tank"
+  "role": "Tank",
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-teal-purple.webp"
  },
  {
   "name": "Kampfmeister",
@@ -1208,7 +1313,8 @@
   },
   "skill": "Leichtfüßigkeit",
   "effect": "Bewegung +2; einmal pro Runde einen Nahkampftreffer ignorieren (1W20 ≥ 12).",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/weapons-crossed-swords-purple.webp"
  },
  {
   "name": "Rotmagier",
@@ -1221,7 +1327,8 @@
   },
   "skill": "Arkanes Element",
   "effect": "Verbindet zwei gelernte Element-Zauber zu einem (Schaden beider, 1 Aktion). CD 3.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/star-solid-gold.webp"
  },
  {
   "name": "Sturmmystiker",
@@ -1234,7 +1341,8 @@
   },
   "skill": "Magische Wut",
   "effect": "Jeder Zauber erhöht den nächsten um +2 Schaden (bis +10); verfällt, wenn eine Runde nicht gezaubert wird.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/triangle-glow-purple.webp"
  },
  {
   "name": "Sternenorakel",
@@ -1247,7 +1355,8 @@
   },
   "skill": "Singularität",
   "effect": "Zieht alle Gegner im Umkreis von 3 Feldern auf einen Punkt, 3W6 Schaden. CD 5.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/star-inverted-yellow.webp"
  },
  {
   "name": "Visionär",
@@ -1260,7 +1369,8 @@
   },
   "skill": "Signatur",
   "effect": "Einmal pro Kampf: Der GM verrät die nächste Aktion eines Gegners, oder ein Verbündeter wiederholt einen Wurf.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/nature/vines-thorned-green.webp"
  },
  {
   "name": "Klingentänzer",
@@ -1273,7 +1383,8 @@
   },
   "skill": "Tanzende Klinge",
   "effect": "Zwei schwebende Klingen greifen jede Runde automatisch an (je 1W6).",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/blade-tips-triple-bent-white.webp"
  },
  {
   "name": "Albtraumweber",
@@ -1286,7 +1397,8 @@
   },
   "skill": "Verwüstung",
   "effect": "Das Ziel durchlebt 3 Runden Albträume: −3 auf alle Würfe, 1W6 Schaden pro Runde.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/symbols/runes-carved-stone-red.webp"
  },
  {
   "name": "Geistwanderer",
@@ -1299,7 +1411,8 @@
   },
   "skill": "Ruf der Schmerzen",
   "effect": "Verlässt 2 Runden den Körper: unangreifbar, geht durch Wände, Angriff 2W6 direkt auf die Seele.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/death/skeleton-glow-yellow-black.webp"
  },
  {
   "name": "Todsucher",
@@ -1312,7 +1425,8 @@
   },
   "skill": "Verhängnis und Verderben",
   "effect": "Verhängnis: Fluch, 1W4 Schaden pro Runde für 5 Runden. Verderben: lässt den Fluch sofort mit 3W6 explodieren.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/skills/melee/sword-engraved-glow-purple.webp"
  },
  {
   "name": "Seelengefährte",
@@ -1325,7 +1439,8 @@
   },
   "skill": "Fokussierung",
   "effect": "Bindet sich an einen Verbündeten: ihr teilt die HP und erhaltet beide +2 auf Würfe.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp"
  },
  {
   "name": "Gezeitenrufer",
@@ -1338,7 +1453,8 @@
   },
   "skill": "Ebbe und Flut",
   "effect": "Ebbe: ein Verbündeter heilt 1W20. Flut: alle Verbündeten im Wirkbereich heilen 1W6.",
-  "role": "Heilung"
+  "role": "Heilung",
+  "img": "icons/magic/water/elemental-water.webp"
  },
  {
   "name": "Arkanjäger",
@@ -1351,7 +1467,8 @@
   },
   "skill": "Magischer Pfeilregen",
   "effect": "Pfeilregen auf ein 3×3-Feld, 2W6 magischer Schaden. CD 3.",
-  "role": "Fernkampf"
+  "role": "Fernkampf",
+  "img": "icons/skills/ranged/blast-energy-plating-orange.webp"
  },
  {
   "name": "Sandmagier",
@@ -1364,7 +1481,8 @@
   },
   "skill": "Sandgrab",
   "effect": "Ziel versinkt im Sand (AGL-Probe 17+ zum Entkommen); bis dahin bewegungsunfähig.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/earth/projectiles-magma-stone-orange.webp"
  },
  {
   "name": "Barde",
@@ -1377,7 +1495,8 @@
   },
   "skill": "Klang der Welten",
   "effect": "Klangfähigkeiten mit einem Instrument; bei geradem Wurf wirken sie auf alle Verbündeten.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/sonic/explosion-shock-sound-wave.webp"
  },
  {
   "name": "Todessänger",
@@ -1390,7 +1509,8 @@
   },
   "skill": "Requiem",
   "effect": "Lied für 3 Runden: Gegner −2 Schaden; Verbündete, die in dieser Zeit fallen, bleiben mit 1 HP stehen.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/time/day-night-sunset-sunrise.webp"
  },
  {
   "name": "Scharlachpriester",
@@ -1403,7 +1523,8 @@
   },
   "skill": "Blutroter Fluch",
   "effect": "Opfert 1W6 HP: Das Ziel erleidet 2 Runden doppelten Schaden und kann nicht geheilt werden.",
-  "role": "Magie"
+  "role": "Magie",
+  "img": "icons/magic/life/heart-area-circle-red-green.webp"
  },
  {
   "name": "Sprecher der Ahnen",
@@ -1416,7 +1537,8 @@
   },
   "skill": "Machtwort",
   "effect": "Fünf Machtworte (Schmerz, Heilung, Barriere, Magie, Halt); dafür keine anderen aktiven Skills.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/life/cross-worn-green.webp"
  },
  {
   "name": "Prophet Athreas",
@@ -1428,7 +1550,8 @@
   },
   "skill": "Athreas Fragment",
   "effect": "Nur für Nachkommen der echten Priesterin Athrea. Einmal pro Kapitel eine wahre Vision; immun gegen fremde Visionen und Bezauberung.",
-  "role": "Support"
+  "role": "Support",
+  "img": "icons/magic/perception/silhouette-stealth-shadow.webp"
  },
  {
   "name": "Arugals Diener",
@@ -1440,6 +1563,7 @@
   },
   "skill": "Arugals Verdammnis",
   "effect": "Nur über die verfluchte Waffe Arugal. Arugal wird aus den Schatten beschworen, entzieht Lebenskraft und wird stärker.",
-  "role": "Nahkampf"
+  "role": "Nahkampf",
+  "img": "icons/magic/life/heart-shadow-red.webp"
  }
 ]
