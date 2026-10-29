@@ -17,7 +17,7 @@ Prediger von Athrea;D;T1;CHA;Orange (Charisma);#EF6C00;;;;;;8;;;5;;CHA 8 · EDU 
 Kleriker;D;T1;EDU;Grau (Bildung);#546E7A;;;5;;;;;;8;;EDU 8 · CON 5;11;13;Göttlicher Schutz;Fällt der Charakter auf 10 HP oder weniger, schützt ihn einmal pro Kampf eine Aura mit +10 HP.;Tank;Klassenbaum
 Mönch;D;T1;EDU;Grau (Bildung);#546E7A;;;;;;;5;;8;;EDU 8 · AGL 5;11;13;Meditation;Eine Aktion lang meditieren: 2W6 HP Selbstheilung.;Nahkampf;Klassenbaum
 Nachtweber;D;T1;EDU;Grau (Bildung);#546E7A;;5;;;;;;;8;;EDU 8 · DEX 5;11;13;Schattenschritt;Wird der Charakter angegriffen, teleportiert er sich zu einem Schatten auf dem Feld. CD 3 Runden.;Support;Klassenbaum
-Herbalist;D;T1;EDU / SOU;Grau (Bildung) / Magenta (Seelenkraft);#546E7A;;;;;;;;;7;7;EDU 7 · SOU 7;12;13;Kräuter und Gifte;Kann alle Kräuter zur Heilung oder als Gift verwenden, ohne magische Waffe.;Heilung;Klassenbaum
+Herbalist;D;T1;EDU / SOU;Grau (Bildung) / Magenta (Seelenkraft);#546E7A;;;;;;;;;7;7;EDU 7 · SOU 7;12;13;Kräuter und Gifte;Kann alle Kräuter zur Heilung oder als Gift verwenden.;Heilung;Klassenbaum
 Weißmagier;D;T1;EDU / WIS;Grau (Bildung) / Türkis (Weisheit);#546E7A;;;;;7;;;;7;;EDU 7 · WIS 7;12;13;Reine Heilung;Heilt alle Verbündeten in der Nähe um je 1W4.;Heilung;Klassenbaum
 Kämpfer;D;T1;STR;Rot (Stärke);#C62828;8;;5;;;;;;;;STR 8 · CON 5;11;13;Ansturm;Wuchtiger Angriff, 1W6 Schaden, stößt das Ziel 2 Felder zurück.;Nahkampf;Klassenbaum
 Sturmweber;D;T1;STR;Rot (Stärke);#C62828;8;;;;;;5;;;;STR 8 · AGL 5;11;13;Blitzpfeil;Ein mit Blitz geladener Wurf- oder Pfeilangriff, 1W6 + 2 Schaden.;Hybrid;Klassenbaum
@@ -60,7 +60,7 @@ Heiliger Gauner;C;T2;EDU / SPE;Grau (Bildung) / Gelb (Geschwindigkeit);#546E7A;;
 Friedenswächter;C;T2;EDU;Grau (Bildung);#546E7A;;;11;;8;;;;14;;EDU 14 · CON 11 · WIS 8;30;23;Friedensstiftung;Erschafft ein heiliges Feld (3×3), in dem 2 Runden niemand Schaden verursachen kann.;Tank;Klassenbaum
 Erzbischof;C;T2;EDU;Grau (Bildung);#546E7A;;;;;8;11;;;14;;EDU 14 · CHA 11 · WIS 8;30;23;Heiliges Licht;Heilt zwei Verbündete um je 2W6 oder fügt zwei Gegnern je 2W6 heiligen Schaden zu.;Heilung;Klassenbaum
 Berserker;C;T2;STR;Rot (Stärke);#C62828;14;;11;;;;;8;;;STR 14 · CON 11 · SPE 8;30;23;Rasender Schlag;Kanalisiert Wut in einen Angriff: Schaden +1W6 für jeden fehlenden Viertel-HP-Balken.;Nahkampf;Klassenbaum
-Waffenmeister;C;T2;STR;Rot (Stärke);#C62828;14;11;8;;;;;;;;STR 14 · DEX 11 · CON 8;30;23;Meisterliche Waffenführung;"Führt jede Waffe; Angriffe ohne Skill +5 Schaden.";Nahkampf;Klassenbaum
+Waffenmeister;C;T2;STR;Rot (Stärke);#C62828;14;11;8;;;;;;;;STR 14 · DEX 11 · CON 8;30;23;Meisterliche Waffenführung;"Angriffe ohne Skill +5 Schaden; Waffe wechseln kostet keine Schnellaktion.";Nahkampf;Klassenbaum
 Heiliger Ritter;C;T2;STR;Rot (Stärke);#C62828;14;;;;;11;;;;8;STR 14 · CHA 11 · SOU 8;30;23;Heilige Intervention;Chance, dass ein kritischer Fehlschlag in einen Erfolg verwandelt wird (bei 1W20 ≥ 15).;Tank;Klassenbaum
 Klingenschatten;C;T2;STR;Rot (Stärke);#C62828;14;8;;;;;;11;;;STR 14 · SPE 11 · DEX 8;30;23;Schattentanz;Bewegt sich blitzschnell zwischen Gegnern und greift bis zu 3 Ziele mit je 1W6 an.;Nahkampf;Klassenbaum
 Blutritter;C;T2;STR;Rot (Stärke);#C62828;14;;;8;;;;;;11;STR 14 · SOU 11 · INT 8;30;23;Blutopfer;Opfert eigene HP, um einen Verbündeten eine Runde um 1W20 Schaden zu stärken.;Hybrid;Klassenbaum
@@ -73,13 +73,13 @@ Erzmagier;C;T2;INT;Blau (Intelligenz);#1565C0;;;;14;11;;;;8;;INT 14 · WIS 11 ·
 Todesmagier;C;T2;INT;Blau (Intelligenz);#1565C0;;;;14;8;;;;;11;INT 14 · SOU 11 · WIS 8;30;23;Echo des Todes;Stirbt eine Kreatur neben dir, verursacht dein nächster Angriff +1W6 Schaden.;Magie;Klassenbaum
 Elementarmagier;C;T2;INT;Blau (Intelligenz);#1565C0;;;;14;;;;;11;8;INT 14 · EDU 11 · SOU 8;30;23;Elementare Meisterschaft;Meisterschaft über ein Element: +2 Schaden mit diesem Element, +2 Rüstwert dagegen.;Magie;Klassenbaum
 Blaumagier-Meister;C;T2;INT;Blau (Intelligenz);#1565C0;;;;14;8;;11;;;;INT 14 · AGL 11 · WIS 8;30;23;Level Up;Lernt schneller: +10 % Erfahrungspunkte, kann zwei Monster-Skills gleichzeitig halten.;Magie;Klassenbaum
-Arkaner Krieger;C;T2;INT;Blau (Intelligenz);#1565C0;11;;8;14;;;;;;;INT 14 · STR 11 · CON 8;30;23;Arkane Waffe;Führt jede Waffe und wirkt Magie und Heilungen damit.;Hybrid;Klassenbaum
+Arkaner Krieger;C;T2;INT;Blau (Intelligenz);#1565C0;11;;8;14;;;;;;;INT 14 · STR 11 · CON 8;30;23;Arkane Waffe;Waffenangriffe gehen gegen den niedrigeren Wert von Rüstwert und Magieresistenz.;Hybrid;Klassenbaum
 Genie;C;T2;WIS;Türkis (Weisheit);#00838F;;;;11;14;;;;8;;WIS 14 · INT 11 · EDU 8;30;23;Worte der Erleuchtung;Entfernt bei einem Verbündeten alle Furcht-, Verwirrungs- und Bezauberungseffekte.;Support;Klassenbaum
 Illusionsklinge;C;T2;WIS;Türkis (Weisheit);#00838F;;11;;;14;8;;;;;WIS 14 · DEX 11 · CHA 8;30;23;Phantomschlag;Angriffe mit Schwert, Dolch oder Lanze verursachen zusätzlich 1W10 magischen Schaden.;Hybrid;Klassenbaum
 Weltenwandler;C;T2;WIS;Türkis (Weisheit);#00838F;;;;;14;;;8;;11;WIS 14 · SOU 11 · SPE 8;30;23;Dimensionsriss;Öffnet einen Riss, durch den du oder ein Verbündeter bis zu 10 Felder weit reist.;Support;Klassenbaum
 Kriegssavant;C;T2;WIS;Türkis (Weisheit);#00838F;8;;;;14;;;11;;;WIS 14 · SPE 11 · STR 8;30;23;Taktischer Rückzug;Die ganze Gruppe zieht sich ohne Gelegenheitsangriffe 3 Felder zurück.;Support;Klassenbaum
 Aspekt der Sterne;C;T2;WIS;Türkis (Weisheit);#00838F;;;;11;14;;;;;8;WIS 14 · INT 11 · SOU 8;30;23;Sternenregen;Ein kleiner Meteoritenregen trifft zufällige Tokens auf der Karte (je 2W6).;Magie;Klassenbaum
-Soulknife;C;T2;DEX;Violett (Geschicklichkeit);#7B1FA2;;14;;8;;;;;;11;DEX 14 · SOU 11 · INT 8;30;23;Magische Klinge;Führt jede Waffe und wirkt Magie und Heilungen damit.;Hybrid;Klassenbaum
+Soulknife;C;T2;DEX;Violett (Geschicklichkeit);#7B1FA2;;14;;8;;;;;;11;DEX 14 · SOU 11 · INT 8;30;23;Magische Klinge;Waffenangriffe machen zusätzlich 1W6 magischen Schaden.;Hybrid;Klassenbaum
 Outlaw;C;T2;DEX;Violett (Geschicklichkeit);#7B1FA2;;14;;;;8;;11;;;DEX 14 · SPE 11 · CHA 8;30;23;Heimtückischer Schuss;Fernkampf aus dem Hinterhalt oder gegen überraschte Ziele verursacht doppelten Schaden.;Fernkampf;Klassenbaum
 Dunkler Prophet;C;T2;DEX / CHA;Violett (Geschicklichkeit) / Orange (Charisma);#7B1FA2;;12;;;;12;;;;8;DEX 12 · CHA 12 · SOU 8;29;23;Blutiges Omen;Opfert eigene HP, um einen eigenen Wurf zu verstärken (+1 pro 2 HP).;Hybrid;Klassenbaum
 Phantomschütze;C;T2;DEX;Violett (Geschicklichkeit);#7B1FA2;;14;;;;;11;;;8;DEX 14 · AGL 11 · SOU 8;30;23;Ätherischer Durchschuss;Ein Pfeil wird kurz ätherisch und ignoriert Rüstung und Deckung.;Fernkampf;Klassenbaum
@@ -98,7 +98,7 @@ Bounty Hunter;C;T2;AGL;Grün (Beweglichkeit);#2E7D32;;;;;8;;14;11;;;AGL 14 · SP
 Albtraumjäger;C;T2;AGL;Grün (Beweglichkeit);#2E7D32;;;;11;;;14;;;8;AGL 14 · INT 11 · SOU 8;30;23;Verzaubert;Belegt ein Ziel mit einem Fluch, der seine Wahrnehmung verzerrt (−3 auf Würfe, 2 Runden).;Fernkampf;Klassenbaum
 Chrono-Schütze;C;T2;AGL;Grün (Beweglichkeit);#2E7D32;;;;;11;;14;8;;;AGL 14 · WIS 11 · SPE 8;30;23;Back in Time;Manipuliert kurz die Zeit: einen eigenen Schuss wiederholen oder eine Bewegung rückgängig machen.;Fernkampf;Klassenbaum
 Lichtbringer;C;T2;CHA;Orange (Charisma);#EF6C00;;;;;;14;;;11;8;CHA 14 · EDU 11 · SOU 8;30;23;Licht der Hoffnung;Entfernt einen Bezauberungseffekt von einem Ziel und heilt es um 1W6.;Heilung;Klassenbaum
-Schamane;C;T2;CHA;Orange (Charisma);#EF6C00;;;;;8;14;;;;11;CHA 14 · SOU 11 · WIS 8;30;23;Aura des Gleichgewichts;"Kann alle Waffen nutzen, Rüstwert wird Blockwert; heilt und schützt statt Schaden zu verursachen.";Support;Klassenbaum
+Schamane;C;T2;CHA;Orange (Charisma);#EF6C00;;;;;8;14;;;;11;CHA 14 · SOU 11 · WIS 8;30;23;Aura des Gleichgewichts;"Rüstwert wird Blockwert; heilt und schützt statt Schaden zu verursachen (Heilung und Schutz +1W6).";Support;Klassenbaum
 Alchemist;C;T2;CHA;Orange (Charisma);#EF6C00;;11;;;;14;;;8;;CHA 14 · DEX 11 · EDU 8;30;23;Bomben;"Rote Bombe (+3 Angriff), Blaue Bombe (+3 Rüstwert) oder Grüne Bombe (Fernkampfangriff); benötigt Zutaten.";Support;Klassenbaum
 Kreuzritter;C;T2;CHA;Orange (Charisma);#EF6C00;11;;;;;14;;;8;;CHA 14 · STR 11 · EDU 8;30;23;Judgement;Ein Zauber göttlicher Gerechtigkeit: 2W6 heiliger Schaden, doppelt gegen Corrupted.;Hybrid;Klassenbaum
 Wikinger;B;T3;STR;Rot (Stärke);#C62828;18;;14;;;;;6;;10;STR 18 · CON 14 · SOU 10 · SPE 6;44;33;Ragnarök;Je weniger HP, desto stärker: +1 Schaden für je 10 % fehlende HP.;Nahkampf;Klassenbaum (Special)

@@ -137,8 +137,17 @@ export function ausruestungsBoni(items) {
   for (const item of items ?? []) {
     const s = item.system ?? {};
     if (["playerSkill", "classSkill"].includes(item.type)) {
+      // Skill-Orbs (noch nicht gelernt) wirken nicht
+      if (item.type === "playerSkill" && item.parent?.type === "character" && !(s.learned === true || s.learned === "true")) continue;
       if (!istPassiv(item)) continue;
-      const boni = passivBoni(item);
+      const boni = { ...passivBoni(item) };
+      // Gemeistert (100 %): Zusatzbonus des Skills
+      if (zahl(s.mastery?.value) >= 100) {
+        for (const [key, v] of Object.entries(s.mastery?.bonus ?? {})) {
+          const ziel = { bewegung: "movement", rw: "rw", mr: "mr", acc: "acc", hp: "hp" }[key];
+          if (ziel) boni[ziel] = zahl(boni[ziel]) + zahl(v);
+        }
+      }
       for (const [key, v] of Object.entries(boni)) if (key in summe) summe[key] += v;
       passiv.push({ name: item.name, text: boniText(boni) });
       continue;

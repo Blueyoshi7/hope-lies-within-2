@@ -14,7 +14,7 @@ const SKILL_SLOTS = [[37, 10], [30, 9], [23, 8], [18, 7], [13, 6], [8, 5], [4, 4
 export function skillSlots(actor) {
   const level = Math.max(Number(actor.system?.progression?.level) || 1, 1);
   const max = SKILL_SLOTS.find(([ab]) => level >= ab)?.[1] ?? 3;
-  const used = actor.items.filter((item) => item.type === "playerSkill").length;
+  const used = actor.items.filter((item) => item.type === "playerSkill" && (item.system?.learned === true || item.system?.learned === "true")).length;
   return { used, max };
 }
 
@@ -60,7 +60,8 @@ export class HopeLiesWithinGebenApp extends ApplicationV2 {
     return `
       <div class="hlw-geben-kopf">
         <input type="search" name="suche" placeholder="Suchen (Name, Art, Klasse, Rang) …" autofocus>
-        ${slots ? `<span class="hlw-geben-slots">Skill-Slots ${slots.used} / ${slots.max}</span>` : ""}
+        ${slots ? `<span class="hlw-geben-slots">Skill-Slots ${slots.used} / ${slots.max}</span>
+        <label class="hlw-geben-orb"><input type="checkbox" name="orb" checked> als Skill-Orb (Spieler lernt ihn selbst)</label>` : ""}
       </div>
       <p class="hlw-geben-hinweis">Tipp: Du kannst Einträge auch aus der Item-Sidebar auf den Charakterbogen ziehen.</p>
       <ol class="hlw-geben-liste">${rows || "<li>Keine Einträge in der Welt. Erst „HLW JSON Import“ ausführen.</li>"}</ol>`;
@@ -84,20 +85,26 @@ export class HopeLiesWithinGebenApp extends ApplicationV2 {
   async _geben(itemId) {
     const item = game.items.get(itemId);
     if (!item) return;
-    if (SKILL_TYPES.includes(item.type) && this.actor.items.some((owned) => owned.name === item.name && owned.type === item.type)) {
+    if (item.type === "classSkill" && this.actor.items.some((owned) => owned.name === item.name && owned.type === item.type)) {
       return ui.notifications?.warn(`${this.actor.name} hat ${item.name} schon.`);
     }
-    if (item.type === "playerSkill") {
+    const alsOrb = item.type === "playerSkill" && this.element?.querySelector?.("input[name='orb']")?.checked !== false;
+    if (item.type === "playerSkill" && !alsOrb) {
       const slots = skillSlots(this.actor);
       if (slots.used >= slots.max) {
-        return ui.notifications?.warn(`Skill-Slots voll (${slots.used} / ${slots.max}). Erst einen Skill entfernen oder Level steigern.`);
+        return ui.notifications?.warn(`Skill-Slots voll (${slots.used} / ${slots.max}). Erst einen Skill entfernen, Level steigern oder als Skill-Orb geben.`);
       }
     }
     const data = item.toObject();
     delete data._id;
     delete data.folder;
+    if (item.type === "playerSkill") {
+      foundry.utils.setProperty(data, "system.learned", !alsOrb);
+      foundry.utils.setProperty(data, "system.appraisal", { stufe: 0, versucht: false });
+      foundry.utils.setProperty(data, "system.mastery.value", 0);
+    }
     await this.actor.createEmbeddedDocuments("Item", [data]);
-    ui.notifications?.info(`${item.name} an ${this.actor.name} gegeben.`);
+    ui.notifications?.info(`${item.name}${item.type === "playerSkill" && alsOrb ? " (als Skill-Orb)" : ""} an ${this.actor.name} gegeben.`);
     if (this.mode === "skills") this.render();
   }
 }

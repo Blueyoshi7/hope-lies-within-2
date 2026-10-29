@@ -1,8 +1,9 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings } from "./hlw-talk.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
+import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
-import { WORLD_SKILLS, PLAETZE, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
+import { WORLD_SKILLS, ATTRS, PLAETZE, klasseVorschlag, verteiltePunkte, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
 const HLW = {};
 
 HLW.attributeLabels = {
@@ -178,7 +179,7 @@ function prepareResources(system) {
 
 function countInventorySlots(items) {
   return Array.from(items ?? [])
-    .filter((item) => HLW.gearItemTypes.includes(item.type))
+    .filter((item) => HLW.gearItemTypes.includes(item.type) || istOrb(item))
     .reduce((sum, item) => sum + Math.max(numberValue(item.system?.quantity), 1), 0);
 }
 
@@ -258,6 +259,17 @@ function isValidFormula(formula) {
 function isPassiveItem(item) {
   const activation = String(item.system?.activation ?? "").toLowerCase();
   return activation === "passive" || boolValue(item.system?.passive);
+}
+
+// Zusatzeffekt eines gemeisterten Skills (100 %): Zahlen, die das System selbst rechnet
+function meisterBonus(item) {
+  return istGelernterSkill(item) && meisterung(item).fertig ? meisterung(item).bonus : {};
+}
+
+function skillReichweite(item) {
+  const r = parseRange(item.system?.range);
+  const plus = numberValue(meisterBonus(item).reichweite);
+  return r && plus ? r + plus : item.system?.range;
 }
 
 function getActivationLabel(item) {
@@ -503,7 +515,7 @@ function getUsableCombatItems(actor) {
   };
   const alle = Array.from(actor.items ?? []);
   const waffen = alle.filter((item) => item.type === "weapon").sort((a, b) => Number(boolValue(b.system?.equipped)) - Number(boolValue(a.system?.equipped)));
-  const skills = alle.filter((item) => ["playerSkill", "classSkill"].includes(item.type) && !isPassiveItem(item));
+  const skills = alle.filter((item) => ["playerSkill", "classSkill"].includes(item.type) && !isPassiveItem(item) && !istOrb(item));
   return [...waffen.filter((item) => boolValue(item.system?.equipped)), ...skills].map((item) => {
     const s = item.system ?? {};
     const kategorie = normalizeDamageCategory(s.damageCategory, `${s.skillType} ${s.element}`);
@@ -526,7 +538,7 @@ function getUsableCombatItems(actor) {
       reaction: isReactionItem(item),
       usable: canUseItemAction(actor, item),
       pending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id,
-      tooltip: `<strong>${escapeHtml(item.name)}</strong><br>${zeilen.map(escapeHtml).join("<br>")}`
+      tooltip: `<strong>${escapeHtml(item.name)}</strong><br>${zeilen.map(escapeHtml).join("<br>")}${istGelernterSkill(item) ? `<br>Meisterung ${meisterung(item).wert} %` : ""}`
     };
   });
 }
@@ -564,7 +576,7 @@ function renderCombatHud() {
   const umfang = 2 * Math.PI * 29;
   const hpProzent = Math.min(Math.max(hpWert / hpMax, 0), 1);
   const tokenBild = actor.prototypeToken?.texture?.src || actor.img || "";
-  const passive = Array.from(actor.items ?? []).filter((item) => ["playerSkill", "classSkill"].includes(item.type) && isPassiveItem(item));
+  const passive = Array.from(actor.items ?? []).filter((item) => ["playerSkill", "classSkill"].includes(item.type) && isPassiveItem(item) && !istOrb(item));
 
   const tasten = getUsableCombatItems(actor);
   const waffenTasten = tasten.filter((item) => item.type === "weapon");
@@ -1125,8 +1137,8 @@ export class HopeLiesWithinActor extends Actor {
         return;
       }
 
-      const rawRange = parseRange(item.system?.range);
-      const rangeLimit = getEffectiveRangeInTiles(item.system?.range);
+      const rawRange = parseRange(skillReichweite(item));
+      const rangeLimit = getEffectiveRangeInTiles(skillReichweite(item));
       clearPendingSkill();
       HLW.pendingSkill = { actorId: this.id, itemId, sourceType, sourceTokenId: sourceToken.id, rawRange, rangeLimit };
       drawSkillRange(sourceToken, rangeLimit, item.name, rawRange);
@@ -1183,7 +1195,7 @@ export class HopeLiesWithinActor extends Actor {
         targetToken = targets[0];
       }
 
-      const rangeLimit = getEffectiveRangeInTiles(item.system?.range);
+      const rangeLimit = getEffectiveRangeInTiles(skillReichweite(item));
       const distance = getTokenDistanceInTiles(sourceToken, targetToken);
       if (rangeLimit > 0 && distance > rangeLimit + 0.01) {
         ui.notifications?.warn(`${targetToken.name} ist ausser Reichweite (${distance.toFixed(1)} / ${rangeLimit} Felder).`);
@@ -1198,7 +1210,9 @@ export class HopeLiesWithinActor extends Actor {
         : null;
       const waffenFormel = waffe ? normalizeFormula(waffe.system?.damage) : "";
       const teile = [damageFormula, waffenFormel].filter(isValidFormula).map((f) => `(${f})`);
-      const formel = `${teile.join(" + ")}${werte.bonus ? ` + ${werte.bonus}` : ""}`;
+      const mb = meisterBonus(item);
+      const meisterPlus = healing ? mb.heilung : mb.schaden;
+      const formel = `${teile.join(" + ")}${werte.bonus ? ` + ${werte.bonus}` : ""}${meisterPlus ? ` + ${meisterPlus}` : ""}`;
       const target = targetToken.actor;
       const targetDerived = target?.system?.derived ?? {};
       const currentHp = numberValue(target?.system?.resources?.hp?.value);
@@ -1274,8 +1288,11 @@ export class HopeLiesWithinActor extends Actor {
       `
     });
 
-    if (maxCooldown > 0) {
-      await item.update({ "system.cooldown.value": maxCooldown });
+    // Lernleiste: +1 % pro Einsatz; gemeistert verkürzt sich die Abklingzeit, falls das der Zusatzeffekt ist
+    await meisterungPlus(this, item);
+    const abkling = maxCooldown > 0 ? Math.max(maxCooldown - numberValue(meisterBonus(item).abklingzeit), 1) : 0;
+    if (abkling > 0) {
+      await item.update({ "system.cooldown.value": abkling });
     }
 
     await spendItemAction(this, item);
@@ -1323,16 +1340,21 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     // Klassen-Auswahl fuer den GM: alle Klassen nach Kategorie, der Vorschlag aus der Wertverteilung ist markiert.
     const vorschlag = context.system.derived?.suggestedClassName ?? "";
     const aktuell = context.system.progression?.class ?? "";
-    context.klasseAnzeige = aktuell || context.system.derived?.suggestedClass || "";
+    const automatisch = context.system.progression?.classAuto !== false;
+    // Spieler sehen nur die gespeicherte Klasse; der Vorschlag aus der Verteilung bleibt bis zum Speichern verborgen.
+    const gespeichert = HLW.klassen.find((k) => k.name === aktuell);
+    context.klasseAnzeige = aktuell ? `${aktuell}${gespeichert ? ` · ${gespeichert.category}` : ""}` : "";
+    context.klasseEffekt = gespeichert ? `${gespeichert.skill}: ${gespeichert.effect}` : "";
     context.klassenGruppen = ["Basic", "T1", "T2", "T3", "Story"].map((kategorie) => ({
       kategorie,
       klassen: HLW.klassen.filter((k) => k.category === kategorie).map((k) => ({
         name: k.name,
         label: `${k.name}${k.name === vorschlag ? " ★ Vorschlag" : ""}`,
-        selected: k.name === aktuell
+        selected: !automatisch && k.name === aktuell
       }))
     })).filter((gruppe) => gruppe.klassen.length);
-    context.vorschlagLabel = vorschlag ? `— automatisch: ${vorschlag} —` : "— automatisch (noch keine Klasse) —";
+    context.vorschlagLabel = (automatisch ? aktuell || vorschlag : vorschlag) ? `— automatisch: ${automatisch ? aktuell || vorschlag : vorschlag} —` : "— automatisch (noch keine Klasse) —";
+    context.punkte = this._punkteKontext(context.actor);
     context.kesText = kes(context.system.resources?.kes?.value);
     context.pointsOver = numberValue(context.system.derived?.points?.free) < 0;
     const prozent = (wert, max) => (max > 0 ? Math.min(Math.max(Math.round((numberValue(wert) / max) * 100), 0), 100) : 0);
@@ -1388,7 +1410,8 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     html.find("[data-edit-owned-item]").on("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      this.actor.editOwnedItem(event.currentTarget.closest("[data-item-id]")?.dataset.itemId);
+      const id = event.currentTarget.closest("[data-item-id]")?.dataset.itemId;
+      this.actor.editOwnedItem(id);
     });
 
     html.find("[data-give-owned-item]").on("click", (event) => {
@@ -1465,6 +1488,39 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     });
 
     // Klick auf Gegenstand (Raster oder Figur): kleines Menü mit den passenden Aktionen
+    // Punkte verteilen (Spieler): erst speichern, dann zeigt sich die Klasse
+    html.find("[data-plus]").on("click", (event) => {
+      event.preventDefault();
+      const k = event.currentTarget.dataset.plus;
+      this._plus[k] = (this._plus[k] ?? 0) + 1;
+      this.render(false);
+    });
+    html.find("[data-minus]").on("click", (event) => {
+      event.preventDefault();
+      const k = event.currentTarget.dataset.minus;
+      this._plus[k] = Math.max((this._plus[k] ?? 0) - 1, 0);
+      this.render(false);
+    });
+    html.find("[data-punkte-zuruecksetzen]").on("click", (event) => {
+      event.preventDefault();
+      this._plus = {};
+      this.render(false);
+    });
+    html.find("[data-punkte-speichern]").on("click", (event) => {
+      event.preventDefault();
+      this._punkteSpeichern();
+    });
+    html.find("[data-zu-den-punkten]").on("click", (event) => {
+      event.preventDefault();
+      this._tabs?.[0]?.activate("main");
+      html.find(".hb-werte-karte")[0]?.scrollIntoView({ block: "center", behavior: "smooth" });
+    });
+    // Klasse (GM): automatisch nach Verteilung oder fest gewählt
+    html.find("[data-klasse-wahl]").on("change", async (event) => {
+      const wert = event.currentTarget.value;
+      const vorschlag = this.actor.system.derived?.suggestedClassName ?? "";
+      await this.actor.update({ "system.progression.class": wert || vorschlag, "system.progression.classAuto": !wert });
+    });
     html.find("[data-gefaehrte]").on("click contextmenu", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -1490,6 +1546,47 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         systemId: "hope-lies-within-2"
       }));
     });
+  }
+
+  _punkteKontext(actor) {
+    if (actor.type === "monster") return null;
+    this._plus ??= {};
+    const s = actor.system;
+    const level = Math.max(numberValue(s.progression?.level), 1);
+    const erlaubt = verteiltePunkte(level);
+    const gespeichert = ATTRS.reduce((sum, k) => sum + Math.max(numberValue(s.attributes?.[k]?.value) - 1, 0), 0);
+    const offen = ATTRS.reduce((sum, k) => sum + (this._plus[k] ?? 0), 0);
+    const frei = erlaubt - gespeichert - offen;
+    // Bei der Erstellung (Level 1) höchstens +3 auf einen Wert; der Herkunftswert darf einen Punkt höher.
+    const herkunft = HERKUNFT[String(s.identity?.origin ?? "").trim().match(/^([ABCD])\b/)?.[1]]?.attr;
+    const deckel = (k) => (level === 1 ? 4 + (k === herkunft ? 1 : 0) : 25);
+    const werte = ATTRS.map((k) => {
+      const wert = numberValue(s.attributes?.[k]?.value);
+      const plus = this._plus[k] ?? 0;
+      return { key: k, abbr: s.attributes?.[k]?.abbr ?? k.toUpperCase(), label: s.attributes?.[k]?.label ?? k, wert: wert + plus, plus, kannPlus: frei > 0 && wert + plus < deckel(k), kannMinus: plus > 0 };
+    });
+    return { erlaubt, frei, offen, werte, aenderung: offen > 0, knoepfe: frei > 0 || offen > 0, erstellung: level === 1 };
+  }
+
+  async _punkteSpeichern() {
+    const actor = this.actor;
+    const plus = this._plus ?? {};
+    const updates = {};
+    const neu = foundry.utils.deepClone(actor.system);
+    for (const [k, p] of Object.entries(plus)) {
+      if (!(p > 0)) continue;
+      neu.attributes[k].value = numberValue(neu.attributes[k].value) + p;
+      updates[`system.attributes.${k}.value`] = neu.attributes[k].value;
+    }
+    if (!Object.keys(updates).length) return;
+    const alte = actor.system.progression?.class ?? "";
+    const automatisch = actor.system.progression?.classAuto !== false;
+    const vorschlag = klasseVorschlag(neu, HLW.klassen);
+    if (automatisch && vorschlag) updates["system.progression.class"] = vorschlag.name;
+    this._plus = {};
+    await actor.update(updates);
+    if (automatisch && vorschlag && vorschlag.name !== alte) klasseEnthuellen(actor, vorschlag, alte);
+    else ui.notifications?.info(automatisch && !vorschlag ? "Punkte gespeichert. Eine Klasse gibt es ab 10 verteilten Punkten." : "Punkte gespeichert.");
   }
 
   _zeigeGefaehrteMenue(element) {
@@ -1538,6 +1635,22 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     document.querySelectorAll(".hb-menue").forEach((menue) => menue.remove());
     const item = this.actor.items.get(element.dataset.itemId);
     if (!item) return;
+    if (istOrb(item)) {
+      const eintraege = [];
+      if (!item.system?.appraisal?.versucht || game.user?.isGM) eintraege.push(["untersuchen", "Untersuchen (Appraisal)", "fa-magnifying-glass"]);
+      eintraege.push(["lernen", "Lernen (Skill-Slot)", "fa-brain"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
+      if (game.user?.isGM) eintraege.push(["neu", "Neuer Versuch (GM)", "fa-rotate"], ["gilde", "Gilde: alles zeigen (GM)", "fa-landmark"]);
+      const id = item.id;
+      this._menue(element, orbName(item), eintraege, {
+        untersuchen: () => orbUntersuchen(this.actor, item),
+        lernen: () => orbLernen(this.actor, item, skillSlots(this.actor)),
+        give: () => this.actor.giveItemToTarget(id),
+        discard: () => this.actor.discardOwnedItem(id),
+        neu: () => item.update({ "system.appraisal.versucht": false }),
+        gilde: () => item.update({ "system.appraisal.stufe": 3 })
+      });
+      return;
+    }
     const angelegt = boolValue(item.system?.equipped);
     const eintraege = [];
     if (["weapon", "armor", "accessory", "equipment"].includes(item.type)) eintraege.push(["equip", angelegt ? "Ablegen" : "Ausrüsten", "fa-shirt"]);
@@ -1567,7 +1680,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     const gear = [];
     for (const item of items) {
       const s = item.system ?? {};
-      if (["playerSkill", "classSkill"].includes(item.type)) {
+      if (["playerSkill", "classSkill"].includes(item.type) && !istOrb(item)) {
         const passive = isPassiveItem(item);
         const cooldown = numberValue(s.cooldown?.value);
         const kategorie = normalizeDamageCategory(s.damageCategory, `${s.skillType} ${s.element}`);
@@ -1578,11 +1691,13 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
           if (heilung) tags.push({ text: "Heilung", art: "heil" });
           else if (s.damage) tags.push({ text: HLW.damageCategories[kategorie] ?? kategorie, art: kategorie === "magical" ? "magisch" : "physisch" });
           tags.push({ text: isQuickItem(item) ? "Schnellaktion" : isReactionItem(item) ? "Reaktion" : "Aktion" });
-          if (s.damageText || s.damage) tags.push({ text: s.damageText || s.damage });
+          if (s.damageText || s.damage) tags.push({ text: s.damageText || s.damage, schaden: true });
           if (s.range) tags.push({ text: `Reichweite ${s.range}` });
           if (numberValue(s.cooldown?.max)) tags.push({ text: cooldown > 0 ? `noch ${cooldown} Züge` : `Abklingzeit ${s.cooldown.max}`, art: cooldown > 0 ? "cd" : "" });
         }
         const boni = passive ? boniText(passivBoni(item)) : "";
+        // Lernleiste: gelernte Skills der Spieler meistern sich mit jedem Einsatz (Zusatzeffekt bei 100 %)
+        const m = meisterung(item);
         const eintrag = {
           id: item.id,
           name: item.name,
@@ -1592,11 +1707,22 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
           beschreibung: s.effect || s.description || "",
           tags,
           boni,
+          meisterung: istGelernterSkill(item) ? { wert: m.wert, fertig: m.fertig, text: m.text } : null,
           cooldown,
           canUse: !passive && canUseItemAction(actor, item) && cooldown <= 0,
           isPending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id
         };
         (passive ? skills.passiv : skills.aktiv).push(eintrag);
+        continue;
+      }
+      if (istOrb(item)) {
+        // Skill-Orb: der Spieler kennt nur, was sein Appraisal gezeigt hat
+        const wissen = orbWissen(item);
+        gear.push({
+          id: item.id, name: orbName(item), img: item.img, type: "orb", orb: true, rang: rangVon(item), filter: "orb", menge: "",
+          tooltip: `<strong>${escapeHtml(orbName(item))}</strong><br>${wissen.zeilen.map(escapeHtml).join("<br>")}<br><em>${escapeHtml(ORB_STUFEN[wissen.stufe])}</em>`,
+          equipped: false, platz: null
+        });
         continue;
       }
       if (!HLW.gearItemTypes.includes(item.type)) continue;
@@ -1956,6 +2082,31 @@ async function aktualisiereBilder({ alle = false, nurEigene = false } = {}) {
   return anzahl;
 }
 
+// Waffen und Klassen-Skills, deren Text noch eine Klassen- oder Waffenbindung nennt, auf den neuen Stand bringen.
+async function freieWahlNachziehen() {
+  if (!game.user?.isGM) return 0;
+  const neu = new Map();
+  for (const datei of ["weapons", "class-skills"]) {
+    const response = await fetch(`systems/hope-lies-within-2/import/${datei}.json`);
+    if (response.ok) for (const e of await response.json()) neu.set(`${e.type}|${e.name}`, e);
+  }
+  const alt = /Erlaubt den Einsatz von Magie|jede Waffe|magische Waffe|magischen Waffe/i;
+  const updates = (items) => items.filter((i) => alt.test(`${i.system?.description ?? ""} ${i.system?.effect ?? ""}`) && neu.has(`${i.type}|${i.name}`)).map((i) => {
+    const e = neu.get(`${i.type}|${i.name}`).system ?? {};
+    return { _id: i.id, "system.description": e.description ?? "", "system.effect": e.effect ?? "", ...(e.bonuses ? { "system.bonuses": e.bonuses } : {}) };
+  });
+  let anzahl = 0;
+  const welt = updates(game.items.contents);
+  if (welt.length) await Item.updateDocuments(welt);
+  anzahl += welt.length;
+  for (const actor of game.actors) {
+    const u = updates(actor.items.contents);
+    if (u.length) await actor.updateEmbeddedDocuments("Item", u);
+    anzahl += u.length;
+  }
+  return anzahl;
+}
+
 const BESTIARIUM_STAND = 1;
 
 // Vorhandene Monster auf den aktuellen Stand bringen: eigenes Bild und Token, Verhalten, Zähmbarkeit,
@@ -2029,6 +2180,8 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "bestiariumStand", { scope: "world", config: false, type: Number, default: 0 });
+  game.settings.register("hope-lies-within-2", "skillOrbsGesetzt", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "freieWahlGesetzt", { scope: "world", config: false, type: Boolean, default: false });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -2074,6 +2227,7 @@ Hooks.once("ready", async () => {
     aktualisiereBestiarium,
     erstelleLindhain,
     entferneOrtsmarker,
+    spielercharakterAnlegen,
     gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor)
   };
   registerTalk();
@@ -2089,6 +2243,23 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && game.settings.get("hope-lies-within-2", "bestiariumStand") < BESTIARIUM_STAND) {
     await aktualisiereBestiarium();
     await game.settings.set("hope-lies-within-2", "bestiariumStand", BESTIARIUM_STAND);
+  }
+  // Skill-Orbs neu: Skills, die Charaktere schon haben, gelten als gelernt; dazu Lernleiste und Zusatzeffekt aus dem Import (einmalig).
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "skillOrbsGesetzt")) {
+    const response = await fetch("systems/hope-lies-within-2/import/skills.json");
+    const quelle = new Map(response.ok ? (await response.json()).map((e) => [e.name, e.system?.mastery]) : []);
+    const weltUpdates = game.items.filter((i) => i.type === "playerSkill" && quelle.has(i.name)).map((i) => ({ _id: i.id, "system.mastery": quelle.get(i.name), "system.learned": false }));
+    if (weltUpdates.length) await Item.updateDocuments(weltUpdates);
+    for (const actor of game.actors.filter((a) => a.type === "character")) {
+      const u = actor.items.filter((i) => i.type === "playerSkill").map((i) => ({ _id: i.id, "system.learned": true, ...(quelle.has(i.name) ? { "system.mastery": { ...quelle.get(i.name), value: numberValue(i.system?.mastery?.value) } } : {}) }));
+      if (u.length) await actor.updateEmbeddedDocuments("Item", u);
+    }
+    await game.settings.set("hope-lies-within-2", "skillOrbsGesetzt", true);
+  }
+  // Freie Wahl: alte Texte („Erlaubt den Einsatz von Magie“, „Führt jede Waffe“ …) einmalig ersetzen.
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "freieWahlGesetzt")) {
+    await freieWahlNachziehen();
+    await game.settings.set("hope-lies-within-2", "freieWahlGesetzt", true);
   }
   // Tier-Klassen bekommen den Klassen-Skill „Zähmen“.
   if (game.user?.isGM) {
@@ -2113,6 +2284,23 @@ Hooks.once("ready", async () => {
 
     await combat.nextTurn();
   });
+});
+
+// GM: Spielercharakter anlegen und einem Spieler zuweisen
+Hooks.on("renderActorDirectory", (app, html) => {
+  if (!game.user?.isGM) return;
+  const root = html?.[0] ?? html;
+  if (!root?.querySelector || root.querySelector("[data-hlw-spieler-anlegen]")) return;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "hlw-sidebar-import";
+  button.dataset.hlwSpielerAnlegen = "true";
+  button.innerHTML = `<i class="fa-solid fa-user-plus"></i> Spielercharakter anlegen`;
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    spielercharakterAnlegen();
+  });
+  (root.querySelector(".directory-header") ?? root.querySelector("header") ?? root).appendChild(button);
 });
 
 Hooks.on("renderItemDirectory", (app, html) => {
@@ -2303,6 +2491,18 @@ Hooks.on("updateActor", (actor, changes, options, userId) => {
   if (userId !== game.user?.id) return;
   if (!foundry.utils.hasProperty(changes, "system.progression.class")) return;
   actor.erhalteKlassenSkills(foundry.utils.getProperty(changes, "system.progression.class"));
+});
+
+// Passive Skills wachsen um 1 % pro Kampf, in dem sie wirken
+Hooks.on("deleteCombat", async (combat) => {
+  if (!game.user?.isGM || game.users.activeGM?.id !== game.user.id) return;
+  const gesehen = new Set();
+  for (const c of combat.combatants) {
+    const actor = c.actor?.isToken ? game.actors.get(c.actor.id) : c.actor;
+    if (!actor || actor.type !== "character" || gesehen.has(actor.id)) continue;
+    gesehen.add(actor.id);
+    for (const item of actor.items.filter((i) => istGelernterSkill(i) && isPassiveItem(i))) await meisterungPlus(actor, item);
+  }
 });
 
 Hooks.on("updateActor", (actor) => {

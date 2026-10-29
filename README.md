@@ -39,6 +39,16 @@ Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP
 
 **Bilder:** Alle Skills, Klassen-Skills, Waffen, Rüstungen und Accessoires haben eigene Bilder im Stil der Charakterporträts (`assets/icons`), alle übrigen Gegenstände ein passendes Symbol aus Foundrys Bibliothek. Beim ersten Start einer Welt mit dieser Version ersetzt das System als GM einmalig die alten Foundry-Symbole durch die eigenen Bilder (Item-Sidebar, Charaktere und nicht verknüpfte Figuren auf Szenen); selbst gewählte Bilder bleiben. Von Hand: `game.hlw.aktualisiereBilder()`, `game.hlw.aktualisiereBilder({ alle: true })` ersetzt auch schon gesetzte Foundry-Symbole.
 
+## Spielercharaktere
+
+- **Anlegen (GM):** In der Actor-Sidebar auf **Spielercharakter anlegen** klicken: Name, Spieler und Herkunft (A–D) wählen. Der Charakter gehört dann dem Spieler, ist seine Spielfigur, sein Token ist verknüpft, und der Herkunftspunkt steckt schon im passenden Wert.
+- **Punkte verteilen (Spieler):** Im Bogen erscheint „N Punkte frei“. Mit + und − verteilen, mit **Speichern** bestätigen. Gespeicherte Punkte sind fest. Bei Level 1 höchstens +3 pro Wert (Herkunftswert einen mehr).
+- **Klasse als Überraschung:** Während des Verteilens sieht der Spieler keine Klasse. Beim Speichern wird sie bestimmt und groß aufgedeckt; der Klassen-Skill kommt automatisch. Nach jedem Level-Up kann der Spieler neue Punkte jederzeit verteilen, und die Klasse kann sich dabei ändern.
+- **GM:** Level und EXP stellt nur der GM. Werte kann der GM direkt eintragen. Im Klassen-Dropdown heißt „automatisch“: Klasse nach Verteilung; eine fest gewählte Klasse (z. B. Story-Klasse) bleibt, bis der GM wieder „automatisch“ wählt.
+- **Freie Wahl:** Waffen und Skills sind an keine Klasse und keine Mindestwerte gebunden. Magie braucht keine magische Waffe; magische Waffen geben Magischer Schaden +1.
+- **Skill-Orbs:** Skills, die der GM gibt („Skill geben“, Haken „als Skill-Orb“), landen als **Skill-Orb** im Inventar. Der Spieler sieht nur „Skill-Orb (Rang X)“ und eine ungenaue Beschreibung. **Untersuchen** (Klick auf den Orb): 1W20 + SOU · unter 10 ungenau · 10–19 Art · ab 20 Art, Reichweite und Schaden; ein Versuch pro Orb (GM: „Neuer Versuch“, „Gilde: alles zeigen“). **Lernen** verbraucht den Orb und belegt einen Skill-Slot; erst dann sieht der Spieler Namen und volle Wirkung. Orbs lassen sich weitergeben und zählen als Inventarplatz.
+- **Lernleiste:** Jeder gelernte Skill hat eine Leiste von 0 bis 100 %: +1 % pro Einsatz (passive Skills +1 % pro Kampf). Bei 100 % ist er gemeistert und bekommt seinen eigenen Zusatzeffekt (z. B. Schaden +2, Abklingzeit −1, Doppelstoß trifft dreimal, Kettenblitz springt weiter). Zahlen wie Schaden, Heilung, Reichweite und Abklingzeit rechnet das System selbst. Skills, die Charaktere vor diesem Update hatten, gelten als gelernt.
+
 ## Charakterbogen und Kampfleiste
 
 - **Charakter:** Figur mit Ausrüstungsplätzen (Kopf, Brust, Arme, Beine, Kette, Ohrring, Ring, Armband, Haupt- und Nebenhand), Rahmenfarbe nach Rang. Rechts Kampfwerte, Werte und Waffen, darunter das Inventar als Raster mit Filtern und die World-Skills. Klick auf einen Gegenstand öffnet ein Menü (Ausrüsten/Ablegen, Benutzen, Details, Bearbeiten, An Ziel geben, Wegwerfen). Rüstung tauscht automatisch mit dem Teil auf demselben Platz.
@@ -87,6 +97,7 @@ scripts/hlw-regeln.js        Regeln aus Kanon 2.0 (Kampfwerte, Punkte, Klassen, 
 scripts/hlw-talk.js          NSC-Gespräch
 scripts/hlw-szenen.js        Szenenaufbau Lindhain
 scripts/hlw-gefaehrte.js     Zähmen und Gefährten
+scripts/hlw-charakter.js     Spielercharaktere anlegen, Klassen-Enthüllung, Skill-Orbs, Meisterung
 scripts/hlw-geben.js         GM-Fenster „Skill geben“ / „Gegenstand geben“
 styles/hlw-bogen.css         Charakterbogen und Kampfleiste
 data/klassen.json            Klassen mit Lvl-Satz

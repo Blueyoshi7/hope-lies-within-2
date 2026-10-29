@@ -218,7 +218,7 @@
    "SOU": 7
   },
   "skill": "Kräuter und Gifte",
-  "effect": "Kann alle Kräuter zur Heilung oder als Gift verwenden, ohne magische Waffe.",
+  "effect": "Kann alle Kräuter zur Heilung oder als Gift verwenden.",
   "role": "Heilung",
   "img": "systems/hope-lies-within-2/assets/icons/klassen/kraeuter-und-gifte.webp"
  },
@@ -746,7 +746,7 @@
    "CON": 8
   },
   "skill": "Meisterliche Waffenführung",
-  "effect": "Führt jede Waffe; Angriffe ohne Skill +5 Schaden.",
+  "effect": "Angriffe ohne Skill +5 Schaden; Waffe wechseln kostet keine Schnellaktion.",
   "role": "Nahkampf",
   "img": "systems/hope-lies-within-2/assets/icons/klassen/meisterliche-waffenfuehrung.webp"
  },
@@ -915,7 +915,7 @@
    "CON": 8
   },
   "skill": "Arkane Waffe",
-  "effect": "Führt jede Waffe und wirkt Magie und Heilungen damit.",
+  "effect": "Waffenangriffe gehen gegen den niedrigeren Wert von Rüstwert und Magieresistenz.",
   "role": "Hybrid",
   "img": "systems/hope-lies-within-2/assets/icons/klassen/arkane-waffe.webp"
  },
@@ -993,7 +993,7 @@
    "INT": 8
   },
   "skill": "Magische Klinge",
-  "effect": "Führt jede Waffe und wirkt Magie und Heilungen damit.",
+  "effect": "Waffenangriffe machen zusätzlich 1W6 magischen Schaden.",
   "role": "Hybrid",
   "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-klinge.webp"
  },
@@ -1250,7 +1250,7 @@
    "WIS": 8
   },
   "skill": "Aura des Gleichgewichts",
-  "effect": "Kann alle Waffen nutzen, Rüstwert wird Blockwert; heilt und schützt statt Schaden zu verursachen.",
+  "effect": "Rüstwert wird Blockwert; heilt und schützt statt Schaden zu verursachen (Heilung und Schutz +1W6).",
   "role": "Support",
   "img": "systems/hope-lies-within-2/assets/icons/klassen/aura-des-gleichgewichts.webp"
  },

@@ -32,7 +32,7 @@ Hinterhalt;D;nicht verkäuflich;Spieler kann sich in Natürlichen gegenden Tarne
 Herz der Tiere;D;nicht verkäuflich;Erlaubt es ein Tier als Gefährten zu halten. Mit einem Tiergefährten erhält der Charakter +10 HP;Tiermeister;Passive;Klasse;Perma;;;
 Sellenvergabe;D;nicht verkäuflich;Kann die Kraft seiner Seele beschwören um Gegner anzugreifen oder Verbündete zu heilen.;Beschwörer;Magie;Klasse;1 Turn;;1W6;
 Präzisionsschuss;D;nicht verkäuflich;Ein gezielter Fernangriff mit hoher Genauigkeit. Schaden: 1W8.;Scharfschütze;Fernkampf;Klasse;1 Turn;3;1W8;
-Kräuter und Gifte;D;nicht verkäuflich;Kann alle Kräuter zur Heilung verwenden. Keine magische Waffe wird benötigt.;Herbalist;Heilung;Klasse;1 Turn;1;1W6;
+Kräuter und Gifte;D;nicht verkäuflich;Kann alle Kräuter zur Heilung oder als Gift verwenden.;Herbalist;Heilung;Klasse;1 Turn;1;1W6;
 Tosende Bestie;D;nicht verkäuflich;Eine Nahkampfattacke, die 2W6 Schaden verursacht und Feinde ängstigt, Aber dich in Rage bringt. Rage: Du musst die folgenden 2 Züge mit normalen angriffen die nähesten Ziele angreifen.;Bestienkrieger;Nahkampf;Klasse;1 Turn;1;4W4;
 Himmlischer Schauer;D;nicht verkäuflich;Täuscht eine Heilung vor und fügt stattdessen 1W6 Schaden in einer 3x3 Sq Fläche zu.;Corrupted-Jäger;Fernkampf;Klasse;1 Turn;3;1W6;
 Netzfalle;D;nicht verkäuflich;Fängt einen Gegner ein, der sich 2 Runden lang nicht bewegen kann.;Fallenleger;Fernkampf;Klasse;3 Turns;1;;
@@ -46,12 +46,12 @@ Göttlicher Schutz;D;nicht verkäuflich;Wenn der Charakter auf 10 HP oder wenige
 Schattenschritt;D;nicht verkäuflich;Lässt dich zu einem Schatten auf dem Spielfeld telepotieren, wenn du angegriffen wirst. CD: 3 Runden;Nachtweber;Verteidigung;Klasse;3 Turns;4;;
 Reine Heilung;D;nicht verkäuflich;Eine leichte Heilung für alle Verbündeten in der Nähe. 1W4 pro Verbündetem;Weißmagier;Heilung;Klasse;1 Turn;;;
 Meditation;D;nicht verkäuflich;Der Mönch kann sich in einer kurzen Meditation selbst heilen.;Mönch;Heilung;Klasse;1 Turn;;1W6;
-Kräuter und Gifte;D;nicht verkäuflich;Kann alle Kräuter zur Heilung verwenden. Keine magische Waffe wird benötigt.;Herbalist;Heilung;Klasse;1 Turn;1;1W6;
+Kräuter und Gifte;D;nicht verkäuflich;Kann alle Kräuter zur Heilung oder als Gift verwenden.;Herbalist;Heilung;Klasse;1 Turn;1;1W6;
 Ragnarök;A;nicht verkäuflich;Je weniger Leben ein Wikinger hat deso mehr Bonusschaden macht er.;Wikinger;Passive;Awaken;Perma;;0-20 Schaden;
 Ebbe und Flut;A;nicht verkäuflich;2 Skills: Ebbe - Ein Verbündeter wird sofort um eine große Menge geheilt.(1W20) Flut - Alle Verbündeten im Wirkungsbereich werden leicht geheilt (2W4);Gezeitenrufer;Heilung;Awaken;1 Turn;3;;
 Verhängnis und Verderben;A;nicht verkäuflich;Verhängnis: Markiert das Ziel mit einem Fluch, der über Zeit (5 Runden) Schaden verursacht. (1W4) Verderben: Sobald ein Ziel von Verhängnis betroffen ist, kann Verderben aktiviert werden,der Todsucher kann sich hinter das Ziel teleportieren und macht zusätzlichen Schaden. (1W10);Todsucher;Magie;Awaken;1 Turn;4;;
 Rasender Schlag;C;nicht verkäuflich;Der Charakter kanalisiert seine unterdrückte Wut in einen einzigen, verheerenden Nahkampfangriff. Der Spieler ist dannach 2 Runden lang angriffs und bewegungsunfähig. Angriff ohne Waffe.;Berserker;Nahkampf;Klasse;3 Turns;1;4W8;
-Meisterliche Waffenführung;C;nicht verkäuflich;Spieler kann jede Waffe führen. Spieler macht bei einem Angriff ohne Skill +5 Schaden.;Waffenmeister;Passive;Klasse;Perma;;Schaden +5;
+Meisterliche Waffenführung;C;nicht verkäuflich;Angriffe ohne Skill +5 Schaden. Waffe wechseln kostet keine Schnellaktion.;Waffenmeister;Passive;Klasse;Perma;;Schaden +5;
 Schattentanz;C;nicht verkäuflich;Der Charakter bewegt sich blitzschnell und hinterlässt scheinbar flüchtige Schattenbilder. Er kann sich an einen anderen Ort innerhalb der Reichweite teleportieren und wird für 1 Runde unsichtbar.;Klingenschatten;Magie;Klasse;4 Turns;4;;
 Blutopfer;C;nicht verkäuflich;Der Spieler fügt sich eine Wunde zu und Opfert sein Blut um einen Verbündeten für eine Runde zu stärken. 1W20 -> Schaden = zusätzlicher DMG;Blutritter;Magie;Klasse;4 Turns;3;;
 Heilige Intervention;C;nicht verkäuflich;Eine passive Chance, dass göttliche Gunst einen kritischen Fehlschlag in einen Erfolg umwandelt. Für den Spieler und Verbündete. 1W20 1-10 -> Fehlschlag 11-20 -> Kein Fehlschlag;Heiliger Ritter;Passive;Klasse;Perma;3;;
@@ -64,7 +64,7 @@ Elementare Meisterschaft;C;nicht verkäuflich;Der Spieler erhält meisterhafte K
 Echo des Todes;C;nicht verkäuflich;Wenn eine Kreatur neben dem Spieler getötet wird erhält dieser für seinen nächsten Angriff zusätzlichen Schaden. 2W6 zusatz Schaden.;Todesmagier;Passive;Klasse;Perma;1;;
 Magische Meisterschaft;C;nicht verkäuflich;100%iger Crit +1W10 auf einen Spell deiner Wahl;Erzmagier;Magie;Klasse;1x Tag;;;
 Level Up;C;nicht verkäuflich;Der Blaumagier Meister lernt schneller aus seinen Erfahrungen. Er erhält einen Bonus auf Erfahrungspunkte aus besiegten Monstern.;Blaumagier-Meister;Passive;Klasse;Perma;;;
-Arkane Waffe;C;nicht verkäuflich;Der Spieler kann jede Waffe führen sowie Magie und Heilungen mit Ihr wirken. (Sofern diese gelernt sind);Arkaner Krieger;Passive;Klasse;Perma;;;
+Arkane Waffe;C;nicht verkäuflich;Waffenangriffe gehen gegen den niedrigeren Wert von Rüstwert und Magieresistenz des Ziels.;Arkaner Krieger;Passive;Klasse;Perma;;;
 Sternenregen;C;nicht verkäuflich;Ruft einen kleinen Meteoritenregen herab, der Schaden an random Tokensauf der Map verursacht.;Aspekt der Sterne;Magie;Klasse;5 Turns;4;3W6 + 2;
 Phantomschlag;C;nicht verkäuflich;Der Spieler mach neben physischem Schaden mit einem Schwert / Dolch / Lanze  zusätzlich magischen Schaden. 1W10;Illusionsklinge;Passive;Klasse;Perma;1;;
 Worte der Erleuchtung;C;nicht verkäuflich;Der Genie spricht Worte der Klarheit und des Mutes. Einem Verbündeten werden alle Furcht-, Verwirrungs- oder Benommenheitseffekte sofort entfernt.;Genie;Heilung;Klasse;3 Turns;3;;
@@ -72,7 +72,7 @@ Dimensionsriss;C;nicht verkäuflich;Der Charakter kann einen Riss im Raumgefüge
 Taktischer Rückzug;C;nicht verkäuflich;Der Charakter kann sich schnell und strategisch aus einer gefährlichen Situation im Kampf zurückziehen. Angriff auf den Spieler wird abgebrochen und der Spieler kann sich einmal frei bewegen.;Kriegssavant;Verteidigung;Klasse;3 Turns;;;
 Seelenentzug;C;nicht verkäuflich;Der Todesweber greift nach der Lebensessenz eines Ziels. Das Ziel erleidet Schaden, und der Todesweber heilt sich um die Hälfte des verursachten Schadens.;Todesweber;Magie;Klasse;4 Turns;3;3W6;
 Ätherischer Durchschuss;C;nicht verkäuflich;Der Phantomschütze feuert einen Pfeil ab, der für den Bruchteil einer Sekunde ätherisch wird. Dieser Schuss ignoriert die Rüstung des Ziels und psychischen Schaden.;Phantomschütze;Fernkampf;Klasse;3 Turns;3;2W6+2;
-Magische Klinge;C;nicht verkäuflich;Der Spieler kann jede Waffe führen sowie Magie und Heilungen mit Ihr wirken. (Sofern diese gelernt sind);Soulknife;Passive;Klasse;Perma;;;
+Magische Klinge;C;nicht verkäuflich;Waffenangriffe machen zusätzlich 1W6 magischen Schaden.;Soulknife;Passive;Klasse;Perma;;;
 Blutiges Omen;C;nicht verkäuflich;Der dunkle Prophet kann sein eigenes Leben opfern um seinen eigenen Wurf zu verstärken. Ein durch diese Fähigkeit auf 20 gebrachter Wurf ist nicht als Crit zu werten. (2HP -> +1 Wurf);Dunkler Prophet;Magie;Klasse;Instant;1;;
 Heimtückischer Schuss;C;nicht verkäuflich;Wenn er einen Fernkampfangriff aus dem Hinterhalt oder gegen ein überraschtes Ziel ausführt, verursacht dieser Angriff zusätzlichen Schaden.;Outlaw;Passive;Klasse;Perma;;Schaden +1W10;
 Loki;C;nicht verkäuflich;Erlaub den Teleport zum Schatten eines Tokens auf der Map.  CD 4;Trickster;Magie;Klasse;Instant;4;;
@@ -94,7 +94,7 @@ Licht der Hoffnung;C;nicht verkäuflich;Der Lichtbringer berührt ein Ziel und k
 Mutagene Mischung;C;nicht verkäuflich;Spieler erhält die Skills: Rote Bombe, Blaue Bombe und Grüne Bombe Für den Einsatzt muss der Spieler Gegenstände aus seinem Inventar verwandeln.;Alchemist;Magie;Klasse;2 Turns;;3 Skills;
 Judgement;C;nicht verkäuflich;Der Charakter führt wirkt einen Zauber, der von göttlicher oder gerechter Macht durchdrungen ist. Dies verursacht 2W10 Schaden. Dieser Skill kann mit jeder Waffe ausgeführt werden.;Kreuzritter;Magie;Klasse;4 Turns;3;2W10;
 Verderbende Berührung;C;nicht verkäuflich;Der Spieler Belegt einen anderen Token mit einem Verderbenden Mal. Der Spieler erhält den nächten Schaden auf dem Ziel als Heilung.;Dunkler Prophet;Heilung;Klasse;3 Turns;3;;
-Aura des Gleichgewichts;C;nicht verkäuflich;Spieler kann alle Waffen verwenden. Rüstwert -> Blockwert. Spieler kann keine Skills verwenden die Schaden verursachen.;Schamane;Passive;Klasse;Perma;;40 HP, 4 Blockwert +4W4 Schaden;
+Aura des Gleichgewichts;C;nicht verkäuflich;"Rüstwert wird Blockwert. Spieler kann keine Skills einsetzen, die Schaden verursachen; Heilungen und Schutz +1W6.";Schamane;Passive;Klasse;Perma;;40 HP, 4 Blockwert +4W4 Schaden;
 Göttliche Welle;C;nicht verkäuflich;Der Heiliger entfesselt eine Welle reiner, göttlicher Energie um sich herum. Alle Verbündeten in diesem Bereich erhalten sofort 3W6 Heilung.;Heiliger;Heilung;Klasse;5 Turns;1;;
 Elementare Gestalt (Feuer, Blitz, Eis);C;nicht verkäuflich;Der Druide kann eine elementare Formen herbeirufen und deren Stärken nutzen.;Druide;Magie;Klasse;Perma;;;
 Göttlicher Bluff;C;nicht verkäuflich;;Heiliger Gauner;Nahkampf;Klasse;;;;

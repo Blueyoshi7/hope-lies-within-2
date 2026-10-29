@@ -22,7 +22,8 @@
           "job": "",
           "title": "",
           "insignia": "",
-          "activeInsignia": "slot1"
+          "activeInsignia": "slot1",
+          "classAuto": true
         },
         "attributes": {
           "str": {
@@ -388,6 +389,16 @@
           "initiative": 0,
           "hp": 0,
           "hpPerLevel": 0
+        },
+        "appraisal": {
+          "stufe": 0,
+          "versucht": false
+        },
+        "learned": false,
+        "mastery": {
+          "value": 0,
+          "effect": "",
+          "bonus": {}
         }
       },
       "gear": {

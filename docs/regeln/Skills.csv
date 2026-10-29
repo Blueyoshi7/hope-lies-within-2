@@ -1,141 +1,141 @@
-﻿Name;Rang;Wert (SK);Marktwert;Händler zahlt;Beschreibung;Art;Fundort;Lernpunkte;Waffe;Schaden;Range;Cooldown;Skalierung;Alt-Tier;Hinweis
-Blitzschlag;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 4.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;4;1 Turn;INT / WIS;1;
-Blutrausch;D;120;1 GK 20 SK;48 SK;Schaden 2 + 1D4 (Bei Tötung erneuter Angriff), Range 1.0;Nahkampf;Skill-Orb;5;Physisch;2 + 1D4 (Bei Tötung erneuter Angriff);1;1 Turn;STR;1;
-Donnerhand;D;120;1 GK 20 SK;48 SK;Ohne Waffe;Magie;Skill-Orb;5;Nicht relevant;1 + 1D4;1;1 Turn;;1;
-Donnerschlag;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 2.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;2;1 Turn;EDU / CHA;1;
-Doppelstoß;D;120;1 GK 20 SK;48 SK;Schaden 2 + 2D6, Range 1.0;Nahkampf;Skill-Orb;5;Physisch;2 + 2D6;1;1 Turn;STR / CON;1;
-Durchdringender Stoß;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 1.0;Nahkampf;Skill-Orb;5;Physisch;3 + 1D4;1;1 Turn;STR, DEX / CON, SPE;1;
-Eisbarriere;D;120;1 GK 20 SK;48 SK;Der Caster erhält ein Schild in Höhe von 1W6 + Waffe, solange der Caster sich nicht bewegt.;Verteidigung;Skill-Orb;5;Magisch;;;1 Turn;INT / WIS;1;
-Eishand;D;120;1 GK 20 SK;48 SK;Schaden 1 + 1D4, Range 3.0;Magie;Skill-Orb;5;Magisch;1 + 1D4;3;1 Turn;;1;
-Eislanze;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 4.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;4;1 Turn;INT / WIS;1;
-Eisschlag;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 2.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;2;1 Turn;EDU / CHA;1;
-Elementar Schuss;D;200;2 GK;80 SK;Schaden 2 + 1D4, Range 4.0;Fernkampf;Skill-Orb;15;Magisch;2 + 1D4;4;1 Turn;AGL / SOU;1;
-Erdspike;D;120;1 GK 20 SK;48 SK;Ein kleiner Erdspieß schießt aus dem Boden hervor und fügt 1W4 Schaden zu. Kann Gegner kurz aus dem Gleichgewicht bringen.;Magie;Skill-Orb;5;Magisch;1W4;2;1 Turn;;1;
-Erweiterte Verteidigung;D;120;1 GK 20 SK;48 SK;"""Der Benutzer erhält einen magischen Schild, der Ihn vor Schaden beschützt. Reichweite und Dauer wird mit INT/WIS erhöht""";Verteidigung;Skill-Orb;5;Nicht relevant;1D4 +3 (Schild für den restlichen Kampf);;1 Turn;CON / INT;1;
-Feuerball;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 4.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;4;1 Turn;INT / WIS;1;
-Feuerhand;D;120;1 GK 20 SK;48 SK;Ohne Waffe.;Magie;Skill-Orb;5;Nicht relevant;1 + 1D4;3;1 Turn;;1;
-Feuerhieb;D;120;1 GK 20 SK;48 SK;Ohne Waffe.;Magie;Skill-Orb;5;Physisch;3 + 1D4;2;1 Turn;EDU / CHA;1;
-Geisterschritt;D;120;1 GK 20 SK;48 SK;Erhöt die Movementweite +1.;Passive;Skill-Orb;5;;;;Perma;;1;
-Giftpfeil;D;120;1 GK 20 SK;48 SK;Schaden 1D4 (Nächster Schaden auf Ziel +3), Range 4.0;Fernkampf;Skill-Orb;5;Physisch;1D4 (Nächster Schaden auf Ziel +3);4;1 Turn;AGL / SOU;1;
-Heiliger Schlag;D;120;1 GK 20 SK;48 SK;Schaden 1 + 2D4, Range 4.0;Magie;Skill-Orb;5;Physisch;1 + 2D4;4;1 Turn;EDU / WIS;1;
-Ich bin ein Baum!;D;120;1 GK 20 SK;48 SK;Erhält Wurzeln die Rückstoß- oder Verschiebeeffekt verhindern aber das Movement einschrenken (-1). Bei 8 Soul erhält der Spieler beim Stillstehen 1W4 Leben alle 2 Runden.;Passive;Skill-Orb;5;Nicht relevant;;;Perma;;1;
-Kleine Heilung;D;120;1 GK 20 SK;48 SK;Schaden 1D4 Heilung, Range 2.0;Heilung;Skill-Orb;5;Magisch;1D4 Heilung;2;1 Turn;EDU / CHA;1;
-Magischer Funke;D;120;1 GK 20 SK;48 SK;Ein kleiner magischer Stoß, der einen Gegner leicht zurückstößt und Schaden anrichtet.;Magie;Skill-Orb;5;Nicht relevant;1W4;2;1 Turn;;1;
-Opfer;D;120;1 GK 20 SK;48 SK;Schaden 1D6 (Heilung), Range 1.0;Heilung;Skill-Orb;5;Magisch;1D6 (Heilung);1;1 Turn;EDU / CHA;1;
-Pfeilregen;D;160;1 GK 60 SK;64 SK;Schaden 3 + 1D4, Range 4.0;Fernkampf;Skill-Orb;10;Physisch;3 + 1D4;4;1 Turn;AGL / SOU;1;
-Schattenblick;D;120;1 GK 20 SK;48 SK;;Passive;Skill-Orb;5;;;;Perma;;1;
-Schattenhafte Presänz;D;120;1 GK 20 SK;48 SK;Erhält eine dauerhafte +3 auf den Rüstwert.;Passive;Skill-Orb;5;;;;Perma;AGL / SPE;1;
-Schattenhieb;D;120;1 GK 20 SK;48 SK;Schaden 1D4 x 1D4, Range 1.0;Nahkampf;Skill-Orb;5;Physisch;1D4 x 1D4;1;1 Turn;DEX / SPE;1;
-Schattenschnur;D;120;1 GK 20 SK;48 SK;Der Gegner wird nach dem treffen von einer magischen dunklen Schnurr fixiert.;Verteidigung;Skill-Orb;5;Physisch;1W4;3;1 Turn;AGL / SOU;1;
-Schattenschritt;D;120;1 GK 20 SK;48 SK;Ermöglicht eine kurze Teleportation (3 Squares), ohne Schaden zu verursachen, ideal für taktische Positionierung.;Magie;Skill-Orb;5;Nicht relevant;;1;1 Turn;;1;
-Schattenschuss;D;200;2 GK;80 SK;Schaden 2 + 1D4, Range 4.0;Fernkampf;Skill-Orb;15;Physisch;2 + 1D4;4;1 Turn;AGL / SOU;1;
-Schnellfeuer;D;120;1 GK 20 SK;48 SK;Zusätzlicher Schaden wenn ein Verbündeter direkt neben dir Schaden verursacht;Passive;Skill-Orb;5;Nicht relevant;1.0;1;Perma;AGL / SOU;1;
-Schwung des Krieger;D;120;1 GK 20 SK;48 SK;Schaden gegen 2 hintereinanderstehenden Gegnern;Nahkampf;Skill-Orb;5;Physisch;1 + 1D4;1;1 Turn;STR / CON;1;
-Seelenauge;D;120;1 GK 20 SK;48 SK;Erkennt Fallen und versteckte Gegenstände um den Caster (4 Tiles);Passive;Skill-Orb;5;Nicht relevant;;2;1 Turn;EDU / WIS;1;
-Seelengriff;D;120;1 GK 20 SK;48 SK;Schaden 2 + 1D4, Range 8.0;Magie;Skill-Orb;5;Physisch;2 + 1D4;8;1 Turn;AGL / SOU;1;
-Splitterpfeil;D;120;1 GK 20 SK;48 SK;Zwei Gegner die nebeneinander Stehen werden mit je einem Wurf getroffen.;Fernkampf;Skill-Orb;5;Physisch;1D4 / 1D4;4;1 Turn;AGL / SOU;1;
-Stärke der Natur;D;120;1 GK 20 SK;48 SK;;Passive;Skill-Orb;5;;;;Perma;AGL / SOU;1;
-Steinkanone;D;120;1 GK 20 SK;48 SK;Schaden 2W4, Range 2.0;Magie;Skill-Orb;5;Magisch;2W4;2;1 Turn;INT / WIS;1;
-Sturmstoß;D;120;1 GK 20 SK;48 SK;Dash zu einem Gegner und anschließend ein Angriff;Magie;Skill-Orb;5;Physisch;1D4;3;1 Turn;STR / CON;1;
-Windsprung;D;120;1 GK 20 SK;48 SK;Erlaubt einen Sprung über 10 Felder. (5CD);Magie;Skill-Orb;5;Nicht relevant;;;Instant;;1;
-Zermalmender Schlag;D;120;1 GK 20 SK;48 SK;Mit diesem Skill kann Ore und anderes ohne Pickaxe abgebaut werden. Wie viel erhalten wird ist mit einem W20 festzulegen.;Nahkampf;Skill-Orb;5;Physisch;;1;Perma;STR / CHA;1;
-Schnitter;D;120;1 GK 20 SK;48 SK;Angriff mit einer Scharfen Klinge auf einen Gegner.;Nahkampf;Skill-Orb;5;Physisch;2W4;1;1 Turn;STR / SPE / DEX;1;
-Magnet-Punkt;D;160;1 GK 60 SK;64 SK;Metalle in der nähe werden zu einem festgelegten Punkt gezogen und verursachen dort Schaden.;Magie;Skill-Orb;10;Nicht relevant;1W4+2;1;1 Turn;INT / SOU / WIS;1;
-Stein-Haut;D;120;1 GK 20 SK;48 SK;Der Spieler kann in den nächsten 2 Runden Je 2 Schaden Blocken. Überzieht die Arme mit Steinen aus der umgebung und schützt den Spieler.;Verstärkung;Skill-Orb;5;Nicht relevant;;1;2 Turns;INT / CON / SOU;1;
-Blitzverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete Waffe oder die Fäuste mit Blitzmagie. Erhöht den Waffenschaden für 2 Runden um 1W6.;Verstärkung;Skill-Orb;15;Physisch;;1;4 Turns;DEX / SPE / AGL;2;
-Blutungsschlag;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 4D4 (7 Schaden nach der aktiven Runde), Range 1.0;Nahkampf;Skill-Orb;15;Physisch;4D4 (7 Schaden nach der aktiven Runde);1;1 Turn;DEX / SPE;2;
-Bodyslam;C;550;5 GK 50 SK;2 GK 20 SK;Rammt den Gegner um diesen Wegzustoßen (Schaden ohne Waffe gerechnet);Nahkampf;Skill-Orb;15;Physisch;1D6;1;1 Turn;STR / CON / SPE;2;
-Durchdringender Pfeil;C;550;5 GK 50 SK;2 GK 20 SK;Bei einem Gegner in Rüstung doppelter Schaden;Fernkampf;Skill-Orb;15;Physisch;3 + 2D6;4;1 Turn;AGL / SOU;2;
-Eisenhaut;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 2D6 (Schild für den Kampf);Verteidigung;Skill-Orb;15;Nicht relevant;2D6 (Schild für den Kampf);;5 Turns;STR / CON;2;
-Eisige Explosion;C;550;5 GK 50 SK;2 GK 20 SK;Stärkerer Eisball;Magie;Skill-Orb;15;Magisch;5 + 2D6;4;1 Turn;INT / WIS;2;
-Eisverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete nahkampfwaffe Waffe oder die Fäuste mit Eismagie. Erhöht den Waffenschaden für 2 Runden um 2W4.;Verstärkung;Skill-Orb;15;Physisch;;1;4 Turns;INT / WIS / EDU;2;
-Erdbeben;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 3 + 3D4, Range 4.0;Magie;Skill-Orb;15;Magisch;3 + 3D4;4;1 Turn;EDU / CHA / STR;2;
-Feuerverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete Waffe oder die Fäuste mit Feuermagie. Erhöht den Waffenschaden für 2 Runden um 1W8.;Verstärkung;Skill-Orb;15;Physisch;;1;4 Turns;STR / CON / INT;2;
-Flammenmeteor;C;550;5 GK 50 SK;2 GK 20 SK;Stärkerer - Feuerball mit Erdelement in der mitte;Magie;Skill-Orb;15;Magisch;5 + 2D6;4;1 Turn;INT / WIS;2;
-Kettenblitz;C;550;5 GK 50 SK;2 GK 20 SK;Stärkerer Blitz;Magie;Skill-Orb;15;Magisch;5 + 2D6;4;1 Turn;INT / WIS;2;
-Klingenschild;C;550;5 GK 50 SK;2 GK 20 SK;Spieler kann 2 Runden nicht angreifen erhält jedoch von Angriffen keinen Schaden (1x pro Kampf einsetztbar, bei doppeltem Einsatzt wird der Skill verloren);Verteidigung;Skill-Orb;15;Physisch;;;3 Turns;STR, DEX / CON;2;
-Lichtheilung;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 3 + 2D4 (Heilung), Range 2.0;Heilung;Skill-Orb;15;Magisch;3 + 2D4 (Heilung);2;2 Turns;EDU / CHA;2;
-Natur-Regen;C;550;5 GK 50 SK;2 GK 20 SK;ACC der Gegner um Feld sinkt um 5 (+ Feld) 3 Range;Schwächung;Skill-Orb;15;Magisch;;4;3 Turns;INT , AGL / WIS;2;
-Schattenschritt;C;550;5 GK 50 SK;2 GK 20 SK;Kurzer Teleport;Passive;Skill-Orb;15;Nicht relevant;;4;4 Turns;DEX / SPE;2;
-Schattentanz;C;550;5 GK 50 SK;2 GK 20 SK;Du tauschst deine Position mit einem Verbündeten deiner Wahl (Radius 5 Felder);Verteidigung;Skill-Orb;15;Nicht relevant;;4;Instant;DEX / SPE / WIS;2;
-Schildbrecher;C;550;5 GK 50 SK;2 GK 20 SK;Kann nur gegen Genger mit einem Schild eingesetzt werden;Nahkampf;Skill-Orb;15;Physisch;5x 1D4;1;2 Turns;STR, DEX, EDU / CON, SPE, CHA;2;
-Schutz des Glaubens;C;550;5 GK 50 SK;2 GK 20 SK;Überlebt einen Tödlichen Schlag 1x mit 1 HP (Anschließend wird der Skill verloren);Passive;Skill-Orb;15;;;;Instant;;2;
-Seelenhammer;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 5 + 2D4, Range 1.0;Nahkampf;Skill-Orb;15;Physisch;5 + 2D4;1;3 Turns;EDU / CHA;2;
-Seelenverbindung;C;550;5 GK 50 SK;2 GK 20 SK;Verbindet die Seele mit einem Gegner oder Verbündeten für diesen Kampf (Schaden und Heilung werden zu 50/50 geteilt);Verteidigung;Skill-Orb;15;Nicht relevant;;3;1 Turn;;2;
-Stich des Schattens;C;550;5 GK 50 SK;2 GK 20 SK;Bei einem Angriff von Hinten wird der Wurf zu einem 1D20;Nahkampf;Skill-Orb;15;Physisch;2D4;1;1 Turn;STR, DEX / CON, SPE;2;
-Tanzende Elemente;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 1W4;Passive;Skill-Orb;15;Nicht relevant;1W4;;Perma;;2;
-Vergifteter Hauch;C;550;5 GK 50 SK;2 GK 20 SK;Waffen und Ausrüstung die du berührst werden immer Vergiftet (Ausrüstung gibt dir 1 Dot-DMG und Waffen geben Gegnern 3 Dot-DMG pro Angriff);Schwächung;Skill-Orb;15;Nicht relevant;;;Perma;;2;
-Vergifteter Schuss;C;550;5 GK 50 SK;2 GK 20 SK;Vergiftet einen Gegner der Schaden nach abschluss der Runde bekommt;Schwächung;Skill-Orb;15;Physisch;3D4 (3 Schaden nach der aktiven Runde);4;1 Turn;AGL / SOU;2;
-Wirbelwind;C;550;5 GK 50 SK;2 GK 20 SK;Schaden in einer kleinen Fläche mit Kleiner Range;Nahkampf;Skill-Orb;15;Physisch;2 + 1D10;3;1 Turn;STR / CON;2;
-Arkaner Sturm;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;2 Turns;INT / WIS;3;
-Aura der Legenden;B;1650;16 GK 50 SK;6 GK 60 SK;;Passive;Skill-Orb;15;Nicht relevant;;;Perma;DEX / SOU;3;
-Einzug des Voids;B;1950;19 GK 50 SK;7 GK 80 SK;;Schwächung;Skill-Orb;25;Magisch;;;1 Turn;INT / CHA;3;
-Explosiver Schuss;B;1950;19 GK 50 SK;7 GK 80 SK;;Fernkampf;Skill-Orb;25;Physisch;;;1 Turn;AGL / SOU;3;
-Frostfeuer;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;1 Turn;INT / WIS;3;
-Heilige Flamme;B;1950;19 GK 50 SK;7 GK 80 SK;;Heilung;Skill-Orb;25;Magisch;;;2 Turns;EDU / CHA;3;
-Himmelszorn;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;1 Turn;EDU / CHA;3;
-Kraft der Titanen;B;1950;19 GK 50 SK;7 GK 80 SK;;Passive;Skill-Orb;25;Nicht relevant;;;Perma;STR, DEX, EDU, AGL / CON, SPE, CHA, SOU;3;
-Licht der Gnade;B;1950;19 GK 50 SK;7 GK 80 SK;;Passive;Skill-Orb;25;Magisch;;;Perma;EDU / CHA;3;
-Licht Salve;B;1950;19 GK 50 SK;7 GK 80 SK;;Fernkampf;Skill-Orb;25;Magisch;;;1 Turn;AGL / SOU;3;
-Magiepuls;B;1950;19 GK 50 SK;7 GK 80 SK;Es wird ein gerade magischer Puls voller Arcaner Energie abgefeuert.;Magie;Skill-Orb;25;Magisch;Gerader Strich 2W10;4;1 Turn;;3;
-Phalanx-Formation;B;1950;19 GK 50 SK;7 GK 80 SK;;Verteidigung;Skill-Orb;25;Physisch;;;1 Turn;STR / CON;3;
-Säureexplusion;B;1650;16 GK 50 SK;6 GK 60 SK;Beschwört eine giftige Säurekugel, die bei Aufprall explodiert und allen Gegnern in einem kleinen Radius Schaden zufügt;Magie;Skill-Orb;15;Magisch;3+2W6;3;1 Turn;INT / SOU;3;
-Schattenklinge;B;1950;19 GK 50 SK;7 GK 80 SK;;Nahkampf;Skill-Orb;25;Physisch;;;1 Turn;DEX / SPE;3;
-Schwarzes Loch;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;3 Turns;INT / WIS;3;
-Zertrümmerer;B;1950;19 GK 50 SK;7 GK 80 SK;;Nahkampf;Skill-Orb;25;Physisch;;;1 Turn;EDU / CHA / STR, CON;3;
-Chronostasit;S;23000;230 GK;92 GK;Hält die Zeit 8x8 Felder um den Caster für 1 Runde an. Der Caster kann sich in der Zeit Frei bewegen und 2 Aktionen durchführen.;Magie;Skill-Orb;50;Magisch;;8;1 Turn;;4;
-Dimensionstor;S;23000;230 GK;92 GK;;Magie;Special;50;Magisch;;;2 Turns;;4;
-Fürbitte;S;23000;230 GK;92 GK;Kann einen gefallenen Spieler, mit dem richtigen Gebet wiederbeleben.;Magie;Awaken;;Magisch;One Time use only;;Instant;;4;
-Göttliche Intervention;S;23000;230 GK;92 GK;;Magie;Special;50;Magisch;;;3 Turns;INT / WIS / EDU;4;
-Göttlicher Komet;S;23000;230 GK;92 GK;;Magie;Boss-Drop;50;Magisch;;;3 Turns;EDU / CHA / WIS;4;
-Himmelsfeuer;S;23000;230 GK;92 GK;Ultra Rare Feuer Spell;Magie;Boss-Drop;50;Magisch;10 x 1D6;;3 Turns;INT / WIS / CHA;4;
-Korrupter Glaube;S;23000;230 GK;92 GK;;Passive;Special;50;Nicht relevant;;;Perma;EDU / WIS / SOU;4;
-Licht des Phönix;S;23000;230 GK;92 GK;;Heilung;Boss-Drop;50;Magisch;;;3 Turns;EDU / CHA / CON;4;
-Sturm des Chaos;S;23000;230 GK;92 GK;;Magie;Boss-Drop;;Magisch;;;2 Turns;INT / WIS / EDU, CHA, SOU;4;
-Teleportation;A;5000;50 GK;20 GK;;Magie;Skill-Orb;25;Magisch;;;Instant;;3 Alt;
-Jilwer;A;5000;50 GK;20 GK;"High Speed ""Teleport"" auf einen Platz der von Anwender angesehen werden kann. Alleine oder zuzweit (Wenn nebeneinander). Reichweite -> 20%SOU";Magie;Boss-Drop;25;Magisch;;;4 Turns;SOU;3 Alt;
-Jubelade;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Catastravia;A;5000;50 GK;20 GK;Lichterpfeile die auf einen ausgewählten Token abgefeuert werden.;Magie;Boss-Drop;25;Magisch;4W6+SOU(-50%);;5 Turns;SOU;3 Alt;
-Reelseiden;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Nephtear;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Waldgroose;A;5000;50 GK;20 GK;Es wird ein kleiner Tornado auf einem nahem Feld erschaffen, der allen Tokens im Umkreis schden zufügt.;Magie;Boss-Drop;25;Magisch;1W10+SOU(-50%) p. Token;;4 Turns;SOU;3 Alt;
-Daosdorg;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Reamstroha;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Judradjim;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Vialathor;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Diagoldze;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Sorganeil;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;
-Priox;A;5000;50 GK;20 GK;Verteidugungshaltung die magischen Schaden abblockt.;Magie;Boss-Drop;25;Magisch;1W20;;1 Turn;SOU;3 Alt;
-Züshaarge;A;5000;50 GK;20 GK;Erschafft aus Sand -> Glas durch starke Magiezufur und dieses Glas kann geschossen oder zurückgezogen werden. Durch die geschwindigkeit wird das Glas unsichtbar und splittert nach eintreten.;Magie;Boss-Drop;25;Magisch;4W10;;5 Turns;SOU;3 Alt;
-Skilldaria;A;5000;50 GK;20 GK;Erlaubt den gemeinsamen Einsatz mehrerer skills des selben Elements.;Passive;Awaken;25;Magisch;;1;Perma;;3 Alt;
-Or'ghavr;SS;65000;650 GK;260 GK;"Die Waffe wird zum violetten Schlund. Nahkampfangriff, 4W8 Schaden; du heilst dich um die Hälfte des Schadens. „Hunger der Tiefe, öffne dein Maul, nimm, was lebt.“ Ab Korruption 50, +2 Korruption pro Einsatz.";Nahkampf;Boss-Drop;25;Physisch;4W8;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.
-Kha'or'baal;SS;65000;650 GK;260 GK;Öffnet für 3 Runden einen Abyss-Schlund (3×3 Felder): 2W8 Schaden pro Runde, Gegner im Feld werden 1 Feld zur Mitte gezogen. Wer im Feld steht, ist im Abyss-Nebel. „Ruf des Abgrunds, öffne dich dem Licht, verschlinge die Tiefe.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;2W8 pro Runde;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.
-Sarath’kil;SS;65000;650 GK;260 GK;Ein Speer aus Abyss-Kristall durchbohrt alle Ziele in einer Linie (6 Felder): 5W6 Schaden, Blutend 1W6 für 3 Runden. „Durchbohrender Speer des Zorns, entfessle deine Wut, durchdringe alles.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Nahkampf;Boss-Drop;50;Physisch;5W6;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.
-Qor'athal;SS;65000;650 GK;260 GK;Beschwört für 3 Runden einen Abgrund-Schemen (HP 10 × dein Level, Rüstwert 14). Er greift jede Runde mit 2W8 an und schützt dich. „Beschwörung des Abgrundfürsten, Herr der Dunkelheit, gehe hervor in die Welt.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;2W8 (Schemen);;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.
-Le'or;SS;65000;650 GK;260 GK;Falsches Licht: Alle Verbündeten im Umkreis von 3 Feldern heilen 3W8 – jeder Geheilte bekommt +1 Korruption. „Licht ohne Sonne, wärme die Gebrochenen, nimm deinen Preis.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;Heilung 3W8;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.
-Bo'el;SS;65000;650 GK;260 GK;Entzieht einem Ziel 4W6 HP und gibt sie dir. Stirbt das Ziel, hinterlässt es einen Abyss-Stein seiner Größe. „Seele zu Stein, Stein zu Macht, Macht zu mir.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;4W6;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.
-Ha'thohom;SS;65000;650 GK;260 GK;Kernbruch: Explosion im Umkreis von 2 Feldern um dich, 6W6 Schaden an allen. Du selbst erleidest 2W6 und bekommst +4 statt +2 Korruption. „Brich, Herz der Welt, und lass es regnen.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;6W6;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.
-Adlerauge;A;4000;40 GK;16 GK;100%ige Chance einen Gegenstand zu Identifizieren;Passive;Awaken;;Nicht relevant;;;Perma;;X;
-Doppelklinge;A;4000;40 GK;16 GK;Erlaubt den gemeinsamen Einsatz von 2 Waffen. Schaden von beiden Waffen.;Passive;Awaken;15;Physisch;;;3 Turns;;X;
-Drachenatem;A;5000;50 GK;20 GK;;Magie;Boss-Drop;;Magisch;;;2 Turns;;X;
-Elementare Kombination;A;5000;50 GK;20 GK;Erlaubt den Einsatz von 2 Magisch-Elemantar-Skills (Magie) gemeinsam.;Magie;Boss-Drop;;Magisch;;;3 Turns;;X;
-Frostblitz;A;4000;40 GK;16 GK;;Magie;Awaken;25;Magisch;;;2 Turns;INT / WIS;X;
-Klingentanz;B;1500;15 GK;6 GK;;Passive;Special;25;Physisch;;;Perma;;X;
-Knieschlag;D;100;1 GK;40 SK;Je mehr Knie'e desto mehr DMG. :D;Nahkampf;Special;5;Physisch;1D4 (+2) (Wenn der Gegner Knie'e hat);1;1 Turn;STR, DEX / SPE;X;
-Levitation;A;4000;40 GK;16 GK;Kann etwas für kurze Zeit zum schweben bringen. (Abhängig von INT und WIS);Magie;Awaken;5;Nicht relevant;;;Perma;INT / WIS;X;
-Zug der Sterne;A;5000;50 GK;20 GK;;Passive;Special;;Nicht relevant;;;Perma;;X;
-Duo-Blade Knifes;A;5000;50 GK;20 GK;Erlaubt den Einsatz von 2 Dolchen gemeinsam mit einem Skill.;Passive;Special;;Physisch;;;Perma;;X;
-Verzauberung Rot (T1);D;200;2 GK;80 SK;Boostet den Schaden von Angriffen oder Skills mit Nahkmapfwaffen für 2 Runden. Auf dich oder einem anderen Token anwendbar. 1W4;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;
-Verzauberung Grün (T1);D;200;2 GK;80 SK;Boostet die Laufweite von dir oder einem anderen Token für 2 Runden. +1;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;
-Verzauberung Weiß (T1);D;200;2 GK;80 SK;Erschaft um dich oder einem anderen Token sofort (instant skill) ein magisches Schild. (Direkt Block Mag.+Melee) 2W4;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;
-Verzauberung Blau (T1);D;200;2 GK;80 SK;Boostet die Krit.-Rate von dir oder einem anderen Token für 2 Runden. +2;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;
-Verzauberung Braun (T1);D;200;2 GK;80 SK;Boostet den Schaden von Angriffen oder Skills eines natürlichen Elements für 2 Runden. Auf dich oder einem anderen Token anwendbar. 1W4;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;
-Magie-Spruch;D;200;2 GK;80 SK;Verringert den Cooldown von On-CD-Spells um 1 Runde. Bei dir oder einem anderen Token.;Magie;Skill-Orb;15;Magisch;;1;5 Turns;INT / WIS / EDU;1;
-Erdverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete Waffe oder die Fäuste mit Erd-/Steinmagie. Erhöht den Waffenschaden für 2 Runden um 2W4.;Magie;Skill-Orb;15;Physisch;2W6;1;4 Turns;STR / SOU / AGL;2;
-Naturresonanz;C;550;5 GK 50 SK;2 GK 20 SK;;Verstärkung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;
-Fauliger Griff;C;550;5 GK 50 SK;2 GK 20 SK;;Schwächung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;
-Regeneration;C;550;5 GK 50 SK;2 GK 20 SK;;Heilung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;
-Stachelregen;C;550;5 GK 50 SK;2 GK 20 SK;;Fernkampf;Skill-Orb;15;Magisch;;;;SOU / AGL;2;
-Efeuklinge;C;550;5 GK 50 SK;2 GK 20 SK;;Verstärkung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;
-Naturinstinkt;C;550;5 GK 50 SK;2 GK 20 SK;;Passive;Skill-Orb;15;Magisch;;;;SOU / AGL;2;
-Sporenwelle;C;550;5 GK 50 SK;2 GK 20 SK;;Schwächung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;
+﻿Name;Rang;Wert (SK);Marktwert;Händler zahlt;Beschreibung;Art;Fundort;Lernpunkte;Waffe;Schaden;Range;Cooldown;Skalierung;Alt-Tier;Hinweis;Meisterung (100 %)
+Blitzschlag;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 4.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;4;1 Turn;INT / WIS;1;;Springt auf ein zweites Ziel in 2 Feldern über (halber Schaden).
+Blutrausch;D;120;1 GK 20 SK;48 SK;Schaden 2 + 1D4 (Bei Tötung erneuter Angriff), Range 1.0;Nahkampf;Skill-Orb;5;Physisch;2 + 1D4 (Bei Tötung erneuter Angriff);1;1 Turn;STR;1;;Bei einer Tötung zwei erneute Angriffe statt einem.
+Donnerhand;D;120;1 GK 20 SK;48 SK;Ohne Waffe;Magie;Skill-Orb;5;Nicht relevant;1 + 1D4;1;1 Turn;;1;;Schaden +2.
+Donnerschlag;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 2.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;2;1 Turn;EDU / CHA;1;;Schaden +2.
+Doppelstoß;D;120;1 GK 20 SK;48 SK;Schaden 2 + 2D6, Range 1.0;Nahkampf;Skill-Orb;5;Physisch;2 + 2D6;1;1 Turn;STR / CON;1;;Trifft dreimal statt zweimal.
+Durchdringender Stoß;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 1.0;Nahkampf;Skill-Orb;5;Physisch;3 + 1D4;1;1 Turn;STR, DEX / CON, SPE;1;;Trifft auch den Gegner direkt hinter dem Ziel.
+Eisbarriere;D;120;1 GK 20 SK;48 SK;Der Caster erhält ein Schild in Höhe von 1W6 + Waffe, solange der Caster sich nicht bewegt.;Verteidigung;Skill-Orb;5;Magisch;;;1 Turn;INT / WIS;1;;Der Schild bleibt, auch wenn du dich bewegst.
+Eishand;D;120;1 GK 20 SK;48 SK;Schaden 1 + 1D4, Range 3.0;Magie;Skill-Orb;5;Magisch;1 + 1D4;3;1 Turn;;1;;Schaden +2.
+Eislanze;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 4.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;4;1 Turn;INT / WIS;1;;Treffer: Bewegung des Ziels −2 bis zu seinem nächsten Zug.
+Eisschlag;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 2.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;2;1 Turn;EDU / CHA;1;;Schaden +2.
+Elementar Schuss;D;200;2 GK;80 SK;Schaden 2 + 1D4, Range 4.0;Fernkampf;Skill-Orb;15;Magisch;2 + 1D4;4;1 Turn;AGL / SOU;1;;Schaden +2.
+Erdspike;D;120;1 GK 20 SK;48 SK;Ein kleiner Erdspieß schießt aus dem Boden hervor und fügt 1W4 Schaden zu. Kann Gegner kurz aus dem Gleichgewicht bringen.;Magie;Skill-Orb;5;Magisch;1W4;2;1 Turn;;1;;Schaden +2.
+Erweiterte Verteidigung;D;120;1 GK 20 SK;48 SK;"""Der Benutzer erhält einen magischen Schild, der Ihn vor Schaden beschützt. Reichweite und Dauer wird mit INT/WIS erhöht""";Verteidigung;Skill-Orb;5;Nicht relevant;1D4 +3 (Schild für den restlichen Kampf);;1 Turn;CON / INT;1;;Schaden +2.
+Feuerball;D;120;1 GK 20 SK;48 SK;Schaden 3 + 1D4, Range 4.0;Magie;Skill-Orb;5;Magisch;3 + 1D4;4;1 Turn;INT / WIS;1;;Explodiert: Gegner in 1 Feld um das Ziel nehmen halben Schaden.
+Feuerhand;D;120;1 GK 20 SK;48 SK;Ohne Waffe.;Magie;Skill-Orb;5;Nicht relevant;1 + 1D4;3;1 Turn;;1;;Schaden +2.
+Feuerhieb;D;120;1 GK 20 SK;48 SK;Ohne Waffe.;Magie;Skill-Orb;5;Physisch;3 + 1D4;2;1 Turn;EDU / CHA;1;;Schaden +2.
+Geisterschritt;D;120;1 GK 20 SK;48 SK;Erhöt die Movementweite +1.;Passive;Skill-Orb;5;;;;Perma;;1;;Bewegung +2 statt +1.
+Giftpfeil;D;120;1 GK 20 SK;48 SK;Schaden 1D4 (Nächster Schaden auf Ziel +3), Range 4.0;Fernkampf;Skill-Orb;5;Physisch;1D4 (Nächster Schaden auf Ziel +3);4;1 Turn;AGL / SOU;1;;Der nächste Schaden auf das Ziel steigt um +5 statt +3.
+Heiliger Schlag;D;120;1 GK 20 SK;48 SK;Schaden 1 + 2D4, Range 4.0;Magie;Skill-Orb;5;Physisch;1 + 2D4;4;1 Turn;EDU / WIS;1;;Schaden +2.
+Ich bin ein Baum!;D;120;1 GK 20 SK;48 SK;Erhält Wurzeln die Rückstoß- oder Verschiebeeffekt verhindern aber das Movement einschrenken (-1). Bei 8 Soul erhält der Spieler beim Stillstehen 1W4 Leben alle 2 Runden.;Passive;Skill-Orb;5;Nicht relevant;;;Perma;;1;;Keine Bewegungsstrafe mehr.
+Kleine Heilung;D;120;1 GK 20 SK;48 SK;Schaden 1D4 Heilung, Range 2.0;Heilung;Skill-Orb;5;Magisch;1D4 Heilung;2;1 Turn;EDU / CHA;1;;Heilt zwei Ziele gleichzeitig.
+Magischer Funke;D;120;1 GK 20 SK;48 SK;Ein kleiner magischer Stoß, der einen Gegner leicht zurückstößt und Schaden anrichtet.;Magie;Skill-Orb;5;Nicht relevant;1W4;2;1 Turn;;1;;Wird doppelt gewirkt: zwei Funken auf zwei Ziele.
+Opfer;D;120;1 GK 20 SK;48 SK;Schaden 1D6 (Heilung), Range 1.0;Heilung;Skill-Orb;5;Magisch;1D6 (Heilung);1;1 Turn;EDU / CHA;1;;Heilt 1W6 mehr.
+Pfeilregen;D;160;1 GK 60 SK;64 SK;Schaden 3 + 1D4, Range 4.0;Fernkampf;Skill-Orb;10;Physisch;3 + 1D4;4;1 Turn;AGL / SOU;1;;Die Fläche wächst um 1 Feld in jede Richtung.
+Schattenblick;D;120;1 GK 20 SK;48 SK;;Passive;Skill-Orb;5;;;;Perma;;1;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Schattenhafte Presänz;D;120;1 GK 20 SK;48 SK;Erhält eine dauerhafte +3 auf den Rüstwert.;Passive;Skill-Orb;5;;;;Perma;AGL / SPE;1;;Rüstwert +5 statt +3.
+Schattenhieb;D;120;1 GK 20 SK;48 SK;Schaden 1D4 x 1D4, Range 1.0;Nahkampf;Skill-Orb;5;Physisch;1D4 x 1D4;1;1 Turn;DEX / SPE;1;;Schaden +2.
+Schattenschnur;D;120;1 GK 20 SK;48 SK;Der Gegner wird nach dem treffen von einer magischen dunklen Schnurr fixiert.;Verteidigung;Skill-Orb;5;Physisch;1W4;3;1 Turn;AGL / SOU;1;;Fesselt 2 Runden statt 1.
+Schattenschritt;D;120;1 GK 20 SK;48 SK;Ermöglicht eine kurze Teleportation (3 Squares), ohne Schaden zu verursachen, ideal für taktische Positionierung.;Magie;Skill-Orb;5;Nicht relevant;;1;1 Turn;;1;;"Teleport 5 statt 3 Felder; die Schnellaktion bleibt frei."
+Schattenschuss;D;200;2 GK;80 SK;Schaden 2 + 1D4, Range 4.0;Fernkampf;Skill-Orb;15;Physisch;2 + 1D4;4;1 Turn;AGL / SOU;1;;Schaden +2.
+Schnellfeuer;D;120;1 GK 20 SK;48 SK;Zusätzlicher Schaden wenn ein Verbündeter direkt neben dir Schaden verursacht;Passive;Skill-Orb;5;Nicht relevant;1.0;1;Perma;AGL / SOU;1;;Der Zusatzschaden gilt auch, wenn ein Verbündeter in 2 Feldern trifft.
+Schwung des Krieger;D;120;1 GK 20 SK;48 SK;Schaden gegen 2 hintereinanderstehenden Gegnern;Nahkampf;Skill-Orb;5;Physisch;1 + 1D4;1;1 Turn;STR / CON;1;;Trifft drei hintereinanderstehende Gegner.
+Seelenauge;D;120;1 GK 20 SK;48 SK;Erkennt Fallen und versteckte Gegenstände um den Caster (4 Tiles);Passive;Skill-Orb;5;Nicht relevant;;2;1 Turn;EDU / WIS;1;;Erkennt Fallen und Verstecktes in 6 statt 4 Feldern.
+Seelengriff;D;120;1 GK 20 SK;48 SK;Schaden 2 + 1D4, Range 8.0;Magie;Skill-Orb;5;Physisch;2 + 1D4;8;1 Turn;AGL / SOU;1;;Heilt dich um die Hälfte des Schadens.
+Splitterpfeil;D;120;1 GK 20 SK;48 SK;Zwei Gegner die nebeneinander Stehen werden mit je einem Wurf getroffen.;Fernkampf;Skill-Orb;5;Physisch;1D4 / 1D4;4;1 Turn;AGL / SOU;1;;Trifft drei Gegner statt zwei.
+Stärke der Natur;D;120;1 GK 20 SK;48 SK;;Passive;Skill-Orb;5;;;;Perma;AGL / SOU;1;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Steinkanone;D;120;1 GK 20 SK;48 SK;Schaden 2W4, Range 2.0;Magie;Skill-Orb;5;Magisch;2W4;2;1 Turn;INT / WIS;1;;Stößt das Ziel 2 Felder zurück.
+Sturmstoß;D;120;1 GK 20 SK;48 SK;Dash zu einem Gegner und anschließend ein Angriff;Magie;Skill-Orb;5;Physisch;1D4;3;1 Turn;STR / CON;1;;Reichweite +2 Felder.
+Windsprung;D;120;1 GK 20 SK;48 SK;Erlaubt einen Sprung über 10 Felder. (5CD);Magie;Skill-Orb;5;Nicht relevant;;;Instant;;1;;Sprungweite 15 statt 10 Felder.
+Zermalmender Schlag;D;120;1 GK 20 SK;48 SK;Mit diesem Skill kann Ore und anderes ohne Pickaxe abgebaut werden. Wie viel erhalten wird ist mit einem W20 festzulegen.;Nahkampf;Skill-Orb;5;Physisch;;1;Perma;STR / CHA;1;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Schnitter;D;120;1 GK 20 SK;48 SK;Angriff mit einer Scharfen Klinge auf einen Gegner.;Nahkampf;Skill-Orb;5;Physisch;2W4;1;1 Turn;STR / SPE / DEX;1;;Schaden +2.
+Magnet-Punkt;D;160;1 GK 60 SK;64 SK;Metalle in der nähe werden zu einem festgelegten Punkt gezogen und verursachen dort Schaden.;Magie;Skill-Orb;10;Nicht relevant;1W4+2;1;1 Turn;INT / SOU / WIS;1;;Schaden +2.
+Stein-Haut;D;120;1 GK 20 SK;48 SK;Der Spieler kann in den nächsten 2 Runden Je 2 Schaden Blocken. Überzieht die Arme mit Steinen aus der umgebung und schützt den Spieler.;Verstärkung;Skill-Orb;5;Nicht relevant;;1;2 Turns;INT / CON / SOU;1;;Blockt 3 statt 2 Schaden pro Treffer.
+Blitzverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete Waffe oder die Fäuste mit Blitzmagie. Erhöht den Waffenschaden für 2 Runden um 1W6.;Verstärkung;Skill-Orb;15;Physisch;;1;4 Turns;DEX / SPE / AGL;2;;Wirkt 1 Runde länger.
+Blutungsschlag;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 4D4 (7 Schaden nach der aktiven Runde), Range 1.0;Nahkampf;Skill-Orb;15;Physisch;4D4 (7 Schaden nach der aktiven Runde);1;1 Turn;DEX / SPE;2;;Schaden +2.
+Bodyslam;C;550;5 GK 50 SK;2 GK 20 SK;Rammt den Gegner um diesen Wegzustoßen (Schaden ohne Waffe gerechnet);Nahkampf;Skill-Orb;15;Physisch;1D6;1;1 Turn;STR / CON / SPE;2;;Schaden +2.
+Durchdringender Pfeil;C;550;5 GK 50 SK;2 GK 20 SK;Bei einem Gegner in Rüstung doppelter Schaden;Fernkampf;Skill-Orb;15;Physisch;3 + 2D6;4;1 Turn;AGL / SOU;2;;Schaden +2.
+Eisenhaut;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 2D6 (Schild für den Kampf);Verteidigung;Skill-Orb;15;Nicht relevant;2D6 (Schild für den Kampf);;5 Turns;STR / CON;2;;Abklingzeit −1.
+Eisige Explosion;C;550;5 GK 50 SK;2 GK 20 SK;Stärkerer Eisball;Magie;Skill-Orb;15;Magisch;5 + 2D6;4;1 Turn;INT / WIS;2;;Schaden +2.
+Eisverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete nahkampfwaffe Waffe oder die Fäuste mit Eismagie. Erhöht den Waffenschaden für 2 Runden um 2W4.;Verstärkung;Skill-Orb;15;Physisch;;1;4 Turns;INT / WIS / EDU;2;;Wirkt 1 Runde länger.
+Erdbeben;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 3 + 3D4, Range 4.0;Magie;Skill-Orb;15;Magisch;3 + 3D4;4;1 Turn;EDU / CHA / STR;2;;Getroffene Gegner stürzen: Bewegung 0 bis zu ihrem nächsten Zug.
+Feuerverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete Waffe oder die Fäuste mit Feuermagie. Erhöht den Waffenschaden für 2 Runden um 1W8.;Verstärkung;Skill-Orb;15;Physisch;;1;4 Turns;STR / CON / INT;2;;Wirkt 1 Runde länger.
+Flammenmeteor;C;550;5 GK 50 SK;2 GK 20 SK;Stärkerer - Feuerball mit Erdelement in der mitte;Magie;Skill-Orb;15;Magisch;5 + 2D6;4;1 Turn;INT / WIS;2;;Schaden +2.
+Kettenblitz;C;550;5 GK 50 SK;2 GK 20 SK;Stärkerer Blitz;Magie;Skill-Orb;15;Magisch;5 + 2D6;4;1 Turn;INT / WIS;2;;Springt auf ein zusätzliches Ziel über.
+Klingenschild;C;550;5 GK 50 SK;2 GK 20 SK;Spieler kann 2 Runden nicht angreifen erhält jedoch von Angriffen keinen Schaden (1x pro Kampf einsetztbar, bei doppeltem Einsatzt wird der Skill verloren);Verteidigung;Skill-Orb;15;Physisch;;;3 Turns;STR, DEX / CON;2;;Wirkt 1 Runde länger.
+Lichtheilung;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 3 + 2D4 (Heilung), Range 2.0;Heilung;Skill-Orb;15;Magisch;3 + 2D4 (Heilung);2;2 Turns;EDU / CHA;2;;Heilt auch alle Verbündeten in 1 Feld um das Ziel.
+Natur-Regen;C;550;5 GK 50 SK;2 GK 20 SK;ACC der Gegner um Feld sinkt um 5 (+ Feld) 3 Range;Schwächung;Skill-Orb;15;Magisch;;4;3 Turns;INT , AGL / WIS;2;;Die Genauigkeit der Gegner sinkt um 7 statt 5.
+Schattenschritt;C;550;5 GK 50 SK;2 GK 20 SK;Kurzer Teleport;Passive;Skill-Orb;15;Nicht relevant;;4;4 Turns;DEX / SPE;2;;"Teleport 5 statt 3 Felder; die Schnellaktion bleibt frei."
+Schattentanz;C;550;5 GK 50 SK;2 GK 20 SK;Du tauschst deine Position mit einem Verbündeten deiner Wahl (Radius 5 Felder);Verteidigung;Skill-Orb;15;Nicht relevant;;4;Instant;DEX / SPE / WIS;2;;Reichweite +2 Felder.
+Schildbrecher;C;550;5 GK 50 SK;2 GK 20 SK;Kann nur gegen Genger mit einem Schild eingesetzt werden;Nahkampf;Skill-Orb;15;Physisch;5x 1D4;1;2 Turns;STR, DEX, EDU / CON, SPE, CHA;2;;Schaden +2.
+Schutz des Glaubens;C;550;5 GK 50 SK;2 GK 20 SK;Überlebt einen Tödlichen Schlag 1x mit 1 HP (Anschließend wird der Skill verloren);Passive;Skill-Orb;15;;;;Instant;;2;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Seelenhammer;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 5 + 2D4, Range 1.0;Nahkampf;Skill-Orb;15;Physisch;5 + 2D4;1;3 Turns;EDU / CHA;2;;Abklingzeit −1.
+Seelenverbindung;C;550;5 GK 50 SK;2 GK 20 SK;Verbindet die Seele mit einem Gegner oder Verbündeten für diesen Kampf (Schaden und Heilung werden zu 50/50 geteilt);Verteidigung;Skill-Orb;15;Nicht relevant;;3;1 Turn;;2;;Wirkt 1 Runde länger.
+Stich des Schattens;C;550;5 GK 50 SK;2 GK 20 SK;Bei einem Angriff von Hinten wird der Wurf zu einem 1D20;Nahkampf;Skill-Orb;15;Physisch;2D4;1;1 Turn;STR, DEX / CON, SPE;2;;Schaden +2.
+Tanzende Elemente;C;550;5 GK 50 SK;2 GK 20 SK;Schaden 1W4;Passive;Skill-Orb;15;Nicht relevant;1W4;;Perma;;2;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Vergifteter Hauch;C;550;5 GK 50 SK;2 GK 20 SK;Waffen und Ausrüstung die du berührst werden immer Vergiftet (Ausrüstung gibt dir 1 Dot-DMG und Waffen geben Gegnern 3 Dot-DMG pro Angriff);Schwächung;Skill-Orb;15;Nicht relevant;;;Perma;;2;;Wirkt 1 Runde länger.
+Vergifteter Schuss;C;550;5 GK 50 SK;2 GK 20 SK;Vergiftet einen Gegner der Schaden nach abschluss der Runde bekommt;Schwächung;Skill-Orb;15;Physisch;3D4 (3 Schaden nach der aktiven Runde);4;1 Turn;AGL / SOU;2;;Das Gift wirkt doppelt so lange.
+Wirbelwind;C;550;5 GK 50 SK;2 GK 20 SK;Schaden in einer kleinen Fläche mit Kleiner Range;Nahkampf;Skill-Orb;15;Physisch;2 + 1D10;3;1 Turn;STR / CON;2;;Die Fläche wächst um 1 Feld.
+Arkaner Sturm;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;2 Turns;INT / WIS;3;;Wird doppelt gewirkt (zweiter Sturm in der nächsten Runde ohne Aktion).
+Aura der Legenden;B;1650;16 GK 50 SK;6 GK 60 SK;;Passive;Skill-Orb;15;Nicht relevant;;;Perma;DEX / SOU;3;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Einzug des Voids;B;1950;19 GK 50 SK;7 GK 80 SK;;Schwächung;Skill-Orb;25;Magisch;;;1 Turn;INT / CHA;3;;Wirkt 1 Runde länger.
+Explosiver Schuss;B;1950;19 GK 50 SK;7 GK 80 SK;;Fernkampf;Skill-Orb;25;Physisch;;;1 Turn;AGL / SOU;3;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Frostfeuer;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;1 Turn;INT / WIS;3;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Heilige Flamme;B;1950;19 GK 50 SK;7 GK 80 SK;;Heilung;Skill-Orb;25;Magisch;;;2 Turns;EDU / CHA;3;;Heilt 2 mehr.
+Himmelszorn;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;1 Turn;EDU / CHA;3;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Kraft der Titanen;B;1950;19 GK 50 SK;7 GK 80 SK;;Passive;Skill-Orb;25;Nicht relevant;;;Perma;STR, DEX, EDU, AGL / CON, SPE, CHA, SOU;3;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Licht der Gnade;B;1950;19 GK 50 SK;7 GK 80 SK;;Passive;Skill-Orb;25;Magisch;;;Perma;EDU / CHA;3;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Licht Salve;B;1950;19 GK 50 SK;7 GK 80 SK;;Fernkampf;Skill-Orb;25;Magisch;;;1 Turn;AGL / SOU;3;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Magiepuls;B;1950;19 GK 50 SK;7 GK 80 SK;Es wird ein gerade magischer Puls voller Arcaner Energie abgefeuert.;Magie;Skill-Orb;25;Magisch;Gerader Strich 2W10;4;1 Turn;;3;;Schaden +2.
+Phalanx-Formation;B;1950;19 GK 50 SK;7 GK 80 SK;;Verteidigung;Skill-Orb;25;Physisch;;;1 Turn;STR / CON;3;;Wirkt 1 Runde länger.
+Säureexplusion;B;1650;16 GK 50 SK;6 GK 60 SK;Beschwört eine giftige Säurekugel, die bei Aufprall explodiert und allen Gegnern in einem kleinen Radius Schaden zufügt;Magie;Skill-Orb;15;Magisch;3+2W6;3;1 Turn;INT / SOU;3;;Getroffene haben 2 Runden Rüstwert −2.
+Schattenklinge;B;1950;19 GK 50 SK;7 GK 80 SK;;Nahkampf;Skill-Orb;25;Physisch;;;1 Turn;DEX / SPE;3;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Schwarzes Loch;B;1950;19 GK 50 SK;7 GK 80 SK;;Magie;Skill-Orb;25;Magisch;;;3 Turns;INT / WIS;3;;Abklingzeit −1.
+Zertrümmerer;B;1950;19 GK 50 SK;7 GK 80 SK;;Nahkampf;Skill-Orb;25;Physisch;;;1 Turn;EDU / CHA / STR, CON;3;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Chronostasit;S;23000;230 GK;92 GK;Hält die Zeit 8x8 Felder um den Caster für 1 Runde an. Der Caster kann sich in der Zeit Frei bewegen und 2 Aktionen durchführen.;Magie;Skill-Orb;50;Magisch;;8;1 Turn;;4;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Dimensionstor;S;23000;230 GK;92 GK;;Magie;Special;50;Magisch;;;2 Turns;;4;;Reichweite +2 Felder.
+Fürbitte;S;23000;230 GK;92 GK;Kann einen gefallenen Spieler, mit dem richtigen Gebet wiederbeleben.;Magie;Awaken;;Magisch;One Time use only;;Instant;;4;;Der Gefallene steht mit halben HP statt mit 1 HP auf.
+Göttliche Intervention;S;23000;230 GK;92 GK;;Magie;Special;50;Magisch;;;3 Turns;INT / WIS / EDU;4;;Abklingzeit −1.
+Göttlicher Komet;S;23000;230 GK;92 GK;;Magie;Boss-Drop;50;Magisch;;;3 Turns;EDU / CHA / WIS;4;;Abklingzeit −1.
+Himmelsfeuer;S;23000;230 GK;92 GK;Ultra Rare Feuer Spell;Magie;Boss-Drop;50;Magisch;10 x 1D6;;3 Turns;INT / WIS / CHA;4;;Abklingzeit −1.
+Korrupter Glaube;S;23000;230 GK;92 GK;;Passive;Special;50;Nicht relevant;;;Perma;EDU / WIS / SOU;4;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Licht des Phönix;S;23000;230 GK;92 GK;;Heilung;Boss-Drop;50;Magisch;;;3 Turns;EDU / CHA / CON;4;;Heilt 2 mehr.
+Sturm des Chaos;S;23000;230 GK;92 GK;;Magie;Boss-Drop;;Magisch;;;2 Turns;INT / WIS / EDU, CHA, SOU;4;;Abklingzeit −1.
+Teleportation;A;5000;50 GK;20 GK;;Magie;Skill-Orb;25;Magisch;;;Instant;;3 Alt;;Nimmt einen Verbündeten in 1 Feld mit.
+Jilwer;A;5000;50 GK;20 GK;"High Speed ""Teleport"" auf einen Platz der von Anwender angesehen werden kann. Alleine oder zuzweit (Wenn nebeneinander). Reichweite -> 20%SOU";Magie;Boss-Drop;25;Magisch;;;4 Turns;SOU;3 Alt;;Reichweite +2 Felder.
+Jubelade;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Catastravia;A;5000;50 GK;20 GK;Lichterpfeile die auf einen ausgewählten Token abgefeuert werden.;Magie;Boss-Drop;25;Magisch;4W6+SOU(-50%);;5 Turns;SOU;3 Alt;;Abklingzeit −1.
+Reelseiden;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Nephtear;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Waldgroose;A;5000;50 GK;20 GK;Es wird ein kleiner Tornado auf einem nahem Feld erschaffen, der allen Tokens im Umkreis schden zufügt.;Magie;Boss-Drop;25;Magisch;1W10+SOU(-50%) p. Token;;4 Turns;SOU;3 Alt;;Abklingzeit −1.
+Daosdorg;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Reamstroha;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Judradjim;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Vialathor;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Diagoldze;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Sorganeil;A;5000;50 GK;20 GK;;Magie;Boss-Drop;25;Magisch;;;1 Turn;SOU;3 Alt;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Priox;A;5000;50 GK;20 GK;Verteidugungshaltung die magischen Schaden abblockt.;Magie;Boss-Drop;25;Magisch;1W20;;1 Turn;SOU;3 Alt;;Schaden +2.
+Züshaarge;A;5000;50 GK;20 GK;Erschafft aus Sand -> Glas durch starke Magiezufur und dieses Glas kann geschossen oder zurückgezogen werden. Durch die geschwindigkeit wird das Glas unsichtbar und splittert nach eintreten.;Magie;Boss-Drop;25;Magisch;4W10;;5 Turns;SOU;3 Alt;;Abklingzeit −1.
+Skilldaria;A;5000;50 GK;20 GK;Erlaubt den gemeinsamen Einsatz mehrerer skills des selben Elements.;Passive;Awaken;25;Magisch;;1;Perma;;3 Alt;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Or'ghavr;SS;65000;650 GK;260 GK;"Die Waffe wird zum violetten Schlund. Nahkampfangriff, 4W8 Schaden; du heilst dich um die Hälfte des Schadens. „Hunger der Tiefe, öffne dein Maul, nimm, was lebt.“ Ab Korruption 50, +2 Korruption pro Einsatz.";Nahkampf;Boss-Drop;25;Physisch;4W8;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.;Abklingzeit −1.
+Kha'or'baal;SS;65000;650 GK;260 GK;Öffnet für 3 Runden einen Abyss-Schlund (3×3 Felder): 2W8 Schaden pro Runde, Gegner im Feld werden 1 Feld zur Mitte gezogen. Wer im Feld steht, ist im Abyss-Nebel. „Ruf des Abgrunds, öffne dich dem Licht, verschlinge die Tiefe.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;2W8 pro Runde;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.;Abklingzeit −1.
+Sarath’kil;SS;65000;650 GK;260 GK;Ein Speer aus Abyss-Kristall durchbohrt alle Ziele in einer Linie (6 Felder): 5W6 Schaden, Blutend 1W6 für 3 Runden. „Durchbohrender Speer des Zorns, entfessle deine Wut, durchdringe alles.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Nahkampf;Boss-Drop;50;Physisch;5W6;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.;Abklingzeit −1.
+Qor'athal;SS;65000;650 GK;260 GK;Beschwört für 3 Runden einen Abgrund-Schemen (HP 10 × dein Level, Rüstwert 14). Er greift jede Runde mit 2W8 an und schützt dich. „Beschwörung des Abgrundfürsten, Herr der Dunkelheit, gehe hervor in die Welt.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;2W8 (Schemen);;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.;Abklingzeit −1.
+Le'or;SS;65000;650 GK;260 GK;Falsches Licht: Alle Verbündeten im Umkreis von 3 Feldern heilen 3W8 – jeder Geheilte bekommt +1 Korruption. „Licht ohne Sonne, wärme die Gebrochenen, nimm deinen Preis.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;Heilung 3W8;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.;Abklingzeit −1.
+Bo'el;SS;65000;650 GK;260 GK;Entzieht einem Ziel 4W6 HP und gibt sie dir. Stirbt das Ziel, hinterlässt es einen Abyss-Stein seiner Größe. „Seele zu Stein, Stein zu Macht, Macht zu mir.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;4W6;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.;Abklingzeit −1.
+Ha'thohom;SS;65000;650 GK;260 GK;Kernbruch: Explosion im Umkreis von 2 Feldern um dich, 6W6 Schaden an allen. Du selbst erleidest 2W6 und bekommst +4 statt +2 Korruption. „Brich, Herz der Welt, und lass es regnen.“ Ab Korruption 50, +2 Korruption pro Einsatz.;Magie;Boss-Drop;50;Magisch;6W6;;5 Turns;;Abyss;Abyss-Skill: nur auf dem Schwarzmarkt, Besitz ist strafbar.;Abklingzeit −1.
+Adlerauge;A;4000;40 GK;16 GK;100%ige Chance einen Gegenstand zu Identifizieren;Passive;Awaken;;Nicht relevant;;;Perma;;X;;Erkennt beim Untersuchen auch, ob ein Gegenstand verflucht ist.
+Doppelklinge;A;4000;40 GK;16 GK;Erlaubt den gemeinsamen Einsatz von 2 Waffen. Schaden von beiden Waffen.;Passive;Awaken;15;Physisch;;;3 Turns;;X;;Mit zwei Waffen zusätzlich Genauigkeit +1.
+Drachenatem;A;5000;50 GK;20 GK;;Magie;Boss-Drop;;Magisch;;;2 Turns;;X;;Abklingzeit −1.
+Elementare Kombination;A;5000;50 GK;20 GK;Erlaubt den Einsatz von 2 Magisch-Elemantar-Skills (Magie) gemeinsam.;Magie;Boss-Drop;;Magisch;;;3 Turns;;X;;Abklingzeit −1.
+Frostblitz;A;4000;40 GK;16 GK;;Magie;Awaken;25;Magisch;;;2 Turns;INT / WIS;X;;Abklingzeit −1.
+Klingentanz;B;1500;15 GK;6 GK;;Passive;Special;25;Physisch;;;Perma;;X;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Knieschlag;D;100;1 GK;40 SK;Je mehr Knie'e desto mehr DMG. :D;Nahkampf;Special;5;Physisch;1D4 (+2) (Wenn der Gegner Knie'e hat);1;1 Turn;STR, DEX / SPE;X;;Schaden +2.
+Levitation;A;4000;40 GK;16 GK;Kann etwas für kurze Zeit zum schweben bringen. (Abhängig von INT und WIS);Magie;Awaken;5;Nicht relevant;;;Perma;INT / WIS;X;;Reichweite +2 Felder.
+Zug der Sterne;A;5000;50 GK;20 GK;;Passive;Special;;Nicht relevant;;;Perma;;X;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Duo-Blade Knifes;A;5000;50 GK;20 GK;Erlaubt den Einsatz von 2 Dolchen gemeinsam mit einem Skill.;Passive;Special;;Physisch;;;Perma;;X;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Verzauberung Rot (T1);D;200;2 GK;80 SK;Boostet den Schaden von Angriffen oder Skills mit Nahkmapfwaffen für 2 Runden. Auf dich oder einem anderen Token anwendbar. 1W4;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;;Abklingzeit −1.
+Verzauberung Grün (T1);D;200;2 GK;80 SK;Boostet die Laufweite von dir oder einem anderen Token für 2 Runden. +1;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;;Abklingzeit −1.
+Verzauberung Weiß (T1);D;200;2 GK;80 SK;Erschaft um dich oder einem anderen Token sofort (instant skill) ein magisches Schild. (Direkt Block Mag.+Melee) 2W4;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;;Abklingzeit −1.
+Verzauberung Blau (T1);D;200;2 GK;80 SK;Boostet die Krit.-Rate von dir oder einem anderen Token für 2 Runden. +2;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;;Abklingzeit −1.
+Verzauberung Braun (T1);D;200;2 GK;80 SK;Boostet den Schaden von Angriffen oder Skills eines natürlichen Elements für 2 Runden. Auf dich oder einem anderen Token anwendbar. 1W4;Magie;Skill-Orb;15;Magisch;;2;4 Turns;EDU / WIS / INT;1;;Abklingzeit −1.
+Magie-Spruch;D;200;2 GK;80 SK;Verringert den Cooldown von On-CD-Spells um 1 Runde. Bei dir oder einem anderen Token.;Magie;Skill-Orb;15;Magisch;;1;5 Turns;INT / WIS / EDU;1;;Abklingzeit −1.
+Erdverstärkung;C;550;5 GK 50 SK;2 GK 20 SK;Überzieht die ausgerüstete Waffe oder die Fäuste mit Erd-/Steinmagie. Erhöht den Waffenschaden für 2 Runden um 2W4.;Magie;Skill-Orb;15;Physisch;2W6;1;4 Turns;STR / SOU / AGL;2;;Abklingzeit −1.
+Naturresonanz;C;550;5 GK 50 SK;2 GK 20 SK;;Verstärkung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;;Wirkt 1 Runde länger.
+Fauliger Griff;C;550;5 GK 50 SK;2 GK 20 SK;;Schwächung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;;Wirkt 1 Runde länger.
+Regeneration;C;550;5 GK 50 SK;2 GK 20 SK;;Heilung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;;Heilt 2 mehr.
+Stachelregen;C;550;5 GK 50 SK;2 GK 20 SK;;Fernkampf;Skill-Orb;15;Magisch;;;;SOU / AGL;2;;Wirkung +2: Schaden oder Heilung +2, sonst Fläche oder Reichweite +1 Feld.
+Efeuklinge;C;550;5 GK 50 SK;2 GK 20 SK;;Verstärkung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;;Wirkt 1 Runde länger.
+Naturinstinkt;C;550;5 GK 50 SK;2 GK 20 SK;;Passive;Skill-Orb;15;Magisch;;;;SOU / AGL;2;;"Die Wirkung wird um die Hälfte stärker (aufrunden; der GM legt bei reinen Texteffekten fest, was das heißt)."
+Sporenwelle;C;550;5 GK 50 SK;2 GK 20 SK;;Schwächung;Skill-Orb;15;Magisch;;;;SOU / AGL;2;;Wirkt 1 Runde länger.

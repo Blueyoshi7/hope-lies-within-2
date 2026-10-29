@@ -14,7 +14,7 @@
         {{else}}
           {{#if isGM}}
             <label class="hb-chip hb-klasse" title="{{system.derived.suggestedClassEffect}}">
-              <select name="system.progression.class">
+              <select data-klasse-wahl>
                 <option value="">{{vorschlagLabel}}</option>
                 {{#each klassenGruppen as |gruppe|}}
                   <optgroup label="{{gruppe.kategorie}}">
@@ -24,9 +24,14 @@
               </select>
             </label>
           {{else}}
-            <span class="hb-chip hb-klasse" title="{{system.derived.suggestedClassEffect}}">{{#if klasseAnzeige}}{{klasseAnzeige}}{{else}}noch keine Klasse{{/if}}</span>
+            <span class="hb-chip hb-klasse" title="{{klasseEffekt}}">{{#if klasseAnzeige}}{{klasseAnzeige}}{{else}}noch keine Klasse{{/if}}</span>
           {{/if}}
-          <label class="hb-chip">Level <input name="system.progression.level" type="number" min="1" max="40" value="{{system.progression.level}}" /></label>
+          {{#if isGM}}
+            <label class="hb-chip">Level <input name="system.progression.level" type="number" min="1" max="40" value="{{system.progression.level}}" /></label>
+          {{else}}
+            <span class="hb-chip">Level <b>{{system.progression.level}}</b></span>
+          {{/if}}
+          {{#if punkte.frei}}<button type="button" class="hb-chip hb-punkte-chip" data-zu-den-punkten>{{punkte.frei}} Punkte frei</button>{{/if}}
           <label class="hb-chip">Herkunft <input name="system.identity.origin" type="text" value="{{system.identity.origin}}" placeholder="–" /></label>
           <span class="hb-chip">Kes <b>{{kesText}}</b></span>
         {{/if}}
@@ -42,7 +47,7 @@
         <label class="hb-balkenzeile">
           <span>EXP</span>
           <span class="hb-spur"><i class="hb-exp" style="width: {{balken.exp}}%"></i></span>
-          <span class="hb-zahl"><input name="system.progression.exp" type="number" value="{{system.progression.exp}}" /> / {{#if system.derived.expNext}}{{system.derived.expNext}}{{else}}max{{/if}}</span>
+          <span class="hb-zahl">{{#if isGM}}<input name="system.progression.exp" type="number" value="{{system.progression.exp}}" />{{else}}{{system.progression.exp}}{{/if}} / {{#if system.derived.expNext}}{{system.derived.expNext}}{{else}}max{{/if}}</span>
         </label>
         <label class="hb-balkenzeile">
           <span>Korruption</span>
@@ -143,16 +148,40 @@
           </section>
 
           {{#unless isMonster}}
-            <section class="hb-karte">
-              <h3>Werte <span class="hb-punkte {{#if pointsOver}}is-over{{/if}}">verteilt {{system.derived.points.used}} / {{system.derived.points.allowed}} · frei <b>{{system.derived.points.free}}</b></span></h3>
-              <div class="hb-attribute">
-                {{#each system.attributes as |attribute key|}}
-                  <label class="hb-attr" title="{{attribute.label}}">
-                    <span>{{attribute.abbr}}</span>
-                    <input name="system.attributes.{{key}}.value" type="number" min="1" max="25" value="{{attribute.value}}" />
-                  </label>
-                {{/each}}
-              </div>
+            <section class="hb-karte hb-werte-karte {{#if punkte.knoepfe}}is-verteilen{{/if}}">
+              <h3>Werte <span class="hb-punkte {{#if pointsOver}}is-over{{/if}}">verteilt {{system.derived.points.used}} / {{punkte.erlaubt}} · frei <b>{{punkte.frei}}</b></span></h3>
+              {{#if isGM}}
+                <div class="hb-attribute">
+                  {{#each system.attributes as |attribute key|}}
+                    <label class="hb-attr" title="{{attribute.label}}">
+                      <span>{{attribute.abbr}}</span>
+                      <input name="system.attributes.{{key}}.value" type="number" min="1" max="25" value="{{attribute.value}}" />
+                    </label>
+                  {{/each}}
+                </div>
+              {{else}}
+                <div class="hb-attribute">
+                  {{#each punkte.werte as |w|}}
+                    <div class="hb-attr {{#if w.plus}}is-plus{{/if}}" title="{{w.label}}">
+                      <span>{{w.abbr}}</span>
+                      <b>{{w.wert}}</b>
+                      {{#if ../punkte.knoepfe}}
+                        <div class="hb-plusminus">
+                          <button type="button" data-minus="{{w.key}}" {{#unless w.kannMinus}}disabled{{/unless}}>−</button>
+                          <button type="button" data-plus="{{w.key}}" {{#unless w.kannPlus}}disabled{{/unless}}>+</button>
+                        </div>
+                      {{/if}}
+                    </div>
+                  {{/each}}
+                </div>
+                {{#if punkte.knoepfe}}
+                  <div class="hb-verteilen">
+                    <span>{{#if punkte.erstellung}}Bei der Erstellung höchstens +3 pro Wert. {{/if}}Deine Klasse zeigt sich, sobald du speicherst.</span>
+                    <button type="button" data-punkte-zuruecksetzen {{#unless punkte.aenderung}}disabled{{/unless}}>Zurücksetzen</button>
+                    <button type="button" class="hb-speichern" data-punkte-speichern {{#unless punkte.aenderung}}disabled{{/unless}}>Speichern</button>
+                  </div>
+                {{/if}}
+              {{/if}}
             </section>
 
             <section class="hb-karte">
@@ -192,6 +221,7 @@
               <button type="button" data-filter="ausr">Ausrüstung</button>
               <button type="button" data-filter="verbrauch">Verbrauch</button>
               <button type="button" data-filter="material">Material</button>
+              <button type="button" data-filter="orb">Skill-Orbs</button>
             </div>
             <div class="hb-kes">
               <span>Kes <b>{{kesText}}</b></span>
@@ -205,15 +235,15 @@
           </div>
           <div class="hb-raster">
             {{#each bogen.raster as |item|}}
-              <div class="hb-feld" data-item-id="{{item.id}}" data-filter="{{item.filter}}" data-rang="{{item.rang}}" data-tooltip-html="{{item.tooltip}}" draggable="true">
-                <img src="{{item.img}}" alt="" />
+              <div class="hb-feld {{#if item.orb}}is-orb{{/if}}" data-item-id="{{item.id}}" data-filter="{{item.filter}}" data-rang="{{item.rang}}" data-tooltip-html="{{item.tooltip}}" draggable="true">
+                {{#if item.orb}}<span class="hb-orbkugel"></span>{{else}}<img src="{{item.img}}" alt="" />{{/if}}
                 {{#if item.menge}}<span class="hb-anzahl">{{item.menge}}</span>{{/if}}
               </div>
             {{/each}}
             {{#each bogen.leereFelder}}<div class="hb-feld is-leer"></div>{{/each}}
           </div>
           <div class="hb-invfuss">
-            <span>Klick auf einen Gegenstand: ausrüsten, benutzen, geben, wegwerfen.</span>
+            <span>Klick auf einen Gegenstand: ausrüsten, benutzen, geben, wegwerfen. Skill-Orbs: untersuchen oder lernen.</span>
             {{#if isGM}}
               <span>
                 <button type="button" data-geben="items">Gegenstand geben</button>
@@ -266,6 +296,12 @@
               <h4><a data-edit-owned-item>{{skill.name}}</a>{{#if skill.rang}} <small class="hb-rang">{{skill.rang}}</small>{{/if}}{{#if skill.istKlasse}} <small class="hb-badge">Klasse</small>{{/if}}</h4>
               <div class="hb-tags">{{#each skill.tags as |tag|}}<span class="hb-tag {{tag.art}}">{{tag.text}}</span>{{/each}}</div>
               {{#if skill.beschreibung}}<p data-tooltip="{{skill.beschreibung}}">{{skill.beschreibung}}</p>{{/if}}
+              {{#if skill.meisterung}}
+                <div class="hb-lernen {{#if skill.meisterung.fertig}}is-fertig{{/if}}" data-tooltip="{{#if skill.meisterung.fertig}}Gemeistert{{else}}Bei 100 %{{/if}}: {{skill.meisterung.text}}">
+                  <span class="hb-lernspur"><i style="width: {{skill.meisterung.wert}}%"></i></span>
+                  <span class="hb-lernzahl">{{#if skill.meisterung.fertig}}★ gemeistert{{else}}{{skill.meisterung.wert}} %{{/if}}</span>
+                </div>
+              {{/if}}
             </div>
             {{#if ../isGM}}<button type="button" class="hb-weg" data-delete-skill title="Skill entfernen">✕</button>{{/if}}
           </article>
@@ -286,6 +322,12 @@
                 {{#if skill.boni}}<span class="hb-tag wirkt" title="Schon in den Werten eingerechnet">{{skill.boni}}</span>{{/if}}
               </div>
               {{#if skill.beschreibung}}<p data-tooltip="{{skill.beschreibung}}">{{skill.beschreibung}}</p>{{/if}}
+              {{#if skill.meisterung}}
+                <div class="hb-lernen {{#if skill.meisterung.fertig}}is-fertig{{/if}}" data-tooltip="{{#if skill.meisterung.fertig}}Gemeistert{{else}}Bei 100 %{{/if}}: {{skill.meisterung.text}}">
+                  <span class="hb-lernspur"><i style="width: {{skill.meisterung.wert}}%"></i></span>
+                  <span class="hb-lernzahl">{{#if skill.meisterung.fertig}}★ gemeistert{{else}}{{skill.meisterung.wert}} %{{/if}}</span>
+                </div>
+              {{/if}}
             </div>
             {{#if ../isGM}}<button type="button" class="hb-weg" data-delete-skill title="Skill entfernen">✕</button>{{/if}}
           </article>
@@ -336,7 +378,11 @@
                 <label>Job <input name="system.progression.job" type="text" value="{{system.progression.job}}" /></label>
                 <label>Titel <input name="system.progression.title" type="text" value="{{system.progression.title}}" /></label>
               </div>
-              <p class="hb-klassenhinweis">Klasse nach Wertverteilung: <b>{{system.derived.suggestedClass}}</b>{{#if system.derived.suggestedClassEffect}}<br><small>{{system.derived.suggestedClassEffect}}</small>{{/if}}</p>
+              {{#if isGM}}
+                <p class="hb-klassenhinweis">Klasse nach Wertverteilung: <b>{{system.derived.suggestedClass}}</b>{{#if system.derived.suggestedClassEffect}}<br><small>{{system.derived.suggestedClassEffect}}</small>{{/if}}</p>
+              {{else}}
+                {{#if klasseAnzeige}}<p class="hb-klassenhinweis">Klasse: <b>{{klasseAnzeige}}</b>{{#if klasseEffekt}}<br><small>{{klasseEffekt}}</small>{{/if}}</p>{{/if}}
+              {{/if}}
             </section>
             {{#if passivListe.length}}
               <section class="hb-karte">
