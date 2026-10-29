@@ -1,4 +1,5 @@
-import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings } from "./hlw-talk.js";
+import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
+import { setzeKlassen, lindhainAusstatten, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill } from "./hlw-charakter.js";
@@ -1388,6 +1389,11 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.inventoryUsed = countInventorySlots(context.actor.items);
     context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
     context.isMonster = context.actor.type === "monster";
+    context.isNpc = context.actor.type === "npc";
+    if (context.isNpc) {
+      const gewaehlt = context.actor.getFlag("hope-lies-within-2", "schwerpunkt") || "zivil";
+      context.schwerpunkte = Object.entries(SCHWERPUNKTE).map(([key, s]) => ({ key, label: s.label, selected: key === gewaehlt }));
+    }
     context.skillSlots = skillSlots(context.actor);
     context.slotPips = Array.from({ length: Math.max(context.skillSlots.max, context.skillSlots.used) }, (_, i) => i < context.skillSlots.used);
     // Klassen-Auswahl fuer den GM: alle Klassen nach Kategorie, der Vorschlag aus der Wertverteilung ist markiert.
@@ -1448,6 +1454,23 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       event.preventDefault();
       const itemId = event.currentTarget.closest("[data-item-id]")?.dataset.itemId;
       this.actor.startSkillTargeting(itemId);
+    });
+
+    // NSC (nur GM): Level und Schwerpunkt wählen, die Punkte verteilt das System
+    html.find("[data-nsc-werte]").on("click", async (event) => {
+      event.preventDefault();
+      const box = event.currentTarget.closest(".hb-nsc");
+      const level = Number(box?.querySelector("[name='nscLevel']")?.value) || 1;
+      const schwerpunkt = box?.querySelector("[name='nscSchwerpunkt']")?.value || "zivil";
+      const ok = await foundry.applications.api.DialogV2.confirm({
+        window: { title: "NSC-Werte verteilen" },
+        content: `<p>${escapeHtml(this.actor.name)} auf Level ${level} setzen und alle Wertpunkte neu als <b>${escapeHtml(SCHWERPUNKTE[schwerpunkt]?.label ?? schwerpunkt)}</b> verteilen? Die bisherigen Werte werden überschrieben.</p>`
+      });
+      if (ok) await nscWerteSetzen(this.actor, { level, schwerpunkt });
+    });
+    html.find("[data-nsc-gespraech]").on("click", (event) => {
+      event.preventDefault();
+      zeigeAllen(this.actor, event.currentTarget.dataset.nscGespraech || "gespraech");
     });
 
     html.find("[data-end-turn]").on("click", (event) => {
@@ -2282,6 +2305,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "skillOrbsGesetzt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "freieWahlGesetzt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "einKlassenSkill", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "lindhainNsc", { scope: "world", config: false, type: Boolean, default: false });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -2315,6 +2339,7 @@ Hooks.once("ready", async () => {
   try {
     HLW.klassen = await (await fetch("systems/hope-lies-within-2/data/klassen.json")).json();
     HLW.insignien = await (await fetch("systems/hope-lies-within-2/data/insignien.json")).json();
+    setzeKlassen(HLW.klassen);
     for (const actor of game.actors ?? []) actor.prepareData();
   } catch (error) {
     console.warn("Hope lies Within 2.0 | Klassenliste nicht geladen", error);
@@ -2329,7 +2354,10 @@ Hooks.once("ready", async () => {
     erstelleLindhain,
     entferneOrtsmarker,
     spielercharakterAnlegen,
-    gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor)
+    gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor),
+    gespraechAllen: zeigeAllen,
+    lindhainAusstatten,
+    nscWerte: nscWerteSetzen
   };
   registerTalk();
   registerGefaehrte();
@@ -2366,6 +2394,12 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "einKlassenSkill")) {
     for (const actor of game.actors.filter((a) => a.type === "character" && a.system?.progression?.class)) await actor.entferneFremdeKlassenSkills(actor.system.progression.class);
     await game.settings.set("hope-lies-within-2", "einKlassenSkill", true);
+  }
+  // Lindhain-NSC: Level, Werte, Waffen, Waren und Quests einmalig nachziehen (Welten mit Lindhain vor v0.8.0).
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainNsc")) {
+    const anzahl = await lindhainAusstatten();
+    if (anzahl) ui.notifications?.info(`${anzahl} NSC in Lindhain haben jetzt Level, Werte, Ausrüstung, Waren und Quests.`);
+    await game.settings.set("hope-lies-within-2", "lindhainNsc", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {

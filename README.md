@@ -69,13 +69,15 @@ Die vollständigen Regeln stehen in [`docs/regeln/Zähmen und Gefährten.csv`](d
 
 Als GM im Charakterbogen: Tab *Skills* → **Skill geben**, Tab *Inventar* → **Gegenstand geben**. Ein Suchfenster listet alle Einträge der Welt; ein Klick legt eine Kopie beim Charakter an. Skill-Slots (Level 1: 3, ab Level 4: 4, 8: 5, 13: 6, 18: 7, 23: 8, 30: 9, 37: 10) werden geprüft, Klassen-Skills zählen nicht. Alternativ einen Eintrag aus der Item-Sidebar auf den Bogen ziehen.
 
-## NSC-Gespräch
+## NSC und Gespräche
 
-- Der GM öffnet Gespräche: im Token-HUD der NSC-Figur öffnet die **Sprechblase** das Fenster nur für dich, das **Personen-Symbol** zeigt es sofort allen. So kannst du entscheiden, ob die Gruppe überhaupt eine Antwort bekommt.
-- Das Fenster ist rahmenlos: links das Porträt, rechts alles, was die Gruppe über den NSC weiß, darunter eigene Notizen (pro Spieler gespeichert).
-- Optional (Spieleinstellungen → „Spieler öffnen NSC-Gespräche selbst“): Spieler dürfen das Gespräch per Doppelklick selbst öffnen. Standard ist aus; dann bekommen Spieler beim Doppelklick nur den Hinweis, die Person am Tisch anzusprechen.
-- Der Name steht für Spieler zuerst als „???“. Jeder kann selbst einen Namen eintragen. Der GM gibt den echten Namen per Haken frei.
-- Der GM öffnet das Gespräch über den Sprechblasen-Knopf im Token-HUD, legt Einträge an, gibt sie frei und kann das Gespräch mit „Allen zeigen“ bei allen öffnen.
+- **Rechtsklick auf eine NSC-Figur** (GM): Neben dem Token-HUD erscheint ein Menü mit **Sprechen**, **Handeln** (nur wenn der NSC Waren hat) und **Quests** (nur wenn er welche hat). Jeder Eintrag öffnet das Gesprächsfenster sofort bei allen; „Nur für mich öffnen“ zum Vorbereiten.
+- **Gespräch:** Du schreibst unten, was der NSC sagt (Enter), oder **erzählst** etwas (kursiv in der Mitte). Neue Sätze erscheinen bei allen Buchstabe für Buchstabe. Spieler antworten im selben Fenster (mit dem Namen ihres Charakters). Jede Zeile lässt sich nachträglich ändern oder löschen.
+- **Quests:** Im Reiter Quests schreibst und änderst du Titel, Rang, Text, Belohnung und Status. „Im Gespräch zeigen“ setzt die Quest als Karte in den Verlauf und bietet sie an; Spieler klicken „Annehmen“. Änderungen am Text erscheinen sofort auch in der Karte im Gespräch.
+- **Handel:** Nicht ausgerüstete Gegenstände des NSC sind seine Ware. Spieler kaufen zum Marktwert und verkaufen zu 40 % (Ankaufsquote des Marktsystems); Kes und Gegenstände wandern automatisch. Du änderst Preise im Fenster und ziehst neue Waren aus der Seitenleiste hinein.
+- **Wissen:** Einträge über den NSC, die du freigibst (oder per Sprechblase direkt im Gespräch sagen lässt), dazu eigene Notizen pro Spieler. Der Name steht für Spieler zuerst als „???“, bis du ihn freigibst.
+- **Werte:** NSC haben Level, Wertpunkte, Klasse, Waffen und manchmal Skills wie Spielercharaktere und kämpfen nach denselben Regeln. Im NSC-Bogen (nur GM) Level und Schwerpunkt wählen (Dorfbewohner, Handwerker, Kämpfer, Schütze, Magier, Heiler, Kundschafter) und „Werte verteilen“.
+- Optional (Spieleinstellungen → „Spieler öffnen NSC-Gespräche selbst“): Spieler dürfen das Gespräch per Doppelklick selbst öffnen.
 
 ## Lindhain (Startdorf)
 
@@ -86,7 +88,7 @@ game.hlw.erstelleLindhain()              // neu anlegen
 game.hlw.erstelleLindhain({ neu: true })  // Szene und Ortsliste neu aufbauen, NSC bleiben
 ```
 
-Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts und Gesprächsdaten sowie die Ortsliste „Lindhain – Orte“ im Journal (ohne Marker auf der Karte; alte Buch-Marker entfernt das System beim ersten GM-Start, sonst `game.hlw.entferneOrtsmarker()`). Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein.
+Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts, Gesprächsdaten, Level, Waffen, Waren und Quests (Hanne: Essen, Jorun: Waffen und Rüstung, Oma Wendel: Heilmittel) sowie die Ortsliste „Lindhain – Orte“ im Journal (ohne Marker auf der Karte; alte Buch-Marker entfernt das System beim ersten GM-Start, sonst `game.hlw.entferneOrtsmarker()`). Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein. Wurde Lindhain mit einer älteren Version angelegt, bekommen die NSC Werte, Waren und Quests beim ersten GM-Start automatisch (sonst `game.hlw.lindhainAusstatten()`).
 
 ## Struktur
 

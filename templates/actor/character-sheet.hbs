@@ -126,6 +126,25 @@
         {{/if}}
 
         <div class="hb-spalte">
+          {{#if isNpc}}{{#if isGM}}
+          <section class="hb-karte hb-nsc">
+            <h3>NSC <small>nur für dich</small></h3>
+            <div class="hb-nsc-zeile">
+              <label>Level <input name="nscLevel" type="number" min="1" max="40" value="{{system.progression.level}}" /></label>
+              <label>Schwerpunkt
+                <select name="nscSchwerpunkt">
+                  {{#each schwerpunkte as |s|}}<option value="{{s.key}}" {{#if s.selected}}selected{{/if}}>{{s.label}}</option>{{/each}}
+                </select>
+              </label>
+              <button type="button" data-nsc-werte title="Setzt das Level und verteilt alle Wertpunkte nach Schwerpunkt neu"><i class="fa-solid fa-wand-magic-sparkles"></i> Werte verteilen</button>
+            </div>
+            <div class="hb-nsc-zeile">
+              <button type="button" data-nsc-gespraech="gespraech"><i class="fa-solid fa-comment"></i> Sprechen</button>
+              <button type="button" data-nsc-gespraech="handel"><i class="fa-solid fa-scale-balanced"></i> Handel</button>
+              <button type="button" data-nsc-gespraech="quests"><i class="fa-solid fa-scroll"></i> Quests</button>
+            </div>
+          </section>
+          {{/if}}{{/if}}
           <section class="hb-karte">
             <h3>Kampfwerte
               <span class="hb-pips" title="Aktion · Schnellaktion · Reaktion">

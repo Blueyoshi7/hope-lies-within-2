@@ -3,6 +3,8 @@
 // Legt die Szene „Lindhain“ an: Dorfboden, Gebaeude als Kacheln mit Waenden und Tueren,
 // die Dorf-NSC mit Gespraechsdaten und eine Ortsliste im Journal (ohne Marker auf der Karte).
 
+import { nscAusstatten, lindhainWerte } from "./hlw-nsc.js";
+
 const SYSTEM_ID = "hope-lies-within-2";
 const ASSETS = `systems/${SYSTEM_ID}/assets`;
 const GRID = 64;            // 1 Feld = 64 px = 1,5 m
@@ -183,6 +185,11 @@ export async function erstelleLindhain({ neu = false } = {}) {
           }
         }
       });
+    // Level, Werte, Waffen, Waren und Quests (einmal pro NSC)
+    if (!actor.getFlag(SYSTEM_ID, "ausgestattet")) {
+      await nscAusstatten(actor, lindhainWerte(nsc.name));
+      await actor.setFlag(SYSTEM_ID, "ausgestattet", true);
+    }
     actors.push([actor, nsc]);
   }
 

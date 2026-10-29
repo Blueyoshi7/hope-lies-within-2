@@ -581,3 +581,112 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-insignien-wahl .hi-liste em.hi-gelb { color: #e2c25a; } .hlw-insignien-wahl .hi-liste em.hi-gruen { color: #8fd08a; } .hlw-insignien-wahl .hi-liste em.hi-rot { color: #f09a92; }
 .hlw-insignien-wahl .hi-liste small { color: #a6a294; font-size: 11.5px; }
 .hlw-insignien-wahl .hi-liste b { color: #d8b46a; font-size: 11px; font-weight: 600; }
+
+/* ---------- NSC-Gespräch v2: Reiter, Verlauf, Quests, Handel ---------- */
+.hlw-talk .hlw-talk-panel {
+  display: flex;
+  flex-direction: column;
+  height: 84vh;
+  max-height: 84vh;
+  overflow: hidden;
+  padding: 22px 26px 18px;
+  background: rgba(16, 13, 9, 0.84);
+  border: 1px solid rgba(216, 180, 106, 0.25);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+.hlw-talk .gs-kopf { position: relative; flex: none; }
+.hlw-talk .gs-kopf .hlw-talk-role { margin: 0.15em 0 0.6em; }
+.hlw-talk .gs-gmleiste { position: absolute; top: 0; right: 0; display: flex; gap: 6px; }
+.hlw-talk button { width: auto; height: auto; min-height: 30px; padding: 4px 12px; font-family: inherit; font-size: 0.85rem; color: #f3ead6; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 6px; cursor: pointer; line-height: 1.2; }
+.hlw-talk button:hover:not(:disabled) { background: rgba(216, 180, 106, 0.18); border-color: rgba(216, 180, 106, 0.6); }
+.hlw-talk button:disabled { opacity: 0.4; cursor: default; }
+.hlw-talk button.gs-haupt { background: #8a6a2c; border-color: #d8b46a; color: #fff8e6; }
+.hlw-talk button.gs-haupt:hover { background: #a37d34; }
+.hlw-talk input, .hlw-talk select, .hlw-talk textarea { color: #f3ead6; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 6px; font-family: inherit; }
+.hlw-talk select option { color: #1b1712; background: #f3ead6; }
+
+.hlw-talk .gs-reiterleiste { flex: none; display: flex; gap: 4px; margin: 0 0 12px; border-bottom: 1px solid rgba(216, 180, 106, 0.3); }
+.hlw-talk .gs-reiter { border: none !important; border-bottom: 2px solid transparent !important; border-radius: 0 !important; background: none !important; padding: 6px 14px !important; font-size: 0.82rem !important; letter-spacing: 0.1em; text-transform: uppercase; color: #c9bc9c !important; }
+.hlw-talk .gs-reiter.aktiv { color: #f3ead6 !important; border-bottom-color: #d8b46a !important; }
+.hlw-talk .gs-reiter span { display: inline-block; min-width: 18px; padding: 0 5px; margin-left: 4px; border-radius: 9px; background: rgba(216, 180, 106, 0.25); color: #f3ead6; font-size: 0.75rem; letter-spacing: 0; }
+
+.hlw-talk .gs-inhalt { flex: 1; min-height: 0; overflow-y: auto; padding-right: 4px; }
+.hlw-talk .gs-inhalt.gs-gespraech { display: flex; flex-direction: column; overflow: hidden; }
+.hlw-talk .gs-inhalt h2 { margin: 0.8em 0 0.4em; }
+.hlw-talk .gs-inhalt h2 small { text-transform: none; letter-spacing: 0; font-weight: normal; }
+.hlw-talk .gs-hinweis { margin: 0 0 10px; font-size: 0.85rem; color: #c9bc9c; }
+.hlw-talk .gs-leer { list-style: none; color: #c9bc9c; font-style: italic; padding: 8px 0; }
+
+/* Verlauf */
+.hlw-talk .gs-verlauf { flex: 1; min-height: 0; overflow-y: auto; list-style: none; margin: 0; padding: 0 4px 8px 0; display: flex; flex-direction: column; gap: 10px; }
+.hlw-talk .gs-zeile { position: relative; padding: 10px 14px; border-radius: 10px; line-height: 1.5; font-size: 1.05rem; }
+.hlw-talk .gs-zeile .gs-sprecher { display: block; margin-bottom: 2px; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.hlw-talk .gs-nsc { align-self: flex-start; max-width: 92%; background: rgba(216, 180, 106, 0.12); border: 1px solid rgba(216, 180, 106, 0.35); border-bottom-left-radius: 2px; }
+.hlw-talk .gs-nsc .gs-sprecher { color: #d8b46a; }
+.hlw-talk .gs-spieler { align-self: flex-end; max-width: 85%; background: rgba(120, 160, 210, 0.14); border: 1px solid rgba(120, 160, 210, 0.4); border-bottom-right-radius: 2px; }
+.hlw-talk .gs-spieler .gs-sprecher { color: #9fc0e8; text-align: right; }
+.hlw-talk .gs-erzaehler { align-self: center; max-width: 90%; text-align: center; font-style: italic; color: #d9cfb8; background: none; padding: 4px 10px; }
+.hlw-talk .gs-zeile.gs-handel { align-self: center; font-size: 0.85rem; color: #b9d7a8; padding: 2px 10px; }
+.hlw-talk .gs-quest { padding: 0; align-self: stretch; }
+.hlw-talk .gs-zeilenknoepfe { position: absolute; top: 4px; right: 4px; display: none; gap: 2px; }
+.hlw-talk .gs-zeile:hover .gs-zeilenknoepfe { display: flex; }
+.hlw-talk .gs-zeilenknoepfe button { min-height: 0; padding: 2px 6px; font-size: 0.7rem; background: rgba(0, 0, 0, 0.5); }
+.hlw-talk .gs-zeilenfeld { width: 100%; min-height: 60px; font-size: 1rem; }
+
+/* Questkarte */
+.hlw-talk .gs-questkarte { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 10px; background: linear-gradient(180deg, rgba(243, 234, 214, 0.1), rgba(243, 234, 214, 0.04)); border: 1px solid rgba(216, 180, 106, 0.55); border-left: 4px solid #d8b46a; }
+.hlw-talk .gs-questkarte em { font-style: normal; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: #d8b46a; }
+.hlw-talk .gs-questkarte strong { font-size: 1.25rem; color: #fff6e0; }
+.hlw-talk .gs-questkarte p { margin: 2px 0; line-height: 1.5; }
+.hlw-talk .gs-questkarte small { color: #d9cfb8; }
+.hlw-talk .gs-questkarte button { align-self: flex-start; margin-top: 6px; background: #3f6b3a; border-color: #8fc286; }
+.hlw-talk .gs-questkarte.status-angenommen { border-left-color: #8fc286; }
+.hlw-talk .gs-questkarte.status-erledigt { opacity: 0.6; border-left-color: #888; }
+.hlw-talk .gs-questkarte.status-verborgen { border-style: dashed; }
+.hlw-talk .gs-questliste { display: flex; flex-direction: column; gap: 10px; }
+
+/* Eingabe */
+.hlw-talk .gs-eingabe { flex: none; display: flex; flex-direction: column; gap: 6px; padding-top: 10px; border-top: 1px solid rgba(216, 180, 106, 0.25); }
+.hlw-talk .gs-eingabe textarea { width: 100%; min-height: 54px; resize: vertical; padding: 8px 10px; font-size: 1rem; }
+.hlw-talk .gs-eingabeknoepfe { display: flex; gap: 6px; justify-content: flex-end; }
+
+/* Quests bearbeiten */
+.hlw-talk .gs-questedit { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; padding: 12px; border-radius: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); }
+.hlw-talk .gs-questzeile { display: grid; grid-template-columns: 1fr 64px 130px; gap: 6px; }
+.hlw-talk .gs-questedit input, .hlw-talk .gs-questedit select { height: 32px; padding: 0 8px; }
+.hlw-talk .gs-questedit input[data-feld="titel"] { font-size: 1.05rem; }
+.hlw-talk .gs-questedit textarea { min-height: 80px; padding: 8px; resize: vertical; line-height: 1.45; }
+.hlw-talk .gs-questknoepfe { display: flex; gap: 6px; justify-content: space-between; }
+
+/* Handel */
+.hlw-talk .gs-handelkopf { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.hlw-talk .gs-handelkopf h2 { margin-top: 0; }
+.hlw-talk .gs-handelkopf span { color: #d9cfb8; font-size: 0.9rem; }
+.hlw-talk .gs-waren { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.hlw-talk .gs-waren li[data-item] { display: grid; grid-template-columns: 40px 1fr auto auto auto; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.04); }
+.hlw-talk .gs-waren img { width: 40px; height: 40px; border: none; border-radius: 6px; object-fit: cover; background: rgba(0, 0, 0, 0.3); }
+.hlw-talk .gs-warenname small { display: block; color: #c9bc9c; font-size: 0.75rem; }
+.hlw-talk .gs-warenname > small:first-child { display: inline; }
+.hlw-talk .gs-preis { color: #f0d48c; white-space: nowrap; }
+.hlw-talk .gs-waren input[data-gs="preis"] { width: 70px; height: 30px; text-align: right; padding: 0 6px; }
+.hlw-talk .gs-sk { color: #c9bc9c; font-size: 0.8rem; }
+.hlw-talk .gs-ablage { margin-top: 10px; padding: 14px; border: 2px dashed rgba(216, 180, 106, 0.4); border-radius: 10px; text-align: center; color: #c9bc9c; font-size: 0.85rem; }
+.hlw-talk .gs-ablage.drueber { background: rgba(216, 180, 106, 0.15); color: #f3ead6; }
+
+.hlw-talk .hlw-talk-gmfact { grid-template-columns: auto auto 1fr auto auto; }
+.hlw-talk .gs-wissen textarea[name="notes"] { width: 100%; min-height: 90px; }
+
+/* Rechtsklick-Menü an NSC-Figuren */
+#hlw-nsc-menue { position: fixed; z-index: 60; display: flex; flex-direction: column; gap: 4px; min-width: 190px; padding: 6px; border-radius: 10px; background: rgba(16, 13, 9, 0.92); border: 1px solid rgba(216, 180, 106, 0.5); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); pointer-events: all; }
+#hlw-nsc-menue button { display: flex; align-items: center; justify-content: flex-start; gap: 10px; width: 100%; height: 36px; padding: 0 12px; border: none; border-radius: 7px; background: transparent; color: #f3ead6; font-size: 0.95rem; text-align: left; cursor: pointer; }
+#hlw-nsc-menue button:hover { background: rgba(216, 180, 106, 0.2); }
+#hlw-nsc-menue button i { width: 18px; text-align: center; color: #d8b46a; }
+#hlw-nsc-menue button small { margin-left: auto; padding: 0 6px; border-radius: 8px; background: rgba(216, 180, 106, 0.25); font-size: 0.75rem; }
+#hlw-nsc-menue button.leise { height: 30px; font-size: 0.8rem; color: #c9bc9c; border-top: 1px solid rgba(255, 255, 255, 0.08); border-radius: 0 0 7px 7px; }
+
+/* NSC-Box im Bogen */
+.hb-nsc .hb-nsc-zeile { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; margin-top: 8px; }
+.hb-nsc .hb-nsc-zeile label { display: flex; flex-direction: column; gap: 2px; font-size: 0.75rem; color: var(--hb-muted, #9a958a); }
+.hb-nsc .hb-nsc-zeile input { width: 64px; }
+.hb-nsc .hb-nsc-zeile button { width: auto; flex: 1 1 auto; }
+.hb-nsc h3 small { font-weight: normal; font-size: 0.7rem; opacity: 0.7; margin-left: 6px; }
