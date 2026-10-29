@@ -1,6 +1,6 @@
 <form class="{{cssClass}} hlw-sheet hlw-bogen" autocomplete="off">
   <header class="hb-kopf">
-    <div class="hb-kopfbild"><img src="{{tokenImage}}" alt="" /></div>
+    <div class="hb-kopfbild"><img src="{{tokenImage}}" alt="" {{#if isGM}}data-token-waehlen title="Token-Bild wählen" class="kann-waehlen"{{/if}} /></div>
     <div class="hb-ident">
       <input class="hb-name" name="name" type="text" value="{{actor.name}}" placeholder="Name" />
       <div class="hb-chips">
@@ -113,7 +113,7 @@
                 </div>
               {{/each}}
             </div>
-            <div class="hb-person"><img src="{{profileImage}}" data-edit="img" title="Bild ändern" alt="" /></div>
+            <div class="hb-person"><img src="{{figurBild}}" alt="" {{#if isGM}}data-figur-waehlen title="Figur (ganzer Körper) wählen" class="kann-waehlen"{{/if}} /></div>
             <div class="hb-slots hb-rechts">
               {{#each bogen.figur.rechts as |platz|}}
                 <div class="hb-slot {{#if platz.item}}is-voll{{else}}is-leer{{/if}}" {{#if platz.item}}data-item-id="{{platz.item.id}}" data-rang="{{platz.item.rang}}" data-tooltip-html="{{platz.item.tooltip}}" draggable="true"{{/if}}>

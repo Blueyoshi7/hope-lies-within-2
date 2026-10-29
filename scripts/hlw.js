@@ -505,6 +505,17 @@ function drawMovementRange(actor) {
   HLW.movementGraphics = graphics;
 }
 
+function bildWaehlen(aktuell, callback) {
+  const Picker = foundry.applications.apps?.FilePicker?.implementation ?? globalThis.FilePicker;
+  new Picker({ type: "image", current: aktuell, callback }).render(true);
+}
+
+// Token-Bild: Actor-Bild, Prototyp-Token und alle Figuren dieses Charakters auf den Szenen
+async function tokenBildSetzen(actor, pfad) {
+  await actor.update({ img: pfad, "prototypeToken.texture.src": pfad });
+  for (const token of actor.getActiveTokens(true, true)) await token.update({ "texture.src": pfad });
+}
+
 function getCombatHudActor() {
   const currentActor = game.combat?.combatant?.actor;
   // Ausgewählter Gefährte des Charakters, der gerade am Zug ist: Leiste für den Gefährten zeigen
@@ -1384,6 +1395,10 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     });
     context.profileImage = context.actor.img;
     context.tokenImage = context.actor.prototypeToken?.texture?.src || context.actor.img;
+    // Figur im Bogen: eigenes Ganzkörperbild, bei NSC sonst das Gesprächsporträt, zuletzt das Actor-Bild
+    context.figurBild = context.actor.getFlag("hope-lies-within-2", "figur")
+      || (context.actor.type === "npc" ? context.actor.getFlag("hope-lies-within-2", "talk")?.portrait : "")
+      || context.actor.img;
     context.isGM = game.user?.isGM;
     context.canAct = hasActionPoints(context.actor);
     context.inventoryUsed = countInventorySlots(context.actor.items);
@@ -1467,6 +1482,15 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         content: `<p>${escapeHtml(this.actor.name)} auf Level ${level} setzen und alle Wertpunkte neu als <b>${escapeHtml(SCHWERPUNKTE[schwerpunkt]?.label ?? schwerpunkt)}</b> verteilen? Die bisherigen Werte werden überschrieben.</p>`
       });
       if (ok) await nscWerteSetzen(this.actor, { level, schwerpunkt });
+    });
+    // Bilder (nur GM): Figur für den Bogen und Token-Bild getrennt wählen
+    html.find("[data-figur-waehlen]").on("click", (event) => {
+      event.preventDefault();
+      bildWaehlen(this.actor.getFlag("hope-lies-within-2", "figur") || this.actor.img, (pfad) => this.actor.setFlag("hope-lies-within-2", "figur", pfad));
+    });
+    html.find("[data-token-waehlen]").on("click", (event) => {
+      event.preventDefault();
+      bildWaehlen(this.actor.prototypeToken?.texture?.src || this.actor.img, (pfad) => tokenBildSetzen(this.actor, pfad));
     });
     html.find("[data-nsc-gespraech]").on("click", (event) => {
       event.preventDefault();

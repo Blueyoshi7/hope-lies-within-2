@@ -35,14 +35,28 @@ export async function spielercharakterAnlegen() {
       <label>Herkunft
         <select name="herkunft">${Object.entries(HERKUNFT).map(([k, h]) => `<option value="${k}">${html(h.label)} (${html(h.text.split(" – ")[0])})</option>`).join("")}</select>
       </label>
-      <p>Der Spieler verteilt seine Punkte danach selbst im Bogen und sieht seine Klasse erst beim Speichern.</p>
+      <label>Token-Bild (rund, für die Karte)
+        <span class="hlw-bildwahl"><input name="token" type="text" placeholder="optional"><button type="button" data-bild="token" title="Bild wählen"><i class="fa-solid fa-folder-open"></i></button></span>
+      </label>
+      <label>Figur (ganzer Körper, für den Bogen)
+        <span class="hlw-bildwahl"><input name="figur" type="text" placeholder="optional"><button type="button" data-bild="figur" title="Bild wählen"><i class="fa-solid fa-folder-open"></i></button></span>
+      </label>
+      <p>Der Spieler verteilt seine Punkte danach selbst im Bogen und sieht seine Klasse erst beim Speichern. Beide Bilder kannst du später im Bogen ändern (Klick auf das Bild oben links bzw. auf die Figur).</p>
     </div>`;
   const daten = await foundry.applications.api.DialogV2.prompt({
     window: { title: "Spielercharakter anlegen" },
     classes: ["hope-lies-within", "hlw-detail-dialog"],
     content,
     ok: { label: "Anlegen", icon: "fa-solid fa-user-plus", callback: (event, button) => Object.fromEntries(new FormData(button.form)) },
-    rejectClose: false
+    rejectClose: false,
+    render: (event, dialog) => {
+      const root = dialog.element ?? event?.target?.element;
+      root?.querySelectorAll("[data-bild]").forEach((knopf) => knopf.addEventListener("click", () => {
+        const feld = root.querySelector(`input[name='${knopf.dataset.bild}']`);
+        const Picker = foundry.applications.apps?.FilePicker?.implementation ?? globalThis.FilePicker;
+        new Picker({ type: "image", current: feld.value, callback: (pfad) => (feld.value = pfad) }).render(true);
+      }));
+    }
   });
   if (!daten) return;
   const name = String(daten.name || "").trim() || "Neuer Charakter";
@@ -61,9 +75,12 @@ export async function spielercharakterAnlegen() {
       // Der Herkunftspunkt steckt schon im passenden Wert; die 5 freien Punkte verteilt der Spieler.
       attributes: { [h.attr]: { value: 2 } }
     },
+    ...(daten.token ? { img: daten.token } : {}),
+    ...(daten.figur ? { flags: { "hope-lies-within-2": { figur: daten.figur } } } : {}),
     prototypeToken: {
       name, actorLink: true, disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
-      displayName: CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER, sight: { enabled: true }
+      displayName: CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER, sight: { enabled: true },
+      ...(daten.token ? { texture: { src: daten.token } } : {})
     }
   });
   if (daten.spieler) await game.users.get(daten.spieler)?.update({ character: actor.id });

@@ -41,7 +41,7 @@ Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP
 
 ## Spielercharaktere
 
-- **Anlegen (GM):** In der Actor-Sidebar auf **Spielercharakter anlegen** klicken: Name, Spieler und Herkunft (A–D) wählen. Der Charakter gehört dann dem Spieler, ist seine Spielfigur, sein Token ist verknüpft, und der Herkunftspunkt steckt schon im passenden Wert.
+- **Anlegen (GM):** In der Actor-Sidebar auf **Spielercharakter anlegen** klicken: Name, Spieler und Herkunft (A–D) wählen. Der Charakter gehört dann dem Spieler, ist seine Spielfigur, sein Token ist verknüpft, und der Herkunftspunkt steckt schon im passenden Wert. Dazu zwei Bilder (optional): **Token-Bild** (rund, für die Karte) und **Figur** (ganzer Körper, für den Bogen).
 - **Punkte verteilen (Spieler):** Im Bogen erscheint „N Punkte frei“. Mit + und − verteilen, mit **Speichern** bestätigen. Gespeicherte Punkte sind fest. Bei Level 1 höchstens +3 pro Wert (Herkunftswert einen mehr).
 - **Klasse als Überraschung:** Während des Verteilens sieht der Spieler keine Klasse. Beim Speichern wird sie bestimmt und groß aufgedeckt; der Klassen-Skill kommt automatisch. Nach jedem Level-Up kann der Spieler neue Punkte jederzeit verteilen, und die Klasse kann sich dabei ändern.
 - **GM:** Level und EXP stellt nur der GM. Werte kann der GM direkt eintragen. Im Klassen-Dropdown heißt „automatisch“: Klasse nach Verteilung; eine fest gewählte Klasse (z. B. Story-Klasse) bleibt, bis der GM wieder „automatisch“ wählt.
@@ -51,6 +51,7 @@ Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP
 
 ## Charakterbogen und Kampfleiste
 
+- **Bilder:** Jeder Charakter und NSC hat zwei Bilder. Oben links das Token-Bild (Klick als GM: ändern, gilt auch für alle Figuren auf den Karten), in der Mitte die Figur (Klick als GM: ganzes Körperbild wählen). NSC nehmen als Figur ihr Gesprächsporträt, solange keine eigene gesetzt ist. Figur und Slots skalieren gemeinsam mit der Fensterbreite.
 - **Charakter:** Figur mit Ausrüstungsplätzen (Kopf, Brust, Arme, Beine, Kette, Ohrring, Ring, Armband, Haupt- und Nebenhand), Rahmenfarbe nach Rang. Rechts Kampfwerte, Werte und Waffen, darunter das Inventar als Raster mit Filtern und die World-Skills. Klick auf einen Gegenstand öffnet ein Menü (Ausrüsten/Ablegen, Benutzen, Details, Bearbeiten, An Ziel geben, Wegwerfen). Rüstung tauscht automatisch mit dem Teil auf demselben Platz.
 - **Skills:** aktive und passive Skills getrennt. Passive Skills wirken immer und brauchen keine Aktion; feste Zahlen aus dem Skilltext (z. B. +1 Bewegung, +3 Rüstwert, +2 HP pro Level) sind schon in den Werten eingerechnet. Der GM kann im Skill eigene Zahlen eintragen.
 - **Insignien:** drei Slots, alle wirken; darunter die ruhenden Insignien. Nur der GM bearbeitet sie: „Aus Liste wählen“ öffnet alle 77 Insignien des Kanons, oder er schreibt eine eigene hinein. Feste Werte im Wirkungstext (z. B. „Naturkunde +3“, „Initiative +5“, „Max-HP +15 %“) rechnet das System automatisch; Bedingtes („einmal pro Kampf …“, „gegen Untote …“) bleibt Tischregel. Die Insignien-Bilder liegen nicht im System, sondern im Foundry-Datenordner unter `hlw-insignien/`.
