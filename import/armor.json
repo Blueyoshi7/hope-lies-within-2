@@ -2,7 +2,7 @@
  {
   "name": "Lederhandschuhe",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-leather-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/lederhandschuhe.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -21,7 +21,7 @@
  {
   "name": "Reste von Lederhandschuhen",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-leather-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/reste-von-lederhandschuhen.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -40,7 +40,7 @@
  {
   "name": "Handschuhe des Heilers",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-leather-black.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/handschuhe-des-heilers.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -59,7 +59,7 @@
  {
   "name": "Verstärkte Lederhandschuhe",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-leather-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/verstaerkte-lederhandschuhe.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -78,7 +78,7 @@
  {
   "name": "Sternenstein-Handschuhe",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-armored-steel-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/sternenstein-handschuhe.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -97,7 +97,7 @@
  {
   "name": "Windfeder Arme",
   "type": "armor",
-  "img": "icons/equipment/hand/glove-studded-leather-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/windfeder-arme.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -118,7 +118,7 @@
  {
   "name": "Handschuhe der Musik",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-leather-simple-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/handschuhe-der-musik.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -137,7 +137,7 @@
  {
   "name": "Abyssalith-Handschuhe",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-armored-steel.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/abyssalith-handschuhe.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -158,7 +158,7 @@
  {
   "name": "Handschuhe des Quälers",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-collared-leather-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/handschuhe-des-quaelers.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -179,7 +179,7 @@
  {
   "name": "Lederstiefel",
   "type": "armor",
-  "img": "icons/equipment/feet/riot-boot-black.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/lederstiefel.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -198,7 +198,7 @@
  {
   "name": "Reste von Lederstiefel",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-armored-banded-steel.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/reste-von-lederstiefel.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -217,7 +217,7 @@
  {
   "name": "Robuste Stiefel",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-armored-layered-steel.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/robuste-stiefel.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -236,7 +236,7 @@
  {
   "name": "Hose aus Schattenseide",
   "type": "armor",
-  "img": "icons/equipment/leg/cuisses-leather-tasset-brown-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/hose-aus-schattenseide.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -255,7 +255,7 @@
  {
   "name": "Arme aus Schattenseide",
   "type": "armor",
-  "img": "icons/equipment/leg/tasset-reticulated-steel.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/arme-aus-schattenseide.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -274,7 +274,7 @@
  {
   "name": "Sternenstein-Beine",
   "type": "armor",
-  "img": "icons/equipment/leg/skirth-cloth-tasset-pink.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/sternenstein-beine.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -293,7 +293,7 @@
  {
   "name": "Windfeder Beine",
   "type": "armor",
-  "img": "icons/equipment/leg/pants-leather-furred-brown-white.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/windfeder-beine.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -314,7 +314,7 @@
  {
   "name": "Beine der Musik",
   "type": "armor",
-  "img": "icons/equipment/leg/cuisses-studded-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/beine-der-musik.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -333,7 +333,7 @@
  {
   "name": "Stiefel der Windläufer",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-simple-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/stiefel-der-windlaeufer.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -354,7 +354,7 @@
  {
   "name": "Schuhe des Quälers",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-leather-red.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/schuhe-des-quaelers.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -375,7 +375,7 @@
  {
   "name": "Kettenhemd",
   "type": "armor",
-  "img": "icons/equipment/chest/breastplate-collared-leather-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/kettenhemd.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -396,7 +396,7 @@
  {
   "name": "Lederrobe",
   "type": "armor",
-  "img": "icons/equipment/chest/shirt-long.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/lederrobe.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -415,7 +415,7 @@
  {
   "name": "Stoffrobe mit Kapuze",
   "type": "armor",
-  "img": "icons/equipment/chest/jacket-military-flight-green.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/stoffrobe-mit-kapuze.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -436,7 +436,7 @@
  {
   "name": "Reste eines Lederbrustpanzers",
   "type": "armor",
-  "img": "icons/equipment/chest/breastplate-layered-steel-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/reste-eines-lederbrustpanzers.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -455,7 +455,7 @@
  {
   "name": "Eisenbrustpanzer",
   "type": "armor",
-  "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/eisenbrustpanzer.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -474,7 +474,7 @@
  {
   "name": "Robe aus Schattenseide",
   "type": "armor",
-  "img": "icons/equipment/chest/shirt-tee-white.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/robe-aus-schattenseide.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -493,7 +493,7 @@
  {
   "name": "Brust des Unbesiegbaren",
   "type": "armor",
-  "img": "icons/equipment/chest/breastplate-collared-steel.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/brust-des-unbesiegbaren.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -512,7 +512,7 @@
  {
   "name": "Mithril-Brustpanzer",
   "type": "armor",
-  "img": "icons/equipment/chest/harness-tactical-heavy.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/mithril-brustpanzer.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -531,7 +531,7 @@
  {
   "name": "Robe des Quälers",
   "type": "armor",
-  "img": "icons/equipment/chest/shirt-collared-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/robe-des-quaelers.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -552,7 +552,7 @@
  {
   "name": "Lederhelm",
   "type": "armor",
-  "img": "icons/equipment/head/mask-plague-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/lederhelm.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -571,7 +571,7 @@
  {
   "name": "Reste eines Lederhelms",
   "type": "armor",
-  "img": "icons/equipment/head/mask-knit-balaclava.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/reste-eines-lederhelms.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -590,7 +590,7 @@
  {
   "name": "Gehärteter Lederhelm",
   "type": "armor",
-  "img": "icons/equipment/head/hood-green-horns.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/gehaerteter-lederhelm.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -609,7 +609,7 @@
  {
   "name": "Ätherium-Mütze",
   "type": "armor",
-  "img": "icons/equipment/head/tech-helm-red.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/aetherium-muetze.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -628,7 +628,7 @@
  {
   "name": "Sternenstein-Kopf",
   "type": "armor",
-  "img": "icons/equipment/head/helm-sallet-steel.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/sternenstein-kopf.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -647,7 +647,7 @@
  {
   "name": "Kopf der Musik",
   "type": "armor",
-  "img": "icons/equipment/head/tech-heavy-pink.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/kopf-der-musik.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -666,7 +666,7 @@
  {
   "name": "Mithril-Helm",
   "type": "armor",
-  "img": "icons/equipment/head/cap-simple-leather.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/mithril-helm.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -685,7 +685,7 @@
  {
   "name": "Stoffrobe",
   "type": "armor",
-  "img": "icons/equipment/chest/breastplate-banded-leather-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/stoffrobe.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -704,7 +704,7 @@
  {
   "name": "Reste einer Stoffrobe",
   "type": "armor",
-  "img": "icons/equipment/chest/breastplate-layered-leather-studded-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/reste-einer-stoffrobe.webp",
   "folder": "HLW/Rüstung/Rang E",
   "system": {
    "rank": "E",
@@ -723,7 +723,7 @@
  {
   "name": "Gefütterte Stoffrobe",
   "type": "armor",
-  "img": "icons/equipment/chest/breastplate-gorget-steel-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/gefuetterte-stoffrobe.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -742,7 +742,7 @@
  {
   "name": "Abyssalith-Robe",
   "type": "armor",
-  "img": "icons/equipment/chest/robe-layered-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/abyssalith-robe.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -763,7 +763,7 @@
  {
   "name": "Holzschild",
   "type": "armor",
-  "img": "icons/equipment/shield/buckler-wooden-boss-lightning.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/holzschild.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -784,7 +784,7 @@
  {
   "name": "Eisenschild",
   "type": "armor",
-  "img": "icons/equipment/shield/heater-stone-orange.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/eisenschild.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -805,7 +805,7 @@
  {
   "name": "Schild des Glaubens",
   "type": "armor",
-  "img": "icons/equipment/shield/targe-steel-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/schild-des-glaubens.webp",
   "folder": "HLW/Rüstung/Rang B",
   "system": {
    "rank": "B",
@@ -826,7 +826,7 @@
  {
   "name": "Handschuhe der Ahnen",
   "type": "armor",
-  "img": "icons/equipment/feet/boots-pointed-cloth-green.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/handschuhe-der-ahnen.webp",
   "folder": "HLW/Rüstung/Rang S",
   "system": {
    "rank": "S",
@@ -845,7 +845,7 @@
  {
   "name": "Wüsten-Robe (Brust, Kopf)",
   "type": "armor",
-  "img": "icons/equipment/chest/bullet-proof-vest-kevlar.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/wuesten-robe-brust-kopf.webp",
   "folder": "HLW/Rüstung/Rang C",
   "system": {
    "rank": "C",
@@ -866,7 +866,7 @@
  {
   "name": "Wüsten-Beinschutz",
   "type": "armor",
-  "img": "icons/equipment/leg/cuisses-reticulated-grey.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/wuesten-beinschutz.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -887,7 +887,7 @@
  {
   "name": "Wüsten-Armschutz",
   "type": "armor",
-  "img": "icons/equipment/hand/tech-gauntlet-steel.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/wuesten-armschutz.webp",
   "folder": "HLW/Rüstung/Rang D",
   "system": {
    "rank": "D",
@@ -908,7 +908,7 @@
  {
   "name": "Harmonium-Brustpanzer",
   "type": "armor",
-  "img": "icons/equipment/chest/vest-leather-pink.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/harmonium-brustpanzer.webp",
   "folder": "HLW/Rüstung/Rang A",
   "system": {
    "rank": "A",
@@ -927,7 +927,7 @@
  {
   "name": "Eisflimmer-Helm",
   "type": "armor",
-  "img": "icons/equipment/head/hood-simple-leather-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/eisflimmer-helm.webp",
   "folder": "HLW/Rüstung/Rang A",
   "system": {
    "rank": "A",
@@ -946,7 +946,7 @@
  {
   "name": "Drachenschuppen-Rüstung",
   "type": "armor",
-  "img": "icons/equipment/chest/vest-bulletproof-body-green.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/ruestung/drachenschuppen-ruestung.webp",
   "folder": "HLW/Rüstung/Rang S",
   "system": {
    "rank": "S",

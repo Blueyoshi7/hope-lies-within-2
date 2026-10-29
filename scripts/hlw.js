@@ -1,7 +1,7 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings } from "./hlw-talk.js";
-import { erstelleLindhain } from "./hlw-szenen.js";
+import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
-import { WORLD_SKILLS, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes } from "./hlw-regeln.js";
+import { WORLD_SKILLS, PLAETZE, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
 const HLW = {};
 
 HLW.attributeLabels = {
@@ -484,24 +484,37 @@ function getCombatHudActor() {
 
 function getUsableCombatItems(actor) {
   if (!actor) return [];
-  return Array.from(actor.items ?? [])
-    .filter((item) => ["playerSkill", "classSkill", "weapon"].includes(item.type))
-    .filter((item) => item.type === "weapon" || !isPassiveItem(item))
-    .map((item) => ({
+  const rang = (item) => {
+    const r = String(item.system?.rank ?? "").trim().toUpperCase();
+    return ["E", "D", "C", "B", "A", "S", "SS"].includes(r) ? r : "";
+  };
+  const alle = Array.from(actor.items ?? []);
+  const waffen = alle.filter((item) => item.type === "weapon").sort((a, b) => Number(boolValue(b.system?.equipped)) - Number(boolValue(a.system?.equipped)));
+  const skills = alle.filter((item) => ["playerSkill", "classSkill"].includes(item.type) && !isPassiveItem(item));
+  return [...waffen.filter((item) => boolValue(item.system?.equipped)), ...skills].map((item) => {
+    const s = item.system ?? {};
+    const kategorie = normalizeDamageCategory(s.damageCategory, `${s.skillType} ${s.element}`);
+    const cooldown = numberValue(s.cooldown?.value);
+    const heilung = isHealingItem(item);
+    const zeilen = [
+      item.type === "weapon" ? "Waffe · Angriff" : `${isQuickItem(item) ? "Schnellaktion" : "Aktion"}${heilung ? " · Heilung, kein Trefferwurf" : s.damage ? ` · gegen ${kategorie === "magical" ? "MR" : "RW"}` : ""}`,
+      s.damageText || s.damage ? `${heilung ? "Heilt" : "Schaden"} ${s.damageText || s.damage}` : "",
+      s.range ? `Reichweite ${s.range}` : "",
+      cooldown > 0 ? `noch ${cooldown} Züge Abklingzeit` : numberValue(s.cooldown?.max) ? `Abklingzeit ${s.cooldown.max}` : ""
+    ].filter(Boolean);
+    return {
       id: item.id,
       type: item.type,
       name: item.name,
-      range: parseRange(item.system?.range),
-      damage: item.system?.damage || "-",
-      cooldown: numberValue(item.system?.cooldown?.value),
-      maxCooldown: numberValue(item.system?.cooldown?.max),
-      element: item.system?.damageType || item.system?.element || "",
-      damageCategory: normalizeDamageCategory(item.system?.damageCategory, `${item.system?.skillType} ${item.system?.element}`),
-      equipped: boolValue(item.system?.equipped),
-      isPassive: isPassiveItem(item),
+      img: item.img,
+      rang: rang(item),
+      cooldown,
+      quick: isQuickItem(item),
       usable: canUseItemAction(actor, item),
-      pending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id
-    }));
+      pending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id,
+      tooltip: `<strong>${escapeHtml(item.name)}</strong><br>${zeilen.map(escapeHtml).join("<br>")}`
+    };
+  });
 }
 
 function renderCombatHud() {
@@ -521,49 +534,68 @@ function renderCombatHud() {
   drawMovementRange(actor);
 
   const hp = actor.system?.resources?.hp ?? {};
+  const hpMax = Math.max(numberValue(hp.max), 1);
+  const hpWert = numberValue(hp.value);
   const movement = actor.system?.resources?.movement ?? {};
-  const actionPoints = actor.system?.resources?.actionPoints ?? {};
   const spent = numberValue(actor.system?.combat?.movementSpent);
   const movementMax = numberValue(movement.value);
   const movementLeft = Math.max(movementMax - spent, 0);
   const ap = getActionPointState(actor);
   const canAct = ap.value > 0;
+  const quickBereit = actor.system?.actions?.quick?.available !== false;
+  const reaktionBereit = actor.system?.actions?.reaction?.available !== false;
   const isCurrentTurn = game.combat?.combatant?.actor?.id === actor.id;
-  const skills = getUsableCombatItems(actor);
-  const skillButtons = skills.length
-    ? skills.map((item) => `
-      <button type="button" class="hlw-hud-skill ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" ${(!item.usable || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
-        <strong>${escapeHtml(item.pending ? "Abbrechen" : item.name)}${item.equipped ? " [E]" : ""}</strong>
-        <span>${escapeHtml(HLW.damageCategories[item.damageCategory] ?? item.damageCategory)} | ${escapeHtml(item.element || "Typ")} | R ${item.range || "-"} | ${escapeHtml(item.damage)}</span>
-        <small>${item.cooldown > 0 ? `CD ${item.cooldown}/${item.maxCooldown}` : "bereit"}</small>
-      </button>
-    `).join("")
-    : `<p class="hlw-hud-empty">Keine Skills am Actor.</p>`;
+  const umfang = 2 * Math.PI * 29;
+  const hpProzent = Math.min(Math.max(hpWert / hpMax, 0), 1);
+  const tokenBild = actor.prototypeToken?.texture?.src || actor.img || "";
+  const passive = Array.from(actor.items ?? []).filter((item) => ["playerSkill", "classSkill"].includes(item.type) && isPassiveItem(item));
+
+  const tasten = getUsableCombatItems(actor);
+  const waffenTasten = tasten.filter((item) => item.type === "weapon");
+  const skillTasten = tasten.filter((item) => item.type !== "weapon");
+  const taste = (item) => `
+    <button type="button" class="hh-taste ${item.type === "weapon" ? "is-waffe" : ""} ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" data-rang="${item.rang}"
+      data-tooltip-html="${escapeHtml(item.pending ? "<strong>Abbrechen</strong>" : item.tooltip)}" data-tooltip-direction="UP"
+      ${(!item.usable || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
+      <img src="${escapeHtml(item.img || "icons/svg/sword.svg")}" alt="">
+      ${item.quick ? `<span class="hh-art">S</span>` : ""}
+      ${item.cooldown > 0 ? `<span class="hh-cd">${item.cooldown}</span>` : ""}
+      ${item.pending ? `<span class="hh-cd">✕</span>` : ""}
+    </button>`;
 
   const hud = document.createElement("aside");
-  hud.className = `hlw-combat-hud ${isCurrentTurn ? "is-turn" : ""}`;
+  hud.className = `hope-lies-within hlw-hud ${isCurrentTurn ? "is-turn" : ""}`;
   hud.innerHTML = `
-    <header>
-      <img src="${escapeHtml(actor.img || "")}" alt="">
-      <div>
-        <strong>${escapeHtml(actor.name)}</strong>
-        <span>${isCurrentTurn ? "Am Zug" : "Wartet"}</span>
+    <div class="hh-person">
+      <div class="hh-ring">
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#2a1514" stroke-width="5"/><circle cx="32" cy="32" r="29" fill="none" stroke="${hpProzent > 0.3 ? "#d0574f" : "#ff3b30"}" stroke-width="5" stroke-linecap="round" stroke-dasharray="${umfang.toFixed(1)}" stroke-dashoffset="${(umfang * (1 - hpProzent)).toFixed(1)}"/></svg>
+        <img src="${escapeHtml(tokenBild)}" alt="">
       </div>
-    </header>
-    <section class="hlw-hud-stats">
-      <div><span>HP</span><strong>${numberValue(hp.value)} / ${numberValue(hp.max)}</strong></div>
-      <div><span>Bewegung</span><strong>${movementLeft.toFixed(1)} / ${movementMax}</strong></div>
-      <div><span>Aktion</span><strong>${numberValue(actionPoints.value)} / ${numberValue(actionPoints.max)}</strong></div>
-      <div><span>Schnellaktion</span><strong>${actor.system?.actions?.quick?.available === false ? "verbraucht" : "bereit"}</strong></div>
-      <div><span>RW / MR</span><strong>${numberValue(actor.system?.derived?.rw)} / ${numberValue(actor.system?.derived?.mr)}</strong></div>
-    </section>
-    <section class="hlw-hud-actions">
-      <button type="button" data-hud-standard="attack" ${canAct ? "" : "disabled"}>Angriff</button>
-      <button type="button" data-hud-standard="item" ${canAct ? "" : "disabled"}>Item</button>
-      <button type="button" data-hud-standard="defend" ${canAct ? "" : "disabled"}>Abwehr</button>
-      <button type="button" data-hud-end-turn>Zug Ende</button>
-    </section>
-    <section class="hlw-hud-skills"><h3>Aktionen & Skills</h3>${skillButtons}</section>
+      <div>
+        <div class="hh-zustand ${isCurrentTurn ? "" : "is-warten"}">${isCurrentTurn ? "Am Zug" : "Wartet"}</div>
+        <div class="hh-name">${escapeHtml(actor.name)}</div>
+        <div class="hh-hp"><b>${hpWert}</b> / ${numberValue(hp.max)} HP · RW ${numberValue(actor.system?.derived?.rw)} · MR ${numberValue(actor.system?.derived?.mr)}</div>
+        <div class="hh-res">
+          <span class="hh-pip hh-a ${canAct ? "is-bereit" : ""}" data-tooltip="Aktion">A</span>
+          <span class="hh-pip hh-s ${quickBereit ? "is-bereit" : ""}" data-tooltip="Schnellaktion">S</span>
+          <span class="hh-pip hh-r ${reaktionBereit ? "is-bereit" : ""}" data-tooltip="Reaktion">R</span>
+          <span class="hh-bewegung">Bewegung <span class="hh-spur"><i style="width:${movementMax ? Math.round((movementLeft / movementMax) * 100) : 0}%"></i></span> ${String(movementLeft.toFixed(1)).replace(".", ",")} / ${movementMax}</span>
+        </div>
+      </div>
+    </div>
+    <div class="hh-leiste">
+      ${waffenTasten.map(taste).join("")}
+      ${waffenTasten.length && skillTasten.length ? `<span class="hh-trenner"></span>` : ""}
+      ${skillTasten.map(taste).join("")}
+      ${!tasten.length ? `<span class="hh-hp">Keine Waffe ausgerüstet und keine aktiven Skills.</span>` : ""}
+      ${passive.length ? `<span class="hh-trenner"></span><div class="hh-passiv" data-tooltip-html="${escapeHtml(`<strong>Passiv, wirkt immer</strong><br>${passive.map((item) => escapeHtml(item.name)).join("<br>")}`)}">${passive.map((item) => `<img src="${escapeHtml(item.img)}" alt="">`).join("")}</div>` : ""}
+    </div>
+    <div class="hh-aktionen">
+      <button type="button" data-hud-standard="attack" ${canAct ? "" : "disabled"} data-tooltip="Normaler Angriff mit der ausgerüsteten Waffe">Angriff</button>
+      <button type="button" data-hud-standard="item" ${canAct ? "" : "disabled"} data-tooltip="Gegenstand benutzen">Gegenstand</button>
+      <button type="button" data-hud-standard="defend" ${canAct ? "" : "disabled"} data-tooltip="RW und MR +2 bis zum nächsten eigenen Zug">Abwehr</button>
+      <button type="button" class="hh-ende" data-hud-end-turn>Zug beenden</button>
+    </div>
   `;
 
   hud.addEventListener("click", (event) => {
@@ -703,11 +735,13 @@ export class HopeLiesWithinActor extends Actor {
         return sum + numberValue(system.attributes?.[attributeKey]?.value);
       }, 0);
       const bonus = numberValue(current.bonus);
+      const passiv = numberValue(derived.worldSkillBonus?.[key]);
 
       current.label = definition.label;
       current.attributes = definition.attributes;
       current.base = base;
-      current.total = base + bonus;
+      current.passive = passiv;
+      current.total = base + bonus + passiv;
       system.worldSkills[key] = current;
     }
   }
@@ -833,15 +867,31 @@ export class HopeLiesWithinActor extends Actor {
     if (!item) return;
 
     const nextValue = !boolValue(item.system?.equipped);
-    if (item.type === "accessory" && nextValue) {
-      const equippedAccessories = this.items.filter((entry) => entry.type === "accessory" && boolValue(entry.system?.equipped) && entry.id !== item.id);
-      if (equippedAccessories.length >= 3) {
-        ui.notifications?.warn("Es koennen maximal 3 Accessories ausgeruestet sein.");
+    const angelegt = this.items.filter((entry) => boolValue(entry.system?.equipped) && entry.id !== item.id);
+    const ablegen = [];
+    if (nextValue) {
+      const platz = ausruestungsPlatz(item);
+      if (item.type === "accessory" && angelegt.filter((entry) => entry.type === "accessory").length >= 3) {
+        ui.notifications?.warn("Es können höchstens 3 Accessoires ausgerüstet sein.");
         return;
+      }
+      if (item.type === "weapon" || platz === "nebenhand") {
+        // Zwei Hände: Waffen und Schild teilen sich Haupt- und Nebenhand.
+        const haende = angelegt.filter((entry) => entry.type === "weapon" || ausruestungsPlatz(entry) === "nebenhand");
+        if (haende.length >= 2) {
+          ui.notifications?.warn("Beide Hände sind belegt. Erst eine Waffe oder einen Schild ablegen.");
+          return;
+        }
+      }
+      else if (platz && item.type === "armor") {
+        // Rüstung tauscht automatisch mit dem Teil, das schon auf diesem Platz sitzt.
+        ablegen.push(...angelegt.filter((entry) => entry.type === "armor" && ausruestungsPlatz(entry) === platz));
       }
     }
 
-    await item.update({ "system.equipped": nextValue });
+    const updates = [{ _id: item.id, "system.equipped": nextValue }, ...ablegen.map((entry) => ({ _id: entry.id, "system.equipped": false }))];
+    await this.updateEmbeddedDocuments("Item", updates);
+    if (ablegen.length) ui.notifications?.info(`Abgelegt: ${ablegen.map((entry) => entry.name).join(", ")}`);
   }
 
   editOwnedItem(itemId) {
@@ -1200,8 +1250,8 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["hope-lies-within", "sheet", "actor"],
       template: "systems/hope-lies-within-2/templates/actor/character-sheet.hbs",
-      width: 920,
-      height: 820,
+      width: 1010,
+      height: 860,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }]
     });
   }
@@ -1213,17 +1263,19 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
   async getData(options) {
     const context = await super.getData(options);
     context.system = context.actor.system;
-    context.itemsByType = this._prepareItems(context.actor.items);
+    context.bogen = this._prepareItems(context.actor.items);
     context.worldSkills = this._prepareWorldSkills(context.system);
     context.activeInsignia = getActiveInsignia(context.system);
-    context.insigniaSlots = getInsigniaSlotList(context.system);
-    context.profileImage = context.activeInsignia?.image || context.actor.img;
+    context.insigniaSlots = getInsigniaSlotList(context.system).map((slot, index) => ({ ...slot, nr: index + 1 }));
+    context.profileImage = context.actor.img;
+    context.tokenImage = context.actor.prototypeToken?.texture?.src || context.actor.img;
     context.isGM = game.user?.isGM;
     context.canAct = hasActionPoints(context.actor);
     context.inventoryUsed = countInventorySlots(context.actor.items);
     context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
     context.isMonster = context.actor.type === "monster";
     context.skillSlots = skillSlots(context.actor);
+    context.slotPips = Array.from({ length: Math.max(context.skillSlots.max, context.skillSlots.used) }, (_, i) => i < context.skillSlots.used);
     // Klassen-Auswahl fuer den GM: alle Klassen nach Kategorie, der Vorschlag aus der Wertverteilung ist markiert.
     const vorschlag = context.system.derived?.suggestedClassName ?? "";
     const aktuell = context.system.progression?.class ?? "";
@@ -1239,6 +1291,20 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.vorschlagLabel = vorschlag ? `— automatisch: ${vorschlag} —` : "— automatisch (noch keine Klasse) —";
     context.kesText = kes(context.system.resources?.kes?.value);
     context.pointsOver = numberValue(context.system.derived?.points?.free) < 0;
+    const prozent = (wert, max) => (max > 0 ? Math.min(Math.max(Math.round((numberValue(wert) / max) * 100), 0), 100) : 0);
+    const hp = context.system.resources?.hp ?? {};
+    context.balken = {
+      hp: prozent(hp.value, numberValue(hp.max)),
+      exp: prozent(context.system.progression?.exp, numberValue(context.system.derived?.expNext)),
+      korruption: prozent(context.system.resources?.corruption?.value, 100)
+    };
+    context.klasseGewaehlt = Boolean(context.system.progression?.class);
+    context.aktionen = {
+      aktion: hasActionPoints(context.actor),
+      schnell: context.system.actions?.quick?.available !== false,
+      reaktion: context.system.actions?.reaction?.available !== false
+    };
+    context.passivListe = context.system.derived?.passiv ?? [];
     return context;
   }
 
@@ -1342,6 +1408,24 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       await importAllJsonFiles();
     });
 
+    // Inventar-Filter
+    html.find("[data-filter]").filter("button").on("click", (event) => {
+      event.preventDefault();
+      const filter = event.currentTarget.dataset.filter;
+      html.find(".hb-filter button").removeClass("is-aktiv");
+      event.currentTarget.classList.add("is-aktiv");
+      html.find(".hb-feld[data-item-id]").each((_, feld) => {
+        feld.hidden = filter !== "alle" && feld.dataset.filter !== filter;
+      });
+    });
+
+    // Klick auf Gegenstand (Raster oder Figur): kleines Menü mit den passenden Aktionen
+    html.find(".hb-feld[data-item-id], .hb-slot[data-item-id]").on("click contextmenu", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this._zeigeGegenstandMenue(event.currentTarget);
+    });
+
     html.find("[data-item-id][draggable=true]").on("dragstart", (event) => {
       const itemId = event.currentTarget.dataset.itemId;
       const item = this.actor.items.get(itemId);
@@ -1357,61 +1441,136 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     });
   }
 
-  _prepareItems(items) {
-    const groups = {
-      skills: [],
-      weapons: [],
-      armor: [],
-      equipment: [],
-      consumables: [],
-      materials: [],
-      accessories: [],
-      natural: [],
-      minerals: [],
-      junk: [],
-      foodDrink: []
+  _zeigeGegenstandMenue(element) {
+    document.querySelectorAll(".hb-menue").forEach((menue) => menue.remove());
+    const item = this.actor.items.get(element.dataset.itemId);
+    if (!item) return;
+    const angelegt = boolValue(item.system?.equipped);
+    const eintraege = [];
+    if (["weapon", "armor", "accessory", "equipment"].includes(item.type)) eintraege.push(["equip", angelegt ? "Ablegen" : "Ausrüsten", "fa-shirt"]);
+    if (["consumable", "foodDrink"].includes(item.type)) eintraege.push(["consume", "Benutzen", "fa-flask"]);
+    eintraege.push(["details", "Details", "fa-circle-info"], ["edit", "Bearbeiten", "fa-pen"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
+    const menue = document.createElement("div");
+    menue.className = "hope-lies-within hb-menue";
+    menue.innerHTML = `<strong>${escapeHtml(item.name)}</strong>${eintraege.map(([key, label, icon]) => `<button type="button" data-menue="${key}"><i class="fa-solid ${icon}"></i> ${label}</button>`).join("")}`;
+    document.body.appendChild(menue);
+    // Neben dem Gegenstand anzeigen; reicht der Platz nach unten nicht, klappt es nach oben.
+    const a = element.getBoundingClientRect();
+    const hoehe = menue.offsetHeight;
+    menue.style.left = `${Math.min(a.left, window.innerWidth - menue.offsetWidth - 8)}px`;
+    menue.style.top = `${a.bottom + hoehe + 8 > window.innerHeight ? a.top - hoehe - 4 : a.bottom + 4}px`;
+    const schliessen = (event) => {
+      if (menue.contains(event.target)) return;
+      menue.remove();
+      document.removeEventListener("pointerdown", schliessen, true);
     };
+    setTimeout(() => document.addEventListener("pointerdown", schliessen, true));
+    menue.addEventListener("click", (event) => {
+      const knopf = event.target.closest("[data-menue]");
+      if (!knopf) return;
+      event.preventDefault();
+      menue.remove();
+      const id = item.id;
+      ({
+        equip: () => this.actor.toggleEquipped(id),
+        consume: () => this.actor.consumeOwnedItem(id),
+        details: () => this.actor.showOwnedItemDetails(id),
+        edit: () => this.actor.editOwnedItem(id),
+        give: () => this.actor.giveItemToTarget(id),
+        discard: () => this.actor.discardOwnedItem(id)
+      })[knopf.dataset.menue]?.();
+    });
+  }
 
+  _prepareItems(items) {
+    const actor = this.actor;
+    const rangVon = (item) => {
+      const r = String(item.system?.rank ?? "").trim().toUpperCase();
+      return ["E", "D", "C", "B", "A", "S", "SS"].includes(r) ? r : "";
+    };
+    const filterVon = (type) => (["weapon", "armor", "accessory", "equipment"].includes(type) ? "ausr" : ["consumable", "foodDrink"].includes(type) ? "verbrauch" : "material");
+    const zeile = (label, wert) => (wert || wert === 0 ? `<br>${escapeHtml(label)}: ${escapeHtml(wert)}` : "");
+
+    const skills = { aktiv: [], passiv: [] };
+    const gear = [];
     for (const item of items) {
+      const s = item.system ?? {};
       if (["playerSkill", "classSkill"].includes(item.type)) {
         const passive = isPassiveItem(item);
-        groups.skills.push({
-          id: item.id,
-          name: item.name,
-          type: item.type,
-          system: item.system,
-          canUse: !passive && hasActionPoints(this.actor) && numberValue(item.system?.cooldown?.value) <= 0,
-          isPassive: passive,
-          activationLabel: getActivationLabel(item),
-          isPending: HLW.pendingSkill?.actorId === this.actor.id && HLW.pendingSkill?.itemId === item.id
-        });
-      }
-      else {
-        const preparedItem = {
+        const cooldown = numberValue(s.cooldown?.value);
+        const kategorie = normalizeDamageCategory(s.damageCategory, `${s.skillType} ${s.element}`);
+        const heilung = isHealingItem(item);
+        const tags = [];
+        if (passive) tags.push({ text: "Passiv · wirkt immer", art: "passiv" });
+        else {
+          if (heilung) tags.push({ text: "Heilung", art: "heil" });
+          else if (s.damage) tags.push({ text: HLW.damageCategories[kategorie] ?? kategorie, art: kategorie === "magical" ? "magisch" : "physisch" });
+          tags.push({ text: isQuickItem(item) ? "Schnellaktion" : "Aktion" });
+          if (s.damageText || s.damage) tags.push({ text: s.damageText || s.damage });
+          if (s.range) tags.push({ text: `Reichweite ${s.range}` });
+          if (numberValue(s.cooldown?.max)) tags.push({ text: cooldown > 0 ? `noch ${cooldown} Züge` : `Abklingzeit ${s.cooldown.max}`, art: cooldown > 0 ? "cd" : "" });
+        }
+        const boni = passive ? boniText(passivBoni(item)) : "";
+        const eintrag = {
           id: item.id,
           name: item.name,
           img: item.img,
-          type: item.type,
-          system: item.system,
-          damageCategoryLabel: HLW.damageCategories[normalizeDamageCategory(item.system?.damageCategory)] ?? "-",
-          damageTypeLabel: HLW.elementLabels[normalizeElement(item.system?.damageType || item.system?.element)] ?? item.system?.damageType ?? item.system?.element ?? "-",
-          equipped: boolValue(item.system?.equipped)
+          rang: rangVon(item),
+          istKlasse: item.type === "classSkill",
+          beschreibung: s.effect || s.description || "",
+          tags,
+          boni,
+          cooldown,
+          canUse: !passive && canUseItemAction(actor, item) && cooldown <= 0,
+          isPending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id
         };
-
-        if (item.type === "weapon") groups.weapons.push(preparedItem);
-        else if (item.type === "armor") groups.armor.push(preparedItem);
-        else if (item.type === "accessory") groups.accessories.push(preparedItem);
-        else if (item.type === "consumable") groups.consumables.push(preparedItem);
-        else if (item.type === "material") groups.materials.push(preparedItem);
-        else if (item.type === "natural") groups.natural.push(preparedItem);
-        else if (item.type === "mineral") groups.minerals.push(preparedItem);
-        else if (item.type === "junk") groups.junk.push(preparedItem);
-        else if (item.type === "foodDrink") groups.foodDrink.push(preparedItem);
-        else groups.equipment.push(preparedItem);
+        (passive ? skills.passiv : skills.aktiv).push(eintrag);
+        continue;
       }
+      if (!HLW.gearItemTypes.includes(item.type)) continue;
+      const menge = Math.max(numberValue(s.quantity), 1);
+      const tooltip = `<strong>${escapeHtml(item.name)}</strong><br>${escapeHtml(HLW.itemTypeLabels[item.type] ?? item.type)}${rangVon(item) ? ` · Rang ${rangVon(item)}` : ""}`
+        + zeile("Schaden", s.damageText || s.damage)
+        + (item.type === "armor" ? zeile("HP", `${numberValue(s.hp)}${s.hpDice ? ` (${s.hpDice})` : ""}`) : "")
+        + zeile("Effekt", s.effect)
+        + (menge > 1 ? zeile("Anzahl", menge) : "");
+      gear.push({
+        id: item.id,
+        name: item.name,
+        img: item.img,
+        type: item.type,
+        rang: rangVon(item),
+        filter: filterVon(item.type),
+        menge: menge > 1 ? menge : "",
+        tooltip,
+        equipped: boolValue(s.equipped),
+        platz: ausruestungsPlatz(item)
+      });
     }
 
-    return groups;
+    // Figur: jeder Platz zeigt das erste ausgerüstete Teil, Waffen füllen Haupt- und Nebenhand.
+    const belegt = {};
+    const weitere = [];
+    for (const g of gear.filter((entry) => entry.equipped)) {
+      let platz = g.platz;
+      if (platz === "waffe") platz = belegt.haupthand ? "nebenhand" : "haupthand";
+      if (platz && !belegt[platz]) belegt[platz] = g;
+      else weitere.push(g);
+    }
+    const platz = (key) => ({ key, label: PLAETZE[key], item: belegt[key] ?? null });
+    const leere = Math.max(numberValue(actor.system?.resources?.inventorySlots?.max) - countInventorySlots(items), 0);
+
+    return {
+      skills,
+      figur: {
+        links: ["kopf", "brust", "arme", "beine"].map(platz),
+        rechts: ["kette", "ohrring", "ring", "armband"].map(platz),
+        waffen: ["haupthand", "nebenhand"].map(platz),
+        weitere
+      },
+      raster: gear.filter((entry) => !entry.equipped),
+      leereFelder: Array.from({ length: Math.min(leere, 40) })
+    };
   }
 
   _prepareWorldSkills(system) {
@@ -1448,6 +1607,8 @@ export class HopeLiesWithinItemSheet extends (BaseItemSheet ?? class {}) {
     context.isArmor = context.item.type === "armor";
     context.isWeapon = context.item.type === "weapon";
     context.priceText = context.system.priceSk ? kes(context.system.priceSk) : context.system.price;
+    context.isPassive = context.isSkill && isPassiveItem(context.item);
+    context.passivText = context.isPassive ? boniText(passivBoni(context.item)) : "";
     return context;
   }
 
@@ -1665,7 +1826,9 @@ async function importAllJsonFiles() {
 
 // Bilder nachziehen: Eintraege, die noch das Standardbild haben, bekommen das Symbol aus den Importdateien.
 // Mit { alle: true } werden auch schon gesetzte Symbole aus Foundrys Bibliothek durch die aktuelle Zuordnung ersetzt.
-async function aktualisiereBilder({ alle = false } = {}) {
+const BILD_STAND = 2;
+
+async function aktualisiereBilder({ alle = false, nurEigene = false } = {}) {
   if (!game.user?.isGM) return 0;
   const basePath = "systems/hope-lies-within-2/import";
   const dateien = ["weapons", "armor", "accessories", "equipment", "consumables", "food-drink", "materials", "natural", "minerals", "junk", "skills", "class-skills", "monsters"];
@@ -1675,7 +1838,11 @@ async function aktualisiereBilder({ alle = false } = {}) {
     if (!response.ok) continue;
     for (const entry of await response.json()) bilder.set(`${entry.type}|${entry.name}`, entry.img);
   }
+  // Klassen-Skills, die nur in der Klassenliste stehen (z. B. Basic-Klassen)
+  for (const klasse of HLW.klassen) if (klasse.skill && klasse.img && !bilder.has(`classSkill|${klasse.skill}`)) bilder.set(`classSkill|${klasse.skill}`, klasse.img);
   const standard = (img) => !img || /icons\/svg\/(item-bag|mystery-man)/.test(img) || (alle && /^icons\//.test(img));
+  // nurEigene: nur dort ersetzen, wo es ein eigenes Bild (assets/icons) gibt
+  if (nurEigene) for (const [key, img] of bilder) if (!img.includes("/assets/icons/")) bilder.delete(key);
   let anzahl = 0;
   const itemUpdates = game.items.filter((i) => standard(i.img) && bilder.has(`${i.type}|${i.name}`)).map((i) => ({ _id: i.id, img: bilder.get(`${i.type}|${i.name}`) }));
   if (itemUpdates.length) await Item.updateDocuments(itemUpdates);
@@ -1688,6 +1855,15 @@ async function aktualisiereBilder({ alle = false } = {}) {
     if (actor.type === "monster" && monsterBild && standard(actor.img)) {
       await actor.update({ img: monsterBild, "prototypeToken.texture.src": monsterBild });
       anzahl += 1;
+    }
+  }
+  // Nicht verknüpfte Figuren auf Szenen haben eigene Kopien der Gegenstände
+  for (const scene of game.scenes) {
+    for (const token of scene.tokens) {
+      if (token.actorLink || !token.actor) continue;
+      const updates = token.actor.items.filter((i) => standard(i.img) && bilder.has(`${i.type}|${i.name}`)).map((i) => ({ _id: i.id, img: bilder.get(`${i.type}|${i.name}`) }));
+      if (updates.length) await token.actor.updateEmbeddedDocuments("Item", updates);
+      anzahl += updates.length;
     }
   }
   ui.notifications?.info(`${anzahl} Bilder aktualisiert.`);
@@ -1724,6 +1900,9 @@ Hooks.once("init", () => {
 
   CONFIG.HLW = HLW;
   registerTalkSettings();
+  // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
+  game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
+  game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -1767,9 +1946,22 @@ Hooks.once("ready", async () => {
     importMonsters,
     aktualisiereBilder,
     erstelleLindhain,
+    entferneOrtsmarker,
     gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor)
   };
   registerTalk();
+
+  // Eigene Bilder für Skills und Ausrüstung: ersetzt einmalig die Foundry-Symbole (icons/…) in Welt und Charakteren.
+  // Selbst gewählte Bilder bleiben unberührt.
+  if (game.user?.isGM && game.settings.get("hope-lies-within-2", "bildStand") < BILD_STAND) {
+    await aktualisiereBilder({ alle: true, nurEigene: true });
+    await game.settings.set("hope-lies-within-2", "bildStand", BILD_STAND);
+  }
+  // Die Buch-Symbole der Lindhain-Ortsliste (v0.3.0) einmalig von den Karten nehmen.
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "ortsmarkerEntfernt")) {
+    await entferneOrtsmarker();
+    await game.settings.set("hope-lies-within-2", "ortsmarkerEntfernt", true);
+  }
 
   game.socket.on("system.hope-lies-within-2", async (data) => {
     if (!game.user?.isGM) return;
@@ -1978,11 +2170,13 @@ Hooks.on("updateActor", (actor) => {
   window.setTimeout(renderCombatHud, 50);
 });
 
-Hooks.on("updateItem", (item) => {
-  if (!item.parent) return;
-  if (game.combat?.combatant?.actor?.id !== item.parent.id && HLW.pendingSkill?.actorId !== item.parent.id) return;
-  window.setTimeout(renderCombatHud, 50);
-});
+for (const hook of ["createItem", "updateItem", "deleteItem"]) {
+  Hooks.on(hook, (item) => {
+    if (!item.parent || !HLW.combatHud) return;
+    if (getCombatHudActor()?.id !== item.parent.id) return;
+    window.setTimeout(renderCombatHud, 50);
+  });
+}
 
 Hooks.on("controlToken", () => {
   window.setTimeout(renderCombatHud, 50);

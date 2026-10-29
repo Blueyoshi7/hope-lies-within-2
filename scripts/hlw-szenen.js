@@ -1,7 +1,7 @@
 // Fertige Szenen fuer den Kampagnenstart. Aufruf als GM in der Konsole oder per Makro:
 //   game.hlw.erstelleLindhain()
 // Legt die Szene „Lindhain“ an: Dorfboden, Gebaeude als Kacheln mit Waenden und Tueren,
-// die Dorf-NSC mit Gespraechsdaten und eine Ortsliste mit Kartennotizen.
+// die Dorf-NSC mit Gespraechsdaten und eine Ortsliste im Journal (ohne Marker auf der Karte).
 
 const SYSTEM_ID = "hope-lies-within-2";
 const ASSETS = `systems/${SYSTEM_ID}/assets`;
@@ -11,20 +11,20 @@ const SIZE = 4096;          // 64 × 64 Felder
 // Gebaeude: Bild, Position (oben links, px), Groesse in Feldern, Drehung (0 = Tuer unten, 180 = Tuer oben).
 // wallRight: Anteil rechts, der nicht zum Haus gehoert (Wasserrad der Muehle).
 const GEBAEUDE = [
-  { id: "gasthaus", icon: "tankard", name: "Gasthaus „Zum Lindenblatt“", text: "Wirtin Hanne Brook. Essen, Betten, Gerüchte.", x: 820, y: 600, w: 13, h: 10, rot: 0 },
-  { id: "kraeuterhaus", icon: "pill", name: "Kräuterhaus", text: "Oma Wendel und ihr Garten.", x: 360, y: 900, w: 7, h: 7, rot: 0 },
-  { id: "schmiede", icon: "fire", name: "Schmiede", text: "Jorun Feldt repariert und schmiedet.", x: 2240, y: 760, w: 9, h: 8, rot: 0 },
-  { id: "aeltestenhaus", icon: "house", name: "Haus der Dorfältesten", text: "Mira Holm.", x: 2850, y: 820, w: 9, h: 8, rot: 0 },
-  { id: "schrein", icon: "temple", name: "Hüter-Schrein", text: "Bruder Aled kommt jede Season.", x: 900, y: 2160, w: 7, h: 7, rot: 180 },
-  { id: "wohnhaus-a", icon: "house", name: "Wohnhaus", text: "Eine Bauernfamilie.", x: 360, y: 2160, w: 8, h: 6, rot: 180 },
-  { id: "fluechtlingshof", icon: "village", name: "Flüchtlingshof", text: "Seit 788 bewohnt.", x: 2560, y: 2160, w: 10, h: 8, rot: 180 },
-  { id: "wohnhaus-b", icon: "house", name: "Wohnhaus", text: "Eine Familie mit Kindern.", x: 2300, y: 2780, w: 8, h: 6, rot: 180 },
-  { id: "muehle", icon: "windmill", name: "Mühle am Lindbach", text: "Hier wird das Korn des Dorfs gemahlen.", x: 3230, y: 2800, w: 8, h: 7, rot: 0, wallRight: 0.2 },
-  { id: "wachturm", icon: "tower-flag", name: "Wachturm der Gilde", text: "Am Rand des gesperrten Waldes.", x: 2040, y: 300, w: 4, h: 4, rot: 0 }
+  { id: "gasthaus", name: "Gasthaus „Zum Lindenblatt“", text: "Wirtin Hanne Brook. Essen, Betten, Gerüchte.", x: 820, y: 600, w: 13, h: 10, rot: 0 },
+  { id: "kraeuterhaus", name: "Kräuterhaus", text: "Oma Wendel und ihr Garten.", x: 360, y: 900, w: 7, h: 7, rot: 0 },
+  { id: "schmiede", name: "Schmiede", text: "Jorun Feldt repariert und schmiedet.", x: 2240, y: 760, w: 9, h: 8, rot: 0 },
+  { id: "aeltestenhaus", name: "Haus der Dorfältesten", text: "Mira Holm.", x: 2850, y: 820, w: 9, h: 8, rot: 0 },
+  { id: "schrein", name: "Hüter-Schrein", text: "Bruder Aled kommt jede Season.", x: 900, y: 2160, w: 7, h: 7, rot: 180 },
+  { id: "wohnhaus-a", name: "Wohnhaus", text: "Eine Bauernfamilie.", x: 360, y: 2160, w: 8, h: 6, rot: 180 },
+  { id: "fluechtlingshof", name: "Flüchtlingshof", text: "Seit 788 bewohnt.", x: 2560, y: 2160, w: 10, h: 8, rot: 180 },
+  { id: "wohnhaus-b", name: "Wohnhaus", text: "Eine Familie mit Kindern.", x: 2300, y: 2780, w: 8, h: 6, rot: 180 },
+  { id: "muehle", name: "Mühle am Lindbach", text: "Hier wird das Korn des Dorfs gemahlen.", x: 3230, y: 2800, w: 8, h: 7, rot: 0, wallRight: 0.2 },
+  { id: "wachturm", name: "Wachturm der Gilde", text: "Am Rand des gesperrten Waldes.", x: 2040, y: 300, w: 4, h: 4, rot: 0 }
 ];
 
 const ORTE_OHNE_GEBAEUDE = [
-  { name: "Dorfplatz", icon: "oak", text: "Die alte Linde in der Mitte. Hier wird zur Saatwende gefeiert.", x: 1940, y: 1460 }
+  { name: "Dorfplatz", text: "Die alte Linde in der Mitte. Hier wird zur Saatwende gefeiert." }
 ];
 
 // Nur Eintraege, die die Spieler sofort sehen. Verdecktes GM-Wissen (siehe GM-Kampagnenstart) traegt der GM
@@ -130,6 +130,21 @@ function waendeFuer(geb, level) {
   }));
 }
 
+// Ortsmarker (Notizen) auf Karten entfernen, die auf die Ortsliste „Lindhain – Orte“ zeigen.
+// Die Ortsliste selbst bleibt im Journal; auf der Karte stören die Buch-Symbole nur.
+export async function entferneOrtsmarker() {
+  if (!game.user?.isGM) return 0;
+  const journal = game.journal.getName("Lindhain – Orte");
+  if (!journal) return 0;
+  let anzahl = 0;
+  for (const scene of game.scenes) {
+    const ids = scene.notes.filter((note) => note.entryId === journal.id).map((note) => note.id);
+    if (ids.length) await scene.deleteEmbeddedDocuments("Note", ids);
+    anzahl += ids.length;
+  }
+  return anzahl;
+}
+
 export async function erstelleLindhain({ neu = false } = {}) {
   if (!game.user?.isGM) return ui.notifications?.warn("Nur der GM kann Szenen anlegen.");
   if (neu) {
@@ -171,14 +186,7 @@ export async function erstelleLindhain({ neu = false } = {}) {
     actors.push([actor, nsc]);
   }
 
-  // Ortsmarker stehen draussen vor der Tuer (nicht mitten im Raum auf den Moebeln).
-  const vorDerTuer = (g) => {
-    const breite = g.w * GRID * (1 - (g.wallRight ?? 0));
-    const x = g.rot === 180 ? g.x + g.w * GRID - breite / 2 : g.x + breite / 2;
-    const y = g.rot === 180 ? g.y - GRID * 0.9 : g.y + g.h * GRID + GRID * 0.9;
-    return { x: Math.round(x + GRID), y: Math.round(y) };
-  };
-  const orte = [...GEBAEUDE.map((g) => ({ name: g.name, text: g.text, icon: g.icon, ...vorDerTuer(g) })), ...ORTE_OHNE_GEBAEUDE];
+  const orte = [...GEBAEUDE.map((g) => ({ name: g.name, text: g.text })), ...ORTE_OHNE_GEBAEUDE];
   const journal = await JournalEntry.create({
     name: "Lindhain – Orte",
     ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER },
@@ -233,19 +241,6 @@ export async function erstelleLindhain({ neu = false } = {}) {
     tokens.push(token.toObject());
   }
   await scene.createEmbeddedDocuments("Token", tokens);
-
-  const pages = [...journal.pages];
-  await scene.createEmbeddedDocuments("Note", orte.map((ort, index) => ({
-    entryId: journal.id,
-    pageId: pages[index]?.id,
-    x: ort.x,
-    y: ort.y,
-    levels: [level],
-    text: ort.name,
-    texture: { src: `icons/svg/${ort.icon ?? "hanging-sign"}.svg`, tint: "#f3ead6" },
-    iconSize: 36,
-    fontSize: 22
-  })));
 
   ui.notifications?.info("Lindhain ist angelegt: Dorf mit 10 Gebäuden samt Dächern, 8 NSC und der Ortsliste.");
   return scene;

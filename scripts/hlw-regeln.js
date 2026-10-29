@@ -96,16 +96,91 @@ export function klasseVorschlag(system, klassen) {
   return null;
 }
 
-// Boni aller ausgeruesteten Gegenstaende; Ruestungs-HP sind die beim Appraisal gewuerfelten HP.
+export const BONUS_LABELS = {
+  rw: "Rüstwert", mr: "Magieresistenz", acc: "Genauigkeit", damageBonus: "Schaden", magicBonus: "Magieschaden", block: "Blockwert",
+  movement: "Bewegung", initiative: "Initiative", hp: "HP", hpPerLevel: "HP pro Level",
+  ...Object.fromEntries(Object.entries(WORLD_SKILLS).map(([key, ws]) => [key, ws.label]))
+};
+
+// Passive Skills wirken immer und brauchen keine Aktion. Feste Zahlen aus dem Skilltext;
+// Boni, die der GM am Skill einträgt, haben Vorrang. Schlüssel „Typ:Name“ trennt gleichnamige Skills.
+export const PASSIV_BONI = {
+  "Geisterschritt": { movement: 1 },
+  "Ich bin ein Baum!": { movement: -1 },
+  "Schattenhafte Presänz": { rw: 3 },
+  "Standhaftigkeit": { hpPerLevel: 2 },
+  "Schildwache": { hp: 20 },
+  "classSkill:Adlerauge": { acc: 2 },
+  "classSkill:Naturinstinkt": { movement: 1, naturkunde: 2 },
+  "Spurensucher-Instinkt": { movement: 1, naturkunde: 5 }
+};
+
+export function istPassiv(item) {
+  const s = item?.system ?? {};
+  return String(s.activation ?? "").toLowerCase() === "passive" || s.passive === true || s.passive === "true";
+}
+
+export function passivBoni(item) {
+  const eigene = Object.fromEntries(Object.entries(item?.system?.bonuses ?? {}).filter(([key, v]) => key in BONUS_LABELS && zahl(v)));
+  if (Object.keys(eigene).length) return Object.fromEntries(Object.entries(eigene).map(([k, v]) => [k, zahl(v)]));
+  return PASSIV_BONI[`${item?.type}:${item?.name}`] ?? PASSIV_BONI[item?.name] ?? {};
+}
+
+export function boniText(boni) {
+  return Object.entries(boni ?? {}).map(([key, v]) => `${v > 0 ? "+" : "−"}${Math.abs(v)} ${BONUS_LABELS[key] ?? key}`).join(", ");
+}
+
+// Boni aller ausgeruesteten Gegenstaende und passiven Skills; Ruestungs-HP sind die beim Appraisal gewuerfelten HP.
 export function ausruestungsBoni(items) {
-  const summe = { rw: 0, mr: 0, acc: 0, damageBonus: 0, magicBonus: 0, block: 0, movement: 0, initiative: 0, hp: 0 };
+  const summe = Object.fromEntries(Object.keys(BONUS_LABELS).map((key) => [key, 0]));
+  const passiv = [];
   for (const item of items ?? []) {
     const s = item.system ?? {};
+    if (["playerSkill", "classSkill"].includes(item.type)) {
+      if (!istPassiv(item)) continue;
+      const boni = passivBoni(item);
+      for (const [key, v] of Object.entries(boni)) if (key in summe) summe[key] += v;
+      passiv.push({ name: item.name, text: boniText(boni) });
+      continue;
+    }
     if (!(s.equipped === true || s.equipped === "true")) continue;
     for (const key of Object.keys(summe)) summe[key] += zahl(s.bonuses?.[key]);
     if (item.type === "armor") summe.hp += zahl(s.hp);
   }
+  summe.passiv = passiv;
   return summe;
+}
+
+// Ausrüstungsplatz für die Figur im Charakterbogen.
+export const PLAETZE = {
+  kopf: "Kopf", brust: "Brust", arme: "Arme", beine: "Beine",
+  kette: "Kette", ohrring: "Ohrring", ring: "Ring", armband: "Armband",
+  haupthand: "Haupthand", nebenhand: "Nebenhand"
+};
+
+export function ausruestungsPlatz(item) {
+  const name = String(item?.name ?? "").toLowerCase();
+  const slot = String(item?.system?.slot ?? "").toLowerCase();
+  if (item?.type === "weapon") return "waffe";
+  if (item?.type === "armor") {
+    if (/schild/.test(slot + name)) return "nebenhand";
+    if (/brust/.test(slot)) return "brust";
+    if (/helm|kopf/.test(slot)) return "kopf";
+    if (/arm|hand/.test(slot)) return "arme";
+    if (/bein|fu(ß|ss)/.test(slot)) return "beine";
+    if (/handschuh|arme|armschien/.test(name)) return "arme";
+    if (/stiefel|schuh|hose|beine/.test(name)) return "beine";
+    if (/helm|kapuze|krone/.test(name)) return "kopf";
+    return "brust";
+  }
+  if (item?.type === "accessory") {
+    if (/ohrring/.test(name)) return "ohrring";
+    if (/armband|armreif/.test(name)) return "armband";
+    if (/kette|amulett|anhänger|halsband/.test(name)) return "kette";
+    if (/ring/.test(name)) return "ring";
+    return "kette";
+  }
+  return null;
 }
 
 // Alle abgeleiteten Werte eines Charakters oder NSC.
@@ -122,7 +197,7 @@ export function berechneWerte(system, items, klassen) {
   const derived = {
     suggestedClassName: klasse?.name ?? "",
     level: L,
-    hpMax: 20 + 2 * L + 3 * a("con") + g.hp + zahl(b.hp),
+    hpMax: 20 + 2 * L + 3 * a("con") + g.hp + g.hpPerLevel * L + zahl(b.hp),
     rw: 8 + Math.floor((a("agl") + a("dex")) / 4) + g.rw + zahl(b.rw) + abwehr,
     mr: 8 + Math.floor((a("wis") + a("sou")) / 4) + g.mr + zahl(b.mr) + abwehr,
     block: Math.min(g.block + zahl(b.block), BLOCK_MAX),
@@ -136,7 +211,9 @@ export function berechneWerte(system, items, klassen) {
     expNext: expFuerNaechstesLevel(L),
     corruption: korruptionsStufe(system.resources?.corruption?.value),
     suggestedClass: klasse ? `${klasse.name} (${klasse.category})` : "noch keine (ab 10 verteilten Punkten)",
-    suggestedClassEffect: klasse ? `${klasse.skill}: ${klasse.effect}` : ""
+    suggestedClassEffect: klasse ? `${klasse.skill}: ${klasse.effect}` : "",
+    worldSkillBonus: Object.fromEntries(Object.keys(WORLD_SKILLS).map((key) => [key, g[key]])),
+    passiv: g.passiv
   };
   return derived;
 }
@@ -162,7 +239,9 @@ export function berechneMonster(system) {
     expNext: null,
     corruption: korruptionsStufe(0),
     suggestedClass: "",
-    suggestedClassEffect: ""
+    suggestedClassEffect: "",
+    worldSkillBonus: {},
+    passiv: []
   };
 }
 

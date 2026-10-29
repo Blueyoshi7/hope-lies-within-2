@@ -362,7 +362,19 @@
         "cooldownText": "",
         "className": "",
         "awaken": "",
-        "learningPoints": 0
+        "learningPoints": 0,
+        "bonuses": {
+          "rw": 0,
+          "mr": 0,
+          "acc": 0,
+          "damageBonus": 0,
+          "magicBonus": 0,
+          "block": 0,
+          "movement": 0,
+          "initiative": 0,
+          "hp": 0,
+          "hpPerLevel": 0
+        }
       },
       "gear": {
         "quantity": 1,

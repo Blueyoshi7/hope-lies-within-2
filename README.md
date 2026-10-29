@@ -35,7 +35,17 @@ Als GM in der Item-Sidebar auf **HLW JSON Import** klicken (oder im Inventar auf
 | `import/skills.json`, `class-skills.json` | Skills und Klassen-Skills |
 | `import/monsters.json` | Bestiarium als Monster-Actors (Werte nach Rang, Rolle und Größe) |
 
-Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP werden beim Appraisal gewürfelt: im Item-Bogen auf „Würfeln“ klicken. Jeder Eintrag hat ein passendes Symbol aus Foundrys Bibliothek; ältere Importe holen sich die Bilder mit `game.hlw.aktualisiereBilder()`; `game.hlw.aktualisiereBilder({ alle: true })` ersetzt auch schon gesetzte Symbole durch die aktuelle Zuordnung.
+Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP werden beim Appraisal gewürfelt: im Item-Bogen auf „Würfeln“ klicken.
+
+**Bilder:** Alle Skills, Klassen-Skills, Waffen, Rüstungen und Accessoires haben eigene Bilder im Stil der Charakterporträts (`assets/icons`), alle übrigen Gegenstände ein passendes Symbol aus Foundrys Bibliothek. Beim ersten Start einer Welt mit dieser Version ersetzt das System als GM einmalig die alten Foundry-Symbole durch die eigenen Bilder (Item-Sidebar, Charaktere und nicht verknüpfte Figuren auf Szenen); selbst gewählte Bilder bleiben. Von Hand: `game.hlw.aktualisiereBilder()`, `game.hlw.aktualisiereBilder({ alle: true })` ersetzt auch schon gesetzte Foundry-Symbole.
+
+## Charakterbogen und Kampfleiste
+
+- **Charakter:** Figur mit Ausrüstungsplätzen (Kopf, Brust, Arme, Beine, Kette, Ohrring, Ring, Armband, Haupt- und Nebenhand), Rahmenfarbe nach Rang. Rechts Kampfwerte, Werte und Waffen, darunter das Inventar als Raster mit Filtern und die World-Skills. Klick auf einen Gegenstand öffnet ein Menü (Ausrüsten/Ablegen, Benutzen, Details, Bearbeiten, An Ziel geben, Wegwerfen). Rüstung tauscht automatisch mit dem Teil auf demselben Platz.
+- **Skills:** aktive und passive Skills getrennt. Passive Skills wirken immer und brauchen keine Aktion; feste Zahlen aus dem Skilltext (z. B. +1 Bewegung, +3 Rüstwert, +2 HP pro Level) sind schon in den Werten eingerechnet. Der GM kann im Skill eigene Zahlen eintragen.
+- **Insignien:** drei Slots, alle wirken; darunter die ruhenden Insignien. Nur der GM bearbeitet sie.
+- **Notizen:** Profil, was gerade passiv wirkt, GM-Boni und ein freies Notizfeld.
+- **Kampfleiste:** Porträt mit HP-Ring, Aktion/Schnellaktion/Reaktion, Bewegung, ausgerüstete Waffen und aktive Skills als Bildtasten mit Tooltip und Abklingzeit, passive Skills als kleine Symbole. Foundrys Makro-Leiste ist im Kampf ausgeblendet.
 
 ## Skills und Gegenstände geben
 
@@ -58,7 +68,7 @@ game.hlw.erstelleLindhain()              // neu anlegen
 game.hlw.erstelleLindhain({ neu: true })  // Szene und Ortsliste neu aufbauen, NSC bleiben
 ```
 
-Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts und Gesprächsdaten sowie Ortsnotizen. Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein.
+Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts und Gesprächsdaten sowie die Ortsliste „Lindhain – Orte“ im Journal (ohne Marker auf der Karte; alte Buch-Marker entfernt das System beim ersten GM-Start, sonst `game.hlw.entferneOrtsmarker()`). Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein.
 
 ## Struktur
 
@@ -68,9 +78,11 @@ scripts/hlw.js               Actor, Bögen, Kampf, Import
 scripts/hlw-regeln.js        Regeln aus Kanon 2.0 (Kampfwerte, Punkte, Klassen, Kes)
 scripts/hlw-talk.js          NSC-Gespräch
 scripts/hlw-szenen.js        Szenenaufbau Lindhain
+scripts/hlw-geben.js         GM-Fenster „Skill geben“ / „Gegenstand geben“
+styles/hlw-bogen.css         Charakterbogen und Kampfleiste
 data/klassen.json            Klassen mit Lvl-Satz
 import/                      Daten für den JSON-Import
-assets/                      Karten, Gebäude, Dächer, NSC-Porträts und Tokens
+assets/                      Karten, Gebäude, Dächer, NSC-Porträts, Tokens und Bilder (icons/)
 docs/                        Spielerbücher und Regeltabellen
 ```
 

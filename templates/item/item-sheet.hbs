@@ -64,6 +64,21 @@
       <label>Sekundaer <input name="system.scaling.secondary" type="text" value="{{system.scaling.secondary}}" /></label>
       <label>Tertiaer <input name="system.scaling.tertiary" type="text" value="{{system.scaling.tertiary}}" /></label>
     </section>
+    {{#if isPassive}}
+      <h3>Passiv: wirkt immer</h3>
+      <p class="hlw-passiv-hinweis">{{#if passivText}}Wirkt gerade: <strong>{{passivText}}</strong>. {{/if}}Trägt der GM hier Zahlen ein, ersetzen sie die Werte aus dem Skilltext.</p>
+      <section class="form-grid">
+        <label>HP <input name="system.bonuses.hp" type="number" value="{{system.bonuses.hp}}" /></label>
+        <label>HP pro Level <input name="system.bonuses.hpPerLevel" type="number" value="{{system.bonuses.hpPerLevel}}" /></label>
+        <label>Rüstwert <input name="system.bonuses.rw" type="number" value="{{system.bonuses.rw}}" /></label>
+        <label>Magieresistenz <input name="system.bonuses.mr" type="number" value="{{system.bonuses.mr}}" /></label>
+        <label>Blockwert <input name="system.bonuses.block" type="number" value="{{system.bonuses.block}}" /></label>
+        <label>Genauigkeit <input name="system.bonuses.acc" type="number" value="{{system.bonuses.acc}}" /></label>
+        <label>Schaden <input name="system.bonuses.damageBonus" type="number" value="{{system.bonuses.damageBonus}}" /></label>
+        <label>Bewegung <input name="system.bonuses.movement" type="number" value="{{system.bonuses.movement}}" /></label>
+        <label>Initiative <input name="system.bonuses.initiative" type="number" value="{{system.bonuses.initiative}}" /></label>
+      </section>
+    {{/if}}
     <label class="stacked">Effekt
       <textarea name="system.effect">{{system.effect}}</textarea>
     </label>

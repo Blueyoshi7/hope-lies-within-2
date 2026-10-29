@@ -1,0 +1,423 @@
+/* Charakterbogen und Kampfleiste (Entwurf „Bogen und Kampf-UI“). Gilt nur für .hlw-bogen und .hlw-hud. */
+
+.hope-lies-within {
+  --hb-grund: #12141a;
+  --hb-flaeche: #1a1d25;
+  --hb-flaeche-2: #22262f;
+  --hb-feld: #111318;
+  --hb-linie: #2f3440;
+  --hb-linie-hell: #3d4352;
+  --hb-text: #e8e4da;
+  --hb-text-2: #a6a294;
+  --hb-text-3: #6f6c63;
+  --hb-gold: #d8b46a;
+  --hb-gold-dunkel: #8a6c35;
+  --hb-hp: #d0574f;
+  --hb-hp-dunkel: #6e2622;
+  --hb-exp: #6fb7d6;
+  --hb-korr: #8e5bd1;
+}
+
+[data-rang="E"] { --rf: #8b8b8b; }
+[data-rang="D"] { --rf: #6fb06a; }
+[data-rang="C"] { --rf: #5a9ad6; }
+[data-rang="B"] { --rf: #a46ad6; }
+[data-rang="A"] { --rf: #e08a3c; }
+[data-rang="S"] { --rf: #e0574f; }
+[data-rang="SS"] { --rf: #f2cf6b; }
+
+.hope-lies-within.sheet.actor .window-content {
+  background: radial-gradient(ellipse at 30% 0%, #23272f 0%, #15171d 55%, #111318 100%);
+  padding: 0;
+}
+
+.hlw-sheet.hlw-bogen {
+  gap: 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--hb-text);
+}
+
+.hlw-bogen input,
+.hlw-bogen textarea,
+.hlw-bogen select {
+  border-color: var(--hb-linie);
+  background: #0e1014;
+  color: var(--hb-text);
+  box-shadow: none;
+}
+.hlw-bogen input:focus,
+.hlw-bogen textarea:focus,
+.hlw-bogen select:focus { border-color: var(--hb-gold); box-shadow: 0 0 0 1px rgba(216, 180, 106, 0.25); }
+.hlw-bogen input[type="number"] { text-align: center; }
+.hope-lies-within .hlw-sheet.hlw-bogen textarea { font-family: var(--font-body, inherit); font-size: 12.5px; line-height: 1.45; padding: 8px 10px; }
+
+.hlw-bogen button {
+  border: 1px solid var(--hb-linie-hell);
+  border-radius: 8px;
+  background: var(--hb-flaeche-2);
+  color: var(--hb-text);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 6px 12px;
+  width: auto;
+}
+.hlw-bogen button:hover:not(:disabled) { border-color: var(--hb-gold); color: var(--hb-gold); background: var(--hb-flaeche-2); box-shadow: none; }
+
+.hlw-bogen h3,
+.hlw-bogen h4 { margin: 0; border: 0; text-transform: none; letter-spacing: 0; }
+.hlw-bogen label { text-transform: none; font-weight: 500; }
+
+/* ---------- Kopf ---------- */
+.hlw-bogen .hb-kopf {
+  display: grid;
+  grid-template-columns: 72px 1fr 300px;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--hb-linie);
+  background: linear-gradient(90deg, rgba(216, 180, 106, 0.08), transparent 60%);
+}
+.hlw-bogen .hb-kopfbild {
+  width: 72px; height: 72px; border-radius: 50%; overflow: hidden;
+  border: 2px solid var(--hb-gold-dunkel); box-shadow: 0 0 0 3px rgba(216, 180, 106, 0.12);
+  background: var(--hb-feld);
+}
+.hlw-bogen .hb-kopfbild img { width: 100%; height: 100%; object-fit: cover; border: 0; }
+.hlw-bogen .hb-name {
+  border: 0 !important; background: transparent !important; padding: 0; height: auto; min-height: 0;
+  font-size: 22px; font-weight: 600; color: var(--hb-text);
+}
+.hlw-bogen .hb-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.hlw-bogen .hb-chip {
+  display: inline-flex; flex-direction: row; align-items: center; gap: 6px;
+  padding: 2px 10px; min-height: 26px; border-radius: 999px; font-size: 12px; font-weight: 500;
+  background: var(--hb-flaeche-2); border: 1px solid var(--hb-linie); color: var(--hb-text-2);
+}
+.hlw-bogen .hb-chip b { color: var(--hb-text); font-weight: 600; }
+.hlw-bogen .hb-chip input {
+  width: 64px; min-height: 0; height: 20px; padding: 0 4px; border: 0; background: transparent;
+  color: var(--hb-text); font-weight: 600; text-align: left;
+}
+.hlw-bogen .hb-chip input[type="number"] { width: 38px; text-align: center; }
+.hlw-bogen .hb-klasse { border-color: var(--hb-gold-dunkel); color: var(--hb-gold); }
+.hlw-bogen .hb-klasse select {
+  min-height: 0; height: 22px; padding: 0 4px; border: 0; background: transparent; color: var(--hb-gold); font-weight: 600; width: auto; max-width: 260px;
+}
+.hlw-bogen .hb-klasse select option, .hlw-bogen .hb-klasse select optgroup { background: #15171d; color: var(--hb-text); }
+
+.hlw-bogen .hb-balken { display: grid; gap: 6px; }
+.hlw-bogen .hb-balkenzeile {
+  display: grid; grid-template-columns: 70px 1fr 104px; gap: 8px; align-items: center;
+  flex-direction: row; font-size: 12px; color: var(--hb-text-2);
+}
+.hlw-bogen .hb-spur { display: block; height: 8px; border-radius: 99px; background: #0b0c10; overflow: hidden; border: 1px solid #2a2e38; }
+.hlw-bogen .hb-spur i { display: block; height: 100%; border-radius: 99px; }
+.hlw-bogen .hb-hp { background: linear-gradient(90deg, var(--hb-hp-dunkel), var(--hb-hp)); }
+.hlw-bogen .hb-exp { background: var(--hb-exp); }
+.hlw-bogen .hb-korr { background: var(--hb-korr); }
+.hlw-bogen .hb-zahl { justify-content: flex-end; color: var(--hb-text); font-variant-numeric: tabular-nums; white-space: nowrap; gap: 3px; }
+.hlw-bogen .hb-zahl input { width: 40px; min-height: 0; height: 20px; padding: 0 2px; border: 0; background: transparent; text-align: right; font-weight: 600; }
+
+/* ---------- Reiter ---------- */
+.hlw-bogen .sheet-tabs.hb-reiter {
+  display: flex; justify-content: flex-start; gap: 4px; padding: 0 14px; border-bottom: 1px solid var(--hb-linie); grid-template-columns: none;
+}
+.hlw-bogen .sheet-tabs.hb-reiter .item {
+  min-height: 0; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none;
+  padding: 11px 14px; color: var(--hb-text-3); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.hlw-bogen .sheet-tabs.hb-reiter .item:hover { color: var(--hb-text); }
+.hlw-bogen .sheet-tabs.hb-reiter .item.active { color: var(--hb-gold); border-bottom-color: var(--hb-gold); box-shadow: none; background: none; }
+
+.hlw-bogen .sheet-body { padding: 16px 18px 20px; flex: 1; }
+
+/* ---------- Karten ---------- */
+.hlw-bogen .hb-karte { background: var(--hb-flaeche); border: 1px solid var(--hb-linie); border-radius: 10px; padding: 12px 14px; }
+.hlw-bogen .hb-karte > h3,
+.hlw-bogen .hb-abschnitt {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  font-size: 11px; font-weight: 600; color: var(--hb-text-3); text-transform: uppercase; letter-spacing: 0.1em;
+}
+.hlw-bogen .hb-karte > h3 small, .hlw-bogen .hb-abschnitt small { text-transform: none; letter-spacing: 0; font-weight: 400; }
+.hlw-bogen .hb-spalte { display: grid; gap: 12px; align-content: start; }
+
+/* ---------- Figur ---------- */
+.hlw-bogen .hb-oben { display: grid; grid-template-columns: 1fr 300px; gap: 16px; }
+.hlw-bogen .hb-figur {
+  display: grid; grid-template-columns: 1fr 260px 1fr; align-items: center; min-height: 440px; padding: 16px 16px 26px;
+  border-radius: 10px; border: 1px solid var(--hb-linie);
+  background: radial-gradient(ellipse at 50% 45%, rgba(216, 180, 106, 0.1), transparent 60%), var(--hb-feld);
+}
+.hlw-bogen .hb-person { align-self: end; height: 410px; display: flex; justify-content: center; }
+.hlw-bogen .hb-person img { height: 100%; width: 100%; object-fit: contain; object-position: bottom; border: 0; filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.6)); cursor: pointer; }
+.hlw-bogen .hb-slots { display: grid; gap: 24px; }
+.hlw-bogen .hb-links { justify-items: end; padding-right: 8px; }
+.hlw-bogen .hb-rechts { justify-items: start; padding-left: 8px; }
+
+.hlw-bogen .hb-slot {
+  position: relative; width: 70px; height: 70px; border-radius: 12px;
+  background: linear-gradient(180deg, #23262e, #181a20);
+  border: 1px solid var(--hb-linie-hell);
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+  display: grid; place-items: center;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.hlw-bogen .hb-slot.is-voll { cursor: pointer; }
+.hlw-bogen .hb-slot.is-voll:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(216, 180, 106, 0.4); }
+.hlw-bogen .hb-slot img { width: 58px; height: 58px; object-fit: contain; border: 0; border-radius: 8px; filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.6)); }
+.hlw-bogen .hb-slot.is-leer::after { content: ""; width: 24px; height: 24px; border-radius: 50%; border: 1px dashed var(--hb-linie-hell); }
+.hlw-bogen .hb-slotname {
+  position: absolute; bottom: -17px; left: 50%; transform: translateX(-50%);
+  font-size: 10px; color: var(--hb-text-3); white-space: nowrap; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.hlw-bogen .hb-slot.is-klein { width: 54px; height: 54px; }
+.hlw-bogen .hb-slot.is-klein img { width: 44px; height: 44px; }
+
+.hlw-bogen [data-rang]:is([data-rang="E"], [data-rang="D"], [data-rang="C"], [data-rang="B"], [data-rang="A"], [data-rang="S"], [data-rang="SS"]).hb-slot {
+  border-color: color-mix(in srgb, var(--rf) 55%, var(--hb-linie));
+  box-shadow: inset 0 0 18px color-mix(in srgb, var(--rf) 22%, transparent);
+}
+.hlw-bogen .hb-slot[data-rang]:not([data-rang=""])::before {
+  content: attr(data-rang); position: absolute; top: 3px; right: 6px; font-size: 9px; font-weight: 700; color: var(--rf);
+}
+
+.hlw-bogen .hb-waffen { display: flex; flex-wrap: wrap; gap: 12px; padding-bottom: 18px; }
+
+/* ---------- Kampfwerte und Werte ---------- */
+.hlw-bogen .hb-kampfwerte { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.hlw-bogen .hb-kw { background: var(--hb-flaeche-2); border-radius: 8px; padding: 7px 4px; text-align: center; }
+.hlw-bogen .hb-kw b { display: block; font-size: 19px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.hlw-bogen .hb-kw span { font-size: 10.5px; color: var(--hb-text-2); }
+.hlw-bogen .hb-kw.is-abwehr { outline: 1px solid var(--hb-gold-dunkel); }
+
+.hlw-bogen .hb-pips { margin-left: auto; display: flex; gap: 4px; }
+.hlw-bogen .hb-res {
+  width: 22px; height: 22px; padding: 0; border-radius: 6px; display: inline-grid; place-items: center;
+  font-size: 11px; font-weight: 700; border: 1px solid var(--hb-linie-hell); color: var(--hb-text-3); background: transparent; letter-spacing: 0;
+}
+.hlw-bogen .hb-res.is-bereit.hb-aktion { background: #c9793a; border-color: #e0a06a; color: #fff; }
+.hlw-bogen .hb-res.is-bereit.hb-schnell { background: #3f8fb8; border-color: #78b9da; color: #fff; }
+.hlw-bogen .hb-res.is-bereit.hb-reaktion { background: #7a5ac2; border-color: #a58ce0; color: #fff; }
+
+.hlw-bogen .hb-punkte { margin-left: auto; text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--hb-text-2); }
+.hlw-bogen .hb-punkte b { color: var(--hb-gold); }
+.hlw-bogen .hb-punkte.is-over b { color: var(--hb-hp); }
+.hlw-bogen .hb-attribute { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.hlw-bogen .hb-attr { display: grid; gap: 0; justify-items: center; padding: 4px 0 2px; border-radius: 8px; background: var(--hb-flaeche-2); }
+.hlw-bogen .hb-attr span { font-size: 10px; color: var(--hb-text-3); letter-spacing: 0.08em; font-weight: 600; }
+.hlw-bogen .hb-attr input { width: 100%; min-height: 0; height: 24px; border: 0; background: transparent; font-size: 17px; font-weight: 600; padding: 0; }
+
+/* ---------- Inventar ---------- */
+.hlw-bogen .hb-inventar { margin-top: 16px; }
+.hlw-bogen .hb-invkopf { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 10px; }
+.hlw-bogen .hb-filter { display: flex; gap: 5px; }
+.hlw-bogen .hb-filter button { border-radius: 999px; padding: 4px 12px; color: var(--hb-text-2); }
+.hlw-bogen .hb-filter button.is-aktiv { background: var(--hb-gold); border-color: var(--hb-gold); color: #1a1408; }
+.hlw-bogen .hb-kes { margin-left: auto; display: flex; align-items: center; gap: 6px; color: var(--hb-text-2); font-size: 12px; }
+.hlw-bogen .hb-kes b { color: var(--hb-text); }
+.hlw-bogen .hb-kes input { width: 130px; min-height: 0; height: 28px; font-size: 12px; text-align: left; }
+.hlw-bogen .hb-raster { display: grid; grid-template-columns: repeat(auto-fill, 60px); gap: 8px; }
+.hlw-bogen .hb-feld {
+  position: relative; width: 60px; height: 60px; border-radius: 10px;
+  background: var(--hb-feld); border: 1px solid var(--hb-linie); display: grid; place-items: center;
+}
+.hlw-bogen .hb-feld[data-item-id] { cursor: pointer; transition: transform 0.1s; }
+.hlw-bogen .hb-feld[data-item-id]:hover { transform: translateY(-2px); border-color: var(--hb-gold-dunkel); }
+.hlw-bogen .hb-feld img { width: 50px; height: 50px; object-fit: contain; border: 0; border-radius: 6px; }
+.hlw-bogen .hb-feld[hidden] { display: none; }
+.hlw-bogen .hb-feld:is([data-rang="E"], [data-rang="D"], [data-rang="C"], [data-rang="B"], [data-rang="A"], [data-rang="S"], [data-rang="SS"]) {
+  border-color: color-mix(in srgb, var(--rf) 50%, var(--hb-linie));
+  background: radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--rf) 20%, transparent), var(--hb-feld) 70%);
+}
+.hlw-bogen .hb-anzahl { position: absolute; right: 4px; bottom: 1px; font-size: 11px; font-weight: 700; text-shadow: 0 1px 2px #000; }
+.hlw-bogen .hb-invfuss { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; font-size: 11.5px; color: var(--hb-text-3); }
+.hlw-bogen .hb-invfuss span { display: flex; gap: 6px; }
+
+.hb-menue {
+  position: fixed; z-index: 1000; width: 180px; display: grid; gap: 2px; padding: 6px;
+  background: #0d0e12; border: 1px solid var(--hb-linie-hell); border-radius: 10px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  font-size: 12.5px;
+}
+.hb-menue strong { padding: 4px 8px 6px; font-size: 12px; color: var(--hb-gold); border-bottom: 1px solid var(--hb-linie); margin-bottom: 2px; }
+.hb-menue button {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px; width: 100%; text-align: left;
+  border: 0 !important; background: transparent !important; padding: 6px 8px; border-radius: 6px; color: var(--hb-text); font-weight: 500;
+}
+.hb-menue button:hover { background: var(--hb-flaeche-2) !important; color: var(--hb-gold); }
+.hb-menue button i { width: 14px; color: var(--hb-text-3); }
+
+/* ---------- World-Skills ---------- */
+.hlw-bogen .hb-worldskills { margin-top: 16px; }
+.hlw-bogen .hb-ws-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 6px; }
+.hlw-bogen .hb-ws { display: grid; grid-template-columns: 1fr 40px 34px; align-items: center; gap: 6px; padding: 4px 6px 4px 4px; border-radius: 8px; background: var(--hb-flaeche-2); }
+.hlw-bogen .hb-ws button { display: grid; text-align: left; border: 0; background: transparent; padding: 3px 6px; }
+.hlw-bogen .hb-ws button strong { font-size: 12.5px; font-weight: 600; }
+.hlw-bogen .hb-ws button small { font-size: 10px; color: var(--hb-text-3); font-weight: 400; }
+.hlw-bogen .hb-ws input { min-height: 0; height: 24px; padding: 0; font-size: 12px; }
+.hlw-bogen .hb-ws > b { text-align: center; font-size: 16px; color: var(--hb-gold); }
+
+/* ---------- Skills ---------- */
+.hlw-bogen .hb-skillkopf { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.hlw-bogen .hb-slotpips { display: flex; align-items: center; gap: 5px; color: var(--hb-text-2); font-size: 12px; }
+.hlw-bogen .hb-slotpips small { color: var(--hb-text-3); }
+.hlw-bogen .hb-pip { width: 12px; height: 12px; border-radius: 3px; background: var(--hb-flaeche-2); border: 1px solid var(--hb-linie-hell); }
+.hlw-bogen .hb-pip.is-voll { background: var(--hb-gold); border-color: var(--hb-gold); }
+.hlw-bogen .hb-abschnitt { margin: 4px 0 10px; }
+.hlw-bogen .hb-skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.hlw-bogen .hb-skill {
+  position: relative; display: grid; grid-template-columns: 62px 1fr; gap: 12px; align-items: start;
+  background: var(--hb-flaeche); border: 1px solid var(--hb-linie); border-radius: 10px; padding: 10px; cursor: grab;
+}
+.hlw-bogen .hb-skill:hover { border-color: var(--hb-linie-hell); }
+.hlw-bogen .hb-skill.is-klasse { border-color: var(--hb-gold-dunkel); background: linear-gradient(90deg, rgba(216, 180, 106, 0.08), var(--hb-flaeche) 50%); }
+.hlw-bogen .hb-skill.is-passiv { background: linear-gradient(90deg, rgba(111, 183, 214, 0.06), var(--hb-flaeche) 50%); }
+.hlw-bogen .hb-ikon {
+  position: relative; width: 62px; height: 62px; padding: 0; border-radius: 10px; overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--rf, #555) 60%, #000); box-shadow: 0 0 0 2px #0b0c10; background: var(--hb-feld);
+}
+.hlw-bogen button.hb-ikon { cursor: pointer; }
+.hlw-bogen button.hb-ikon:hover:not(:disabled) { box-shadow: 0 0 0 2px var(--hb-gold); }
+.hlw-bogen button.hb-ikon:disabled { opacity: 1; }
+.hlw-bogen .hb-ikon img { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
+.hlw-bogen .hb-cd { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(8, 9, 12, 0.72); font-size: 20px; font-weight: 700; color: #fff; }
+.hlw-bogen .hb-dauer { position: absolute; right: 3px; bottom: 1px; font-size: 14px; font-weight: 700; color: #bfe3f2; text-shadow: 0 1px 3px #000; }
+.hlw-bogen .is-passiv .hb-ikon { filter: saturate(0.85); }
+.hlw-bogen .hb-skilltext { min-width: 0; }
+.hlw-bogen .hb-skilltext h4 { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+.hlw-bogen .hb-skilltext h4 a { color: var(--hb-text); }
+.hlw-bogen .hb-skilltext h4 a:hover { color: var(--hb-gold); text-shadow: none; }
+.hlw-bogen .hb-rang { font-size: 10px; font-weight: 700; color: var(--rf, var(--hb-text-2)); border: 1px solid currentColor; border-radius: 4px; padding: 0 4px; }
+.hlw-bogen .hb-badge { font-size: 9.5px; font-weight: 700; color: var(--hb-gold); border: 1px solid var(--hb-gold-dunkel); border-radius: 4px; padding: 0 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+.hlw-bogen .hb-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.hlw-bogen .hb-tag { font-size: 11px; color: var(--hb-text-2); background: var(--hb-flaeche-2); border-radius: 5px; padding: 1px 7px; }
+.hlw-bogen .hb-tag.magisch { color: #b9a4ef; }
+.hlw-bogen .hb-tag.physisch { color: #e6b98a; }
+.hlw-bogen .hb-tag.heil { color: #9fd59a; }
+.hlw-bogen .hb-tag.passiv { color: #9fd0e6; }
+.hlw-bogen .hb-tag.wirkt { color: #1a1408; background: var(--hb-gold); font-weight: 600; }
+.hlw-bogen .hb-tag.cd { color: #f0a29b; }
+.hlw-bogen .hb-skilltext p {
+  margin: 6px 0 0; font-size: 12px; color: var(--hb-text-2); line-height: 1.35;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.hlw-bogen .hb-weg {
+  position: absolute; top: 6px; right: 6px; width: 22px; height: 22px; padding: 0; border-radius: 6px;
+  border-color: transparent; background: transparent; color: var(--hb-text-3); opacity: 0; font-size: 11px;
+}
+.hlw-bogen .hb-skill:hover .hb-weg { opacity: 1; }
+.hlw-bogen .hb-weg:hover:not(:disabled) { color: var(--hb-hp); border-color: var(--hb-hp); }
+.hlw-bogen .hb-leer { color: var(--hb-text-3); font-size: 12px; margin: 0; }
+.hlw-bogen .hb-knopf { padding: 7px 14px; }
+
+/* ---------- Insignien ---------- */
+.hlw-bogen .hb-hinweis { margin: 0 0 14px; color: var(--hb-text-2); font-size: 12.5px; }
+.hlw-bogen .hb-insignien { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+.hlw-bogen .hb-insignie {
+  position: relative; display: grid; justify-items: center; gap: 8px; padding: 18px 14px 14px; text-align: center;
+  border-radius: 14px; border: 1px solid var(--hb-linie);
+  background: radial-gradient(circle at 50% 30%, rgba(216, 180, 106, 0.12), transparent 60%), var(--hb-flaeche);
+}
+.hlw-bogen .hb-insignie.is-voll { border-color: var(--hb-gold-dunkel); box-shadow: inset 0 0 30px rgba(216, 180, 106, 0.08); }
+.hlw-bogen .hb-insbild {
+  width: 120px; height: 120px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle, #23262e, #0e1014 70%); border: 2px solid var(--hb-linie-hell);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3);
+}
+.hlw-bogen .is-voll .hb-insbild { border-color: var(--hb-gold); box-shadow: 0 0 24px rgba(216, 180, 106, 0.25), 0 0 0 4px rgba(0, 0, 0, 0.3); }
+.hlw-bogen .hb-insbild img { width: 92px; height: 92px; object-fit: contain; border: 0; cursor: pointer; }
+.hlw-bogen .hb-insbild img.is-platzhalter { width: 46px; height: 46px; opacity: 0.25; }
+.hlw-bogen .hb-insleer { color: var(--hb-text-3); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
+.hlw-bogen .hb-slotnr { position: absolute; top: 8px; left: 12px; font-size: 10px; color: var(--hb-text-3); text-transform: uppercase; letter-spacing: 0.1em; }
+.hlw-bogen .hb-insignie h4 { font-size: 15px; font-weight: 600; color: var(--hb-gold); }
+.hlw-bogen .hb-insignie p { margin: 0; font-size: 12px; color: var(--hb-text-2); }
+.hlw-bogen .hb-insname { text-align: center; font-weight: 600; color: var(--hb-gold); }
+.hlw-bogen .hb-insignie textarea { min-height: 90px; font-size: 12px; }
+.hlw-bogen .hb-ruhend { min-height: 70px; }
+
+/* ---------- Notizen ---------- */
+.hlw-bogen .hb-notizen { display: grid; grid-template-columns: 320px 1fr; gap: 14px; align-items: start; }
+.hlw-bogen .hb-formular { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.hlw-bogen .hb-formular label { display: grid; gap: 3px; font-size: 11px; color: var(--hb-text-3); }
+.hlw-bogen .hb-formular input { min-height: 0; height: 28px; text-align: left; }
+.hlw-bogen .hb-formular input[type="number"] { text-align: center; }
+.hlw-bogen .hb-klassenhinweis { margin: 10px 0 0; font-size: 12px; color: var(--hb-text-2); }
+.hlw-bogen .hb-klassenhinweis b { color: var(--hb-gold); }
+.hlw-bogen .hb-wirkt { margin: 0; padding-left: 16px; font-size: 12px; color: var(--hb-text-2); display: grid; gap: 4px; }
+.hlw-bogen .hb-wirkt b { color: var(--hb-text); }
+.hlw-bogen .hb-gm summary { cursor: pointer; font-size: 11px; font-weight: 600; color: var(--hb-text-3); text-transform: uppercase; letter-spacing: 0.1em; }
+.hlw-bogen .hb-gm[open] summary { margin-bottom: 10px; }
+.hlw-bogen .hb-notizfeld { display: flex; flex-direction: column; min-height: 520px; }
+.hlw-bogen .hb-notizfeld textarea { flex: 1; min-height: 480px; font-size: 13px; line-height: 1.5; padding: 10px; }
+
+/* ---------- Monster ---------- */
+.hlw-bogen .hb-monster { display: grid; gap: 10px; }
+.hlw-bogen .hb-monsterbild { display: flex; justify-content: center; }
+.hlw-bogen .hb-monsterbild img { max-height: 180px; object-fit: contain; border: 0; cursor: pointer; }
+.hlw-bogen .hb-monster .hb-formular { grid-template-columns: repeat(4, 1fr); }
+.hlw-bogen .hb-breit { display: grid; gap: 3px; font-size: 11px; color: var(--hb-text-3); }
+.hlw-bogen .hb-breit textarea { min-height: 70px; }
+
+/* ---------- Kampfleiste ---------- */
+.hlw-hud {
+  position: fixed; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 70;
+  display: flex; align-items: flex-end; gap: 14px;
+  padding: 10px 14px; border-radius: 18px;
+  background: rgba(16, 18, 23, 0.88); backdrop-filter: blur(10px);
+  border: 1px solid #2f3440; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+  color: #e8e4da; font-size: 13px; max-width: calc(100vw - 340px);
+  pointer-events: auto;
+}
+.hlw-hud.is-turn { border-color: #8a6c35; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(216, 180, 106, 0.25), 0 0 30px rgba(216, 180, 106, 0.12); }
+.hlw-hud .hh-person { display: grid; grid-template-columns: 64px auto; gap: 10px; align-items: center; }
+.hlw-hud .hh-ring { position: relative; width: 64px; height: 64px; }
+.hlw-hud .hh-ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.hlw-hud .hh-ring img { position: absolute; inset: 6px; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 0; }
+.hlw-hud .hh-zustand { font-size: 10.5px; color: #d8b46a; letter-spacing: 0.08em; text-transform: uppercase; }
+.hlw-hud .hh-zustand.is-warten { color: #6f6c63; }
+.hlw-hud .hh-name { font-weight: 600; white-space: nowrap; }
+.hlw-hud .hh-hp { font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; color: #a6a294; }
+.hlw-hud .hh-hp b { color: #f08b83; }
+.hlw-hud .hh-res { display: flex; gap: 5px; margin-top: 4px; align-items: center; }
+.hlw-hud .hh-pip { width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-size: 11px; font-weight: 700; border: 1px solid #3d4352; color: #6f6c63; }
+.hlw-hud .hh-pip.is-bereit.hh-a { background: #c9793a; border-color: #e0a06a; color: #fff; }
+.hlw-hud .hh-pip.is-bereit.hh-s { background: #3f8fb8; border-color: #78b9da; color: #fff; }
+.hlw-hud .hh-pip.is-bereit.hh-r { background: #7a5ac2; border-color: #a58ce0; color: #fff; }
+.hlw-hud .hh-bewegung { display: flex; align-items: center; gap: 6px; margin-left: 6px; font-size: 11px; color: #a6a294; white-space: nowrap; }
+.hlw-hud .hh-spur { width: 70px; height: 5px; border-radius: 9px; background: #0b0c10; overflow: hidden; }
+.hlw-hud .hh-spur i { display: block; height: 100%; background: #7fc48a; }
+
+.hlw-hud .hh-leiste { display: flex; gap: 6px; align-items: flex-end; overflow-x: auto; padding: 4px 2px 2px; scrollbar-width: thin; scrollbar-color: #3d4352 transparent; }
+.hlw-hud .hh-taste {
+  position: relative; flex: 0 0 auto; width: 54px; height: 54px; padding: 0; border-radius: 11px; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--rf, #555) 60%, #000); background: #0c0d11;
+  box-shadow: 0 0 0 2px #0b0c10; transition: transform 0.1s;
+}
+.hlw-hud .hh-taste:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 0 0 2px #d8b46a; }
+.hlw-hud .hh-taste:disabled { cursor: not-allowed; }
+.hlw-hud .hh-taste:disabled img { filter: grayscale(0.8) brightness(0.6); }
+.hlw-hud .hh-taste img { width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 10px; display: block; }
+.hlw-hud .hh-taste.is-waffe { background: radial-gradient(circle, #2a2d36, #121318); }
+.hlw-hud .hh-taste.is-waffe img { object-fit: contain; padding: 4px; }
+.hlw-hud .hh-taste.is-pending { box-shadow: 0 0 0 2px #d8b46a, 0 0 18px rgba(216, 180, 106, 0.5); }
+.hlw-hud .hh-cd { position: absolute; inset: 0; border-radius: 10px; display: grid; place-items: center; background: rgba(8, 9, 12, 0.72); font-size: 18px; font-weight: 700; color: #fff; }
+.hlw-hud .hh-art { position: absolute; left: 3px; top: 2px; font-size: 9px; font-weight: 700; color: #fff; text-shadow: 0 1px 2px #000; }
+.hlw-hud .hh-trenner { width: 1px; align-self: stretch; background: #2f3440; margin: 0 2px; }
+body:has(.hlw-hud) #hotbar { visibility: hidden; }
+.hlw-hud .hh-passiv { display: grid; grid-auto-flow: column; grid-template-rows: repeat(2, 24px); grid-auto-columns: 24px; gap: 4px; align-self: center; cursor: help; }
+.hlw-hud .hh-passiv img { width: 24px; height: 24px; max-width: none; border-radius: 4px; border: 1px solid #3d4352; opacity: 0.8; object-fit: cover; }
+
+.hlw-hud .hh-aktionen { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+.hlw-hud .hh-aktionen button {
+  font-size: 12px; font-weight: 600; color: #e8e4da; cursor: pointer; line-height: 1.2;
+  background: #22262f; border: 1px solid #3d4352; border-radius: 8px; padding: 7px 10px; min-width: 88px;
+}
+.hlw-hud .hh-aktionen button:hover:not(:disabled) { border-color: #d8b46a; color: #d8b46a; }
+.hlw-hud .hh-aktionen button:disabled { opacity: 0.45; cursor: not-allowed; }
+.hlw-hud .hh-aktionen .hh-ende { grid-column: span 2; background: linear-gradient(180deg, #d8b46a, #a7843f); color: #1a1408; border-color: #e7c98a; }
+.hlw-hud .hh-aktionen .hh-ende:hover:not(:disabled) { color: #1a1408; filter: brightness(1.08); }
+
+@media (max-width: 1100px) {
+  .hlw-hud { max-width: calc(100vw - 24px); }
+}

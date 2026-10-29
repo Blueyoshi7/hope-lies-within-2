@@ -1,25 +1,16 @@
-<form class="{{cssClass}} hlw-sheet" autocomplete="off">
-  <header class="sheet-header">
-    <img class="profile-img" src="{{profileImage}}" data-edit="img" title="{{actor.name}}" />
-    <div class="header-fields">
-      <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Charaktername" /></h1>
-      {{#if isMonster}}
-        <div class="identity-grid">
-          <label>Rang <input name="system.monster.rank" type="text" value="{{system.monster.rank}}" /></label>
-          <label>Rolle <input name="system.monster.role" type="text" value="{{system.monster.role}}" /></label>
-          <label>Größe <input name="system.monster.size" type="text" value="{{system.monster.size}}" /></label>
-          <label>Kategorie <input name="system.monster.category" type="text" value="{{system.monster.category}}" /></label>
-          <label>Corrupted-Stufe <input name="system.monster.corrupted" type="number" value="{{system.monster.corrupted}}" /></label>
-          <label>EXP <input name="system.monster.exp" type="text" value="{{system.monster.exp}}" /></label>
-        </div>
-      {{else}}
-        <div class="identity-grid">
-          <label>Spieler <input name="system.identity.player" type="text" value="{{system.identity.player}}" /></label>
-          <label>Herkunft <input name="system.identity.origin" type="text" value="{{system.identity.origin}}" placeholder="A–D" /></label>
-          <label>Level <input name="system.progression.level" type="number" value="{{system.progression.level}}" /></label>
-          <label>EXP <span><input name="system.progression.exp" type="number" value="{{system.progression.exp}}" /> / {{#if system.derived.expNext}}{{system.derived.expNext}}{{else}}max{{/if}}</span></label>
-          <label>Klasse
-            {{#if isGM}}
+<form class="{{cssClass}} hlw-sheet hlw-bogen" autocomplete="off">
+  <header class="hb-kopf">
+    <div class="hb-kopfbild"><img src="{{tokenImage}}" alt="" /></div>
+    <div class="hb-ident">
+      <input class="hb-name" name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+      <div class="hb-chips">
+        {{#if isMonster}}
+          <span class="hb-chip hb-klasse">{{system.monster.category}} · Rang {{system.monster.rank}}</span>
+          <span class="hb-chip">{{system.monster.role}}</span>
+          <span class="hb-chip">{{system.monster.size}}</span>
+        {{else}}
+          {{#if isGM}}
+            <label class="hb-chip hb-klasse" title="{{system.derived.suggestedClassEffect}}">
               <select name="system.progression.class">
                 <option value="">{{vorschlagLabel}}</option>
                 {{#each klassenGruppen as |gruppe|}}
@@ -28,393 +19,333 @@
                   </optgroup>
                 {{/each}}
               </select>
-            {{else}}
-              <input type="text" value="{{klasseAnzeige}}" disabled />
-            {{/if}}
-          </label>
-          <label>Job <input name="system.progression.job" type="text" value="{{system.progression.job}}" /></label>
-          <label>Titel <input name="system.progression.title" type="text" value="{{system.progression.title}}" /></label>
-          <label>Insignie <input name="system.progression.insignia" type="text" value="{{system.progression.insignia}}" /></label>
-        </div>
-        <p class="hlw-class-hint" title="{{system.derived.suggestedClassEffect}}">Klasse nach Wertverteilung: <strong>{{system.derived.suggestedClass}}</strong></p>
-      {{/if}}
+            </label>
+          {{else}}
+            <span class="hb-chip hb-klasse" title="{{system.derived.suggestedClassEffect}}">{{#if klasseAnzeige}}{{klasseAnzeige}}{{else}}noch keine Klasse{{/if}}</span>
+          {{/if}}
+          <label class="hb-chip">Level <input name="system.progression.level" type="number" min="1" max="40" value="{{system.progression.level}}" /></label>
+          <label class="hb-chip">Herkunft <input name="system.identity.origin" type="text" value="{{system.identity.origin}}" placeholder="–" /></label>
+          <span class="hb-chip">Kes <b>{{kesText}}</b></span>
+        {{/if}}
+      </div>
+    </div>
+    <div class="hb-balken">
+      <label class="hb-balkenzeile">
+        <span>HP</span>
+        <span class="hb-spur"><i class="hb-hp" style="width: {{balken.hp}}%"></i></span>
+        <span class="hb-zahl"><input name="system.resources.hp.value" type="number" value="{{system.resources.hp.value}}" /> / {{system.resources.hp.max}}</span>
+      </label>
+      {{#unless isMonster}}
+        <label class="hb-balkenzeile">
+          <span>EXP</span>
+          <span class="hb-spur"><i class="hb-exp" style="width: {{balken.exp}}%"></i></span>
+          <span class="hb-zahl"><input name="system.progression.exp" type="number" value="{{system.progression.exp}}" /> / {{#if system.derived.expNext}}{{system.derived.expNext}}{{else}}max{{/if}}</span>
+        </label>
+        <label class="hb-balkenzeile">
+          <span>Korruption</span>
+          <span class="hb-spur"><i class="hb-korr" style="width: {{balken.korruption}}%"></i></span>
+          <span class="hb-zahl"><input name="system.resources.corruption.value" type="number" value="{{system.resources.corruption.value}}" /> · {{system.derived.corruption.label}}</span>
+        </label>
+      {{/unless}}
     </div>
   </header>
 
-  <nav class="sheet-tabs tabs" data-group="primary">
+  <nav class="sheet-tabs tabs hb-reiter" data-group="primary">
     <a class="item" data-tab="main">Charakter</a>
     <a class="item" data-tab="skills">Skills</a>
     {{#unless isMonster}}<a class="item" data-tab="insignia">Insignien</a>{{/unless}}
-    <a class="item" data-tab="inventory">Inventar</a>
     <a class="item" data-tab="notes">Notizen</a>
   </nav>
 
   <section class="sheet-body">
     <div class="tab" data-group="primary" data-tab="main">
-      <section class="resource-grid">
-        <label>Lebenspunkte
-          <span><input name="system.resources.hp.value" type="number" value="{{system.resources.hp.value}}" /> / {{system.resources.hp.max}}</span>
-        </label>
-        <label>Rüstwert (RW)<span><strong>{{system.derived.rw}}</strong></span></label>
-        <label>Magieresistenz (MR)<span><strong>{{system.derived.mr}}</strong></span></label>
-        <label>Blockwert<span><strong>{{system.derived.block}}</strong></span></label>
-        <label>Initiative<span><strong>1W20 + {{system.derived.initiative}}</strong></span></label>
-        <label>Bewegung<span><strong>{{system.derived.movement}} Felder</strong></span></label>
-        {{#unless isMonster}}
-          <label>Inventarplätze<span>{{inventoryUsed}} / {{system.resources.inventorySlots.max}}</span></label>
-          <label>Korruption
-            <span><input name="system.resources.corruption.value" type="number" value="{{system.resources.corruption.value}}" /> / 100 · {{system.derived.corruption.label}}</span>
-          </label>
-        {{/unless}}
-      </section>
-
-      <section class="action-grid">
-        <div class="action-toggle {{#if canAct}}is-ready{{else}}is-spent{{/if}}">
-          <strong>Aktion</strong>
-          <span>{{system.resources.actionPoints.value}} / {{system.resources.actionPoints.max}}</span>
-        </div>
-        <button type="button" class="action-toggle {{#if system.actions.quick.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="quick">
-          <strong>Schnellaktion</strong>
-          <span>{{#if system.actions.quick.available}}bereit{{else}}verbraucht{{/if}}</span>
-        </button>
-        <button type="button" class="action-toggle {{#if system.actions.reaction.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="reaction">
-          <strong>Reaktion</strong>
-          <span>{{#if system.actions.reaction.available}}bereit{{else}}verbraucht{{/if}}</span>
-        </button>
-        <button type="button" class="action-toggle {{#if system.actions.movement.available}}is-ready{{else}}is-spent{{/if}}" data-toggle-action="movement">
-          <strong>Bewegung</strong>
-          <span>{{#if system.actions.movement.available}}bereit{{else}}verbraucht{{/if}}</span>
-        </button>
-        <button type="button" class="action-toggle end-turn" data-end-turn>
-          <strong>Zug beenden</strong>
-          <span>weiter</span>
-        </button>
-      </section>
-
-      <section class="standard-actions">
-        <h2>Standardaktionen</h2>
-        <div class="action-grid">
-          <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="attack" {{#unless canAct}}disabled{{/unless}}>
-            <strong>Normaler Angriff</strong>
-            <span>Aktion</span>
-          </button>
-          <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="item" {{#unless canAct}}disabled{{/unless}}>
-            <strong>Gegenstand benutzen</strong>
-            <span>Aktion</span>
-          </button>
-          <button type="button" class="action-toggle {{#unless canAct}}is-spent{{/unless}}" data-standard-action="defend" {{#unless canAct}}disabled{{/unless}}>
-            <strong>Abwehrhaltung</strong>
-            <span>RW und MR +2</span>
-          </button>
-        </div>
-      </section>
-
-      {{#if isMonster}}
-        <section class="monster-panel">
-          <h2>Bestiarium-Werte</h2>
-          <div class="form-grid">
-            <label>HP <input name="system.monster.hp" type="number" value="{{system.monster.hp}}" /></label>
-            <label>RW <input name="system.monster.rw" type="number" value="{{system.monster.rw}}" /></label>
-            <label>MR <input name="system.monster.mr" type="number" value="{{system.monster.mr}}" /></label>
-            <label>Genauigkeit <input name="system.monster.acc" type="number" value="{{system.monster.acc}}" /></label>
-            <label>Initiative <input name="system.monster.initiative" type="number" value="{{system.monster.initiative}}" /></label>
-            <label>Bewegung <input name="system.monster.movement" type="number" value="{{system.monster.movement}}" /></label>
-            <label>Reichweite <input name="system.monster.reach" type="number" value="{{system.monster.reach}}" /></label>
-            <label>Probenwert <input name="system.monster.probe" type="number" value="{{system.monster.probe}}" /></label>
-          </div>
-          <label class="stacked">Merkmale <input name="system.monster.traits" type="text" value="{{system.monster.traits}}" /></label>
-          <label class="stacked">Lebensraum <input name="system.monster.habitat" type="text" value="{{system.monster.habitat}}" /></label>
-          <label class="stacked">Besonderheit <textarea name="system.monster.special">{{system.monster.special}}</textarea></label>
-        </section>
-      {{else}}
-        <section class="two-column">
-          <div>
-            <h2>Werte</h2>
-            <p class="hlw-points {{#if pointsOver}}is-over{{/if}}">Verteilt {{system.derived.points.used}} von {{system.derived.points.allowed}} · frei {{system.derived.points.free}}</p>
-            <div class="attribute-grid">
-              {{#each system.attributes as |attribute key|}}
-                <label>
-                  <span>{{attribute.abbr}}</span>
-                  <small>{{attribute.label}}</small>
-                  <input name="system.attributes.{{key}}.value" type="number" min="1" max="25" value="{{attribute.value}}" />
-                </label>
-              {{/each}}
+      <div class="hb-oben">
+        {{#if isMonster}}
+          <section class="hb-karte hb-monster">
+            <h3>Bestiarium</h3>
+            <div class="hb-monsterbild"><img src="{{profileImage}}" data-edit="img" alt="" /></div>
+            <div class="hb-formular">
+              <label>Rang <input name="system.monster.rank" type="text" value="{{system.monster.rank}}" /></label>
+              <label>Rolle <input name="system.monster.role" type="text" value="{{system.monster.role}}" /></label>
+              <label>Größe <input name="system.monster.size" type="text" value="{{system.monster.size}}" /></label>
+              <label>Kategorie <input name="system.monster.category" type="text" value="{{system.monster.category}}" /></label>
+              <label>HP <input name="system.monster.hp" type="number" value="{{system.monster.hp}}" /></label>
+              <label>RW <input name="system.monster.rw" type="number" value="{{system.monster.rw}}" /></label>
+              <label>MR <input name="system.monster.mr" type="number" value="{{system.monster.mr}}" /></label>
+              <label>Genauigkeit <input name="system.monster.acc" type="number" value="{{system.monster.acc}}" /></label>
+              <label>Initiative <input name="system.monster.initiative" type="number" value="{{system.monster.initiative}}" /></label>
+              <label>Bewegung <input name="system.monster.movement" type="number" value="{{system.monster.movement}}" /></label>
+              <label>Reichweite <input name="system.monster.reach" type="number" value="{{system.monster.reach}}" /></label>
+              <label>Probenwert <input name="system.monster.probe" type="number" value="{{system.monster.probe}}" /></label>
+              <label>Corrupted-Stufe <input name="system.monster.corrupted" type="number" value="{{system.monster.corrupted}}" /></label>
+              <label>EXP <input name="system.monster.exp" type="text" value="{{system.monster.exp}}" /></label>
             </div>
-          </div>
-
-          <div>
-            <h2>World-Skills</h2>
-            <div class="world-skill-list">
-              {{#each worldSkills as |skill|}}
-                <div class="world-skill-row">
-                  <button type="button" data-roll-world-skill="{{skill.key}}">W20</button>
-                  <div>
-                    <strong>{{skill.label}}</strong>
-                    <small>{{skill.attributeLabels}}</small>
-                  </div>
-                  <span>{{skill.base}}</span>
-                  <input name="system.worldSkills.{{skill.key}}.bonus" type="number" value="{{skill.bonus}}" />
-                  <strong>{{skill.total}}</strong>
+            <label class="hb-breit">Merkmale <input name="system.monster.traits" type="text" value="{{system.monster.traits}}" /></label>
+            <label class="hb-breit">Lebensraum <input name="system.monster.habitat" type="text" value="{{system.monster.habitat}}" /></label>
+            <label class="hb-breit">Besonderheit <textarea name="system.monster.special">{{system.monster.special}}</textarea></label>
+          </section>
+        {{else}}
+          <section class="hb-figur">
+            <div class="hb-slots hb-links">
+              {{#each bogen.figur.links as |platz|}}
+                <div class="hb-slot {{#if platz.item}}is-voll{{else}}is-leer{{/if}}" {{#if platz.item}}data-item-id="{{platz.item.id}}" data-rang="{{platz.item.rang}}" data-tooltip-html="{{platz.item.tooltip}}" draggable="true"{{/if}}>
+                  {{#if platz.item}}<img src="{{platz.item.img}}" alt="" />{{/if}}
+                  <span class="hb-slotname">{{platz.label}}</span>
                 </div>
               {{/each}}
             </div>
-          </div>
-        </section>
-      {{/if}}
+            <div class="hb-person"><img src="{{profileImage}}" data-edit="img" title="Bild ändern" alt="" /></div>
+            <div class="hb-slots hb-rechts">
+              {{#each bogen.figur.rechts as |platz|}}
+                <div class="hb-slot {{#if platz.item}}is-voll{{else}}is-leer{{/if}}" {{#if platz.item}}data-item-id="{{platz.item.id}}" data-rang="{{platz.item.rang}}" data-tooltip-html="{{platz.item.tooltip}}" draggable="true"{{/if}}>
+                  {{#if platz.item}}<img src="{{platz.item.img}}" alt="" />{{/if}}
+                  <span class="hb-slotname">{{platz.label}}</span>
+                </div>
+              {{/each}}
+            </div>
+          </section>
+        {{/if}}
 
-      {{#if isGM}}
-        <section class="bonus-panel">
-          <h2>Boni (Klasse, Titel, Insignien, GM)</h2>
-          <div class="resistance-grid">
-            <label><span>HP</span><input name="system.bonuses.hp" type="number" value="{{system.bonuses.hp}}" /></label>
-            <label><span>RW</span><input name="system.bonuses.rw" type="number" value="{{system.bonuses.rw}}" /></label>
-            <label><span>MR</span><input name="system.bonuses.mr" type="number" value="{{system.bonuses.mr}}" /></label>
-            <label><span>Blockwert</span><input name="system.bonuses.block" type="number" value="{{system.bonuses.block}}" /></label>
-            <label><span>Genauigkeit</span><input name="system.bonuses.acc" type="number" value="{{system.bonuses.acc}}" /></label>
-            <label><span>Schaden</span><input name="system.bonuses.damage" type="number" value="{{system.bonuses.damage}}" /></label>
-            <label><span>Bewegung</span><input name="system.bonuses.movement" type="number" value="{{system.bonuses.movement}}" /></label>
-            <label><span>Initiative</span><input name="system.bonuses.initiative" type="number" value="{{system.bonuses.initiative}}" /></label>
-            <label><span>Inventar</span><input name="system.bonuses.inventory" type="number" value="{{system.bonuses.inventory}}" /></label>
-            <label><span>Aktionen</span><input name="system.resources.actionPoints.max" type="number" value="{{system.resources.actionPoints.max}}" /></label>
+        <div class="hb-spalte">
+          <section class="hb-karte">
+            <h3>Kampfwerte
+              <span class="hb-pips" title="Aktion · Schnellaktion · Reaktion">
+                <span class="hb-res hb-aktion {{#if aktionen.aktion}}is-bereit{{/if}}">A</span>
+                <button type="button" class="hb-res hb-schnell {{#if aktionen.schnell}}is-bereit{{/if}}" data-toggle-action="quick" title="Schnellaktion">S</button>
+                <button type="button" class="hb-res hb-reaktion {{#if aktionen.reaktion}}is-bereit{{/if}}" data-toggle-action="reaction" title="Reaktion">R</button>
+              </span>
+            </h3>
+            <div class="hb-kampfwerte">
+              <div class="hb-kw"><b>{{system.resources.hp.max}}</b><span>HP max</span></div>
+              <div class="hb-kw"><b>{{system.derived.rw}}</b><span>Rüstwert</span></div>
+              <div class="hb-kw"><b>{{system.derived.mr}}</b><span>Magieres.</span></div>
+              <div class="hb-kw"><b>+{{system.derived.accBonus}}</b><span>Genauigk.-Bonus</span></div>
+              <div class="hb-kw"><b>{{system.derived.block}}</b><span>Block</span></div>
+              <div class="hb-kw"><b>{{system.derived.movement}}</b><span>Bewegung</span></div>
+              <div class="hb-kw"><b>+{{system.derived.initiative}}</b><span>Initiative</span></div>
+              {{#unless isMonster}}<div class="hb-kw"><b>{{inventoryUsed}}/{{inventoryMax}}</b><span>Inventar</span></div>{{/unless}}
+              {{#if system.combat.defending}}<div class="hb-kw is-abwehr"><b>+2</b><span>Abwehr</span></div>{{/if}}
+            </div>
+          </section>
+
+          {{#unless isMonster}}
+            <section class="hb-karte">
+              <h3>Werte <span class="hb-punkte {{#if pointsOver}}is-over{{/if}}">verteilt {{system.derived.points.used}} / {{system.derived.points.allowed}} · frei <b>{{system.derived.points.free}}</b></span></h3>
+              <div class="hb-attribute">
+                {{#each system.attributes as |attribute key|}}
+                  <label class="hb-attr" title="{{attribute.label}}">
+                    <span>{{attribute.abbr}}</span>
+                    <input name="system.attributes.{{key}}.value" type="number" min="1" max="25" value="{{attribute.value}}" />
+                  </label>
+                {{/each}}
+              </div>
+            </section>
+
+            <section class="hb-karte">
+              <h3>Waffen</h3>
+              <div class="hb-waffen">
+                {{#each bogen.figur.waffen as |platz|}}
+                  <div class="hb-slot {{#if platz.item}}is-voll{{else}}is-leer{{/if}}" {{#if platz.item}}data-item-id="{{platz.item.id}}" data-rang="{{platz.item.rang}}" data-tooltip-html="{{platz.item.tooltip}}" draggable="true"{{/if}}>
+                    {{#if platz.item}}<img src="{{platz.item.img}}" alt="" />{{/if}}
+                    <span class="hb-slotname">{{platz.label}}</span>
+                  </div>
+                {{/each}}
+                {{#each bogen.figur.weitere as |item|}}
+                  <div class="hb-slot is-voll is-klein" data-item-id="{{item.id}}" data-rang="{{item.rang}}" data-tooltip-html="{{item.tooltip}}" draggable="true">
+                    <img src="{{item.img}}" alt="" />
+                    <span class="hb-slotname">Angelegt</span>
+                  </div>
+                {{/each}}
+              </div>
+            </section>
+          {{/unless}}
+        </div>
+      </div>
+
+      {{#unless isMonster}}
+        <section class="hb-inventar">
+          <div class="hb-invkopf">
+            <div class="hb-filter">
+              <button type="button" class="is-aktiv" data-filter="alle">Alles</button>
+              <button type="button" data-filter="ausr">Ausrüstung</button>
+              <button type="button" data-filter="verbrauch">Verbrauch</button>
+              <button type="button" data-filter="material">Material</button>
+            </div>
+            <div class="hb-kes">
+              <span>Kes <b>{{kesText}}</b></span>
+              <input data-gold-amount type="text" placeholder="z. B. 1 GK 20 SK" />
+              <button type="button" data-give-gold title="An das markierte Ziel geben">Geben</button>
+              {{#if isGM}}
+                <input data-add-gold-amount type="text" placeholder="GM: +50 SK / −2 GK" />
+                <button type="button" data-add-gold>Buchen</button>
+              {{/if}}
+            </div>
+          </div>
+          <div class="hb-raster">
+            {{#each bogen.raster as |item|}}
+              <div class="hb-feld" data-item-id="{{item.id}}" data-filter="{{item.filter}}" data-rang="{{item.rang}}" data-tooltip-html="{{item.tooltip}}" draggable="true">
+                <img src="{{item.img}}" alt="" />
+                {{#if item.menge}}<span class="hb-anzahl">{{item.menge}}</span>{{/if}}
+              </div>
+            {{/each}}
+            {{#each bogen.leereFelder}}<div class="hb-feld is-leer"></div>{{/each}}
+          </div>
+          <div class="hb-invfuss">
+            <span>Klick auf einen Gegenstand: ausrüsten, benutzen, geben, wegwerfen.</span>
+            {{#if isGM}}
+              <span>
+                <button type="button" data-geben="items">Gegenstand geben</button>
+                <button type="button" data-import-json>JSON importieren</button>
+              </span>
+            {{/if}}
           </div>
         </section>
-      {{/if}}
+
+        <section class="hb-karte hb-worldskills">
+          <h3>World-Skills <small>1W20 + Summe der drei Werte</small></h3>
+          <div class="hb-ws-liste">
+            {{#each worldSkills as |skill|}}
+              <div class="hb-ws">
+                <button type="button" data-roll-world-skill="{{skill.key}}" title="Würfeln">
+                  <strong>{{skill.label}}</strong>
+                  <small>{{skill.attributeLabels}}</small>
+                </button>
+                <input name="system.worldSkills.{{skill.key}}.bonus" type="number" value="{{skill.bonus}}" title="Bonus" />
+                <b title="{{skill.base}} aus Werten{{#if skill.passive}} · +{{skill.passive}} passiv{{/if}}">{{skill.total}}</b>
+              </div>
+            {{/each}}
+          </div>
+        </section>
+      {{/unless}}
     </div>
 
     <div class="tab" data-group="primary" data-tab="skills">
-      <h2>Spieler- und Klassenskills</h2>
-      <section class="hlw-skill-kopf">
-        <span>Skill-Slots {{skillSlots.used}} / {{skillSlots.max}} <small>(Klassen-Skills zählen nicht)</small></span>
-        {{#if isGM}}<button type="button" data-geben="skills">Skill geben</button>{{/if}}
-      </section>
-      <ol class="item-list">
-        {{#each itemsByType.skills as |item|}}
-          <li class="item-row {{#unless item.canUse}}is-disabled{{/unless}}" data-item-id="{{item.id}}" draggable="true">
-            <button type="button" data-use-skill {{#unless item.canUse}}disabled{{/unless}}>{{#if item.isPending}}Abbrechen{{else}}Nutzen{{/if}}</button>
-            <strong>{{item.name}}</strong>
-            <span>{{item.system.skillType}}</span>
-            <span>{{item.activationLabel}}</span>
-            <span>{{item.system.element}}</span>
-            <span>CD {{item.system.cooldown.value}} / {{item.system.cooldown.max}}</span>
-            <span>Range {{item.system.range}}</span>
-            <span>{{item.system.damage}}</span>
-            {{#if ../isGM}}<button type="button" class="danger-button" data-delete-skill>X</button>{{/if}}
-          </li>
-        {{/each}}
-      </ol>
-    </div>
+      <div class="hb-skillkopf">
+        {{#unless isMonster}}
+          <div class="hb-slotpips" >
+            Skill-Slots
+            {{#each slotPips as |voll|}}<span class="hb-pip {{#if voll}}is-voll{{/if}}"></span>{{/each}}
+            <b>{{skillSlots.used}} / {{skillSlots.max}}</b> <small>Klassen-Skills zählen nicht</small>
+          </div>
+        {{/unless}}
+        {{#if isGM}}<button type="button" class="hb-knopf" data-geben="skills">Skill geben</button>{{/if}}
+      </div>
 
-    <div class="tab" data-group="primary" data-tab="insignia">
-      <h2>Insignien</h2>
-      <div class="insignia-grid">
-        {{#each insigniaSlots as |slot|}}
-          <section class="insignia-slot">
-            <label class="insignia-active"><input name="system.progression.activeInsignia" type="radio" value="{{slot.key}}" {{checked slot.active}} /> Aktiv</label>
-            <img src="{{slot.image}}" data-edit="system.insigniaSlots.{{slot.key}}.image" title="{{slot.name}}" />
-            <label>Name <input name="system.insigniaSlots.{{slot.key}}.name" type="text" value="{{slot.name}}" /></label>
-            <label>Bild <input name="system.insigniaSlots.{{slot.key}}.image" type="text" value="{{slot.image}}" /></label>
-            <label>Beschreibung <textarea name="system.insigniaSlots.{{slot.key}}.description">{{slot.description}}</textarea></label>
-          </section>
+      <h3 class="hb-abschnitt">Aktive Skills <small>brauchen eine Aktion oder Schnellaktion</small></h3>
+      <div class="hb-skills">
+        {{#each bogen.skills.aktiv as |skill|}}
+          <article class="hb-skill {{#if skill.istKlasse}}is-klasse{{/if}} {{#unless skill.canUse}}is-gesperrt{{/unless}}" data-item-id="{{skill.id}}" data-rang="{{skill.rang}}" draggable="true">
+            <button type="button" class="hb-ikon" data-use-skill {{#unless skill.canUse}}{{#unless skill.isPending}}disabled{{/unless}}{{/unless}} title="{{#if skill.isPending}}Abbrechen{{else}}Einsetzen{{/if}}">
+              <img src="{{skill.img}}" alt="" />
+              {{#if skill.cooldown}}<span class="hb-cd">{{skill.cooldown}}</span>{{/if}}
+              {{#if skill.isPending}}<span class="hb-cd">✕</span>{{/if}}
+            </button>
+            <div class="hb-skilltext">
+              <h4><a data-edit-owned-item>{{skill.name}}</a>{{#if skill.rang}} <small class="hb-rang">{{skill.rang}}</small>{{/if}}{{#if skill.istKlasse}} <small class="hb-badge">Klasse</small>{{/if}}</h4>
+              <div class="hb-tags">{{#each skill.tags as |tag|}}<span class="hb-tag {{tag.art}}">{{tag.text}}</span>{{/each}}</div>
+              {{#if skill.beschreibung}}<p data-tooltip="{{skill.beschreibung}}">{{skill.beschreibung}}</p>{{/if}}
+            </div>
+            {{#if ../isGM}}<button type="button" class="hb-weg" data-delete-skill title="Skill entfernen">✕</button>{{/if}}
+          </article>
+        {{else}}
+          <p class="hb-leer">Keine aktiven Skills.</p>
+        {{/each}}
+      </div>
+
+      <h3 class="hb-abschnitt">Passive Skills <small>wirken immer, keine Aktion nötig</small></h3>
+      <div class="hb-skills">
+        {{#each bogen.skills.passiv as |skill|}}
+          <article class="hb-skill is-passiv {{#if skill.istKlasse}}is-klasse{{/if}}" data-item-id="{{skill.id}}" data-rang="{{skill.rang}}" draggable="true">
+            <div class="hb-ikon"><img src="{{skill.img}}" alt="" /><span class="hb-dauer" title="Wirkt immer">∞</span></div>
+            <div class="hb-skilltext">
+              <h4><a data-edit-owned-item>{{skill.name}}</a>{{#if skill.rang}} <small class="hb-rang">{{skill.rang}}</small>{{/if}}{{#if skill.istKlasse}} <small class="hb-badge">Klasse</small>{{/if}}</h4>
+              <div class="hb-tags">
+                <span class="hb-tag passiv">Passiv · wirkt immer</span>
+                {{#if skill.boni}}<span class="hb-tag wirkt" title="Schon in den Werten eingerechnet">{{skill.boni}}</span>{{/if}}
+              </div>
+              {{#if skill.beschreibung}}<p data-tooltip="{{skill.beschreibung}}">{{skill.beschreibung}}</p>{{/if}}
+            </div>
+            {{#if ../isGM}}<button type="button" class="hb-weg" data-delete-skill title="Skill entfernen">✕</button>{{/if}}
+          </article>
+        {{else}}
+          <p class="hb-leer">Keine passiven Skills.</p>
         {{/each}}
       </div>
     </div>
 
-    <div class="tab" data-group="primary" data-tab="inventory">
-      <h2>Inventar</h2>
-      <section class="inventory-gold-bar">
-        <div>
-          <span>Kes</span>
-          <strong>{{kesText}}</strong>
+    {{#unless isMonster}}
+      <div class="tab" data-group="primary" data-tab="insignia">
+        <p class="hb-hinweis">Drei Slots, alle drei wirken. Insignien gibt der GM für Taten. Weitere Insignien ruhen und lassen sich bei einer langen Rast tauschen.</p>
+        <div class="hb-insignien">
+          {{#each insigniaSlots as |slot|}}
+            <section class="hb-insignie {{#if slot.name}}is-voll{{else}}is-leer{{/if}}">
+              <div class="hb-insbild">
+                {{#if slot.image}}<img src="{{slot.image}}" alt="" {{#if ../isGM}}data-edit="system.insigniaSlots.{{slot.key}}.image" title="Bild ändern"{{/if}} />
+                {{else}}{{#if ../isGM}}<img class="is-platzhalter" src="icons/svg/aura.svg" data-edit="system.insigniaSlots.{{slot.key}}.image" title="Bild wählen" alt="" />{{else}}<span class="hb-insleer">frei</span>{{/if}}{{/if}}
+              </div>
+              <span class="hb-slotnr">Slot {{slot.nr}}</span>
+              {{#if ../isGM}}
+                <input class="hb-insname" name="system.insigniaSlots.{{slot.key}}.name" type="text" value="{{slot.name}}" placeholder="Name der Insignie" />
+                <textarea name="system.insigniaSlots.{{slot.key}}.description" placeholder="Wirkung">{{slot.description}}</textarea>
+              {{else}}
+                <h4>{{#if slot.name}}{{slot.name}}{{else}}Noch keine Insignie{{/if}}</h4>
+                <p>{{slot.description}}</p>
+              {{/if}}
+            </section>
+          {{/each}}
         </div>
-        <div>
-          <span>Inventar</span>
-          <strong>{{inventoryUsed}} / {{inventoryMax}}</strong>
-        </div>
-        <label>Kes geben
-          <span><input data-gold-amount type="text" placeholder="z. B. 1 GK 20 SK" /><button type="button" data-give-gold>Geben</button></span>
-        </label>
-        {{#if isGM}}
-          <label>GM Kes +/−
-            <span><input data-add-gold-amount type="text" placeholder="z. B. 50 SK oder -2 GK" /><button type="button" data-add-gold>Buchen</button></span>
-          </label>
-          <button type="button" class="inventory-import-button" data-geben="items">Gegenstand geben</button>
-          <button type="button" class="inventory-import-button" data-import-json>JSON importieren</button>
-        {{/if}}
-      </section>
-      <h3>Waffen</h3>
-      <ol class="item-list">
-        {{#each itemsByType.weapons as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>{{item.damageCategoryLabel}}</span>
-            <span>{{item.damageTypeLabel}}</span>
-            <span>{{item.system.damage}}</span>
-            <span>R {{item.system.range}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Rüstung</h3>
-      <ol class="item-list">
-        {{#each itemsByType.armor as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>HP {{item.system.hp}}{{#if item.system.hpDice}} ({{item.system.hpDice}}){{/if}}</span>
-            <span>{{item.system.slot}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Ausrüstung</h3>
-      <ol class="item-list">
-        {{#each itemsByType.equipment as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>{{item.system.slot}}</span>
-            <span>{{item.system.effect}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Accessories</h3>
-      <ol class="item-list">
-        {{#each itemsByType.accessories as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <input type="checkbox" data-toggle-equipped {{checked item.equipped}} title="Ausgeruestet" />
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>Rang {{item.system.rank}}</span>
-            <span>{{item.system.effect}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Verbrauchbares & Material</h3>
-      <ol class="item-list">
-        {{#each itemsByType.consumables as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <span></span>
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>x{{item.system.quantity}}</span>
-            <span>{{item.system.effect}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-        {{#each itemsByType.materials as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <span></span>
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>x{{item.system.quantity}}</span>
-            <span>{{item.system.source}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Naturgegenstände</h3>
-      <ol class="item-list">
-        {{#each itemsByType.natural as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <span></span>
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>x{{item.system.quantity}}</span>
-            <span>{{item.system.source}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Mineralien</h3>
-      <ol class="item-list">
-        {{#each itemsByType.minerals as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <span></span>
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>x{{item.system.quantity}}</span>
-            <span>{{item.system.source}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Müll</h3>
-      <ol class="item-list">
-        {{#each itemsByType.junk as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <span></span>
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>x{{item.system.quantity}}</span>
-            <span>{{item.system.source}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-      <h3>Essen & Trinken</h3>
-      <ol class="item-list">
-        {{#each itemsByType.foodDrink as |item|}}
-          <li class="item-row inventory-row" data-item-id="{{item.id}}">
-            <span></span>
-            <img src="{{item.img}}" alt="" />
-            <strong>{{item.name}}</strong>
-            <span>x{{item.system.quantity}}</span>
-            <span>{{item.system.effect}}</span>
-            <button type="button" data-show-item-details>Details</button>
-            <button type="button" data-edit-owned-item>Bearbeiten</button>
-            <button type="button" data-give-owned-item>Geben</button>
-            <button type="button" data-consume-owned-item>Verbr.</button>
-            <button type="button" data-discard-owned-item>Weg</button>
-          </li>
-        {{/each}}
-      </ol>
-    </div>
+        <section class="hb-karte">
+          <h3>Ruhende Insignien</h3>
+          <textarea class="hb-ruhend" name="system.progression.insignia" placeholder="Insignien, die gerade nicht in einem Slot stecken" {{#unless isGM}}disabled{{/unless}}>{{system.progression.insignia}}</textarea>
+        </section>
+      </div>
+    {{/unless}}
 
     <div class="tab" data-group="primary" data-tab="notes">
-      <h2>Charakternotizen</h2>
-      <textarea name="system.identity.notes">{{system.identity.notes}}</textarea>
+      <div class="hb-notizen">
+        <div class="hb-spalte">
+          {{#unless isMonster}}
+            <section class="hb-karte">
+              <h3>Profil</h3>
+              <div class="hb-formular">
+                <label>Spieler <input name="system.identity.player" type="text" value="{{system.identity.player}}" /></label>
+                <label>Alter <input name="system.identity.age" type="text" value="{{system.identity.age}}" /></label>
+                <label>Geschlecht <input name="system.identity.gender" type="text" value="{{system.identity.gender}}" /></label>
+                <label>Job <input name="system.progression.job" type="text" value="{{system.progression.job}}" /></label>
+                <label>Titel <input name="system.progression.title" type="text" value="{{system.progression.title}}" /></label>
+              </div>
+              <p class="hb-klassenhinweis">Klasse nach Wertverteilung: <b>{{system.derived.suggestedClass}}</b>{{#if system.derived.suggestedClassEffect}}<br><small>{{system.derived.suggestedClassEffect}}</small>{{/if}}</p>
+            </section>
+            {{#if passivListe.length}}
+              <section class="hb-karte">
+                <h3>Wirkt gerade (passiv)</h3>
+                <ul class="hb-wirkt">{{#each passivListe as |p|}}<li><b>{{p.name}}</b>{{#if p.text}} · {{p.text}}{{else}} · siehe Skilltext{{/if}}</li>{{/each}}</ul>
+              </section>
+            {{/if}}
+          {{/unless}}
+          {{#if isGM}}
+            <details class="hb-karte hb-gm">
+              <summary>GM: Boni (Klasse, Titel, Insignien)</summary>
+              <div class="hb-formular">
+                <label>HP <input name="system.bonuses.hp" type="number" value="{{system.bonuses.hp}}" /></label>
+                <label>RW <input name="system.bonuses.rw" type="number" value="{{system.bonuses.rw}}" /></label>
+                <label>MR <input name="system.bonuses.mr" type="number" value="{{system.bonuses.mr}}" /></label>
+                <label>Blockwert <input name="system.bonuses.block" type="number" value="{{system.bonuses.block}}" /></label>
+                <label>Genauigkeit <input name="system.bonuses.acc" type="number" value="{{system.bonuses.acc}}" /></label>
+                <label>Schaden <input name="system.bonuses.damage" type="number" value="{{system.bonuses.damage}}" /></label>
+                <label>Bewegung <input name="system.bonuses.movement" type="number" value="{{system.bonuses.movement}}" /></label>
+                <label>Initiative <input name="system.bonuses.initiative" type="number" value="{{system.bonuses.initiative}}" /></label>
+                <label>Inventar <input name="system.bonuses.inventory" type="number" value="{{system.bonuses.inventory}}" /></label>
+                <label>Aktionen <input name="system.resources.actionPoints.max" type="number" value="{{system.resources.actionPoints.max}}" /></label>
+              </div>
+            </details>
+          {{/if}}
+        </div>
+        <section class="hb-karte hb-notizfeld">
+          <h3>Notizen</h3>
+          <textarea name="system.identity.notes" placeholder="Hintergrund, Ziele, Kontakte, offene Fragen …">{{system.identity.notes}}</textarea>
+        </section>
+      </div>
     </div>
   </section>
 </form>
