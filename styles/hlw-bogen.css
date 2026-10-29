@@ -666,7 +666,7 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-talk .gs-waren li[data-item] { display: grid; grid-template-columns: 40px 1fr auto auto auto; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.04); }
 .hlw-talk .gs-waren img { width: 40px; height: 40px; border: none; border-radius: 6px; object-fit: cover; background: rgba(0, 0, 0, 0.3); }
 .hlw-talk .gs-warenname small { display: block; color: #c9bc9c; font-size: 0.75rem; }
-.hlw-talk .gs-warenname > small:first-child { display: inline; }
+.hlw-talk .gs-warenname small.gs-menge { display: inline; }
 .hlw-talk .gs-preis { color: #f0d48c; white-space: nowrap; }
 .hlw-talk .gs-waren input[data-gs="preis"] { width: 70px; height: 30px; text-align: right; padding: 0 6px; }
 .hlw-talk .gs-sk { color: #c9bc9c; font-size: 0.8rem; }
@@ -728,3 +728,18 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-talk .gs-notizneu { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
 .hlw-talk .gs-notizneu textarea { width: 100%; min-height: 60px; padding: 8px; }
 .hlw-talk .gs-notizneu button { align-self: flex-end; }
+
+/* Handel v2: Ware suchen, Händler-Einstellungen */
+.hlw-talk .gs-warensuche { margin-top: 12px; }
+.hlw-talk .gs-warensuche input[type="search"] { width: 100%; height: 34px; padding: 0 10px; }
+.hlw-talk .gs-suchtreffer { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; max-height: 260px; overflow-y: auto; }
+.hlw-talk .gs-suchtreffer li[data-ware] { display: grid; grid-template-columns: 34px 1fr 56px auto; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 8px; background: rgba(255, 255, 255, 0.04); }
+.hlw-talk .gs-suchtreffer img { width: 34px; height: 34px; border: none; border-radius: 6px; }
+.hlw-talk .gs-suchtreffer input { height: 28px; padding: 0 6px; text-align: right; }
+.hlw-talk .gs-haendler { margin-top: 12px; padding: 8px 10px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); }
+.hlw-talk .gs-haendler summary { color: #e2d6bb; }
+.hlw-talk .gs-haendlerzeile { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 8px; font-size: 0.85rem; }
+.hlw-talk .gs-haendlerzeile input[type="number"] { width: 64px; height: 28px; padding: 0 6px; text-align: right; }
+.hlw-talk .gs-haendlerzeile small { color: #c9bc9c; }
+.hlw-talk .gs-art { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 12px; background: rgba(255, 255, 255, 0.05); }
+.hlw-talk .gs-waren input[data-gs="preis"]::placeholder { color: #c9bc9c; opacity: 1; }

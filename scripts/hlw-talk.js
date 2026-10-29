@@ -7,7 +7,7 @@
 // Nur der GM schreibt Actor-Daten; Spieler schicken ihre Wünsche (Notiz, kaufen, verkaufen, Quest annehmen) per Socket.
 
 import { kes } from "./hlw-regeln.js";
-import { istWare, preisVon, ankaufVon, kaufen, verkaufen } from "./hlw-nsc.js";
+import { istWare, preisVon, ankaufVon, kaufen, verkaufen, handelVon, istHaendler, WAREN_ARTEN, warenSuche, wareHinzufuegen } from "./hlw-nsc.js";
 
 const SYSTEM_ID = "hope-lies-within-2";
 const SOCKET = `system.${SYSTEM_ID}`;
@@ -195,7 +195,7 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
   _reiterListe(talk) {
     const isGM = game.user?.isGM;
     return Object.entries(REITER).filter(([key]) => {
-      if (key === "handel") return isGM || warenVon(this.actor).length > 0;
+      if (key === "handel") return isGM || istHaendler(this.actor);
       if (key === "quests") return isGM || sichtbareQuests(talk).length > 0;
       return true;
     });
@@ -342,42 +342,75 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
 
   _handelHtml() {
     const isGM = game.user.isGM;
-    const waren = warenVon(this.actor);
+    const nsc = this.actor;
+    const name = anzeigeName(nsc);
+    const handel = handelVon(nsc);
+    const waren = warenVon(nsc);
     const charakter = game.user.character;
     const geld = charakter ? Number(charakter.system?.resources?.kes?.value) || 0 : 0;
+    const kasse = Number(nsc.system?.resources?.kes?.value) || 0;
     const warenListe = waren.map((item) => {
-      const preis = preisVon(item);
+      const preis = preisVon(item, nsc);
+      const fest = item.getFlag(SYSTEM_ID, "preis");
       const menge = Number(item.system?.quantity ?? 1);
       const aktion = isGM
-        ? `<input type="number" min="0" step="1" value="${preis}" data-gs="preis" title="Preis in SK"> <span class="gs-sk">SK</span>
+        ? `<input type="number" min="0" step="1" value="${fest ?? ""}" placeholder="${preis}" data-gs="preis" title="Fester Preis in SK (leer = Marktwert × ${handel.verkauf} %)"> <span class="gs-sk">SK</span>
            <button type="button" data-gs="wareWeg" title="Aus dem Angebot nehmen"><i class="fa-solid fa-xmark"></i></button>`
-        : `<b class="gs-preis">${kes(preis)}</b><button type="button" data-gs="kaufen" ${!charakter || geld < preis ? "disabled" : ""}>Kaufen</button>`;
+        : `<b class="gs-preis">${kes(preis)}</b><button type="button" data-gs="kaufen" class="gs-haupt" ${!charakter || geld < preis ? "disabled" : ""}>Kaufen</button>`;
       return `<li data-item="${item.id}">
           <img src="${escapeHtml(item.img)}" alt="">
-          <span class="gs-warenname">${escapeHtml(item.name)}${menge > 1 ? ` <small>×${menge}</small>` : ""}<small>${escapeHtml(item.system?.rank ? `Rang ${item.system.rank}` : "")}</small></span>
+          <span class="gs-warenname">${escapeHtml(item.name)}${menge > 1 ? ` <small class="gs-menge">×${menge}</small>` : ""}<small>${escapeHtml(WAREN_ARTEN[item.type] ?? "")}${item.system?.rank ? ` · Rang ${escapeHtml(item.system.rank)}` : ""}</small></span>
           ${aktion}
         </li>`;
     }).join("");
+
+    const kauftText = [
+      handel.ankauf > 0 && handel.kauft.length ? `${handel.kauft.map((k) => WAREN_ARTEN[k] ?? k).join(", ")} für ${handel.ankauf} %` : "",
+      handel.andere > 0 ? `alles andere für ${handel.andere} %` : ""
+    ].filter(Boolean).join(", ");
+
     let verkauf = "";
     if (!isGM && charakter) {
-      const eigene = charakter.items.filter((item) => istWare(item) && ankaufVon(item) > 0);
+      const eigene = charakter.items.filter((item) => istWare(item) && ankaufVon(item, nsc) > 0);
       verkauf = `
-        <h2>Verkaufen <small>(Händler zahlen 40 % vom Marktwert)</small></h2>
-        <ul class="gs-waren">${eigene.map((item) => `
+        <h2>Verkaufen <small>${kauftText ? `(${escapeHtml(name)} kauft ${escapeHtml(kauftText)} vom Marktwert)` : `(${escapeHtml(name)} kauft nichts an)`}</small></h2>
+        ${kauftText ? `<ul class="gs-waren">${eigene.map((item) => `
           <li data-item="${item.id}">
             <img src="${escapeHtml(item.img)}" alt="">
-            <span class="gs-warenname">${escapeHtml(item.name)}${Number(item.system?.quantity ?? 1) > 1 ? ` <small>×${item.system.quantity}</small>` : ""}</span>
-            <b class="gs-preis">${kes(ankaufVon(item))}</b><button type="button" data-gs="verkaufen">Verkaufen</button>
-          </li>`).join("") || `<li class="gs-leer">Du hast nichts, was ${escapeHtml(anzeigeName(this.actor))} kaufen würde.</li>`}
-        </ul>`;
+            <span class="gs-warenname">${escapeHtml(item.name)}${Number(item.system?.quantity ?? 1) > 1 ? ` <small class="gs-menge">×${item.system.quantity}</small>` : ""}<small>${escapeHtml(WAREN_ARTEN[item.type] ?? "")}</small></span>
+            <b class="gs-preis">${kes(ankaufVon(item, nsc))}</b><button type="button" data-gs="verkaufen" ${ankaufVon(item, nsc) > kasse ? "disabled title=\"Nicht genug Kes in der Kasse\"" : ""}>Verkaufen</button>
+          </li>`).join("") || `<li class="gs-leer">Du hast nichts, was ${escapeHtml(name)} kaufen würde.</li>`}
+        </ul>` : ""}`;
     }
+
+    const gmBereich = isGM ? `
+      <div class="gs-warensuche">
+        <input type="search" name="warensuche" placeholder="Ware hinzufügen: Namen suchen, z. B. Brot, Schwert, Trank …">
+        <ul class="gs-suchtreffer"></ul>
+      </div>
+      <details class="gs-aufklapp gs-haendler" ${this._haendlerOffen ? "open" : ""} data-aufklapp="haendler">
+        <summary>Händler-Einstellungen: ${escapeHtml(kauftText || "kauft nichts an")} · verkauft zu ${handel.verkauf} %</summary>
+        <div class="gs-haendlerzeile">
+          <label>Verkauft zu <input type="number" min="0" step="5" data-hfeld="verkauf" value="${handel.verkauf}"> % vom Marktwert</label>
+          <label>Kasse <input type="number" min="0" step="1" data-gs="kasse" value="${kasse}"> SK</label>
+        </div>
+        <div class="gs-haendlerzeile"><span>Kauft an:</span>
+          ${Object.entries(WAREN_ARTEN).map(([k, l]) => `<label class="gs-art"><input type="checkbox" data-hart="${k}" ${handel.kauft.includes(k) ? "checked" : ""}> ${l}</label>`).join("")}
+        </div>
+        <div class="gs-haendlerzeile">
+          <label>zahlt dafür <input type="number" min="0" max="100" step="5" data-hfeld="ankauf" value="${handel.ankauf}"> %</label>
+          <label>für alles andere <input type="number" min="0" max="100" step="5" data-hfeld="andere" value="${handel.andere}"> % <small>(0 = kauft er nicht)</small></label>
+        </div>
+        <p class="gs-hinweis">Spieler kaufen und verkaufen selbst mit den Knöpfen im Fenster; Kes und Gegenstände wandern automatisch. Angekaufte Ware legt der Händler wieder ins Angebot, zum Verkaufspreis. Ein fester Preis im Feld neben der Ware gilt statt Marktwert × %.</p>
+      </details>` : "";
+
     return `
       <div class="gs-handelkopf">
         <h2>Angebot</h2>
-        ${isGM ? `<span>Kasse: ${kes(Number(this.actor.system?.resources?.kes?.value) || 0)}</span>` : charakter ? `<span>Dein Geld: <b>${kes(geld)}</b></span>` : `<span>Dir ist kein Charakter zugewiesen.</span>`}
+        ${isGM ? `<span>Kasse: ${kes(kasse)}</span>` : charakter ? `<span>Dein Geld: <b>${kes(geld)}</b></span>` : `<span>Dir ist kein Charakter zugewiesen.</span>`}
       </div>
-      <ul class="gs-waren">${warenListe || `<li class="gs-leer">${isGM ? "Noch keine Waren." : "Gerade nichts im Angebot."}</li>`}</ul>
-      ${isGM ? `<div class="gs-ablage" data-gs="ablage"><i class="fa-solid fa-box-open"></i> Gegenstände aus der Seitenleiste hierher ziehen, um sie ins Angebot zu legen. Nicht ausgerüstete Gegenstände des NSC sind Ware.</div>` : ""}
+      <ul class="gs-waren">${warenListe || `<li class="gs-leer">${isGM ? "Noch keine Waren. Unten suchen und hinzufügen." : "Gerade nichts im Angebot."}</li>`}</ul>
+      ${gmBereich}
       ${verkauf}`;
   }
 
@@ -582,8 +615,52 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
 
     // Handel (GM): Preise, Waren entfernen, Gegenstände hineinziehen
     root.querySelectorAll("[data-gs='preis']").forEach((feld) => feld.addEventListener("change", () => {
-      this.actor.items.get(feld.closest("[data-item]")?.dataset.item)?.update({ "system.priceSk": Math.max(Math.round(Number(feld.value) || 0), 0) });
+      const item = this.actor.items.get(feld.closest("[data-item]")?.dataset.item);
+      if (!item) return;
+      if (feld.value === "") item.unsetFlag(SYSTEM_ID, "preis");
+      else item.setFlag(SYSTEM_ID, "preis", Math.max(Math.round(Number(feld.value) || 0), 0));
     }));
+    // Händler-Einstellungen
+    root.querySelectorAll("[data-hfeld]").forEach((feld) => feld.addEventListener("change", () => {
+      const handel = handelVon(this.actor);
+      talkAendern(this.actor, { handel: { ...handel, [feld.dataset.hfeld]: Math.max(Number(feld.value) || 0, 0) } });
+    }));
+    root.querySelectorAll("[data-hart]").forEach((feld) => feld.addEventListener("change", () => {
+      const kauft = Array.from(root.querySelectorAll("[data-hart]")).filter((f) => f.checked).map((f) => f.dataset.hart);
+      talkAendern(this.actor, { handel: { ...handelVon(this.actor), kauft } });
+    }));
+    root.querySelector("[data-gs='kasse']")?.addEventListener("change", (event) => {
+      this.actor.update({ "system.resources.kes.value": Math.max(Math.round(Number(event.currentTarget.value) || 0), 0) });
+    });
+    root.querySelector("[data-aufklapp='haendler']")?.addEventListener("toggle", (event) => {
+      this._haendlerOffen = event.currentTarget.open;
+    });
+    // Ware suchen und hinzufügen (ohne die Seitenleiste)
+    const suche = root.querySelector("input[name='warensuche']");
+    const trefferListe = root.querySelector(".gs-suchtreffer");
+    let suchNr = 0;
+    suche?.addEventListener("input", async () => {
+      this._letzteSuche = suche.value;
+      const nr = ++suchNr;
+      const treffer = suche.value.trim().length >= 2 ? await warenSuche(suche.value) : [];
+      if (nr !== suchNr || !trefferListe) return;
+      trefferListe.innerHTML = treffer.map((w) => `
+        <li data-ware="${escapeHtml(w.name)}">
+          <img src="${escapeHtml(w.img)}" alt="">
+          <span class="gs-warenname">${escapeHtml(w.name)}<small>${escapeHtml(WAREN_ARTEN[w.type] ?? "")} · Marktwert ${kes(Number(w.system?.priceSk) || 0)}</small></span>
+          <input type="number" min="1" value="1" title="Anzahl">
+          <button type="button" class="gs-haupt"><i class="fa-solid fa-plus"></i></button>
+        </li>`).join("") || (suche.value.trim().length >= 2 ? `<li class="gs-leer">Nichts gefunden.</li>` : "");
+      trefferListe.querySelectorAll("[data-ware] button").forEach((knopf) => knopf.addEventListener("click", async () => {
+        const li = knopf.closest("[data-ware]");
+        knopf.disabled = true;
+        await wareHinzufuegen(this.actor, li.dataset.ware, Math.max(Number(li.querySelector("input")?.value) || 1, 1));
+      }));
+    });
+    if (this._letzteSuche && suche) {
+      suche.value = this._letzteSuche;
+      suche.dispatchEvent(new Event("input"));
+    }
     root.querySelectorAll("[data-gs='wareWeg']").forEach((knopf) => knopf.addEventListener("click", () => {
       this.actor.items.get(knopf.closest("[data-item]")?.dataset.item)?.delete();
     }));
@@ -834,7 +911,7 @@ Hooks.on("renderTokenHUD", (hud) => {
     menue.appendChild(knopf);
   };
   eintrag("fa-comment", "Sprechen", () => zeigeAllen(actor, "gespraech"));
-  if (waren) eintrag("fa-scale-balanced", `Handeln <small>${waren}</small>`, () => zeigeAllen(actor, "handel"));
+  if (istHaendler(actor)) eintrag("fa-scale-balanced", `Handeln <small>${waren}</small>`, () => zeigeAllen(actor, "handel"));
   if (talk.quests.length) eintrag("fa-scroll", `Quests <small>${offen}</small>`, () => zeigeAllen(actor, "quests"));
   eintrag("fa-eye", "Nur für mich öffnen", () => HopeLiesWithinTalkApp.openFor(actor, "gespraech"), "leise");
   document.body.appendChild(menue);

@@ -6,8 +6,6 @@ import { ATTRS, verteiltePunkte, klasseVorschlag, kes } from "./hlw-regeln.js";
 
 const SYSTEM_ID = "hope-lies-within-2";
 const SKILL_TYPEN = ["playerSkill", "classSkill"];
-// Händler kaufen zur Ankaufsquote (Marktsystem im Kanon: Standard 40 %).
-export const ANKAUF = 0.4;
 
 // Klassenliste kommt aus hlw.js (data/klassen.json), damit die Klasse aus den Werten folgt wie bei Spielern.
 let KLASSEN = [];
@@ -111,18 +109,21 @@ const LINDHAIN_WERTE = {
   "Hanne Brook": {
     bausteine: [["gruss", "Willkommen im Lindenblatt! Setzt euch, setzt euch!"], ["gruss", "Na, ihr seht hungrig aus!"], ["handel", "Suppe gibt's für drei Silber, Brot obendrauf."], ["abschied", "Kommt bald wieder, die Suppe wartet!"]],
     level: 3, schwerpunkt: "zivil", kes: 120, waffe: "Holzkeule",
+    handel: { kauft: ["foodDrink", "natural"], ankauf: 40, andere: 0, verkauf: 100 },
     waren: [["Sonnenkornbrot", 10], ["Nebeltraum-Suppe", 8], ["Schattenfeuer-Eintopf", 4], ["Windgrass-Bier", 12], ["Proviant (1 Tagesration)", 10], ["Kerzen (5 Stück)", 4]],
     quests: [{ titel: "Ratten im Keller", rang: "F", belohnung: "15 SK und eine Woche freies Essen", text: "Irgendwas frisst mir die Vorräte im Keller weg. Ratten, so groß wie Katzen! Wer den Keller freiräumt, isst eine Woche lang umsonst bei mir." }]
   },
   "Jorun Feldt": {
     bausteine: [["gruss", "Mach die Tür zu, die Esse braucht die Wärme."], ["gruss", "Was brauchst du? Und fass nichts Heißes an."], ["handel", "Gute Arbeit hat ihren Preis."], ["abschied", "Bring's zurück, wenn's stumpf wird."]],
     level: 8, schwerpunkt: "handwerk", kes: 400, waffe: "Kampfhammer (2 Händer)",
+    handel: { kauft: ["weapon", "armor", "material", "mineral"], ankauf: 50, andere: 0, verkauf: 110 },
     waren: [["Holzkeule", 2], ["Bronze Dolch", 2], ["Holzbogen", 1], ["Holzpfeile (20 Stück)", 4], ["Holzschild", 2], ["Lederhelm", 2], ["Lederstiefel", 2], ["Jagdmesser", 2], ["Wetzstein", 6]],
     quests: [{ titel: "Kohle für die Esse", rang: "F", belohnung: "20 SK und ein Wetzstein", text: "Meine Esse frisst Kohle wie ein Drache. Hol mir drei Säcke vom Köhler am Waldrand, aber bleib auf dem Weg. Den Wald betritt man nicht." }]
   },
   "Oma Wendel": {
     bausteine: [["gruss", "Ach, Besuch! Komm, setz dich zu mir, Kind."], ["handel", "Gegen fast alles ist ein Kraut gewachsen."], ["abschied", "Und iss genug, du bist viel zu dünn."]],
     level: 9, schwerpunkt: "heil", kes: 150, waffe: "Holz-Kampfstab (2 Händer)", skills: ["Kleine Heilung"],
+    handel: { kauft: ["natural", "consumable"], ankauf: 40, andere: 5, verkauf: 100 },
     waren: [["Verband", 10], ["Heilkräutersalbe (Nebelfarn)", 6], ["Gegengift", 2], ["Kleiner Heiltrank", 2], ["Nebelfarn", 8], ["Sternmoos", 2]],
     quests: [{ titel: "Nebelfarn am Lindbach", rang: "F", belohnung: "Zwei Heilkräutersalben", text: "Meine Augen sind nicht mehr die besten, Kind. Am Lindbach wächst Nebelfarn, fünf Wedel brauche ich. Pflück nur die mit den silbrigen Spitzen (Naturkunde 12)." }]
   },
@@ -158,6 +159,14 @@ export async function lindhainBausteine() {
   }
 }
 
+// Händler-Einstellungen für Lindhain nachtragen (Welten vor v0.10.0; eigene Einstellungen bleiben).
+export async function lindhainHandel() {
+  for (const actor of game.actors.filter((a) => a.type === "npc" && LINDHAIN_WERTE[a.name]?.handel)) {
+    if (actor.getFlag(SYSTEM_ID, "talk")?.handel) continue;
+    await actor.update({ [`flags.${SYSTEM_ID}.talk.handel`]: LINDHAIN_WERTE[actor.name].handel });
+  }
+}
+
 export async function nscAusstatten(actor, werte) {
   if (!actor || !werte) return;
   await nscWerteSetzen(actor, { level: werte.level, schwerpunkt: werte.schwerpunkt });
@@ -175,6 +184,7 @@ export async function nscAusstatten(actor, werte) {
   if (liste.length) await actor.createEmbeddedDocuments("Item", liste);
   const talk = actor.getFlag(SYSTEM_ID, "talk") ?? {};
   const update = { "system.resources.kes.value": werte.kes ?? 0 };
+  if (!talk.handel && werte.handel) update[`flags.${SYSTEM_ID}.talk.handel`] = werte.handel;
   if (!Array.isArray(talk.bausteine)) {
     update[`flags.${SYSTEM_ID}.talk.bausteine`] = bausteineAus(werte);
   }
@@ -197,18 +207,65 @@ export async function lindhainAusstatten({ alle = false } = {}) {
 }
 
 // ---------- Handel ----------
+// Jeder Händler hat Einstellungen am NSC (flags.talk.handel):
+//   verkauf: Verkaufspreis in % vom Marktwert (Standard 100)
+//   kauft:   Warenarten, die er ankauft (Standard: die Arten, die er selbst anbietet)
+//   ankauf:  was er für diese Arten zahlt, in % vom Marktwert (Standard 40, wie im Marktsystem)
+//   andere:  was er für alle anderen Waren zahlt (Standard 0 = kauft er nicht)
+// Angekaufte Ware landet in seinem Angebot und wird wieder zum Verkaufspreis angeboten.
+
+export const WAREN_ARTEN = {
+  weapon: "Waffen", armor: "Rüstung", accessory: "Schmuck", equipment: "Ausrüstung", consumable: "Verbrauchsgüter",
+  foodDrink: "Essen & Trinken", natural: "Pflanzen & Ernte", material: "Materialien", mineral: "Minerale", junk: "Kram"
+};
+
+function zahlOder(wert, standard) {
+  const z = Number(wert);
+  return wert === "" || wert === null || wert === undefined || !Number.isFinite(z) ? standard : Math.max(z, 0);
+}
 
 export function istWare(item) {
   return !SKILL_TYPEN.includes(item.type) && !item.system?.equipped && Number(item.system?.quantity ?? 1) > 0;
 }
 
-export function preisVon(item) {
+export function handelVon(actor) {
+  const h = actor?.getFlag(SYSTEM_ID, "talk")?.handel ?? {};
+  const eigeneArten = [...new Set((actor?.items ?? []).filter((i) => istWare(i)).map((i) => i.type))];
+  return {
+    verkauf: zahlOder(h.verkauf, 100),
+    ankauf: zahlOder(h.ankauf, 40),
+    andere: zahlOder(h.andere, 0),
+    kauft: Array.isArray(h.kauft) ? h.kauft : eigeneArten
+  };
+}
+
+// Handelt der NSC überhaupt (hat Waren oder kauft etwas an)?
+export function istHaendler(actor) {
+  const h = handelVon(actor);
+  return actor.items.some((i) => istWare(i)) || (h.kauft.length > 0 && h.ankauf > 0) || h.andere > 0;
+}
+
+function marktwert(item) {
   return Math.max(Math.round(Number(item.system?.priceSk) || 0), 0);
 }
 
-export function ankaufVon(item) {
-  const preis = preisVon(item);
-  return preis > 0 ? Math.max(Math.floor(preis * ANKAUF), 1) : 0;
+// Verkaufspreis des NSC: fester Preis, falls der GM einen gesetzt hat, sonst Marktwert × Verkaufs-%.
+export function preisVon(item, nsc = item.parent) {
+  const fest = item.getFlag?.(SYSTEM_ID, "preis");
+  if (fest !== undefined && fest !== null && fest !== "") return Math.max(Math.round(Number(fest) || 0), 0);
+  const wert = marktwert(item);
+  return wert > 0 ? Math.max(Math.round((wert * handelVon(nsc).verkauf) / 100), 1) : 0;
+}
+
+export function ankaufProzent(item, nsc) {
+  const h = handelVon(nsc);
+  return h.kauft.includes(item.type) ? h.ankauf : h.andere;
+}
+
+export function ankaufVon(item, nsc) {
+  const wert = marktwert(item);
+  const prozent = ankaufProzent(item, nsc);
+  return wert > 0 && prozent > 0 ? Math.max(Math.floor((wert * prozent) / 100), 1) : 0;
 }
 
 function kesVon(actor) {
@@ -221,20 +278,20 @@ async function stueckAbgeben(actor, item) {
   else await item.delete();
 }
 
-async function stueckAufnehmen(actor, item) {
+async function stueckAufnehmen(actor, item, menge = 1) {
   const gleich = actor.items.find((i) => i.name === item.name && i.type === item.type && !i.system?.equipped);
-  if (gleich) return gleich.update({ "system.quantity": Number(gleich.system?.quantity ?? 1) + 1 });
-  const daten = { name: item.name, type: item.type, img: item.img, system: foundry.utils.deepClone(item.system.toObject?.() ?? item.system) };
-  daten.system.quantity = 1;
-  daten.system.equipped = false;
-  return actor.createEmbeddedDocuments("Item", [daten]);
+  if (gleich) return gleich.update({ "system.quantity": Number(gleich.system?.quantity ?? 1) + menge });
+  const system = foundry.utils.deepClone(item.system?.toObject?.() ?? item.system ?? {});
+  system.quantity = menge;
+  system.equipped = false;
+  return actor.createEmbeddedDocuments("Item", [{ name: item.name, type: item.type, img: item.img, system }]);
 }
 
 // Läuft beim GM. Gibt einen Text für den Gesprächsverlauf zurück oder wirft einen Fehlertext.
 export async function kaufen(nsc, kaeufer, itemId) {
   const item = nsc.items.get(itemId);
   if (!item || !istWare(item)) throw new Error("Diese Ware gibt es nicht mehr.");
-  const preis = preisVon(item);
+  const preis = preisVon(item, nsc);
   if (kesVon(kaeufer) < preis) throw new Error(`${kaeufer.name} hat nicht genug Kes (${kes(preis)} nötig).`);
   await stueckAufnehmen(kaeufer, item);
   await stueckAbgeben(nsc, item);
@@ -246,10 +303,34 @@ export async function kaufen(nsc, kaeufer, itemId) {
 export async function verkaufen(nsc, verkaeufer, itemId) {
   const item = verkaeufer.items.get(itemId);
   if (!item || !istWare(item)) throw new Error("Diesen Gegenstand gibt es nicht mehr.");
-  const preis = ankaufVon(item);
-  if (!preis) throw new Error(`${item.name} hat keinen Marktwert.`);
+  const preis = ankaufVon(item, nsc);
+  if (!preis) throw new Error(`${nsc.name} kauft so etwas nicht.`);
+  if (kesVon(nsc) < preis) throw new Error(`${nsc.name} hat nicht genug Kes in der Kasse (${kes(preis)} nötig).`);
   await stueckAufnehmen(nsc, item);
   await stueckAbgeben(verkaeufer, item);
   await verkaeufer.update({ "system.resources.kes.value": kesVon(verkaeufer) + preis });
+  await nsc.update({ "system.resources.kes.value": kesVon(nsc) - preis });
   return `${verkaeufer.name} verkauft ${item.name} für ${kes(preis)}.`;
+}
+
+// GM: Ware aus allen Gegenständen des Spiels suchen (Import-Listen und Gegenstände der Welt).
+export async function warenSuche(text, max = 30) {
+  const worte = String(text ?? "").toLowerCase().split(/\s+/).filter(Boolean);
+  if (!worte.length) return [];
+  const treffer = new Map();
+  const pruefen = (eintrag) => {
+    if (!eintrag?.name || !WAREN_ARTEN[eintrag.type] || treffer.has(eintrag.name)) return;
+    const suchtext = `${eintrag.name} ${WAREN_ARTEN[eintrag.type]}`.toLowerCase();
+    if (worte.every((w) => suchtext.includes(w))) treffer.set(eintrag.name, { name: eintrag.name, type: eintrag.type, img: eintrag.img, system: eintrag.system });
+  };
+  // Zuerst die Kanon-Listen (mit Marktwert), dann eigene Gegenstände der Welt
+  for (const eintrag of (await importListe()).values()) pruefen(eintrag);
+  for (const item of game.items ?? []) pruefen(item.toObject());
+  return [...treffer.values()].slice(0, max);
+}
+
+export async function wareHinzufuegen(nsc, name, menge = 1) {
+  const daten = (await importListe()).get(name) ?? game.items?.getName(name)?.toObject();
+  if (!daten) return;
+  await stueckAufnehmen(nsc, { name: daten.name, type: daten.type, img: daten.img, system: daten.system }, menge);
 }
