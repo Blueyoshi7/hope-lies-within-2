@@ -99,36 +99,44 @@ async function itemDaten(name, extra = {}) {
 
 const LINDHAIN_WERTE = {
   "Kessa Dorn": {
+    bausteine: [["gruss", "Ah, noch ein Gesicht fürs Fest! Ich bin von der Gilde, keine Angst."], ["gruss", "Na, neugierig auf den Kristall?"], ["abschied", "Wir sehen uns unter der Linde."], ["abschied", "Die Gilde vergisst niemanden, der hilft."]],
     level: 12, schwerpunkt: "kundschaft", kes: 300, waffe: "Eisenschwert", skills: ["Doppelstoß"],
     quests: [{ titel: "Die Prüfung am Fest", rang: "F", belohnung: "Ein Platz an einer Schule in Illmaris (Gildenstipendium)", text: "Zum Saatwendefest prüfe ich jedes Kind mit diesem Kristall. Leuchtet er, wartet in Illmaris ein Platz an einer Schule der Gilde. Stell dich einfach in die Reihe unter der Linde." }]
   },
   "Mira Holm": {
+    bausteine: [["gruss", "Kind, du bist ja groß geworden!"], ["gruss", "Komm rein, aber putz dir die Füße ab."], ["abschied", "Pass auf dich auf, hörst du?"], ["abschied", "Geh mit dem Licht, Kind."]],
     level: 4, schwerpunkt: "zivil", kes: 80, waffe: "Holz-Kampfstab (2 Händer)",
     quests: [{ titel: "Bänke für die Saatwende", rang: "F", belohnung: "10 SK und ein Platz in der ersten Reihe", text: "Für das Fest brauchen wir Bänke und Girlanden auf dem Dorfplatz. Die Bretter liegen hinter der Mühle. Wer mir hilft, sitzt beim Tanz in der ersten Reihe." }]
   },
   "Hanne Brook": {
+    bausteine: [["gruss", "Willkommen im Lindenblatt! Setzt euch, setzt euch!"], ["gruss", "Na, ihr seht hungrig aus!"], ["handel", "Suppe gibt's für drei Silber, Brot obendrauf."], ["abschied", "Kommt bald wieder, die Suppe wartet!"]],
     level: 3, schwerpunkt: "zivil", kes: 120, waffe: "Holzkeule",
     waren: [["Sonnenkornbrot", 10], ["Nebeltraum-Suppe", 8], ["Schattenfeuer-Eintopf", 4], ["Windgrass-Bier", 12], ["Proviant (1 Tagesration)", 10], ["Kerzen (5 Stück)", 4]],
     quests: [{ titel: "Ratten im Keller", rang: "F", belohnung: "15 SK und eine Woche freies Essen", text: "Irgendwas frisst mir die Vorräte im Keller weg. Ratten, so groß wie Katzen! Wer den Keller freiräumt, isst eine Woche lang umsonst bei mir." }]
   },
   "Jorun Feldt": {
+    bausteine: [["gruss", "Mach die Tür zu, die Esse braucht die Wärme."], ["gruss", "Was brauchst du? Und fass nichts Heißes an."], ["handel", "Gute Arbeit hat ihren Preis."], ["abschied", "Bring's zurück, wenn's stumpf wird."]],
     level: 8, schwerpunkt: "handwerk", kes: 400, waffe: "Kampfhammer (2 Händer)",
     waren: [["Holzkeule", 2], ["Bronze Dolch", 2], ["Holzbogen", 1], ["Holzpfeile (20 Stück)", 4], ["Holzschild", 2], ["Lederhelm", 2], ["Lederstiefel", 2], ["Jagdmesser", 2], ["Wetzstein", 6]],
     quests: [{ titel: "Kohle für die Esse", rang: "F", belohnung: "20 SK und ein Wetzstein", text: "Meine Esse frisst Kohle wie ein Drache. Hol mir drei Säcke vom Köhler am Waldrand, aber bleib auf dem Weg. Den Wald betritt man nicht." }]
   },
   "Oma Wendel": {
+    bausteine: [["gruss", "Ach, Besuch! Komm, setz dich zu mir, Kind."], ["handel", "Gegen fast alles ist ein Kraut gewachsen."], ["abschied", "Und iss genug, du bist viel zu dünn."]],
     level: 9, schwerpunkt: "heil", kes: 150, waffe: "Holz-Kampfstab (2 Händer)", skills: ["Kleine Heilung"],
     waren: [["Verband", 10], ["Heilkräutersalbe (Nebelfarn)", 6], ["Gegengift", 2], ["Kleiner Heiltrank", 2], ["Nebelfarn", 8], ["Sternmoos", 2]],
     quests: [{ titel: "Nebelfarn am Lindbach", rang: "F", belohnung: "Zwei Heilkräutersalben", text: "Meine Augen sind nicht mehr die besten, Kind. Am Lindbach wächst Nebelfarn, fünf Wedel brauche ich. Pflück nur die mit den silbrigen Spitzen (Naturkunde 12)." }]
   },
   "Bruder Aled": {
+    bausteine: [["gruss", "Das Licht sei mit dir."], ["gruss", "Was bedrückt dich, mein Kind?"], ["abschied", "Geh in Frieden und im Gleichgewicht."]],
     level: 10, schwerpunkt: "heil", kes: 40, waffe: "Gilden Zauberstab", skills: ["Kleine Heilung", "Heiliger Schlag"]
   },
   "Hauptmann Rell": {
+    bausteine: [["gruss", "Halt. Was wollt ihr hier oben?"], ["sonst", "Keinen Schritt weiter in den Wald."], ["abschied", "Und jetzt zurück ins Dorf."]],
     level: 14, schwerpunkt: "kampf", kes: 200, waffe: "Eisenschwert", schild: "Holzschild", skills: ["Schwung des Krieger", "Erweiterte Verteidigung"],
     quests: [{ titel: "Proviant für den Posten", rang: "F", belohnung: "10 SK", text: "Meine Leute am Waldrand warten auf Brot und Bier aus dem Lindenblatt. Bring es hoch zum Wachturm, und keinen Schritt weiter in den Wald." }]
   },
   "Toma": {
+    bausteine: [["gruss", "Hey! Seid ihr Abenteurer? Echte?"], ["sonst", "Darf ich mitkommen? Bitte!"], ["abschied", "Wartet! Nehmt mich das nächste Mal mit!"]],
     level: 1, schwerpunkt: "kundschaft", kes: 2,
     quests: [{ titel: "Der Holzvogel", rang: "F", belohnung: "Tomas Dank und ein glatter Flussstein", text: "Ich hab meinen Holzvogel am Mühlbach verloren! Papa hat ihn geschnitzt, als wir noch an der Grenze gewohnt haben. Hilfst du mir suchen?" }]
   }
@@ -136,6 +144,18 @@ const LINDHAIN_WERTE = {
 
 export function lindhainWerte(name) {
   return LINDHAIN_WERTE[name] ?? null;
+}
+
+function bausteineAus(werte) {
+  return (werte?.bausteine ?? []).map(([art, text]) => ({ id: foundry.utils.randomID(), art, text }));
+}
+
+// Textbausteine für Lindhain-NSC nachtragen, die vor v0.9.0 ausgestattet wurden (eigene Bausteine bleiben).
+export async function lindhainBausteine() {
+  for (const actor of game.actors.filter((a) => a.type === "npc" && LINDHAIN_WERTE[a.name])) {
+    if (Array.isArray(actor.getFlag(SYSTEM_ID, "talk")?.bausteine)) continue;
+    await actor.update({ [`flags.${SYSTEM_ID}.talk.bausteine`]: bausteineAus(LINDHAIN_WERTE[actor.name]) });
+  }
 }
 
 export async function nscAusstatten(actor, werte) {
@@ -155,6 +175,9 @@ export async function nscAusstatten(actor, werte) {
   if (liste.length) await actor.createEmbeddedDocuments("Item", liste);
   const talk = actor.getFlag(SYSTEM_ID, "talk") ?? {};
   const update = { "system.resources.kes.value": werte.kes ?? 0 };
+  if (!Array.isArray(talk.bausteine)) {
+    update[`flags.${SYSTEM_ID}.talk.bausteine`] = bausteineAus(werte);
+  }
   if (!Array.isArray(talk.quests) || !talk.quests.length) {
     update[`flags.${SYSTEM_ID}.talk.quests`] = (werte.quests ?? []).map((q) => ({ id: foundry.utils.randomID(), status: "verborgen", ...q }));
   }

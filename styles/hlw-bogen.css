@@ -690,3 +690,41 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hb-nsc .hb-nsc-zeile input { width: 64px; }
 .hb-nsc .hb-nsc-zeile button { width: auto; flex: 1 1 auto; }
 .hb-nsc h3 small { font-weight: normal; font-size: 0.7rem; opacity: 0.7; margin-left: 6px; }
+
+/* ---------- Gespräch v3: Bühne statt Chatverlauf ---------- */
+.hlw-talk .gs-inhalt.gs-gespraech { display: flex; flex-direction: column; overflow-y: auto; }
+.hlw-talk .gs-buehne { flex: 1 0 auto; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 18px 8px; text-align: center; }
+.hlw-talk .gs-buehne .gs-sprecher { font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: #d8b46a; }
+.hlw-talk .gs-buehne .gs-satz { margin: 0; max-width: 34em; font-size: 2rem; line-height: 1.4; color: #fbf3e0; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
+.hlw-talk .gs-buehne-erzaehler .gs-satz { font-style: italic; font-size: 1.6rem; color: #e2d6bb; }
+.hlw-talk .gs-buehne .gs-leer { font-size: 1rem; }
+.hlw-talk .gs-buehne .gs-questkarte { width: min(100%, 520px); text-align: left; }
+.hlw-talk .gs-wort { display: inline-block; opacity: 0; transform: translateY(0.35em); filter: blur(2px); animation: gsWort 0.5s ease forwards; }
+@keyframes gsWort { to { opacity: 1; transform: none; filter: none; } }
+.hlw-talk .gs-buehne.gs-neu .gs-questkarte { animation: gsEin 0.7s ease both; }
+@keyframes gsEin { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
+.hlw-talk .gs-hinweise { list-style: none; margin: 0 0 8px; padding: 0; text-align: center; font-size: 0.85rem; color: #b9d7a8; }
+
+.hlw-talk .gs-steuerung { flex: none; display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(216, 180, 106, 0.25); }
+.hlw-talk .gs-steuerung .gs-eingabe { border-top: none; padding-top: 0; }
+.hlw-talk .gs-bausteine { display: flex; flex-direction: column; gap: 4px; }
+.hlw-talk .gs-bausteingruppe { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.hlw-talk .gs-bausteingruppe > span { width: 84px; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: #c9bc9c; }
+.hlw-talk button.gs-baustein { min-height: 0; padding: 3px 10px; border-radius: 14px; font-size: 0.8rem; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hlw-talk .gs-aufklapp summary { cursor: pointer; font-size: 0.8rem; color: #c9bc9c; }
+.hlw-talk .gs-aufklapp[open] { padding: 6px 0 4px; }
+.hlw-talk .gs-bausteinliste, .hlw-talk .gs-frueher { list-style: none; margin: 6px 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.hlw-talk .gs-bausteinliste li { display: grid; grid-template-columns: 120px 1fr auto; gap: 6px; }
+.hlw-talk .gs-bausteinliste input, .hlw-talk .gs-bausteinliste select { height: 30px; padding: 0 8px; }
+.hlw-talk .gs-frueher .gs-zeile { align-self: stretch; max-width: none; padding: 6px 10px; font-size: 0.9rem; border-radius: 6px; background: rgba(255, 255, 255, 0.04); border: none; text-align: left; }
+.hlw-talk .gs-frueher .gs-zeile.gs-erzaehler { font-style: italic; }
+.hlw-talk .gs-frueher .gs-zeile.gs-handel { color: #b9d7a8; }
+
+/* Notizen der Gruppe */
+.hlw-talk .gs-notizen { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.hlw-talk .gs-notizen li[data-notiz] { position: relative; padding: 8px 12px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border-left: 3px solid rgba(159, 192, 232, 0.6); line-height: 1.45; }
+.hlw-talk .gs-notizen li[data-notiz] b { display: block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #9fc0e8; }
+.hlw-talk .gs-notizen li[data-notiz]:hover .gs-zeilenknoepfe { display: flex; }
+.hlw-talk .gs-notizneu { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.hlw-talk .gs-notizneu textarea { width: 100%; min-height: 60px; padding: 8px; }
+.hlw-talk .gs-notizneu button { align-self: flex-end; }

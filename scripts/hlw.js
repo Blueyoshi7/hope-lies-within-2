@@ -1,5 +1,5 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
-import { setzeKlassen, lindhainAusstatten, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
+import { setzeKlassen, lindhainAusstatten, lindhainBausteine, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill } from "./hlw-charakter.js";
@@ -2306,6 +2306,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "freieWahlGesetzt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "einKlassenSkill", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainNsc", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "lindhainBausteine", { scope: "world", config: false, type: Boolean, default: false });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -2400,6 +2401,10 @@ Hooks.once("ready", async () => {
     const anzahl = await lindhainAusstatten();
     if (anzahl) ui.notifications?.info(`${anzahl} NSC in Lindhain haben jetzt Level, Werte, Ausrüstung, Waren und Quests.`);
     await game.settings.set("hope-lies-within-2", "lindhainNsc", true);
+  }
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainBausteine")) {
+    await lindhainBausteine();
+    await game.settings.set("hope-lies-within-2", "lindhainBausteine", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {

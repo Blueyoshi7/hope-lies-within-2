@@ -1,10 +1,10 @@
 // NSC-Gespraech: rahmenloses Fenster ueber der Karte. Links das Portraet, rechts vier Reiter:
-// Gespräch (Verlauf, der GM spricht als NSC oder erzählt), Handel (Waren des NSC, Kaufen/Verkaufen),
-// Quests (der GM schreibt und zeigt sie, Spieler nehmen an) und Wissen (freigegebene Einträge, eigene Notizen).
-// Daten am Actor: flags["hope-lies-within-2"].talk = { portrait, role, nameRevealed, facts[], quests[], verlauf[] }
-// Notizen am User:  flags["hope-lies-within-2"].talkNotes[actorId] = "..."
+// Gespräch (nur der GM spricht: der aktuelle Satz steht groß in der Mitte, Wort für Wort eingeblendet; Textbausteine),
+// Handel (Waren des NSC, Kaufen/Verkaufen), Quests (der GM schreibt und zeigt sie, Spieler nehmen an)
+// und Wissen (freigegebene Einträge, Notizen der Gruppe: jeder schreibt, alle lesen).
+// Daten am Actor: flags["hope-lies-within-2"].talk = { portrait, role, nameRevealed, facts[], quests[], verlauf[], bausteine[], notizen[] }
 // Namen am User:    flags["hope-lies-within-2"].talkNames[actorId] = "..." (bis der GM den echten Namen freigibt, steht dort „???“)
-// Nur der GM schreibt Actor-Daten; Spieler schicken ihre Wünsche (sagen, kaufen, verkaufen, Quest annehmen) per Socket.
+// Nur der GM schreibt Actor-Daten; Spieler schicken ihre Wünsche (Notiz, kaufen, verkaufen, Quest annehmen) per Socket.
 
 import { kes } from "./hlw-regeln.js";
 import { istWare, preisVon, ankaufVon, kaufen, verkaufen } from "./hlw-nsc.js";
@@ -15,6 +15,16 @@ const VERLAUF_MAX = 40;
 const QUEST_RAENGE = ["F", "E", "D", "C", "B", "A", "S", "SS"];
 const QUEST_STATUS = { verborgen: "Verborgen", angeboten: "Angeboten", angenommen: "Angenommen", erledigt: "Erledigt" };
 const REITER = { gespraech: "Gespräch", handel: "Handel", quests: "Quests", wissen: "Wissen" };
+const BAUSTEIN_ARTEN = { gruss: "Begrüßung", abschied: "Abschied", handel: "Handel", sonst: "Sonstiges" };
+// Gilt für jeden NSC, bis der GM eigene Bausteine anlegt.
+const STANDARD_BAUSTEINE = [
+  { id: "std-gruss-1", art: "gruss", text: "Seid gegrüßt, Reisende." },
+  { id: "std-gruss-2", art: "gruss", text: "Was kann ich für euch tun?" },
+  { id: "std-abschied-1", art: "abschied", text: "Passt auf euch auf." },
+  { id: "std-abschied-2", art: "abschied", text: "Bis zum nächsten Mal." }
+];
+// Was groß auf der Bühne steht (Handel und Quest-Annahmen erscheinen nur klein darunter)
+const BUEHNE = ["nsc", "erzaehler", "quest"];
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -36,7 +46,9 @@ export function getTalkData(actor) {
     nameRevealed: !!talk.nameRevealed,
     facts: Array.isArray(talk.facts) ? talk.facts : [],
     quests: Array.isArray(talk.quests) ? talk.quests : [],
-    verlauf: Array.isArray(talk.verlauf) ? talk.verlauf : []
+    verlauf: Array.isArray(talk.verlauf) ? talk.verlauf : [],
+    bausteine: Array.isArray(talk.bausteine) ? talk.bausteine : STANDARD_BAUSTEINE,
+    notizen: Array.isArray(talk.notizen) ? talk.notizen : []
   };
 }
 
@@ -52,6 +64,7 @@ function sichtbareQuests(talk) {
   return game.user?.isGM ? talk.quests : talk.quests.filter((q) => q.status !== "verborgen");
 }
 
+// Alte private Notizen (bis v0.8.0) – werden beim Öffnen einmal als Gruppennotiz übernommen.
 function getNotes(actorId) {
   return game.user?.getFlag(SYSTEM_ID, `talkNotes.${actorId}`) ?? "";
 }
@@ -106,9 +119,16 @@ async function gmAusfuehren(data) {
     return c && user && c.testUserPermission(user, "OWNER") ? c : null;
   };
   try {
-    if (data.type === "nscSagen") {
-      const text = String(data.text ?? "").trim().slice(0, 800);
-      if (text) await zeileHinzufuegen(actor, { art: "spieler", name: sprecherVon(data.userId, data.charakterId), text });
+    if (data.type === "nscNotiz") {
+      const text = String(data.text ?? "").trim().slice(0, 2000);
+      const darf = (notiz) => notiz && (notiz.userId === data.userId || user?.isGM);
+      await talkAendern(actor, (talk) => {
+        const alt = talk.notizen.find((n) => n.id === data.notizId);
+        if (data.aktion === "loeschen") return darf(alt) ? { notizen: talk.notizen.filter((n) => n.id !== alt.id) } : null;
+        if (!text) return null;
+        if (data.aktion === "aendern") return darf(alt) ? { notizen: talk.notizen.map((n) => (n.id === alt.id ? { ...n, text } : n)) } : null;
+        return { notizen: [...talk.notizen, { id: foundry.utils.randomID(), userId: data.userId, name: sprecherVon(data.userId, data.charakterId), text, zeit: Date.now() }] };
+      });
     } else if (data.type === "nscKaufen") {
       const kaeufer = eigenerCharakter(data.charakterId);
       if (!kaeufer) throw new Error("Du brauchst einen eigenen Charakter zum Handeln.");
@@ -152,7 +172,6 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     super({ ...options, id: `hlw-talk-${actor.id}` });
     this.actor = actor;
     this.reiter = options.reiter ?? "gespraech";
-    this._notesTimer = null;
     this._gesehen = null;
   }
 
@@ -243,35 +262,79 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
       </div>`;
   }
 
+  // Wörter einzeln einblenden (per CSS-Verzögerung, läuft auch in Hintergrund-Tabs sauber durch)
+  _woerter(text, animieren) {
+    if (!animieren) return absaetze(text);
+    let nr = 0;
+    return String(text ?? "").split("\n").map((zeile) => zeile.split(/(\s+)/).map((teil) => {
+      if (!teil.trim()) return teil;
+      return `<span class="gs-wort" style="animation-delay:${(nr++ * 0.11).toFixed(2)}s">${escapeHtml(teil)}</span>`;
+    }).join("")).join("<br>");
+  }
+
   _gespraechHtml(talk) {
     const isGM = game.user.isGM;
-    const name = anzeigeName(this.actor);
-    const zeilen = talk.verlauf.map((z) => {
-      const gmKnoepfe = isGM ? `<span class="gs-zeilenknoepfe">
-          ${z.art === "quest" ? "" : `<button type="button" data-gs="bearbeiten" title="Ändern"><i class="fa-solid fa-pen"></i></button>`}
-          <button type="button" data-gs="loeschen" title="Löschen"><i class="fa-solid fa-xmark"></i></button></span>` : "";
-      if (z.art === "quest") {
-        const quest = talk.quests.find((q) => q.id === z.questId);
-        if (!isGM && quest?.status === "verborgen") return "";
-        return `<li class="gs-zeile gs-quest" data-id="${z.id}">${this._questKarte(quest, true)}${gmKnoepfe}</li>`;
-      }
-      const sprecher = z.art === "nsc" ? name : z.art === "spieler" ? z.name : "";
-      return `<li class="gs-zeile gs-${escapeHtml(z.art)}" data-id="${z.id}">
-          ${sprecher ? `<b class="gs-sprecher">${escapeHtml(sprecher)}</b>` : ""}
-          <span class="gs-text">${absaetze(z.text)}</span>${gmKnoepfe}
-        </li>`;
+    const sichtbar = (z) => z.art !== "quest" || isGM || talk.quests.find((q) => q.id === z.questId)?.status !== "verborgen";
+    const hauptzeilen = talk.verlauf.filter((z) => BUEHNE.includes(z.art) && sichtbar(z));
+    const aktuell = hauptzeilen.at(-1);
+    const neu = Boolean(aktuell && this._gesehen && !this._gesehen.has(aktuell.id));
+    let buehne;
+    if (!aktuell) {
+      buehne = `<div class="gs-buehne gs-still"><p class="gs-leer">${isGM ? `Noch nichts gesagt. Schreib unten, was ${escapeHtml(this.actor.name)} sagt, nimm einen Textbaustein oder zeig eine Quest.` : "…"}</p></div>`;
+    } else if (aktuell.art === "quest") {
+      buehne = `<div class="gs-buehne ${neu ? "gs-neu" : ""}">${this._questKarte(talk.quests.find((q) => q.id === aktuell.questId), true)}</div>`;
+    } else {
+      const sprecher = aktuell.art === "nsc" ? `<b class="gs-sprecher">${escapeHtml(anzeigeName(this.actor))}</b>` : "";
+      buehne = `<div class="gs-buehne gs-buehne-${aktuell.art} ${neu ? "gs-neu" : ""}">${sprecher}<p class="gs-satz">${this._woerter(aktuell.text, neu)}</p></div>`;
+    }
+    // Kleine Hinweise (Kauf, Quest angenommen), die nach dem aktuellen Satz kamen
+    const nachIndex = aktuell ? talk.verlauf.findIndex((z) => z.id === aktuell.id) : -1;
+    const hinweise = talk.verlauf.slice(nachIndex + 1).filter((z) => z.art === "handel").slice(-3)
+      .map((z) => `<li>${escapeHtml(z.text)}</li>`).join("");
+    if (!isGM) return `${buehne}${hinweise ? `<ul class="gs-hinweise">${hinweise}</ul>` : ""}`;
+
+    const bausteine = Object.entries(BAUSTEIN_ARTEN).map(([art, label]) => {
+      const liste = talk.bausteine.filter((b) => b.art === art);
+      if (!liste.length) return "";
+      return `<div class="gs-bausteingruppe"><span>${label}</span>${liste.map((b) => `<button type="button" class="gs-baustein" data-baustein="${escapeHtml(b.id)}" title="Klick: sofort sagen · Umschalt+Klick: ins Feld übernehmen">${escapeHtml(b.text)}</button>`).join("")}</div>`;
     }).join("");
-    const leer = `<li class="gs-leer">${isGM ? "Noch nichts gesagt. Schreib unten, was " + escapeHtml(this.actor.name) + " sagt, oder zeig eine Quest." : "Das Gespräch beginnt …"}</li>`;
-    const knoepfe = isGM
-      ? `<button type="button" data-gs="sagen" class="gs-haupt"><i class="fa-solid fa-comment"></i> Als ${escapeHtml(this.actor.name)} sagen</button>
-         <button type="button" data-gs="erzaehlen"><i class="fa-solid fa-feather"></i> Erzählen</button>
-         <button type="button" data-gs="leeren" title="Verlauf leeren"><i class="fa-solid fa-broom"></i></button>`
-      : `<button type="button" data-gs="sagen" class="gs-haupt"><i class="fa-solid fa-comment"></i> Sagen</button>`;
+    const bausteinEdit = talk.bausteine.map((b) => `
+      <li data-baustein-id="${escapeHtml(b.id)}">
+        <select data-bfeld="art">${Object.entries(BAUSTEIN_ARTEN).map(([k, l]) => `<option value="${k}" ${k === b.art ? "selected" : ""}>${l}</option>`).join("")}</select>
+        <input type="text" data-bfeld="text" value="${escapeHtml(b.text)}">
+        <button type="button" data-gs="bausteinWeg" title="Löschen"><i class="fa-solid fa-xmark"></i></button>
+      </li>`).join("");
+    const frueher = talk.verlauf.filter((z) => z.art !== "quest").slice(-12).reverse().map((z) => `
+      <li class="gs-zeile gs-${escapeHtml(z.art)}" data-id="${z.id}">
+        <span class="gs-text">${absaetze(z.text)}</span>
+        <span class="gs-zeilenknoepfe">
+          ${z.art === "handel" ? "" : `<button type="button" data-gs="nochmal" title="Nochmal zeigen"><i class="fa-solid fa-rotate-left"></i></button>
+          <button type="button" data-gs="bearbeiten" title="Ändern"><i class="fa-solid fa-pen"></i></button>`}
+          <button type="button" data-gs="loeschen" title="Löschen"><i class="fa-solid fa-xmark"></i></button>
+        </span>
+      </li>`).join("");
     return `
-      <ol class="gs-verlauf">${zeilen || leer}</ol>
-      <div class="gs-eingabe">
-        <textarea name="zeile" rows="2" placeholder="${isGM ? `Was sagt ${escapeHtml(this.actor.name)}? Enter = sagen, Umschalt+Enter = neue Zeile` : "Was sagst du? (Enter = sagen)"}"></textarea>
-        <div class="gs-eingabeknoepfe">${knoepfe}</div>
+      ${buehne}
+      ${hinweise ? `<ul class="gs-hinweise">${hinweise}</ul>` : ""}
+      <div class="gs-steuerung">
+        <div class="gs-bausteine">${bausteine}</div>
+        <div class="gs-eingabe">
+          <textarea name="zeile" rows="2" placeholder="Was sagt ${escapeHtml(this.actor.name)}? Enter = sagen, Umschalt+Enter = neue Zeile"></textarea>
+          <div class="gs-eingabeknoepfe">
+            <button type="button" data-gs="sagen" class="gs-haupt"><i class="fa-solid fa-comment"></i> Als ${escapeHtml(this.actor.name)} sagen</button>
+            <button type="button" data-gs="erzaehlen"><i class="fa-solid fa-feather"></i> Erzählen</button>
+          </div>
+        </div>
+        <details class="gs-aufklapp" ${this._bausteineOffen ? "open" : ""} data-aufklapp="bausteine">
+          <summary>Textbausteine bearbeiten</summary>
+          <ul class="gs-bausteinliste">${bausteinEdit}</ul>
+          <button type="button" data-gs="bausteinNeu"><i class="fa-solid fa-plus"></i> Baustein</button>
+        </details>
+        <details class="gs-aufklapp" ${this._frueherOffen ? "open" : ""} data-aufklapp="frueher">
+          <summary>Zuletzt gesagt</summary>
+          <ol class="gs-frueher">${frueher || `<li class="gs-leer">Noch nichts.</li>`}</ol>
+          <button type="button" data-gs="leeren"><i class="fa-solid fa-broom"></i> Alles löschen</button>
+        </details>
       </div>`;
   }
 
@@ -367,8 +430,18 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
       <h2>${isGM ? "Einträge (Haken = für Spieler sichtbar)" : "Was ihr wisst"}</h2>
       <ul class="hlw-talk-facts">${factList}</ul>
       ${gmTools}
-      <h2>Deine Notizen</h2>
-      <textarea name="notes" placeholder="Nur du siehst diese Notizen …">${escapeHtml(getNotes(this.actor.id))}</textarea>
+      <h2>Notizen der Gruppe <small>(alle sehen alle Notizen)</small></h2>
+      <ul class="gs-notizen">${talk.notizen.map((n) => `
+        <li data-notiz="${escapeHtml(n.id)}">
+          <b>${escapeHtml(n.name)}</b>
+          <span class="gs-notiztext">${absaetze(n.text)}</span>
+          ${n.userId === game.user.id || isGM ? `<span class="gs-zeilenknoepfe"><button type="button" data-gs="notizAendern" title="Ändern"><i class="fa-solid fa-pen"></i></button><button type="button" data-gs="notizWeg" title="Löschen"><i class="fa-solid fa-xmark"></i></button></span>` : ""}
+        </li>`).join("") || `<li class="gs-leer">Noch keine Notizen.</li>`}
+      </ul>
+      <div class="gs-notizneu">
+        <textarea name="notiz" rows="2" placeholder="Notiz zu dieser Person (alle in der Gruppe sehen sie) …"></textarea>
+        <button type="button" data-gs="notizNeu"><i class="fa-solid fa-plus"></i> Notiz speichern</button>
+      </div>
       <div class="hlw-talk-hint">Klick neben das Fenster oder Esc, um es zu schließen.</div>`;
   }
 
@@ -384,45 +457,28 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
   }
 
   _replaceHTML(result, content) {
-    // Angefangenen Satz behalten, wenn währenddessen jemand anderes etwas sagt
+    // Angefangene Texte behalten, wenn sich währenddessen etwas ändert
     const entwurf = content.querySelector("textarea[name='zeile']")?.value;
+    const notizEntwurf = content.querySelector("textarea[name='notiz']")?.value;
     content.innerHTML = result;
     const feld = content.querySelector("textarea[name='zeile']");
     if (feld && entwurf) feld.value = entwurf;
+    const notizFeld = content.querySelector("textarea[name='notiz']");
+    if (notizFeld && notizEntwurf) notizFeld.value = notizEntwurf;
     this._bindEvents(content);
-    this._schreibmaschine(content);
+    // Ab jetzt gelten alle Zeilen als gesehen; nur später gesagte Sätze werden eingeblendet.
+    this._gesehen ??= new Set();
+    for (const z of getTalkData(this.actor).verlauf) this._gesehen.add(z.id);
+    this._alteNotizUebernehmen();
   }
 
-  // Neue Sätze des NSC erscheinen Buchstabe für Buchstabe; beim ersten Öffnen steht der Verlauf sofort da.
-  _schreibmaschine(root) {
-    const ids = getTalkData(this.actor).verlauf.map((z) => z.id);
-    const erstesMal = !this._gesehen;
-    this._gesehen ??= new Set();
-    const verlauf = root.querySelector(".gs-verlauf");
-    if (verlauf) verlauf.scrollTop = verlauf.scrollHeight;
-    for (const id of ids) {
-      if (this._gesehen.has(id)) continue;
-      this._gesehen.add(id);
-      if (erstesMal) continue;
-      const span = root.querySelector(`.gs-zeile.gs-nsc[data-id="${id}"] .gs-text, .gs-zeile.gs-erzaehler[data-id="${id}"] .gs-text`);
-      if (!span) continue;
-      const voll = span.innerHTML;
-      const text = span.textContent;
-      span.textContent = "";
-      let i = 0;
-      const schritt = () => {
-        if (!span.isConnected) return;
-        i += 2;
-        if (i >= text.length) {
-          span.innerHTML = voll;
-          return;
-        }
-        span.textContent = text.slice(0, i);
-        if (verlauf) verlauf.scrollTop = verlauf.scrollHeight;
-        setTimeout(schritt, 22);
-      };
-      schritt();
-    }
+  // Private Notizen aus v0.8.0 einmal als Gruppennotiz übernehmen.
+  _alteNotizUebernehmen() {
+    const alt = getNotes(this.actor.id).trim();
+    if (!alt || this._notizUebernommen) return;
+    this._notizUebernommen = true;
+    anfrage("nscNotiz", this.actor, { aktion: "neu", text: alt });
+    game.user.unsetFlag(SYSTEM_ID, `talkNotes.${this.actor.id}`);
   }
 
   _bindEvents(root) {
@@ -432,11 +488,18 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
       this.reiter = knopf.dataset.reiter;
       this.render();
     }));
-    root.querySelector("textarea[name='notes']")?.addEventListener("input", (event) => {
-      clearTimeout(this._notesTimer);
-      const text = event.currentTarget.value;
-      this._notesTimer = setTimeout(() => game.user.setFlag(SYSTEM_ID, `talkNotes.${this.actor.id}`, text), 600);
+    // Notizen der Gruppe
+    root.querySelector("[data-gs='notizNeu']")?.addEventListener("click", () => {
+      const feld = root.querySelector("textarea[name='notiz']");
+      const text = feld?.value?.trim();
+      if (!text) return;
+      feld.value = "";
+      anfrage("nscNotiz", this.actor, { aktion: "neu", text });
     });
+    root.querySelectorAll("[data-gs='notizWeg']").forEach((knopf) => knopf.addEventListener("click", () => {
+      anfrage("nscNotiz", this.actor, { aktion: "loeschen", notizId: knopf.closest("[data-notiz]")?.dataset.notiz });
+    }));
+    root.querySelectorAll("[data-gs='notizAendern']").forEach((knopf) => knopf.addEventListener("click", () => this._notizBearbeiten(knopf.closest("[data-notiz]"))));
     root.querySelector("input[name='ownName']")?.addEventListener("change", (event) => {
       game.user.setFlag(SYSTEM_ID, `talkNames.${this.actor.id}`, event.currentTarget.value.trim());
     });
@@ -448,23 +511,6 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     };
     window.addEventListener("keydown", this._keyHandler, true);
 
-    // Gespräch: sagen / erzählen
-    const eingabe = root.querySelector("textarea[name='zeile']");
-    const senden = (art) => {
-      const text = eingabe?.value?.trim();
-      if (!text) return;
-      eingabe.value = "";
-      if (isGM) zeileHinzufuegen(this.actor, { art, text });
-      else anfrage("nscSagen", this.actor, { text });
-    };
-    eingabe?.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" || event.shiftKey) return;
-      event.preventDefault();
-      senden("nsc");
-    });
-    eingabe?.focus();
-    root.querySelector("[data-gs='sagen']")?.addEventListener("click", () => senden("nsc"));
-    root.querySelector("[data-gs='erzaehlen']")?.addEventListener("click", () => senden("erzaehler"));
     root.querySelectorAll("[data-gs='annehmen']").forEach((knopf) => knopf.addEventListener("click", () => anfrage("nscQuestAnnehmen", this.actor, { questId: knopf.dataset.quest })));
 
     // Handel (Spieler)
@@ -479,7 +525,51 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
 
     if (!isGM) return;
 
-    // Verlauf: Zeilen ändern oder löschen
+    // Gespräch: sagen / erzählen / Textbausteine (nur der GM spricht)
+    const eingabe = root.querySelector("textarea[name='zeile']");
+    const senden = (art) => {
+      const text = eingabe?.value?.trim();
+      if (!text) return;
+      eingabe.value = "";
+      zeileHinzufuegen(this.actor, { art, text });
+    };
+    eingabe?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || event.shiftKey) return;
+      event.preventDefault();
+      senden("nsc");
+    });
+    if (this.reiter === "gespraech") eingabe?.focus();
+    root.querySelector("[data-gs='sagen']")?.addEventListener("click", () => senden("nsc"));
+    root.querySelector("[data-gs='erzaehlen']")?.addEventListener("click", () => senden("erzaehler"));
+    root.querySelectorAll("[data-baustein]").forEach((knopf) => knopf.addEventListener("click", (event) => {
+      const baustein = getTalkData(this.actor).bausteine.find((b) => b.id === knopf.dataset.baustein);
+      if (!baustein) return;
+      if (event.shiftKey && eingabe) {
+        eingabe.value = baustein.text;
+        eingabe.focus();
+      } else zeileHinzufuegen(this.actor, { art: "nsc", text: baustein.text });
+    }));
+    root.querySelectorAll("[data-aufklapp]").forEach((el) => el.addEventListener("toggle", () => {
+      if (el.dataset.aufklapp === "bausteine") this._bausteineOffen = el.open;
+      else this._frueherOffen = el.open;
+    }));
+    root.querySelectorAll("[data-bfeld]").forEach((feld) => feld.addEventListener("change", () => {
+      const id = feld.closest("[data-baustein-id]")?.dataset.bausteinId;
+      talkAendern(this.actor, (talk) => ({ bausteine: talk.bausteine.map((b) => (b.id === id ? { ...b, [feld.dataset.bfeld]: feld.value } : b)) }));
+    }));
+    root.querySelectorAll("[data-gs='bausteinWeg']").forEach((knopf) => knopf.addEventListener("click", () => {
+      const id = knopf.closest("[data-baustein-id]")?.dataset.bausteinId;
+      talkAendern(this.actor, (talk) => ({ bausteine: talk.bausteine.filter((b) => b.id !== id) }));
+    }));
+    root.querySelector("[data-gs='bausteinNeu']")?.addEventListener("click", () => {
+      talkAendern(this.actor, (talk) => ({ bausteine: [...talk.bausteine, { id: foundry.utils.randomID(), art: "sonst", text: "" }] }));
+    });
+    root.querySelectorAll("[data-gs='nochmal']").forEach((knopf) => knopf.addEventListener("click", () => {
+      const zeile = getTalkData(this.actor).verlauf.find((z) => z.id === knopf.closest("[data-id]")?.dataset.id);
+      if (zeile) zeileHinzufuegen(this.actor, { art: zeile.art, text: zeile.text });
+    }));
+
+    // Frühere Sätze ändern oder löschen
     root.querySelectorAll("[data-gs='loeschen']").forEach((knopf) => knopf.addEventListener("click", () => {
       const id = knopf.closest("[data-id]")?.dataset.id;
       talkAendern(this.actor, (talk) => ({ verlauf: talk.verlauf.filter((z) => z.id !== id) }));
@@ -565,6 +655,28 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     feld.addEventListener("blur", speichern, { once: true });
   }
 
+  _notizBearbeiten(li) {
+    const id = li?.dataset.notiz;
+    const notiz = getTalkData(this.actor).notizen.find((n) => n.id === id);
+    const span = li?.querySelector(".gs-notiztext");
+    if (!notiz || !span) return;
+    const feld = document.createElement("textarea");
+    feld.className = "gs-zeilenfeld";
+    feld.value = notiz.text;
+    span.replaceWith(feld);
+    feld.focus();
+    feld.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        feld.blur();
+      }
+    });
+    feld.addEventListener("blur", () => {
+      const text = feld.value.trim();
+      anfrage("nscNotiz", this.actor, text ? { aktion: "aendern", notizId: id, text } : { aktion: "loeschen", notizId: id });
+    }, { once: true });
+  }
+
   async _wareAblegen(event) {
     event.preventDefault();
     event.currentTarget.classList.remove("drueber");
@@ -619,9 +731,6 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
 
   async _onClose(options) {
     if (this._keyHandler) window.removeEventListener("keydown", this._keyHandler, true);
-    clearTimeout(this._notesTimer);
-    const text = this.element?.querySelector("textarea[name='notes']")?.value;
-    if (text !== undefined && text !== getNotes(this.actor.id)) await game.user.setFlag(SYSTEM_ID, `talkNotes.${this.actor.id}`, text);
     const ownName = this.element?.querySelector("input[name='ownName']")?.value?.trim();
     if (ownName !== undefined && ownName !== getOwnName(this.actor.id)) await game.user.setFlag(SYSTEM_ID, `talkNames.${this.actor.id}`, ownName);
     return super._onClose?.(options);
@@ -650,7 +759,7 @@ export function registerTalk() {
     if (data?.type === "talkOpen" && !game.user?.isGM) HopeLiesWithinTalkApp.openFor(game.actors.get(data.actorId), data.reiter);
     if (data?.type === "talkClose") HopeLiesWithinTalkApp.closeFor(data.actorId);
     if (data?.type === "nscFehler" && data.userId === game.user?.id) ui.notifications?.warn(data.text);
-    if (["nscSagen", "nscKaufen", "nscVerkaufen", "nscQuestAnnehmen"].includes(data?.type) && ichBinAktiverGM()) gmAusfuehren(data);
+    if (["nscNotiz", "nscKaufen", "nscVerkaufen", "nscQuestAnnehmen"].includes(data?.type) && ichBinAktiverGM()) gmAusfuehren(data);
   });
 
   // Doppelklick eines Spielers auf eine NSC-Figur: Gespraech nur, wenn der GM es erlaubt; sonst ein Hinweis statt des Bogens.
