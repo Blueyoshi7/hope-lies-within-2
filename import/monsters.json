@@ -2,7 +2,8 @@
  {
   "name": "Pinselhörnchen",
   "type": "monster",
-  "img": "icons/creatures/mammals/rabbit-movement-glowing-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/pinselhoernchen.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/pinselhoernchen-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -24,7 +25,10 @@
     "traits": "Harmlos",
     "habitat": "Wälder",
     "special": "Tarnt sich perfekt in Rinde (Scharfsinnigkeit 20 zum Finden). Fell 2 SK.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -33,12 +37,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Erdbeermaus",
   "type": "monster",
-  "img": "icons/creatures/mammals/beast-horned-scaled-glowing-orange.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/erdbeermaus.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/erdbeermaus-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -60,7 +89,10 @@
     "traits": "Harmlos",
     "habitat": "Wiesen, Felder",
     "special": "Riecht süß; Köder für größere Tiere.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -69,12 +101,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Wüsten-Springmaus",
   "type": "monster",
-  "img": "icons/creatures/mammals/bull-horned-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/wuesten-springmaus.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/wuesten-springmaus-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -96,7 +153,10 @@
     "traits": "Harmlos, Schnell",
     "habitat": "Suna-Wüste",
     "special": "Wo sie leben, ist Wasser in der Nähe (Naturkunde +2 beim Wassersuchen).",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -105,12 +165,60 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
+    }
+   }
+  ]
  },
  {
   "name": "Ente",
   "type": "monster",
-  "img": "icons/creatures/birds/duck-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/ente.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/ente-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -132,7 +240,10 @@
     "traits": "Harmlos",
     "habitat": "Seen, Flüsse",
     "special": "Gutes Jagdwild (2 Portionen Fleisch).",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -141,12 +252,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Kleinhorn",
   "type": "monster",
-  "img": "icons/creatures/mammals/livestock-cow-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/kleinhorn.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/kleinhorn-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -168,7 +304,10 @@
     "traits": "Harmlos, Schnell",
     "habitat": "lichte Wälder",
     "special": "Ein winziges Lichtwesen. Wer eines schützt, hat bis Kapitelende +1 auf Religion (GM).",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -177,12 +316,60 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
+    }
+   }
+  ]
  },
  {
   "name": "Streifwiesel",
   "type": "monster",
-  "img": "icons/creatures/mammals/bull-horned-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/streifwiesel.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/streifwiesel-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -204,7 +391,10 @@
     "traits": "Harmlos, Schnell",
     "habitat": "Wiesen, Wälder",
     "special": "Fell 3 SK.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -213,12 +403,60 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
+    }
+   }
+  ]
  },
  {
   "name": "Blubberhirschling",
   "type": "monster",
-  "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/blubberhirschling.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/blubberhirschling-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -240,7 +478,10 @@
     "traits": "Harmlos",
     "habitat": "Bäche, Sümpfe",
     "special": "Zeigt sauberes Wasser an.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -249,12 +490,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Glimmkäfer",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/bug-sixlegged-gray.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/glimmkaefer.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/glimmkaefer-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -276,7 +542,10 @@
     "traits": "Harmlos",
     "habitat": "Wälder bei Nacht",
     "special": "Ein Glas voller Glimmkäfer leuchtet wie eine Kerze (1 Nacht).",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -285,12 +554,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Nebelohr",
   "type": "monster",
-  "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/nebelohr.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/nebelohr-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -312,7 +606,10 @@
     "traits": "Harmlos",
     "habitat": "Nebelige Täler",
     "special": "Hört Abyss-Nebel kommen: wird unruhig, bevor er auftaucht.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -321,12 +618,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Blattpieper",
   "type": "monster",
-  "img": "icons/creatures/birds/dove-pigeon-flying-white.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/blattpieper.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/blattpieper-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -348,7 +670,10 @@
     "traits": "Harmlos, Flieger",
     "habitat": "Wälder",
     "special": "Federn als Grundmaterial (Federn).",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -357,12 +682,60 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   }
+  ]
  },
  {
   "name": "Flauschling",
   "type": "monster",
-  "img": "icons/creatures/claws/claw-hooked-barbed.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/flauschling.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/flauschling-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -384,7 +757,10 @@
     "traits": "Harmlos, Flieger",
     "habitat": "Hochland, Wind",
     "special": "Schwebt in Schwärmen; Kinder lieben sie.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -393,12 +769,60 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   }
+  ]
  },
  {
   "name": "Moosling",
   "type": "monster",
-  "img": "icons/creatures/claws/pincer-crab-red.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/moosling.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/moosling-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -420,7 +844,10 @@
     "traits": "Harmlos",
     "habitat": "feuchte Wälder",
     "special": "Trägt Sternmoos auf dem Rücken (1 Sternmoos, wenn man es freundlich lockt).",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -429,12 +856,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Schnüffelwisch",
   "type": "monster",
-  "img": "icons/creatures/magical/humanoid-horned-rider.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/schnueffelwisch.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/schnueffelwisch-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -456,7 +908,10 @@
     "traits": "Harmlos",
     "habitat": "Wälder, Gärten",
     "special": "Schnüffelt Magie: niest bei magischen Gegenständen in 3 Feldern.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -465,12 +920,37 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   }
+  ]
  },
  {
   "name": "Herzling",
   "type": "monster",
-  "img": "icons/creatures/unholy/demon-fire-imp.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/herzling.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/herzling-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -492,7 +972,10 @@
     "traits": "Harmlos",
     "habitat": "Friedhöfe, Ruinen",
     "special": "Kuschelt sich an: Wer ihn trägt, hat auf seinen niedrigsten Wert +1 (zählt nicht für die Klasse). Harmlos und treu.",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -501,12 +984,60 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   },
+   {
+    "name": "Treue Umarmung",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/herzling.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Wer ihn trägt, hat auf seinen niedrigsten Wert +1 (zählt nicht für die Klasse).",
+     "description": "Passiv: Wer ihn trägt, hat auf seinen niedrigsten Wert +1 (zählt nicht für die Klasse)."
+    }
+   }
+  ]
  },
  {
   "name": "Dolmetscheule",
   "type": "monster",
-  "img": "icons/creatures/birds/corvid-call-sound-glowing.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/dolmetscheule.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/dolmetscheule-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -528,7 +1059,10 @@
     "traits": "Harmlos, Flieger",
     "habitat": "alte Wälder, Ruinen",
     "special": "Übersetzt jede Sprache, aber nicht zuverlässig: Pro Satz würfelt der GM, ob er stimmt (1W20, 1–5 falsch). Kann als Begleiter gezähmt werden (Tierkunde 25).",
-    "harmless": true
+    "harmless": true,
+    "behavior": "friedlich",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -537,12 +1071,83 @@
     }
    }
   },
-  "items": []
+  "items": [
+   {
+    "name": "Flucht",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/geisterschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus.",
+     "description": "Schnellaktion: Läuft mit doppelter Bewegung davon; löst keine Gelegenheitsangriffe aus."
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Dolmetschen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/dolmetscheule.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Übersetzt jede Sprache, aber unzuverlässig: pro Satz 1W20, bei 1–5 stimmt es nicht.",
+     "description": "Passiv: Übersetzt jede Sprache, aber unzuverlässig: pro Satz 1W20, bei 1–5 stimmt es nicht."
+    }
+   }
+  ]
  },
  {
   "name": "Fledhase",
   "type": "monster",
-  "img": "icons/creatures/mammals/rodent-rat-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/fledhase.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/fledhase-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -564,7 +1169,10 @@
     "traits": "Flieger",
     "habitat": "Wälder bei Nacht",
     "special": "Heilt sich um den halben Schaden seines Bisses.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -577,14 +1185,61 @@
    {
     "name": "Blutbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/fledhase.webp",
     "system": {
      "damage": "1d6+1",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Blutdurst",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kleine-heilung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Heilt sich um den halben Schaden seines Bisses.",
+     "description": "Passiv: Heilt sich um den halben Schaden seines Bisses."
     }
    }
   ]
@@ -592,7 +1247,8 @@
  {
   "name": "Pilzpelz-Frettchen",
   "type": "monster",
-  "img": "icons/creatures/mammals/unicorn-horned-white.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/pilzpelz-frettchen.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/pilzpelz-frettchen-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -614,7 +1270,10 @@
     "traits": "Schnell",
     "habitat": "Unterholz, Höhleneingänge",
     "special": "Reaktion einmal pro Kampf: Sporenwolke, 1 Feld, Athletik 15 oder vergiftet. Fell enthält Pilzflechte (Zutat).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -627,14 +1286,61 @@
    {
     "name": "Biss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/pilzpelz-frettchen.webp",
     "system": {
      "damage": "1d6+1",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
+    }
+   },
+   {
+    "name": "Sporenwolke",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "reaction",
+     "damage": "",
+     "damageText": "",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Einmal pro Kampf: alle in 1 Feld Athletik 15 oder vergiftet.",
+     "description": "Reaktion: Einmal pro Kampf: alle in 1 Feld Athletik 15 oder vergiftet."
     }
    }
   ]
@@ -642,7 +1348,8 @@
  {
   "name": "Zottelziege",
   "type": "monster",
-  "img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/zottelziege.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/zottelziege-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -664,7 +1371,10 @@
     "traits": "–",
     "habitat": "Berge, Hochland",
     "special": "Treffer stößt 1 Feld zurück.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -677,14 +1387,38 @@
    {
     "name": "Hornstoß",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/zottelziege.webp",
     "system": {
      "damage": "1d6+1",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Rammen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ansturm.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer stößt das Ziel 1 Feld zurück.",
+     "description": "Passiv: Ein Treffer stößt das Ziel 1 Feld zurück."
     }
    }
   ]
@@ -692,7 +1426,8 @@
  {
   "name": "Hallrabe",
   "type": "monster",
-  "img": "icons/creatures/birds/songbird-yellow-flying.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/hallrabe.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/hallrabe-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -714,7 +1449,10 @@
     "traits": "Flieger",
     "habitat": "Städte, Schlachtfelder",
     "special": "Einmal pro Kampf ein greller Schrei: alle in 2 Feldern Willenskraft 15 oder Betäubt.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -727,14 +1465,61 @@
    {
     "name": "Schnabel",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/hallrabe.webp",
     "system": {
      "damage": "1d6+1",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Greller Schrei",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Einmal pro Kampf: alle in 2 Feldern Willenskraft 15 oder betäubt.",
+     "description": "Aktion: Einmal pro Kampf: alle in 2 Feldern Willenskraft 15 oder betäubt."
     }
    }
   ]
@@ -742,7 +1527,8 @@
  {
   "name": "Fellfliege",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/spider-large-white-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/fellfliege.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/fellfliege-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -764,7 +1550,10 @@
     "traits": "Flieger",
     "habitat": "Sümpfe, Sommer",
     "special": "Tritt in Schwärmen von 4–8 auf.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -777,14 +1566,38 @@
    {
     "name": "Stich",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/fellfliege.webp",
     "system": {
      "damage": "1d6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
     }
    }
   ]
@@ -792,7 +1605,8 @@
  {
   "name": "Blasenmücke",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/tick-cross-glowing-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/blasenmuecke.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/blasenmuecke-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -814,7 +1628,10 @@
     "traits": "Flieger, Gift, Explodiert",
     "habitat": "Sümpfe",
     "special": "Platzt beim Tod und vergiftet die Umgebung.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -827,14 +1644,84 @@
    {
     "name": "Stich",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/blasenmuecke.webp",
     "system": {
      "damage": "1d6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Platzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/explosiver-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Beim Tod 1W6 pro Rang an allen in 1 Feld Umkreis.",
+     "description": "Passiv: Beim Tod 1W6 pro Rang an allen in 1 Feld Umkreis."
     }
    }
   ]
@@ -842,7 +1729,8 @@
  {
   "name": "Funkenkrill",
   "type": "monster",
-  "img": "icons/creatures/fish/fish-bluefin-yellow-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/funkenkrill.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/funkenkrill-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -864,7 +1752,10 @@
     "traits": "Element (Blitz)",
     "habitat": "Küste, Meer",
     "special": "Schwärme im Wasser: wer schwimmt, wird von 1W4 angegriffen.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -877,14 +1768,38 @@
    {
     "name": "Stromstoß",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/funkenkrill.webp",
     "system": {
      "damage": "1d6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Element: Blitz",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/blitzschlag.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Blitz; immun gegen Blitz; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Blitz; immun gegen Blitz; nimmt ×1,5 vom Gegenelement."
     }
    }
   ]
@@ -892,7 +1807,8 @@
  {
   "name": "Ameise",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/spider-web-black.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/ameise.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/ameise-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -914,7 +1830,10 @@
     "traits": "Rudel, Panzer",
     "habitat": "Wälder, Wiesen",
     "special": "Kommt nie allein.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -927,14 +1846,61 @@
    {
     "name": "Zangenbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/ameise.webp",
     "system": {
      "damage": "1d6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
+    }
+   },
+   {
+    "name": "Panzer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/eisenhaut.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Blockwert +2 (Rang E–C) oder +4 (ab B).",
+     "description": "Passiv: Blockwert +2 (Rang E–C) oder +4 (ab B)."
     }
    }
   ]
@@ -942,7 +1908,8 @@
  {
   "name": "Ratte",
   "type": "monster",
-  "img": "icons/creatures/mammals/deer-antlers-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/ratte.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/ratte-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -964,7 +1931,10 @@
     "traits": "Rudel",
     "habitat": "Kanäle, Keller",
     "special": "–",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -977,14 +1947,38 @@
    {
     "name": "Biss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/ratte.webp",
     "system": {
      "damage": "1d6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
     }
    }
   ]
@@ -992,7 +1986,8 @@
  {
   "name": "Tröpfchen",
   "type": "monster",
-  "img": "icons/creatures/slimes/slime-movement-swirling-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/troepfchen.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/troepfchen-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -1014,7 +2009,10 @@
     "traits": "Schleim",
     "habitat": "Höhlen, Dungeons",
     "special": "Mehrere Tröpfchen können zu einem Schleimklumpen verschmelzen.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1027,14 +2025,38 @@
    {
     "name": "Ätzen",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/troepfchen.webp",
     "system": {
      "damage": "1d6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Klebrig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/saeureexplusion.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener.",
+     "description": "Passiv: Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener."
     }
    }
   ]
@@ -1042,7 +2064,8 @@
  {
   "name": "Augenklumpen",
   "type": "monster",
-  "img": "icons/creatures/slimes/slime-movement-pseudopods-teal.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/augenklumpen.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/augenklumpen-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -1064,7 +2087,10 @@
     "traits": "Schleim",
     "habitat": "Dungeons, Kanäle",
     "special": "Kann nicht überrascht werden (Augen überall).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1077,14 +2103,61 @@
    {
     "name": "Schleimschlag",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/augenklumpen.webp",
     "system": {
      "damage": "1d6+1",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Klebrig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/saeureexplusion.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener.",
+     "description": "Passiv: Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener."
+    }
+   },
+   {
+    "name": "Tausend Augen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/seelenauge.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Kann nicht überrascht werden.",
+     "description": "Passiv: Kann nicht überrascht werden."
     }
    }
   ]
@@ -1092,7 +2165,8 @@
  {
   "name": "Kuschelschnecke",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/wasp-swarm-movement.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/kuschelschnecke.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/kuschelschnecke-token.webp",
   "folder": "HLW Bestiarium/Rang E",
   "system": {
    "monster": {
@@ -1114,7 +2188,10 @@
     "traits": "Gift",
     "habitat": "feuchte Höhlen",
     "special": "Treffer: Bewegungsunfähig, bis man sich befreit (Athletik 15); danach Athletik 15 oder vergiftet.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1127,14 +2204,61 @@
    {
     "name": "Umarmung",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/kuschelschnecke.webp",
     "system": {
      "damage": "1d6+1",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "E"
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Festsaugen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "E",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Treffer: bewegungsunfähig, bis man sich befreit (Athletik 15); danach Athletik 15 oder vergiftet.",
+     "description": "Passiv: Treffer: bewegungsunfähig, bis man sich befreit (Athletik 15); danach Athletik 15 oder vergiftet."
     }
    }
   ]
@@ -1142,7 +2266,8 @@
  {
   "name": "Hornwiesel",
   "type": "monster",
-  "img": "icons/creatures/mammals/spirit-deer-herd-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/hornwiesel.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/hornwiesel-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1164,7 +2289,10 @@
     "traits": "Schnell",
     "habitat": "Hochland, helle Wälder",
     "special": "Weißes Fell 30 SK.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1177,14 +2305,38 @@
    {
     "name": "Geweihstoß",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/hornwiesel.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
     }
    }
   ]
@@ -1192,7 +2344,8 @@
  {
   "name": "Geisterdachs",
   "type": "monster",
-  "img": "icons/creatures/mammals/spirit-deer-herd-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/geisterdachs.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/geisterdachs-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1214,7 +2367,10 @@
     "traits": "Gräber",
     "habitat": "kalte Wälder, Norden",
     "special": "Augen leuchten türkis: sieht Unsichtbares.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1227,14 +2383,61 @@
    {
     "name": "Klauen",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/geisterdachs.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Eingraben",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/erdspike.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Gräbt sich ein: nicht angreifbar bis zum nächsten eigenen Zug.",
+     "description": "Aktion: Gräbt sich ein: nicht angreifbar bis zum nächsten eigenen Zug."
+    }
+   },
+   {
+    "name": "Geisterblick",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/geisterdachs.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Sieht Unsichtbares.",
+     "description": "Passiv: Sieht Unsichtbares."
     }
    }
   ]
@@ -1242,7 +2445,8 @@
  {
   "name": "Wirrkatze",
   "type": "monster",
-  "img": "icons/creatures/mammals/livestock-cow-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/wirrkatze.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/wirrkatze-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1264,7 +2468,10 @@
     "traits": "Schnell",
     "habitat": "Städte, Märkte",
     "special": "Treffer: Willenskraft 20 oder Verwirrt. Stiehlt glitzernde Dinge.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "scheu",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1277,14 +2484,61 @@
    {
     "name": "Kratzen",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/wirrkatze.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
+    }
+   },
+   {
+    "name": "Wirrkratzer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Treffer: Willenskraft 20 oder verwirrt.",
+     "description": "Passiv: Treffer: Willenskraft 20 oder verwirrt."
     }
    }
   ]
@@ -1292,7 +2546,8 @@
  {
   "name": "Pilzkatze",
   "type": "monster",
-  "img": "icons/creatures/mammals/livestock-sheep-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/pilzkatze.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/pilzkatze-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1314,7 +2569,10 @@
     "traits": "Gift",
     "habitat": "Pilzwälder",
     "special": "Fliegenpilz-Kappe; vergiftet bei Treffer.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1327,14 +2585,38 @@
    {
     "name": "Sporenkralle",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/pilzkatze.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
     }
    }
   ]
@@ -1342,7 +2624,8 @@
  {
   "name": "Glutratte",
   "type": "monster",
-  "img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/glutratte.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/glutratte-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1364,7 +2647,10 @@
     "traits": "Element (Feuer)",
     "habitat": "Vulkane, Schmieden, Glutzone",
     "special": "Hinterlässt brennende Spuren.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1377,14 +2663,61 @@
    {
     "name": "Glutbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/glutratte.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Element: Feuer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/feuerball.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Glutspur",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/glutratte.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Felder, die sie verlässt, brennen 1 Runde (1W4 Feuer).",
+     "description": "Passiv: Felder, die sie verlässt, brennen 1 Runde (1W4 Feuer)."
     }
    }
   ]
@@ -1392,7 +2725,8 @@
  {
   "name": "Seuchenratte",
   "type": "monster",
-  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/seuchenratte.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/seuchenratte-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1414,7 +2748,10 @@
     "traits": "Gift, Rudel",
     "habitat": "Kanäle, verlassene Städte",
     "special": "Grün leuchtend, halb Skelett. Biss: vergiftet, Heilung wirkt halb, bis geheilt.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -1427,14 +2764,84 @@
    {
     "name": "Seuchenbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/seuchenratte.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
+    }
+   },
+   {
+    "name": "Seuche",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kleine-heilung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Biss vergiftet; Heilung wirkt nur halb, bis die Vergiftung geheilt ist.",
+     "description": "Passiv: Biss vergiftet; Heilung wirkt nur halb, bis die Vergiftung geheilt ist."
     }
    }
   ]
@@ -1442,7 +2849,8 @@
  {
   "name": "Riesenratte",
   "type": "monster",
-  "img": "icons/creatures/mammals/deer-movement-leap-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/riesenratte.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/riesenratte-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1464,7 +2872,10 @@
     "traits": "Rudel",
     "habitat": "Kanäle, Dungeons",
     "special": "Anführer eines Rattenrudels (1W6 Ratten).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1477,14 +2888,84 @@
    {
     "name": "Nagezahn",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/riesenratte.webp",
     "system": {
      "damage": "2d6+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
+    }
+   },
+   {
+    "name": "Rudel rufen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ruf-der-wildnis.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Einmal pro Kampf: 1W6 Ratten erscheinen.",
+     "description": "Aktion: Einmal pro Kampf: 1W6 Ratten erscheinen."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "1d6+1",
+     "damageText": "1W6+1",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -1492,7 +2973,8 @@
  {
   "name": "Wildschwein",
   "type": "monster",
-  "img": "icons/creatures/mammals/deer-movement-leap-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/wildschwein.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/wildschwein-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1514,7 +2996,10 @@
     "traits": "Rudel",
     "habitat": "Wälder",
     "special": "Ansturm: 3 Felder gerade Linie, dann +1 Würfel Schaden. Tritt als Rotte auf.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1527,14 +3012,61 @@
    {
     "name": "Hauer",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/wildschwein.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
+    }
+   },
+   {
+    "name": "Ansturm",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/wildschwein.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 2
+     },
+     "cooldownText": "2 Runden",
+     "effect": "3 Felder in gerader Linie, dann Angriff mit einem Würfel mehr.",
+     "description": "Aktion: 3 Felder in gerader Linie, dann Angriff mit einem Würfel mehr."
     }
    }
   ]
@@ -1542,7 +3074,8 @@
  {
   "name": "Elch",
   "type": "monster",
-  "img": "icons/creatures/mammals/cat-hunched-glowing-red.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/elch.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/elch-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1564,7 +3097,10 @@
     "traits": "–",
     "habitat": "Nördliche Wälder",
     "special": "Greift nur an, wenn bedrängt. 6 Portionen Fleisch.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "scheu",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1577,14 +3113,38 @@
    {
     "name": "Geweih",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/elch.webp",
     "system": {
      "damage": "2d6+2",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Geweihschwung",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ansturm.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "1d6+1",
+     "damageText": "1W6+1",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 2
+     },
+     "cooldownText": "2 Runden",
+     "effect": "Stößt alle in 1 Feld vor ihm 1 Feld zurück.",
+     "description": "Aktion: Stößt alle in 1 Feld vor ihm 1 Feld zurück."
     }
    }
   ]
@@ -1592,7 +3152,8 @@
  {
   "name": "Kammraptor-Jungtier",
   "type": "monster",
-  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/kammraptor-jungtier.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/kammraptor-jungtier-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1614,7 +3175,10 @@
     "traits": "Rudel, Schnell",
     "habitat": "Steppe, Dschungel",
     "special": "Ruft den erwachsenen Raptor, wenn verletzt.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1627,14 +3191,84 @@
    {
     "name": "Biss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/kammraptor-jungtier.webp",
     "system": {
      "damage": "1d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
+    }
+   },
+   {
+    "name": "Hilferuf",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ruf-der-wildnis.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "reaction",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Wenn es verletzt wird, einmal pro Kampf: Ein erwachsener Raptor kommt in 1W4 Runden.",
+     "description": "Reaktion: Wenn es verletzt wird, einmal pro Kampf: Ein erwachsener Raptor kommt in 1W4 Runden."
     }
    }
   ]
@@ -1642,7 +3276,8 @@
  {
   "name": "Hydra-Schlüpfling",
   "type": "monster",
-  "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/hydra-schluepfling.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/hydra-schluepfling-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1664,7 +3299,10 @@
     "traits": "Gift",
     "habitat": "Sümpfe",
     "special": "Zwei Köpfe: zwei Angriffe mit halbem Schaden statt einem.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1677,14 +3315,61 @@
    {
     "name": "Doppelbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/hydra-schluepfling.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Zwei Köpfe",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/hydra-schluepfling.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Greift mit zwei Bissen an, je halber Schaden.",
+     "description": "Passiv: Greift mit zwei Bissen an, je halber Schaden."
     }
    }
   ]
@@ -1692,7 +3377,8 @@
  {
   "name": "Schlafschleimnatter",
   "type": "monster",
-  "img": "icons/creatures/slimes/slime-movement-dripping-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/schlafschleimnatter.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/schlafschleimnatter-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1714,7 +3400,10 @@
     "traits": "Schleim",
     "habitat": "Sümpfe, Höhlen",
     "special": "Treffer: Willenskraft 20 oder schläft ein (Betäubt, bis man geweckt wird).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1727,14 +3416,61 @@
    {
     "name": "Biss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/schlafschleimnatter.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Klebrig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/saeureexplusion.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener.",
+     "description": "Passiv: Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener."
+    }
+   },
+   {
+    "name": "Schlafgift",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Treffer: Willenskraft 20 oder schläft ein (betäubt, bis man geweckt wird).",
+     "description": "Passiv: Treffer: Willenskraft 20 oder schläft ein (betäubt, bis man geweckt wird)."
     }
    }
   ]
@@ -1742,7 +3478,8 @@
  {
   "name": "Dunkelschleim",
   "type": "monster",
-  "img": "icons/creatures/slimes/slime-bubble-teal.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/dunkelschleim.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/dunkelschleim-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1764,7 +3501,10 @@
     "traits": "Schleim, Schatten",
     "habitat": "Dungeons",
     "special": "Drei leuchtende Augen; im Licht träge.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1777,14 +3517,61 @@
    {
     "name": "Schattenschleim",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/dunkelschleim.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Klebrig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/saeureexplusion.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener.",
+     "description": "Passiv: Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener."
+    }
+   },
+   {
+    "name": "Schattenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenhafte-presaenz.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit.",
+     "description": "Passiv: In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit."
     }
    }
   ]
@@ -1792,7 +3579,8 @@
  {
   "name": "Rußwicht",
   "type": "monster",
-  "img": "icons/creatures/reptiles/turtle-shell-glowing-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/russwicht.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/russwicht-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1814,7 +3602,10 @@
     "traits": "Schatten, Element (Feuer)",
     "habitat": "Ruinen, Kamine",
     "special": "Löscht Lichtquellen in 2 Feldern (Aktion).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1827,14 +3618,84 @@
    {
     "name": "Rußkralle",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/russwicht.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Schattenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenhafte-presaenz.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit.",
+     "description": "Passiv: In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit."
+    }
+   },
+   {
+    "name": "Element: Feuer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/feuerball.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Licht löschen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenblick.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 2
+     },
+     "cooldownText": "2 Runden",
+     "effect": "Löscht alle Lichtquellen in 2 Feldern.",
+     "description": "Aktion: Löscht alle Lichtquellen in 2 Feldern."
     }
    }
   ]
@@ -1842,7 +3703,8 @@
  {
   "name": "Speerwicht",
   "type": "monster",
-  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/speerwicht.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/speerwicht-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1864,7 +3726,10 @@
     "traits": "Flieger, Element (Feuer)",
     "habitat": "Glutzone, Vulkane",
     "special": "Fernkampf 4 Felder.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1877,14 +3742,84 @@
    {
     "name": "Glutspeer",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/speerwicht.webp",
     "system": {
      "damage": "2d6+2",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Element: Feuer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/feuerball.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Glutspeer werfen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/elementar-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
+     "range": 4,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 1
+     },
+     "cooldownText": "1 Runden",
+     "effect": "Fernkampfangriff mit brennendem Speer.",
+     "description": "Aktion: Fernkampfangriff mit brennendem Speer."
     }
    }
   ]
@@ -1892,7 +3827,8 @@
  {
   "name": "Winterwelpe",
   "type": "monster",
-  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/winterwelpe.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/winterwelpe-token.webp",
   "folder": "HLW Bestiarium/Rang D",
   "system": {
    "monster": {
@@ -1914,7 +3850,10 @@
     "traits": "Element (Eis)",
     "habitat": "Eiszone, Deep North",
     "special": "Treffer: Bewegung −2 bis zum nächsten Zug. Folgt Gruppen mit Feuer.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -1927,14 +3866,84 @@
    {
     "name": "Frostbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/winterwelpe.webp",
     "system": {
      "damage": "2d6+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Element: Eis",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/eislanze.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Eis; immun gegen Eis; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Eis; immun gegen Eis; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Frostbiss",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/winterwelpe.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Treffer: Bewegung −2 bis zum nächsten Zug des Ziels.",
+     "description": "Passiv: Treffer: Bewegung −2 bis zum nächsten Zug des Ziels."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "1d6+1",
+     "damageText": "1W6+1",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -1942,7 +3951,8 @@
  {
   "name": "Raptor",
   "type": "monster",
-  "img": "icons/creatures/reptiles/snake-poised-white.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/raptor.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/raptor-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -1964,7 +3974,10 @@
     "traits": "Rudel, Schnell",
     "habitat": "Steppe, Dschungel",
     "special": "Springt 3 Felder ohne Gelegenheitsangriffe.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -1977,14 +3990,84 @@
    {
     "name": "Sichelkralle",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/raptor.webp",
     "system": {
      "damage": "2d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
+    }
+   },
+   {
+    "name": "Flink",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2; Rückzug ist eine Schnellaktion.",
+     "description": "Passiv: Bewegung +2; Rückzug ist eine Schnellaktion."
+    }
+   },
+   {
+    "name": "Sprung",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 1
+     },
+     "cooldownText": "1 Runden",
+     "effect": "Springt 3 Felder ohne Gelegenheitsangriffe.",
+     "description": "Schnellaktion: Springt 3 Felder ohne Gelegenheitsangriffe."
     }
    }
   ]
@@ -1992,7 +4075,8 @@
  {
   "name": "Schattenwolf",
   "type": "monster",
-  "img": "icons/creatures/mammals/beast-horned-scaled-glowing-orange.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/schattenwolf.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/schattenwolf-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2014,7 +4098,10 @@
     "traits": "Rudel, Schatten",
     "habitat": "Nördliche Wälder, Nacht",
     "special": "",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2027,14 +4114,61 @@
    {
     "name": "Schattenbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/schattenwolf.webp",
     "system": {
      "damage": "2d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Rudeltaktik",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "+1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).",
+     "description": "Passiv: +1 Genauigkeit für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2)."
+    }
+   },
+   {
+    "name": "Schattenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenhafte-presaenz.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit.",
+     "description": "Passiv: In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit."
     }
    }
   ]
@@ -2042,7 +4176,8 @@
  {
   "name": "Chimärchen",
   "type": "monster",
-  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/chimaerchen.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/chimaerchen-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2064,7 +4199,10 @@
     "traits": "Element (zufällig)",
     "habitat": "Ruinen, Dungeons",
     "special": "Jede Runde wählt der GM Feuer, Gift oder Blitz.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2077,14 +4215,61 @@
    {
     "name": "Dreifachbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/chimaerchen.webp",
     "system": {
      "damage": "2d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Element: zufällig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/tanzende-elemente.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist zufällig; immun gegen zufällig; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist zufällig; immun gegen zufällig; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Wechselnde Elemente",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Jede Runde wählt der GM Feuer, Gift oder Blitz für seinen Schaden.",
+     "description": "Passiv: Jede Runde wählt der GM Feuer, Gift oder Blitz für seinen Schaden."
     }
    }
   ]
@@ -2092,7 +4277,8 @@
  {
   "name": "Zaubersalamander",
   "type": "monster",
-  "img": "icons/creatures/reptiles/serpent-horned-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/zaubersalamander.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/zaubersalamander-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2114,7 +4300,10 @@
     "traits": "Element (Feuer)",
     "habitat": "Magische Orte, Illmaris",
     "special": "Greift gegen die Magieresistenz an, Reichweite 4.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2127,14 +4316,61 @@
    {
     "name": "Zauberfunke",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/zaubersalamander.webp",
     "system": {
      "damage": "2d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Element: Feuer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/feuerball.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Zauberfunke",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/zaubersalamander.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "2d8+4",
+     "damageText": "2W8+4",
+     "range": 4,
+     "damageCategory": "magical",
+     "cooldown": {
+      "value": 0,
+      "max": 1
+     },
+     "cooldownText": "1 Runden",
+     "effect": "Magischer Angriff gegen die Magieresistenz.",
+     "description": "Aktion: Magischer Angriff gegen die Magieresistenz."
     }
    }
   ]
@@ -2142,7 +4378,8 @@
  {
   "name": "Kopierkatze",
   "type": "monster",
-  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/kopierkatze.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/kopierkatze-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2164,7 +4401,10 @@
     "traits": "Schatten",
     "habitat": "Städte, Dungeons",
     "special": "Gestaltwandler: nimmt die Gestalt einer Figur an, die sie gesehen hat (Scharfsinnigkeit 25 zum Durchschauen).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2177,14 +4417,61 @@
    {
     "name": "Schattenkralle",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/kopierkatze.webp",
     "system": {
      "damage": "2d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Schattenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenhafte-presaenz.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit.",
+     "description": "Passiv: In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit."
+    }
+   },
+   {
+    "name": "Gestaltwandel",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/kopierkatze.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Nimmt die Gestalt einer gesehenen Figur an (Scharfsinnigkeit 25 zum Durchschauen).",
+     "description": "Aktion: Nimmt die Gestalt einer gesehenen Figur an (Scharfsinnigkeit 25 zum Durchschauen)."
     }
    }
   ]
@@ -2192,7 +4479,8 @@
  {
   "name": "Moornixe",
   "type": "monster",
-  "img": "icons/creatures/fish/squid-kraken-teal.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/moornixe.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/moornixe-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2214,7 +4502,10 @@
     "traits": "–",
     "habitat": "Sümpfe, Moore",
     "special": "Gesang (Aktion): Willenskraft 25 oder Bezaubert und läuft ins Wasser.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2227,14 +4518,38 @@
    {
     "name": "Krallen",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/moornixe.webp",
     "system": {
      "damage": "2d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Gesang",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Alle in 3 Feldern: Willenskraft 25 oder bezaubert und laufen ins Wasser.",
+     "description": "Aktion: Alle in 3 Feldern: Willenskraft 25 oder bezaubert und laufen ins Wasser."
     }
    }
   ]
@@ -2242,7 +4557,8 @@
  {
   "name": "Madenschlund",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/ant-strength-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/madenschlund.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/madenschlund-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2264,7 +4580,10 @@
     "traits": "Gift, Gräber",
     "habitat": "Pilzhöhlen",
     "special": "Treffer: verschlingt ein kleines Ziel (Bewegungsunfähig, 1W6 pro Runde, Athletik 25).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2277,14 +4596,84 @@
    {
     "name": "Schlund",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/madenschlund.webp",
     "system": {
      "damage": "2d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Eingraben",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/erdspike.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Gräbt sich ein: nicht angreifbar bis zum nächsten eigenen Zug.",
+     "description": "Aktion: Gräbt sich ein: nicht angreifbar bis zum nächsten eigenen Zug."
+    }
+   },
+   {
+    "name": "Verschlingen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Ein kleines Ziel: bewegungsunfähig, 1W6 pro Runde, bis Athletik 25 gelingt.",
+     "description": "Aktion: Ein kleines Ziel: bewegungsunfähig, 1W6 pro Runde, bis Athletik 25 gelingt."
     }
    }
   ]
@@ -2292,7 +4681,8 @@
  {
   "name": "Ameisenkönig",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/bug-sixlegged-gray.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/ameisenkoenig.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/ameisenkoenig-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2314,7 +4704,10 @@
     "traits": "Beschwörer, Panzer",
     "habitat": "Ameisenbaue",
     "special": "Ruft Ameisen. Solange Ameisen leben, Blockwert +2 zusätzlich.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2327,14 +4720,107 @@
    {
     "name": "Königszange",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/ameisenkoenig.webp",
     "system": {
      "damage": "2d8+7",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Brut rufen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/beschwoeren.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Ruft 1W4 Diener seines Rangs (einmal pro Kampf, als Boss zweimal).",
+     "description": "Aktion: Ruft 1W4 Diener seines Rangs (einmal pro Kampf, als Boss zweimal)."
+    }
+   },
+   {
+    "name": "Panzer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/eisenhaut.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Blockwert +2 (Rang E–C) oder +4 (ab B).",
+     "description": "Passiv: Blockwert +2 (Rang E–C) oder +4 (ab B)."
+    }
+   },
+   {
+    "name": "Königspanzer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/ameisenkoenig.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Solange Ameisen leben, Blockwert +2 zusätzlich.",
+     "description": "Passiv: Solange Ameisen leben, Blockwert +2 zusätzlich."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "1d8+2",
+     "damageText": "1W8+2",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2342,7 +4828,8 @@
  {
   "name": "Schleimgans",
   "type": "monster",
-  "img": "icons/creatures/birds/birds-flock-fly-yellow.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/schleimgans.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/schleimgans-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2364,7 +4851,10 @@
     "traits": "Schleim",
     "habitat": "Sümpfe, Kanäle",
     "special": "Säurezischen, Kegel 3 Felder, Cooldown 3: Schaden ×2, Athletik 25 halbiert.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Tiermeister, Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2377,14 +4867,84 @@
    {
     "name": "3 Schleimschnäbel (Säure)",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/schleimgans.webp",
     "system": {
      "damage": "2d8+7",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Klebrig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/saeureexplusion.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener.",
+     "description": "Passiv: Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener."
+    }
+   },
+   {
+    "name": "Säurezischen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/schleimgans.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "4d8+8",
+     "damageText": "4W8+8",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Kegel 3 Felder, doppelter Schaden; Athletik 25 halbiert.",
+     "description": "Aktion: Kegel 3 Felder, doppelter Schaden; Athletik 25 halbiert."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "1d8+2",
+     "damageText": "1W8+2",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2392,7 +4952,8 @@
  {
   "name": "Flickkeiler",
   "type": "monster",
-  "img": "icons/creatures/mammals/deer-movement-leap-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/flickkeiler.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/flickkeiler-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -2414,7 +4975,10 @@
     "traits": "–",
     "habitat": "Verlassene Höfe, alte Schlachtfelder",
     "special": "Zusammengenähter Keiler. Fällt er, steht er einmal mit 10 HP wieder auf (Nähte halten).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2427,14 +4991,61 @@
    {
     "name": "Genähte Hauer",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/flickkeiler.webp",
     "system": {
      "damage": "2d8+7",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Nähte halten",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/flickkeiler.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Fällt er, steht er einmal mit 10 HP wieder auf.",
+     "description": "Passiv: Fällt er, steht er einmal mit 10 HP wieder auf."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "1d8+2",
+     "damageText": "1W8+2",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2442,7 +5053,8 @@
  {
   "name": "Psilotus",
   "type": "monster",
-  "img": "icons/creatures/magical/spirit-poison-smoke-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/psilotus.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/psilotus-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2464,7 +5076,10 @@
     "traits": "–",
     "habitat": "Pilzwälder, Dungeons",
     "special": "Treffer: Willenskraft 30 oder Verwirrt.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2477,14 +5092,38 @@
    {
     "name": "Gedankenstoß (gegen MR)",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/psilotus.webp",
     "system": {
      "damage": "3d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "magical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Gedankenstoß",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Treffer: Willenskraft 30 oder verwirrt.",
+     "description": "Passiv: Treffer: Willenskraft 30 oder verwirrt."
     }
    }
   ]
@@ -2492,7 +5131,8 @@
  {
   "name": "Sturmhaar-Geist",
   "type": "monster",
-  "img": "icons/creatures/magical/spirit-fire-orange.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/sturmhaar-geist.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/sturmhaar-geist-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2514,7 +5154,10 @@
     "traits": "Flieger, Element (Blitz)",
     "habitat": "Hochland bei Sturm",
     "special": "Trifft 2 Ziele nebeneinander.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2527,14 +5170,84 @@
    {
     "name": "Blitzmähne",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/sturmhaar-geist.webp",
     "system": {
      "damage": "3d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Element: Blitz",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/blitzschlag.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Blitz; immun gegen Blitz; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Blitz; immun gegen Blitz; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Kettenblitz",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/sturmhaar-geist.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Sein Angriff trifft 2 Ziele nebeneinander.",
+     "description": "Passiv: Sein Angriff trifft 2 Ziele nebeneinander."
     }
    }
   ]
@@ -2542,7 +5255,8 @@
  {
   "name": "Allseher",
   "type": "monster",
-  "img": "icons/creatures/eyes/slime-stalks-yellow-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/allseher.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/allseher-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2564,7 +5278,10 @@
     "traits": "Flieger",
     "habitat": "Dungeons, Kristallhöhlen",
     "special": "Jede Runde ein anderer Strahl: Geblendet, Bewegungsunfähig oder Schaden. Kann nicht überrascht werden.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2577,14 +5294,107 @@
    {
     "name": "Augenstrahl (gegen MR)",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/allseher.webp",
     "system": {
      "damage": "4d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "magical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Augenstrahlen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "4d8+4",
+     "damageText": "4W8+4",
+     "range": 6,
+     "damageCategory": "magical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Jede Runde ein anderer Strahl: geblendet, bewegungsunfähig oder Schaden.",
+     "description": "Aktion: Jede Runde ein anderer Strahl: geblendet, bewegungsunfähig oder Schaden."
+    }
+   },
+   {
+    "name": "Tausend Augen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/seelenauge.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Kann nicht überrascht werden.",
+     "description": "Passiv: Kann nicht überrascht werden."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d8",
+     "damageText": "2W8",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2592,7 +5402,8 @@
  {
   "name": "Kristallspinne",
   "type": "monster",
-  "img": "icons/creatures/webs/web-spider-glowing-pink.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/kristallspinne.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/kristallspinne-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2614,7 +5425,10 @@
     "traits": "Gift, Panzer",
     "habitat": "Kristallhöhlen",
     "special": "Netz (Aktion): 2×2 Felder Bewegungsunfähig, Athletik 30.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2627,14 +5441,107 @@
    {
     "name": "Kristallbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/kristallspinne.webp",
     "system": {
      "damage": "4d8+4",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Panzer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/eisenhaut.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Blockwert +2 (Rang E–C) oder +4 (ab B).",
+     "description": "Passiv: Blockwert +2 (Rang E–C) oder +4 (ab B)."
+    }
+   },
+   {
+    "name": "Netz",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": 4,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "2×2 Felder: bewegungsunfähig, Athletik 30 zum Befreien.",
+     "description": "Aktion: 2×2 Felder: bewegungsunfähig, Athletik 30 zum Befreien."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d8",
+     "damageText": "2W8",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2642,7 +5549,8 @@
  {
   "name": "Quellhirsch",
   "type": "monster",
-  "img": "icons/creatures/mammals/unicorn-horned-white.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/quellhirsch.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/quellhirsch-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2664,7 +5572,10 @@
     "traits": "Element (Wasser)",
     "habitat": "Heilige Quellen",
     "special": "Hütet Quellen und greift nur an, wenn sie bedroht werden. Wer ihn verschont und die Quelle schützt, wird einmal voll geheilt.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "scheu",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2677,14 +5588,84 @@
    {
     "name": "Geweih",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/quellhirsch.webp",
     "system": {
      "damage": "4d8+4",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Element: Wasser",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/reamstroha.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Wasser; immun gegen Wasser; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Wasser; immun gegen Wasser; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Hüter der Quelle",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kleine-heilung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Wer ihn verschont und die Quelle schützt, wird einmal voll geheilt.",
+     "description": "Passiv: Wer ihn verschont und die Quelle schützt, wird einmal voll geheilt."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d8",
+     "damageText": "2W8",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2692,7 +5673,8 @@
  {
   "name": "Tiefenaal",
   "type": "monster",
-  "img": "icons/creatures/fish/squid-kraken-orange.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/tiefenaal.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/tiefenaal-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2714,7 +5696,10 @@
     "traits": "–",
     "habitat": "Küste, Meer, tiefe Seen",
     "special": "Umschlingt Boote: Athletik 30 oder kentern.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": true,
+    "tamers": "Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2727,14 +5712,61 @@
    {
     "name": "Schlingbiss",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/tiefenaal.webp",
     "system": {
      "damage": "4d8+4",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Umschlingen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "4d8+4",
+     "damageText": "4W8+4",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 2
+     },
+     "cooldownText": "2 Runden",
+     "effect": "Ein Ziel oder Boot: Athletik 30 oder gepackt bzw. gekentert.",
+     "description": "Aktion: Ein Ziel oder Boot: Athletik 30 oder gepackt bzw. gekentert."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d8",
+     "damageText": "2W8",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2742,7 +5774,8 @@
  {
   "name": "Moosschlund",
   "type": "monster",
-  "img": "icons/creatures/claws/claw-straight-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/moosschlund.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/moosschlund-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -2764,7 +5797,10 @@
     "traits": "Regeneration",
     "habitat": "Höhlen, Urwälder",
     "special": "Schläft meist. Wecken ist eine Heimlichkeit-Probe 30 wert.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": true,
+    "tamers": "Bestienmeister, Bestienkönig"
    },
    "resources": {
     "hp": {
@@ -2777,14 +5813,84 @@
    {
     "name": "Mooskralle",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/moosschlund.webp",
     "system": {
      "damage": "4d8+4",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Regeneration",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/regeneration.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde.",
+     "description": "Passiv: Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde."
+    }
+   },
+   {
+    "name": "Tiefschlaf",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/moosschlund.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schläft meist; ihn unbemerkt zu passieren ist Heimlichkeit 30.",
+     "description": "Passiv: Schläft meist; ihn unbemerkt zu passieren ist Heimlichkeit 30."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d8",
+     "damageText": "2W8",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2792,7 +5898,8 @@
  {
   "name": "Gletscherhüne",
   "type": "monster",
-  "img": "icons/creatures/magical/spirit-fire-yellow.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/gletscherhuene.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/gletscherhuene-token.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -2814,7 +5921,10 @@
     "traits": "Element (Eis), Panzer",
     "habitat": "Eiszone, Deep North",
     "special": "Im Körper steckt ein altes Schwert (Beute, Rang B).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2827,14 +5937,107 @@
    {
     "name": "Eisfaust",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/gletscherhuene.webp",
     "system": {
      "damage": "4d10+6",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "A"
+    }
+   },
+   {
+    "name": "Element: Eis",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/eislanze.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Eis; immun gegen Eis; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Eis; immun gegen Eis; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Panzer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/eisenhaut.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Blockwert +2 (Rang E–C) oder +4 (ab B).",
+     "description": "Passiv: Blockwert +2 (Rang E–C) oder +4 (ab B)."
+    }
+   },
+   {
+    "name": "Eisstampfer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/gletscherhuene.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "4d10+6",
+     "damageText": "4W10+6",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Alle in 1 Feld Umkreis: Schaden und Bewegung −2.",
+     "description": "Aktion: Alle in 1 Feld Umkreis: Schaden und Bewegung −2."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d10",
+     "damageText": "2W10",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2842,7 +6045,8 @@
  {
   "name": "Sumpfhydra",
   "type": "monster",
-  "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/sumpfhydra.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/sumpfhydra-token.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -2864,7 +6068,10 @@
     "traits": "Gift, Regeneration",
     "habitat": "Große Sümpfe",
     "special": "Jeder Kopf ein eigener Angriff (halber Schaden). Ein abgetrennter Kopf (40 Schaden auf einen Kopf) wächst doppelt nach, außer Feuer verschließt die Wunde.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2877,14 +6084,153 @@
    {
     "name": "5 Köpfe",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/sumpfhydra.webp",
     "system": {
      "damage": "4d10+12",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "A"
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Regeneration",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/regeneration.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde.",
+     "description": "Passiv: Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde."
+    }
+   },
+   {
+    "name": "Fünf Köpfe",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/sumpfhydra.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Jeder Kopf greift einzeln an (halber Schaden).",
+     "description": "Passiv: Jeder Kopf greift einzeln an (halber Schaden)."
+    }
+   },
+   {
+    "name": "Nachwachsen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/sumpfhydra.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein abgetrennter Kopf (40 Schaden auf einen Kopf) wächst doppelt nach, außer Feuer verschließt die Wunde.",
+     "description": "Passiv: Ein abgetrennter Kopf (40 Schaden auf einen Kopf) wächst doppelt nach, außer Feuer verschließt die Wunde."
+    }
+   },
+   {
+    "name": "Phase 2",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ragnaroek.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde.",
+     "description": "Passiv: Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde."
+    }
+   },
+   {
+    "name": "Verheerung",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/erdbeben.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "4d10+12",
+     "damageText": "4W10+12",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Flächenangriff auf 3×3 Felder.",
+     "description": "Aktion: Flächenangriff auf 3×3 Felder."
     }
    }
   ]
@@ -2892,7 +6238,8 @@
  {
   "name": "Delirium-Dschinn",
   "type": "monster",
-  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/delirium-dschinn.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/delirium-dschinn-token.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -2914,7 +6261,10 @@
     "traits": "Flieger, Element (Feuer)",
     "habitat": "Wüste, Ruinen alter Magie",
     "special": "Roter Rauch, 3 Felder: Willenskraft 40 oder Verwirrt. Erfüllt einen Wunsch, wenn man ihn besiegt, aber verdreht.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2927,14 +6277,107 @@
    {
     "name": "Wahnrauch (gegen MR)",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/delirium-dschinn.webp",
     "system": {
      "damage": "4d10+12",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "magical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "A"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Element: Feuer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/feuerball.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Wahnrauch",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 2
+     },
+     "cooldownText": "2 Runden",
+     "effect": "Roter Rauch, 3 Felder: Willenskraft 40 oder verwirrt.",
+     "description": "Aktion: Roter Rauch, 3 Felder: Willenskraft 40 oder verwirrt."
+    }
+   },
+   {
+    "name": "Phase 2",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ragnaroek.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde.",
+     "description": "Passiv: Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde."
     }
    }
   ]
@@ -2942,7 +6385,8 @@
  {
   "name": "Seelensucher",
   "type": "monster",
-  "img": "icons/creatures/magical/humanoid-silhouette-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/seelensucher.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/seelensucher-token.webp",
   "folder": "HLW Bestiarium/Rang S",
   "system": {
    "monster": {
@@ -2964,7 +6408,10 @@
     "traits": "Flieger",
     "habitat": "Schlachtfelder, Eldora",
     "special": "Sammelt die Seelen Gefallener. Wer bei ihm stirbt, kann nicht wiederbelebt werden. Neutral: greift nur an, wer ihn stört.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "scheu",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -2977,14 +6424,84 @@
    {
     "name": "Seelengriff (gegen MR)",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/seelensucher.webp",
     "system": {
      "damage": "5d10+8",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "magical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "S"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Seelensammler",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/seelensucher.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Wer bei ihm stirbt, kann nicht wiederbelebt werden.",
+     "description": "Passiv: Wer bei ihm stirbt, kann nicht wiederbelebt werden."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d10+3",
+     "damageText": "2W10+3",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -2992,7 +6509,8 @@
  {
   "name": "Abyss-Hummel",
   "type": "monster",
-  "img": "icons/creatures/invertebrates/beetle-grub-larvae-gray.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/abyss-hummel.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/abyss-hummel-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -3014,7 +6532,10 @@
     "traits": "Flieger, Gift",
     "habitat": "Wiesen am Nebelrand",
     "special": "Mutierte Biene. Stirbt sie, platzt ein Splitter heraus.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3027,14 +6548,84 @@
    {
     "name": "Stachel",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/abyss-hummel.webp",
     "system": {
      "damage": "2d8+4",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Giftig",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/vergifteter-schuss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+    }
+   },
+   {
+    "name": "Splitter",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kha-or-baal.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Stirbt sie, platzt ein Abyss-Splitter heraus.",
+     "description": "Passiv: Stirbt sie, platzt ein Abyss-Splitter heraus."
     }
    }
   ]
@@ -3042,7 +6633,8 @@
  {
   "name": "Muskelgans",
   "type": "monster",
-  "img": "icons/creatures/birds/dove-pigeon-flying-white.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/muskelgans.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/muskelgans-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -3064,7 +6656,10 @@
     "traits": "–",
     "habitat": "Teiche bei Abyss-Rissen",
     "special": "Die legendäre Ente. Quak der Verdammnis (Aktion): alle in 3 Feldern zurückgestoßen 2.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3077,14 +6672,61 @@
    {
     "name": "Flügelschlag",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/muskelgans.webp",
     "system": {
      "damage": "3d8+6",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Quak der Verdammnis",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ansturm.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "1d8+2",
+     "damageText": "1W8+2",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Alle in 3 Feldern werden 2 Felder zurückgestoßen.",
+     "description": "Aktion: Alle in 3 Feldern werden 2 Felder zurückgestoßen."
+    }
+   },
+   {
+    "name": "Phase 2",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ragnaroek.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde.",
+     "description": "Passiv: Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde."
     }
    }
   ]
@@ -3092,7 +6734,8 @@
  {
   "name": "Stachelglut-Läufer",
   "type": "monster",
-  "img": "icons/creatures/unholy/demon-winged-horned-orange.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/stachelglut-laeufer.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/stachelglut-laeufer-token.webp",
   "folder": "HLW Bestiarium/Rang C",
   "system": {
    "monster": {
@@ -3114,7 +6757,10 @@
     "traits": "Schatten, Element (Feuer)",
     "habitat": "Nebelrand, verbrannte Wälder",
     "special": "Auf Stelzenbeinen: Bewegung +2, ignoriert schwieriges Gelände.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3127,14 +6773,107 @@
    {
     "name": "Stachelstoß",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/stachelglut-laeufer.webp",
     "system": {
      "damage": "4d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Schattenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenhafte-presaenz.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit.",
+     "description": "Passiv: In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit."
+    }
+   },
+   {
+    "name": "Element: Feuer",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/feuerball.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement.",
+     "description": "Passiv: Schaden ist Feuer; immun gegen Feuer; nimmt ×1,5 vom Gegenelement."
+    }
+   },
+   {
+    "name": "Stelzenbeine",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/stachelglut-laeufer.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Bewegung +2, ignoriert schwieriges Gelände.",
+     "description": "Passiv: Bewegung +2, ignoriert schwieriges Gelände."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "1d8+2",
+     "damageText": "1W8+2",
+     "range": 1,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -3142,7 +6881,8 @@
  {
   "name": "Knochenhirsch",
   "type": "monster",
-  "img": "icons/creatures/mammals/humanoid-cat-skulking-teal.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/knochenhirsch.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/knochenhirsch-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -3164,7 +6904,10 @@
     "traits": "Schatten",
     "habitat": "Nördliche Wälder",
     "special": "Hirschschädel, dunkler Nebel. Jagt nachts.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3177,14 +6920,84 @@
    {
     "name": "Schädelstoß",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/knochenhirsch.webp",
     "system": {
      "damage": "5d8+5",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Schattenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenhafte-presaenz.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit.",
+     "description": "Passiv: In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit."
+    }
+   },
+   {
+    "name": "Nachtjäger",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/knochenhirsch.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Nachts +2 Genauigkeit.",
+     "description": "Passiv: Nachts +2 Genauigkeit."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d8",
+     "damageText": "2W8",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -3192,7 +7005,8 @@
  {
   "name": "Arturu, der Schattenhirsch",
   "type": "monster",
-  "img": "icons/creatures/mammals/spirit-deer-herd-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/arturu-der-schattenhirsch.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/arturu-der-schattenhirsch-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -3214,7 +7028,10 @@
     "traits": "Schatten",
     "habitat": "Wald der Zauberer",
     "special": "Blau leuchtendes Gesicht. Ein Teil der Hirsch-Gruppe (Arturu, Marakah, Isfar).",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3227,14 +7044,84 @@
    {
     "name": "Schattengeweih",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/arturu-der-schattenhirsch.webp",
     "system": {
      "damage": "5d8+5",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Schattenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenhafte-presaenz.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit.",
+     "description": "Passiv: In Dunkelheit unsichtbar oder getarnt; im Licht −2 Genauigkeit."
+    }
+   },
+   {
+    "name": "Schattensprung",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/schattenschritt.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "",
+     "damageText": "",
+     "range": 4,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 2
+     },
+     "cooldownText": "2 Runden",
+     "effect": "Teleportiert sich von Schatten zu Schatten (bis 4 Felder).",
+     "description": "Schnellaktion: Teleportiert sich von Schatten zu Schatten (bis 4 Felder)."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d8",
+     "damageText": "2W8",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -3242,7 +7129,8 @@
  {
   "name": "Marakah, der Bluthirsch",
   "type": "monster",
-  "img": "icons/creatures/mammals/deer-antlers-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/marakah-der-bluthirsch.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/marakah-der-bluthirsch-token.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -3264,7 +7152,10 @@
     "traits": "–",
     "habitat": "Wald der Zauberer",
     "special": "Treffer: Blutend 1W8 für 3 Runden.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3277,14 +7168,61 @@
    {
     "name": "Blutgeweih",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/marakah-der-bluthirsch.webp",
     "system": {
      "damage": "5d10+8",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "A"
+    }
+   },
+   {
+    "name": "Blutgeweih",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/blutungsschlag.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Treffer: blutend 1W8 für 3 Runden.",
+     "description": "Passiv: Treffer: blutend 1W8 für 3 Runden."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d10",
+     "damageText": "2W10",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -3292,7 +7230,8 @@
  {
   "name": "Isfar, der verrottende Hirschkönig",
   "type": "monster",
-  "img": "icons/creatures/mammals/bats-movement-flying-purple.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/isfar-der-verrottende-hirschkoenig.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/isfar-der-verrottende-hirschkoenig-token.webp",
   "folder": "HLW Bestiarium/Rang S",
   "system": {
    "monster": {
@@ -3314,7 +7253,10 @@
     "traits": "Regeneration",
     "habitat": "Herz des Waldes der Zauberer",
     "special": "Herr der Hirsche. Ruft Arturu und Marakah in Phase 2.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3327,14 +7269,107 @@
    {
     "name": "Moderhuf",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/isfar-der-verrottende-hirschkoenig.webp",
     "system": {
      "damage": "6d10+9",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "S"
+    }
+   },
+   {
+    "name": "Regeneration",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/regeneration.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde.",
+     "description": "Passiv: Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde."
+    }
+   },
+   {
+    "name": "Ruf der Hirsche",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ruf-der-wildnis.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "In Phase 2: ruft Arturu und Marakah.",
+     "description": "Aktion: In Phase 2: ruft Arturu und Marakah."
+    }
+   },
+   {
+    "name": "Phase 2",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ragnaroek.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde.",
+     "description": "Passiv: Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde."
+    }
+   },
+   {
+    "name": "Verheerung",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/erdbeben.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "6d10+9",
+     "damageText": "6W10+9",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Flächenangriff auf 3×3 Felder.",
+     "description": "Aktion: Flächenangriff auf 3×3 Felder."
     }
    }
   ]
@@ -3342,7 +7377,8 @@
  {
   "name": "Sternenschädel",
   "type": "monster",
-  "img": "icons/creatures/eyes/human-single-blue.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/sternenschaedel.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/sternenschaedel-token.webp",
   "folder": "HLW Bestiarium/Rang B",
   "system": {
    "monster": {
@@ -3364,7 +7400,10 @@
     "traits": "Abyss-Aura",
     "habitat": "Abyss, Risse",
     "special": "Im Kopf ein Sternenhimmel. Kritische Treffer +1 Korruption.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3377,14 +7416,61 @@
    {
     "name": "Leerenblick (gegen MR)",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/sternenschaedel.webp",
     "system": {
      "damage": "3d8+4",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "magical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "B"
+    }
+   },
+   {
+    "name": "Abyss-Aura",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/einzug-des-voids.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel.",
+     "description": "Passiv: Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel."
+    }
+   },
+   {
+    "name": "Leerenblick",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kha-or-baal.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "B",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Kritische Treffer geben +1 Korruption.",
+     "description": "Passiv: Kritische Treffer geben +1 Korruption."
     }
    }
   ]
@@ -3392,7 +7478,8 @@
  {
   "name": "Leerenrufer",
   "type": "monster",
-  "img": "icons/creatures/tentacles/tentacles-thing-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/leerenrufer.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/leerenrufer-token.webp",
   "folder": "HLW Bestiarium/Rang A",
   "system": {
    "monster": {
@@ -3414,7 +7501,10 @@
     "traits": "Abyss-Aura, Beschwörer",
     "habitat": "Abyss, Kristallfelder",
     "special": "Ruft Sternenschädel. Kritische Treffer +2 Korruption.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3427,14 +7517,107 @@
    {
     "name": "Wurzelgriff",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/leerenrufer.webp",
     "system": {
      "damage": "4d10+6",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "physical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "A"
+    }
+   },
+   {
+    "name": "Abyss-Aura",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/einzug-des-voids.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel.",
+     "description": "Passiv: Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel."
+    }
+   },
+   {
+    "name": "Brut rufen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/beschwoeren.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Ruft 1W4 Diener seines Rangs (einmal pro Kampf, als Boss zweimal).",
+     "description": "Aktion: Ruft 1W4 Diener seines Rangs (einmal pro Kampf, als Boss zweimal)."
+    }
+   },
+   {
+    "name": "Leerenblick",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kha-or-baal.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Kritische Treffer geben +2 Korruption.",
+     "description": "Passiv: Kritische Treffer geben +2 Korruption."
+    }
+   },
+   {
+    "name": "Nachsetzen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/doppelstoss.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "A",
+     "activation": "active",
+     "castTime": "quick",
+     "damage": "2d10",
+     "damageText": "2W10",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
+     "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
     }
    }
   ]
@@ -3442,7 +7625,8 @@
  {
   "name": "Leerenpyramide",
   "type": "monster",
-  "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
+  "img": "systems/hope-lies-within-2/assets/monster/leerenpyramide.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/leerenpyramide-token.webp",
   "folder": "HLW Bestiarium/Rang S",
   "system": {
    "monster": {
@@ -3464,7 +7648,10 @@
     "traits": "Abyss-Aura, Flieger",
     "habitat": "Tiefer Abyss",
     "special": "Ein schwebendes Dreieck mit einem Kosmos darin. Jede Runde öffnet sich 1 Feld Abyss-Nebel. Kritische Treffer +3 Korruption.",
-    "harmless": false
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
    },
    "resources": {
     "hp": {
@@ -3477,14 +7664,130 @@
    {
     "name": "Kosmosstrahl (gegen MR)",
     "type": "weapon",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/hope-lies-within-2/assets/monster/leerenpyramide.webp",
     "system": {
      "damage": "6d10+9",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
      "damageCategory": "magical",
-     "quantity": 1
+     "quantity": 1,
+     "rank": "S"
+    }
+   },
+   {
+    "name": "Abyss-Aura",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/einzug-des-voids.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel.",
+     "description": "Passiv: Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel."
+    }
+   },
+   {
+    "name": "Flug",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/windsprung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet.",
+     "description": "Passiv: Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
+    }
+   },
+   {
+    "name": "Nebel öffnen",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kha-or-baal.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Jede Runde öffnet sich 1 Feld Abyss-Nebel. Kritische Treffer geben +3 Korruption.",
+     "description": "Passiv: Jede Runde öffnet sich 1 Feld Abyss-Nebel. Kritische Treffer geben +3 Korruption."
+    }
+   },
+   {
+    "name": "Phase 2",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/ragnaroek.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde.",
+     "description": "Passiv: Ab 50 % HP: +2 Genauigkeit, Schaden +1 Würfel, eine Reaktion pro Runde."
+    }
+   },
+   {
+    "name": "Verheerung",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/erdbeben.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "S",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "6d10+9",
+     "damageText": "6W10+9",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Flächenangriff auf 3×3 Felder.",
+     "description": "Aktion: Flächenangriff auf 3×3 Felder."
     }
    }
   ]

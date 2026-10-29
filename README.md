@@ -47,6 +47,14 @@ Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP
 - **Notizen:** Profil, was gerade passiv wirkt, GM-Boni und ein freies Notizfeld.
 - **Kampfleiste:** Porträt mit HP-Ring, Aktion/Schnellaktion/Reaktion, Bewegung, ausgerüstete Waffen und aktive Skills als Bildtasten mit Tooltip und Abklingzeit, passive Skills als kleine Symbole. Foundrys Makro-Leiste ist im Kampf ausgeblendet.
 
+## Monster, Zähmen und Gefährten
+
+- **Monster:** Alle 74 Monster aus dem Bestiarium haben eigene Bilder und runde Tokens (Rahmen: Holz normal, Silber Elite, Gold Boss), ihren Angriff und 1–6 Monster-Skills (aus Merkmalen, Rolle und Besonderheit). Im Bogen stehen **Verhalten** (friedlich, scheu, territorial, aggressiv) und ob das Monster **zähmbar** ist. Vorhandene Welten werden beim ersten GM-Start einmalig nachgezogen (`game.hlw.aktualisiereBestiarium()`).
+- **Zähmen:** nur Tier-Klassen (Tierbändiger bis Rang D, Tiermeister bis C, Bestienmeister und Bestienkönig bis B) über ihren Klassen-Skill **Zähmen**: Monster als Ziel markieren, Skill einsetzen. 1W20 + Tierkunde + Klassenbonus gegen den Probenwert. Bei Erfolg wird das Monster zum Gefährten des Charakters (eigene Figur, gehört dem Spieler).
+- **Gefährte:** belegt die Nebenhand (keine zweite Waffe, kein Schild). Rufen kostet die Schnellaktion; er bleibt so viele Runden wie die Klasse erlaubt (2/3/4), danach 2 Runden Pause. Er handelt im Zug seines Besitzers: Figur auswählen, die Kampfleiste zeigt seine Angriffe und Skills. Bei 0 HP kehrt er verletzt zurück (lange Rast nötig). Der GM kann im Menü des Nebenhand-Platzes „Lange Rast“ und „Freilassen“ wählen.
+
+Die vollständigen Regeln stehen in [`docs/regeln/Zähmen und Gefährten.csv`](docs/regeln).
+
 ## Skills und Gegenstände geben
 
 Als GM im Charakterbogen: Tab *Skills* → **Skill geben**, Tab *Inventar* → **Gegenstand geben**. Ein Suchfenster listet alle Einträge der Welt; ein Klick legt eine Kopie beim Charakter an. Skill-Slots (Level 1: 3, ab Level 4: 4, 8: 5, 13: 6, 18: 7, 23: 8, 30: 9, 37: 10) werden geprüft, Klassen-Skills zählen nicht. Alternativ einen Eintrag aus der Item-Sidebar auf den Bogen ziehen.
@@ -78,11 +86,12 @@ scripts/hlw.js               Actor, Bögen, Kampf, Import
 scripts/hlw-regeln.js        Regeln aus Kanon 2.0 (Kampfwerte, Punkte, Klassen, Kes)
 scripts/hlw-talk.js          NSC-Gespräch
 scripts/hlw-szenen.js        Szenenaufbau Lindhain
+scripts/hlw-gefaehrte.js     Zähmen und Gefährten
 scripts/hlw-geben.js         GM-Fenster „Skill geben“ / „Gegenstand geben“
 styles/hlw-bogen.css         Charakterbogen und Kampfleiste
 data/klassen.json            Klassen mit Lvl-Satz
 import/                      Daten für den JSON-Import
-assets/                      Karten, Gebäude, Dächer, NSC-Porträts, Tokens und Bilder (icons/)
+assets/                      Karten, Gebäude, Dächer, NSC-Porträts, Tokens, Bilder (icons/) und Monster (monster/)
 docs/                        Spielerbücher und Regeltabellen
 ```
 

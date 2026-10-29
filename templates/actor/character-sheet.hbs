@@ -8,6 +8,9 @@
           <span class="hb-chip hb-klasse">{{system.monster.category}} · Rang {{system.monster.rank}}</span>
           <span class="hb-chip">{{system.monster.role}}</span>
           <span class="hb-chip">{{system.monster.size}}</span>
+          <span class="hb-chip hb-verhalten" data-verhalten="{{system.monster.behavior}}">{{system.monster.behavior}}</span>
+          {{#if system.monster.tameable}}<span class="hb-chip" title="{{system.monster.tamers}}">zähmbar</span>{{/if}}
+          {{#if gefaehrteBesitzer}}<span class="hb-chip hb-klasse">Gefährte von {{gefaehrteBesitzer}}</span>{{/if}}
         {{else}}
           {{#if isGM}}
             <label class="hb-chip hb-klasse" title="{{system.derived.suggestedClassEffect}}">
@@ -79,6 +82,17 @@
               <label>Probenwert <input name="system.monster.probe" type="number" value="{{system.monster.probe}}" /></label>
               <label>Corrupted-Stufe <input name="system.monster.corrupted" type="number" value="{{system.monster.corrupted}}" /></label>
               <label>EXP <input name="system.monster.exp" type="text" value="{{system.monster.exp}}" /></label>
+              <label>Verhalten
+                <select name="system.monster.behavior">
+                  {{#select system.monster.behavior}}
+                    <option value="friedlich">friedlich</option>
+                    <option value="scheu">scheu</option>
+                    <option value="territorial">territorial</option>
+                    <option value="aggressiv">aggressiv</option>
+                  {{/select}}
+                </select>
+              </label>
+              <label>Zähmbar <span class="hb-zaehmbar"><input name="system.monster.tameable" type="checkbox" {{checked system.monster.tameable}} /> {{#if system.monster.tameable}}{{system.monster.tamers}}{{else}}nein{{/if}}</span></label>
             </div>
             <label class="hb-breit">Merkmale <input name="system.monster.traits" type="text" value="{{system.monster.traits}}" /></label>
             <label class="hb-breit">Lebensraum <input name="system.monster.habitat" type="text" value="{{system.monster.habitat}}" /></label>
@@ -145,10 +159,18 @@
               <h3>Waffen</h3>
               <div class="hb-waffen">
                 {{#each bogen.figur.waffen as |platz|}}
-                  <div class="hb-slot {{#if platz.item}}is-voll{{else}}is-leer{{/if}}" {{#if platz.item}}data-item-id="{{platz.item.id}}" data-rang="{{platz.item.rang}}" data-tooltip-html="{{platz.item.tooltip}}" draggable="true"{{/if}}>
-                    {{#if platz.item}}<img src="{{platz.item.img}}" alt="" />{{/if}}
-                    <span class="hb-slotname">{{platz.label}}</span>
-                  </div>
+                  {{#if platz.gefaehrte}}
+                    <div class="hb-slot is-voll hb-gefaehrte {{#if platz.gefaehrte.aufFeld}}is-feld{{/if}}" data-gefaehrte data-tooltip-html="{{platz.gefaehrte.tooltip}}">
+                      <img src="{{platz.gefaehrte.img}}" alt="" />
+                      {{#if platz.gefaehrte.badge}}<span class="hb-runden">{{platz.gefaehrte.badge}}</span>{{/if}}
+                      <span class="hb-slotname">{{platz.label}}</span>
+                    </div>
+                  {{else}}
+                    <div class="hb-slot {{#if platz.item}}is-voll{{else}}is-leer{{/if}}" {{#if platz.item}}data-item-id="{{platz.item.id}}" data-rang="{{platz.item.rang}}" data-tooltip-html="{{platz.item.tooltip}}" draggable="true"{{/if}}>
+                      {{#if platz.item}}<img src="{{platz.item.img}}" alt="" />{{/if}}
+                      <span class="hb-slotname">{{platz.label}}</span>
+                    </div>
+                  {{/if}}
                 {{/each}}
                 {{#each bogen.figur.weitere as |item|}}
                   <div class="hb-slot is-voll is-klein" data-item-id="{{item.id}}" data-rang="{{item.rang}}" data-tooltip-html="{{item.tooltip}}" draggable="true">

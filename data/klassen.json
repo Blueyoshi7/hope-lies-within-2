@@ -85,7 +85,12 @@
   "skill": "Ruhige Hand",
   "effect": "Bei aktiven Fernkampfangriffen +1 Schaden.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/ruhige-hand.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/ruhige-hand.webp",
+  "zaehmen": {
+   "maxRang": "D",
+   "runden": 2,
+   "bonus": 0
+  }
  },
  {
   "name": "Pfarrer",
@@ -563,7 +568,12 @@
   "skill": "Herz der Tiere",
   "effect": "Darf einen Tiergefährten halten; mit Gefährte +10 HP.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/herz-der-tiere.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/herz-der-tiere.webp",
+  "zaehmen": {
+   "maxRang": "C",
+   "runden": 3,
+   "bonus": 2
+  }
  },
  {
   "name": "Waldläufer",
@@ -1102,7 +1112,12 @@
   "skill": "Ruf der Wildnis",
   "effect": "Lockt wilde Tiere an, die kurzzeitig für dich kämpfen.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/ruf-der-wildnis.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/ruf-der-wildnis.webp",
+  "zaehmen": {
+   "maxRang": "B",
+   "runden": 4,
+   "bonus": 4
+  }
  },
  {
   "name": "Bestienmeister",
@@ -1115,7 +1130,12 @@
   "skill": "Tierische Synergie",
   "effect": "Du und dein Tiergefährte greifen in derselben Aktion an.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/tierische-synergie.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/tierische-synergie.webp",
+  "zaehmen": {
+   "maxRang": "B",
+   "runden": 4,
+   "bonus": 4
+  }
  },
  {
   "name": "Dark Ranger",

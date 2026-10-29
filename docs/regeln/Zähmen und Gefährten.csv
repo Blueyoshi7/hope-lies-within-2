@@ -1,0 +1,23 @@
+﻿Regel;Beschreibung
+Wer zähmt;Nur Charaktere mit einer Tier-Klasse (Tierbändiger, Tiermeister, Bestienmeister, Bestienkönig). Sie bekommen dafür den Klassen-Skill „Zähmen“.
+Was zähmbar ist;Tiere, Bestien und Schleime bis zum Rang der Klasse. Keine Bosse, keine Schwärme, keine Corrupted, Abyss-Wesen, Untoten, Geister oder Elementare (Ausnahmen stehen beim Monster).
+Probe;Aktion, Ziel in 1 Feld: 1W20 + Tierkunde + Klassenbonus gegen den Probenwert des Monster-Rangs. Das Monster muss friedlich oder scheu sein, außerhalb eines Kampfes stehen oder unter 50 % HP haben. Natürliche 20 gelingt, natürliche 1 misslingt.
+Fehlschlag;Das Monster wird aggressiv. Ein neuer Versuch am selben Monster erst nach einer langen Rast.
+Ein Gefährte;Jeder Charakter hat höchstens einen Gefährten. Wer einen neuen zähmt, lässt den alten frei.
+Nebenhand;Der Gefährte belegt die Nebenhand: keine zweite Waffe und kein Schild, solange man einen Gefährten hat.
+Rufen;Schnellaktion: Der Gefährte erscheint in 1 Feld Umkreis und bleibt so viele Runden, wie die Klasse erlaubt. Danach kehrt er zurück und braucht 2 Runden Pause, bevor er wieder gerufen werden kann.
+Im Kampf;"Der Gefährte handelt im Zug seines Besitzers: Bewegung und eine eigene Aktion (Angriff oder einer seiner Monster-Skills). Der Spieler steuert ihn; der GM darf eingreifen, wenn das Tier überfordert wäre (z. B. friedliche Tiere greifen nicht an)."
+Werte;Wie im Bestiarium. HP bleiben zwischen den Rufen erhalten und heilen bei einer langen Rast voll.
+0 HP;Der Gefährte kehrt verletzt zurück und kann erst nach einer langen Rast wieder gerufen werden. Er stirbt nicht, außer der GM entscheidet es in einer besonderen Lage.
+
+Klasse;Stufe;Zähmt bis Rang;Runden auf dem Feld;Bonus auf die Probe
+Tierbändiger;Basic;D;2;0
+Tiermeister;T1;C;3;2
+Bestienmeister;T2;B;4;4
+Bestienkönig;T2;B;4;4
+
+Verhalten;Bedeutung am Tisch
+friedlich;Greift nie an und flieht, sobald es bedroht wird.
+scheu;Weicht aus. Greift nur an, wenn es bedrängt, eingekesselt oder verletzt wird.
+territorial;"Greift an, wer sein Revier betritt oder ihm auf 2 Felder nahe kommt; verfolgt nicht weit."
+aggressiv;Greift an, sobald es jemanden bemerkt, und verfolgt seine Beute.

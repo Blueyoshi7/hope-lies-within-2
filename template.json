@@ -272,6 +272,17 @@
           "movement": 0,
           "initiative": 0,
           "inventory": 0
+        },
+        "companion": {
+          "actorId": "",
+          "name": "",
+          "img": "",
+          "maxRounds": 0,
+          "rounds": 0,
+          "cooldown": 0,
+          "exhausted": false,
+          "tokenId": "",
+          "sceneId": ""
         }
       },
       "monster": {
@@ -294,7 +305,10 @@
           "traits": "",
           "habitat": "",
           "special": "",
-          "harmless": false
+          "harmless": false,
+          "behavior": "territorial",
+          "tameable": false,
+          "tamers": ""
         }
       }
     },

@@ -1,6 +1,7 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings } from "./hlw-talk.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
+import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
 import { WORLD_SKILLS, PLAETZE, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
 const HLW = {};
 
@@ -219,14 +220,23 @@ function isQuickItem(item) {
   return String(item?.system?.castTime ?? "").toLowerCase() === "quick";
 }
 
+function isReactionItem(item) {
+  return String(item?.system?.castTime ?? "").toLowerCase() === "reaction";
+}
+
 function canUseItemAction(actor, item) {
   if (isQuickItem(item)) return actor.system?.actions?.quick?.available !== false;
+  if (isReactionItem(item)) return actor.system?.actions?.reaction?.available !== false;
   return hasActionPoints(actor);
 }
 
 async function spendItemAction(actor, item) {
   if (isQuickItem(item)) {
     await actor.update({ "system.actions.quick.available": false });
+    return true;
+  }
+  if (isReactionItem(item)) {
+    await actor.update({ "system.actions.reaction.available": false });
     return true;
   }
   return spendActionPoints(actor);
@@ -477,6 +487,9 @@ function drawMovementRange(actor) {
 
 function getCombatHudActor() {
   const currentActor = game.combat?.combatant?.actor;
+  // Ausgewählter Gefährte des Charakters, der gerade am Zug ist: Leiste für den Gefährten zeigen
+  const gewaehlt = canvas.tokens?.controlled?.[0]?.actor;
+  if (currentActor && gewaehlt && besitzerVon(gewaehlt)?.id === currentActor.id) return gewaehlt;
   if (currentActor) return currentActor;
   const controlled = canvas.tokens?.controlled?.[0]?.actor;
   return controlled ?? null;
@@ -497,7 +510,7 @@ function getUsableCombatItems(actor) {
     const cooldown = numberValue(s.cooldown?.value);
     const heilung = isHealingItem(item);
     const zeilen = [
-      item.type === "weapon" ? "Waffe · Angriff" : `${isQuickItem(item) ? "Schnellaktion" : "Aktion"}${heilung ? " · Heilung, kein Trefferwurf" : s.damage ? ` · gegen ${kategorie === "magical" ? "MR" : "RW"}` : ""}`,
+      item.type === "weapon" ? "Waffe · Angriff" : `${isQuickItem(item) ? "Schnellaktion" : isReactionItem(item) ? "Reaktion" : "Aktion"}${heilung ? " · Heilung, kein Trefferwurf" : s.damage ? ` · gegen ${kategorie === "magical" ? "MR" : "RW"}` : ""}`,
       s.damageText || s.damage ? `${heilung ? "Heilt" : "Schaden"} ${s.damageText || s.damage}` : "",
       s.range ? `Reichweite ${s.range}` : "",
       cooldown > 0 ? `noch ${cooldown} Züge Abklingzeit` : numberValue(s.cooldown?.max) ? `Abklingzeit ${s.cooldown.max}` : ""
@@ -510,6 +523,7 @@ function getUsableCombatItems(actor) {
       rang: rang(item),
       cooldown,
       quick: isQuickItem(item),
+      reaction: isReactionItem(item),
       usable: canUseItemAction(actor, item),
       pending: HLW.pendingSkill?.actorId === actor.id && HLW.pendingSkill?.itemId === item.id,
       tooltip: `<strong>${escapeHtml(item.name)}</strong><br>${zeilen.map(escapeHtml).join("<br>")}`
@@ -544,7 +558,9 @@ function renderCombatHud() {
   const canAct = ap.value > 0;
   const quickBereit = actor.system?.actions?.quick?.available !== false;
   const reaktionBereit = actor.system?.actions?.reaction?.available !== false;
-  const isCurrentTurn = game.combat?.combatant?.actor?.id === actor.id;
+  const besitzer = besitzerVon(actor);
+  const isCurrentTurn = game.combat?.combatant?.actor?.id === (besitzer ?? actor).id;
+  const gefaehrte = besitzer ? null : gefaehrteVon(actor);
   const umfang = 2 * Math.PI * 29;
   const hpProzent = Math.min(Math.max(hpWert / hpMax, 0), 1);
   const tokenBild = actor.prototypeToken?.texture?.src || actor.img || "";
@@ -558,7 +574,7 @@ function renderCombatHud() {
       data-tooltip-html="${escapeHtml(item.pending ? "<strong>Abbrechen</strong>" : item.tooltip)}" data-tooltip-direction="UP"
       ${(!item.usable || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
       <img src="${escapeHtml(item.img || "icons/svg/sword.svg")}" alt="">
-      ${item.quick ? `<span class="hh-art">S</span>` : ""}
+      ${item.quick ? `<span class="hh-art">S</span>` : item.reaction ? `<span class="hh-art">R</span>` : ""}
       ${item.cooldown > 0 ? `<span class="hh-cd">${item.cooldown}</span>` : ""}
       ${item.pending ? `<span class="hh-cd">✕</span>` : ""}
     </button>`;
@@ -572,7 +588,7 @@ function renderCombatHud() {
         <img src="${escapeHtml(tokenBild)}" alt="">
       </div>
       <div>
-        <div class="hh-zustand ${isCurrentTurn ? "" : "is-warten"}">${isCurrentTurn ? "Am Zug" : "Wartet"}</div>
+        <div class="hh-zustand ${isCurrentTurn ? "" : "is-warten"}">${besitzer ? `Gefährte von ${escapeHtml(besitzer.name)} · noch ${numberValue(besitzer.system?.companion?.rounds)} Runden` : isCurrentTurn ? "Am Zug" : "Wartet"}</div>
         <div class="hh-name">${escapeHtml(actor.name)}</div>
         <div class="hh-hp"><b>${hpWert}</b> / ${numberValue(hp.max)} HP · RW ${numberValue(actor.system?.derived?.rw)} · MR ${numberValue(actor.system?.derived?.mr)}</div>
         <div class="hh-res">
@@ -588,6 +604,11 @@ function renderCombatHud() {
       ${waffenTasten.length && skillTasten.length ? `<span class="hh-trenner"></span>` : ""}
       ${skillTasten.map(taste).join("")}
       ${!tasten.length ? `<span class="hh-hp">Keine Waffe ausgerüstet und keine aktiven Skills.</span>` : ""}
+      ${gefaehrte ? `<span class="hh-trenner"></span><button type="button" class="hh-taste hh-gefaehrte ${gefaehrte.aufFeld ? "is-feld" : ""}" data-hud-gefaehrte ${gefaehrte.exhausted || (!gefaehrte.aufFeld && numberValue(gefaehrte.cooldown) > 0) ? "disabled" : ""}
+        data-tooltip-html="${escapeHtml(`<strong>${escapeHtml(gefaehrte.name)}</strong><br>${gefaehrte.aufFeld ? `Auf dem Feld, noch ${numberValue(gefaehrte.rounds)} Runden. Klick: auswählen und steuern.` : gefaehrte.exhausted ? "Verletzt, braucht eine lange Rast." : numberValue(gefaehrte.cooldown) > 0 ? `Pause: noch ${numberValue(gefaehrte.cooldown)} Runden.` : `Rufen (Schnellaktion), bleibt ${numberValue(gefaehrte.maxRounds)} Runden.`}`)}" data-tooltip-direction="UP">
+        <img src="${escapeHtml(gefaehrte.img || "")}" alt="">
+        ${gefaehrte.aufFeld ? `<span class="hh-art">${numberValue(gefaehrte.rounds)}</span>` : numberValue(gefaehrte.cooldown) > 0 ? `<span class="hh-cd">${numberValue(gefaehrte.cooldown)}</span>` : ""}
+      </button>` : ""}
       ${passive.length ? `<span class="hh-trenner"></span><div class="hh-passiv" data-tooltip-html="${escapeHtml(`<strong>Passiv, wirkt immer</strong><br>${passive.map((item) => escapeHtml(item.name)).join("<br>")}`)}">${passive.map((item) => `<img src="${escapeHtml(item.img)}" alt="">`).join("")}</div>` : ""}
     </div>
     <div class="hh-aktionen">
@@ -611,8 +632,15 @@ function renderCombatHud() {
       return;
     }
 
+    if (event.target.closest("[data-hud-gefaehrte]")) {
+      const g = gefaehrteVon(actor);
+      if (g?.aufFeld) g.token?.object?.control({ releaseOthers: true });
+      else rufen(actor);
+      return;
+    }
+
     if (event.target.closest("[data-hud-end-turn]")) {
-      actor.endTurn();
+      (besitzer ?? actor).endTurn();
     }
   });
 
@@ -680,6 +708,7 @@ async function resetActorTurnState(actor) {
   await actor.update(updates);
   for (const token of actor.getActiveTokens?.() ?? []) HLW.movementSpentCache.delete(token.id);
   if (itemUpdates.length) await actor.updateEmbeddedDocuments("Item", itemUpdates);
+  await zugbeginn(actor);
 }
 
 function handleCombatTurnChange(combat) {
@@ -773,6 +802,9 @@ export class HopeLiesWithinActor extends Actor {
         system: { className: klasse.name, skillType: klasse.role, rank: rang, activation: aktiv ? "active" : "passive", effect: klasse.effect, description: `${klasse.name} (${klasse.category}): ${klasse.effect}`, price: "nicht verkäuflich" }
       }];
     }
+    if (klasse?.zaehmen && !this.items.some((i) => i.type === "classSkill" && i.system?.skillType === "Zähmen" && i.system?.className === klasse.name)) {
+      neu.push(zaehmSkillDaten(klasse));
+    }
     if (!neu.length) return [];
     const created = await this.createEmbeddedDocuments("Item", neu);
     ui.notifications?.info(`${this.name} erhält: ${created.map((i) => i.name).join(", ")}`);
@@ -794,6 +826,15 @@ export class HopeLiesWithinActor extends Actor {
       speaker: ChatMessage.getSpeaker({ actor: this }),
       flavor: `<strong>${skill.label}</strong> (${skill.attributes.map((key) => HLW.attributeLabels[key]).join(" + ")})${hinweis}`
     });
+  }
+
+  async zaehmeZiel(item) {
+    if (game.combat?.started && !canUseItemAction(this, item)) {
+      ui.notifications?.warn("Die Aktion ist schon verbraucht.");
+      return;
+    }
+    const verbraucht = await zaehmen(this, HLW.klassen);
+    if (verbraucht && game.combat?.started) await spendItemAction(this, item);
   }
 
   async toggleAction(actionKey) {
@@ -878,8 +919,9 @@ export class HopeLiesWithinActor extends Actor {
       if (item.type === "weapon" || platz === "nebenhand") {
         // Zwei Hände: Waffen und Schild teilen sich Haupt- und Nebenhand.
         const haende = angelegt.filter((entry) => entry.type === "weapon" || ausruestungsPlatz(entry) === "nebenhand");
-        if (haende.length >= 2) {
-          ui.notifications?.warn("Beide Hände sind belegt. Erst eine Waffe oder einen Schild ablegen.");
+        const frei = gefaehrteVon(this) ? 1 : 2;
+        if (haende.length >= frei) {
+          ui.notifications?.warn(frei === 1 ? "Die Nebenhand gehört deinem Gefährten. Erst die andere Waffe ablegen." : "Beide Hände sind belegt. Erst eine Waffe oder einen Schild ablegen.");
           return;
         }
       }
@@ -929,14 +971,14 @@ export class HopeLiesWithinActor extends Actor {
       </div>
     `;
 
-    new Dialog({
-      title: item.name,
-      content,
+    // DialogV2: der alte Dialog ignoriert in Foundry 14 die eigenen Klassen und zeigt hellen Pergament-Hintergrund.
+    const fenster = new foundry.applications.api.DialogV2({
+      window: { title: item.name },
       classes: ["hope-lies-within", "hlw-detail-dialog"],
-      buttons: {
-        close: { label: "Schliessen" }
-      }
-    }).render(true);
+      content,
+      buttons: [{ action: "ok", label: "Schließen", icon: "fa-solid fa-check", default: true }]
+    });
+    fenster.render({ force: true }).then(() => fenster.setPosition({ width: 460, height: "auto", left: (window.innerWidth - 460) / 2, top: window.innerHeight / 4 }));
   }
 
   async consumeOwnedItem(itemId) {
@@ -1052,6 +1094,8 @@ export class HopeLiesWithinActor extends Actor {
   startOffensiveTargeting(itemId, sourceType = "skill") {
     const item = this.items.get(itemId);
     if (!item) return;
+
+    if (item.system?.skillType === "Zähmen") return this.zaehmeZiel(item);
 
     if (sourceType === "skill" && isPassiveItem(item)) {
       ui.notifications?.warn(`${item.name} ist ein passiver Skill und kann nicht als Aktion genutzt werden.`);
@@ -1305,6 +1349,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       reaktion: context.system.actions?.reaction?.available !== false
     };
     context.passivListe = context.system.derived?.passiv ?? [];
+    context.gefaehrteBesitzer = besitzerVon(context.actor)?.name ?? "";
     return context;
   }
 
@@ -1420,6 +1465,12 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     });
 
     // Klick auf Gegenstand (Raster oder Figur): kleines Menü mit den passenden Aktionen
+    html.find("[data-gefaehrte]").on("click contextmenu", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this._zeigeGefaehrteMenue(event.currentTarget);
+    });
+
     html.find(".hb-feld[data-item-id], .hb-slot[data-item-id]").on("click contextmenu", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -1441,20 +1492,29 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     });
   }
 
-  _zeigeGegenstandMenue(element) {
+  _zeigeGefaehrteMenue(element) {
     document.querySelectorAll(".hb-menue").forEach((menue) => menue.remove());
-    const item = this.actor.items.get(element.dataset.itemId);
-    if (!item) return;
-    const angelegt = boolValue(item.system?.equipped);
+    const g = gefaehrteVon(this.actor);
+    if (!g) return;
     const eintraege = [];
-    if (["weapon", "armor", "accessory", "equipment"].includes(item.type)) eintraege.push(["equip", angelegt ? "Ablegen" : "Ausrüsten", "fa-shirt"]);
-    if (["consumable", "foodDrink"].includes(item.type)) eintraege.push(["consume", "Benutzen", "fa-flask"]);
-    eintraege.push(["details", "Details", "fa-circle-info"], ["edit", "Bearbeiten", "fa-pen"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
+    if (g.aufFeld) eintraege.push(["zurueck", "Zurückrufen", "fa-person-walking-arrow-loop-left"]);
+    else eintraege.push(["rufen", "Rufen (Schnellaktion)", "fa-paw"]);
+    if (g.actor) eintraege.push(["bogen", "Bogen öffnen", "fa-id-card"]);
+    if (game.user?.isGM) eintraege.push(["rast", "Lange Rast (GM)", "fa-bed"], ["frei", "Freilassen (GM)", "fa-dove"]);
+    this._menue(element, g.name, eintraege, {
+      rufen: () => rufen(this.actor),
+      zurueck: () => zurueckrufen(this.actor),
+      bogen: () => g.actor?.sheet.render(true),
+      rast: () => langeRast(this.actor),
+      frei: () => freilassen(this.actor)
+    });
+  }
+
+  _menue(element, titel, eintraege, aktionen) {
     const menue = document.createElement("div");
     menue.className = "hope-lies-within hb-menue";
-    menue.innerHTML = `<strong>${escapeHtml(item.name)}</strong>${eintraege.map(([key, label, icon]) => `<button type="button" data-menue="${key}"><i class="fa-solid ${icon}"></i> ${label}</button>`).join("")}`;
+    menue.innerHTML = `<strong>${escapeHtml(titel)}</strong>${eintraege.map(([key, label, icon]) => `<button type="button" data-menue="${key}"><i class="fa-solid ${icon}"></i> ${label}</button>`).join("")}`;
     document.body.appendChild(menue);
-    // Neben dem Gegenstand anzeigen; reicht der Platz nach unten nicht, klappt es nach oben.
     const a = element.getBoundingClientRect();
     const hoehe = menue.offsetHeight;
     menue.style.left = `${Math.min(a.left, window.innerWidth - menue.offsetWidth - 8)}px`;
@@ -1470,15 +1530,27 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       if (!knopf) return;
       event.preventDefault();
       menue.remove();
-      const id = item.id;
-      ({
-        equip: () => this.actor.toggleEquipped(id),
-        consume: () => this.actor.consumeOwnedItem(id),
-        details: () => this.actor.showOwnedItemDetails(id),
-        edit: () => this.actor.editOwnedItem(id),
-        give: () => this.actor.giveItemToTarget(id),
-        discard: () => this.actor.discardOwnedItem(id)
-      })[knopf.dataset.menue]?.();
+      aktionen[knopf.dataset.menue]?.();
+    });
+  }
+
+  _zeigeGegenstandMenue(element) {
+    document.querySelectorAll(".hb-menue").forEach((menue) => menue.remove());
+    const item = this.actor.items.get(element.dataset.itemId);
+    if (!item) return;
+    const angelegt = boolValue(item.system?.equipped);
+    const eintraege = [];
+    if (["weapon", "armor", "accessory", "equipment"].includes(item.type)) eintraege.push(["equip", angelegt ? "Ablegen" : "Ausrüsten", "fa-shirt"]);
+    if (["consumable", "foodDrink"].includes(item.type)) eintraege.push(["consume", "Benutzen", "fa-flask"]);
+    eintraege.push(["details", "Details", "fa-circle-info"], ["edit", "Bearbeiten", "fa-pen"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
+    const id = item.id;
+    this._menue(element, item.name, eintraege, {
+      equip: () => this.actor.toggleEquipped(id),
+      consume: () => this.actor.consumeOwnedItem(id),
+      details: () => this.actor.showOwnedItemDetails(id),
+      edit: () => this.actor.editOwnedItem(id),
+      give: () => this.actor.giveItemToTarget(id),
+      discard: () => this.actor.discardOwnedItem(id)
     });
   }
 
@@ -1505,7 +1577,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         else {
           if (heilung) tags.push({ text: "Heilung", art: "heil" });
           else if (s.damage) tags.push({ text: HLW.damageCategories[kategorie] ?? kategorie, art: kategorie === "magical" ? "magisch" : "physisch" });
-          tags.push({ text: isQuickItem(item) ? "Schnellaktion" : "Aktion" });
+          tags.push({ text: isQuickItem(item) ? "Schnellaktion" : isReactionItem(item) ? "Reaktion" : "Aktion" });
           if (s.damageText || s.damage) tags.push({ text: s.damageText || s.damage });
           if (s.range) tags.push({ text: `Reichweite ${s.range}` });
           if (numberValue(s.cooldown?.max)) tags.push({ text: cooldown > 0 ? `noch ${cooldown} Züge` : `Abklingzeit ${s.cooldown.max}`, art: cooldown > 0 ? "cd" : "" });
@@ -1558,6 +1630,20 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       else weitere.push(g);
     }
     const platz = (key) => ({ key, label: PLAETZE[key], item: belegt[key] ?? null });
+    // Gefährte belegt die Nebenhand
+    const g = gefaehrteVon(actor);
+    let nebenhand = platz("nebenhand");
+    if (g) {
+      if (nebenhand.item) weitere.push(nebenhand.item);
+      const status = g.aufFeld ? `auf dem Feld, noch ${numberValue(g.rounds)} Runden` : g.exhausted ? "verletzt (lange Rast)" : numberValue(g.cooldown) > 0 ? `Pause ${numberValue(g.cooldown)} Runden` : "bereit";
+      nebenhand = {
+        key: "nebenhand", label: "Gefährte",
+        gefaehrte: {
+          name: g.name, img: g.img || g.actor?.img, status, aufFeld: g.aufFeld, badge: g.aufFeld ? numberValue(g.rounds) : "",
+          tooltip: `<strong>${escapeHtml(g.name)}</strong><br>Gefährte · ${escapeHtml(status)}<br>Bleibt ${numberValue(g.maxRounds)} Runden auf dem Feld`
+        }
+      };
+    }
     const leere = Math.max(numberValue(actor.system?.resources?.inventorySlots?.max) - countInventorySlots(items), 0);
 
     return {
@@ -1565,7 +1651,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       figur: {
         links: ["kopf", "brust", "arme", "beine"].map(platz),
         rechts: ["kette", "ohrring", "ring", "armband"].map(platz),
-        waffen: ["haupthand", "nebenhand"].map(platz),
+        waffen: [platz("haupthand"), nebenhand],
         weitere
       },
       raster: gear.filter((entry) => !entry.equipped),
@@ -1870,6 +1956,45 @@ async function aktualisiereBilder({ alle = false, nurEigene = false } = {}) {
   return anzahl;
 }
 
+const BESTIARIUM_STAND = 1;
+
+// Vorhandene Monster auf den aktuellen Stand bringen: eigenes Bild und Token, Verhalten, Zähmbarkeit,
+// Angriff und Monster-Skills. Vom GM geänderte Bilder (nicht aus Foundrys Bibliothek) bleiben.
+async function aktualisiereBestiarium() {
+  if (!game.user?.isGM) return 0;
+  const response = await fetch("systems/hope-lies-within-2/import/monsters.json");
+  if (!response.ok) return 0;
+  const eintraege = new Map((await response.json()).map((e) => [e.name, e]));
+  const alt = (img) => !img || /^icons\//.test(img);
+  let anzahl = 0;
+  for (const actor of game.actors.filter((a) => a.type === "monster" && !besitzerVon(a))) {
+    const e = eintraege.get(actor.name);
+    if (!e) continue;
+    const update = {
+      "system.monster.behavior": e.system.monster.behavior,
+      "system.monster.tameable": e.system.monster.tameable,
+      "system.monster.tamers": e.system.monster.tamers
+    };
+    const altesBild = actor.img;
+    if (alt(actor.img)) update.img = e.img;
+    if (alt(actor.prototypeToken?.texture?.src)) update["prototypeToken.texture.src"] = e.token || e.img;
+    await actor.update(update);
+    // Angriff und Skills aus dem Bestiarium; vorhandene Einträge gleichen Namens werden ersetzt
+    const namen = new Set(e.items.map((i) => i.name));
+    const weg = actor.items.filter((i) => namen.has(i.name) || (i.type === "weapon" && alt(i.img) && i.system?.weaponClass === "monster")).map((i) => i.id);
+    if (weg.length) await actor.deleteEmbeddedDocuments("Item", weg);
+    await actor.createEmbeddedDocuments("Item", e.items);
+    // Figuren dieses Monsters auf den Szenen bekommen das neue Token-Bild
+    for (const scene of game.scenes) {
+      const tokens = scene.tokens.filter((t) => t.actorId === actor.id && (alt(t.texture?.src) || t.texture?.src === altesBild));
+      if (tokens.length) await scene.updateEmbeddedDocuments("Token", tokens.map((t) => ({ _id: t.id, "texture.src": e.token || e.img })));
+    }
+    anzahl += 1;
+  }
+  ui.notifications?.info(`Bestiarium aktualisiert: ${anzahl} Monster.`);
+  return anzahl;
+}
+
 // Bestiarium: Monster als Actors mit ihrem Angriff als Waffe.
 async function importMonsters(path) {
   if (!game.user?.isGM) return [];
@@ -1887,7 +2012,7 @@ async function importMonsters(path) {
       folder: folder?.id,
       system: entry.system,
       items: entry.items ?? [],
-      prototypeToken: { name: entry.name, disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE, texture: { src: entry.img } }
+      prototypeToken: { name: entry.name, disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE, texture: { src: entry.token || entry.img } }
     });
   }
   const created = documents.length ? await Actor.createDocuments(documents) : [];
@@ -1903,6 +2028,7 @@ Hooks.once("init", () => {
   // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "bestiariumStand", { scope: "world", config: false, type: Number, default: 0 });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -1945,17 +2071,31 @@ Hooks.once("ready", async () => {
     importAllJson: importAllJsonFiles,
     importMonsters,
     aktualisiereBilder,
+    aktualisiereBestiarium,
     erstelleLindhain,
     entferneOrtsmarker,
     gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor)
   };
   registerTalk();
+  registerGefaehrte();
 
   // Eigene Bilder für Skills und Ausrüstung: ersetzt einmalig die Foundry-Symbole (icons/…) in Welt und Charakteren.
   // Selbst gewählte Bilder bleiben unberührt.
   if (game.user?.isGM && game.settings.get("hope-lies-within-2", "bildStand") < BILD_STAND) {
     await aktualisiereBilder({ alle: true, nurEigene: true });
     await game.settings.set("hope-lies-within-2", "bildStand", BILD_STAND);
+  }
+  // Bestiarium: Bilder, Tokens, Monster-Skills, Verhalten und Zähmbarkeit einmalig nachziehen.
+  if (game.user?.isGM && game.settings.get("hope-lies-within-2", "bestiariumStand") < BESTIARIUM_STAND) {
+    await aktualisiereBestiarium();
+    await game.settings.set("hope-lies-within-2", "bestiariumStand", BESTIARIUM_STAND);
+  }
+  // Tier-Klassen bekommen den Klassen-Skill „Zähmen“.
+  if (game.user?.isGM) {
+    for (const actor of game.actors.filter((a) => a.type === "character")) {
+      const klasse = HLW.klassen.find((k) => k.name === actor.system?.progression?.class);
+      if (klasse?.zaehmen && !actor.items.some((i) => i.system?.skillType === "Zähmen")) await actor.createEmbeddedDocuments("Item", [zaehmSkillDaten(klasse)]);
+    }
   }
   // Die Buch-Symbole der Lindhain-Ortsliste (v0.3.0) einmalig von den Karten nehmen.
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "ortsmarkerEntfernt")) {
