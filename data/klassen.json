@@ -72,9 +72,22 @@
    "AGL": 5
   },
   "skill": "„Trickshot“",
-  "effect": "Einmal pro Kampf: Ein Fernkampfangriff prallt ab und trifft ein zweites Ziel innerhalb von 3 Feldern mit vollem Schaden.",
+  "effect": "Einmal pro Kampf: ein Fernkampfangriff auf zwei verschiedene Ziele in Reichweite der Waffe, jedes mit eigenem Angriffswurf und vollem Waffenschaden. Nur einsetzbar, wenn zwei Ziele in Reichweite stehen.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/trickshot.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/trickshot.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "ziele": 2,
+   "waffenSchaden": true,
+   "einmalProKampf": true,
+   "damageCategory": "physical",
+   "scaling": {
+    "primary": "AGL",
+    "secondary": "",
+    "tertiary": ""
+   }
+  }
  },
  {
   "name": "Tierbändiger",

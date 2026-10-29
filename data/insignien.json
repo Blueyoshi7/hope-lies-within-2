@@ -1,0 +1,541 @@
+[
+ {
+  "name": "Insignie der Aufklärung",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Untersuchen ohne Gilde (Appraisal): 1W20 – bei 1–10 nur der Name, bei 11–20 alles.",
+  "bild": "hlw-insignien/insignie-der-aufklaerung.webp"
+ },
+ {
+  "name": "Insignie der Natur",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Doppelter Fund von Naturgegenständen.",
+  "bild": "hlw-insignien/insignie-der-natur.webp"
+ },
+ {
+  "name": "Insignie der Vergangenheit",
+  "rank": "D",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Pro Kapitel eine feste Erinnerung aus dem letzten Kapitel (der GM erzählt sie genau nach).",
+  "bild": "hlw-insignien/insignie-der-vergangenheit.webp"
+ },
+ {
+  "name": "Insignie der Intuition",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Einmal pro Spielsitzung einen „intuitiven Hinweis“ vom GM.",
+  "bild": "hlw-insignien/insignie-der-intuition.webp"
+ },
+ {
+  "name": "Insignie des ewigen Glücks",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Einmal pro Spielsitzung ein Glücksmoment: einen eigenen Wurf wiederholen, der bessere zählt.",
+  "bild": "hlw-insignien/insignie-des-ewigen-gluecks.webp"
+ },
+ {
+  "name": "Insignie des stillen Schutzes",
+  "rank": "A",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Verhindert 3× pro Kapitel, dass du oder ein Verbündeter auf 0 HP fällt. Wird der Effekt erwähnt, verliert er seine Wirkung.",
+  "bild": "hlw-insignien/insignie-des-stillen-schutzes.webp"
+ },
+ {
+  "name": "Insignie der magischen Intuition",
+  "rank": "A",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Kopiert einmal pro Kampf einen Zauber eines Verbündeten mit 80 % Wirkung.",
+  "bild": "hlw-insignien/insignie-der-magischen-intuition.webp"
+ },
+ {
+  "name": "Insignie der Transportation",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Keine Begrenzung der Inventarplätze.",
+  "bild": "hlw-insignien/insignie-der-transportation.webp"
+ },
+ {
+  "name": "Insignie des Energie-Pfeils",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Erschafft Pfeile aus magischer Kraft; es werden keine Pfeile verbraucht.",
+  "bild": "hlw-insignien/insignie-des-energie-pfeils.webp"
+ },
+ {
+  "name": "Insignie der heiligen Worte I",
+  "rank": "C / B / A",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "I: Wortgewandtheit +3, einmal pro Sitzung glauben NPCs eine nicht offensichtlich falsche Aussage.",
+  "bild": "hlw-insignien/insignie-der-heiligen-worte-1.webp"
+ },
+ {
+  "name": "Insignie der heiligen Worte II",
+  "rank": "C / B / A",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "I: Wortgewandtheit +3, einmal pro Sitzung glauben NPCs eine nicht offensichtlich falsche Aussage. II: Einmal pro Kampf „Wort der Ruhe“: Gegner im Umkreis von 3 Feldern Willenskraft 20, sonst verlieren sie ihre nächste Aktion.",
+  "bild": "hlw-insignien/insignie-der-heiligen-worte-2.webp"
+ },
+ {
+  "name": "Insignie der heiligen Worte III",
+  "rank": "C / B / A",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "I: Wortgewandtheit +3, einmal pro Sitzung glauben NPCs eine nicht offensichtlich falsche Aussage. II: Einmal pro Kampf „Wort der Ruhe“: Gegner im Umkreis von 3 Feldern Willenskraft 20, sonst verlieren sie ihre nächste Aktion. III: Einmal pro Kapitel „Wort des Lebens“: ein gefallener Verbündeter steht mit halben HP auf.",
+  "bild": "hlw-insignien/insignie-der-heiligen-worte-3.webp"
+ },
+ {
+  "name": "Insignie der Schmiedekunst",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Handwerkskunst +5 beim Schmieden. Einmal pro Kapitel ein Ausrüstungsteil um einen Rang verbessern (Material nötig).",
+  "bild": "hlw-insignien/insignie-der-schmiedekunst.webp"
+ },
+ {
+  "name": "Insignie der Erdmagier",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Erd-Skills +2 Schaden. Einmal pro Kampf als Schnellaktion eine Steinwand (3 Felder, volle Deckung, 30 HP).",
+  "bild": "hlw-insignien/insignie-der-erdmagier.webp"
+ },
+ {
+  "name": "Insignie des Schattenwolfs",
+  "rank": "B",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Ein Schattenwolf begleitet dich: HP 5 × Level, Rüstwert 12, Biss 1W8 + ⌊Level ÷ 4⌋, eigener Zug. Fällt er, kehrt er nach einer langen Rast zurück.",
+  "bild": "hlw-insignien/insignie-des-schattenwolfs.webp"
+ },
+ {
+  "name": "Insignie der Bergarbeit",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Athletik +3, doppelte Ausbeute beim Abbau, spürt Mineralien im Umkreis von 10 Feldern.",
+  "bild": "hlw-insignien/insignie-der-bergarbeit.webp"
+ },
+ {
+  "name": "Insignie der vergessenen Sprachen",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Archäologie +5. Liest Ahnen-Runen nach einer Stunde Studium; versteht Bruchstücke von Vaarah.",
+  "bild": "hlw-insignien/insignie-der-vergessenen-sprachen.webp"
+ },
+ {
+  "name": "Insignie der Anpassung",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Nach einem Treffer eines Schadenstyps: −2 Schaden von diesem Typ bis Kampfende.",
+  "bild": "hlw-insignien/adaptation.webp"
+ },
+ {
+  "name": "Insignie der Wasserschale",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf als Schnellaktion: Wasserschild fängt 10 + Level Schaden ab.",
+  "bild": "hlw-insignien/aqua-shell.webp"
+ },
+ {
+  "name": "Insignie des Sternengeists",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Willenskraft +3, immun gegen Bezauberung.",
+  "bild": "hlw-insignien/astral-mind.webp"
+ },
+ {
+  "name": "Insignie des Hinterhalts",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Angriffe von hinten oder aus der Unsichtbarkeit +1W8.",
+  "bild": "hlw-insignien/backstabber.webp"
+ },
+ {
+  "name": "Insignie der Bestiengestalt",
+  "rank": "B",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Einmal pro Kapitel für 3 Runden Tiergestalt: +20 HP, Bewegung +2, Nahkampf 2W8, keine Skills.",
+  "bild": "hlw-insignien/beastial-transformation.webp"
+ },
+ {
+  "name": "Insignie der Gesegneten",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Sterbewürfe +2, Heilung an dir +2.",
+  "bild": "hlw-insignien/blessed.webp"
+ },
+ {
+  "name": "Insignie der Glut",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Feuer-Skills setzen „Brennend“ (1W4 für 2 Runden).",
+  "bild": "hlw-insignien/boil.webp"
+ },
+ {
+  "name": "Insignie der Leichtigkeit",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Kein Fallschaden, 3 Felder über Wasser laufen, Athletik +2.",
+  "bild": "hlw-insignien/buoyant-charm.webp"
+ },
+ {
+  "name": "Insignie des Heldenrufs",
+  "rank": "A",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Einmal pro Kapitel ruft das Echo eines gefallenen Heroes für 3 Runden (kämpft auf deinem Level, 2W8 pro Runde).",
+  "bild": "hlw-insignien/call-hero.webp"
+ },
+ {
+  "name": "Insignie des Farbblitzes",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf: alle Gegner in einem 3×3-Feld sind 1 Runde geblendet.",
+  "bild": "hlw-insignien/chromatic-flare.webp"
+ },
+ {
+  "name": "Insignie des Kolosses",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf 2 Runden riesig: +30 HP, Nahkampf +1W10, Bewegung −1.",
+  "bild": "hlw-insignien/colossification.webp"
+ },
+ {
+  "name": "Insignie der Riesentöter",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "+1W10 Schaden gegen Gegner mit mehr Max-HP als du.",
+  "bild": "hlw-insignien/colussus-slayer.webp"
+ },
+ {
+  "name": "Insignie des Andenkens",
+  "rank": "C",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Begleiter und Beschwörungen +10 HP und +2 Schaden; ein gefallener Begleiter bleibt als Geist bis Kampfende.",
+  "bild": "hlw-insignien/companion-s-memento.webp"
+ },
+ {
+  "name": "Insignie des gebrochenen Scheins",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Kann pro Kapitel bis zu 10 Korruption von Verbündeten auf sich nehmen.",
+  "bild": "hlw-insignien/corrupted-halo.webp"
+ },
+ {
+  "name": "Insignie des Durchschauens",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Religion +5. Erkennt Lügen in Glaubensdingen; falsche Visionen fühlen sich „falsch“ an (GM-Hinweis).",
+  "bild": "hlw-insignien/cultist.webp"
+ },
+ {
+  "name": "Insignie des Aufschubs",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf als Reaktion: Ein Angriff oder Effekt gegen dich wirkt erst am Rundenende.",
+  "bild": "hlw-insignien/delay.webp"
+ },
+ {
+  "name": "Insignie der Gegenrede",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Wortgewandtheit +3, einmal pro Sitzung einen Wettstreit neu würfeln.",
+  "bild": "hlw-insignien/devil-s-advocate.webp"
+ },
+ {
+  "name": "Insignie des Doppelblicks",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Scharfsinnigkeit +3, Illusionen werden sofort erkannt.",
+  "bild": "hlw-insignien/double-vision.webp"
+ },
+ {
+  "name": "Insignie des Giftmischers",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Gifte und Bomben +1W6, immun gegen Gift.",
+  "bild": "hlw-insignien/drogulum.webp"
+ },
+ {
+  "name": "Insignie des Gedächtnisses",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Erinnert sich an alles Gesehene; Erfindergeist und Archäologie +2.",
+  "bild": "hlw-insignien/eidetic-memory.webp"
+ },
+ {
+  "name": "Insignie des Funkenschlags",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Blitz-Skills springen auf ein zweites Ziel über (halber Schaden).",
+  "bild": "hlw-insignien/electric-shock.webp"
+ },
+ {
+  "name": "Insignie des Elementarsturms",
+  "rank": "A",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kapitel 3 Runden: Element-Skills wirken alle Elemente zugleich (+1W6 und ein Zufallseffekt).",
+  "bild": "hlw-insignien/elemental-chaos-titan.webp"
+ },
+ {
+  "name": "Insignie des Gefühlsräubers",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Nimmt einem Verbündeten Angst oder Bezauberung ab; dein nächster Angriff +2.",
+  "bild": "hlw-insignien/emotion-eater.webp"
+ },
+ {
+  "name": "Insignie des Flackerns",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Runde als Schnellaktion 2 Felder Teleport.",
+  "bild": "hlw-insignien/flicker.webp"
+ },
+ {
+  "name": "Insignie des Frosts",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf: Ein Eis-Skill macht das Ziel 1 Runde bewegungsunfähig.",
+  "bild": "hlw-insignien/freeze.webp"
+ },
+ {
+  "name": "Insignie des richtigen Moments",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Initiative +5, einmal pro Kampf den eigenen Zug vorziehen.",
+  "bild": "hlw-insignien/impeccable-timing.webp"
+ },
+ {
+  "name": "Insignie der Zähigkeit",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Max. HP +15 %, der Zustand „Verwundet“ wirkt nicht.",
+  "bild": "hlw-insignien/improved-resilience.webp"
+ },
+ {
+  "name": "Insignie der Wachsamen",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Braucht nur 2 Stunden Schlaf, wird nie im Schlaf überrascht, Nachtwache-Wurf +3.",
+  "bild": "hlw-insignien/insomniac.webp"
+ },
+ {
+  "name": "Insignie des Lebensfunkens",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Deine Heilungen heilen auch Verbündete direkt neben dem Ziel um die Hälfte.",
+  "bild": "hlw-insignien/life-burst.webp"
+ },
+ {
+  "name": "Insignie des enthüllenden Lichts",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf: Unsichtbares wird sichtbar, Corrupted im Licht haben 2 Runden Rüstwert −2.",
+  "bild": "hlw-insignien/light-of-revelation.webp"
+ },
+ {
+  "name": "Insignie der Durchdringung",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Normale Angriffe +1W4 magischer Schaden.",
+  "bild": "hlw-insignien/magic-infused.webp"
+ },
+ {
+  "name": "Insignie der Hydra",
+  "rank": "A",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Einmal pro Kampf eine Wasserhydra für 3 Runden (3 Köpfe, je 1W6).",
+  "bild": "hlw-insignien/manatide-hydra.webp"
+ },
+ {
+  "name": "Insignie der kleinen Meisterschaft",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Tier-1-Skills: Cooldown −1 (mindestens 1) und +1 Schaden.",
+  "bild": "hlw-insignien/minor-magic-mastery.webp"
+ },
+ {
+  "name": "Insignie der flinken Finger",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Heimlichkeit +3, Schlösser und Taschendiebstahl in halber Zeit.",
+  "bild": "hlw-insignien/nimble-fingers.webp"
+ },
+ {
+  "name": "Insignie der Naturverbundenheit",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Naturkunde +3, Tiere greifen nicht von sich aus an.",
+  "bild": "hlw-insignien/one-with-nature.webp"
+ },
+ {
+  "name": "Insignie der Beständigkeit",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Effekte deiner Skills (Stärkungen, Zustände) halten 1 Runde länger.",
+  "bild": "hlw-insignien/perpetuality.webp"
+ },
+ {
+  "name": "Insignie des Blütensturms",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf: Blütensturm auf 3×3 Feldern, 2W6 Schaden an Gegnern, Verbündete heilen 1W6.",
+  "bild": "hlw-insignien/petal-storm.webp"
+ },
+ {
+  "name": "Insignie des Prismenhagels",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Magie-Skills mit Cooldown 3+ feuern zusätzlich 3 Lichtgeschosse (je 1W4).",
+  "bild": "hlw-insignien/prismatic-barrage.webp"
+ },
+ {
+  "name": "Insignie des Geistimpulses",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf: Gegner im Umkreis von 2 Feldern Willenskraft 20, sonst betäubt.",
+  "bild": "hlw-insignien/psi-pulse.webp"
+ },
+ {
+  "name": "Insignie des Gedankenlesens",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Einmal pro Sitzung die Absicht eines NPC erfahren.",
+  "bild": "hlw-insignien/psionic-intuition.webp"
+ },
+ {
+  "name": "Insignie des Strahlens",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Licht- und heiliger Schaden +2, gegen Corrupted +4.",
+  "bild": "hlw-insignien/radiant.webp"
+ },
+ {
+  "name": "Insignie der Umlenkung",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf als Reaktion: Ein Fernkampf- oder Magieangriff gegen dich trifft ein anderes Ziel in 3 Feldern.",
+  "bild": "hlw-insignien/redirect.webp"
+ },
+ {
+  "name": "Insignie der Gesundheit",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Immun gegen Krankheiten, Erholung durch Schlaf doppelt.",
+  "bild": "hlw-insignien/resilent-health.webp"
+ },
+ {
+  "name": "Insignie der Erneuerung",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Am Rundenende 1 + ⌊Level ÷ 5⌋ HP regenerieren.",
+  "bild": "hlw-insignien/revitalization.webp"
+ },
+ {
+  "name": "Insignie der Welle",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Wenn du Schaden verursachst, erleiden Gegner direkt neben dem Ziel 1W4.",
+  "bild": "hlw-insignien/ripple.webp"
+ },
+ {
+  "name": "Insignie der Heilrune",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Einmal pro Rast eine Heilrune: Wer dort schläft, erholt sich doppelt.",
+  "bild": "hlw-insignien/rune-of-healing.webp"
+ },
+ {
+  "name": "Insignie des Opfers",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf den Schaden eines Verbündeten auf dich nehmen; dein nächster Angriff +1W8.",
+  "bild": "hlw-insignien/sacrifice.webp"
+ },
+ {
+  "name": "Insignie des Traumwandlers",
+  "rank": "B",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Einmal pro Nacht eine Traumbotschaft an eine bekannte Person senden.",
+  "bild": "hlw-insignien/sonnambulism.webp"
+ },
+ {
+  "name": "Insignie der Lebensbrücke",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "10 % des verursachten Schadens heilen dich.",
+  "bild": "hlw-insignien/soul-leech.webp"
+ },
+ {
+  "name": "Insignie des Zauberbiegers",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Einmal pro Kampf Reichweite oder Fläche eines Zaubers verdoppeln.",
+  "bild": "hlw-insignien/spell-bender.webp"
+ },
+ {
+  "name": "Insignie des Zauberflusses",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Wenn ein Cooldown endet, macht der nächste Skill +1W6.",
+  "bild": "hlw-insignien/spell-flux.webp"
+ },
+ {
+  "name": "Insignie der Sporen",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Getötete Gegner zerplatzen in Sporen: Gegner daneben vergiftet (1W4, 2 Runden).",
+  "bild": "hlw-insignien/spore-blast.webp"
+ },
+ {
+  "name": "Insignie des Rufers",
+  "rank": "B",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Beschwörungen halten 2 Runden länger, eine Beschwörung mehr gleichzeitig.",
+  "bild": "hlw-insignien/summoner.webp"
+ },
+ {
+  "name": "Insignie der Wurfmeister",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Wurfwaffen kehren zurück, Genauigkeit +2, Reichweite +2.",
+  "bild": "hlw-insignien/throwing-expert.webp"
+ },
+ {
+  "name": "Insignie der Besänftigung",
+  "rank": "C",
+  "kategorie": "Gelb – Persönlich",
+  "effekt": "Einmal pro Kampf wird ein Tier oder korrumpiertes Tier friedlich (Willenskraft 20).",
+  "bild": "hlw-insignien/tranquilizer.webp"
+ },
+ {
+  "name": "Insignie des kleinen Begleiters",
+  "rank": "C",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Ein winziger Geist-Begleiter: einmal pro Kampf +2 auf einen Wurf eines Verbündeten, Scharfsinnigkeit +2 beim Suchen.",
+  "bild": "hlw-insignien/twinklewhisker.webp"
+ },
+ {
+  "name": "Insignie des Schattendoppelgängers",
+  "rank": "B",
+  "kategorie": "Rot – Beschwörung & Begleiter",
+  "effekt": "Einmal pro Kampf ein Schattenklon für 2 Runden (dein normaler Angriff, 1 HP).",
+  "bild": "hlw-insignien/umbral-clone.webp"
+ },
+ {
+  "name": "Insignie der Gedankenmauer",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Immun gegen Verängstigt und Verwirrt, Magieresistenz +2.",
+  "bild": "hlw-insignien/wall-of-mind.webp"
+ },
+ {
+  "name": "Insignie der Wasserklinge",
+  "rank": "C",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Nahkampfwaffe +1W6 Wasserschaden, ignoriert Blockwert.",
+  "bild": "hlw-insignien/water-blade.webp"
+ },
+ {
+  "name": "Insignie der Wandlungskunst",
+  "rank": "B",
+  "kategorie": "Grün – Kampf & Magie",
+  "effekt": "Verwandlungen halten doppelt so lange, beim Verwandeln 1W8 Heilung.",
+  "bild": "hlw-insignien/wild-shape-adept.webp"
+ }
+]

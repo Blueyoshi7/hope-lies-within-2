@@ -5,7 +5,7 @@ Magier;E;Basic;INT;Blau (Intelligenz);#1565C0;;;;5;;;;;;;INT 5;4;5;Magisches Ges
 Gelehrter;E;Basic;WIS;Türkis (Weisheit);#00838F;;;;;5;;;;;;WIS 5;4;5;„Das hab ich schon mal gesehen“;Einmal pro Kampf: Der GM nennt eine Schwäche, Resistenz oder Besonderheit eines Gegners.;Support;Klassenbaum
 Schurke;E;Basic;DEX;Violett (Geschicklichkeit);#7B1FA2;;5;;;;;;;;;DEX 5;4;5;Klingenhand;Bei Angriffen mit einem Dolch +1 Schaden.;Nahkampf;Klassenbaum
 Gauner;E;Basic;SPE;Gelb (Geschwindigkeit);#F9A825;;;;;;;;5;;;SPE 5;4;5;Flinke Füße;Aktionsgeschwindigkeit +1 (Initiative +1).;Support;Klassenbaum
-Schütze;E;Basic;AGL;Grün (Beweglichkeit);#2E7D32;;;;;;;5;;;;AGL 5;4;5;„Trickshot“;Einmal pro Kampf: Ein Fernkampfangriff prallt ab und trifft ein zweites Ziel innerhalb von 3 Feldern mit vollem Schaden.;Fernkampf;Klassenbaum
+Schütze;E;Basic;AGL;Grün (Beweglichkeit);#2E7D32;;;;;;;5;;;;AGL 5;4;5;„Trickshot“;Einmal pro Kampf: ein Fernkampfangriff auf zwei verschiedene Ziele in Reichweite der Waffe, jedes mit eigenem Angriffswurf und vollem Waffenschaden. Nur einsetzbar, wenn zwei Ziele in Reichweite stehen.;Fernkampf;Klassenbaum
 Tierbändiger;E;Basic;SOU;Magenta (Seelenkraft);#AD1457;;;;;;;;;;5;SOU 5;4;5;Ruhige Hand;Bei aktiven Fernkampfangriffen +1 Schaden.;Fernkampf;Klassenbaum
 Pfarrer;E;Basic;CHA;Orange (Charisma);#EF6C00;;;;;;5;;;;;CHA 5;4;5;Wortgewandt;World-Skill Wortgewandtheit +1.;Support;Klassenbaum
 Priester;E;Basic;EDU;Grau (Bildung);#546E7A;;;;;;;;;5;;EDU 5;4;5;„Bildung einprügeln“;"Einmal pro Kampf: Schlag mit einem schweren Buch, 1W4 Schaden; das Ziel hat −2 auf seinen nächsten Wurf.";Support;Klassenbaum

@@ -3,7 +3,7 @@ import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
-import { WORLD_SKILLS, ATTRS, PLAETZE, klasseVorschlag, verteiltePunkte, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
+import { textBoni, WORLD_SKILLS, ATTRS, PLAETZE, klasseVorschlag, verteiltePunkte, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
 const HLW = {};
 
 HLW.attributeLabels = {
@@ -42,6 +42,7 @@ HLW.insigniaSlotDefaults = {
   slot3: { image: "", name: "", description: "" }
 };
 HLW.klassen = [];
+HLW.insignien = [];
 HLW.pendingSkill = null;
 HLW.rangeGraphics = null;
 HLW.movementGraphics = null;
@@ -147,7 +148,9 @@ function prepareInsigniaSlots(system) {
     prepared[key] = {
       image: current[key]?.image ?? defaults.image,
       name: current[key]?.name ?? defaults.name,
-      description: current[key]?.description ?? defaults.description
+      description: current[key]?.description ?? defaults.description,
+      rank: current[key]?.rank ?? "",
+      kategorie: current[key]?.kategorie ?? ""
     };
   }
 
@@ -267,6 +270,10 @@ function meisterBonus(item) {
 }
 
 function skillReichweite(item) {
+  if (boolValue(item.system?.waffenSchaden) && !parseRange(item.system?.range)) {
+    const waffe = item.parent?.items?.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped));
+    if (waffe) return waffe.system?.range;
+  }
   const r = parseRange(item.system?.range);
   const plus = numberValue(meisterBonus(item).reichweite);
   return r && plus ? r + plus : item.system?.range;
@@ -788,7 +795,17 @@ export class HopeLiesWithinActor extends Actor {
   }
 
   // Klassen-Skills der gewaehlten Klasse geben. Skills frueherer Klassen bleiben (Klassenregeln).
+  // Es gibt immer nur die Klassen-Skills der aktuellen Klasse: Skills früherer Klassen fallen beim Wechsel weg.
+  async entferneFremdeKlassenSkills(klassenName) {
+    const weg = this.items.filter((i) => i.type === "classSkill" && i.system?.className !== klassenName);
+    if (!weg.length) return [];
+    await this.deleteEmbeddedDocuments("Item", weg.map((i) => i.id));
+    return weg.map((i) => i.name);
+  }
+
   async erhalteKlassenSkills(klassenName) {
+    const entfernt = await this.entferneFremdeKlassenSkills(klassenName || "");
+    if (entfernt.length) ui.notifications?.info(`${this.name} verliert: ${entfernt.join(", ")}`);
     if (!klassenName) return [];
     const klasse = HLW.klassen.find((k) => k.name === klassenName);
     const vorhanden = new Set(this.items.filter((i) => i.type === "classSkill").map((i) => i.name));
@@ -811,7 +828,7 @@ export class HopeLiesWithinActor extends Actor {
         name: klasse.skill,
         type: "classSkill",
         img: klasse.img || "icons/magic/symbols/question-stone-yellow.webp",
-        system: { className: klasse.name, skillType: klasse.role, rank: rang, activation: aktiv ? "active" : "passive", effect: klasse.effect, description: `${klasse.name} (${klasse.category}): ${klasse.effect}`, price: "nicht verkäuflich" }
+        system: { className: klasse.name, skillType: klasse.role, rank: rang, activation: aktiv ? "active" : "passive", effect: klasse.effect, description: `${klasse.name} (${klasse.category}): ${klasse.effect}`, price: "nicht verkäuflich", ...(klasse.skillDaten ?? {}) }
       }];
     }
     if (klasse?.zaehmen && !this.items.some((i) => i.type === "classSkill" && i.system?.skillType === "Zähmen" && i.system?.className === klasse.name)) {
@@ -1128,8 +1145,30 @@ export class HopeLiesWithinActor extends Actor {
     }
 
     const damageFormula = normalizeFormula(item.system?.damage);
-    const hasDamage = isValidFormula(damageFormula);
+    const ausgeruestet = this.items.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped));
+    const hasDamage = isValidFormula(damageFormula) || (boolValue(item.system?.waffenSchaden) && isValidFormula(normalizeFormula(ausgeruestet?.system?.damage)));
     const sourceToken = getSourceTokenForActor(this);
+
+    // Mehrere Ziele (z. B. Trickshot): nur, wenn genug Ziele in Reichweite stehen; jedes Ziel bekommt einen eigenen Angriff.
+    const zielAnzahl = Math.max(numberValue(item.system?.ziele), 1);
+    if (hasDamage && zielAnzahl > 1) {
+      if (!sourceToken) return ui.notifications?.warn("Bitte zuerst den handelnden Token auf der Szene auswählen.");
+      if (boolValue(item.system?.waffenSchaden) && !ausgeruestet) return ui.notifications?.warn(`${item.name} braucht eine ausgerüstete Waffe.`);
+      const rangeLimit = getEffectiveRangeInTiles(skillReichweite(item));
+      const eigene = sourceToken.document?.disposition;
+      const imBereich = getTokensInRange(sourceToken, rangeLimit).filter((e) => e.token.document?.disposition !== eigene && !e.token.document?.hidden);
+      if (imBereich.length < zielAnzahl) {
+        return ui.notifications?.warn(`${item.name} geht nur, wenn ${zielAnzahl} Ziele in Reichweite (${rangeLimit} Felder) stehen. Gerade sind es ${imBereich.length}.`);
+      }
+      const markiert = Array.from(game.user?.targets ?? []).filter((t) => t.id !== sourceToken.id);
+      const gueltig = markiert.filter((t) => imBereich.some((e) => e.token.id === t.id));
+      if (gueltig.length !== zielAnzahl) {
+        drawSkillRange(sourceToken, rangeLimit, item.name, parseRange(skillReichweite(item)));
+        return ui.notifications?.info(`${item.name}: Markiere ${zielAnzahl} verschiedene Ziele in Reichweite (Taste T) und setze den Skill dann noch einmal ein.`);
+      }
+      removeRangeUi();
+      return this.resolveSkillMehrfach(itemId, gueltig);
+    }
 
     if (hasDamage) {
       if (!sourceToken) {
@@ -1151,7 +1190,13 @@ export class HopeLiesWithinActor extends Actor {
     this.resolveSkill(itemId, null);
   }
 
-  async resolveSkill(itemId, targetToken = null) {
+  async resolveSkillMehrfach(itemId, ziele) {
+    for (const [i, ziel] of ziele.entries()) {
+      await this.resolveSkill(itemId, ziel, { ohneKosten: i < ziele.length - 1 });
+    }
+  }
+
+  async resolveSkill(itemId, targetToken = null, { ohneKosten = false } = {}) {
     const item = this.items.get(itemId);
     if (!item || !["playerSkill", "classSkill", "weapon"].includes(item.type)) return;
 
@@ -1175,7 +1220,8 @@ export class HopeLiesWithinActor extends Actor {
     }
 
     const damageFormula = normalizeFormula(item.system?.damage);
-    const hasDamage = isValidFormula(damageFormula);
+    const mitWaffe = this.items.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped));
+    const hasDamage = isValidFormula(damageFormula) || (boolValue(item.system?.waffenSchaden) && isValidFormula(normalizeFormula(mitWaffe?.system?.damage)));
     const healing = isHealingItem(item);
     const sourceToken = getPendingSourceToken(this);
     let result = null;
@@ -1253,7 +1299,7 @@ export class HopeLiesWithinActor extends Actor {
     }
 
     const skillType = escapeHtml(item.system?.skillType || HLW.itemTypeLabels[item.type] || "");
-    const range = escapeHtml(item.system?.range);
+    const range = escapeHtml(skillReichweite(item));
     const damage = escapeHtml(item.system?.damageText || item.system?.damage);
     const effect = escapeHtml(item.system?.effect || item.system?.description);
     let ergebnis = "";
@@ -1279,8 +1325,8 @@ export class HopeLiesWithinActor extends Actor {
           <dl>
             <dt>Art</dt><dd>${skillType || "-"}${isQuickItem(item) ? " · Schnellaktion" : ""}</dd>
             <dt>Reichweite</dt><dd>${range || "-"}</dd>
-            <dt>${result?.healing ? "Heilung" : "Schaden"}</dt><dd>${damage || "-"}${result?.waffe ? ` + ${escapeHtml(result.waffe)}` : ""}</dd>
-            <dt>Cooldown</dt><dd>${maxCooldown || 0} Zug(e)</dd>
+            <dt>${result?.healing ? "Heilung" : "Schaden"}</dt><dd>${result?.waffe ? (damage ? `${damage} + ${escapeHtml(result.waffe)}` : `Waffenschaden (${escapeHtml(result.waffe)})`) : damage || "-"}</dd>
+            <dt>Cooldown</dt><dd>${boolValue(item.system?.einmalProKampf) ? "Einmal pro Kampf" : `${maxCooldown || 0} Zug(e)`}</dd>
             ${ergebnis}
           </dl>
           ${effect ? `<p>${effect}</p>` : ""}
@@ -1288,9 +1334,13 @@ export class HopeLiesWithinActor extends Actor {
       `
     });
 
+    // Bei mehreren Zielen zahlt erst der letzte Angriff Aktion, Abklingzeit und Lernfortschritt
+    if (ohneKosten) return;
+
     // Lernleiste: +1 % pro Einsatz; gemeistert verkürzt sich die Abklingzeit, falls das der Zusatzeffekt ist
     await meisterungPlus(this, item);
-    const abkling = maxCooldown > 0 ? Math.max(maxCooldown - numberValue(meisterBonus(item).abklingzeit), 1) : 0;
+    // „Einmal pro Kampf“: gesperrt bis Kampfende
+    const abkling = boolValue(item.system?.einmalProKampf) && game.combat?.started ? 999 : maxCooldown > 0 ? Math.max(maxCooldown - numberValue(meisterBonus(item).abklingzeit), 1) : 0;
     if (abkling > 0) {
       await item.update({ "system.cooldown.value": abkling });
     }
@@ -1327,7 +1377,10 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.bogen = this._prepareItems(context.actor.items);
     context.worldSkills = this._prepareWorldSkills(context.system);
     context.activeInsignia = getActiveInsignia(context.system);
-    context.insigniaSlots = getInsigniaSlotList(context.system).map((slot, index) => ({ ...slot, nr: index + 1 }));
+    context.insigniaSlots = getInsigniaSlotList(context.system).map((slot, index) => {
+      const b = textBoni(slot.description);
+      return { ...slot, nr: index + 1, farbe: /gelb/i.test(slot.kategorie) ? "gelb" : /grün/i.test(slot.kategorie) ? "gruen" : /rot/i.test(slot.kategorie) ? "rot" : "", wirkt: Object.keys(b).length ? boniText(b) : "" };
+    });
     context.profileImage = context.actor.img;
     context.tokenImage = context.actor.prototypeToken?.texture?.src || context.actor.img;
     context.isGM = game.user?.isGM;
@@ -1521,6 +1574,18 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       const vorschlag = this.actor.system.derived?.suggestedClassName ?? "";
       await this.actor.update({ "system.progression.class": wert || vorschlag, "system.progression.classAuto": !wert });
     });
+    // Insignien (GM): aus der Liste wählen oder leeren
+    html.find("[data-insignie-waehlen]").on("click", (event) => {
+      event.preventDefault();
+      if (game.user?.isGM) this._insignieWaehlen(event.currentTarget.dataset.insignieWaehlen);
+    });
+    html.find("[data-insignie-leeren]").on("click", async (event) => {
+      event.preventDefault();
+      if (!game.user?.isGM) return;
+      const key = event.currentTarget.dataset.insignieLeeren;
+      await this.actor.update({ [`system.insigniaSlots.${key}`]: { image: "", name: "", description: "", rank: "", kategorie: "" } });
+    });
+
     html.find("[data-gefaehrte]").on("click contextmenu", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -1587,6 +1652,40 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     await actor.update(updates);
     if (automatisch && vorschlag && vorschlag.name !== alte) klasseEnthuellen(actor, vorschlag, alte);
     else ui.notifications?.info(automatisch && !vorschlag ? "Punkte gespeichert. Eine Klasse gibt es ab 10 verteilten Punkten." : "Punkte gespeichert.");
+  }
+
+  async _insignieWaehlen(slotKey) {
+    const liste = HLW.insignien ?? [];
+    const zeilen = liste.map((ins, i) => {
+      const b = textBoni(ins.effekt);
+      const farbe = /gelb/i.test(ins.kategorie) ? "gelb" : /grün/i.test(ins.kategorie) ? "gruen" : /rot/i.test(ins.kategorie) ? "rot" : "";
+      return `<li data-nr="${i}" data-suche="${escapeHtml(`${ins.name} ${ins.effekt} ${ins.kategorie} ${ins.rank}`.toLowerCase())}">
+        <img src="${escapeHtml(ins.bild)}" onerror="this.src='icons/svg/aura.svg'" alt="">
+        <span><strong>${escapeHtml(ins.name)}</strong> <em class="hi-${farbe}">${escapeHtml(ins.kategorie)} · ${escapeHtml(ins.rank)}</em><small>${escapeHtml(ins.effekt)}</small>${Object.keys(b).length ? `<b>wirkt automatisch: ${escapeHtml(boniText(b))}</b>` : ""}</span>
+      </li>`;
+    }).join("");
+    const fenster = new foundry.applications.api.DialogV2({
+      window: { title: `Insignie für Slot ${slotKey.replace("slot", "")}` },
+      classes: ["hope-lies-within", "hlw-detail-dialog", "hlw-insignien-wahl"],
+      content: `<input type="search" name="suche" placeholder="Suchen (Name, Wirkung, Farbe, Rang) …"><ol class="hi-liste">${zeilen}</ol>`,
+      buttons: [{ action: "abbrechen", label: "Abbrechen" }]
+    });
+    await fenster.render({ force: true });
+    fenster.setPosition({ width: 620, height: 640 });
+    const root = fenster.element;
+    const suche = root.querySelector("input[name='suche']");
+    suche?.addEventListener("input", () => {
+      const worte = suche.value.toLowerCase().split(/\s+/).filter(Boolean);
+      for (const li of root.querySelectorAll("li[data-suche]")) li.hidden = !worte.every((w) => li.dataset.suche.includes(w));
+    });
+    suche?.focus();
+    root.querySelector(".hi-liste")?.addEventListener("click", async (event) => {
+      const li = event.target.closest("li[data-nr]");
+      if (!li) return;
+      const ins = liste[Number(li.dataset.nr)];
+      await this.actor.update({ [`system.insigniaSlots.${slotKey}`]: { image: ins.bild, name: ins.name, description: ins.effekt, rank: ins.rank, kategorie: ins.kategorie } });
+      fenster.close();
+    });
   }
 
   _zeigeGefaehrteMenue(element) {
@@ -2182,6 +2281,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "bestiariumStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillOrbsGesetzt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "freieWahlGesetzt", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "einKlassenSkill", { scope: "world", config: false, type: Boolean, default: false });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -2214,6 +2314,7 @@ Hooks.once("ready", async () => {
   // Klassenliste fuer die automatische Klassenzuteilung (Lvl-Saetze aus Kanon 2.0)
   try {
     HLW.klassen = await (await fetch("systems/hope-lies-within-2/data/klassen.json")).json();
+    HLW.insignien = await (await fetch("systems/hope-lies-within-2/data/insignien.json")).json();
     for (const actor of game.actors ?? []) actor.prepareData();
   } catch (error) {
     console.warn("Hope lies Within 2.0 | Klassenliste nicht geladen", error);
@@ -2260,6 +2361,22 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "freieWahlGesetzt")) {
     await freieWahlNachziehen();
     await game.settings.set("hope-lies-within-2", "freieWahlGesetzt", true);
+  }
+  // Nur die Klassen-Skills der aktuellen Klasse behalten (einmalig für alte Charaktere).
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "einKlassenSkill")) {
+    for (const actor of game.actors.filter((a) => a.type === "character" && a.system?.progression?.class)) await actor.entferneFremdeKlassenSkills(actor.system.progression.class);
+    await game.settings.set("hope-lies-within-2", "einKlassenSkill", true);
+  }
+  // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
+  if (game.user?.isGM) {
+    for (const actor of game.actors.filter((a) => a.type === "character")) {
+      const u = actor.items.filter((i) => i.type === "classSkill").map((i) => {
+        const k = HLW.klassen.find((kl) => kl.skill === i.name && kl.skillDaten);
+        if (!k || numberValue(i.system?.ziele) === numberValue(k.skillDaten.ziele)) return null;
+        return { _id: i.id, "system.effect": k.effect, "system.description": `${k.name} (${k.category}): ${k.effect}`, ...Object.fromEntries(Object.entries(k.skillDaten).map(([key, v]) => [`system.${key}`, v])) };
+      }).filter(Boolean);
+      if (u.length) await actor.updateEmbeddedDocuments("Item", u);
+    }
   }
   // Tier-Klassen bekommen den Klassen-Skill „Zähmen“.
   if (game.user?.isGM) {
@@ -2493,11 +2610,13 @@ Hooks.on("updateActor", (actor, changes, options, userId) => {
   actor.erhalteKlassenSkills(foundry.utils.getProperty(changes, "system.progression.class"));
 });
 
-// Passive Skills wachsen um 1 % pro Kampf, in dem sie wirken
+// Passive Skills wachsen um 1 % pro Kampf, in dem sie wirken; „einmal pro Kampf“ wird wieder frei
 Hooks.on("deleteCombat", async (combat) => {
   if (!game.user?.isGM || game.users.activeGM?.id !== game.user.id) return;
   const gesehen = new Set();
   for (const c of combat.combatants) {
+    const einmal = c.actor?.items?.filter((i) => boolValue(i.system?.einmalProKampf) && numberValue(i.system?.cooldown?.value) > 0) ?? [];
+    if (einmal.length) await c.actor.updateEmbeddedDocuments("Item", einmal.map((i) => ({ _id: i.id, "system.cooldown.value": 0 })));
     const actor = c.actor?.isToken ? game.actors.get(c.actor.id) : c.actor;
     if (!actor || actor.type !== "character" || gesehen.has(actor.id)) continue;
     gesehen.add(actor.id);

@@ -97,6 +97,7 @@ export function klasseVorschlag(system, klassen) {
 }
 
 export const BONUS_LABELS = {
+  hpProzent: "% Max-HP", inventory: "Inventar",
   rw: "Rüstwert", mr: "Magieresistenz", acc: "Genauigkeit", damageBonus: "Schaden", magicBonus: "Magieschaden", block: "Blockwert",
   movement: "Bewegung", initiative: "Initiative", hp: "HP", hpPerLevel: "HP pro Level",
   ...Object.fromEntries(Object.entries(WORLD_SKILLS).map(([key, ws]) => [key, ws.label]))
@@ -114,6 +115,39 @@ export const PASSIV_BONI = {
   "classSkill:Naturinstinkt": { movement: 1, naturkunde: 2 },
   "Spurensucher-Instinkt": { movement: 1, naturkunde: 5 }
 };
+
+// Boni aus einem Text lesen, z. B. „Naturkunde +3“, „Initiative +5“, „Erfindergeist und Archäologie +2“, „Max. HP +15 %“.
+// Teilsätze mit Bedingungen („einmal pro …“, „beim …“, „gegen …“, „wenn …“) zählen nicht: die gelten nur am Tisch.
+const TEXT_SCHLUESSEL = {
+  ...Object.fromEntries(Object.entries(WORLD_SKILLS).map(([key, ws]) => [ws.label.toLowerCase(), key])),
+  "rüstwert": "rw", "magieresistenz": "mr", "genauigkeit": "acc", "bewegung": "movement", "bewegungsweite": "movement", "laufweite": "movement",
+  "initiative": "initiative", "blockwert": "block", "hp": "hp", "max. hp": "hp", "max hp": "hp", "inventar": "inventory", "inventarplätze": "inventory"
+};
+const BEDINGUNG = /einmal|pro (kampf|kapitel|sitzung|rast|runde|nacht)|\bbeim\b|\bgegen\b|\bwenn\b|\bnach\b|\bfür \d|tiergestalt|riesig|in gestalt/i;
+
+export function textBoni(text) {
+  const boni = {};
+  for (const satz of String(text ?? "").split(/\.\s|;\s*|\.$/)) {
+    // „Einmal pro Kapitel …: +20 HP, Bewegung +2“: alles nach einer bedingten Einleitung gilt nur am Tisch
+    const doppelpunkt = satz.indexOf(":");
+    if (doppelpunkt >= 0 && BEDINGUNG.test(satz.slice(0, doppelpunkt))) continue;
+    const rest = doppelpunkt >= 0 ? satz.slice(doppelpunkt + 1) : satz;
+    for (const teil of rest.split(",")) {
+      if (BEDINGUNG.test(teil)) continue;
+      const muster = /((?:max\.?\s*)?[A-Za-zÄÖÜäöüß]+(?:(?:\s+und\s+|\s*\/\s*)[A-Za-zÄÖÜäöüß]+)*)\s*\+\s*(\d+)\s*(%)?/g;
+      let m;
+      while ((m = muster.exec(teil))) {
+        const wert = Number(m[2]);
+        for (const name of m[1].split(/\s+und\s+|\s*\/\s*/)) {
+          const n = name.trim().toLowerCase();
+          const key = m[3] ? (/hp/.test(n) ? "hpProzent" : null) : TEXT_SCHLUESSEL[n];
+          if (key) boni[key] = (boni[key] ?? 0) + wert;
+        }
+      }
+    }
+  }
+  return boni;
+}
 
 export function istPassiv(item) {
   const s = item?.system ?? {};
@@ -203,10 +237,15 @@ export function berechneWerte(system, items, klassen) {
   const erlaubt = verteiltePunkte(L);
   const klasse = klasseVorschlag(system, klassen);
 
+  // Insignien: Boni aus dem Text der drei Slots
+  const insignien = Object.values(system.insigniaSlots ?? {}).map((slot) => textBoni(slot?.description));
+  for (const ib of insignien) for (const [key, v] of Object.entries(ib)) g[key] = zahl(g[key]) + v;
+  const hpGrund = 20 + 2 * L + 3 * a("con") + g.hp + g.hpPerLevel * L + zahl(b.hp);
+
   const derived = {
     suggestedClassName: klasse?.name ?? "",
     level: L,
-    hpMax: 20 + 2 * L + 3 * a("con") + g.hp + g.hpPerLevel * L + zahl(b.hp),
+    hpMax: Math.round(hpGrund * (1 + zahl(g.hpProzent) / 100)),
     rw: 8 + Math.floor((a("agl") + a("dex")) / 4) + g.rw + zahl(b.rw) + abwehr,
     mr: 8 + Math.floor((a("wis") + a("sou")) / 4) + g.mr + zahl(b.mr) + abwehr,
     block: Math.min(g.block + zahl(b.block), BLOCK_MAX),
@@ -215,7 +254,7 @@ export function berechneWerte(system, items, klassen) {
     magicBonus: g.magicBonus,
     movement: 3 + Math.floor(a("spe") / 6) + g.movement + zahl(b.movement),
     initiative: Math.floor(a("spe") / 2) + g.initiative + zahl(b.initiative),
-    inventory: 10 + a("str") + zahl(b.inventory),
+    inventory: 10 + a("str") + zahl(b.inventory) + zahl(g.inventory),
     points: { used: verteilt, allowed: erlaubt, free: erlaubt - verteilt },
     expNext: expFuerNaechstesLevel(L),
     corruption: korruptionsStufe(system.resources?.corruption?.value),

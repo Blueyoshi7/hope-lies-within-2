@@ -339,21 +339,29 @@
 
     {{#unless isMonster}}
       <div class="tab" data-group="primary" data-tab="insignia">
-        <p class="hb-hinweis">Drei Slots, alle drei wirken. Insignien gibt der GM für Taten. Weitere Insignien ruhen und lassen sich bei einer langen Rast tauschen.</p>
+        <p class="hb-hinweis">Drei Slots, alle drei wirken. Insignien gibt der GM für Taten. Weitere Insignien ruhen und lassen sich bei einer langen Rast tauschen. Feste Werte im Text (z. B. „Naturkunde +3“, „Initiative +5“) rechnet das System selbst ein.</p>
         <div class="hb-insignien">
           {{#each insigniaSlots as |slot|}}
-            <section class="hb-insignie {{#if slot.name}}is-voll{{else}}is-leer{{/if}}">
+            <section class="hb-insignie {{#if slot.name}}is-voll{{else}}is-leer{{/if}} {{#if slot.farbe}}hi-rand-{{slot.farbe}}{{/if}}">
               <div class="hb-insbild">
                 {{#if slot.image}}<img src="{{slot.image}}" alt="" {{#if ../isGM}}data-edit="system.insigniaSlots.{{slot.key}}.image" title="Bild ändern"{{/if}} />
                 {{else}}{{#if ../isGM}}<img class="is-platzhalter" src="icons/svg/aura.svg" data-edit="system.insigniaSlots.{{slot.key}}.image" title="Bild wählen" alt="" />{{else}}<span class="hb-insleer">frei</span>{{/if}}{{/if}}
               </div>
-              <span class="hb-slotnr">Slot {{slot.nr}}</span>
+              <span class="hb-slotnr">Slot {{slot.nr}}{{#if slot.rank}} · Rang {{slot.rank}}{{/if}}</span>
               {{#if ../isGM}}
+                <div class="hb-inswahl">
+                  <button type="button" data-insignie-waehlen="{{slot.key}}"><i class="fa-solid fa-list"></i> Aus Liste wählen</button>
+                  {{#if slot.name}}<button type="button" data-insignie-leeren="{{slot.key}}" title="Slot leeren"><i class="fa-solid fa-xmark"></i></button>{{/if}}
+                </div>
                 <input class="hb-insname" name="system.insigniaSlots.{{slot.key}}.name" type="text" value="{{slot.name}}" placeholder="Name der Insignie" />
-                <textarea name="system.insigniaSlots.{{slot.key}}.description" placeholder="Wirkung">{{slot.description}}</textarea>
+                <textarea name="system.insigniaSlots.{{slot.key}}.description" placeholder="Wirkung, z. B. „Naturkunde +2“ – Zahlen wie diese wirken automatisch">{{slot.description}}</textarea>
               {{else}}
-                <h4>{{#if slot.name}}{{slot.name}}{{else}}Noch keine Insignie{{/if}}</h4>
+                <h4>{{#if slot.name}}{{slot.name}}{{else if slot.description}}Insignie{{else}}Noch keine Insignie{{/if}}</h4>
                 <p>{{slot.description}}</p>
+              {{/if}}
+              {{#if slot.name}}
+                {{#if slot.wirkt}}<span class="hb-tag wirkt" title="Schon in den Werten eingerechnet">wirkt automatisch: {{slot.wirkt}}</span>
+                {{else}}<span class="hb-tag">Wirkung am Tisch</span>{{/if}}
               {{/if}}
             </section>
           {{/each}}

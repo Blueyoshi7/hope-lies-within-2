@@ -399,7 +399,10 @@
           "value": 0,
           "effect": "",
           "bonus": {}
-        }
+        },
+        "ziele": 1,
+        "waffenSchaden": false,
+        "einmalProKampf": false
       },
       "gear": {
         "quantity": 1,
