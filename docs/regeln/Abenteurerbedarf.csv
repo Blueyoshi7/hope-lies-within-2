@@ -1,5 +1,4 @@
 ﻿Name;Rang;Wert (SK);Marktwert;Händler zahlt;Beschreibung;Hinweis
-Rucksack;D;40;40 SK;16 SK;Fasst die normale Ausrüstung einer Person.;
 Schlafsack;E;30;30 SK;12 SK;"Wolle und Leder; für Nächte im Freien.";
 Zelt (2 Personen);D;120;1 GK 20 SK;48 SK;Leinen und Holzstangen.;
 Decke;E;8;8 SK;3 SK;Einfache Wolldecke.;
@@ -32,6 +31,9 @@ Spiegel (klein);D;50;50 SK;20 SK;Poliertes Metall.;
 Dietrich-Set;D;150;1 GK 50 SK;60 SK;Für Schlösser. Der Besitz ist in Städten verdächtig.;
 Kes-Börse;E;5;5 SK;2 SK;Lederbeutel für Münzen.;
 Ersatz-Gildenkarte;D;50;50 SK;20 SK;Bei Verlust in jedem Gildenhaus erhältlich.;
+Rucksack S;D;40;40 SK;16 SK;Kleine Ledertasche mit einer Schnalle.;Belegt die Nebenhand: keine zweite Waffe, kein Schild, kein Gefährte. Dafür ein eigener Rucksack-Tab mit 10 Plätzen zusätzlich zum Inventar. Im Kampf an den Rucksack kommen ist eine Schnellaktion.
+Rucksack M;D;150;1 GK 50 SK;60 SK;Abenteurer-Rucksack aus Segeltuch und Leder, mit Schlafrolle.;Belegt die Nebenhand: keine zweite Waffe, kein Schild, kein Gefährte. Dafür ein eigener Rucksack-Tab mit 20 Plätzen zusätzlich zum Inventar. Im Kampf an den Rucksack kommen ist eine Schnellaktion.
+Rucksack L;C;600;6 GK;2 GK 40 SK;Großer Reiserucksack auf Holzgestell, mit Topf, Seil und Laterne.;Belegt die Nebenhand: keine zweite Waffe, kein Schild, kein Gefährte. Dafür ein eigener Rucksack-Tab mit 30 Plätzen zusätzlich zum Inventar. Im Kampf an den Rucksack kommen ist eine Schnellaktion.
 Holz (Bündel);E;1;1 SK;1 SK;Grundmaterial: Stangen und Scheite.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
 Talg;E;1;1 SK;1 SK;Grundmaterial: Fett für Fackeln, Salben und Kerzen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen
 Stoff (1 Elle);E;2;2 SK;1 SK;Grundmaterial: Leinen.;Neu (2.5): herstellbar, siehe Herstellen und Kochen

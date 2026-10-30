@@ -138,7 +138,7 @@ const SEITEN = [
 <li><b>Treffen:</b> 1W20 + Genauigkeit gegen den Rüstwert des Ziels (bei Magie gegen die Magieresistenz).</li>
 <li>Eine natürliche 20 ist ein kritischer Treffer (doppelte Würfel), eine natürliche 1 geht immer daneben.</li>
 <li><b>Schaden:</b> Skill + Waffe + Hauptwert ÷ 4 + Nebenwert ÷ 8, minus Blockwert des Ziels (mindestens 1). Heilung bekommt denselben Bonus.</li>
-<li>Wer ein Monster besiegt, bekommt seine EXP. Das Level steigt beim nächsten Besuch in der Gilde.</li>
+<li>Wer ein Monster besiegt, bekommt etwas EXP und einen <b>EXP-Kristall</b> ins Inventar. Den könnt ihr verwenden (mehr EXP), einem anderen geben oder bei der Gilde verkaufen. Abyss-Kristalle von korrumpierten Monstern will die Gilde haben. Das Level steigt beim nächsten Besuch in der Gilde.</li>
 </ul>
 <h2>Bei 0 HP</h2>
 <p>Du bist <b>am Boden</b>. Zu Beginn jedes deiner Züge würfelst du 1W20: ab 10 ein Erfolg, darunter ein Fehlschlag. Drei Erfolge: stabil. Drei Fehlschläge: tot. Eine natürliche 20 bringt dich mit 1 HP zurück auf die Beine; Schaden in dieser Zeit zählt als Fehlschlag. Andere stabilisieren dich mit Naturkunde (15) oder einem Heilmittel.</p>`

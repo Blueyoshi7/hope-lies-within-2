@@ -366,7 +366,9 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
 
     const kauftText = [
       handel.ankauf > 0 && handel.kauft.length ? `${handel.kauft.map((k) => WAREN_ARTEN[k] ?? k).join(", ")} für ${handel.ankauf} %` : "",
-      handel.andere > 0 ? `alles andere für ${handel.andere} %` : ""
+      handel.andere > 0 ? `alles andere für ${handel.andere} %` : "",
+      handel.gilde ? "Kristalle für 100 %" : "",
+      handel.schwarzmarkt ? "Abyss-Kristalle für 200 %" : ""
     ].filter(Boolean).join(", ");
 
     let verkauf = "";
@@ -400,6 +402,10 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
         <div class="gs-haendlerzeile">
           <label>zahlt dafür <input type="number" min="0" max="100" step="5" data-hfeld="ankauf" value="${handel.ankauf}"> %</label>
           <label>für alles andere <input type="number" min="0" max="100" step="5" data-hfeld="andere" value="${handel.andere}"> % <small>(0 = kauft er nicht)</small></label>
+        </div>
+        <div class="gs-haendlerzeile">
+          <label class="gs-art"><input type="checkbox" data-hschalter="gilde" ${handel.gilde ? "checked" : ""}> Gilde: kauft Kristalle zum vollen Wert</label>
+          <label class="gs-art"><input type="checkbox" data-hschalter="schwarzmarkt" ${handel.schwarzmarkt ? "checked" : ""}> Schwarzmarkt: Abyss-Kristalle zum doppelten Wert</label>
         </div>
         <p class="gs-hinweis">Spieler kaufen und verkaufen selbst mit den Knöpfen im Fenster; Kes und Gegenstände wandern automatisch. Angekaufte Ware legt der Händler wieder ins Angebot, zum Verkaufspreis. Ein fester Preis im Feld neben der Ware gilt statt Marktwert × %.</p>
       </details>` : "";
@@ -624,6 +630,9 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     root.querySelectorAll("[data-hfeld]").forEach((feld) => feld.addEventListener("change", () => {
       const handel = handelVon(this.actor);
       talkAendern(this.actor, { handel: { ...handel, [feld.dataset.hfeld]: Math.max(Number(feld.value) || 0, 0) } });
+    }));
+    root.querySelectorAll("[data-hschalter]").forEach((feld) => feld.addEventListener("change", () => {
+      talkAendern(this.actor, { handel: { ...handelVon(this.actor), [feld.dataset.hschalter]: feld.checked } });
     }));
     root.querySelectorAll("[data-hart]").forEach((feld) => feld.addEventListener("change", () => {
       const kauft = Array.from(root.querySelectorAll("[data-hart]")).filter((f) => f.checked).map((f) => f.dataset.hart);

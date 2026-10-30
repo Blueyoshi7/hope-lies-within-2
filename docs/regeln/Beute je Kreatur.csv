@@ -1,75 +1,75 @@
-﻿Kreatur;Rang;Rolle;Teile;Wert pro Teil;Fund;Abyss-Stein
-Ameise;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;–
-Augenklumpen;E;Normal;1 × Schleimgel;4 SK;nur Teile;–
-Blasenmücke;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+﻿Kreatur;Rang;Rolle;Teile;Wert pro Teil;Fund;Kristalle
+Ameise;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20 (und 4 auf 1W4)
+Augenklumpen;E;Normal;1 × Schleimgel;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20
+Blasenmücke;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20 (und 4 auf 1W4)
 Blattpieper;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
 Blubberhirschling;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
 Ente;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
 Erdbeermaus;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Fellfliege;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+Fellfliege;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20 (und 4 auf 1W4)
 Flauschling;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Fledhase;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;–
-Funkenkrill;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+Fledhase;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20
+Funkenkrill;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20 (und 4 auf 1W4)
 Glimmkäfer;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Hallrabe;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+Hallrabe;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20
 Herzling;E;Normal;1 × Knochenstaub und Grabtuch;2 SK;Fundwurf;–
 Kleinhorn;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Kuschelschnecke;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+Kuschelschnecke;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20
 Moosling;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
 Nebelohr;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Pilzpelz-Frettchen;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+Pilzpelz-Frettchen;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20
 Pinselhörnchen;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Ratte;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+Ratte;E;Diener;1 pro 4 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20 (und 4 auf 1W4)
 Schnüffelwisch;E;Normal;1 × Geistessenz (in einer Phiole);2 SK;Fundwurf;–
 Streifwiesel;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Tröpfchen;E;Diener;1 pro 4 × Schleimgel;4 SK;nur Teile;–
+Tröpfchen;E;Diener;1 pro 4 × Schleimgel;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20 (und 4 auf 1W4)
 Wüsten-Springmaus;E;Normal;1 × Fell, Leder und Fleisch;2 SK;nur Teile;–
-Zottelziege;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;–
+Zottelziege;E;Normal;1 × Fell, Leder und Fleisch;4 SK;nur Teile;EXP-Kristall D bei 11+ auf 1W20
 Dolmetscheule;D;Normal;1 × Geistessenz (in einer Phiole);7 SK;Fundwurf;–
-Dunkelschleim;D;Normal;1 × Schleimgel;15 SK;nur Teile;–
-Elch;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;–
-Geisterdachs;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;–
-Glutratte;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;–
-Hornwiesel;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;–
-Hydra-Schlüpfling;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;–
-Kammraptor-Jungtier;D;Diener;1 pro 4 × Klauen, Zähne, Schuppen;15 SK;nur Teile;–
-Pilzkatze;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;–
-Riesenratte;D;Elite;2 × Fell, Leder und Fleisch;15 SK;Fundwurf +3;–
-Rußwicht;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;–
-Schlafschleimnatter;D;Normal;1 × Schleimgel;15 SK;nur Teile;–
-Seuchenratte;D;Normal;1 × Knochenstaub und Grabtuch;15 SK;Fundwurf;–
-Speerwicht;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;–
-Wildschwein;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;–
-Winterwelpe;D;Elite;2 × Elementkern (Feuer, Eis, Blitz …);15 SK;Fundwurf +3;–
-Wirrkatze;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;–
-Abyss-Hummel;C;Normal;1 × Kristallhaut;60 SK;nur Teile;15+: Kleiner Stein
-Ameisenkönig;C;Elite;2 × Klauen, Zähne, Schuppen;60 SK;Fundwurf +3;–
-Chimärchen;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;–
-Flickkeiler;C;Elite;2 × Knochenstaub und Grabtuch;60 SK;Fundwurf +3;–
-Kopierkatze;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;–
-Madenschlund;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;–
-Moornixe;C;Normal;1 × Geistessenz (in einer Phiole);60 SK;Fundwurf;–
-Muskelgans;C;Boss;4 × Kristallhaut;60 SK;Boss-Beute;Großer Stein
-Raptor;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;–
-Schattenwolf;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;–
-Schleimgans;C;Elite;2 × Schleimgel;60 SK;Fundwurf +3;–
-Stachelglut-Läufer;C;Elite;2 × Kristallhaut;60 SK;Fundwurf +3;Mittlerer Stein
-Zaubersalamander;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;–
-Allseher;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;–
-Arturu, der Schattenhirsch;B;Elite;2 × Kristallhaut;2 GK 50 SK;Fundwurf +3;Mittlerer Stein
-Knochenhirsch;B;Elite;2 × Kristallhaut;2 GK 50 SK;Fundwurf +3;Mittlerer Stein
-Kristallspinne;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;–
-Moosschlund;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;–
-Psilotus;B;Normal;1 × Geistessenz (in einer Phiole);2 GK 50 SK;Fundwurf;–
-Quellhirsch;B;Elite;2 × Geistessenz (in einer Phiole);2 GK 50 SK;Fundwurf +3;–
-Sternenschädel;B;Normal;1 × Leerenstaub;2 GK 50 SK;Fundwurf;Mittlerer Stein
-Sturmhaar-Geist;B;Normal;1 × Geistessenz (in einer Phiole);2 GK 50 SK;Fundwurf;–
-Tiefenaal;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;–
-Delirium-Dschinn;A;Boss;4 × Elementkern (Feuer, Eis, Blitz …);10 GK;Boss-Beute;–
-Gletscherhüne;A;Elite;2 × Elementkern (Feuer, Eis, Blitz …);10 GK;Fundwurf +3;–
-Leerenrufer;A;Elite;2 × Leerenstaub;10 GK;Fundwurf +3;Großer Stein
-Marakah, der Bluthirsch;A;Elite;2 × Kristallhaut;10 GK;Fundwurf +3;Mittlerer Stein
-Sumpfhydra;A;Boss;4 × Klauen, Zähne, Schuppen;10 GK;Boss-Beute;–
-Isfar, der verrottende Hirschkönig;S;Boss;4 × Kristallhaut;40 GK;Boss-Beute;Abyss-Herz
-Leerenpyramide;S;Boss;4 × Leerenstaub;40 GK;Boss-Beute;Abyss-Herz
-Seelensucher;S;Elite;2 × Geistessenz (in einer Phiole);40 GK;Fundwurf +3;–
+Dunkelschleim;D;Normal;1 × Schleimgel;15 SK;nur Teile;EXP-Kristall D
+Elch;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;EXP-Kristall D
+Geisterdachs;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;EXP-Kristall D
+Glutratte;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;EXP-Kristall D
+Hornwiesel;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;EXP-Kristall D
+Hydra-Schlüpfling;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;EXP-Kristall D
+Kammraptor-Jungtier;D;Diener;1 pro 4 × Klauen, Zähne, Schuppen;15 SK;nur Teile;EXP-Kristall D bei 4 auf 1W4
+Pilzkatze;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;EXP-Kristall D
+Riesenratte;D;Elite;2 × Fell, Leder und Fleisch;15 SK;Fundwurf +3;2 × EXP-Kristall D
+Rußwicht;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;EXP-Kristall D
+Schlafschleimnatter;D;Normal;1 × Schleimgel;15 SK;nur Teile;EXP-Kristall D
+Seuchenratte;D;Normal;1 × Knochenstaub und Grabtuch;15 SK;Fundwurf;EXP-Kristall D
+Speerwicht;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;EXP-Kristall D
+Wildschwein;D;Normal;1 × Fell, Leder und Fleisch;15 SK;nur Teile;EXP-Kristall D
+Winterwelpe;D;Elite;2 × Elementkern (Feuer, Eis, Blitz …);15 SK;Fundwurf +3;2 × EXP-Kristall D
+Wirrkatze;D;Normal;1 × Klauen, Zähne, Schuppen;15 SK;Fundwurf;EXP-Kristall D
+Abyss-Hummel;C;Normal;1 × Kristallhaut;60 SK;nur Teile;Abyss-Kristall C
+Ameisenkönig;C;Elite;2 × Klauen, Zähne, Schuppen;60 SK;Fundwurf +3;2 × EXP-Kristall C
+Chimärchen;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;EXP-Kristall C
+Flickkeiler;C;Elite;2 × Knochenstaub und Grabtuch;60 SK;Fundwurf +3;2 × EXP-Kristall C
+Kopierkatze;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;EXP-Kristall C
+Madenschlund;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;EXP-Kristall C
+Moornixe;C;Normal;1 × Geistessenz (in einer Phiole);60 SK;Fundwurf;EXP-Kristall C
+Muskelgans;C;Boss;4 × Kristallhaut;60 SK;Boss-Beute;4 × Abyss-Kristall B
+Raptor;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;EXP-Kristall C
+Schattenwolf;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;EXP-Kristall C
+Schleimgans;C;Elite;2 × Schleimgel;60 SK;Fundwurf +3;2 × EXP-Kristall C
+Stachelglut-Läufer;C;Elite;2 × Kristallhaut;60 SK;Fundwurf +3;2 × Abyss-Kristall B
+Zaubersalamander;C;Normal;1 × Klauen, Zähne, Schuppen;60 SK;Fundwurf;EXP-Kristall C
+Allseher;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;2 × EXP-Kristall B
+Arturu, der Schattenhirsch;B;Elite;2 × Kristallhaut;2 GK 50 SK;Fundwurf +3;2 × Abyss-Kristall A
+Knochenhirsch;B;Elite;2 × Kristallhaut;2 GK 50 SK;Fundwurf +3;2 × Abyss-Kristall A
+Kristallspinne;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;2 × EXP-Kristall B
+Moosschlund;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;2 × EXP-Kristall B
+Psilotus;B;Normal;1 × Geistessenz (in einer Phiole);2 GK 50 SK;Fundwurf;EXP-Kristall B
+Quellhirsch;B;Elite;2 × Geistessenz (in einer Phiole);2 GK 50 SK;Fundwurf +3;2 × EXP-Kristall B
+Sternenschädel;B;Normal;1 × Leerenstaub;2 GK 50 SK;Fundwurf;Abyss-Kristall S
+Sturmhaar-Geist;B;Normal;1 × Geistessenz (in einer Phiole);2 GK 50 SK;Fundwurf;EXP-Kristall B
+Tiefenaal;B;Elite;2 × Klauen, Zähne, Schuppen;2 GK 50 SK;Fundwurf +3;2 × EXP-Kristall B
+Delirium-Dschinn;A;Boss;4 × Elementkern (Feuer, Eis, Blitz …);10 GK;Boss-Beute;4 × EXP-Kristall A
+Gletscherhüne;A;Elite;2 × Elementkern (Feuer, Eis, Blitz …);10 GK;Fundwurf +3;2 × EXP-Kristall A
+Leerenrufer;A;Elite;2 × Leerenstaub;10 GK;Fundwurf +3;4 × Abyss-Kristall S
+Marakah, der Bluthirsch;A;Elite;2 × Kristallhaut;10 GK;Fundwurf +3;2 × Abyss-Kristall S
+Sumpfhydra;A;Boss;4 × Klauen, Zähne, Schuppen;10 GK;Boss-Beute;4 × EXP-Kristall A
+Isfar, der verrottende Hirschkönig;S;Boss;4 × Kristallhaut;40 GK;Boss-Beute;8 × Abyss-Kristall S
+Leerenpyramide;S;Boss;4 × Leerenstaub;40 GK;Boss-Beute;8 × Abyss-Kristall S
+Seelensucher;S;Elite;2 × Geistessenz (in einer Phiole);40 GK;Fundwurf +3;2 × EXP-Kristall S

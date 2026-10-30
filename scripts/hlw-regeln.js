@@ -223,6 +223,8 @@ export function ausruestungsPlatz(item) {
     if (/ring/.test(name)) return "ring";
     return "kette";
   }
+  // Rucksack S/M/L belegt die Nebenhand
+  if (item?.type === "equipment" && (/rucksack/.test(slot) || /^rucksack [sml]$/.test(name))) return "nebenhand";
   return null;
 }
 

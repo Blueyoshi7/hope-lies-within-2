@@ -1,11 +1,11 @@
 ﻿Rang;Gruppen-Level;Gildenrang;HP;RW;MR;ACC;Schaden;Initiative;Probenwert;EXP
-E;1–4;F;18;9;9;0;1W6+1;+1;15;5
-D;5–9;E;26;10;10;1;2W6+2;+2;20;10
-C;10–15;D;38;11;11;2;2W8+4;+3;25;20
-B;16–22;C;50;13;12;3;3W8+4;+4;30;35
-A;23–29;B;62;15;14;5;3W10+6;+5;40;60
-S;30–35;A;78;16;16;6;4W10+6;+6;50;100
-SS;36–40;S;98;17;17;7;4W12+7;+7;60;160
+E;1–4;F;18;9;9;0;1W6+1;+1;15;2
+D;5–9;E;26;10;10;1;2W6+2;+2;20;4
+C;10–15;D;38;11;11;2;2W8+4;+3;25;8
+B;16–22;C;50;13;12;3;3W8+4;+4;30;14
+A;23–29;B;62;15;14;5;3W10+6;+5;40;24
+S;30–35;A;78;16;16;6;4W10+6;+6;50;40
+SS;36–40;S;98;17;17;7;4W12+7;+7;60;64
 
 Rolle;HP;Schaden;Werte;Aktionen;EXP;Token
 Diener;× 0,4;× 0,6;wie Rang;1 Aktion;× 0,25;Schwärme, Larven, Beschworene
@@ -37,12 +37,12 @@ Schatten;"In Dunkelheit unsichtbar/getarnt; im Licht −2 ACC."
 Abyss-Aura;"Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel."
 
 Corrupted-Stufe;Aussehen;Änderung;EXP / Beute
-Leicht (Stufe 1);Violette Augen, Unruhe;HP × 1,25, ACC +1, immun gegen Verängstigt;"wie Rang; kleiner Abyss-Stein möglich"
-Schwer (Stufe 2);Kristalle wachsen aus Haut und Fell;HP × 1,5, ACC +1, Schaden +1 Würfel, kritische Treffer +1 Korruption;zählt einen Rang höher
-Vollständig (Stufe 3);Abyss-Form, violetter Nebel, verzerrter Körper;HP × 2, ACC +2, Schaden +1 Würfel, Abyss-Aura, kritische Treffer +1 Korruption, immun gegen Bezaubert;"zählt zwei Ränge höher; immer ein Abyss-Stein"
+Leicht (Stufe 1);Violette Augen, Unruhe;HP × 1,25, ACC +1, immun gegen Verängstigt;"wie Rang; lässt Abyss-Kristalle statt EXP-Kristallen"
+Schwer (Stufe 2);Kristalle wachsen aus Haut und Fell;HP × 1,5, ACC +1, Schaden +1 Würfel, kritische Treffer +1 Korruption;zählt einen Rang höher (EXP und Abyss-Kristall)
+Vollständig (Stufe 3);Abyss-Form, violetter Nebel, verzerrter Körper;HP × 2, ACC +2, Schaden +1 Würfel, Abyss-Aura, kritische Treffer +1 Korruption, immun gegen Bezaubert;zählt zwei Ränge höher (EXP und Abyss-Kristall)
 Corrupted;Jedes Tier und jeder Mensch kann Corrupted werden. Man nimmt die normalen Werte und legt eine Stufe darüber.
 Schwäche;Heilige Magie und Licht (z. B. Priester, Hüter-Skills) machen +50 % Schaden gegen Corrupted.
-Abyss-Steine;Wachsen in Corrupted. Welcher Stein fällt, regeln die Beutetabellen (Fahrplan 3.2).
+Abyss-Kristalle;Wachsen in Corrupted. Jeder besiegte Corrupted lässt Abyss-Kristalle statt EXP-Kristallen (Tab Kristalle).
 Verhalten;Schmerz, Wahnsinn, Aggression: Corrupted fliehen nie und greifen bevorzugt das nächste Ziel an.
 
 Verlorene;Beschreibung

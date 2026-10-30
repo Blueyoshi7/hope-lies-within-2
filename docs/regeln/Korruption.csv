@@ -10,7 +10,8 @@ Anstieg
 Quelle;Korruption;Hinweis
 Abyss-Nebel im Kampf;+1 pro Runde;Nur wenn die Willenskraft-Probe 15 am Rundenende misslingt (siehe Kampfablauf). Nebeltuch: Probe +5.
 Abyss-Nebel außerhalb des Kampfs;+2 pro Stunde;Nebeltuch halbiert. Im Kern des Abyss +5 pro Stunde.
-Abyss-Stein einsetzen;Splitter +1 · klein +2 · mittel +3 · groß +5 · Abyss-Herz +10 · Kern eines Verlorenen +20;Gilt auch für das Tragen ohne magischen Beutel (pro Tag). Mit Beutel halbiert.
+Abyss-Kristall verwenden oder einsetzen;D +1 · C +2 · B +3 · A +5 · S +10 · Kern eines Verlorenen +20;Normale EXP-Kristalle korrumpieren nicht.
+Abyss-Kristalle tragen;+1 pro Tag und Kristall;Nicht im magischen Beutel (bis zu 10 Kristalle).
 Zorr;+5 pro Prise;Dazu 1 Stunde Rausch: Werte +2, danach Verwundet.
 Abyss-Skill;+2 pro Einsatz;Ha'thohom +4.
 Abyss-Ausrüstung;+2 pro Kampf;Waffen und Rüstung mit Abyss-Namen oder aus Abyssalith, solange sie ausgerüstet sind.
@@ -31,7 +32,7 @@ Meditation (Mönch);−1 pro Kapitel zusätzlich;Klassenfähigkeit.
 
 Schutz
 Gegenstand;Wirkung
-Magischer Beutel;Halbiert die Korruption durch getragene Abyss-Steine.
+Magischer Beutel;Bis zu 10 Abyss-Kristalle darin korrumpieren beim Tragen nicht.
 Harmonium-Kette;Unterdrückt den Wurf auf Tabelle Stufe 1 (die Korruption steigt trotzdem).
 Nebeltuch;Willenskraft-Probe im Abyss-Nebel +5, Nebel-Korruption außerhalb des Kampfs halbiert.
 Insignien;+5 auf die Probe am Kipppunkt und −2 Korruption zu Kapitelbeginn je Insignie.

@@ -22,7 +22,8 @@ Rückzug;Aktion;Bis zum Bewegungswert bewegen, ohne Gelegenheitsangriffe auszul�
 Interagieren;Aktion;Tür aufbrechen, Hebel ziehen, Seil kappen, etwas tragen.
 Instant-Skill;Schnellaktion;Skills mit der Zeitangabe „Instant“ (z. B. Windsprung, Schattentanz).
 Waffe wechseln / Gegenstand ziehen;Schnellaktion;Einmal pro Zug.
-Abyss-Stein einsetzen;Schnellaktion;Der nächste Skill in diesem Zug ignoriert seinen Cooldown oder bekommt +1W6. Kostet den Stein und erhöht die Korruption (Werte im Tab Korruption).
+Abyss-Kristall einsetzen;Schnellaktion;Der nächste Skill in diesem Zug ignoriert seinen Cooldown oder bekommt +1W6. Kostet den Kristall (ohne EXP) und erhöht die Korruption (Werte im Tab Korruption).
+An den Rucksack;Schnellaktion;Einen Gegenstand aus dem Rucksack holen oder hineinlegen (nur mit Rucksack in der Nebenhand).
 Kurz sprechen, rufen, Zeichen geben;frei;"Ein paar Worte; längere Gespräche kosten die Aktion."
 Gelegenheitsangriff;Reaktion;Ein Gegner verlässt deine Nahkampfreichweite ohne Rückzug: ein normaler Angriff.
 Bereitgehaltene Aktion;Reaktion;Löst aus, wenn der angesagte Auslöser eintritt.
@@ -42,7 +43,7 @@ Ressource;Regel
 Aktionen;"1 Aktion, 1 Schnellaktion, 1 Reaktion. Der Gladiator (Vielseitigkeit) hat eine zweite Aktion; ist sie ein Angriff, macht er halben Schaden."
 Cooldowns;Die wichtigste Ressource. Es gibt kein Mana: Starke Skills haben lange Cooldowns, schwache sind jederzeit nutzbar.
 Lebenspunkte;Manche Skills kosten eigene HP (Blutopfer, Blutiges Omen, Blutroter Fluch). Kosten zahlt man vor dem Wurf.
-Korruption;Abyss-Skills, Abyss-Steine, korrupte Waffen. Jeder Einsatz erhöht die Korruption (Tab Korruption).
+Korruption;Abyss-Skills, Abyss-Kristalle, korrupte Waffen. Jeder Einsatz erhöht die Korruption (Tab Korruption).
 Verbrauchsgegenstände;Pfeile, Verbände, Salben, Bomben, Runen. Was verbraucht ist, ist weg (Magiegeboren: Pfeile entstehen magisch).
 Begrenzte Effekte;Einmal pro Kampf, Sitzung, Tag oder Kapitel, z. B. Insignien, Trickshot, Erste Umarmung.
 

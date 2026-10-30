@@ -422,6 +422,7 @@
         "hp": 0,
         "hpDice": "",
         "weaponClass": "melee",
+        "plaetze": 0,
         "bonuses": {
           "rw": 0,
           "mr": 0,

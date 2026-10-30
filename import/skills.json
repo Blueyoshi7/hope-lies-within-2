@@ -5388,7 +5388,7 @@
    "tier": 7,
    "priceSk": 65000,
    "price": "650 GK",
-   "description": "Entzieht einem Ziel 4W6 HP und gibt sie dir. Stirbt das Ziel, hinterlässt es einen Abyss-Stein seiner Größe. „Seele zu Stein, Stein zu Macht, Macht zu mir.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
+   "description": "Entzieht einem Ziel 4W6 HP und gibt sie dir. Stirbt das Ziel, hinterlässt es einen Abyss-Kristall seines Rangs. „Seele zu Stein, Stein zu Macht, Macht zu mir.“ Ab Korruption 50, +2 Korruption pro Einsatz.",
    "source": "Boss-Drop",
    "quantity": 1,
    "skillType": "Magie",

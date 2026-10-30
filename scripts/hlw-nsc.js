@@ -3,6 +3,7 @@
 // damit sie kämpfen können, falls die Gruppe das Dorf angreift.
 
 import { ATTRS, verteiltePunkte, klasseVorschlag, kes } from "./hlw-regeln.js";
+import { kristallInfo } from "./hlw-kristalle.js";
 
 const SYSTEM_ID = "hope-lies-within-2";
 const SKILL_TYPEN = ["playerSkill", "classSkill"];
@@ -99,6 +100,7 @@ const LINDHAIN_WERTE = {
   "Kessa Dorn": {
     bausteine: [["gruss", "Ah, noch ein Gesicht fürs Fest! Ich bin von der Gilde, keine Angst."], ["gruss", "Na, neugierig auf den Kristall?"], ["abschied", "Wir sehen uns unter der Linde."], ["abschied", "Die Gilde vergisst niemanden, der hilft."]],
     level: 12, schwerpunkt: "kundschaft", kes: 300, waffe: "Eisenschwert", skills: ["Doppelstoß"],
+    handel: { kauft: [], ankauf: 40, andere: 0, verkauf: 100, gilde: true },
     quests: [{ titel: "Die Prüfung am Fest", rang: "F", belohnung: "Ein Platz an einer Schule in Illmaris (Gildenstipendium)", text: "Zum Saatwendefest prüfe ich jedes Kind mit diesem Kristall. Leuchtet er, wartet in Illmaris ein Platz an einer Schule der Gilde. Stell dich einfach in die Reihe unter der Linde." }]
   },
   "Mira Holm": {
@@ -212,6 +214,8 @@ export async function lindhainAusstatten({ alle = false } = {}) {
 //   kauft:   Warenarten, die er ankauft (Standard: die Arten, die er selbst anbietet)
 //   ankauf:  was er für diese Arten zahlt, in % vom Marktwert (Standard 40, wie im Marktsystem)
 //   andere:  was er für alle anderen Waren zahlt (Standard 0 = kauft er nicht)
+//   gilde:   Gilde: kauft EXP- und Abyss-Kristalle zum vollen Wert (Gildenpreis)
+//   schwarzmarkt: kauft Abyss-Kristalle zum doppelten Wert (strafbar)
 // Angekaufte Ware landet in seinem Angebot und wird wieder zum Verkaufspreis angeboten.
 
 export const WAREN_ARTEN = {
@@ -235,6 +239,8 @@ export function handelVon(actor) {
     verkauf: zahlOder(h.verkauf, 100),
     ankauf: zahlOder(h.ankauf, 40),
     andere: zahlOder(h.andere, 0),
+    gilde: h.gilde === true,
+    schwarzmarkt: h.schwarzmarkt === true,
     kauft: Array.isArray(h.kauft) ? h.kauft : eigeneArten
   };
 }
@@ -242,7 +248,7 @@ export function handelVon(actor) {
 // Handelt der NSC überhaupt (hat Waren oder kauft etwas an)?
 export function istHaendler(actor) {
   const h = handelVon(actor);
-  return actor.items.some((i) => istWare(i)) || (h.kauft.length > 0 && h.ankauf > 0) || h.andere > 0;
+  return actor.items.some((i) => istWare(i)) || (h.kauft.length > 0 && h.ankauf > 0) || h.andere > 0 || h.gilde || h.schwarzmarkt;
 }
 
 function marktwert(item) {
@@ -259,6 +265,9 @@ export function preisVon(item, nsc = item.parent) {
 
 export function ankaufProzent(item, nsc) {
   const h = handelVon(nsc);
+  const kristall = kristallInfo(item);
+  if (kristall?.abyss && h.schwarzmarkt) return 200;
+  if (kristall && h.gilde) return 100;
   return h.kauft.includes(item.type) ? h.ankauf : h.andere;
 }
 

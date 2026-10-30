@@ -22,7 +22,8 @@ D: Kinder ruinierter Familien / Flüchtlinge;+1 SPE – Wer flieht, lernt zu ren
 
 EXP-Quelle;EXP;Hinweis
 Quest abgeschlossen;Rang F 60 · E 90 · D 150 · C 240 · B 360 · A 540 · S 800 · SS 1.200;Pro Spieler, nach Gildenrang der Quest.
-Gegner besiegt;"Rang E 5 · D 10 · C 20 · B 35 · A 60 · S 100 · SS 160 (Diener × 0,25 · Elite × 3 · Boss × 8 · harmlose Tiere × 0,2; Corrupted ab Stufe 2 zählt höher)";"Bekommt, wer den Gegner besiegt (in Foundry umstellbar: alle Spieler im Kampf). Steht auf jedem Monster im Bestiarium; Foundry verteilt es beim Sieg automatisch. Flucht des Gegners zählt halb."
+Gegner besiegt;"Rang E 2 · D 4 · C 8 · B 14 · A 24 · S 40 · SS 64 (Diener × 0,25 · Elite × 3 · Boss × 8 · harmlose Tiere × 0,2; Corrupted ab Stufe 2 zählt höher; mindestens 1)";"Seit 2026-10-30 auf 40 % gesenkt, den Rest halten die EXP-Kristalle. Bekommt, wer den Gegner besiegt (in Foundry umstellbar: alle Spieler im Kampf). Steht auf jedem Monster im Bestiarium; Foundry verteilt es beim Sieg automatisch. Flucht des Gegners zählt halb."
+EXP-Kristall verwenden;D 6 · C 12 · B 20 · A 35 · S 60 · Abyss-Kristall D 9 · C 18 · B 30 · A 50 · S 90 (+ Korruption);Jedes besiegte Monster lässt Kristalle seines Rangs (Normal 1, Elite 2, Boss 4). Verwenden, weitergeben oder verkaufen: die Gruppe entscheidet (Tab Kristalle).
 Boss / Dungeon-Ende;Doppelte Quest-EXP des Dungeon-Rangs;Einmalig pro Dungeon.
 Entdeckung;20 – 100;Neuer Ort, Dungeon-Ebene, Geheimnis, Ahnenrune, Wahrheit über die Welt.
 Große Tat / starkes Rollenspiel;25 – 100;GM-Entscheidung. Auch der Weg zu einer Insignie.

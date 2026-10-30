@@ -1,5 +1,5 @@
 ﻿Regel;Beschreibung
-Drei Arten Beute;1. Teile: was man aus einer Kreatur gewinnt (Fell, Klauen, Essenz). 2. Fund: was eine Kreatur bei sich hat oder in ihrem Lager liegt (Kes, Gegenstände). 3. Abyss-Steine aus Corrupted, Abyss-Wesen und Verlorenen.
+Drei Arten Beute;1. Teile: was man aus einer Kreatur gewinnt (Fell, Klauen, Essenz). 2. Fund: was eine Kreatur bei sich hat oder in ihrem Lager liegt (Kes, Gegenstände). 3. Kristalle: Jedes Monster lässt EXP-Kristalle, korrumpierte Monster Abyss-Kristalle (Tab Kristalle).
 Ränge passen zum Markt;"Ein Gegner lässt Dinge seines Rangs fallen. Der Rang einer Beute ist derselbe wie im Markt (Preisbänder E bis SS); der GM wählt den Gegenstand im passenden Tab und Rang oder würfelt eine Zeile."
 Teile gewinnen;Nach dem Kampf, 10 Minuten pro Kreatur: Tierkunde (Tiere, Bestien) oder Naturkunde (alles andere) gegen den Probenwert der Kreatur −5. Erfolg: Normal 1 Teil, Elite 2, Boss 4. Um 10+ übertroffen: doppelt. Diener: 1 Teil pro 4 Diener. Ohne Probe (nur Fleisch, Fell grob abziehen): halber Wert.
 Fundwurf;Pro besiegtem Gegner, der etwas bei sich tragen kann (Menschen, Verlorene, Bestien mit Hort, Elite, Boss), 1W20 auf die Fundtabelle. Normale Tiere haben keinen Fund, nur Teile. Diener würfeln nicht.
@@ -25,8 +25,8 @@ Schleim;Schleimgel;"Klebstoff, Gegengift, Schmiermittel; Apotheker zahlen gut."
 Geist;Geistessenz (in einer Phiole);Runen, Heiltränke, Zutat für magische Ausrüstung. Ohne Glasphiole verfliegt sie.
 Elementar;Elementkern (Feuer, Eis, Blitz …);"Elementare Waffen und Runen; ersetzt beim Herstellen ein Mineral desselben Rangs."
 Untot;Knochenstaub und Grabtuch;"Runen, Flüche; die Hüter kaufen ihn zum doppelten Preis, um ihn zu verbrennen."
-Corrupted;Kristallhaut;"Wie die Teile des Grundtiers; zusätzlich Abyss-Stein (siehe unten). Berühren ohne Handschuh: +1 Korruption."
-Abyss-Wesen;Leerenstaub;Nur auf dem Schwarzmarkt (Kyr). Wird zu Zorr verarbeitet.
+Corrupted;Kristallhaut;Wie die Teile des Grundtiers. Statt EXP-Kristallen lässt es Abyss-Kristalle. Kristallhaut berühren ohne Handschuh: +1 Korruption.
+Abyss-Wesen;Leerenstaub;Nur auf dem Schwarzmarkt (Kyr). Lässt Abyss-Kristalle.
 
 Fundwurf 1W20;Ergebnis
 1–9;Nichts außer Teilen.
@@ -53,26 +53,36 @@ Tier 1 Cache;Dungeons und Ruinen Rang F–E, verlassene Lager;1W3 Gegenstände R
 Tier 2 Cache;Dungeons Rang D–C, Ruinen im Norden;1W3 Gegenstände Rang D–C (Fundort „Tier 2 Cache“);1W6 GK
 Tier 3 Cache;Dungeons Rang B und höher, alte Runenstätten;1W3 Gegenstände Rang C–B (Fundort „Tier 3 Cache“);3W6 GK
 Kern-Truhe;Am Ende jedes Dungeons, nach dem Boss;1 Gegenstand im Rang des Dungeons + 1W2 Gegenstände einen Rang tiefer;Kes des Dungeon-Rangs × 10
-Abyss-Truhe;In Corrupted-Nestern und im Abyss;"1 Abyss-Ausrüstung (Fundort „Abyss“) oder 1W4 Abyss-Steine; Öffnen: Willenskraft 30 oder +3 Korruption";–
+Abyss-Truhe;In Corrupted-Nestern und im Abyss;"1 Abyss-Ausrüstung (Fundort „Abyss“) oder 1W4 Abyss-Kristalle im Rang des Nests; Öffnen: Willenskraft 30 oder +3 Korruption";–
 GM-Schatz;Nur vom GM gesetzt;Gegenstände mit Fundort „GM“ (legendäre Stücke, SS);–
 Fallen;Jede dritte Truhe in Dungeons ist gesichert: Scharfsinnigkeit gegen den Probenwert des Dungeon-Rangs, entschärfen mit Erfindergeist (gleiche Schwierigkeit). Auslösen: Schaden wie ein normaler Gegner des Rangs.
 
-Abyss-Steine;Beschreibung
-Wer Steine trägt;Nur Corrupted, Abyss-Wesen, Verlorene und Wächter. Normale Tiere und Monster nie.
-Herauslösen;Naturkunde gegen den Probenwert der Kreatur. Misslingt es, zerspringt der Stein in 1W4 Splitter. Ohne magischen Beutel zählt das Tragen wie ein Einsatz (Tab Korruption).
-Gildenpakt;"Abyss-Steine gehören der Gilde. Sie zahlt den Gildenpreis; der Schwarzmarkt (Kyr) zahlt mehr, ist aber strafbar."
-Kern eines Verlorenen;Immer, wenn ein Verlorener fällt. Die Hüter fordern ihn für Eldora.
+Kristalle;Beschreibung
+Wer Kristalle lässt;Jedes besiegte Monster lässt EXP-Kristalle seines Rangs: Normal 1, Elite 2, Boss 4, Diener nur bei 4 auf 1W4. Rang E lässt einen Kristall D bei 11+ auf 1W20, Rang SS doppelt so viele Kristalle S. Harmlose Tiere (Jagd) lassen keine.
+Abyss-Kristalle;"Korrumpierte Monster (jede Stufe) und Abyss-Wesen lassen statt der EXP-Kristalle Abyss-Kristalle. Ab Corrupted-Stufe 2 zählt der Kristall einen Rang höher, ab Stufe 3 zwei (wie die EXP). Nur sie korrumpieren; ein normaler EXP-Kristall ist ungefährlich."
+Direkt ins Inventar;Der Kristall landet sofort im Inventar dessen, der das Monster besiegt hat (Gefährten: bei ihrem Besitzer). Kein Herauslösen, keine Probe.
+Verwenden;Außerhalb des Kampfs, 1 Minute: Der Kristall zerfällt und gibt seine EXP an den, der ihn verwendet. Wer will, gibt ihn vorher einem anderen Spieler.
+Verkaufen;Die Gilde kauft EXP-Kristalle zum vollen Wert, jeder Händler zur üblichen Ankaufsquote. So wird aus EXP Geld, und die Gruppe muss sich einigen, was ihr wichtiger ist.
+Gildenpakt;"Abyss-Kristalle gehören der Gilde. Sie zahlt den Gildenpreis und will jeden einzelnen. Der Schwarzmarkt (Kyr) zahlt das Doppelte, ist aber strafbar. Wer einen Abyss-Kristall selbst verwendet, bricht den Pakt; die Korruptionsprüfung der Gilde kann es zeigen."
+Abyss-Kristall verwenden;Gibt mehr EXP als ein EXP-Kristall desselben Rangs, erhöht aber die Korruption: D +1 · C +2 · B +3 · A +5 · S +10 (Korruptionsresistenz wird abgezogen, mindestens +1).
+Abyss-Kristall im Kampf;Schnellaktion: Der nächste Skill in diesem Zug ignoriert seinen Cooldown oder bekommt +1W6. Kostet den Kristall (ohne EXP) und erhöht die Korruption wie beim Verwenden.
+Tragen;Ohne magischen Beutel: +1 Korruption pro Tag für jeden getragenen Abyss-Kristall. Im magischen Beutel (bis zu 10 Kristalle) nichts.
+Zorr;Zorr lässt sich nur aus Abyss-Kristallen herstellen: Herstellen-Probe gegen den Probenwert des Kristallrangs (Tab Herstellen und Kochen), Ergebnis D 1 · C 3 · B 10 · A 30 · S 100 Prisen. Misslingt die Probe, zerfällt der Kristall und der Hersteller bekommt seine Korruption.
+Kern eines Verlorenen;Immer, wenn ein Verlorener fällt, zusätzlich zu seinen Abyss-Kristallen. Die Hüter fordern ihn für Eldora.
 
-Herkunft;Diener;Normal winzig/klein;Normal mittel;Normal groß/riesig;Elite;Boss
-Corrupted Stufe 1;–;15+ auf 1W20: Splitter;15+: Kleiner Stein;15+: Kleiner Stein;Kleiner Stein;Mittlerer Stein
-Corrupted Stufe 2;1 Splitter pro 4 Diener;Splitter;Kleiner Stein;Mittlerer Stein;Mittlerer Stein;Großer Stein
-Corrupted Stufe 3 / Abyss-Wesen;Splitter;Kleiner Stein;Mittlerer Stein;Großer Stein;Großer Stein;Abyss-Herz
-Verlorener;–;–;Kern eines Verlorenen;Kern eines Verlorenen;Kern eines Verlorenen + 1W4 Splitter;–
+Herkunft;Diener;Normal;Elite;Boss
+Monster Rang E;1 Kristall D bei 4 auf 1W4 und 11+ auf 1W20;1 Kristall D bei 11+ auf 1W20;2 × 11+: je 1 Kristall D;4 × 11+: je 1 Kristall D
+Monster Rang D bis S;1 Kristall des Rangs bei 4 auf 1W4;1 Kristall des Rangs;2 Kristalle des Rangs;4 Kristalle des Rangs
+Monster Rang SS;1 Kristall S bei 4 auf 1W4;2 Kristalle S;4 Kristalle S;8 Kristalle S
+Corrupted Stufe 1;wie oben, aber Abyss-Kristalle;Abyss-Kristall;2 Abyss-Kristalle;4 Abyss-Kristalle
+Corrupted Stufe 2 / 3, Abyss-Wesen;Abyss-Kristall, 1 bzw. 2 Ränge höher (Abyss-Wesen: wie Stufe 3);wie links;wie links;wie links
+Verlorener;–;–;Kern eines Verlorenen + 2 Abyss-Kristalle;–
+Harmlose Tiere;–;keine;–;–
 
 Tab;E;D;C;B;A;S;SS
 Ausrüstung;22;29;39;25;13;10;8
 Verbrauchsgegenstände;30;10;6;3;2;2;1
-Abenteurerbedarf;31;17;3;0;0;0;0
+Abenteurerbedarf;31;18;4;0;0;0;0
 Mineralien;6;7;6;3;1;1;1
 Pflanzen;34;3;2;0;0;0;0
 Skills;0;50;33;17;24;9;7

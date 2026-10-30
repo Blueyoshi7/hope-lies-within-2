@@ -61,6 +61,7 @@
   <nav class="sheet-tabs tabs hb-reiter" data-group="primary">
     <a class="item" data-tab="main">Charakter</a>
     <a class="item" data-tab="skills">Skills</a>
+    {{#if bogen.rucksack}}<a class="item" data-tab="rucksack">Rucksack</a>{{/if}}
     {{#unless isMonster}}<a class="item" data-tab="insignia">Insignien</a>{{/unless}}
     <a class="item" data-tab="notes">Notizen</a>
   </nav>
@@ -289,6 +290,29 @@
         </section>
       {{/unless}}
     </div>
+
+    {{#if bogen.rucksack}}
+      <div class="tab" data-group="primary" data-tab="rucksack">
+        <section class="hb-inventar hb-rucksack">
+          <div class="hb-invkopf">
+            <h3><img src="{{bogen.rucksack.img}}" alt="" /> {{bogen.rucksack.name}} <small>{{bogen.rucksack.belegt}} / {{bogen.rucksack.plaetze}} Plätze</small></h3>
+          </div>
+          {{#unless bogen.rucksack.aktiv}}<p class="hb-rucksack-hinweis">Der Rucksack ist abgelegt. Leg ihn in der Nebenhand an, um an den Inhalt zu kommen.</p>{{/unless}}
+          <div class="hb-raster hb-rucksack-raster">
+            {{#each bogen.rucksack.felder as |item|}}
+              <div class="hb-feld {{#if item.orb}}is-orb{{/if}}" {{#if ../bogen.rucksack.aktiv}}data-item-id="{{item.id}}" draggable="true"{{else}}data-gesperrt="1"{{/if}} data-rang="{{item.rang}}" data-tooltip-html="{{item.tooltip}}">
+                {{#if item.orb}}<span class="hb-orbkugel {{#if item.orbTier}}is-tier tier-{{item.orbTier}}{{/if}}">{{#if item.orbTier}}<b>T{{item.orbTier}}</b>{{/if}}</span>{{else}}<img src="{{item.img}}" alt="" />{{/if}}
+                {{#if item.menge}}<span class="hb-anzahl">{{item.menge}}</span>{{/if}}
+              </div>
+            {{/each}}
+            {{#each bogen.rucksack.leereFelder}}<div class="hb-feld is-leer"></div>{{/each}}
+          </div>
+          <div class="hb-invfuss">
+            <span>Gegenstände aus dem Inventar hierher ziehen oder im Menü „In den Rucksack“ wählen. Rucksack-Plätze zählen nicht fürs Inventar. Der Rucksack belegt die Nebenhand: keine zweite Waffe, kein Schild, kein Gefährte. Im Kampf ist an den Rucksack kommen eine Schnellaktion.</span>
+          </div>
+        </section>
+      </div>
+    {{/if}}
 
     <div class="tab" data-group="primary" data-tab="skills">
       <div class="hb-skillkopf">

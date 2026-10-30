@@ -773,3 +773,11 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-tuerblase.is-gm { color: #f0d48c; }
 .hlw-tuerblase.is-weg { opacity: 0; transform: translate(-50%, calc(-100% - 34px)); }
 @keyframes hlwBlase { from { opacity: 0; transform: translate(-50%, calc(-100% - 8px)) scale(0.8); } }
+
+/* Rucksack-Tab (Rucksack S/M/L in der Nebenhand) */
+.hlw-bogen .hb-rucksack .hb-invkopf h3 { display: flex; align-items: center; gap: 10px; margin: 0; }
+.hlw-bogen .hb-rucksack .hb-invkopf h3 img { width: 40px; height: 40px; object-fit: contain; border: 0; }
+.hlw-bogen .hb-rucksack .hb-invkopf h3 small { opacity: 0.7; font-weight: normal; }
+.hlw-bogen .hb-rucksack-hinweis { margin: 8px 0; color: var(--hb-gold-dunkel); font-style: italic; }
+.hlw-bogen .hb-rucksack-raster { min-height: 140px; }
+.hlw-bogen .hb-feld[data-gesperrt] { opacity: 0.45; filter: grayscale(0.6); }

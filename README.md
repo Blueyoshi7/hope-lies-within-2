@@ -32,7 +32,7 @@ Als GM in der Item-Sidebar auf **HLW JSON Import** klicken (oder im Inventar auf
 | Datei | Inhalt |
 |---|---|
 | `import/weapons.json`, `armor.json`, `accessories.json` | Ausrüstung mit Schadenswürfel, HP-Würfel und Boni |
-| `import/equipment.json`, `consumables.json`, `food-drink.json`, `materials.json`, `junk.json` | Abenteurerbedarf, Tränke, Gerichte, Grundmaterialien, Abyss-Steine, Müll |
+| `import/equipment.json`, `consumables.json`, `food-drink.json`, `materials.json`, `junk.json` | Abenteurerbedarf, Tränke, Gerichte, Grundmaterialien, EXP- und Abyss-Kristalle, Rucksäcke, Müll |
 | `import/natural.json`, `minerals.json` | Pflanzen und Mineralien mit Fundgebiet |
 | `import/skills.json`, `class-skills.json` | Skills und Klassen-Skills |
 | `import/monsters.json` | Bestiarium als Monster-Actors (Werte nach Rang, Rolle und Größe) |
@@ -111,6 +111,13 @@ game.hlw.dashboardAktualisieren()          // Steckbriefe von Hand neu zeichnen
 - **Szene „Dashboard“** (in der Navigation „Willkommen“, 3840 × 2160, ohne Raster): Titel wie auf der Website, links die **Weltkarte** (Spieleransicht des Atlas von Gaia, als Kachel austauschbar), rechts **Die Gruppe** mit einem Steckbrief pro Spielercharakter (Bild, Name, Level, Klasse, Herkunft, Alter, Spieler) und unten **Erste Schritte**. Die Steckbriefe ziehen sich selbst nach, sobald sich Name, Bild, Level, Klasse, Herkunft oder Besitzer eines Charakters ändern; Gefährten zählen nicht.
 - **Journal „Willkommen in Gaia“** (für alle lesbar): Willkommen, Dein Charakter, Proben, Kampf, Foundry, Am Tisch und die Weltkarte zum Zoomen. Ein Doppelklick auf die Symbole im Dashboard öffnet die Seiten. Nur Spielerwissen.
 - **Login-Hintergrund:** In Foundrys Setup bei der Welt auf **Welt bearbeiten** → **Hintergrundbild** `systems/hope-lies-within-2/assets/dashboard/login-hintergrund.webp` eintragen und als **Thema der Beitrittsseite** „Minimal“ wählen. Dunkles Violett mit dem Logo in Weiß groß hinter dem Anmeldefenster, darunter „Hope lies within“; beim Thema „Standard“ verdecken die breiten Felder das Logo. Foundry zeigt das Bild immer mit halber Helligkeit, die Farben im Bild sind deshalb heller angelegt. `titel.webp` ist dieselbe Fläche mittig gesetzt (z. B. als Szenenhintergrund).
+
+## Kristalle und Rucksäcke
+
+- **EXP-Kristalle:** Jedes besiegte Monster gibt weniger EXP direkt (40 % des alten Werts) und legt dafür EXP-Kristalle seines Rangs (D–S) ins Inventar dessen, der es besiegt hat (Normal 1, Elite 2, Boss 4, Diener 25 %, Rang E 50 %). Im Inventar: **Verwenden** (EXP), **An Ziel geben** (auch an Charaktere anderer Spieler, der GM bucht es) oder bei einem Händler verkaufen.
+- **Abyss-Kristalle:** Korrumpierte Monster und Abyss-Wesen lassen Abyss-Kristalle: mehr EXP, aber Korruption beim Verwenden. Im Kampf: **Im Kampf einsetzen** (Schnellaktion).
+- **Gilde und Schwarzmarkt:** In den Händler-Einstellungen eines NSC (Gesprächsfenster → Handel) gibt es „Gilde: kauft Kristalle zum vollen Wert“ und „Schwarzmarkt: Abyss-Kristalle zum doppelten Wert“. Kessa Dorn in Lindhain ist Gilde.
+- **Rucksäcke S/M/L** (10/20/30 Plätze) belegen die Nebenhand. Ausgerüstet erscheint im Bogen der Tab **Rucksack**; Gegenstände per Menü „In den Rucksack“ oder durch Ziehen einpacken. Was im Rucksack liegt, zählt nicht fürs Inventar.
 
 ## Struktur
 

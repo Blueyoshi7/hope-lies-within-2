@@ -1,20 +1,5 @@
 [
  {
-  "name": "Rucksack",
-  "type": "equipment",
-  "img": "icons/containers/bags/pouch-cloth-pink.webp",
-  "folder": "HLW/Abenteurerbedarf/Rang D",
-  "system": {
-   "rank": "D",
-   "tier": 2,
-   "priceSk": 40,
-   "price": "40 SK",
-   "description": "Fasst die normale Ausrüstung einer Person.",
-   "source": "",
-   "quantity": 1
-  }
- },
- {
   "name": "Schlafsack",
   "type": "equipment",
   "img": "icons/sundries/survival/hip-flask.webp",
@@ -495,6 +480,60 @@
   }
  },
  {
+  "name": "Rucksack S",
+  "type": "equipment",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/rucksack-s.webp",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 40,
+   "price": "40 SK",
+   "description": "Kleine Ledertasche mit einer Schnalle.",
+   "source": "",
+   "quantity": 1,
+   "slot": "Rucksack",
+   "plaetze": 10,
+   "effect": "Belegt die Nebenhand: keine zweite Waffe, kein Schild, kein Gefährte. Dafür ein eigener Rucksack-Tab mit 10 Plätzen zusätzlich zum Inventar. Im Kampf an den Rucksack kommen ist eine Schnellaktion."
+  }
+ },
+ {
+  "name": "Rucksack M",
+  "type": "equipment",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/rucksack-m.webp",
+  "folder": "HLW/Abenteurerbedarf/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 150,
+   "price": "1 GK 50 SK",
+   "description": "Abenteurer-Rucksack aus Segeltuch und Leder, mit Schlafrolle.",
+   "source": "",
+   "quantity": 1,
+   "slot": "Rucksack",
+   "plaetze": 20,
+   "effect": "Belegt die Nebenhand: keine zweite Waffe, kein Schild, kein Gefährte. Dafür ein eigener Rucksack-Tab mit 20 Plätzen zusätzlich zum Inventar. Im Kampf an den Rucksack kommen ist eine Schnellaktion."
+  }
+ },
+ {
+  "name": "Rucksack L",
+  "type": "equipment",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/rucksack-l.webp",
+  "folder": "HLW/Abenteurerbedarf/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 600,
+   "price": "6 GK",
+   "description": "Großer Reiserucksack auf Holzgestell, mit Topf, Seil und Laterne.",
+   "source": "",
+   "quantity": 1,
+   "slot": "Rucksack",
+   "plaetze": 30,
+   "effect": "Belegt die Nebenhand: keine zweite Waffe, kein Schild, kein Gefährte. Dafür ein eigener Rucksack-Tab mit 30 Plätzen zusätzlich zum Inventar. Im Kampf an den Rucksack kommen ist eine Schnellaktion."
+  }
+ },
+ {
   "name": "Alchemie-Set",
   "type": "equipment",
   "img": "icons/tools/laboratory/bowl-powder-red.webp",
@@ -662,7 +701,7 @@
  {
   "name": "Magischer Beutel",
   "type": "equipment",
-  "img": "icons/containers/bags/pouch-leather-leaf-green.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/magischer-beutel.webp",
   "folder": "HLW/Gegenstände/Rang B",
   "system": {
    "rank": "B",

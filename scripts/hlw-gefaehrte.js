@@ -232,9 +232,10 @@ async function gmAktion(data) {
         maxRounds: zahl(data.runden) || 2, rounds: 0, cooldown: 0, exhausted: false, tokenId: "", sceneId: ""
       }
     });
-    // Die Nebenhand gehört jetzt dem Gefährten: zweite Waffe und Schild ablegen.
-    const haende = owner.items.filter((i) => (i.type === "weapon" || (i.type === "armor" && /schild/i.test(`${i.system?.slot} ${i.name}`))) && (i.system?.equipped === true || i.system?.equipped === "true"));
-    const weg = haende.filter((i) => i.type === "armor").concat(haende.filter((i) => i.type === "weapon").slice(1));
+    // Die Nebenhand gehört jetzt dem Gefährten: zweite Waffe, Schild und Rucksack ablegen.
+    const nebenhand = (i) => (i.type === "armor" && /schild/i.test(`${i.system?.slot} ${i.name}`)) || (i.type === "equipment" && /rucksack/i.test(`${i.system?.slot} ${i.name}`));
+    const haende = owner.items.filter((i) => (i.type === "weapon" || nebenhand(i)) && (i.system?.equipped === true || i.system?.equipped === "true"));
+    const weg = haende.filter((i) => i.type !== "weapon").concat(haende.filter((i) => i.type === "weapon").slice(1));
     if (weg.length) await owner.updateEmbeddedDocuments("Item", weg.map((i) => ({ _id: i.id, "system.equipped": false })));
     if (ziel) {
       const kampf = game.combat?.combatants?.find((c) => c.tokenId === ziel.id);

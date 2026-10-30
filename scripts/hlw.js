@@ -2,6 +2,7 @@ import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen }
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard } from "./hlw-dashboard.js";
+import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
@@ -183,9 +184,35 @@ function prepareResources(system) {
 }
 
 function countInventorySlots(items) {
-  return Array.from(items ?? [])
-    .filter((item) => HLW.gearItemTypes.includes(item.type) || istOrb(item))
+  const liste = Array.from(items ?? []);
+  const rucksaecke = new Set(liste.filter(istRucksack).map((item) => item.id));
+  return liste
+    .filter((item) => (HLW.gearItemTypes.includes(item.type) || istOrb(item)) && !rucksaecke.has(item.getFlag?.("hope-lies-within-2", "rucksack")))
     .reduce((sum, item) => sum + Math.max(numberValue(item.system?.quantity), 1), 0);
+}
+
+// Rucksäcke S/M/L: belegen die Nebenhand (keine zweite Waffe, kein Schild, kein Gefährte) und geben einen eigenen Tab.
+// Was im Rucksack liegt, trägt flags.hope-lies-within-2.rucksack = ID des Rucksacks und zählt nicht fürs Inventar.
+const RUCKSACK_PLAETZE = { S: 10, M: 20, L: 30 };
+function istRucksack(item) {
+  return item?.type === "equipment" && (/rucksack/i.test(String(item.system?.slot ?? "")) || /^Rucksack [SML]$/.test(item.name ?? ""));
+}
+function rucksackPlaetze(item) {
+  return numberValue(item?.system?.plaetze) || RUCKSACK_PLAETZE[String(item?.name ?? "").slice(-1)] || 10;
+}
+function aktiverRucksack(actor) {
+  return actor?.items?.find((item) => istRucksack(item) && boolValue(item.system?.equipped)) ?? null;
+}
+function rucksackInhalt(actor, rucksack) {
+  if (!rucksack || !istRucksack(rucksack)) return [];
+  return actor.items.filter((item) => item.getFlag("hope-lies-within-2", "rucksack") === rucksack.id);
+}
+function rucksackBelegt(actor, rucksack) {
+  return rucksackInhalt(actor, rucksack).reduce((sum, item) => sum + Math.max(numberValue(item.system?.quantity), 1), 0);
+}
+function imRucksack(actor, item) {
+  const id = item?.getFlag?.("hope-lies-within-2", "rucksack");
+  return !!id && istRucksack(actor?.items?.get(id));
 }
 
 function normalizeTier(value) {
@@ -536,8 +563,9 @@ async function hpSetzen(targetToken, nextHp, { besiegt = false, toeterId = null 
   game.socket.emit("system.hope-lies-within-2", { type: "hpSetzen", sceneId: targetToken.document?.parent?.id ?? canvas.scene?.id, tokenId: targetToken.document?.id ?? targetToken.id, hp: nextHp, besiegt, toeterId, userId: game.user.id });
 }
 
-// EXP eines Monsters (Bestiarium); alte Einträge ohne Zahl nach Rang und Rolle
-const EXP_RANG = { E: 5, D: 10, C: 20, B: 35, A: 60, S: 100, SS: 160 };
+// EXP eines Monsters (Bestiarium); alte Einträge ohne Zahl nach Rang und Rolle.
+// Seit 2026-10-30 auf 40 % gesenkt: den Rest halten die EXP-Kristalle (hlw-kristalle.js).
+const EXP_RANG = { E: 2, D: 4, C: 8, B: 14, A: 24, S: 40, SS: 64 };
 const EXP_ROLLE = { Diener: 0.25, Normal: 1, Elite: 3, Boss: 8 };
 function monsterExp(actor) {
   const m = actor?.system?.monster ?? {};
@@ -560,6 +588,22 @@ function expEmpfaenger(toeter) {
   return spieler ? [spieler] : [];
 }
 
+// Ein Stück eines Gegenstands von einem Actor zum anderen (Rucksack-Markierung fällt weg, gleiche Stapel wachsen)
+async function gegenstandUebergeben(quelle, item, ziel) {
+  const itemData = item.toObject();
+  delete itemData._id;
+  foundry.utils.setProperty(itemData, "system.quantity", 1);
+  foundry.utils.setProperty(itemData, "system.equipped", false);
+  if (itemData.flags?.["hope-lies-within-2"]) delete itemData.flags["hope-lies-within-2"].rucksack;
+  const stapel = ["consumable", "foodDrink", "material", "natural", "mineral", "junk"].includes(item.type)
+    && ziel.items.find((i) => i.name === item.name && i.type === item.type && !i.getFlag("hope-lies-within-2", "rucksack"));
+  if (stapel) await stapel.update({ "system.quantity": Math.max(numberValue(stapel.system?.quantity), 1) + 1 });
+  else await ziel.createEmbeddedDocuments("Item", [itemData]);
+  const quantity = Math.max(numberValue(item.system?.quantity), 1);
+  if (quantity > 1) await item.update({ "system.quantity": quantity - 1 });
+  else await quelle.deleteEmbeddedDocuments("Item", [item.id]);
+}
+
 // Beim GM: Monster als tot markieren (Totenkopf am Token, besiegt im Kampf) und EXP vergeben (einmal pro Monster).
 async function totMarkieren(tokenDoc) {
   const actor = tokenDoc?.actor;
@@ -570,15 +614,30 @@ async function totMarkieren(tokenDoc) {
   if (combatant && !combatant.defeated) await combatant.update({ defeated: true });
 }
 
-async function besiegtAbwickeln(tokenDoc, toeterId = null, { empfaenger = null } = {}) {
+// Wer hat besiegt? Der Spielercharakter (Gefährten zählen für ihren Besitzer) – bekommt die Kristalle.
+function toeterSpieler(toeter) {
+  const basisActor = toeter?.isToken ? game.actors.get(toeter.id) : toeter;
+  return basisActor?.type === "character" ? basisActor : besitzerVon(basisActor) ?? null;
+}
+
+async function besiegtAbwickeln(tokenDoc, toeterId = null, { empfaenger = null, kristallAn = undefined } = {}) {
   const actor = tokenDoc?.actor;
   if (!actor || actor.type !== "monster") return;
   await totMarkieren(tokenDoc);
   if (actor.getFlag("hope-lies-within-2", "expVergeben")) return;
   const exp = monsterExp(actor);
-  const liste = empfaenger ?? expEmpfaenger(game.actors.get(toeterId) ?? canvas.tokens?.get(toeterId)?.actor ?? null);
+  const toeter = game.actors.get(toeterId) ?? canvas.tokens?.get(toeterId)?.actor ?? null;
+  const liste = empfaenger ?? expEmpfaenger(toeter);
   await actor.setFlag("hope-lies-within-2", "expVergeben", true);
-  if (!liste.length || !exp) return;
+  // EXP-Kristall direkt ins Inventar dessen, der besiegt hat
+  const kristallSpieler = kristallAn !== undefined ? kristallAn : toeterSpieler(toeter) ?? (liste.length === 1 ? liste[0] : null);
+  const beute = kristallSpieler ? await kristallBeute(actor) : null;
+  if (beute?.anzahl) await kristalleGeben(kristallSpieler, beute.name, beute.anzahl);
+  const kristallText = beute ? `<br>${kristallZeile(kristallSpieler, beute)}` : "";
+  if (!liste.length || !exp) {
+    if (kristallText) await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(tokenDoc.name ?? actor.name)} ist besiegt</h2><p>${kristallText.slice(4)}</p></div>` });
+    return;
+  }
   const zeilen = [];
   for (const spieler of liste) {
     const neu = numberValue(spieler.system?.progression?.exp) + exp;
@@ -586,7 +645,7 @@ async function besiegtAbwickeln(tokenDoc, toeterId = null, { empfaenger = null }
     const naechstes = numberValue(spieler.system?.derived?.expNext);
     zeilen.push(`<strong>${escapeHtml(spieler.name)}</strong> erhält ${exp} EXP${naechstes && neu >= naechstes ? ` und hat genug für Level ${numberValue(spieler.system?.progression?.level) + 1} (Level-Up bei der Gilde)` : ""}.`);
   }
-  await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(tokenDoc.name ?? actor.name)} ist besiegt</h2><p>${zeilen.join("<br>")}</p></div>` });
+  await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(tokenDoc.name ?? actor.name)} ist besiegt</h2><p>${zeilen.join("<br>")}${kristallText}</p></div>` });
 }
 
 // GM: Monster von Hand als tot markieren (mit Wahl, wer die EXP bekommt) oder wiederbeleben
@@ -607,15 +666,17 @@ async function monsterTotMarkieren(tokenDoc) {
   const wahl = await foundry.applications.api.DialogV2.prompt({
     window: { title: `${tokenDoc.name} als tot markieren` },
     classes: ["hope-lies-within", "hlw-detail-dialog"],
-    content: vergeben ? `<p>Die EXP für dieses Monster wurden schon vergeben.</p>` : `<label>EXP (${monsterExp(actor)}) an <select name="an">${optionen}</select></label>`,
-    ok: { label: "Tot markieren", icon: "fa-solid fa-skull", callback: (event, button) => button.form?.elements?.an?.value ?? "" },
+    content: vergeben ? `<p>Die EXP für dieses Monster wurden schon vergeben.</p>` : `<label>EXP (${monsterExp(actor)}) an <select name="an">${optionen}</select></label>
+      <label>Kristall an <select name="kristall"><option value="">Niemand</option>${spieler.map((s) => `<option value="${s.id}">${escapeHtml(s.name)}</option>`).join("")}</select></label>`,
+    ok: { label: "Tot markieren", icon: "fa-solid fa-skull", callback: (event, button) => ({ an: button.form?.elements?.an?.value ?? "", kristall: button.form?.elements?.kristall?.value ?? "" }) },
     rejectClose: false
   });
   if (wahl === null || wahl === undefined) return;
   await actor.update({ "system.resources.hp.value": 0 });
-  const empfaenger = wahl === "alle" ? spieler : wahl ? [game.actors.get(wahl)].filter(Boolean) : [];
-  if (!empfaenger.length && !vergeben) await actor.setFlag("hope-lies-within-2", "expVergeben", true);
-  await besiegtAbwickeln(tokenDoc, null, { empfaenger });
+  const an = typeof wahl === "object" ? wahl.an : "";
+  const empfaenger = an === "alle" ? spieler : an ? [game.actors.get(an)].filter(Boolean) : [];
+  const kristallAn = typeof wahl === "object" && wahl.kristall ? game.actors.get(wahl.kristall) ?? null : null;
+  await besiegtAbwickeln(tokenDoc, null, { empfaenger, kristallAn });
 }
 
 // Würfel einer Formel lesbar: „3 + 1W4 + 2“ und „3 + 4 + 2 = 9“ (jeder Würfel mit seinem Ergebnis, feste Zahlen einzeln)
@@ -1095,7 +1156,11 @@ export class HopeLiesWithinActor extends Actor {
         const haende = angelegt.filter((entry) => entry.type === "weapon" || ausruestungsPlatz(entry) === "nebenhand");
         const frei = gefaehrteVon(this) ? 1 : 2;
         if (haende.length >= frei) {
-          ui.notifications?.warn(frei === 1 ? "Die Nebenhand gehört deinem Gefährten. Erst die andere Waffe ablegen." : "Beide Hände sind belegt. Erst eine Waffe oder einen Schild ablegen.");
+          ui.notifications?.warn(frei === 1 ? "Die Nebenhand gehört deinem Gefährten. Erst die andere Waffe ablegen." : "Beide Hände sind belegt. Erst eine Waffe, einen Schild oder den Rucksack ablegen.");
+          return;
+        }
+        if (platz === "nebenhand" && haende.some((entry) => ausruestungsPlatz(entry) === "nebenhand")) {
+          ui.notifications?.warn("In der Nebenhand ist schon ein Schild oder Rucksack.");
           return;
         }
       }
@@ -1105,7 +1170,7 @@ export class HopeLiesWithinActor extends Actor {
       }
     }
 
-    const updates = [{ _id: item.id, "system.equipped": nextValue }, ...ablegen.map((entry) => ({ _id: entry.id, "system.equipped": false }))];
+    const updates = [{ _id: item.id, "system.equipped": nextValue, ...(nextValue && item.getFlag("hope-lies-within-2", "rucksack") ? { "flags.hope-lies-within-2.-=rucksack": null } : {}) }, ...ablegen.map((entry) => ({ _id: entry.id, "system.equipped": false }))];
     await this.updateEmbeddedDocuments("Item", updates);
     if (ablegen.length) ui.notifications?.info(`Abgelegt: ${ablegen.map((entry) => entry.name).join(", ")}`);
   }
@@ -1158,6 +1223,7 @@ export class HopeLiesWithinActor extends Actor {
   async consumeOwnedItem(itemId) {
     const item = this.items.get(itemId);
     if (!item) return;
+    if (kristallInfo(item)) return kristallVerwenden(this, item);
 
     const quantity = Math.max(numberValue(item.system?.quantity), 1);
     if (quantity > 1) await item.update({ "system.quantity": quantity - 1 });
@@ -1165,19 +1231,43 @@ export class HopeLiesWithinActor extends Actor {
     ui.notifications?.info(`${item.name} verbraucht.`);
   }
 
+  async inDenRucksack(itemId) {
+    const item = this.items.get(itemId);
+    const rucksack = aktiverRucksack(this);
+    if (!item) return;
+    if (!rucksack) return ui.notifications?.warn("Erst einen Rucksack in der Nebenhand ausrüsten.");
+    if (istRucksack(item) || boolValue(item.system?.equipped)) return ui.notifications?.warn("Ausgerüstetes und Rucksäcke passen nicht in den Rucksack.");
+    const menge = Math.max(numberValue(item.system?.quantity), 1);
+    const frei = rucksackPlaetze(rucksack) - rucksackBelegt(this, rucksack);
+    if (menge > frei) return ui.notifications?.warn(`Im ${rucksack.name} ist nur noch Platz für ${Math.max(frei, 0)}.`);
+    await item.setFlag("hope-lies-within-2", "rucksack", rucksack.id);
+  }
+
+  async ausDemRucksack(itemId) {
+    const item = this.items.get(itemId);
+    if (!item || !imRucksack(this, item)) return;
+    if (!aktiverRucksack(this)) return ui.notifications?.warn("Der Rucksack ist abgelegt. Erst wieder in der Nebenhand ausrüsten.");
+    const menge = Math.max(numberValue(item.system?.quantity), 1);
+    const frei = numberValue(this.system?.resources?.inventorySlots?.max) - countInventorySlots(this.items);
+    if (menge > frei) return ui.notifications?.warn(`Das Inventar ist voll (noch ${Math.max(frei, 0)} frei).`);
+    await item.unsetFlag("hope-lies-within-2", "rucksack");
+  }
+
   async discardOwnedItem(itemId) {
     const item = this.items.get(itemId);
     if (!item) return;
+    const inhalt = rucksackInhalt(this, item);
 
     const confirmed = await Dialog.confirm({
       title: `${item.name} wegwerfen?`,
-      content: `<p>${escapeHtml(item.name)} wirklich entfernen?</p>`,
+      content: `<p>${escapeHtml(item.name)} wirklich entfernen?${inhalt.length ? ` Der Inhalt (${inhalt.length} Gegenstände) kommt zurück ins Inventar.` : ""}</p>`,
       yes: () => true,
       no: () => false,
       defaultYes: false
     });
     if (!confirmed) return;
 
+    if (inhalt.length) await this.updateEmbeddedDocuments("Item", inhalt.map((i) => ({ _id: i.id, "flags.hope-lies-within-2.-=rucksack": null })));
     await this.deleteEmbeddedDocuments("Item", [item.id]);
     ui.notifications?.info(`${item.name} wurde weggeworfen.`);
   }
@@ -1208,15 +1298,14 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    const itemData = item.toObject();
-    const quantity = Math.max(numberValue(item.system?.quantity), 1);
-    foundry.utils.setProperty(itemData, "system.quantity", 1);
-    delete itemData._id;
-
-    await targetToken.actor.createEmbeddedDocuments("Item", [itemData]);
-    if (quantity > 1) await item.update({ "system.quantity": quantity - 1 });
-    else await this.deleteEmbeddedDocuments("Item", [item.id]);
-
+    if (rucksackInhalt(this, item).length) return ui.notifications?.warn("Erst den Rucksack ausräumen.");
+    // Fremde Charaktere darf nur der GM ändern: dann bucht der aktive GM die Übergabe.
+    if (!targetToken.actor.isOwner) {
+      if (!game.users?.activeGM) return ui.notifications?.warn("Kein GM online: Übergeben geht nur mit GM.");
+      game.socket.emit("system.hope-lies-within-2", { type: "gegenstandGeben", quelle: this.uuid, itemId: item.id, ziel: targetToken.actor.uuid, userId: game.user.id });
+      return ui.notifications?.info(`${item.name} geht an ${targetToken.name}.`);
+    }
+    await gegenstandUebergeben(this, item, targetToken.actor);
     ui.notifications?.info(`${item.name} wurde an ${targetToken.name} gegeben.`);
   }
 
@@ -1781,6 +1870,21 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       this._zeigeGegenstandMenue(event.currentTarget);
     });
 
+    // Ziehen zwischen Inventar und Rucksack-Tab
+    const packDrop = (selector, rein) => html.find(selector).on("dragover", (event) => event.preventDefault()).on("drop", (event) => {
+      let daten = null;
+      try { daten = JSON.parse(event.originalEvent.dataTransfer.getData("text/plain")); } catch { return; }
+      if (daten?.systemId !== "hope-lies-within-2" || daten.actorId !== this.actor.id) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const item = this.actor.items.get(daten.itemId);
+      if (!item) return;
+      if (rein && !imRucksack(this.actor, item)) this.actor.inDenRucksack(item.id);
+      if (!rein && imRucksack(this.actor, item)) this.actor.ausDemRucksack(item.id);
+    });
+    packDrop(".hb-rucksack-raster", true);
+    packDrop(".hb-inventar .hb-raster", false);
+
     html.find("[data-item-id][draggable=true]").on("dragstart", (event) => {
       const itemId = event.currentTarget.dataset.itemId;
       const item = this.actor.items.get(itemId);
@@ -1917,14 +2021,19 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     document.querySelectorAll(".hb-menue").forEach((menue) => menue.remove());
     const item = this.actor.items.get(element.dataset.itemId);
     if (!item) return;
+    const packen = [];
+    if (imRucksack(this.actor, item)) packen.push(["raus", "Aus dem Rucksack", "fa-box-open"]);
+    else if (aktiverRucksack(this.actor) && !istRucksack(item) && !boolValue(item.system?.equipped)) packen.push(["rein", "In den Rucksack", "fa-suitcase"]);
+    const packAktionen = { rein: () => this.actor.inDenRucksack(item.id), raus: () => this.actor.ausDemRucksack(item.id) };
     if (orbTier(item)) {
       // Skill-Orb T1–T3: Appraisal ist ein Glücksspiel, der Orb wird dabei zu einem bestimmten Skill-Orb
       const eintraege = [];
       if (!orbTierVersucht(item) || game.user?.isGM) eintraege.push(["appraisal", "Appraisal (Glücksspiel)", "fa-dice-d20"]);
-      eintraege.push(["details", "Details", "fa-circle-info"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
+      eintraege.push(["details", "Details", "fa-circle-info"], ...packen, ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
       if (game.user?.isGM && orbTierVersucht(item)) eintraege.push(["neu", "Neuer Versuch (GM)", "fa-rotate"]);
       const id = item.id;
       this._menue(element, item.name, eintraege, {
+        ...packAktionen,
         appraisal: () => orbGluecksspiel(this.actor, item),
         details: () => this.actor.showOwnedItemDetails(id),
         give: () => this.actor.giveItemToTarget(id),
@@ -1934,9 +2043,10 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       return;
     }
     if (istOrb(item)) {
-      const eintraege = [["details", "Ansehen", "fa-circle-info"], ["lernen", "Lernen (Skill-Slot)", "fa-brain"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]];
+      const eintraege = [["details", "Ansehen", "fa-circle-info"], ["lernen", "Lernen (Skill-Slot)", "fa-brain"], ...packen, ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]];
       const id = item.id;
       this._menue(element, orbName(item), eintraege, {
+        ...packAktionen,
         details: () => zeigeSkill(item),
         lernen: () => orbLernen(this.actor, item, skillSlots(this.actor)),
         give: () => this.actor.giveItemToTarget(id),
@@ -1947,12 +2057,19 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     const angelegt = boolValue(item.system?.equipped);
     const eintraege = [];
     if (["weapon", "armor", "accessory", "equipment"].includes(item.type)) eintraege.push(["equip", angelegt ? "Ablegen" : "Ausrüsten", "fa-shirt"]);
-    if (["consumable", "foodDrink"].includes(item.type)) eintraege.push(["consume", "Benutzen", "fa-flask"]);
-    eintraege.push(["details", "Details", "fa-circle-info"], ["edit", "Bearbeiten", "fa-pen"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
+    const kristall = kristallInfo(item);
+    if (kristall) {
+      eintraege.push(["consume", `Verwenden (+${kristall.exp} EXP${kristall.korruption ? `, +${kristall.korruption} Korruption` : ""})`, "fa-gem"]);
+      if (kristall.abyss && !kristall.kern) eintraege.push(["einsetzen", "Im Kampf einsetzen (Schnellaktion)", "fa-bolt"]);
+    }
+    else if (["consumable", "foodDrink"].includes(item.type)) eintraege.push(["consume", "Benutzen", "fa-flask"]);
+    eintraege.push(["details", "Details", "fa-circle-info"], ...packen, ["edit", "Bearbeiten", "fa-pen"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
     const id = item.id;
     this._menue(element, item.name, eintraege, {
+      ...packAktionen,
       equip: () => this.actor.toggleEquipped(id),
       consume: () => this.actor.consumeOwnedItem(id),
+      einsetzen: () => kristallEinsetzen(this.actor, item),
       details: () => this.actor.showOwnedItemDetails(id),
       edit: () => this.actor.editOwnedItem(id),
       give: () => this.actor.giveItemToTarget(id),
@@ -2019,7 +2136,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         gear.push({
           id: item.id, name: orbName(item), img: item.img, type: "orb", orb: true, rang: rangVon(item), filter: "orb", menge: "",
           tooltip: `<strong>${escapeHtml(orbName(item))}</strong> · Rang ${escapeHtml(rangVon(item) || "?")}<br>${escapeHtml(s.description || "")}<br>${werte.map(escapeHtml).join("<br>")}<br><em>Klick: ansehen oder lernen</em>`,
-          equipped: false, platz: null
+          equipped: false, platz: null, rucksackId: imRucksack(actor, item) ? item.getFlag("hope-lies-within-2", "rucksack") : ""
         });
         continue;
       }
@@ -2028,7 +2145,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         gear.push({
           id: item.id, name: item.name, img: item.img, type: "orb", orb: true, orbTier: orbTier(item), rang: rangVon(item), filter: "orb", menge: menge > 1 ? menge : "",
           tooltip: `<strong>${escapeHtml(item.name)}</strong><br>${escapeHtml(s.description || "")}${orbTierVersucht(item) ? "<br><em>Appraisal misslungen – bleibt versiegelt.</em>" : "<br><em>Klick: Appraisal (Glücksspiel)</em>"}`,
-          equipped: false, platz: null
+          equipped: false, platz: null, rucksackId: imRucksack(actor, item) ? item.getFlag("hope-lies-within-2", "rucksack") : ""
         });
         continue;
       }
@@ -2038,6 +2155,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         + zeile("Schaden", s.damageText || s.damage)
         + (item.type === "armor" ? zeile("HP", `${numberValue(s.hp)}${s.hpDice ? ` (${s.hpDice})` : ""}`) : "")
         + zeile("Effekt", s.effect)
+        + (istRucksack(item) ? zeile("Plätze", `${rucksackBelegt(actor, item)} / ${rucksackPlaetze(item)}`) : "")
         + (menge > 1 ? zeile("Anzahl", menge) : "");
       gear.push({
         id: item.id,
@@ -2049,7 +2167,8 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         menge: menge > 1 ? menge : "",
         tooltip,
         equipped: boolValue(s.equipped),
-        platz: ausruestungsPlatz(item)
+        platz: ausruestungsPlatz(item),
+        rucksackId: imRucksack(actor, item) ? item.getFlag("hope-lies-within-2", "rucksack") : ""
       });
     }
 
@@ -2079,6 +2198,20 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     }
     const leere = Math.max(numberValue(actor.system?.resources?.inventorySlots?.max) - countInventorySlots(items), 0);
 
+    // Rucksack-Tab: der ausgerüstete Rucksack, sonst ein abgelegter mit Inhalt (dann gesperrt)
+    const aktiv = aktiverRucksack(actor);
+    const gezeigt = aktiv ?? Array.from(items).find((item) => istRucksack(item) && rucksackInhalt(actor, item).length);
+    let rucksack = null;
+    if (gezeigt) {
+      const plaetze = rucksackPlaetze(gezeigt);
+      const belegt = rucksackBelegt(actor, gezeigt);
+      rucksack = {
+        name: gezeigt.name, img: gezeigt.img, plaetze, belegt, aktiv: !!aktiv,
+        felder: gear.filter((entry) => entry.rucksackId === gezeigt.id),
+        leereFelder: Array.from({ length: Math.min(Math.max(plaetze - belegt, 0), 60) })
+      };
+    }
+
     return {
       skills,
       figur: {
@@ -2087,8 +2220,9 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         waffen: [platz("haupthand"), nebenhand],
         weitere
       },
-      raster: gear.filter((entry) => !entry.equipped),
-      leereFelder: Array.from({ length: Math.min(leere, 40) })
+      raster: gear.filter((entry) => !entry.equipped && !entry.rucksackId),
+      leereFelder: Array.from({ length: Math.min(leere, 40) }),
+      rucksack
     };
   }
 
@@ -2554,6 +2688,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainNsc", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainBausteine", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainHandel", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "kristallHandel", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expVerteilung", {
@@ -2666,13 +2801,13 @@ Hooks.once("ready", async () => {
     await game.settings.set("hope-lies-within-2", "lindhainBausteine", true);
   }
   // EXP-Werte aus dem Bestiarium in die Monster der Welt übernehmen (einmalig)
-  if (game.user?.isGM && game.settings.get("hope-lies-within-2", "expStand") < 1) {
+  if (game.user?.isGM && game.settings.get("hope-lies-within-2", "expStand") < 2) {
     const response = await fetch("systems/hope-lies-within-2/import/monsters.json");
     if (response.ok) {
       const exp = new Map((await response.json()).map((e) => [e.name, e.system?.monster?.exp]));
       for (const actor of game.actors.filter((a) => a.type === "monster" && exp.has(a.name))) await actor.update({ "system.monster.exp": exp.get(actor.name) });
     }
-    await game.settings.set("hope-lies-within-2", "expStand", 1);
+    await game.settings.set("hope-lies-within-2", "expStand", 2);
   }
   // Skills: feste Werte und Beschreibungen für die Spieler (Reichweite, Abklingzeit, Schaden, Schutz, Fläche, Dauer)
   if (game.user?.isGM && game.settings.get("hope-lies-within-2", "skillWerteStand") < SKILL_WERTE_STAND) {
@@ -2683,6 +2818,11 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainHandel")) {
     await lindhainHandel();
     await game.settings.set("hope-lies-within-2", "lindhainHandel", true);
+  }
+  // Kristalle (2026-10-30): Kessa Dorn ist von der Gilde und kauft Kristalle (Lindhain-NSC ohne eigenen Handel)
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "kristallHandel")) {
+    await lindhainHandel();
+    await game.settings.set("hope-lies-within-2", "kristallHandel", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {
@@ -2716,6 +2856,17 @@ Hooks.once("ready", async () => {
       if (!token?.actor) return;
       await token.actor.update({ "system.resources.hp.value": Math.max(numberValue(data.hp), 0) });
       if (data.besiegt) await besiegtAbwickeln(token, data.toeterId);
+      return;
+    }
+    if (data?.type === "gegenstandGeben") {
+      if (game.users.activeGM?.id !== game.user.id) return;
+      const quelle = await fromUuid(data.quelle);
+      const ziel = await fromUuid(data.ziel);
+      const item = quelle?.items?.get(data.itemId);
+      const absender = game.users.get(data.userId);
+      if (!item || !ziel || !absender || !quelle.testUserPermission(absender, "OWNER")) return;
+      await gegenstandUebergeben(quelle, item, ziel);
+      await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><p>${escapeHtml(quelle.name)} gibt ${escapeHtml(item.name)} an ${escapeHtml(ziel.name)}.</p></div>` });
       return;
     }
     if (data?.type !== "endTurn") return;

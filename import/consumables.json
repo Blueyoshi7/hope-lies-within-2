@@ -12,7 +12,7 @@
    "description": "Universales Produkt für Magie, Alchemie, Highs und Lows.",
    "source": "Monster Drop",
    "quantity": 1,
-   "effect": "Entspricht einem kleinen Abyss-Stein (siehe Tab Abyss-Steine)."
+   "effect": "Entspricht einem Abyss-Kristall C (siehe Tab Kristalle)."
   }
  },
  {
@@ -34,7 +34,7 @@
  {
   "name": "Magischer Staub (Zorr)",
   "type": "consumable",
-  "img": "icons/commodities/materials/feathers-brown.webp",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/magischer-staub-zorr.webp",
   "folder": "HLW/Verbrauchsgegenstände/Rang D",
   "system": {
    "rank": "D",
@@ -333,6 +333,182 @@
    "source": "Kern-Truhe",
    "quantity": 1,
    "effect": "Neu (Balancing 3.3)"
+  }
+ },
+ {
+  "name": "EXP-Kristall D",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/exp-kristall-d.webp",
+  "folder": "HLW/Kristalle/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 20,
+   "price": "20 SK",
+   "description": "Ein einzelner, blass türkisgrüner Splitter. Hält 6 EXP.",
+   "source": "Jedes Monster des Rangs D (Rang E: halbe Chance)",
+   "quantity": 1,
+   "effect": "Verwenden: +6 EXP. Darf weitergegeben oder verkauft werden (Gilde zahlt den vollen Wert, Händler die übliche Quote). Gehört dem, der das Monster besiegt hat, auch bei Gilden-Aufträgen."
+  }
+ },
+ {
+  "name": "EXP-Kristall C",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/exp-kristall-c.webp",
+  "folder": "HLW/Kristalle/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 80,
+   "price": "80 SK",
+   "description": "Zwei klare, himmelblaue Kristalle auf einem Stückchen Fels. Hält 12 EXP.",
+   "source": "Jedes Monster des Rangs C",
+   "quantity": 1,
+   "effect": "Verwenden: +12 EXP. Darf weitergegeben oder verkauft werden (Gilde zahlt den vollen Wert, Händler die übliche Quote). Gehört dem, der das Monster besiegt hat, auch bei Gilden-Aufträgen."
+  }
+ },
+ {
+  "name": "EXP-Kristall B",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/exp-kristall-b.webp",
+  "folder": "HLW/Kristalle/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 300,
+   "price": "3 GK",
+   "description": "Drei tiefblaue Kristalle mit hellem Kern. Hält 20 EXP.",
+   "source": "Jedes Monster des Rangs B",
+   "quantity": 1,
+   "effect": "Verwenden: +20 EXP. Darf weitergegeben oder verkauft werden (Gilde zahlt den vollen Wert, Händler die übliche Quote). Gehört dem, der das Monster besiegt hat, auch bei Gilden-Aufträgen."
+  }
+ },
+ {
+  "name": "EXP-Kristall A",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/exp-kristall-a.webp",
+  "folder": "HLW/Kristalle/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 1200,
+   "price": "12 GK",
+   "description": "Fünf goldene Kristalle, die warm leuchten. Hält 35 EXP.",
+   "source": "Jedes Monster des Rangs A",
+   "quantity": 1,
+   "effect": "Verwenden: +35 EXP. Darf weitergegeben oder verkauft werden (Gilde zahlt den vollen Wert, Händler die übliche Quote). Gehört dem, der das Monster besiegt hat, auch bei Gilden-Aufträgen."
+  }
+ },
+ {
+  "name": "EXP-Kristall S",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/exp-kristall-s.webp",
+  "folder": "HLW/Kristalle/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 5000,
+   "price": "50 GK",
+   "description": "Ein großer, weißer Kristall, der das Licht in allen Farben bricht. Hält 60 EXP.",
+   "source": "Jedes Monster des Rangs S (Rang SS: doppelt)",
+   "quantity": 1,
+   "effect": "Verwenden: +60 EXP. Darf weitergegeben oder verkauft werden (Gilde zahlt den vollen Wert, Händler die übliche Quote). Gehört dem, der das Monster besiegt hat, auch bei Gilden-Aufträgen."
+  }
+ },
+ {
+  "name": "Abyss-Kristall D",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/abyss-kristall-d.webp",
+  "folder": "HLW/Kristalle/Rang D",
+  "system": {
+   "rank": "D",
+   "tier": 2,
+   "priceSk": 60,
+   "price": "60 SK",
+   "description": "Ein dunkelvioletter Splitter, erbsengroß. Hält 9 EXP.",
+   "source": "Korrumpierte Monster und Abyss-Wesen des Rangs D",
+   "quantity": 1,
+   "effect": "Abgabe an die Gilde ist Pflicht (Gildenpakt 612). Der Wert ist der Gildenpreis. Gehört der Gilde (Gildenpakt). Verwenden: +9 EXP und +1 Korruption. Grundstoff für Zorr (1 Prise)."
+  }
+ },
+ {
+  "name": "Abyss-Kristall C",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/abyss-kristall-c.webp",
+  "folder": "HLW/Kristalle/Rang C",
+  "system": {
+   "rank": "C",
+   "tier": 3,
+   "priceSk": 250,
+   "price": "2 GK 50 SK",
+   "description": "Zwei gezackte, violette Kristalle mit feinen roten Rissen. Hält 18 EXP.",
+   "source": "Korrumpierte Monster und Abyss-Wesen des Rangs C",
+   "quantity": 1,
+   "effect": "Abgabe an die Gilde ist Pflicht (Gildenpakt 612). Der Wert ist der Gildenpreis. Gehört der Gilde (Gildenpakt). Verwenden: +18 EXP und +2 Korruption. Grundstoff für Zorr (3 Prisen)."
+  }
+ },
+ {
+  "name": "Abyss-Kristall B",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/abyss-kristall-b.webp",
+  "folder": "HLW/Kristalle/Rang B",
+  "system": {
+   "rank": "B",
+   "tier": 4,
+   "priceSk": 1000,
+   "price": "10 GK",
+   "description": "Drei dunkle Kristalle mit pulsierenden roten Adern, faustgroß. Hält 30 EXP.",
+   "source": "Korrumpierte Monster und Abyss-Wesen des Rangs B",
+   "quantity": 1,
+   "effect": "Abgabe an die Gilde ist Pflicht (Gildenpakt 612). Der Wert ist der Gildenpreis. Gehört der Gilde (Gildenpakt). Verwenden: +30 EXP und +3 Korruption. Grundstoff für Zorr (10 Prisen)."
+  }
+ },
+ {
+  "name": "Abyss-Kristall A",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/abyss-kristall-a.webp",
+  "folder": "HLW/Kristalle/Rang A",
+  "system": {
+   "rank": "A",
+   "tier": 5,
+   "priceSk": 4000,
+   "price": "40 GK",
+   "description": "Ein schwarzvioletter Kristallblock mit glühenden Rissen, kopfgroß; raucht leise. Hält 50 EXP.",
+   "source": "Korrumpierte Monster und Abyss-Wesen des Rangs A",
+   "quantity": 1,
+   "effect": "Abgabe an die Gilde ist Pflicht (Gildenpakt 612). Der Wert ist der Gildenpreis. Gehört der Gilde (Gildenpakt). Verwenden: +50 EXP und +5 Korruption. Grundstoff für Zorr (30 Prisen)."
+  }
+ },
+ {
+  "name": "Abyss-Kristall S",
+  "type": "consumable",
+  "img": "systems/hope-lies-within-2/assets/icons/gegenstaende/abyss-kristall-s.webp",
+  "folder": "HLW/Kristalle/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 15000,
+   "price": "150 GK",
+   "description": "Ein Kristallherz mit rotem Kern, das schlägt (früher „Abyss-Herz“). Hält 90 EXP.",
+   "source": "Korrumpierte Monster und Abyss-Wesen des Rangs S",
+   "quantity": 1,
+   "effect": "Abgabe an die Gilde ist Pflicht (Gildenpakt 612). Der Wert ist der Gildenpreis. Gehört der Gilde (Gildenpakt). Verwenden: +90 EXP und +10 Korruption. Grundstoff für Zorr (100 Prisen)."
+  }
+ },
+ {
+  "name": "Kern eines Verlorenen",
+  "type": "consumable",
+  "img": "icons/sundries/misc/key-short-gold.webp",
+  "folder": "HLW/Kristalle/Rang S",
+  "system": {
+   "rank": "S",
+   "tier": 6,
+   "priceSk": 15000,
+   "price": "150 GK",
+   "description": "Hell leuchtend, fast durchsichtig.",
+   "source": "Verlorene (korrumpierte Heroes)",
+   "quantity": 1,
+   "effect": "Abgabe an die Gilde ist Pflicht (Gildenpakt 612). Der Wert ist der Gildenpreis. Die Hüter fordern ihn für Eldora. Verwenden: +150 EXP und +20 Korruption."
   }
  }
 ]

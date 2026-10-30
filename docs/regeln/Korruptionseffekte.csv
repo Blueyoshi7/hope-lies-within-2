@@ -22,7 +22,7 @@
 2;1;Brüchige Haut;Negativ;Rüstwert −3.
 2;2;Violette Adern;Neutral;"Violette Adern unter der Haut. Wortgewandtheit −3 gegenüber Fremden; Corrupted halten dich kurz für ihresgleichen."
 2;3;Zitternde Hand;Negativ;Zweitwaffe / Schild ist gesperrt.
-2;4;Steinhunger;Negativ;Muss jede Nacht einen Abyss-Splitter berühren (+1 Korruption), sonst Verwundet.
+2;4;Steinhunger;Negativ;Muss jede Nacht einen Abyss-Kristall berühren (+1 Korruption), sonst Verwundet.
 2;5;Taube Finger;Negativ;Handwerkskunst −5.
 2;6;Verschwommene Welt;Negativ;Genauigkeit −2.
 2;7;Abyss-Sicht;Neutral;Sieht im Dunkeln wie am Tag, aber bei Tageslicht Genauigkeit −2.
@@ -43,8 +43,8 @@
 3;2;Zweiter Herzschlag;Positiv;"Einmal im Kapitel bei 0 HP sofort mit 1 HP aufstehen; danach +5 Korruption."
 3;3;Leere Augen;Negativ;"Violette Augen. Jeder erkennt die Korruption; Wortgewandtheit −8, die Hüter werden gerufen."
 3;4;Fremder Wille;Negativ;Einmal pro Kampf bestimmt der GM eine deiner Aktionen.
-3;5;Abyss-Hunger;Negativ;Essen heilt nicht mehr. Nur Abyss-Steine nähren dich (Splitter = 10 HP, +1 Korruption).
-3;6;Steinwuchs;Negativ;In deiner Brust wächst ein Abyss-Stein. Max. HP −10. Wer dich tötet, findet einen kleinen Abyss-Stein.
+3;5;Abyss-Hunger;Negativ;"Essen heilt nicht mehr. Nur Abyss-Kristalle nähren dich (Rang D = 10 HP, +1 Korruption; ohne EXP)."
+3;6;Steinwuchs;Negativ;In deiner Brust wächst ein Abyss-Kristall. Max. HP −10. Wer dich tötet, findet einen Abyss-Kristall C.
 3;7;Schattenklaue;Neutral;Ein Arm wird zur Klaue: Nahkampf +1W6 Schaden, in dieser Hand keine Waffe.
 3;8;Gedächtnisfraß;Negativ;Vergisst einen zufälligen Skill bis zum Kapitelende.
 3;9;Ruf der Tiefe;Negativ;Jede Nacht Willenskraft 25, sonst wandert man im Schlaf nach Norden.
