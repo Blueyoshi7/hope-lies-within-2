@@ -8,7 +8,28 @@
   "skill": "Kampfgeist",
   "effect": "Bei aktiven Nahkampfangriffen +1 Schaden.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfgeist.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfgeist.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Deine Nahkampfangriffe machen +1 Schaden.",
+   "effect": "Deine Nahkampfangriffe machen +1 Schaden."
+  }
  },
  {
   "name": "Hüter",
@@ -19,7 +40,30 @@
   "skill": "Zähigkeit",
   "effect": "+20 Max HP.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/zaehigkeit.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/zaehigkeit.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "hp": 20
+   },
+   "description": "Du hältst mehr aus als andere: Max-HP +20.",
+   "effect": "Du hältst mehr aus als andere: Max-HP +20."
+  }
  },
  {
   "name": "Magier",
@@ -30,7 +74,28 @@
   "skill": "Magisches Gespür",
   "effect": "Bei aktiven magischen Angriffen +1 Schaden.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magisches-gespuer.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magisches-gespuer.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Deine magischen Angriffe machen +1 Schaden.",
+   "effect": "Deine magischen Angriffe machen +1 Schaden."
+  }
  },
  {
   "name": "Gelehrter",
@@ -41,7 +106,28 @@
   "skill": "„Das hab ich schon mal gesehen“",
   "effect": "Einmal pro Kampf: Der GM nennt eine Schwäche, Resistenz oder Besonderheit eines Gegners.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/das-hab-ich-schon-mal-gesehen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/das-hab-ich-schon-mal-gesehen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Kampf",
+   "einmalProKampf": true,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du erinnerst dich an etwas aus deinen Büchern: Der GM nennt eine Schwäche, Resistenz oder Besonderheit eines Gegners.",
+   "effect": "Du erinnerst dich an etwas aus deinen Büchern: Der GM nennt eine Schwäche, Resistenz oder Besonderheit eines Gegners."
+  }
  },
  {
   "name": "Schurke",
@@ -52,7 +138,28 @@
   "skill": "Klingenhand",
   "effect": "Bei Angriffen mit einem Dolch +1 Schaden.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/klingenhand.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/klingenhand.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Mit einem Dolch machen deine Angriffe +1 Schaden.",
+   "effect": "Mit einem Dolch machen deine Angriffe +1 Schaden."
+  }
  },
  {
   "name": "Gauner",
@@ -63,7 +170,30 @@
   "skill": "Flinke Füße",
   "effect": "Aktionsgeschwindigkeit +1 (Initiative +1).",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/flinke-fuesse.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "initiative": 1
+   },
+   "description": "Du bist schneller als die anderen: Initiative +1.",
+   "effect": "Du bist schneller als die anderen: Initiative +1."
+  }
  },
  {
   "name": "Schütze",
@@ -78,9 +208,24 @@
   "skillDaten": {
    "activation": "active",
    "castTime": "action",
-   "ziele": 2,
-   "waffenSchaden": true,
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Kampf",
    "einmalProKampf": true,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 2,
+   "bonuses": {},
+   "description": "Ein Angriff auf zwei verschiedene Ziele in Reichweite deiner Waffe, jedes mit eigenem Angriffswurf und vollem Waffenschaden. Geht nur, wenn zwei Ziele in Reichweite stehen. Mit einer Nahkampfwaffe wirfst du sie (Reichweite 5).",
+   "effect": "Ein Angriff auf zwei verschiedene Ziele in Reichweite deiner Waffe, jedes mit eigenem Angriffswurf und vollem Waffenschaden. Geht nur, wenn zwei Ziele in Reichweite stehen. Mit einer Nahkampfwaffe wirfst du sie (Reichweite 5).",
+   "waffenSchaden": true,
    "damageCategory": "physical",
    "scaling": {
     "primary": "AGL",
@@ -103,6 +248,27 @@
    "maxRang": "D",
    "runden": 2,
    "bonus": 0
+  },
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Deine Fernkampfangriffe machen +1 Schaden.",
+   "effect": "Deine Fernkampfangriffe machen +1 Schaden."
   }
  },
  {
@@ -114,7 +280,30 @@
   "skill": "Wortgewandt",
   "effect": "World-Skill Wortgewandtheit +1.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/wortgewandt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/wortgewandt.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "wortgewandtheit": 1
+   },
+   "description": "Du findest immer die richtigen Worte: Wortgewandtheit +1.",
+   "effect": "Du findest immer die richtigen Worte: Wortgewandtheit +1."
+  }
  },
  {
   "name": "Priester",
@@ -125,7 +314,28 @@
   "skill": "„Bildung einprügeln“",
   "effect": "Einmal pro Kampf: Schlag mit einem schweren Buch, 1W4 Schaden; das Ziel hat −2 auf seinen nächsten Wurf.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/bildung-einpruegeln.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/bildung-einpruegeln.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Kampf",
+   "einmalProKampf": true,
+   "damage": "1d4",
+   "damageText": "1W4",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "1 Runde",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Schlag mit einem schweren Buch. Das Ziel hat −2 auf seinen nächsten Wurf.",
+   "effect": "Ein Schlag mit einem schweren Buch. Das Ziel hat −2 auf seinen nächsten Wurf."
+  }
  },
  {
   "name": "Prophet",
@@ -137,7 +347,28 @@
   "skill": "Gnade",
   "effect": "Leichte Heilung für ein Ziel: 1W6 HP.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/gnade.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/gnade.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "1d6+2",
+   "damageText": "1W6+2",
+   "heilung": "1W6+2",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Eine leichte Heilung für einen Verbündeten in 3 Feldern.",
+   "effect": "Eine leichte Heilung für einen Verbündeten in 3 Feldern."
+  }
  },
  {
   "name": "Täuschungs-Kleriker",
@@ -149,7 +380,28 @@
   "skill": "Heilungsversprechen",
   "effect": "Täuscht eine Heilung vor und fügt stattdessen 2W6 Schaden zu.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/heilungsversprechen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/heilungsversprechen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du tust, als würdest du heilen, und fügst stattdessen 2W6 Schaden zu. Das Ziel kann nicht mit einer Reaktion ausweichen.",
+   "effect": "Du tust, als würdest du heilen, und fügst stattdessen 2W6 Schaden zu. Das Ziel kann nicht mit einer Reaktion ausweichen."
+  }
  },
  {
   "name": "Sanitäter",
@@ -161,7 +413,28 @@
   "skill": "Schmerzlinderung",
   "effect": "Halbiert eine Runde lang den Schaden, den du oder ein Verbündeter erleidet.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/schmerzlinderung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/schmerzlinderung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "reaction",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Treffer gegen dich oder einen Verbündeten in 4 Feldern macht nur halben Schaden.",
+   "effect": "Ein Treffer gegen dich oder einen Verbündeten in 4 Feldern macht nur halben Schaden."
+  }
  },
  {
   "name": "Paladin",
@@ -173,7 +446,28 @@
   "skill": "Aura des Glaubens",
   "effect": "Verbündete im Umkreis erhalten +1 auf alle Würfe.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/aura-des-glaubens.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/aura-des-glaubens.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 1 Feld",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Dein Glaube stärkt die anderen: Verbündete direkt neben dir haben +1 auf alle Würfe.",
+   "effect": "Dein Glaube stärkt die anderen: Verbündete direkt neben dir haben +1 auf alle Würfe."
+  }
  },
  {
   "name": "Prediger von Athrea",
@@ -197,7 +491,28 @@
   "skill": "Göttlicher Schutz",
   "effect": "Fällt der Charakter auf 10 HP oder weniger, schützt ihn einmal pro Kampf eine Aura mit +10 HP.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/goettlicher-schutz.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/goettlicher-schutz.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Einmal pro Kampf, wenn du auf 10 HP oder weniger fällst: Eine Aura heilt dich und alle Verbündeten in 2 Feldern um 10 HP.",
+   "effect": "Einmal pro Kampf, wenn du auf 10 HP oder weniger fällst: Eine Aura heilt dich und alle Verbündeten in 2 Feldern um 10 HP."
+  }
  },
  {
   "name": "Mönch",
@@ -209,7 +524,28 @@
   "skill": "Meditation",
   "effect": "Eine Aktion lang meditieren: 2W6 HP Selbstheilung.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/meditation.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/meditation.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "1d6+2",
+   "damageText": "1W6+2",
+   "heilung": "1W6+2",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Eine kurze Meditation sammelt deine Kraft: Du heilst dich.",
+   "effect": "Eine kurze Meditation sammelt deine Kraft: Du heilst dich."
+  }
  },
  {
   "name": "Nachtweber",
@@ -221,7 +557,28 @@
   "skill": "Schattenschritt",
   "effect": "Wird der Charakter angegriffen, teleportiert er sich zu einem Schatten auf dem Feld. CD 3 Runden.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/schattenschritt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/schattenschritt.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "reaction",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Wirst du angegriffen, teleportierst du dich in einen Schatten bis 4 Felder entfernt. Der Angriff verfehlt.",
+   "effect": "Wirst du angegriffen, teleportierst du dich in einen Schatten bis 4 Felder entfernt. Der Angriff verfehlt."
+  }
  },
  {
   "name": "Herbalist",
@@ -233,7 +590,28 @@
   "skill": "Kräuter und Gifte",
   "effect": "Kann alle Kräuter zur Heilung oder als Gift verwenden.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/kraeuter-und-gifte.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/kraeuter-und-gifte.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "1d6",
+   "damageText": "1W6",
+   "heilung": "1W6",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du nutzt ein Kraut aus deinem Inventar: als Heilung für dich oder einen Verbündeten neben dir (1W6) oder als Gift gegen einen Gegner (1W6). Das Kraut ist danach verbraucht.",
+   "effect": "Du nutzt ein Kraut aus deinem Inventar: als Heilung für dich oder einen Verbündeten neben dir (1W6) oder als Gift gegen einen Gegner (1W6). Das Kraut ist danach verbraucht."
+  }
  },
  {
   "name": "Weißmagier",
@@ -245,7 +623,28 @@
   "skill": "Reine Heilung",
   "effect": "Heilt alle Verbündeten in der Nähe um je 1W4.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/reine-heilung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/reine-heilung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "1d4",
+   "damageText": "1W4",
+   "heilung": "1W4",
+   "schutz": "",
+   "flaeche": "Umkreis 2 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein sanftes Licht: Alle Verbündeten im Umkreis (auch du) heilen 1W4.",
+   "effect": "Ein sanftes Licht: Alle Verbündeten im Umkreis (auch du) heilen 1W4."
+  }
  },
  {
   "name": "Kämpfer",
@@ -257,7 +656,28 @@
   "skill": "Ansturm",
   "effect": "Wuchtiger Angriff, 1W6 Schaden, stößt das Ziel 2 Felder zurück.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/ansturm.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/ansturm.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "1d6",
+   "damageText": "1W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein wuchtiger Angriff, der den Gegner 1 Feld zurückstößt.",
+   "effect": "Ein wuchtiger Angriff, der den Gegner 1 Feld zurückstößt."
+  }
  },
  {
   "name": "Sturmweber",
@@ -269,7 +689,29 @@
   "skill": "Blitzpfeil",
   "effect": "Ein mit Blitz geladener Wurf- oder Pfeilangriff, 1W6 + 2 Schaden.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/blitzpfeil.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/blitzpfeil.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "1d6+2",
+   "damageText": "1W6+2",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein mit Blitz geladener Wurf- oder Pfeilangriff, zählt als magischer Schaden. Geht mit jeder Waffe: Ohne Bogen oder Armbrust wirfst du deine Waffe oder etwas anderes (Messer, Stein, Flasche); Reichweite und Schaden bleiben gleich.",
+   "effect": "Ein mit Blitz geladener Wurf- oder Pfeilangriff, zählt als magischer Schaden. Geht mit jeder Waffe: Ohne Bogen oder Armbrust wirfst du deine Waffe oder etwas anderes (Messer, Stein, Flasche); Reichweite und Schaden bleiben gleich.",
+   "skillType": "Fernkampf"
+  }
  },
  {
   "name": "Barbar",
@@ -281,7 +723,28 @@
   "skill": "Qual",
   "effect": "Brutaler Angriff, 2W6 Schaden; das Ziel hat −1 auf seinen nächsten Wurf.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/qual.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/qual.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "1 Runde",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein brutaler Hieb, der nachbrennt: Das Ziel hat −2 auf seinen nächsten Wurf.",
+   "effect": "Ein brutaler Hieb, der nachbrennt: Das Ziel hat −2 auf seinen nächsten Wurf."
+  }
  },
  {
   "name": "Kampfmagier",
@@ -293,7 +756,28 @@
   "skill": "Magische Raserei",
   "effect": "Unkontrollierte Explosion: 1W6 Schaden an allen Zielen direkt neben dir.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-raserei.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-raserei.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "1d6",
+   "damageText": "1W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "alle Felder um dich",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Eine unkontrollierte magische Explosion: Jedes Wesen direkt neben dir nimmt 1W6 Schaden, auch Verbündete.",
+   "effect": "Eine unkontrollierte magische Explosion: Jedes Wesen direkt neben dir nimmt 1W6 Schaden, auch Verbündete."
+  }
  },
  {
   "name": "Wächter",
@@ -305,7 +789,30 @@
   "skill": "Standhaftigkeit",
   "effect": "+2 Max HP pro Level.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/standhaftigkeit.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/standhaftigkeit.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "hpPerLevel": 2
+   },
+   "description": "Du bist zäh wie altes Holz: Max-HP +2 pro Level.",
+   "effect": "Du bist zäh wie altes Holz: Max-HP +2 pro Level."
+  }
  },
  {
   "name": "Gladiator",
@@ -317,7 +824,28 @@
   "skill": "Vielseitigkeit",
   "effect": "Eine zweite Aktion pro Runde; ist sie ein Angriff, macht er halben Schaden.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/vielseitigkeit.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/vielseitigkeit.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du hast eine zweite Aktion pro Runde. Ist sie ein Angriff, macht er halben Schaden.",
+   "effect": "Du hast eine zweite Aktion pro Runde. Ist sie ein Angriff, macht er halben Schaden."
+  }
  },
  {
   "name": "Schmarotzer",
@@ -329,7 +857,28 @@
   "skill": "Fluch des Parasiten",
   "effect": "Teilt 50 % des erhaltenen Schadens auf Verbündete in der Nähe auf.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/fluch-des-parasiten.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/fluch-des-parasiten.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Die Hälfte des Schadens, den du bekommst, geht auf einen Verbündeten direkt neben dir über (du wählst, wen).",
+   "effect": "Die Hälfte des Schadens, den du bekommst, geht auf einen Verbündeten direkt neben dir über (du wählst, wen)."
+  }
  },
  {
   "name": "Erlöser",
@@ -341,7 +890,28 @@
   "skill": "Erste Umarmung",
   "effect": "Stabilisiert einen sterbenden Verbündeten sofort mit 1 HP. Einmal pro Kampf.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/erste-umarmung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/erste-umarmung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Kampf",
+   "einmalProKampf": true,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du umarmst einen sterbenden Verbündeten neben dir und stabilisierst ihn sofort mit 1 HP.",
+   "effect": "Du umarmst einen sterbenden Verbündeten neben dir und stabilisierst ihn sofort mit 1 HP."
+  }
  },
  {
   "name": "Magische Wache",
@@ -353,7 +923,30 @@
   "skill": "Schildwache",
   "effect": "HP +20; der Rüstwert über 8 wird zum Blockwert.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/schildwache.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/schildwache.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "hp": 20
+   },
+   "description": "Max-HP +20. Dein Rüstwert über 8 wird zum Blockwert (Blockwert insgesamt höchstens 8).",
+   "effect": "Max-HP +20. Dein Rüstwert über 8 wird zum Blockwert (Blockwert insgesamt höchstens 8)."
+  }
  },
  {
   "name": "Schwarzmagier",
@@ -365,7 +958,28 @@
   "skill": "Nekrotisches Mal",
   "effect": "Markiert einen Gegner; stirbt er, explodiert das Mal (1W6 an allen Nahen).",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/nekrotisches-mal.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/nekrotisches-mal.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "1W6 (beim Tod des Ziels)",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "alle Felder um das Ziel",
+   "dauer": "bis Kampfende",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du belegst einen Gegner mit einem Mal. Stirbt er in diesem Kampf, explodiert es: Alle Wesen direkt neben ihm nehmen 1W6.",
+   "effect": "Du belegst einen Gegner mit einem Mal. Stirbt er in diesem Kampf, explodiert es: Alle Wesen direkt neben ihm nehmen 1W6."
+  }
  },
  {
   "name": "Sturmzauberer",
@@ -377,7 +991,28 @@
   "skill": "Blitzschritt",
   "effect": "Teleport genau 6 Felder, bei der Landung 1W6 Blitzschaden in der Nähe.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/blitzschritt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/blitzschritt.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "1d6",
+   "damageText": "1W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "alle Felder um deine Landestelle",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du teleportierst dich genau 6 Felder in eine Richtung. Beim Landen nehmen alle Gegner direkt neben dir 1W6 Blitzschaden.",
+   "effect": "Du teleportierst dich genau 6 Felder in eine Richtung. Beim Landen nehmen alle Gegner direkt neben dir 1W6 Blitzschaden."
+  }
  },
  {
   "name": "Blaumagier",
@@ -389,7 +1024,28 @@
   "skill": "Bestienkodex",
   "effect": "Lernt Skills nur von Monstern, die er selbst getötet hat; einmal pro Kampf einen davon kopieren.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/bestienkodex.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/bestienkodex.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du lernst Skills nur von Monstern, die du selbst besiegt hast. Einmal pro Kampf erfährst du, ob ein Gegner einen Skill hinterlässt.",
+   "effect": "Du lernst Skills nur von Monstern, die du selbst besiegt hast. Einmal pro Kampf erfährst du, ob ein Gegner einen Skill hinterlässt."
+  }
  },
  {
   "name": "Steinweber",
@@ -401,7 +1057,28 @@
   "skill": "Steinlanze",
   "effect": "Erschafft eine Lanze aus Stein, die geworfen und jederzeit neu geformt werden kann.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/steinlanze.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/steinlanze.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "1d6+2",
+   "damageText": "1W6+2",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du formst eine Lanze aus Stein. Sie ist eine Waffe (1W6+2), die du werfen kannst (3 Felder); danach entsteht sie jederzeit neu.",
+   "effect": "Du formst eine Lanze aus Stein. Sie ist eine Waffe (1W6+2), die du werfen kannst (3 Felder); danach entsteht sie jederzeit neu."
+  }
  },
  {
   "name": "Wissensdieb",
@@ -413,7 +1090,28 @@
   "skill": "Deins? Meins!",
   "effect": "Kann mit geringer Chance aus der Magie eines Gegners einen Skill-Orb erschaffen.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/deins-meins.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/deins-meins.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du greifst nach der Magie eines Gegners: Würfle 1W20. Bei 18 oder mehr entsteht daraus ein Skill-Orb T1 (einmal pro Gegner).",
+   "effect": "Du greifst nach der Magie eines Gegners: Würfle 1W20. Bei 18 oder mehr entsteht daraus ein Skill-Orb T1 (einmal pro Gegner)."
+  }
  },
  {
   "name": "Runenmagier",
@@ -425,7 +1123,28 @@
   "skill": "Energielauf",
   "effect": "Natürliche Skills werden doppelt gewirkt.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/energielauf.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/energielauf.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Natur-Skills (Erde, Pflanze, Wasser, Wind) wirken bei dir doppelt: doppelter Schaden, doppelte Heilung oder doppelte Dauer.",
+   "effect": "Natur-Skills (Erde, Pflanze, Wasser, Wind) wirken bei dir doppelt: doppelter Schaden, doppelte Heilung oder doppelte Dauer."
+  }
  },
  {
   "name": "Taktiker",
@@ -437,7 +1156,28 @@
   "skill": "Kampfanalyse",
   "effect": "Zweimal pro Kampf: Verbündete erhalten +3 auf ihren nächsten Wurf.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/kampfanalyse.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "2× pro Kampf",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Verbündete in 4 Feldern",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du liest den Kampf: Alle Verbündeten in 4 Feldern haben +3 auf ihren nächsten Wurf.",
+   "effect": "Du liest den Kampf: Alle Verbündeten in 4 Feldern haben +3 auf ihren nächsten Wurf."
+  }
  },
  {
   "name": "Astrologe",
@@ -449,7 +1189,28 @@
   "skill": "Galaktisches Auge",
   "effect": "Analysiert die Schwachstelle eines Gegners: der erste Angriff darauf ist ein kritischer Treffer.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/galaktisches-auge.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/galaktisches-auge.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Die Sterne zeigen dir Schwachstellen: Dein erster Angriff auf jeden neuen Gegner im Kampf macht +1W4 Schaden.",
+   "effect": "Die Sterne zeigen dir Schwachstellen: Dein erster Angriff auf jeden neuen Gegner im Kampf macht +1W4 Schaden."
+  }
  },
  {
   "name": "Schattentänzer",
@@ -461,7 +1222,28 @@
   "skill": "Schattenversteck",
   "effect": "Angriff aus dem Verborgenen, 1W6 Schaden, das Ziel verliert zusätzlich 3 HP.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/schattenversteck.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/schattenversteck.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "1d6",
+   "damageText": "1W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "1 Runde",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein dunkler Angriff aus dem Verborgenen. Zu Beginn seines nächsten Zugs verliert das Ziel noch einmal 3 HP.",
+   "effect": "Ein dunkler Angriff aus dem Verborgenen. Zu Beginn seines nächsten Zugs verliert das Ziel noch einmal 3 HP."
+  }
  },
  {
   "name": "Kampfspäher",
@@ -473,7 +1255,30 @@
   "skill": "Adlerauge",
   "effect": "Genauigkeit +2.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/adlerauge.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/adlerauge.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "acc": 2
+   },
+   "description": "Scharfer Blick: Genauigkeit +2.",
+   "effect": "Scharfer Blick: Genauigkeit +2."
+  }
  },
  {
   "name": "Klingenpriester",
@@ -485,7 +1290,29 @@
   "skill": "Heilige Klinge",
   "effect": "Nahkampfangriff, der Schaden verursacht und einen Verbündeten um 1W4 heilt.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/heilige-klinge.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/heilige-klinge.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "1d6",
+   "damageText": "1W6",
+   "heilung": "1W4",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Nahkampfangriff mit gesegneter Klinge. Zusätzlich heilt ein Verbündeter in 3 Feldern 1W4.",
+   "effect": "Ein Nahkampfangriff mit gesegneter Klinge. Zusätzlich heilt ein Verbündeter in 3 Feldern 1W4.",
+   "skillType": "Nahkampf"
+  }
  },
  {
   "name": "Nebeljäger",
@@ -497,7 +1324,28 @@
   "skill": "Nebelschuss",
   "effect": "Ein Schuss, der durch Gegner und Verbündete fliegt und die Seele trifft (ignoriert Rüstung).",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/nebelschuss.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/nebelschuss.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "1d6+2",
+   "damageText": "1W6+2",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Linie 4 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Schuss, der durch Körper hindurchfliegt und die Seele trifft: jedes Wesen in der Linie, auch Verbündete.",
+   "effect": "Ein Schuss, der durch Körper hindurchfliegt und die Seele trifft: jedes Wesen in der Linie, auch Verbündete."
+  }
  },
  {
   "name": "Assassine",
@@ -509,7 +1357,28 @@
   "skill": "Tödlicher Schlag",
   "effect": "Gezielter Angriff auf eine Schwachstelle: ein gerader Wurf zählt als maximaler Schaden.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/toedlicher-schlag.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/toedlicher-schlag.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "1d10",
+   "damageText": "1W10",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Angriff auf eine Schwachstelle. Ist dein Angriffswurf gerade, macht er vollen Schaden (10).",
+   "effect": "Ein Angriff auf eine Schwachstelle. Ist dein Angriffswurf gerade, macht er vollen Schaden (10)."
+  }
  },
  {
   "name": "Trickmage",
@@ -521,7 +1390,28 @@
   "skill": "Illusionsschlag",
   "effect": "Ein zufälliger Angriff pro Kampf verursacht doppelten Schaden.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/illusionsschlag.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/illusionsschlag.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Würfle bei jedem Angriff 1W6: Bei einer 6 war ein Trugbild im Spiel, und der Angriff macht doppelten Schaden.",
+   "effect": "Würfle bei jedem Angriff 1W6: Bei einer 6 war ein Trugbild im Spiel, und der Angriff macht doppelten Schaden."
+  }
  },
  {
   "name": "Klingenläufer",
@@ -533,7 +1423,28 @@
   "skill": "Sturmschritt",
   "effect": "Schnelle Attacke, 2W6 Schaden, du und das Ziel bewegt euch 3 Felder nach vorne.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/sturmschritt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/sturmschritt.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Eine schnelle Attacke: Du reißt den Gegner mit, ihr beide bewegt euch 2 Felder in Angriffsrichtung.",
+   "effect": "Eine schnelle Attacke: Du reißt den Gegner mit, ihr beide bewegt euch 2 Felder in Angriffsrichtung."
+  }
  },
  {
   "name": "Scout",
@@ -545,7 +1456,28 @@
   "skill": "Magische Tarnung",
   "effect": "Unsichtbar bis zur nächsten eigenen Aktion.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-tarnung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-tarnung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "bis zu deiner nächsten Aktion",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du wirst unsichtbar, bis du deine nächste Aktion machst.",
+   "effect": "Du wirst unsichtbar, bis du deine nächste Aktion machst."
+  }
  },
  {
   "name": "Dieb",
@@ -557,7 +1489,28 @@
   "skill": "Präzise Berührung",
   "effect": "Nahkampfangriff, der die Rüstung des Ziels ignoriert.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/praezise-beruehrung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/praezise-beruehrung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "1d6",
+   "damageText": "1W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Stich mit magischer Führung, der Rüstung ignoriert: Der Angriff geht gegen Rüstwert 8, egal was das Ziel trägt.",
+   "effect": "Ein Stich mit magischer Führung, der Rüstung ignoriert: Der Angriff geht gegen Rüstwert 8, egal was das Ziel trägt."
+  }
  },
  {
   "name": "Bestienkrieger",
@@ -569,7 +1522,28 @@
   "skill": "Tosende Bestie",
   "effect": "2W6 Nahkampfschaden, Gegner geraten in Angst; du verfällst in Rage.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/tosende-bestie.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/tosende-bestie.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "4d4",
+   "damageText": "4W4",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "2 Züge",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Brüllen und ein Hieb: Gegner in 2 Feldern sind 1 Runde verängstigt. Du gerätst in Rage und musst die nächsten 2 Züge mit normalen Angriffen den nächsten Gegner angreifen.",
+   "effect": "Ein Brüllen und ein Hieb: Gegner in 2 Feldern sind 1 Runde verängstigt. Du gerätst in Rage und musst die nächsten 2 Züge mit normalen Angriffen den nächsten Gegner angreifen."
+  }
  },
  {
   "name": "Tiermeister",
@@ -586,6 +1560,27 @@
    "maxRang": "C",
    "runden": 3,
    "bonus": 2
+  },
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du kannst ein gezähmtes Tier als Gefährten halten. Solange es bei dir ist, hast du Max-HP +10.",
+   "effect": "Du kannst ein gezähmtes Tier als Gefährten halten. Solange es bei dir ist, hast du Max-HP +10."
   }
  },
  {
@@ -598,7 +1593,28 @@
   "skill": "Hinterhalt",
   "effect": "Tarnt sich in natürlicher Umgebung; der erste Angriff aus der Tarnung ist kritisch.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/hinterhalt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/hinterhalt.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "+1d4",
+   "damageText": "+1W4",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "In natürlicher Umgebung tarnst du dich (Heimlichkeit, solange du dich nicht bewegst). Dein erster Angriff aus der Tarnung macht +1W4 Schaden.",
+   "effect": "In natürlicher Umgebung tarnst du dich (Heimlichkeit, solange du dich nicht bewegst). Dein erster Angriff aus der Tarnung macht +1W4 Schaden."
+  }
  },
  {
   "name": "Beschwörer",
@@ -622,7 +1638,28 @@
   "skill": "Präzisionsschuss",
   "effect": "Gezielter Fernangriff mit hoher Genauigkeit, 1W8 Schaden.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/praezisionsschuss.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/praezisionsschuss.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 8,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "1d8",
+   "damageText": "1W8",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein gezielter Schuss mit hoher Genauigkeit: Genauigkeit +2 für diesen Angriff.",
+   "effect": "Ein gezielter Schuss mit hoher Genauigkeit: Genauigkeit +2 für diesen Angriff."
+  }
  },
  {
   "name": "Ranger",
@@ -634,7 +1671,31 @@
   "skill": "Naturinstinkt",
   "effect": "Naturkunde +2, Schussschaden +2, Bewegung +1.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/naturinstinkt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/naturinstinkt.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "naturkunde": 2,
+    "movement": 1
+   },
+   "description": "Dein Instinkt für die Wildnis: Naturkunde +2, Bewegung +1, und deine Fernkampfangriffe machen +2 Schaden.",
+   "effect": "Dein Instinkt für die Wildnis: Naturkunde +2, Bewegung +1, und deine Fernkampfangriffe machen +2 Schaden."
+  }
  },
  {
   "name": "Runenschütze",
@@ -646,7 +1707,28 @@
   "skill": "Magiegeboren",
   "effect": "Pfeile entstehen aus magischer Kraft; es werden keine Pfeile verbraucht.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magiegeboren.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magiegeboren.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Deine Pfeile entstehen aus Magie: Du brauchst keine Munition, und deine Schüsse zählen als magischer Schaden.",
+   "effect": "Deine Pfeile entstehen aus Magie: Du brauchst keine Munition, und deine Schüsse zählen als magischer Schaden."
+  }
  },
  {
   "name": "Fallenleger",
@@ -658,7 +1740,28 @@
   "skill": "Netzfalle",
   "effect": "Fängt einen Gegner ein; er kann sich 2 Runden nicht bewegen.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Netz fängt einen Gegner ein: Er kann sich 2 Runden lang nicht bewegen.",
+   "effect": "Ein Netz fängt einen Gegner ein: Er kann sich 2 Runden lang nicht bewegen."
+  }
  },
  {
   "name": "Corrupted-Jäger",
@@ -683,7 +1786,28 @@
   "skill": "Göttliche Welle",
   "effect": "Eine Welle göttlicher Energie heilt alle Verbündeten im Bereich um 2W6.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/goettliche-welle.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/goettliche-welle.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "3d6",
+   "damageText": "3W6",
+   "heilung": "3W6",
+   "schutz": "",
+   "flaeche": "Umkreis 2 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Eine Welle göttlicher Energie: Alle Verbündeten im Umkreis heilen sofort 3W6.",
+   "effect": "Eine Welle göttlicher Energie: Alle Verbündeten im Umkreis heilen sofort 3W6."
+  }
  },
  {
   "name": "Druide",
@@ -709,7 +1833,28 @@
   "skill": "Göttlicher Bluff",
   "effect": "Täuscht göttliches Eingreifen vor: Gegner verlieren ihre nächste Aktion (Wurf gegen Willenskraft).",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/goettlicher-bluff.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/goettlicher-bluff.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du gibst dich als Gesandter der Götter aus. Ein Gegner würfelt Willenskraft gegen deine Wortgewandtheit; verliert er, greift er dich 2 Runden lang nicht an.",
+   "effect": "Du gibst dich als Gesandter der Götter aus. Ein Gegner würfelt Willenskraft gegen deine Wortgewandtheit; verliert er, greift er dich 2 Runden lang nicht an."
+  }
  },
  {
   "name": "Friedenswächter",
@@ -735,7 +1880,28 @@
   "skill": "Heiliges Licht",
   "effect": "Heilt zwei Verbündete um je 2W6 oder fügt zwei Gegnern je 2W6 heiligen Schaden zu.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/heiliges-licht.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/heiliges-licht.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "2W6",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 2,
+   "bonuses": {},
+   "description": "Heiliges Licht trifft zwei Ziele: Zwei Verbündete heilen 2W6, oder zwei Gegner nehmen 2W6 Schaden.",
+   "effect": "Heiliges Licht trifft zwei Ziele: Zwei Verbündete heilen 2W6, oder zwei Gegner nehmen 2W6 Schaden."
+  }
  },
  {
   "name": "Berserker",
@@ -748,7 +1914,28 @@
   "skill": "Rasender Schlag",
   "effect": "Kanalisiert Wut in einen Angriff: Schaden +1W6 für jeden fehlenden Viertel-HP-Balken.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/rasender-schlag.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/rasender-schlag.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "4d8",
+   "damageText": "4W8",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "danach 2 Runden erschöpft",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Alle unterdrückte Wut in einem Schlag, ohne Waffe. Danach kannst du 2 Runden lang weder angreifen noch dich bewegen.",
+   "effect": "Alle unterdrückte Wut in einem Schlag, ohne Waffe. Danach kannst du 2 Runden lang weder angreifen noch dich bewegen."
+  }
  },
  {
   "name": "Waffenmeister",
@@ -761,7 +1948,28 @@
   "skill": "Meisterliche Waffenführung",
   "effect": "Angriffe ohne Skill +5 Schaden; Waffe wechseln kostet keine Schnellaktion.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/meisterliche-waffenfuehrung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/meisterliche-waffenfuehrung.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Normale Waffenangriffe (ohne Skill) machen +5 Schaden. Waffe wechseln kostet keine Schnellaktion.",
+   "effect": "Normale Waffenangriffe (ohne Skill) machen +5 Schaden. Waffe wechseln kostet keine Schnellaktion."
+  }
  },
  {
   "name": "Heiliger Ritter",
@@ -774,7 +1982,28 @@
   "skill": "Heilige Intervention",
   "effect": "Chance, dass ein kritischer Fehlschlag in einen Erfolg verwandelt wird (bei 1W20 ≥ 15).",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/heilige-intervention.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/heilige-intervention.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 3 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Würfelt jemand im Umkreis von 3 Feldern (du oder ein Verbündeter) eine natürliche 1, würfle 1W20: Bei 11 oder mehr ist es kein Fehlschlag.",
+   "effect": "Würfelt jemand im Umkreis von 3 Feldern (du oder ein Verbündeter) eine natürliche 1, würfle 1W20: Bei 11 oder mehr ist es kein Fehlschlag."
+  }
  },
  {
   "name": "Klingenschatten",
@@ -787,7 +2016,28 @@
   "skill": "Schattentanz",
   "effect": "Bewegt sich blitzschnell zwischen Gegnern und greift bis zu 3 Ziele mit je 1W6 an.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/schattentanz.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/schattentanz.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "1 Runde",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du bewegst dich blitzschnell und lässt Schattenbilder zurück: Teleport bis 4 Felder, danach bist du 1 Runde unsichtbar.",
+   "effect": "Du bewegst dich blitzschnell und lässt Schattenbilder zurück: Teleport bis 4 Felder, danach bist du 1 Runde unsichtbar."
+  }
  },
  {
   "name": "Blutritter",
@@ -800,7 +2050,28 @@
   "skill": "Blutopfer",
   "effect": "Opfert eigene HP, um einen Verbündeten eine Runde um 1W20 Schaden zu stärken.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutopfer.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutopfer.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "1 Runde",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du opferst dein Blut für einen Verbündeten in 3 Feldern: Würfle 1W20. Du verlierst so viele HP, und sein nächster Angriff macht genauso viel zusätzlichen Schaden.",
+   "effect": "Du opferst dein Blut für einen Verbündeten in 3 Feldern: Würfle 1W20. Du verlierst so viele HP, und sein nächster Angriff macht genauso viel zusätzlichen Schaden."
+  }
  },
  {
   "name": "Champion",
@@ -813,7 +2084,28 @@
   "skill": "Inspirierende Ausstrahlung",
   "effect": "Hebt Furcht, Verwirrung und ähnliche Zustände bei Verbündeten in der Nähe auf.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/inspirierende-ausstrahlung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/inspirierende-ausstrahlung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 3 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Deine Ausstrahlung vertreibt Furcht: Alle Verbündeten im Umkreis verlieren Verängstigt, Bezaubert und Verwirrt.",
+   "effect": "Deine Ausstrahlung vertreibt Furcht: Alle Verbündeten im Umkreis verlieren Verängstigt, Bezaubert und Verwirrt."
+  }
  },
  {
   "name": "Beschützer",
@@ -826,7 +2118,28 @@
   "skill": "Magisches Schild",
   "effect": "Übernimmt sofort den Schaden für einen Verbündeten in der Nähe (+1W6 zusätzlicher Schaden für sich).",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magisches-schild.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magisches-schild.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "reaction",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du übernimmst den Treffer für einen Verbündeten in 3 Feldern. Dein Schild fängt dabei 1W6 Schaden ab.",
+   "effect": "Du übernimmst den Treffer für einen Verbündeten in 3 Feldern. Dein Schild fängt dabei 1W6 Schaden ab."
+  }
  },
  {
   "name": "Wächter des Abgrunds",
@@ -839,7 +2152,28 @@
   "skill": "Dunkler Pakt",
   "effect": "Riskanter Handel mit dem Abyss: sofortige Macht (+5 Schaden, +20 HP für 3 Runden), danach +1 Korruption.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/dunkler-pakt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/dunkler-pakt.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein riskanter Handel mit dem Abyss: 2 Runden lang +2W6 Schaden bei allen Angriffen. Danach bekommst du +3 Korruption und bist 1 Runde verwundet (−2 auf Würfe).",
+   "effect": "Ein riskanter Handel mit dem Abyss: 2 Runden lang +2W6 Schaden bei allen Angriffen. Danach bekommst du +3 Korruption und bist 1 Runde verwundet (−2 auf Würfe)."
+  }
  },
  {
   "name": "Eiserne Jungfrau",
@@ -852,7 +2186,30 @@
   "skill": "Dornenrüstung",
   "effect": "Natürlicher Dornenpanzer: Wer im Nahkampf angreift, erleidet 1W6 Schaden.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/dornenruestung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/dornenruestung.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "hp": 20
+   },
+   "description": "Ein Brustpanzer aus Dornen: Max-HP +20. Dein Rüstwert wird zum Blockwert (höchstens 8), und wer dich im Nahkampf trifft, nimmt so viel Schaden wie dein Blockwert. Gegner direkt neben dir müssen dich angreifen, wenn sie können.",
+   "effect": "Ein Brustpanzer aus Dornen: Max-HP +20. Dein Rüstwert wird zum Blockwert (höchstens 8), und wer dich im Nahkampf trifft, nimmt so viel Schaden wie dein Blockwert. Gegner direkt neben dir müssen dich angreifen, wenn sie können."
+  }
  },
  {
   "name": "Koloss",
@@ -865,7 +2222,28 @@
   "skill": "Riesiges Abkommen",
   "effect": "Wächst für 5 Runden: +30 HP, aber Bewegung −1.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/riesiges-abkommen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/riesiges-abkommen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Tag",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "5 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Dein Körper wächst: 5 Runden lang doppelte Max-HP (deine aktuellen HP steigen um denselben Wert). Riesig: Bewegung −1, Heimlichkeit unmöglich.",
+   "effect": "Dein Körper wächst: 5 Runden lang doppelte Max-HP (deine aktuellen HP steigen um denselben Wert). Riesig: Bewegung −1, Heimlichkeit unmöglich."
+  }
  },
  {
   "name": "Erzmagier",
@@ -878,7 +2256,28 @@
   "skill": "Magische Meisterschaft",
   "effect": "Einmal am Tag trifft ein Zauber deiner Wahl automatisch kritisch, +1W10.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-meisterschaft.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-meisterschaft.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Tag",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Zauber deiner Wahl trifft automatisch kritisch und macht +1W10 Schaden.",
+   "effect": "Ein Zauber deiner Wahl trifft automatisch kritisch und macht +1W10 Schaden."
+  }
  },
  {
   "name": "Todesmagier",
@@ -891,7 +2290,28 @@
   "skill": "Echo des Todes",
   "effect": "Stirbt eine Kreatur neben dir, verursacht dein nächster Angriff +1W6 Schaden.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/echo-des-todes.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/echo-des-todes.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Stirbt ein Wesen direkt neben dir, macht dein nächster Angriff +2W6 Schaden.",
+   "effect": "Stirbt ein Wesen direkt neben dir, macht dein nächster Angriff +2W6 Schaden."
+  }
  },
  {
   "name": "Elementarmagier",
@@ -904,7 +2324,28 @@
   "skill": "Elementare Meisterschaft",
   "effect": "Meisterschaft über ein Element: +2 Schaden mit diesem Element, +2 Rüstwert dagegen.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/elementare-meisterschaft.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/elementare-meisterschaft.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Wähle ein Element: Feuer, Blitz oder Eis. Deine Zauber dieses Elements machen +1W10 Schaden, und gegen dieses Element hast du Rüstwert und Magieresistenz +5.",
+   "effect": "Wähle ein Element: Feuer, Blitz oder Eis. Deine Zauber dieses Elements machen +1W10 Schaden, und gegen dieses Element hast du Rüstwert und Magieresistenz +5."
+  }
  },
  {
   "name": "Blaumagier-Meister",
@@ -917,7 +2358,28 @@
   "skill": "Level Up",
   "effect": "Lernt schneller: +10 % Erfahrungspunkte, kann zwei Monster-Skills gleichzeitig halten.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/level-up.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/level-up.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du lernst schneller aus Kämpfen: +25 % EXP aus besiegten Monstern.",
+   "effect": "Du lernst schneller aus Kämpfen: +25 % EXP aus besiegten Monstern."
+  }
  },
  {
   "name": "Arkaner Krieger",
@@ -930,7 +2392,28 @@
   "skill": "Arkane Waffe",
   "effect": "Waffenangriffe gehen gegen den niedrigeren Wert von Rüstwert und Magieresistenz.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/arkane-waffe.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/arkane-waffe.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Deine Waffenangriffe gehen gegen den niedrigeren Wert von Rüstwert und Magieresistenz des Ziels.",
+   "effect": "Deine Waffenangriffe gehen gegen den niedrigeren Wert von Rüstwert und Magieresistenz des Ziels."
+  }
  },
  {
   "name": "Genie",
@@ -943,7 +2426,28 @@
   "skill": "Worte der Erleuchtung",
   "effect": "Entfernt bei einem Verbündeten alle Furcht-, Verwirrungs- und Bezauberungseffekte.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/worte-der-erleuchtung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/worte-der-erleuchtung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Worte der Klarheit: Ein Verbündeter in 3 Feldern verliert sofort Verängstigt, Verwirrt und Benommen.",
+   "effect": "Worte der Klarheit: Ein Verbündeter in 3 Feldern verliert sofort Verängstigt, Verwirrt und Benommen."
+  }
  },
  {
   "name": "Illusionsklinge",
@@ -956,7 +2460,28 @@
   "skill": "Phantomschlag",
   "effect": "Angriffe mit Schwert, Dolch oder Lanze verursachen zusätzlich 1W10 magischen Schaden.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/phantomschlag.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/phantomschlag.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Mit Schwert, Dolch oder Lanze machen deine Treffer zusätzlich 1W10 magischen Schaden.",
+   "effect": "Mit Schwert, Dolch oder Lanze machen deine Treffer zusätzlich 1W10 magischen Schaden."
+  }
  },
  {
   "name": "Weltenwandler",
@@ -969,7 +2494,28 @@
   "skill": "Dimensionsriss",
   "effect": "Öffnet einen Riss, durch den du oder ein Verbündeter bis zu 10 Felder weit reist.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/dimensionsriss.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/dimensionsriss.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Riss im Raum: Teleportiere dich oder einen Verbündeten bis 6 Felder, oder leite einen eigenen Angriff durch den Riss zu einem Ziel, das du sehen kannst (egal wie weit).",
+   "effect": "Ein Riss im Raum: Teleportiere dich oder einen Verbündeten bis 6 Felder, oder leite einen eigenen Angriff durch den Riss zu einem Ziel, das du sehen kannst (egal wie weit)."
+  }
  },
  {
   "name": "Kriegssavant",
@@ -982,7 +2528,28 @@
   "skill": "Taktischer Rückzug",
   "effect": "Die ganze Gruppe zieht sich ohne Gelegenheitsangriffe 3 Felder zurück.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/taktischer-rueckzug.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/taktischer-rueckzug.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "reaction",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Wirst du angegriffen, brichst du den Angriff ab und bewegst dich sofort frei um deine volle Bewegung.",
+   "effect": "Wirst du angegriffen, brichst du den Angriff ab und bewegst dich sofort frei um deine volle Bewegung."
+  }
  },
  {
   "name": "Aspekt der Sterne",
@@ -995,7 +2562,28 @@
   "skill": "Sternenregen",
   "effect": "Ein kleiner Meteoritenregen trifft zufällige Tokens auf der Karte (je 2W6).",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/sternenregen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/sternenregen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "3d6+2",
+   "damageText": "3W6+2",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 3,
+   "bonuses": {},
+   "description": "Ein kleiner Meteoritenregen: Drei Wesen auf dem Feld werden zufällig getroffen (der GM würfelt), Freund wie Feind.",
+   "effect": "Ein kleiner Meteoritenregen: Drei Wesen auf dem Feld werden zufällig getroffen (der GM würfelt), Freund wie Feind."
+  }
  },
  {
   "name": "Soulknife",
@@ -1008,7 +2596,28 @@
   "skill": "Magische Klinge",
   "effect": "Waffenangriffe machen zusätzlich 1W6 magischen Schaden.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-klinge.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-klinge.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Deine Waffenangriffe machen zusätzlich 1W6 magischen Schaden.",
+   "effect": "Deine Waffenangriffe machen zusätzlich 1W6 magischen Schaden."
+  }
  },
  {
   "name": "Outlaw",
@@ -1021,7 +2630,28 @@
   "skill": "Heimtückischer Schuss",
   "effect": "Fernkampf aus dem Hinterhalt oder gegen überraschte Ziele verursacht doppelten Schaden.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/heimtueckischer-schuss.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/heimtueckischer-schuss.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Fernkampfangriffe aus dem Hinterhalt oder gegen ein überraschtes Ziel machen +1W10 Schaden.",
+   "effect": "Fernkampfangriffe aus dem Hinterhalt oder gegen ein überraschtes Ziel machen +1W10 Schaden."
+  }
  },
  {
   "name": "Dunkler Prophet",
@@ -1034,7 +2664,28 @@
   "skill": "Blutiges Omen",
   "effect": "Opfert eigene HP, um einen eigenen Wurf zu verstärken (+1 pro 2 HP).",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutiges-omen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutiges-omen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 1
+   },
+   "cooldownText": "jeden Zug",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Opfere Leben für Glück: Je 2 HP, die du verlierst, +1 auf deinen Wurf. Eine so erreichte 20 ist kein kritischer Treffer.",
+   "effect": "Opfere Leben für Glück: Je 2 HP, die du verlierst, +1 auf deinen Wurf. Eine so erreichte 20 ist kein kritischer Treffer."
+  }
  },
  {
   "name": "Phantomschütze",
@@ -1047,7 +2698,28 @@
   "skill": "Ätherischer Durchschuss",
   "effect": "Ein Pfeil wird kurz ätherisch und ignoriert Rüstung und Deckung.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/aetherischer-durchschuss.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/aetherischer-durchschuss.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6+2",
+   "damageText": "2W6+2",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Pfeil, der für einen Augenblick ätherisch wird: Der Angriff geht gegen Rüstwert 8, egal was das Ziel trägt.",
+   "effect": "Ein Pfeil, der für einen Augenblick ätherisch wird: Der Angriff geht gegen Rüstwert 8, egal was das Ziel trägt."
+  }
  },
  {
   "name": "Todesweber",
@@ -1060,7 +2732,28 @@
   "skill": "Seelenentzug",
   "effect": "Entzieht einem Ziel Lebenskraft: 2W6 Schaden, du heilst dich um die Hälfte.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/seelenentzug.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/seelenentzug.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "3d6",
+   "damageText": "3W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du greifst nach der Lebensessenz eines Ziels: Es nimmt Schaden, und du heilst dich um die Hälfte davon.",
+   "effect": "Du greifst nach der Lebensessenz eines Ziels: Es nimmt Schaden, und du heilst dich um die Hälfte davon."
+  }
  },
  {
   "name": "Magischer Narr",
@@ -1073,7 +2766,28 @@
   "skill": "Arkane Anarchie",
   "effect": "Entfesselt rohe Magie mit einem zufälligen Effekt (Wurf auf die Narrentabelle).",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/arkane-anarchie.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/arkane-anarchie.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "2W6 bis 2W6+2",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 8 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Rohe Magie ohne Kontrolle. Würfle 1W20: 1–7 alle Wesen im Umkreis nehmen 2W6 · 8–9 alle Verbündeten heilen 2W6 · 10–12 alle würfeln Willenskraft, unter 12 sind sie 2 Runden betäubt · 13–20 alle Gegner nehmen 2W6+2.",
+   "effect": "Rohe Magie ohne Kontrolle. Würfle 1W20: 1–7 alle Wesen im Umkreis nehmen 2W6 · 8–9 alle Verbündeten heilen 2W6 · 10–12 alle würfeln Willenskraft, unter 12 sind sie 2 Runden betäubt · 13–20 alle Gegner nehmen 2W6+2."
+  }
  },
  {
   "name": "Klingenstürmer",
@@ -1086,7 +2800,28 @@
   "skill": "Wirbelwind der Klingen",
   "effect": "Wirbelangriff gegen alle Gegner direkt neben dir, je 2W6.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/wirbelwind-der-klingen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/wirbelwind-der-klingen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "Schaden beider Waffen",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "alle Felder um dich",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein schneller Wirbel: Jeder Gegner direkt neben dir wird mit dem Schaden beider Waffen getroffen (ein Angriffswurf pro Ziel).",
+   "effect": "Ein schneller Wirbel: Jeder Gegner direkt neben dir wird mit dem Schaden beider Waffen getroffen (ein Angriffswurf pro Ziel)."
+  }
  },
  {
   "name": "Trickster",
@@ -1099,7 +2834,28 @@
   "skill": "Loki",
   "effect": "Teleport zum Schatten eines beliebigen Tokens auf der Karte. CD 4.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/loki.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/loki.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 10,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du springst in den Schatten eines Wesens, das du auf dem Feld sehen kannst, und stehst direkt hinter ihm.",
+   "effect": "Du springst in den Schatten eines Wesens, das du auf dem Feld sehen kannst, und stehst direkt hinter ihm."
+  }
  },
  {
   "name": "Survivalist",
@@ -1112,7 +2868,28 @@
   "skill": "Notration",
   "effect": "Beschafft in Notsituationen auf wundersame Weise Essen, Wasser oder einfache Hilfsmittel.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/notration.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/notration.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Tag",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Wie durch ein Wunder findest du Essen, Wasser oder ein einfaches Hilfsmittel für dich und bis zu drei andere.",
+   "effect": "Wie durch ein Wunder findest du Essen, Wasser oder ein einfaches Hilfsmittel für dich und bis zu drei andere."
+  }
  },
  {
   "name": "Bestienkönig",
@@ -1130,6 +2907,27 @@
    "maxRang": "B",
    "runden": 4,
    "bonus": 4
+  },
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "2W6 pro Runde",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "3×3 Felder in 6 Feldern",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein mächtiger Ruf: Wilde Tiere aus der Umgebung kommen 2 Runden zu Hilfe und greifen eine Fläche an.",
+   "effect": "Ein mächtiger Ruf: Wilde Tiere aus der Umgebung kommen 2 Runden zu Hilfe und greifen eine Fläche an."
   }
  },
  {
@@ -1148,6 +2946,27 @@
    "maxRang": "B",
    "runden": 4,
    "bonus": 4
+  },
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du kannst bis zu zwei Gefährten halten (zusammen höchstens dein Level) und steuerst sie selbst.",
+   "effect": "Du kannst bis zu zwei Gefährten halten (zusammen höchstens dein Level) und steuerst sie selbst."
   }
  },
  {
@@ -1161,7 +2980,28 @@
   "skill": "Pfeil der Nacht",
   "effect": "Ein in Schatten gehülltes Geschoss: magischer Schaden 2W6, kann blenden.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/pfeil-der-nacht.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/pfeil-der-nacht.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "1 Runde",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Geschoss aus Schatten, magischer Schaden. Das Ziel ist 1 Runde geblendet (Genauigkeit −5).",
+   "effect": "Ein Geschoss aus Schatten, magischer Schaden. Das Ziel ist 1 Runde geblendet (Genauigkeit −5)."
+  }
  },
  {
   "name": "Bestienrufer",
@@ -1174,7 +3014,28 @@
   "skill": "Beschwören",
   "effect": "Ruft einen Geist oder Tiergeist aus einer anderen Ebene, der 3 Runden hilft.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/beschwoeren.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/beschwoeren.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 2,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "3 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Geist erscheint und kämpft 3 Runden an deiner Seite. Würfle 1W20: 1–5 Schildkröte · 6–10 Eichhörnchen · 11–15 Panther · 16–19 Adler · 20 Braunbär. Seine Werte nennt der GM.",
+   "effect": "Ein Geist erscheint und kämpft 3 Runden an deiner Seite. Würfle 1W20: 1–5 Schildkröte · 6–10 Eichhörnchen · 11–15 Panther · 16–19 Adler · 20 Braunbär. Seine Werte nennt der GM."
+  }
  },
  {
   "name": "Virtuose",
@@ -1187,7 +3048,28 @@
   "skill": "Fesselnde Darbietung",
   "effect": "Gesang, Musik oder Schauspiel verändern den Zustand der Zuhörer (beruhigen, ablenken, anstacheln).",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/fesselnde-darbietung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/fesselnde-darbietung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 4 Felder",
+   "dauer": "1–2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Gesang, Musik oder Schauspiel. Würfle 1W20: 1–5 alle Zuhörer schlafen ein, bis sie Schaden nehmen · 6–7 alle Gegner greifen dich an · 8–14 alle Gegner sind 1 Runde verwirrt · 15–20 Verbündete haben 2 Runden +2 auf alle Würfe.",
+   "effect": "Gesang, Musik oder Schauspiel. Würfle 1W20: 1–5 alle Zuhörer schlafen ein, bis sie Schaden nehmen · 6–7 alle Gegner greifen dich an · 8–14 alle Gegner sind 1 Runde verwirrt · 15–20 Verbündete haben 2 Runden +2 auf alle Würfe."
+  }
  },
  {
   "name": "Wilderer",
@@ -1200,7 +3082,31 @@
   "skill": "Spurensucher-Instinkt",
   "effect": "Sichtweite +1, Laufweite +1, Naturkunde +5.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/spurensucher-instinkt.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/spurensucher-instinkt.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "movement": 1,
+    "naturkunde": 5
+   },
+   "description": "Du liest jede Spur: Sichtweite +1 Feld, Bewegung +1, Naturkunde +5.",
+   "effect": "Du liest jede Spur: Sichtweite +1 Feld, Bewegung +1, Naturkunde +5."
+  }
  },
  {
   "name": "Bounty Hunter",
@@ -1213,7 +3119,28 @@
   "skill": "Auszahlung",
   "effect": "Gezielter Fernkampfangriff; tötet er das Ziel, gibt es zusätzliche Beute.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/auszahlung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/auszahlung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein gezielter Schuss, der Schaden wird ohne Waffe gerechnet. Stirbt das Ziel dadurch, ist sein Fundwurf um 3 höher.",
+   "effect": "Ein gezielter Schuss, der Schaden wird ohne Waffe gerechnet. Stirbt das Ziel dadurch, ist sein Fundwurf um 3 höher."
+  }
  },
  {
   "name": "Albtraumjäger",
@@ -1226,7 +3153,28 @@
   "skill": "Verzaubert",
   "effect": "Belegt ein Ziel mit einem Fluch, der seine Wahrnehmung verzerrt (−3 auf Würfe, 2 Runden).",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 5,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Fluch verwirrt das Ziel 2 Runden lang: Es greift ein zufälliges Wesen in seiner Nähe an. Mit Willenskraft 15 kann es widerstehen.",
+   "effect": "Ein Fluch verwirrt das Ziel 2 Runden lang: Es greift ein zufälliges Wesen in seiner Nähe an. Mit Willenskraft 15 kann es widerstehen."
+  }
  },
  {
   "name": "Chrono-Schütze",
@@ -1239,7 +3187,28 @@
   "skill": "Back in Time",
   "effect": "Manipuliert kurz die Zeit: einen eigenen Schuss wiederholen oder eine Bewegung rückgängig machen.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/back-in-time.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/back-in-time.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "reaction",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du drehst die Zeit kurz zurück: Mach eine eigene Aktion dieser Runde noch einmal, oder ein Verbündeter in 6 Feldern bekommt eine zusätzliche Reaktion.",
+   "effect": "Du drehst die Zeit kurz zurück: Mach eine eigene Aktion dieser Runde noch einmal, oder ein Verbündeter in 6 Feldern bekommt eine zusätzliche Reaktion."
+  }
  },
  {
   "name": "Lichtbringer",
@@ -1252,7 +3221,28 @@
   "skill": "Licht der Hoffnung",
   "effect": "Entfernt einen Bezauberungseffekt von einem Ziel und heilt es um 1W6.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/licht-der-hoffnung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/licht-der-hoffnung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 1,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "1d10",
+   "damageText": "1W10",
+   "heilung": "1W10",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du berührst ein Ziel und nimmst einen Bezauberungs-Effekt von ihm. Ist es nicht bezaubert, heilt es stattdessen 1W10.",
+   "effect": "Du berührst ein Ziel und nimmst einen Bezauberungs-Effekt von ihm. Ist es nicht bezaubert, heilt es stattdessen 1W10."
+  }
  },
  {
   "name": "Schamane",
@@ -1265,7 +3255,28 @@
   "skill": "Aura des Gleichgewichts",
   "effect": "Rüstwert wird Blockwert; heilt und schützt statt Schaden zu verursachen (Heilung und Schutz +1W6).",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/aura-des-gleichgewichts.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/aura-des-gleichgewichts.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Dein Rüstwert wird zum Blockwert. Du kannst keine Skills einsetzen, die Schaden machen; dafür heilen und schützen deine Skills +1W6.",
+   "effect": "Dein Rüstwert wird zum Blockwert. Du kannst keine Skills einsetzen, die Schaden machen; dafür heilen und schützen deine Skills +1W6."
+  }
  },
  {
   "name": "Alchemist",
@@ -1291,7 +3302,28 @@
   "skill": "Judgement",
   "effect": "Ein Zauber göttlicher Gerechtigkeit: 2W6 heiliger Schaden, doppelt gegen Corrupted.",
   "role": "Hybrid",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/judgement.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/judgement.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "2d10",
+   "damageText": "2W10",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Urteil aus göttlicher Macht trifft einen Gegner. Geht mit jeder Waffe.",
+   "effect": "Ein Urteil aus göttlicher Macht trifft einen Gegner. Geht mit jeder Waffe."
+  }
  },
  {
   "name": "Wikinger",
@@ -1305,7 +3337,28 @@
   "skill": "Ragnarök",
   "effect": "Je weniger HP, desto stärker: +1 Schaden für je 10 % fehlende HP.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/ragnaroek.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/ragnaroek.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Je weniger HP du hast, desto härter schlägst du zu: unter 75 % +1W6, unter 50 % +2W6, unter 25 % +3W6 Schaden bei Nahkampfangriffen.",
+   "effect": "Je weniger HP du hast, desto härter schlägst du zu: unter 75 % +1W6, unter 50 % +2W6, unter 25 % +3W6 Schaden bei Nahkampfangriffen."
+  }
  },
  {
   "name": "Schlächter",
@@ -1319,7 +3372,28 @@
   "skill": "Blutiger Zorn",
   "effect": "Nach jedem Kill sofort ein weiterer Angriff mit +1W6 (höchstens zweimal pro Runde).",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutiger-zorn.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutiger-zorn.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Tötest du einen Gegner, darfst du sofort noch einmal angreifen, mit +1W6 Schaden (höchstens zweimal pro Runde).",
+   "effect": "Tötest du einen Gegner, darfst du sofort noch einmal angreifen, mit +1W6 Schaden (höchstens zweimal pro Runde)."
+  }
  },
  {
   "name": "Wächter von Bahl",
@@ -1333,7 +3407,28 @@
   "skill": "Quahl",
   "effect": "Zieht 2 Runden alle Angriffe im Umkreis von 3 Feldern auf sich; erlittener Schaden halbiert.",
   "role": "Tank",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/quahl.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/quahl.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 3 Felder",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du ziehst 2 Runden lang alle Angriffe im Umkreis auf dich. Schaden, den du in dieser Zeit nimmst, wird halbiert.",
+   "effect": "Du ziehst 2 Runden lang alle Angriffe im Umkreis auf dich. Schaden, den du in dieser Zeit nimmst, wird halbiert."
+  }
  },
  {
   "name": "Kampfmeister",
@@ -1347,7 +3442,30 @@
   "skill": "Leichtfüßigkeit",
   "effect": "Bewegung +2; einmal pro Runde einen Nahkampftreffer ignorieren (1W20 ≥ 12).",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/leichtfuessigkeit.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/leichtfuessigkeit.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {
+    "movement": 2
+   },
+   "description": "Bewegung +2. Einmal pro Runde kannst du einem Nahkampftreffer ausweichen: Würfle 1W20, bei 12 oder mehr trifft er nicht.",
+   "effect": "Bewegung +2. Einmal pro Runde kannst du einem Nahkampftreffer ausweichen: Würfle 1W20, bei 12 oder mehr trifft er nicht."
+  }
  },
  {
   "name": "Rotmagier",
@@ -1361,7 +3479,28 @@
   "skill": "Arkanes Element",
   "effect": "Verbindet zwei gelernte Element-Zauber zu einem (Schaden beider, 1 Aktion). CD 3.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/arkanes-element.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/arkanes-element.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du verbindest zwei gelernte Element-Zauber zu einem: eine Aktion, der Schaden beider Zauber. Beide gehen danach in ihre Abklingzeit.",
+   "effect": "Du verbindest zwei gelernte Element-Zauber zu einem: eine Aktion, der Schaden beider Zauber. Beide gehen danach in ihre Abklingzeit."
+  }
  },
  {
   "name": "Sturmmystiker",
@@ -1375,7 +3514,28 @@
   "skill": "Magische Wut",
   "effect": "Jeder Zauber erhöht den nächsten um +2 Schaden (bis +10); verfällt, wenn eine Runde nicht gezaubert wird.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-wut.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magische-wut.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Jeder Zauber macht den nächsten um 2 Schaden stärker (bis +10). Zauberst du eine Runde lang nicht, ist der Bonus weg.",
+   "effect": "Jeder Zauber macht den nächsten um 2 Schaden stärker (bis +10). Zauberst du eine Runde lang nicht, ist der Bonus weg."
+  }
  },
  {
   "name": "Sternenorakel",
@@ -1389,7 +3549,28 @@
   "skill": "Singularität",
   "effect": "Zieht alle Gegner im Umkreis von 3 Feldern auf einen Punkt, 3W6 Schaden. CD 5.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/singularitaet.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/singularitaet.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "3d6",
+   "damageText": "3W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 3 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Punkt, der alles anzieht: Alle Gegner im Umkreis werden zur Mitte gezogen und nehmen 3W6.",
+   "effect": "Ein Punkt, der alles anzieht: Alle Gegner im Umkreis werden zur Mitte gezogen und nehmen 3W6."
+  }
  },
  {
   "name": "Visionär",
@@ -1403,7 +3584,28 @@
   "skill": "Signatur",
   "effect": "Einmal pro Kampf: Der GM verrät die nächste Aktion eines Gegners, oder ein Verbündeter wiederholt einen Wurf.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/signatur.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/signatur.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "quick",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Kampf",
+   "einmalProKampf": true,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du siehst, was kommt: Der GM verrät die nächste Aktion eines Gegners, oder ein Verbündeter wiederholt einen Wurf.",
+   "effect": "Du siehst, was kommt: Der GM verrät die nächste Aktion eines Gegners, oder ein Verbündeter wiederholt einen Wurf."
+  }
  },
  {
   "name": "Klingentänzer",
@@ -1417,7 +3619,28 @@
   "skill": "Tanzende Klinge",
   "effect": "Zwei schwebende Klingen greifen jede Runde automatisch an (je 1W6).",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/tanzende-klinge.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/tanzende-klinge.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "1W6 je Klinge",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Zwei schwebende Klingen begleiten dich und greifen in jeder Runde von selbst einen Gegner neben dir an (je 1W6).",
+   "effect": "Zwei schwebende Klingen begleiten dich und greifen in jeder Runde von selbst einen Gegner neben dir an (je 1W6)."
+  }
  },
  {
   "name": "Albtraumweber",
@@ -1431,7 +3654,28 @@
   "skill": "Verwüstung",
   "effect": "Das Ziel durchlebt 3 Runden Albträume: −3 auf alle Würfe, 1W6 Schaden pro Runde.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/verwuestung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/verwuestung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 5,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "1W6 pro Runde",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "3 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Das Ziel durchlebt 3 Runden lang Albträume: −3 auf alle Würfe und 1W6 Schaden zu Beginn jedes seiner Züge.",
+   "effect": "Das Ziel durchlebt 3 Runden lang Albträume: −3 auf alle Würfe und 1W6 Schaden zu Beginn jedes seiner Züge."
+  }
  },
  {
   "name": "Geistwanderer",
@@ -1445,7 +3689,28 @@
   "skill": "Ruf der Schmerzen",
   "effect": "Verlässt 2 Runden den Körper: unangreifbar, geht durch Wände, Angriff 2W6 direkt auf die Seele.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/ruf-der-schmerzen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/ruf-der-schmerzen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du verlässt 2 Runden lang deinen Körper: Niemand kann dich angreifen, du gehst durch Wände, und deine Angriffe treffen direkt die Seele (2W6).",
+   "effect": "Du verlässt 2 Runden lang deinen Körper: Niemand kann dich angreifen, du gehst durch Wände, und deine Angriffe treffen direkt die Seele (2W6)."
+  }
  },
  {
   "name": "Todsucher",
@@ -1459,7 +3724,28 @@
   "skill": "Verhängnis und Verderben",
   "effect": "Verhängnis: Fluch, 1W4 Schaden pro Runde für 5 Runden. Verderben: lässt den Fluch sofort mit 3W6 explodieren.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/verhaengnis-und-verderben.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/verhaengnis-und-verderben.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "Verhängnis 1W4 pro Runde / Verderben 1W10",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "Verhängnis: 5 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Verhängnis: Ein Fluch, der 5 Runden lang zu Beginn jedes Zugs des Ziels 1W4 Schaden macht. Verderben (nur auf ein verfluchtes Ziel): Du teleportierst dich hinter es und triffst für 1W10.",
+   "effect": "Verhängnis: Ein Fluch, der 5 Runden lang zu Beginn jedes Zugs des Ziels 1W4 Schaden macht. Verderben (nur auf ein verfluchtes Ziel): Du teleportierst dich hinter es und triffst für 1W10."
+  }
  },
  {
   "name": "Seelengefährte",
@@ -1473,7 +3759,28 @@
   "skill": "Fokussierung",
   "effect": "Bindet sich an einen Verbündeten: ihr teilt die HP und erhaltet beide +2 auf Würfe.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/fokussierung.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/fokussierung.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "einmal pro Kampf",
+   "einmalProKampf": true,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "bis Kampfende",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du bindest dich an einen Verbündeten: Ihr teilt eure HP und habt beide +2 auf alle Würfe.",
+   "effect": "Du bindest dich an einen Verbündeten: Ihr teilt eure HP und habt beide +2 auf alle Würfe."
+  }
  },
  {
   "name": "Gezeitenrufer",
@@ -1487,7 +3794,28 @@
   "skill": "Ebbe und Flut",
   "effect": "Ebbe: ein Verbündeter heilt 1W20. Flut: alle Verbündeten im Wirkbereich heilen 1W6.",
   "role": "Heilung",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/ebbe-und-flut.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/ebbe-und-flut.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 3,
+   "cooldown": {
+    "value": 0,
+    "max": 2
+   },
+   "cooldownText": "2 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "Ebbe 1W20 / Flut 2W4",
+   "heilung": "Ebbe 1W20 / Flut 2W4",
+   "schutz": "",
+   "flaeche": "Flut: Umkreis 2 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Zwei Formen, du wählst beim Einsatz: Ebbe heilt einen Verbündeten um 1W20. Flut heilt alle Verbündeten im Umkreis von 2 Feldern um 2W4.",
+   "effect": "Zwei Formen, du wählst beim Einsatz: Ebbe heilt einen Verbündeten um 1W20. Flut heilt alle Verbündeten im Umkreis von 2 Feldern um 2W4."
+  }
  },
  {
   "name": "Arkanjäger",
@@ -1501,7 +3829,29 @@
   "skill": "Magischer Pfeilregen",
   "effect": "Pfeilregen auf ein 3×3-Feld, 2W6 magischer Schaden. CD 3.",
   "role": "Fernkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/magischer-pfeilregen.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/magischer-pfeilregen.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 6,
+   "cooldown": {
+    "value": 0,
+    "max": 3
+   },
+   "cooldownText": "3 Züge",
+   "einmalProKampf": false,
+   "damage": "2d6",
+   "damageText": "2W6",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "3×3 Felder",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Regen aus magischen Pfeilen auf eine Fläche, magischer Schaden (ein Angriffswurf pro Ziel). Geht mit jeder Waffe: Ohne Bogen oder Armbrust wirfst du deine Waffe oder etwas anderes (Messer, Stein, Flasche); Reichweite und Schaden bleiben gleich.",
+   "effect": "Ein Regen aus magischen Pfeilen auf eine Fläche, magischer Schaden (ein Angriffswurf pro Ziel). Geht mit jeder Waffe: Ohne Bogen oder Armbrust wirfst du deine Waffe oder etwas anderes (Messer, Stein, Flasche); Reichweite und Schaden bleiben gleich.",
+   "skillType": "Fernkampf"
+  }
  },
  {
   "name": "Sandmagier",
@@ -1515,7 +3865,29 @@
   "skill": "Sandgrab",
   "effect": "Ziel versinkt im Sand (AGL-Probe 17+ zum Entkommen); bis dahin bewegungsunfähig.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/sandgrab.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/sandgrab.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 4,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Sand umschließt einen Gegner bis zur Hüfte: Er würfelt 1W20 + AGL; unter 17 kann er sich nicht bewegen, bis er sich befreit (neuer Wurf in jedem seiner Züge). Fernkampf kann er weiter nutzen.",
+   "effect": "Sand umschließt einen Gegner bis zur Hüfte: Er würfelt 1W20 + AGL; unter 17 kann er sich nicht bewegen, bis er sich befreit (neuer Wurf in jedem seiner Züge). Fernkampf kann er weiter nutzen.",
+   "skillType": "Magie"
+  }
  },
  {
   "name": "Barde",
@@ -1529,7 +3901,28 @@
   "skill": "Klang der Welten",
   "effect": "Klangfähigkeiten mit einem Instrument; bei geradem Wurf wirken sie auf alle Verbündeten.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/klang-der-welten.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/klang-der-welten.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Klang-Fähigkeiten setzt du nur mit einem Instrument ein. Bei einem geraden Wurf wirken sie wie gedacht, bei einem ungeraden in ihr Gegenteil.",
+   "effect": "Klang-Fähigkeiten setzt du nur mit einem Instrument ein. Bei einem geraden Wurf wirken sie wie gedacht, bei einem ungeraden in ihr Gegenteil."
+  }
  },
  {
   "name": "Todessänger",
@@ -1543,7 +3936,28 @@
   "skill": "Requiem",
   "effect": "Lied für 3 Runden: Gegner −2 Schaden; Verbündete, die in dieser Zeit fallen, bleiben mit 1 HP stehen.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/requiem.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/requiem.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 0,
+   "cooldown": {
+    "value": 0,
+    "max": 5
+   },
+   "cooldownText": "5 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "Umkreis 4 Felder",
+   "dauer": "3 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Ein Lied für 3 Runden: Gegner im Umkreis machen −2 Schaden. Verbündete, die in dieser Zeit fallen würden, bleiben mit 1 HP stehen.",
+   "effect": "Ein Lied für 3 Runden: Gegner im Umkreis machen −2 Schaden. Verbündete, die in dieser Zeit fallen würden, bleiben mit 1 HP stehen."
+  }
  },
  {
   "name": "Scharlachpriester",
@@ -1557,7 +3971,28 @@
   "skill": "Blutroter Fluch",
   "effect": "Opfert 1W6 HP: Das Ziel erleidet 2 Runden doppelten Schaden und kann nicht geheilt werden.",
   "role": "Magie",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutroter-fluch.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/blutroter-fluch.webp",
+  "skillDaten": {
+   "activation": "active",
+   "castTime": "action",
+   "range": 5,
+   "cooldown": {
+    "value": 0,
+    "max": 4
+   },
+   "cooldownText": "4 Züge",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "2 Runden",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du opferst 1W6 HP: Das Ziel nimmt 2 Runden lang doppelten Schaden und kann nicht geheilt werden.",
+   "effect": "Du opferst 1W6 HP: Das Ziel nimmt 2 Runden lang doppelten Schaden und kann nicht geheilt werden."
+  }
  },
  {
   "name": "Sprecher der Ahnen",
@@ -1571,7 +4006,28 @@
   "skill": "Machtwort",
   "effect": "Fünf Machtworte (Schmerz, Heilung, Barriere, Magie, Halt); dafür keine anderen aktiven Skills.",
   "role": "Support",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/machtwort.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/machtwort.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Du bekommst vier Machtworte als Skills: Schmerz, Heilung, Barriere und Magie. Dafür kannst du keine anderen aktiven Skills mehr nutzen.",
+   "effect": "Du bekommst vier Machtworte als Skills: Schmerz, Heilung, Barriere und Magie. Dafür kannst du keine anderen aktiven Skills mehr nutzen."
+  }
  },
  {
   "name": "Prophet Athreas",
@@ -1597,6 +4053,27 @@
   "skill": "Arugals Verdammnis",
   "effect": "Nur über die verfluchte Waffe Arugal. Arugal wird aus den Schatten beschworen, entzieht Lebenskraft und wird stärker.",
   "role": "Nahkampf",
-  "img": "systems/hope-lies-within-2/assets/icons/klassen/arugals-verdammnis.webp"
+  "img": "systems/hope-lies-within-2/assets/icons/klassen/arugals-verdammnis.webp",
+  "skillDaten": {
+   "activation": "passive",
+   "castTime": "action",
+   "range": "",
+   "cooldown": {
+    "value": 0,
+    "max": 0
+   },
+   "cooldownText": "–",
+   "einmalProKampf": false,
+   "damage": "",
+   "damageText": "",
+   "heilung": "",
+   "schutz": "",
+   "flaeche": "",
+   "dauer": "",
+   "ziele": 1,
+   "bonuses": {},
+   "description": "Einmal pro Kampf tritt Arugal aus den Schatten: Er entzieht einem Gegner in 4 Feldern 3W6 HP und gibt sie dir.",
+   "effect": "Einmal pro Kampf tritt Arugal aus den Schatten: Er entzieht einem Gegner in 4 Feldern 3W6 HP und gibt sie dir."
+  }
  }
 ]

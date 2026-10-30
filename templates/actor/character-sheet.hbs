@@ -255,14 +255,14 @@
           <div class="hb-raster">
             {{#each bogen.raster as |item|}}
               <div class="hb-feld {{#if item.orb}}is-orb{{/if}}" data-item-id="{{item.id}}" data-filter="{{item.filter}}" data-rang="{{item.rang}}" data-tooltip-html="{{item.tooltip}}" draggable="true">
-                {{#if item.orb}}<span class="hb-orbkugel"></span>{{else}}<img src="{{item.img}}" alt="" />{{/if}}
+                {{#if item.orb}}<span class="hb-orbkugel {{#if item.orbTier}}is-tier tier-{{item.orbTier}}{{/if}}">{{#if item.orbTier}}<b>T{{item.orbTier}}</b>{{/if}}</span>{{else}}<img src="{{item.img}}" alt="" />{{/if}}
                 {{#if item.menge}}<span class="hb-anzahl">{{item.menge}}</span>{{/if}}
               </div>
             {{/each}}
             {{#each bogen.leereFelder}}<div class="hb-feld is-leer"></div>{{/each}}
           </div>
           <div class="hb-invfuss">
-            <span>Klick auf einen Gegenstand: ausrüsten, benutzen, geben, wegwerfen. Skill-Orbs: untersuchen oder lernen.</span>
+            <span>Klick auf einen Gegenstand: ausrüsten, benutzen, geben, wegwerfen. Skill-Orbs T1–T3: Appraisal (Glücksspiel); bestimmte Skill-Orbs: ansehen oder lernen.</span>
             {{#if isGM}}
               <span>
                 <button type="button" data-geben="items">Gegenstand geben</button>

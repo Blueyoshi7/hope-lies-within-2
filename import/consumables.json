@@ -185,7 +185,7 @@
    "tier": 2,
    "priceSk": 150,
    "price": "1 GK 50 SK",
-   "description": "Erlaubt das lernen eines T1 Skills",
+   "description": "Ein versiegelter Skill-Orb. Appraisal (1W20 + SOU, ab 10) zieht zufällig einen Rang-D-Skill, mit 5 % Chance einen Rang-C-Skill. Kann mehr oder weniger wert sein als der Orb.",
    "source": "Tier 1 Cache",
    "quantity": 1,
    "effect": ""
@@ -201,7 +201,7 @@
    "tier": 3,
    "priceSk": 600,
    "price": "6 GK",
-   "description": "Erlaubt das lernen eines T2 Skills",
+   "description": "Ein versiegelter Skill-Orb. Appraisal (1W20 + SOU, ab 15) zieht zufällig einen Rang-D- oder Rang-C-Skill, mit 5 % Chance einen Rang-B-Skill. Kann mehr oder weniger wert sein als der Orb.",
    "source": "Tier 2 Cache",
    "quantity": 1,
    "effect": ""
@@ -217,7 +217,7 @@
    "tier": 4,
    "priceSk": 2500,
    "price": "25 GK",
-   "description": "Erlaubt das lernen eines T3 Skills",
+   "description": "Ein versiegelter Skill-Orb. Appraisal (1W20 + SOU, ab 20) zieht zufällig einen Rang-C- oder Rang-B-Skill, mit 5 % Chance einen Rang-A-Skill. Kann mehr oder weniger wert sein als der Orb.",
    "source": "Tier 3 Cache",
    "quantity": 1,
    "effect": ""

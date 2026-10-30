@@ -751,3 +751,13 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-anlegen .hlw-bildwahl { display: flex; gap: 6px; }
 .hlw-anlegen .hlw-bildwahl input { flex: 1; }
 .hlw-anlegen .hlw-bildwahl button { flex: none; width: 34px; }
+
+/* Skill-Orbs T1–T3 (versiegelt, Appraisal als Glücksspiel) und Skill-Ansicht */
+.hlw-bogen .hb-orbkugel.is-tier { display: grid; place-items: center; --rf: #6d6f78; }
+.hlw-bogen .hb-orbkugel.tier-1 { --rf: #b07a46; }
+.hlw-bogen .hb-orbkugel.tier-2 { --rf: #9aa9bd; }
+.hlw-bogen .hb-orbkugel.tier-3 { --rf: #d8b46a; }
+.hlw-bogen .hb-orbkugel b { font-size: 11px; font-weight: 800; color: #fff; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9); letter-spacing: 0.04em; }
+.hlw-detail-dialog .hlw-skill-detail .hs-text { margin: 4px 0 10px; line-height: 1.45; color: var(--hb-text, #e8e4da); }
+.hlw-detail-dialog .hlw-skill-detail dl { grid-template-columns: max-content 1fr; }
+.hlw-detail-dialog .hlw-skill-detail .hs-hinweis { margin-top: 10px; font-size: 12px; color: var(--hb-text-2, #a8a294); font-style: italic; }

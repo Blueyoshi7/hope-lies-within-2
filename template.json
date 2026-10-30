@@ -402,7 +402,11 @@
         },
         "ziele": 1,
         "waffenSchaden": false,
-        "einmalProKampf": false
+        "einmalProKampf": false,
+        "heilung": "",
+        "schutz": "",
+        "flaeche": "",
+        "dauer": ""
       },
       "gear": {
         "quantity": 1,

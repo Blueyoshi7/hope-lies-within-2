@@ -111,9 +111,10 @@ export function klasseEnthuellen(actor, klasse, alteKlasse) {
 }
 
 // ---------- Skill-Orbs ----------
-// Ein Skill, den ein Charakter besitzt, aber noch nicht gelernt hat, ist ein Skill-Orb im Inventar.
-// Appraisal (Untersuchen): 1W20 + SOU · unter 10: ungenaue Beschreibung · 10–19: Art · ab 20: Art, Reichweite, Schaden.
-// Stufe 3 (Gilde) zeigt alles. Den Namen und die ganze Wirkung sieht der Spieler sonst erst beim Lernen.
+// Der GM gibt Skill-Orbs T1–T3 (Verbrauchsgegenstände). Appraisal ist ein Glücksspiel (Kanon: Punktesystem):
+// 1W20 + SOU gegen 10 / 15 / 20. Gelingt es, verschwindet der Orb und ein bestimmter Skill-Orb wird zufällig gezogen
+// (T1: D, 5 % C · T2: D oder C, 5 % B · T3: C oder B, 5 % A; nie Klassen- oder Abyss-Skills). Misslingt es, bleibt der Orb.
+// Ein bestimmter Skill-Orb ist ein noch nicht gelernter Skill im Inventar; er zeigt Namen und alle Werte.
 export const ORB_STUFEN = ["ungenau", "Art bekannt", "Art, Reichweite und Schaden", "alles bekannt (Gilde)"];
 
 const ELEMENTE = [
@@ -135,7 +136,7 @@ export function orbStufe(item) {
 }
 
 export function orbName(item) {
-  return game.user?.isGM || orbStufe(item) >= 3 ? `Skill-Orb: ${item.name}` : `Skill-Orb (Rang ${item.system?.rank || "?"})`;
+  return `Skill-Orb: ${item.name}`;
 }
 
 export function vageBeschreibung(item) {
@@ -149,7 +150,8 @@ export function vageBeschreibung(item) {
 // Was der Spieler über einen Orb weiß (der GM sieht immer alles)
 export function orbWissen(item) {
   const s = item.system ?? {};
-  const stufe = game.user?.isGM ? 3 : orbStufe(item);
+  // Seit dem Glücksspiel-Appraisal zeigt ein bestimmter Skill-Orb immer alles
+  const stufe = 3;
   const zeilen = [vageBeschreibung(item)];
   if (stufe >= 1) zeilen.push(`Art: ${ART_NAME[s.skillType] ?? s.skillType ?? "unklar"}`);
   if (stufe >= 2) {
@@ -177,6 +179,167 @@ export async function orbUntersuchen(actor, item) {
     speaker: ChatMessage.getSpeaker({ actor }),
     flavor: `<div class="hlw-chat-card"><h2>Appraisal: ${html(orbName(item))}</h2><p>1W20 + Seelenkraft (${sou}) · unter 10 ungenau · 10–19 Art · ab 20 Art, Reichweite, Schaden</p><p><strong>${html(ORB_STUFEN[neu])}</strong></p><p>${wissen.zeilen.map(html).join("<br>")}</p></div>`
   }, { rollMode: CONST.DICE_ROLL_MODES.PRIVATE });
+}
+
+// ---------- Skill-Orbs T1–T3: Appraisal als Glücksspiel ----------
+const ORB_SCHWELLE = { 1: 10, 2: 15, 3: 20 };
+const ORB_RAENGE = { 1: { normal: ["D"], selten: "C" }, 2: { normal: ["D", "C"], selten: "B" }, 3: { normal: ["C", "B"], selten: "A" } };
+const SELTEN_CHANCE = 0.05;
+let skillPool = null;
+
+export function orbTier(item) {
+  const m = String(item?.name ?? "").match(/^Skill-Orb T([123])$/i);
+  return item?.type === "consumable" && m ? Number(m[1]) : 0;
+}
+
+export function orbTierVersucht(item) {
+  return Boolean(item?.getFlag?.(SYSTEM_ID, "appraisalVersucht"));
+}
+
+async function skillsZumZiehen() {
+  if (!skillPool) {
+    const liste = await (await fetch(`systems/${SYSTEM_ID}/import/skills.json`)).json();
+    // Nur Spieler-Skills; Abyss-Skills (SS) gibt es nie aus einem Orb
+    skillPool = liste.filter((s) => s.type === "playerSkill" && !["S", "SS"].includes(s.system?.rank));
+  }
+  return skillPool;
+}
+
+function zufall(liste) {
+  return liste[Math.floor(Math.random() * liste.length)];
+}
+
+async function skillZiehen(tier) {
+  const pool = await skillsZumZiehen();
+  const raenge = ORB_RAENGE[tier];
+  const selten = Math.random() < SELTEN_CHANCE;
+  const rang = selten ? raenge.selten : zufall(raenge.normal);
+  return { skill: zufall(pool.filter((s) => s.system?.rank === rang)), selten, rang };
+}
+
+function hatAdlerauge(actor) {
+  return actor.items.some((i) => i.type === "playerSkill" && i.name === "Adlerauge" && (i.system?.learned === true || i.system?.learned === "true"));
+}
+
+export async function orbGluecksspiel(actor, item) {
+  const tier = orbTier(item);
+  if (!tier) return;
+  if (orbTierVersucht(item) && !game.user?.isGM) {
+    ui.notifications?.warn("Bei diesem Orb ist das Appraisal schon misslungen. Ein neuer Versuch nur mit Erlaubnis des GM.");
+    return;
+  }
+  const schwelle = ORB_SCHWELLE[tier];
+  const sou = zahl(actor.system?.attributes?.sou?.value);
+  const adlerauge = hatAdlerauge(actor);
+  const roll = await new Roll(`1d20 + ${sou}`).evaluate();
+  const gelungen = adlerauge || roll.total >= schwelle;
+  const kopf = `<h2>Appraisal: Skill-Orb T${tier}</h2><p>1W20 + Seelenkraft (${sou}) gegen ${schwelle}${adlerauge ? " · Adlerauge: gelingt immer" : ""}</p>`;
+
+  if (!gelungen) {
+    // Nur dieser eine Orb gilt als versucht; der Rest des Stapels bleibt unberührt.
+    const menge = zahl(item.system?.quantity) || 1;
+    if (menge > 1) {
+      await item.update({ "system.quantity": menge - 1 });
+      const daten = item.toObject();
+      delete daten._id;
+      daten.system.quantity = 1;
+      daten.flags = { ...(daten.flags ?? {}), [SYSTEM_ID]: { ...(daten.flags?.[SYSTEM_ID] ?? {}), appraisalVersucht: true } };
+      await actor.createEmbeddedDocuments("Item", [daten]);
+    } else await item.setFlag(SYSTEM_ID, "appraisalVersucht", true);
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `<div class="hlw-chat-card">${kopf}<p><strong>Misslungen.</strong> Der Orb bleibt versiegelt.</p></div>`
+    });
+    return;
+  }
+
+  const { skill, selten, rang } = await skillZiehen(tier);
+  if (!skill) return ui.notifications?.error(`Kein Rang-${rang}-Skill zum Ziehen gefunden.`);
+  const menge = zahl(item.system?.quantity) || 1;
+  if (menge > 1) await item.update({ "system.quantity": menge - 1 });
+  else await item.delete();
+  const system = foundry.utils.deepClone(skill.system);
+  system.learned = false;
+  system.appraisal = { stufe: 3, versucht: true };
+  system.mastery = { ...(system.mastery ?? {}), value: 0 };
+  await actor.createEmbeddedDocuments("Item", [{ name: skill.name, type: "playerSkill", img: skill.img, system }]);
+  const wert = zahl(skill.system?.priceSk);
+  const orbWert = zahl(item.system?.priceSk);
+  const vergleich = orbWert ? (wert > orbWert ? "mehr wert als der Orb" : wert < orbWert ? "weniger wert als der Orb" : "genau so viel wert wie der Orb") : "";
+  const content = `<div class="hlw-chat-card">${kopf}
+    ${adlerauge ? "" : `<p>Wurf: ${roll.total}</p>`}
+    <p><strong>Gelungen!</strong>${selten ? " <em>Ein seltener Fund!</em>" : ""}</p>
+    <p>Im Orb steckt: <strong>${html(skill.name)}</strong> (Rang ${html(rang)}${wert ? `, Marktwert ${html(kesText(wert))}` : ""}${vergleich ? `, ${vergleich}` : ""}).</p>
+    <p>${html(skill.system?.description || "")}</p></div>`;
+  if (adlerauge) await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }), content });
+  else await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: content });
+}
+
+function kesText(sk) {
+  const gk = Math.floor(sk / 100);
+  const rest = sk % 100;
+  return [gk ? `${gk} GK` : "", rest || !gk ? `${rest} SK` : ""].filter(Boolean).join(" ");
+}
+
+// ---------- Skill-Ansicht (Spieler und GM) ----------
+const EINSATZ_TEXT = { action: "Aktion", quick: "Schnellaktion", reaction: "Reaktion" };
+
+function abklingText(s) {
+  if (s.einmalProKampf === true || s.einmalProKampf === "true") return s.cooldownText || "einmal pro Kampf";
+  const max = zahl(s.cooldown?.max);
+  if (!max) return s.cooldownText || "–";
+  return max === 1 ? "jeden Zug" : `${max} Züge`;
+}
+
+// Alle festen Werte eines Skills als Zeilen [Bezeichnung, Wert]
+export function skillZeilen(item) {
+  const s = item.system ?? {};
+  const passiv = String(s.activation ?? "").toLowerCase() === "passive";
+  const heilung = /heil/i.test(String(s.skillType ?? ""));
+  const reichweite = s.range === 0 || s.range === "0" ? "du selbst" : s.range ? `${s.range} Felder` : "";
+  const skalierung = [s.scaling?.primary, s.scaling?.secondary, s.scaling?.tertiary].filter(Boolean).join(" / ");
+  const zeilen = [
+    ["Rang", s.rank],
+    ["Art", ART_NAME[s.skillType] ?? s.skillType],
+    ["Einsatz", passiv ? "Passiv · wirkt immer" : EINSATZ_TEXT[s.castTime] ?? "Aktion"],
+    ["Reichweite", passiv ? "" : reichweite],
+    ["Abklingzeit", passiv ? "" : abklingText(s)],
+    [heilung ? "Heilung" : "Schaden", s.heilung || s.damageText || s.damage],
+    ["Schutz", s.schutz],
+    ["Ziele", zahl(s.ziele) > 1 ? `${zahl(s.ziele)} verschiedene` : ""],
+    ["Fläche", s.flaeche],
+    ["Dauer", s.dauer],
+    ["Skaliert mit", skalierung],
+    ["Klasse", item.type === "classSkill" ? s.className : ""],
+    ["Bei 100 % Meisterung", s.mastery?.effect]
+  ];
+  return zeilen.filter(([, wert]) => wert !== undefined && wert !== null && String(wert).trim() !== "");
+}
+
+export async function zeigeSkill(item, { aktionen = [] } = {}) {
+  const s = item.system ?? {};
+  const zeilen = skillZeilen(item);
+  const orb = istOrb(item);
+  const content = `
+    <div class="hlw-item-detail hlw-skill-detail">
+      <img src="${html(item.img || "")}" alt="">
+      <div>
+        <h2>${html(orb ? orbName(item) : item.name)}</h2>
+        <p class="hs-text">${html(s.description || s.effect || "Keine Beschreibung.")}</p>
+        <dl>${zeilen.map(([k, v]) => `<dt>${html(k)}</dt><dd>${html(v)}</dd>`).join("")}</dl>
+        ${orb ? `<p class="hs-hinweis">Noch nicht gelernt. Lernen verbraucht den Orb und belegt einen Skill-Slot.${zahl(s.priceSk) ? ` Marktwert ${html(kesText(zahl(s.priceSk)))}.` : ""}</p>` : ""}
+      </div>
+    </div>`;
+  const knoepfe = [...aktionen.map(([action, label, icon]) => ({ action, label, icon: `fa-solid ${icon}` })), { action: "ok", label: "Schließen", icon: "fa-solid fa-check", default: true }];
+  const fenster = new foundry.applications.api.DialogV2({
+    window: { title: item.name },
+    classes: ["hope-lies-within", "hlw-detail-dialog"],
+    content,
+    buttons: knoepfe,
+    submit: (ergebnis) => aktionen.find(([action]) => action === ergebnis)?.[3]?.()
+  });
+  await fenster.render({ force: true });
+  fenster.setPosition({ width: 500, height: "auto", left: (window.innerWidth - 500) / 2, top: window.innerHeight / 6 });
 }
 
 export async function orbLernen(actor, item, slots) {

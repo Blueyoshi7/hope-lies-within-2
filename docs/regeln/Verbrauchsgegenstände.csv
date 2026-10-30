@@ -43,9 +43,9 @@ Heilige Bandagen;C;400;4 GK;1 GK 60 SK;1W20 Heilung an dir oder einem nahen Spie
 Metallspitzen;D;60;60 SK;24 SK;Verstärkt Angriffe von Bögen. Schaden +2;Verbrauchsgegenstand;Schaden;Tier 2 Cache;Preis pro Bündel (10 Stück).
 Mithrilspitzen;C;500;5 GK;2 GK;Verstärkt Angriffe von Bögen. Schaden +5;Verbrauchsgegenstand;Schaden;Tier 3 Cache;Preis pro Bündel (10 Stück).
 Skill-Orb-Leer;C;300;3 GK;1 GK 20 SK;Ein leerer Skill-Orb in den ein bereits gelernter Skill übertragen werden kann (Skill wird verlernt).;Verbrauchsgegenstand;Skills;Special;
-Skill-Orb T1;D;150;1 GK 50 SK;60 SK;Erlaubt das lernen eines T1 Skills;Verbrauchsgegenstand;Skills;Tier 1 Cache;
-Skill-Orb T2;C;600;6 GK;2 GK 40 SK;Erlaubt das lernen eines T2 Skills;Verbrauchsgegenstand;Skills;Tier 2 Cache;
-Skill-Orb T3;B;2500;25 GK;10 GK;Erlaubt das lernen eines T3 Skills;Verbrauchsgegenstand;Skills;Tier 3 Cache;
+Skill-Orb T1;D;150;1 GK 50 SK;60 SK;Ein versiegelter Skill-Orb. Appraisal (1W20 + SOU, ab 10) zieht zufällig einen Rang-D-Skill, mit 5 % Chance einen Rang-C-Skill. Kann mehr oder weniger wert sein als der Orb.;Verbrauchsgegenstand;Skills;Tier 1 Cache;
+Skill-Orb T2;C;600;6 GK;2 GK 40 SK;Ein versiegelter Skill-Orb. Appraisal (1W20 + SOU, ab 15) zieht zufällig einen Rang-D- oder Rang-C-Skill, mit 5 % Chance einen Rang-B-Skill. Kann mehr oder weniger wert sein als der Orb.;Verbrauchsgegenstand;Skills;Tier 2 Cache;
+Skill-Orb T3;B;2500;25 GK;10 GK;Ein versiegelter Skill-Orb. Appraisal (1W20 + SOU, ab 20) zieht zufällig einen Rang-C- oder Rang-B-Skill, mit 5 % Chance einen Rang-A-Skill. Kann mehr oder weniger wert sein als der Orb.;Verbrauchsgegenstand;Skills;Tier 3 Cache;
 Phönixasche;SS;100000;1000 GK;400 GK;Kann einen Spieler wiederbeleben (Leiche muss vorhanden sein);Verbrauchsgegenstand;Wiederbelebung;Naturfund;"Wird praktisch nie gehandelt; Sammler und Adelshäuser zahlen jeden Preis."
 Großer Heiltrank;B;1200;12 GK;4 GK 80 SK;Neu (3.3): Heilt 6W6 + 10 HP, als Aktion, beendet „Verwundet“.;Verbrauchsgegenstand;Trank / Rune;Tier 3 Cache;Neu (Balancing 3.3)
 Starke Schutzrune;B;1500;15 GK;6 GK;Neu (3.3): Rüstwert +3 für einen Kampf.;Verbrauchsgegenstand;Trank / Rune;Tier 3 Cache;Neu (Balancing 3.3)

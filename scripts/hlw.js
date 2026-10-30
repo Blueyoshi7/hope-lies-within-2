@@ -2,7 +2,7 @@ import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen }
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
-import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill } from "./hlw-charakter.js";
+import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
 import { textBoni, WORLD_SKILLS, ATTRS, PLAETZE, klasseVorschlag, verteiltePunkte, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
 const HLW = {};
@@ -270,9 +270,13 @@ function meisterBonus(item) {
   return istGelernterSkill(item) && meisterung(item).fertig ? meisterung(item).bonus : {};
 }
 
+const WURF_REICHWEITE = 5;
+
 function skillReichweite(item) {
   if (boolValue(item.system?.waffenSchaden) && !parseRange(item.system?.range)) {
     const waffe = item.parent?.items?.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped));
+    // Fernkampf-Skill ohne Fernkampfwaffe: die Waffe (oder etwas anderes) wird geworfen
+    if (waffe && /fern|schuss|shot/i.test(`${item.system?.skillType} ${item.name}`) && waffe.system?.weaponClass === "melee") return Math.max(parseRange(waffe.system?.range) || 0, WURF_REICHWEITE);
     if (waffe) return waffe.system?.range;
   }
   const r = parseRange(item.system?.range);
@@ -1511,6 +1515,12 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       event.preventDefault();
       event.stopPropagation();
       const id = event.currentTarget.closest("[data-item-id]")?.dataset.itemId;
+      const item = this.actor.items.get(id);
+      // Skills: feste Werte und Beschreibung ansehen (Spieler wie GM); der GM kann von dort bearbeiten
+      if (item && ["playerSkill", "classSkill"].includes(item.type)) {
+        zeigeSkill(item, { aktionen: game.user?.isGM ? [["bearbeiten", "Bearbeiten", "fa-pen", () => this.actor.editOwnedItem(id)]] : [] });
+        return;
+      }
       this.actor.editOwnedItem(id);
     });
 
@@ -1781,19 +1791,30 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     document.querySelectorAll(".hb-menue").forEach((menue) => menue.remove());
     const item = this.actor.items.get(element.dataset.itemId);
     if (!item) return;
-    if (istOrb(item)) {
+    if (orbTier(item)) {
+      // Skill-Orb T1–T3: Appraisal ist ein Glücksspiel, der Orb wird dabei zu einem bestimmten Skill-Orb
       const eintraege = [];
-      if (!item.system?.appraisal?.versucht || game.user?.isGM) eintraege.push(["untersuchen", "Untersuchen (Appraisal)", "fa-magnifying-glass"]);
-      eintraege.push(["lernen", "Lernen (Skill-Slot)", "fa-brain"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
-      if (game.user?.isGM) eintraege.push(["neu", "Neuer Versuch (GM)", "fa-rotate"], ["gilde", "Gilde: alles zeigen (GM)", "fa-landmark"]);
+      if (!orbTierVersucht(item) || game.user?.isGM) eintraege.push(["appraisal", "Appraisal (Glücksspiel)", "fa-dice-d20"]);
+      eintraege.push(["details", "Details", "fa-circle-info"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
+      if (game.user?.isGM && orbTierVersucht(item)) eintraege.push(["neu", "Neuer Versuch (GM)", "fa-rotate"]);
       const id = item.id;
-      this._menue(element, orbName(item), eintraege, {
-        untersuchen: () => orbUntersuchen(this.actor, item),
-        lernen: () => orbLernen(this.actor, item, skillSlots(this.actor)),
+      this._menue(element, item.name, eintraege, {
+        appraisal: () => orbGluecksspiel(this.actor, item),
+        details: () => this.actor.showOwnedItemDetails(id),
         give: () => this.actor.giveItemToTarget(id),
         discard: () => this.actor.discardOwnedItem(id),
-        neu: () => item.update({ "system.appraisal.versucht": false }),
-        gilde: () => item.update({ "system.appraisal.stufe": 3 })
+        neu: () => item.unsetFlag("hope-lies-within-2", "appraisalVersucht")
+      });
+      return;
+    }
+    if (istOrb(item)) {
+      const eintraege = [["details", "Ansehen", "fa-circle-info"], ["lernen", "Lernen (Skill-Slot)", "fa-brain"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]];
+      const id = item.id;
+      this._menue(element, orbName(item), eintraege, {
+        details: () => zeigeSkill(item),
+        lernen: () => orbLernen(this.actor, item, skillSlots(this.actor)),
+        give: () => this.actor.giveItemToTarget(id),
+        discard: () => this.actor.discardOwnedItem(id)
       });
       return;
     }
@@ -1838,7 +1859,12 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
           else if (s.damage) tags.push({ text: HLW.damageCategories[kategorie] ?? kategorie, art: kategorie === "magical" ? "magisch" : "physisch" });
           tags.push({ text: isQuickItem(item) ? "Schnellaktion" : isReactionItem(item) ? "Reaktion" : "Aktion" });
           if (s.damageText || s.damage) tags.push({ text: s.damageText || s.damage, schaden: true });
-          if (s.range) tags.push({ text: `Reichweite ${s.range}` });
+          if (s.range === 0 || s.range === "0") tags.push({ text: "Selbst" });
+          else if (s.range) tags.push({ text: `Reichweite ${s.range}` });
+          if (numberValue(s.ziele) > 1) tags.push({ text: `${numberValue(s.ziele)} Ziele` });
+          if (s.flaeche) tags.push({ text: s.flaeche });
+          if (s.schutz) tags.push({ text: s.schutz, art: "heil" });
+          if (s.dauer) tags.push({ text: s.dauer });
           if (numberValue(s.cooldown?.max)) tags.push({ text: cooldown > 0 ? `noch ${cooldown} Züge` : `Abklingzeit ${s.cooldown.max}`, art: cooldown > 0 ? "cd" : "" });
         }
         const boni = passive ? boniText(passivBoni(item)) : "";
@@ -1862,11 +1888,20 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
         continue;
       }
       if (istOrb(item)) {
-        // Skill-Orb: der Spieler kennt nur, was sein Appraisal gezeigt hat
-        const wissen = orbWissen(item);
+        // Bestimmter Skill-Orb: Name, Beschreibung und alle Werte sind bekannt
+        const werte = skillZeilen(item).filter(([k]) => !["Rang", "Bei 100 % Meisterung"].includes(k)).map(([k, v]) => `${k}: ${v}`);
         gear.push({
           id: item.id, name: orbName(item), img: item.img, type: "orb", orb: true, rang: rangVon(item), filter: "orb", menge: "",
-          tooltip: `<strong>${escapeHtml(orbName(item))}</strong><br>${wissen.zeilen.map(escapeHtml).join("<br>")}<br><em>${escapeHtml(ORB_STUFEN[wissen.stufe])}</em>`,
+          tooltip: `<strong>${escapeHtml(orbName(item))}</strong> · Rang ${escapeHtml(rangVon(item) || "?")}<br>${escapeHtml(s.description || "")}<br>${werte.map(escapeHtml).join("<br>")}<br><em>Klick: ansehen oder lernen</em>`,
+          equipped: false, platz: null
+        });
+        continue;
+      }
+      if (orbTier(item)) {
+        const menge = Math.max(numberValue(s.quantity), 1);
+        gear.push({
+          id: item.id, name: item.name, img: item.img, type: "orb", orb: true, orbTier: orbTier(item), rang: rangVon(item), filter: "orb", menge: menge > 1 ? menge : "",
+          tooltip: `<strong>${escapeHtml(item.name)}</strong><br>${escapeHtml(s.description || "")}${orbTierVersucht(item) ? "<br><em>Appraisal misslungen – bleibt versiegelt.</em>" : "<br><em>Klick: Appraisal (Glücksspiel)</em>"}`,
           equipped: false, platz: null
         });
         continue;
@@ -2253,6 +2288,54 @@ async function freieWahlNachziehen() {
   return anzahl;
 }
 
+// Feste Skill-Werte aus dem Kanon (skillwerte.py) in Welt und Charaktere übernehmen. Gelernt, Lernleiste und Bild bleiben.
+const SKILL_WERTE_STAND = 2;
+async function skillWerteNachziehen() {
+  if (!game.user?.isGM) return 0;
+  const neu = new Map();
+  for (const datei of ["skills", "consumables", "class-skills"]) {
+    const response = await fetch(`systems/hope-lies-within-2/import/${datei}.json`);
+    if (!response.ok) continue;
+    for (const e of await response.json()) {
+      if (e.type === "classSkill") {
+        neu.set(`classSkill|${e.name}|${e.system?.className ?? ""}`, e);
+        continue;
+      }
+      neu.set(`${e.type}|${e.name}|${e.system?.rank ?? ""}`, e);
+      if (!neu.has(`${e.type}|${e.name}`)) neu.set(`${e.type}|${e.name}`, e);
+    }
+  }
+  // Klassen-Skills, die aus der Klassenliste entstehen (Basic-Klassen u. a.): Werte stehen in data/klassen.json (skillDaten)
+  for (const k of HLW.klassen ?? []) {
+    if (k.skillDaten && !neu.has(`classSkill|${k.skill}|${k.name}`)) neu.set(`classSkill|${k.skill}|${k.name}`, { type: "classSkill", name: k.skill, system: { ...k.skillDaten, rank: { Basic: "E", T1: "D", T2: "C", T3: "B", Story: "A" }[k.category] } });
+  }
+  const quelle = (i) => (i.type === "classSkill" ? neu.get(`classSkill|${i.name}|${i.system?.className ?? ""}`) : neu.get(`${i.type}|${i.name}|${i.system?.rank ?? ""}`) ?? neu.get(`${i.type}|${i.name}`));
+  const updates = (items) => items.filter((i) => (["playerSkill", "classSkill"].includes(i.type) || orbTier(i)) && quelle(i)).map((i) => {
+    const e = quelle(i).system ?? {};
+    if (!["playerSkill", "classSkill"].includes(i.type)) return { _id: i.id, "system.description": e.description ?? "" };
+    return {
+      _id: i.id, "system.description": e.description ?? "", "system.effect": e.effect ?? "", ...(e.skillType ? { "system.skillType": e.skillType } : {}),
+      "system.activation": e.activation ?? "active", "system.castTime": e.castTime ?? "action", "system.range": e.range ?? "",
+      "system.cooldown.max": e.cooldown?.max ?? 0, "system.cooldownText": e.cooldownText ?? "", "system.damage": e.damage ?? "",
+      "system.damageText": e.damageText ?? "", "system.damageCategory": e.damageCategory ?? "physical", "system.ziele": e.ziele ?? 1,
+      "system.einmalProKampf": Boolean(e.einmalProKampf), "system.heilung": e.heilung ?? "", "system.schutz": e.schutz ?? "",
+      "system.flaeche": e.flaeche ?? "", "system.dauer": e.dauer ?? "", "system.bonuses": e.bonuses ?? {}, "system.scaling": e.scaling ?? {},
+      ...(i.type === "playerSkill" ? { "system.mastery.effect": e.mastery?.effect ?? "", "system.mastery.bonus": e.mastery?.bonus ?? {} } : {}),
+      ...(e.waffenSchaden !== undefined ? { "system.waffenSchaden": Boolean(e.waffenSchaden) } : {})
+    };
+  });
+  let anzahl = 0;
+  const welt = updates(game.items.contents);
+  if (welt.length) await Item.updateDocuments(welt);
+  anzahl += welt.length;
+  for (const actor of game.actors) {
+    const u = updates(actor.items.contents);
+    if (u.length) await actor.updateEmbeddedDocuments("Item", u);
+    anzahl += u.length;
+  }
+  return anzahl;
+}
+
 const BESTIARIUM_STAND = 1;
 
 // Vorhandene Monster auf den aktuellen Stand bringen: eigenes Bild und Token, Verhalten, Zähmbarkeit,
@@ -2332,6 +2415,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainNsc", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainBausteine", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainHandel", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -2383,7 +2467,8 @@ Hooks.once("ready", async () => {
     gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor),
     gespraechAllen: zeigeAllen,
     lindhainAusstatten,
-    nscWerte: nscWerteSetzen
+    nscWerte: nscWerteSetzen,
+    skillWerteNachziehen
   };
   registerTalk();
   registerGefaehrte();
@@ -2430,6 +2515,12 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainBausteine")) {
     await lindhainBausteine();
     await game.settings.set("hope-lies-within-2", "lindhainBausteine", true);
+  }
+  // Skills: feste Werte und Beschreibungen für die Spieler (Reichweite, Abklingzeit, Schaden, Schutz, Fläche, Dauer)
+  if (game.user?.isGM && game.settings.get("hope-lies-within-2", "skillWerteStand") < SKILL_WERTE_STAND) {
+    const anzahl = await skillWerteNachziehen();
+    if (anzahl) ui.notifications?.info(`${anzahl} Skills und Skill-Orbs haben jetzt feste Werte und Beschreibungen.`);
+    await game.settings.set("hope-lies-within-2", "skillWerteStand", SKILL_WERTE_STAND);
   }
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainHandel")) {
     await lindhainHandel();
