@@ -141,7 +141,7 @@ const SEITEN = [
 <li>Wer ein Monster besiegt, bekommt etwas EXP und einen <b>EXP-Kristall</b> ins Inventar. Den könnt ihr verwenden (mehr EXP), einem anderen geben oder bei der Gilde verkaufen. Abyss-Kristalle von korrumpierten Monstern will die Gilde haben. Das Level steigt beim nächsten Besuch in der Gilde.</li>
 </ul>
 <h2>Bei 0 HP</h2>
-<p>Du bist <b>am Boden</b>. Zu Beginn jedes deiner Züge würfelst du 1W20: ab 10 ein Erfolg, darunter ein Fehlschlag. Drei Erfolge: stabil. Drei Fehlschläge: tot. Eine natürliche 20 bringt dich mit 1 HP zurück auf die Beine; Schaden in dieser Zeit zählt als Fehlschlag. Andere stabilisieren dich mit Naturkunde (15) oder einem Heilmittel.</p>`
+<p>Du bist <b>am Boden</b> und kannst dich nicht bewegen. Wenn du am Zug bist, drückst du im Kampf-HUD auf <b>Todeswurf</b> (1W20). Ab 10 stehst du mit 1 HP wieder auf. Darunter bist du <b>gewurzelt</b>: Du hast noch <b>3 Runden</b>. In der Zeit kann dir jemand direkt neben dir einen Heiltrank, eine Salbe oder einen Verband <b>verabreichen</b> (dich als Ziel markieren, dann im Inventar „Verabreichen“ oder im HUD „Gegenstand“) oder dich mit einem Heil-Skill heilen. Sonst stirbt dein Charakter, und du erstellst einen neuen.</p>`
   },
   {
     name: "Foundry", icon: "icons/svg/hanging-sign.svg",
@@ -356,6 +356,18 @@ function spaeterAktualisieren() {
   if (!game.users.activeGM?.isSelf || !dashboardSzene()) return;
   clearTimeout(warten);
   warten = setTimeout(() => dashboardAktualisieren(), 1500);
+}
+
+// Texte des Journals in bestehenden Welten auf den Stand des Systems bringen (Seiten mit gleichem Namen)
+export const DASHBOARD_TEXT_STAND = 1;
+export async function dashboardTexteAktualisieren() {
+  const journal = game.journal.getName(JOURNAL);
+  if (!journal) return 0;
+  const updates = SEITEN.map((s) => ({ seite: journal.pages.getName(s.name), text: s.text.trim() }))
+    .filter(({ seite, text }) => seite && seite.text?.content !== text)
+    .map(({ seite, text }) => ({ _id: seite.id, "text.content": text }));
+  if (updates.length) await journal.updateEmbeddedDocuments("JournalEntryPage", updates);
+  return updates.length;
 }
 
 export function registerDashboard() {

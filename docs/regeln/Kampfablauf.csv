@@ -60,17 +60,16 @@ Flankieren;+1 Genauigkeit, wenn ein Verbündeter auf der gegenüberliegenden Sei
 
 0 HP und Sterben
 Regel;Beschreibung
-Auf 0 HP;Die Figur geht zu Boden (Zustand „Am Boden“). Überschüssiger Schaden verfällt.
-Sterbewurf;Am Anfang jedes eigenen Zugs: 1W20. 10 oder mehr ist ein Erfolg, darunter ein Fehlschlag. Natürliche 20: steht mit 1 HP auf. Natürliche 1: zählt als zwei Fehlschläge.
-Stabil;Drei Erfolge: stabil und bewusstlos. Nach einer Stunde wacht die Figur mit 1 HP auf.
-Schaden am Boden;Jeder Treffer zählt als ein Fehlschlag, ein kritischer Treffer als zwei.
-Heilung am Boden;Jede Heilung weckt die Figur mit den geheilten HP. Sie ist danach „Verwundet“.
-Hilfe;Stabilisieren (Aktion, Naturkunde 15 oder Heilgegenstand) beendet die Sterbewürfe. Erste Umarmung (Erlöser) weckt sofort mit 1 HP.
+Auf 0 HP;Die Figur geht zu Boden (Zustand „Am Boden“). Überschüssiger Schaden verfällt. Sie kann sich nicht bewegen und nicht handeln.
+Todeswurf;Einmal, wenn sie am Zug ist: 1W20. 10 oder mehr: Sie steht mit 1 HP wieder auf. Darunter: Sie ist „Gewurzelt“ (Rooted).
+Gewurzelt;Die Figur kann sich 3 Runden lang nicht bewegen. Am Anfang jedes eigenen Zugs läuft eine Runde ab. Nach der dritten stirbt sie.
+Retten;In diesen 3 Runden kann ein anderer Spieler sie heilen: einen Heiltrank, eine Salbe oder einen Verband verabreichen (Aktion, direkt daneben) oder einen Heil-Skill wirken. Jede Heilung weckt sie mit den geheilten HP.
+Schaden am Boden;Wird die Figur am Boden getroffen, verliert sie eine Runde Frist (kritischer Treffer: zwei). Vor dem Todeswurf zählt ein Treffer als misslungener Todeswurf. Der GM trägt das ein.
 Schutz;Insignie des stillen Schutzes, Requiem (Todessänger) und Göttlicher Schutz (Kleriker) können das Fallen verhindern.
 
 Tod
 Regel;Beschreibung
-Tod;Drei Fehlschläge: Die Figur ist tot.
+Tod;Nach 3 Runden gewurzelt ohne Heilung ist die Figur tot. Der Spieler erstellt einen neuen Charakter.
 Wiederbelebung;Nur mit Phönixasche (Rang SS) und nur, solange der Körper vorhanden ist. Danach „Verwundet“ und −1 auf einen Wert nach Wahl des GM für ein Kapitel.
 Gefallene Heroes;Ein Hero, der im Abyss-Nebel stirbt oder mit hoher Korruption, kann nach drei Tagen als Verlorener zurückkehren, wenn sein Körper nicht verbrannt oder den Hütern übergeben wird.
 Neuer Charakter;Ein neuer Charakter startet auf dem Level des Gefallenen minus 2 mit der Grundausrüstung seines Rangs.

@@ -96,6 +96,11 @@ export function kristallZeile(spieler, beute) {
   return `<strong>${escapeHtml(spieler?.name ?? "Niemand")}</strong> bekommt ${was}${beute.wurf ? ` (${escapeHtml(beute.wurf)})` : ""}.`;
 }
 
+// Nur der GM und die Besitzer der Figur sehen, was mit Kristallen passiert (Spieler dürfen Geheimnisse haben)
+function nurGmUndBesitzer(actor) {
+  return game.users.filter((u) => u.isGM || actor.testUserPermission(u, "OWNER")).map((u) => u.id);
+}
+
 function imKampf(actor) {
   return !!game.combat?.started && game.combat.combatants.some((c) => c.actor?.id === actor.id || c.actorId === actor.id);
 }
@@ -139,6 +144,7 @@ export async function kristallVerwenden(actor, item) {
   const levelText = naechstes && exp >= naechstes ? ` Genug für Level ${zahl(actor.system?.progression?.level) + 1} (Level-Up bei der Gilde).` : "";
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor }),
+    whisper: nurGmUndBesitzer(actor),
     content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(item.name)} verwendet</h2><p>${escapeHtml(actor.name)} nimmt ${info.exp} EXP auf${plus ? ` und bekommt +${plus} Korruption` : ""}.${levelText}</p></div>`
   });
 }
@@ -151,6 +157,7 @@ export async function kristallEinsetzen(actor, item) {
   await stueckWeg(item);
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor }),
+    whisper: nurGmUndBesitzer(actor),
     content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(item.name)} eingesetzt</h2><p>Schnellaktion: Der nächste Skill in diesem Zug ignoriert seinen Cooldown oder bekommt +1W6. ${escapeHtml(actor.name)} bekommt +${plus} Korruption.</p></div>`
   });
 }

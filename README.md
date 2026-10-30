@@ -119,6 +119,13 @@ game.hlw.dashboardAktualisieren()          // Steckbriefe von Hand neu zeichnen
 - **Gilde und Schwarzmarkt:** In den Händler-Einstellungen eines NSC (Gesprächsfenster → Handel) gibt es „Gilde: kauft Kristalle zum vollen Wert“ und „Schwarzmarkt: Abyss-Kristalle zum doppelten Wert“. Kessa Dorn in Lindhain ist Gilde.
 - **Rucksäcke S/M/L** (10/20/30 Plätze) belegen die Nebenhand. Ausgerüstet erscheint im Bogen der Tab **Rucksack**; Gegenstände per Menü „In den Rucksack“ oder durch Ziehen einpacken. Was im Rucksack liegt, zählt nicht fürs Inventar.
 
+## Todeswurf und Heiltränke
+
+- **0 HP:** Ein Spielercharakter liegt am Boden und kann sich nicht bewegen. Im Kampf-HUD (oder oben im Bogen) erscheint **Todeswurf**: 1W20, ab 10 steht er mit 1 HP auf. Sonst ist er **gewurzelt** (Rooted): noch 3 Runden, am Anfang jedes eigenen Zugs läuft eine ab, danach stirbt er.
+- **Retten:** Ein anderer markiert ihn als Ziel und nimmt im HUD **Gegenstand** oder im Inventar **Verabreichen** (Heiltrank, Salbe, Verband; direkt daneben, kostet die Aktion). Heil-Skills retten genauso. Tote kann nur der GM zurückholen.
+- **Heilgegenstände:** „Benutzen“ würfelt die Heilung aus dem Text des Gegenstands (z. B. Kleiner Heiltrank 2W6 + 2).
+- **Combat Tracker Dock:** Das System stellt den verfolgten Wert des Combat-Trackers automatisch auf HP (`resources.hp.value`).
+
 ## Struktur
 
 ```text

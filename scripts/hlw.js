@@ -1,8 +1,9 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
-import { erstelleDashboard, dashboardAktualisieren, registerDashboard } from "./hlw-dashboard.js";
+import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
+import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
@@ -588,6 +589,14 @@ function expEmpfaenger(toeter) {
   return spieler ? [spieler] : [];
 }
 
+// Heilformel eines Gegenstands aus seinem Text: „Heilt 2W6 + 2 HP“, „1W6 Heilung …“, „heilt 1W10“ → „2d6 + 2“
+function heilFormel(item) {
+  if (!item || !["consumable", "foodDrink", "equipment"].includes(item.type) || kristallInfo(item)) return "";
+  const text = `${item.system?.description ?? ""} ${item.system?.effect ?? ""}`;
+  const m = text.match(/heilt\s+(\d*W\d+(?:\s*\+\s*\d+)?)/i) ?? text.match(/(\d*W\d+(?:\s*\+\s*\d+)?)\s*(?:HP\s*)?Heilung/i);
+  return m ? m[1].replace(/(\d*)W(\d+)/i, (_, n, f) => `${n || 1}d${f}`).replace(/\s+/g, " ") : "";
+}
+
 // Ein Stück eines Gegenstands von einem Actor zum anderen (Rucksack-Markierung fällt weg, gleiche Stapel wachsen)
 async function gegenstandUebergeben(quelle, item, ziel) {
   const itemData = item.toObject();
@@ -633,11 +642,12 @@ async function besiegtAbwickeln(tokenDoc, toeterId = null, { empfaenger = null, 
   const kristallSpieler = kristallAn !== undefined ? kristallAn : toeterSpieler(toeter) ?? (liste.length === 1 ? liste[0] : null);
   const beute = kristallSpieler ? await kristallBeute(actor) : null;
   if (beute?.anzahl) await kristalleGeben(kristallSpieler, beute.name, beute.anzahl);
-  const kristallText = beute ? `<br>${kristallZeile(kristallSpieler, beute)}` : "";
-  if (!liste.length || !exp) {
-    if (kristallText) await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(tokenDoc.name ?? actor.name)} ist besiegt</h2><p>${kristallText.slice(4)}</p></div>` });
-    return;
+  // Welcher Kristall fällt, sehen nur der GM und der Empfänger (Spieler dürfen Geheimnisse haben)
+  if (beute && kristallSpieler) {
+    const an = game.users.filter((u) => u.isGM || kristallSpieler.testUserPermission(u, "OWNER")).map((u) => u.id);
+    await ChatMessage.create({ whisper: an, content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>Kristall: ${escapeHtml(tokenDoc.name ?? actor.name)}</h2><p>${kristallZeile(kristallSpieler, beute)}</p></div>` });
   }
+  if (!liste.length || !exp) return;
   const zeilen = [];
   for (const spieler of liste) {
     const neu = numberValue(spieler.system?.progression?.exp) + exp;
@@ -645,7 +655,7 @@ async function besiegtAbwickeln(tokenDoc, toeterId = null, { empfaenger = null, 
     const naechstes = numberValue(spieler.system?.derived?.expNext);
     zeilen.push(`<strong>${escapeHtml(spieler.name)}</strong> erhält ${exp} EXP${naechstes && neu >= naechstes ? ` und hat genug für Level ${numberValue(spieler.system?.progression?.level) + 1} (Level-Up bei der Gilde)` : ""}.`);
   }
-  await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(tokenDoc.name ?? actor.name)} ist besiegt</h2><p>${zeilen.join("<br>")}${kristallText}</p></div>` });
+  await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(tokenDoc.name ?? actor.name)} ist besiegt</h2><p>${zeilen.join("<br>")}</p></div>` });
 }
 
 // GM: Monster von Hand als tot markieren (mit Wahl, wer die EXP bekommt) oder wiederbeleben
@@ -780,7 +790,8 @@ function renderCombatHud() {
   const movementMax = numberValue(movement.value);
   const movementLeft = Math.max(movementMax - spent, 0);
   const ap = getActionPointState(actor);
-  const canAct = ap.value > 0;
+  const amBoden = sterbeZustand(actor);
+  const canAct = ap.value > 0 && !amBoden;
   const quickBereit = actor.system?.actions?.quick?.available !== false;
   const reaktionBereit = actor.system?.actions?.reaction?.available !== false;
   const besitzer = besitzerVon(actor);
@@ -797,7 +808,7 @@ function renderCombatHud() {
   const taste = (item) => `
     <button type="button" class="hh-taste ${item.type === "weapon" ? "is-waffe" : ""} ${item.pending ? "is-pending" : ""}" data-hud-skill="${item.id}" data-rang="${item.rang}"
       data-tooltip-html="${escapeHtml(item.pending ? "<strong>Abbrechen</strong>" : item.tooltip)}" data-tooltip-direction="UP"
-      ${(!item.usable || item.cooldown > 0) && !item.pending ? "disabled" : ""}>
+      ${(!item.usable || item.cooldown > 0 || amBoden) && !item.pending ? "disabled" : ""}>
       <img src="${escapeHtml(item.img || "icons/svg/sword.svg")}" alt="">
       ${item.quick ? `<span class="hh-art">S</span>` : item.reaction ? `<span class="hh-art">R</span>` : ""}
       ${item.cooldown > 0 ? `<span class="hh-cd">${item.cooldown}</span>` : ""}
@@ -840,6 +851,9 @@ function renderCombatHud() {
       <button type="button" data-hud-standard="attack" ${canAct ? "" : "disabled"} data-tooltip="Normaler Angriff mit der ausgerüsteten Waffe">Angriff</button>
       <button type="button" data-hud-standard="item" ${canAct ? "" : "disabled"} data-tooltip="Gegenstand benutzen">Gegenstand</button>
       <button type="button" data-hud-standard="defend" ${canAct ? "" : "disabled"} data-tooltip="RW und MR +2 bis zum nächsten eigenen Zug">Abwehr</button>
+      ${amBoden?.phase === "wurf" ? `<button type="button" class="hh-todeswurf" data-hud-todeswurf data-tooltip="1W20, 10 oder mehr: wieder auf 1 HP. Sonst gewurzelt für ${STERBE_RUNDEN} Runden">Todeswurf</button>` : ""}
+      ${amBoden?.phase === "gewurzelt" ? `<span class="hh-sterben">Gewurzelt · noch ${numberValue(amBoden.runden)} ${numberValue(amBoden.runden) === 1 ? "Runde" : "Runden"}</span>` : ""}
+      ${amBoden?.phase === "tot" ? `<span class="hh-sterben">Tot</span>` : ""}
       <button type="button" class="hh-ende" data-hud-end-turn>Zug beenden</button>
     </div>
   `;
@@ -861,6 +875,11 @@ function renderCombatHud() {
       const g = gefaehrteVon(actor);
       if (g?.aufFeld) g.token?.object?.control({ releaseOthers: true });
       else rufen(actor);
+      return;
+    }
+
+    if (event.target.closest("[data-hud-todeswurf]")) {
+      todeswurf(actor);
       return;
     }
 
@@ -934,6 +953,7 @@ async function resetActorTurnState(actor) {
   for (const token of actor.getActiveTokens?.() ?? []) HLW.movementSpentCache.delete(token.id);
   if (itemUpdates.length) await actor.updateEmbeddedDocuments("Item", itemUpdates);
   await zugbeginn(actor);
+  await sterbenZugbeginn(actor);
 }
 
 function handleCombatTurnChange(combat) {
@@ -1130,11 +1150,20 @@ export class HopeLiesWithinActor extends Actor {
     }
 
     if (actionType === "item") {
-      await ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this }),
-        content: `<div class="hlw-chat-card"><h2>Item verwenden</h2><p>${escapeHtml(this.name)} verwendet ein Item. Die konkrete Item-Wirkung wird in einer spaeteren Version automatisiert.</p></div>`
+      // Heilgegenstand wählen: auf sich selbst oder auf das markierte Ziel daneben (z. B. jemand auf 0 HP)
+      const heiler = this.items.filter((i) => heilFormel(i));
+      if (!heiler.length) return ui.notifications?.warn("Kein Heilgegenstand im Inventar (Trank, Salbe, Verband, Essen).");
+      const ziel = Array.from(game.user?.targets ?? []).find((t) => t.actor && t.actor.id !== this.id);
+      const wahl = await foundry.applications.api.DialogV2.prompt({
+        window: { title: "Gegenstand benutzen" },
+        classes: ["hope-lies-within", "hlw-detail-dialog"],
+        content: `<label>Gegenstand <select name="gegenstand">${heiler.map((i) => `<option value="${i.id}">${escapeHtml(i.name)} (${heilFormel(i).replace(/d/g, "W")}${numberValue(i.system?.quantity) > 1 ? `, ×${numberValue(i.system.quantity)}` : ""})</option>`).join("")}</select></label>
+          <label>Für <select name="ziel"><option value="selbst">mich selbst</option>${ziel ? `<option value="ziel" selected>${escapeHtml(ziel.name)} (markiert)</option>` : ""}</select></label>`,
+        ok: { label: "Benutzen", icon: "fa-solid fa-flask", callback: (event, button) => ({ item: button.form.elements.gegenstand.value, ziel: button.form.elements.ziel.value }) },
+        rejectClose: false
       });
-      await spendActionPoints(this);
+      if (!wahl) return;
+      return this.heilenMit(wahl.item, { aufZiel: wahl.ziel === "ziel" });
     }
   }
 
@@ -1220,10 +1249,43 @@ export class HopeLiesWithinActor extends Actor {
     fenster.render({ force: true }).then(() => fenster.setPosition({ width: 460, height: "auto", left: (window.innerWidth - 460) / 2, top: window.innerHeight / 4 }));
   }
 
+  // Heilgegenstand (Trank, Salbe, Verband, Essen) auf sich selbst oder auf das markierte Ziel neben sich.
+  // Im Kampf kostet das die Aktion. Auf 0 HP kann man selbst nichts benutzen, aber andere können einem etwas verabreichen.
+  async heilenMit(itemId, { aufZiel = false } = {}) {
+    const item = this.items.get(itemId);
+    const formel = heilFormel(item);
+    if (!item || !formel) return;
+    if (istAmBoden(this) && !game.user?.isGM) return ui.notifications?.warn("Auf 0 HP kannst du nichts benutzen. Jemand anderes muss dir etwas verabreichen.");
+    const imKampf = !!game.combat?.started && game.combat.combatants.some((c) => c.actorId === this.id);
+    if (imKampf && !hasActionPoints(this)) return ui.notifications?.warn("Nicht genug Aktionspunkte.");
+    let zielToken = null;
+    if (aufZiel) {
+      zielToken = Array.from(game.user?.targets ?? []).find((t) => t.actor && t.actor.id !== this.id) ?? null;
+      if (!zielToken) return ui.notifications?.warn("Bitte erst das Ziel markieren (Rechtsklick auf das Token → Ziel, oder T).");
+      const eigenes = this.getActiveTokens?.()[0];
+      if (eigenes && getPointDistanceInTiles(eigenes.document ?? eigenes, zielToken.document) > 1.5) return ui.notifications?.warn(`${zielToken.name} ist zu weit weg. Verabreichen geht nur direkt daneben.`);
+    }
+    else zielToken = this.getActiveTokens?.()[0] ?? null;
+    const ziel = zielToken?.actor ?? this;
+    const roll = await new Roll(formel).evaluate();
+    const max = numberValue(ziel.system?.resources?.hp?.max);
+    const vorher = Math.max(numberValue(ziel.system?.resources?.hp?.value), 0);
+    const nachher = max ? Math.min(vorher + numberValue(roll.total), max) : vorher + numberValue(roll.total);
+    await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor: this }), flavor: aufZiel ? `${item.name}: ${this.name} verabreicht es ${ziel.name}` : `${item.name}: ${this.name} heilt sich` });
+    if (zielToken && ziel !== this) await hpSetzen(zielToken, nachher);
+    else await ziel.update({ "system.resources.hp.value": nachher });
+    const quantity = Math.max(numberValue(item.system?.quantity), 1);
+    if (quantity > 1) await item.update({ "system.quantity": quantity - 1 });
+    else await this.deleteEmbeddedDocuments("Item", [item.id]);
+    if (imKampf) await spendActionPoints(this);
+    ui.notifications?.info(`${ziel.name}: +${nachher - vorher} HP (${nachher}/${max}).`);
+  }
+
   async consumeOwnedItem(itemId) {
     const item = this.items.get(itemId);
     if (!item) return;
     if (kristallInfo(item)) return kristallVerwenden(this, item);
+    if (heilFormel(item)) return this.heilenMit(itemId);
 
     const quantity = Math.max(numberValue(item.system?.quantity), 1);
     if (quantity > 1) await item.update({ "system.quantity": quantity - 1 });
@@ -1649,6 +1711,11 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     context.vorschlagLabel = (automatisch ? aktuell || vorschlag : vorschlag) ? `— automatisch: ${automatisch ? aktuell || vorschlag : vorschlag} —` : "— automatisch (noch keine Klasse) —";
     context.punkte = this._punkteKontext(context.actor);
     context.kesText = kes(context.system.resources?.kes?.value);
+    const sterben = sterbeZustand(this.actor);
+    context.sterben = sterben ? {
+      wurf: sterben.phase === "wurf",
+      text: sterben.phase === "wurf" ? "0 HP: Todeswurf (1W20, 10 oder mehr)" : sterben.phase === "gewurzelt" ? `Gewurzelt: noch ${numberValue(sterben.runden)} ${numberValue(sterben.runden) === 1 ? "Runde" : "Runden"}, dann stirbt die Figur` : "Tot"
+    } : null;
     context.pointsOver = numberValue(context.system.derived?.points?.free) < 0;
     const prozent = (wert, max) => (max > 0 ? Math.min(Math.max(Math.round((numberValue(wert) / max) * 100), 0), 100) : 0);
     const hp = context.system.resources?.hp ?? {};
@@ -1858,6 +1925,11 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       await this.actor.update({ [`system.insigniaSlots.${key}`]: { image: "", name: "", description: "", rank: "", kategorie: "" } });
     });
 
+    html.find("[data-todeswurf]").on("click", (event) => {
+      event.preventDefault();
+      todeswurf(this.actor);
+    });
+
     html.find("[data-gefaehrte]").on("click contextmenu", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -2062,6 +2134,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       eintraege.push(["consume", `Verwenden (+${kristall.exp} EXP${kristall.korruption ? `, +${kristall.korruption} Korruption` : ""})`, "fa-gem"]);
       if (kristall.abyss && !kristall.kern) eintraege.push(["einsetzen", "Im Kampf einsetzen (Schnellaktion)", "fa-bolt"]);
     }
+    else if (heilFormel(item)) eintraege.push(["consume", `Benutzen (heilt ${heilFormel(item).replace(/d/g, "W")})`, "fa-flask"], ["verabreichen", "Verabreichen (markiertes Ziel daneben)", "fa-hand-holding-medical"]);
     else if (["consumable", "foodDrink"].includes(item.type)) eintraege.push(["consume", "Benutzen", "fa-flask"]);
     eintraege.push(["details", "Details", "fa-circle-info"], ...packen, ["edit", "Bearbeiten", "fa-pen"], ["give", "An Ziel geben", "fa-hand-holding"], ["discard", "Wegwerfen", "fa-trash"]);
     const id = item.id;
@@ -2070,6 +2143,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       equip: () => this.actor.toggleEquipped(id),
       consume: () => this.actor.consumeOwnedItem(id),
       einsetzen: () => kristallEinsetzen(this.actor, item),
+      verabreichen: () => this.actor.heilenMit(id, { aufZiel: true }),
       details: () => this.actor.showOwnedItemDetails(id),
       edit: () => this.actor.editOwnedItem(id),
       give: () => this.actor.giveItemToTarget(id),
@@ -2689,6 +2763,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainBausteine", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainHandel", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "kristallHandel", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expVerteilung", {
@@ -2755,6 +2830,7 @@ Hooks.once("ready", async () => {
   };
   registerTalk();
   registerGefaehrte();
+  registerSterben();
   registerDashboard();
 
   // Eigene Bilder für Skills und Ausrüstung: ersetzt einmalig die Foundry-Symbole (icons/…) in Welt und Charakteren.
@@ -2819,6 +2895,16 @@ Hooks.once("ready", async () => {
     await lindhainHandel();
     await game.settings.set("hope-lies-within-2", "lindhainHandel", true);
   }
+  // Willkommens-Journal: neue Regeltexte (Kristalle, Todeswurf) in bestehende Welten übernehmen
+  if (game.user?.isGM && game.settings.get("hope-lies-within-2", "dashboardTextStand") < DASHBOARD_TEXT_STAND) {
+    await dashboardTexteAktualisieren();
+    await game.settings.set("hope-lies-within-2", "dashboardTextStand", DASHBOARD_TEXT_STAND);
+  }
+  // Combat-Tracker (auch Combat Tracker Dock): HP als verfolgter Wert, solange der GM nichts anderes gewählt hat
+  if (game.user?.isGM) {
+    const tracker = game.settings.get("core", "combatTrackerConfig") ?? {};
+    if (!tracker.resource || tracker.resource === "resources.hp") await game.settings.set("core", "combatTrackerConfig", { ...tracker, resource: "resources.hp.value" });
+  }
   // Kristalle (2026-10-30): Kessa Dorn ist von der Gilde und kauft Kristalle (Lindhain-NSC ohne eigenen Handel)
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "kristallHandel")) {
     await lindhainHandel();
@@ -2866,7 +2952,8 @@ Hooks.once("ready", async () => {
       const absender = game.users.get(data.userId);
       if (!item || !ziel || !absender || !quelle.testUserPermission(absender, "OWNER")) return;
       await gegenstandUebergeben(quelle, item, ziel);
-      await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><p>${escapeHtml(quelle.name)} gibt ${escapeHtml(item.name)} an ${escapeHtml(ziel.name)}.</p></div>` });
+      const an = game.users.filter((u) => u.isGM || quelle.testUserPermission(u, "OWNER") || ziel.testUserPermission(u, "OWNER")).map((u) => u.id);
+      await ChatMessage.create({ whisper: an, content: `<div class="hlw-chat-card hlw-chat-kurz"><p>${escapeHtml(quelle.name)} gibt ${escapeHtml(item.name)} an ${escapeHtml(ziel.name)}.</p></div>` });
       return;
     }
     if (data?.type !== "endTurn") return;
@@ -3109,8 +3196,12 @@ Hooks.on("renderChatMessageHTML", (message, html) => {
 // wenn die Bewegung wirklich angekommen ist (Foundry kann sie verwerfen, z. B. an Wänden oder in der Pause).
 // Der verbrauchte Wert steht am Actor (system.combat.movementSpent) und gilt so in jedem Browser gleich.
 Hooks.on("preUpdateToken", (tokenDocument, changes) => {
-  if (!game.combat?.started) return;
   if (!("x" in changes) && !("y" in changes)) return;
+  if (!game.user?.isGM && istAmBoden(tokenDocument.actor)) {
+    ui.notifications?.warn(sterbeZustand(tokenDocument.actor)?.phase === "gewurzelt" ? "Gewurzelt: Die Figur kann sich nicht bewegen." : "Auf 0 HP kann sich die Figur nicht bewegen.");
+    return false;
+  }
+  if (!game.combat?.started) return;
   if (game.paused && !game.user?.isGM) return;
 
   const actor = tokenDocument.actor;

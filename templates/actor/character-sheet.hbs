@@ -38,6 +38,12 @@
       </div>
     </div>
     <div class="hb-balken">
+      {{#if sterben}}
+        <div class="hb-sterben">
+          <span>{{sterben.text}}</span>
+          {{#if sterben.wurf}}<button type="button" data-todeswurf>Todeswurf</button>{{/if}}
+        </div>
+      {{/if}}
       <label class="hb-balkenzeile">
         <span>HP</span>
         <span class="hb-spur"><i class="hb-hp" style="width: {{balken.hp}}%"></i></span>

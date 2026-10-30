@@ -1,5 +1,6 @@
 ﻿Zustand;Wirkung;Endet
-Am Boden;Bewusstlos, kann nichts tun. Macht Sterbewürfe (siehe 0 HP).;Heilung, Stabilisieren, 3 Erfolge
+Am Boden;Auf 0 HP: kann sich nicht bewegen und nicht handeln. Macht einen Todeswurf (siehe 0 HP).;Todeswurf geschafft oder Heilung
+Gewurzelt (Rooted);Todeswurf misslungen: kann sich nicht bewegen, liegt am Boden. Stirbt nach 3 Runden, wenn niemand heilt.;Heilung (Heiltrank verabreichen, Heil-Skill)
 Verwundet;−2 auf alle Würfe.;Lange Rast (eine Nacht Schlaf)
 Liegend;Nahkampf gegen dich +2, Fernkampf gegen dich −2. Aufstehen kostet die halbe Bewegung.;Aufstehen
 Zurückgestoßen;"Um die angegebenen Felder versetzt; gegen eine Wand zusätzlich 1W4 Schaden.";sofort

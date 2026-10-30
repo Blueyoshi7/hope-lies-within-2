@@ -781,3 +781,9 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-bogen .hb-rucksack-hinweis { margin: 8px 0; color: var(--hb-gold-dunkel); font-style: italic; }
 .hlw-bogen .hb-rucksack-raster { min-height: 140px; }
 .hlw-bogen .hb-feld[data-gesperrt] { opacity: 0.45; filter: grayscale(0.6); }
+
+/* Sterben: 0 HP, Todeswurf, gewurzelt */
+.hlw-bogen .hb-sterben { display: flex; align-items: center; gap: 10px; padding: 6px 10px; margin-bottom: 6px; border: 1px solid #8a2a24; border-radius: 6px; background: rgba(120, 20, 16, 0.35); color: #f3d2cc; font-weight: bold; }
+.hlw-bogen .hb-sterben button { margin-left: auto; width: auto; padding: 2px 14px; background: #8a2a24; color: #fff; border: 1px solid #c2493f; }
+.hlw-hud .hh-aktionen .hh-todeswurf { grid-column: span 2; background: linear-gradient(180deg, #b23a31, #7a221c); color: #fff; border-color: #d8675d; }
+.hlw-hud .hh-aktionen .hh-sterben { grid-column: span 2; text-align: center; color: #f3a59c; font-weight: bold; padding: 4px 0; }
