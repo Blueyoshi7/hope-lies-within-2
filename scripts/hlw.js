@@ -520,7 +520,58 @@ async function tokenBildSetzen(actor, pfad) {
   for (const token of actor.getActiveTokens(true, true)) await token.update({ "texture.src": pfad });
 }
 
+// HP eines Ziels setzen. Gehört das Ziel nicht dem Spieler (Monster, NSC, andere Spieler), bucht es der aktive GM per Socket.
+async function hpSetzen(targetToken, nextHp, { besiegt = false } = {}) {
+  const target = targetToken?.actor;
+  if (!target) return;
+  if (target.isOwner && (!besiegt || game.user?.isGM)) {
+    await target.update({ "system.resources.hp.value": nextHp });
+    if (besiegt) await kampfteilnehmerBesiegt(targetToken);
+    return;
+  }
+  if (!game.users?.activeGM) return ui.notifications?.warn("Kein GM online: Der Schaden muss von Hand eingetragen werden.");
+  game.socket.emit("system.hope-lies-within-2", { type: "hpSetzen", sceneId: targetToken.document?.parent?.id ?? canvas.scene?.id, tokenId: targetToken.document?.id ?? targetToken.id, hp: nextHp, besiegt, userId: game.user.id });
+}
+
+async function kampfteilnehmerBesiegt(targetToken) {
+  const target = targetToken?.actor;
+  if (target?.type !== "monster") return;
+  const combatant = game.combat?.combatants.find((entry) => entry.tokenId === (targetToken.document?.id ?? targetToken.id) || entry.actor?.id === target.id);
+  if (combatant && !combatant.defeated) await combatant.update({ defeated: true });
+}
+
+// Würfel einer Formel lesbar: „3 + 1W4 + 2“ und „3 + 4 + 2 = 9“ (jeder Würfel mit seinem Ergebnis, feste Zahlen einzeln)
+function wuerfelText(roll) {
+  const roh = String(roll?.formula ?? "");
+  const schoen = (s) => s.replace(/[()]/g, "").replace(/\s*\+\s*/g, " + ").replace(/\s*-\s*/g, " − ").replace(/\s*\*\s*/g, " × ").replace(/\s+/g, " ").trim();
+  const formel = schoen(roh.replace(/(\d*)d(\d+)/gi, (m, n, f) => `${n || 1}W${f}`));
+  const dice = roll?.dice ?? [];
+  let i = 0;
+  const rechnung = schoen(roh.replace(/(\d*)d(\d+)([a-z]+\d*)*/gi, () => {
+    const werte = (dice[i++]?.results ?? []).filter((r) => r.active !== false && !r.discarded).map((r) => r.result);
+    return werte.length ? werte.join(" + ") : "0";
+  }));
+  const total = numberValue(roll?.total);
+  return { formel, rechnung: /[+−×]/.test(rechnung) ? `${rechnung} = ${total}` : String(total) };
+}
+
+// Waffenschaden: Würfelformel, sonst fester Schaden aus der Beschreibung („Fix 2 DMG“), sonst 1
+function waffenSchadenFormel(waffe) {
+  const formel = normalizeFormula(waffe?.system?.damage);
+  if (isValidFormula(formel)) return formel;
+  if (waffe?.type !== "weapon") return "";
+  const fix = String(`${waffe.system?.description ?? ""} ${waffe.system?.effect ?? ""}`).match(/fix\s*(\d+)/i);
+  return fix ? fix[1] : "1";
+}
+
 function getCombatHudActor() {
+  const actor = combatHudKandidat();
+  // Spieler sehen und bedienen nur die Leiste ihrer eigenen Figuren (oder ihres Gefährten); der GM sieht alle.
+  if (actor && !game.user?.isGM && !actor.isOwner) return null;
+  return actor;
+}
+
+function combatHudKandidat() {
   const currentActor = game.combat?.combatant?.actor;
   // Ausgewählter Gefährte des Charakters, der gerade am Zug ist: Leiste für den Gefährten zeigen
   const gewaehlt = canvas.tokens?.controlled?.[0]?.actor;
@@ -1160,9 +1211,9 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    const damageFormula = normalizeFormula(item.system?.damage);
+    const damageFormula = item.type === "weapon" ? waffenSchadenFormel(item) : normalizeFormula(item.system?.damage);
     const ausgeruestet = this.items.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped));
-    const hasDamage = isValidFormula(damageFormula) || (boolValue(item.system?.waffenSchaden) && isValidFormula(normalizeFormula(ausgeruestet?.system?.damage)));
+    const hasDamage = isValidFormula(damageFormula) || (boolValue(item.system?.waffenSchaden) && isValidFormula(waffenSchadenFormel(ausgeruestet)));
     const sourceToken = getSourceTokenForActor(this);
 
     // Mehrere Ziele (z. B. Trickshot): nur, wenn genug Ziele in Reichweite stehen; jedes Ziel bekommt einen eigenen Angriff.
@@ -1235,9 +1286,9 @@ export class HopeLiesWithinActor extends Actor {
       return;
     }
 
-    const damageFormula = normalizeFormula(item.system?.damage);
+    const damageFormula = item.type === "weapon" ? waffenSchadenFormel(item) : normalizeFormula(item.system?.damage);
     const mitWaffe = this.items.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped));
-    const hasDamage = isValidFormula(damageFormula) || (boolValue(item.system?.waffenSchaden) && isValidFormula(normalizeFormula(mitWaffe?.system?.damage)));
+    const hasDamage = isValidFormula(damageFormula) || (boolValue(item.system?.waffenSchaden) && isValidFormula(waffenSchadenFormel(mitWaffe)));
     const healing = isHealingItem(item);
     const sourceToken = getPendingSourceToken(this);
     let result = null;
@@ -1270,7 +1321,7 @@ export class HopeLiesWithinActor extends Actor {
       const waffe = item.type !== "weapon" && !healing && this.type !== "monster"
         ? this.items.find((entry) => entry.type === "weapon" && boolValue(entry.system?.equipped))
         : null;
-      const waffenFormel = waffe ? normalizeFormula(waffe.system?.damage) : "";
+      const waffenFormel = waffe ? waffenSchadenFormel(waffe) : "";
       const teile = [damageFormula, waffenFormel].filter(isValidFormula).map((f) => `(${f})`);
       const mb = meisterBonus(item);
       const meisterPlus = healing ? mb.heilung : mb.schaden;
@@ -1284,7 +1335,7 @@ export class HopeLiesWithinActor extends Actor {
         const roll = await new Roll(formel, this.getRollData()).evaluate();
         const maxHp = numberValue(target?.system?.resources?.hp?.max) || currentHp + roll.total;
         const nextHp = Math.min(currentHp + numberValue(roll.total), maxHp);
-        if (target) await target.update({ "system.resources.hp.value": nextHp });
+        if (target) await hpSetzen(targetToken, nextHp);
         Object.assign(result, { roll, amount: nextHp - currentHp, nextHp });
       } else {
         const verteidigung = numberValue(magisch ? targetDerived.mr : targetDerived.rw) || 10;
@@ -1302,50 +1353,43 @@ export class HopeLiesWithinActor extends Actor {
           const block = numberValue(targetDerived.block);
           const finalDamage = Math.max(numberValue(roll.total) - block, 1);
           const nextHp = Math.max(currentHp - finalDamage, 0);
-          if (target) await target.update({ "system.resources.hp.value": nextHp });
-          let defeated = false;
-          if (nextHp <= 0 && target) {
-            defeated = true;
-            const combatant = game.combat?.combatants.find((entry) => entry.tokenId === targetToken.document?.id || entry.actor?.id === target.id);
-            if (combatant && target.type === "monster") await combatant.update({ defeated: true });
-          }
+          const defeated = nextHp <= 0 && Boolean(target);
+          if (target) await hpSetzen(targetToken, nextHp, { besiegt: defeated });
           Object.assign(result, { roll, block, finalDamage, nextHp, defeated });
         }
       }
     }
 
-    const skillType = escapeHtml(item.system?.skillType || HLW.itemTypeLabels[item.type] || "");
-    const range = escapeHtml(skillReichweite(item));
-    const damage = escapeHtml(item.system?.damageText || item.system?.damage);
-    const effect = escapeHtml(item.system?.effect || item.system?.description);
-    let ergebnis = "";
+    // Kurze Chatkarte für alle: Name, Ziel, Würfel mit Ergebnissen. Art, Reichweite, Abklingzeit und Waffentexte stehen im Bogen.
+    let zeilen = "";
+    let unterzeile = "";
     if (result?.healing) {
-      ergebnis = `<dt>Ziel</dt><dd>${escapeHtml(result.targetName)}</dd>
-        <dt>Heilung</dt><dd>${result.roll.formula} = <strong>${result.roll.total}</strong> (${result.amount} geheilt)</dd>`;
+      const w = wuerfelText(result.roll);
+      unterzeile = `für ${escapeHtml(result.targetName)}`;
+      zeilen = `<dt>Heilung (${escapeHtml(w.formel)})</dt><dd>${escapeHtml(w.rechnung)}</dd>`;
     } else if (result) {
-      const wurf = `${result.natur} + ${result.werte.acc} = ${result.angriff.total} gegen ${result.verteidigungsArt} ${result.verteidigung}`;
+      const acc = numberValue(result.werte.acc);
+      const angriff = acc ? `${result.natur} ${acc > 0 ? "+" : "−"} ${Math.abs(acc)} = ${result.angriff.total}` : `${result.natur}`;
       const status = result.kritisch ? "Kritischer Treffer" : result.patzer ? "Natürliche 1: daneben" : result.trifft ? "Treffer" : "Verfehlt";
-      ergebnis = `<dt>Ziel</dt><dd>${escapeHtml(result.targetName)} (${result.distance.toFixed(1)} Felder)</dd>
-        <dt>Angriff</dt><dd>${wurf}</dd>
-        <dt>Ergebnis</dt><dd><strong>${status}</strong></dd>
-        ${result.trifft ? `<dt>Schaden</dt><dd>${result.roll.formula} = ${result.roll.total}${result.block ? ` − Blockwert ${result.block}` : ""}</dd>
-        <dt>Finaler Schaden</dt><dd><strong>${result.finalDamage}</strong></dd>` : ""}
-        ${result.defeated ? `<dt>Status</dt><dd><strong>${result.targetIsMonster ? "Besiegt" : "Am Boden (Sterbewürfe)"}</strong></dd>` : ""}`;
+      unterzeile = `gegen ${escapeHtml(result.targetName)}`;
+      zeilen = `<dt>Angriff (1W20)</dt><dd>${angriff} gegen ${result.verteidigungsArt} ${result.verteidigung}</dd>
+        <dt>Ergebnis</dt><dd><strong>${status}</strong></dd>`;
+      if (result.trifft) {
+        const w = wuerfelText(result.roll);
+        zeilen += `<dt>Schaden (${escapeHtml(w.formel)})</dt><dd>${escapeHtml(w.rechnung)}${result.block ? ` − ${result.block} Block = <strong>${result.finalDamage}</strong>` : ""}</dd>`;
+      }
+      if (result.defeated) zeilen += `<dt>Status</dt><dd><strong>${result.targetIsMonster ? "Besiegt" : "Am Boden (Sterbewürfe)"}</strong></dd>`;
     }
+    // Ohne Ziel und Wurf (z. B. Verstärkungen): die Wirkung ist hier das Wichtige
+    const wirkung = !result ? escapeHtml(item.system?.description || item.system?.effect) : "";
 
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
       content: `
-        <div class="hlw-chat-card">
-          <h2>${escapeHtml(item.name)}</h2>
-          <dl>
-            <dt>Art</dt><dd>${skillType || "-"}${isQuickItem(item) ? " · Schnellaktion" : ""}</dd>
-            <dt>Reichweite</dt><dd>${range || "-"}</dd>
-            <dt>${result?.healing ? "Heilung" : "Schaden"}</dt><dd>${result?.waffe ? (damage ? `${damage} + ${escapeHtml(result.waffe)}` : `Waffenschaden (${escapeHtml(result.waffe)})`) : damage || "-"}</dd>
-            <dt>Cooldown</dt><dd>${boolValue(item.system?.einmalProKampf) ? "Einmal pro Kampf" : `${maxCooldown || 0} Zug(e)`}</dd>
-            ${ergebnis}
-          </dl>
-          ${effect ? `<p>${effect}</p>` : ""}
+        <div class="hlw-chat-card hlw-chat-kurz">
+          <h2>${escapeHtml(item.name)}${unterzeile ? ` <small>${unterzeile}</small>` : ""}</h2>
+          ${zeilen ? `<dl>${zeilen}</dl>` : ""}
+          ${wirkung ? `<p>${wirkung}</p>` : ""}
         </div>
       `
     });
@@ -1991,6 +2035,12 @@ export class HopeLiesWithinItemSheet extends (BaseItemSheet ?? class {}) {
     });
   }
 
+  // Was der GM im Bogen ändert, bleibt: automatische Wertübernahmen aus dem Kanon lassen solche Items in Ruhe.
+  async _updateObject(event, formData) {
+    if (game.user?.isGM) formData["flags.hope-lies-within-2.eigeneWerte"] = true;
+    return super._updateObject(event, formData);
+  }
+
   async getData(options) {
     const context = await super.getData(options);
     context.system = context.item.system;
@@ -2310,7 +2360,7 @@ async function skillWerteNachziehen() {
     if (k.skillDaten && !neu.has(`classSkill|${k.skill}|${k.name}`)) neu.set(`classSkill|${k.skill}|${k.name}`, { type: "classSkill", name: k.skill, system: { ...k.skillDaten, rank: { Basic: "E", T1: "D", T2: "C", T3: "B", Story: "A" }[k.category] } });
   }
   const quelle = (i) => (i.type === "classSkill" ? neu.get(`classSkill|${i.name}|${i.system?.className ?? ""}`) : neu.get(`${i.type}|${i.name}|${i.system?.rank ?? ""}`) ?? neu.get(`${i.type}|${i.name}`));
-  const updates = (items) => items.filter((i) => (["playerSkill", "classSkill"].includes(i.type) || orbTier(i)) && quelle(i)).map((i) => {
+  const updates = (items) => items.filter((i) => (["playerSkill", "classSkill"].includes(i.type) || orbTier(i)) && quelle(i) && !i.getFlag("hope-lies-within-2", "eigeneWerte")).map((i) => {
     const e = quelle(i).system ?? {};
     if (!["playerSkill", "classSkill"].includes(i.type)) return { _id: i.id, "system.description": e.description ?? "" };
     return {
@@ -2401,6 +2451,13 @@ async function importMonsters(path) {
 }
 
 Hooks.once("init", () => {
+  // Foundry 14 hat den Handlebars-Helfer „select“ entfernt; Item- und Monsterbogen brauchen ihn noch.
+  if (!Handlebars.helpers.select) {
+    Handlebars.registerHelper("select", function (selected, options) {
+      const wert = Handlebars.escapeExpression(String(selected ?? "")).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return options.fn(this).replace(new RegExp(` value=["']${wert}["']`), "$& selected");
+    });
+  }
   console.log("Hope lies Within 2.0 | Initialisiere System");
 
   CONFIG.HLW = HLW;
@@ -2552,6 +2609,14 @@ Hooks.once("ready", async () => {
 
   game.socket.on("system.hope-lies-within-2", async (data) => {
     if (!game.user?.isGM) return;
+    if (data?.type === "hpSetzen") {
+      if (game.users.activeGM?.id !== game.user.id) return;
+      const token = game.scenes.get(data.sceneId)?.tokens.get(data.tokenId);
+      if (!token?.actor) return;
+      await token.actor.update({ "system.resources.hp.value": Math.max(numberValue(data.hp), 0) });
+      if (data.besiegt) await kampfteilnehmerBesiegt(token.object ?? { document: token, actor: token.actor, id: token.id });
+      return;
+    }
     if (data?.type !== "endTurn") return;
 
     const combat = game.combats?.get(data.combatId);
@@ -2660,22 +2725,23 @@ Hooks.on("updateCombat", (combat, changed) => {
 });
 
 Hooks.on("combatTurn", (combat) => {
+  // Neuer Zug: angefangene Bewegungen gelten in keinem Browser mehr
+  HLW.pendingLegalMoves.clear();
   handleCombatTurnChange(combat);
   renderCombatHud();
 });
+Hooks.on("combatRound", () => HLW.pendingLegalMoves.clear());
 
+// Bewegung im Kampf: Der Browser, der die Figur zieht, prüft das Bewegungslimit und bucht erst dann,
+// wenn die Bewegung wirklich angekommen ist (Foundry kann sie verwerfen, z. B. an Wänden oder in der Pause).
+// Der verbrauchte Wert steht am Actor (system.combat.movementSpent) und gilt so in jedem Browser gleich.
 Hooks.on("preUpdateToken", (tokenDocument, changes) => {
   if (!game.combat?.started) return;
   if (!("x" in changes) && !("y" in changes)) return;
-  if (HLW.revertingTokens.has(tokenDocument.id)) return;
+  if (game.paused && !game.user?.isGM) return;
 
   const actor = tokenDocument.actor;
   if (!actor) return;
-
-  HLW.lastLegalTokenPositions.set(tokenDocument.id, {
-    x: numberValue(tokenDocument.x),
-    y: numberValue(tokenDocument.y)
-  });
 
   const currentActor = game.combat.combatant?.actor;
   if (currentActor?.id !== actor.id) {
@@ -2683,82 +2749,56 @@ Hooks.on("preUpdateToken", (tokenDocument, changes) => {
     return false;
   }
 
-  const from = {
-    x: numberValue(tokenDocument.x),
-    y: numberValue(tokenDocument.y)
-  };
-  const to = {
-    x: "x" in changes ? numberValue(changes.x) : from.x,
-    y: "y" in changes ? numberValue(changes.y) : from.y
-  };
+  const from = { x: numberValue(tokenDocument.x), y: numberValue(tokenDocument.y) };
+  const to = { x: "x" in changes ? numberValue(changes.x) : from.x, y: "y" in changes ? numberValue(changes.y) : from.y };
   const distance = getPointDistanceInTiles(from, to);
   const limit = numberValue(actor.system?.resources?.movement?.value);
-  const spent = HLW.movementSpentCache.has(tokenDocument.id)
-    ? numberValue(HLW.movementSpentCache.get(tokenDocument.id))
-    : numberValue(actor.system?.combat?.movementSpent);
+  const unterwegs = numberValue(HLW.pendingLegalMoves.get(tokenDocument.id)?.distanz);
+  const spent = numberValue(actor.system?.combat?.movementSpent) + unterwegs;
   const remaining = Math.max(limit - spent, 0);
 
   if (limit > 0 && distance > remaining + 0.01) {
-    ui.notifications?.warn(`Bewegungslimit erreicht: ${remaining.toFixed(1)} Felder uebrig.`);
+    ui.notifications?.warn(`Bewegungslimit erreicht: ${remaining.toFixed(1)} Felder übrig.`);
     return false;
   }
 
-  const nextSpent = spent + distance;
-  HLW.movementSpentCache.set(tokenDocument.id, nextSpent);
-  HLW.pendingLegalMoves.set(tokenDocument.id, {
-    x: to.x,
-    y: to.y,
-    spent: nextSpent
+  const eintrag = { from, to, distanz: unterwegs + distance };
+  HLW.pendingLegalMoves.set(tokenDocument.id, eintrag);
+  // Verwirft Foundry die Bewegung, kommt kein Update: dann zählt sie nach kurzer Zeit auch nicht.
+  window.setTimeout(() => {
+    if (HLW.pendingLegalMoves.get(tokenDocument.id) === eintrag) HLW.pendingLegalMoves.delete(tokenDocument.id);
+  }, 4000);
+});
+
+// Gebucht wird über Foundrys Bewegungs-Ereignis: Es kommt mit Start und tatsächlichem Ende der Bewegung,
+// auch wenn die Figur beim Spieler noch läuft (beim Spieler steht die neue Position erst nach der Animation im Dokument).
+Hooks.on("moveToken", async (tokenDocument, movement, operation, user) => {
+  const von = user?.id ?? user ?? movement?.user?.id ?? movement?.user;
+  const vonMir = von === game.user?.id;
+  const unterwegs = HLW.pendingLegalMoves.get(tokenDocument.id);
+  if (!game.combat?.started || !vonMir) return;
+  HLW.pendingLegalMoves.delete(tokenDocument.id);
+  const actor = tokenDocument.actor;
+  if (!actor || game.combat.combatant?.actor?.id !== actor.id) return;
+  const start = movement.origin ?? unterwegs?.from;
+  const ende = movement.passed?.waypoints?.at?.(-1) ?? movement.destination;
+  if (!start || !ende) return;
+  const gelaufen = getPointDistanceInTiles({ x: numberValue(start.x), y: numberValue(start.y) }, { x: numberValue(ende.x), y: numberValue(ende.y) });
+  if (!(gelaufen > 0)) return;
+  const limit = numberValue(actor.system?.resources?.movement?.value);
+  const spent = numberValue(actor.system?.combat?.movementSpent) + gelaufen;
+  await actor.update({
+    "system.combat.movementSpent": spent,
+    "system.actions.movement.available": limit <= 0 || spent < limit - 0.01
   });
 });
 
-Hooks.on("updateToken", async (tokenDocument, changes) => {
-  if (!("x" in changes) && !("y" in changes)) return;
-  if (HLW.revertingTokens.has(tokenDocument.id)) {
-    HLW.revertingTokens.delete(tokenDocument.id);
-    return;
-  }
-
-  if (game.combat?.started) {
-    const actor = tokenDocument.actor;
-    const currentActor = game.combat.combatant?.actor;
-    if (actor && currentActor?.id === actor.id) {
-      const current = { x: numberValue(tokenDocument.x), y: numberValue(tokenDocument.y) };
-      const limit = numberValue(actor.system?.resources?.movement?.value);
-      const pendingMove = HLW.pendingLegalMoves.get(tokenDocument.id);
-      if (pendingMove && Math.abs(pendingMove.x - current.x) < 0.01 && Math.abs(pendingMove.y - current.y) < 0.01) {
-        HLW.pendingLegalMoves.delete(tokenDocument.id);
-        HLW.lastLegalTokenPositions.set(tokenDocument.id, current);
-        await actor.update({
-          "system.combat.movementSpent": pendingMove.spent,
-          "system.actions.movement.available": limit <= 0 || pendingMove.spent < limit - 0.01
-        });
-        if (HLW.pendingSkill?.sourceTokenId === tokenDocument.id) window.setTimeout(refreshPendingSkillTargeting, 50);
-        else window.setTimeout(renderCombatHud, 50);
-        return;
-      }
-
-      const lastLegal = HLW.lastLegalTokenPositions.get(tokenDocument.id);
-      const spent = HLW.movementSpentCache.has(tokenDocument.id)
-        ? numberValue(HLW.movementSpentCache.get(tokenDocument.id))
-        : numberValue(actor.system?.combat?.movementSpent);
-      const leakedDistance = lastLegal ? getPointDistanceInTiles(lastLegal, current) : 0;
-      const remaining = Math.max(limit - spent, 0);
-      if (lastLegal && limit > 0 && leakedDistance > remaining + 0.01) {
-        HLW.revertingTokens.add(tokenDocument.id);
-        HLW.movementSpentCache.set(tokenDocument.id, spent);
-        tokenDocument.update(lastLegal);
-        ui.notifications?.warn("Bewegungslimit erreicht. Token wurde zur erlaubten Position zurueckgesetzt.");
-        return;
-      }
-    }
-  }
-
+Hooks.on("updateToken", (tokenDocument, changes) => {
+  if (!("x" in changes) && !("y" in changes) && !("_movementHistory" in changes)) return;
   if (HLW.pendingSkill?.sourceTokenId === tokenDocument.id) {
     window.setTimeout(refreshPendingSkillTargeting, 50);
     return;
   }
-
   window.setTimeout(renderCombatHud, 50);
 });
 

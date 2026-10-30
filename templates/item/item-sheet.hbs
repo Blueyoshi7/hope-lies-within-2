@@ -57,10 +57,17 @@
           {{/select}}
         </select>
       </label>
-      <label>Range <input name="system.range" type="text" value="{{system.range}}" /></label>
+      <label>Reichweite (Felder, 0 = selbst) <input name="system.range" type="text" value="{{system.range}}" /></label>
       <label>Schaden / Heilung (Formel) <input name="system.damage" type="text" value="{{system.damage}}" /></label>
-      <label>Angabe laut Liste <input name="system.damageText" type="text" value="{{system.damageText}}" /></label>
-      <label>Cooldown <span><input name="system.cooldown.value" type="number" value="{{system.cooldown.value}}" /> / <input name="system.cooldown.max" type="number" value="{{system.cooldown.max}}" /></span></label>
+      <label>Schaden laut Liste <input name="system.damageText" type="text" value="{{system.damageText}}" /></label>
+      <label>Heilung (Text) <input name="system.heilung" type="text" value="{{system.heilung}}" /></label>
+      <label>Abklingzeit <span><input name="system.cooldown.value" type="number" value="{{system.cooldown.value}}" title="läuft gerade" /> / <input name="system.cooldown.max" type="number" value="{{system.cooldown.max}}" title="Züge" /></span></label>
+      <label>Abklingzeit (Text) <input name="system.cooldownText" type="text" value="{{system.cooldownText}}" placeholder="z. B. einmal pro Tag" /></label>
+      <label>Einmal pro Kampf <input name="system.einmalProKampf" type="checkbox" {{checked system.einmalProKampf}} /></label>
+      <label>Ziele <input name="system.ziele" type="number" min="1" value="{{system.ziele}}" /></label>
+      <label>Schutz <input name="system.schutz" type="text" value="{{system.schutz}}" placeholder="z. B. Schild 1W6+2" /></label>
+      <label>Fläche <input name="system.flaeche" type="text" value="{{system.flaeche}}" placeholder="z. B. 3×3 Felder" /></label>
+      <label>Dauer <input name="system.dauer" type="text" value="{{system.dauer}}" placeholder="z. B. 2 Runden" /></label>
       <label>Primaer <input name="system.scaling.primary" type="text" value="{{system.scaling.primary}}" /></label>
       <label>Sekundaer <input name="system.scaling.secondary" type="text" value="{{system.scaling.secondary}}" /></label>
       <label>Tertiaer <input name="system.scaling.tertiary" type="text" value="{{system.scaling.tertiary}}" /></label>

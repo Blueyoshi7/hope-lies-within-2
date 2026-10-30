@@ -761,3 +761,6 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-detail-dialog .hlw-skill-detail .hs-text { margin: 4px 0 10px; line-height: 1.45; color: var(--hb-text, #e8e4da); }
 .hlw-detail-dialog .hlw-skill-detail dl { grid-template-columns: max-content 1fr; }
 .hlw-detail-dialog .hlw-skill-detail .hs-hinweis { margin-top: 10px; font-size: 12px; color: var(--hb-text-2, #a8a294); font-style: italic; }
+/* Kurze Kampfkarte */
+.chat-message .hlw-chat-kurz h2 small, .hlw-chat-kurz h2 small { display: block; margin-top: 2px; font-family: var(--font-body, inherit); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: #b9b3a5; }
+.chat-message .hlw-chat-kurz dl { margin-top: 6px; }
