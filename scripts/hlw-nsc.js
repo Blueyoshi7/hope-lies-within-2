@@ -110,6 +110,19 @@ const KESSA_LEKTIONEN = [
   { titel: "Dritte Lektion: Skill-Orbs", rang: "F", belohnung: "1 × Skill-Orb T1 pro Person", text: "Seht ihr diese Kugeln? Skill-Orbs. In jeder steckt eine Fähigkeit, aber welche, verrät sie erst, wenn man sie untersucht. Manchmal hat man Glück, manchmal nicht.\nJeder von euch bekommt einen. Untersucht ihn, und wenn ihr Platz habt, lernt den Skill. So fängt jeder Abenteurer an." }
 ];
 
+// Hauptquests: Rell baut mit den Spielern ein Tor am Waldrand und kann dann ins Dorf; danach können die Wachen im Süden
+// nach dem Händler Tamm suchen, der vom Keiler angegriffen wurde (Gerolds Keiler).
+const QUEST_TOR = {
+  titel: "Ein Tor für den Waldrand", rang: "E", haupt: true,
+  belohnung: "40 SK, und Rell kann seinen Posten oben verlassen",
+  text: "Solange der Weg in den Wald offen ist, steh ich hier oben fest. Und unten auf der Südstraße stehen meine zwei Leute allein.\nIch brauch einen Zaun quer über den Weg und ein Tor, das man schließen kann. Stämme liegen am Waldrand, Bretter hat die Mühle. Holt das Holz und baut mir das Ding.\nSteht das Tor, kann ich runter ins Dorf, und einer von den Wachen im Süden bekommt endlich frei."
+};
+const QUEST_HAENDLER = {
+  titel: "Der Händler kommt nicht", rang: "E", haupt: true,
+  belohnung: "40 SK aus der Wachkasse, dazu Tamms Dank: 2 × Kleiner Heiltrank",
+  text: "Jetzt, wo der Hauptmann wieder unten ist, kann endlich einer von uns los. Jedes Jahr zur Saatwende kommt der Händler Tamm mit seinem Karren aus Illmaris, und gestern hätte er da sein sollen.\nIch bleib am Tor. Lene geht mit euch die Straße runter, vielleicht bis zur Gabelung beim alten Wegstein.\nUnd passt auf: Gerold sagt, irgendwas wühlt nachts seine Felder um."
+};
+
 // Jorun Feldt: Kohle vom Meiler im Westen (führt zur Senke) und eine Einführung ins Herstellen
 const QUEST_KOHLE = {
   titel: "Kohle für die Esse", rang: "F", belohnung: "20 SK und ein Wetzstein",
@@ -121,9 +134,20 @@ const QUEST_HERSTELLEN = {
 };
 
 // Alte Quest-Texte, die ersetzt werden, wenn der GM sie nicht selbst geändert hat (Welten vor 0.14.0)
+const ALT_IVO_TEXT = "Jedes Jahr zur Saatwende kommt der Händler Tamm mit seinem Karren aus Illmaris. Gestern hätte er da sein sollen. Wir zwei dürfen die Straße nicht verlassen, solange der Hauptmann oben am Wald steht.\nGeht ihr ihm entgegen? Weit kann er nicht sein, vielleicht bis zur Gabelung beim alten Wegstein.";
 const QUEST_ERSATZ = {
   "Kessa Dorn": [{ alt: "Die Prüfung am Fest", altText: "Zum Saatwendefest prüfe ich jedes Kind mit diesem Kristall. Leuchtet er, wartet in Illmaris ein Platz an einer Schule der Gilde. Stell dich einfach in die Reihe unter der Linde.", neu: QUEST_ILLMARIS }],
-  "Jorun Feldt": [{ alt: "Kohle für die Esse", altText: "Meine Esse frisst Kohle wie ein Drache. Hol mir drei Säcke vom Köhler am Waldrand, aber bleib auf dem Weg. Den Wald betritt man nicht.", neu: QUEST_KOHLE }]
+  "Jorun Feldt": [{ alt: "Kohle für die Esse", altText: "Meine Esse frisst Kohle wie ein Drache. Hol mir drei Säcke vom Köhler am Waldrand, aber bleib auf dem Weg. Den Wald betritt man nicht.", neu: QUEST_KOHLE }],
+  "Ivo Brandt": [{ alt: "Der Händler kommt nicht", altText: ALT_IVO_TEXT, neu: QUEST_HAENDLER }],
+  "Oma Wendel": [
+    { alt: "Nebelfarn am Lindbach", altBelohnung: "Zwei Heilkräutersalben", neu: { belohnung: "2 × Heilkräutersalbe (Nebelfarn)" } },
+    { alt: "Feuer gegen Dornen", altBelohnung: "2 × Funkenbombe und 3 Fackeln", neu: { belohnung: "2 × Funkenbombe und 3 × Fackel" } }
+  ],
+  "Gerold Wiese": [{ alt: "Der Keiler im Kornfeld", altBelohnung: "25 SK und ein Sack Sonnenkorn (5 Portionen)", neu: { belohnung: "25 SK und 5 × Sonnenkorn" } }]
+};
+// Entfernte Quests (nur solange sie noch nicht angenommen wurden und der Text unverändert ist)
+const QUEST_ENTFERNT = {
+  "Hauptmann Rell": [{ titel: "Proviant für den Posten", text: "Meine Leute am Waldrand warten auf Brot und Bier aus dem Lindenblatt. Bring es hoch zum Wachturm, und keinen Schritt weiter in den Wald." }]
 };
 
 // Quests im Norden: Toma sucht seinen Bruder Finn, der das Schwert des Hauptmanns mitgenommen hat.
@@ -174,8 +198,8 @@ const LINDHAIN_WERTE = {
     handel: { kauft: ["natural", "consumable"], ankauf: 40, andere: 5, verkauf: 100 },
     waren: [["Verband", 10], ["Heilkräutersalbe (Nebelfarn)", 6], ["Gegengift", 2], ["Kleiner Heiltrank", 2], ["Nebelfarn", 8], ["Sternmoos", 2]],
     quests: [
-      { titel: "Nebelfarn am Lindbach", rang: "F", belohnung: "Zwei Heilkräutersalben", text: "Meine Augen sind nicht mehr die besten, Kind. Am Lindbach wächst Nebelfarn, fünf Wedel brauche ich. Pflück nur die mit den silbrigen Spitzen (Naturkunde 12)." },
-      { titel: "Feuer gegen Dornen", rang: "E", belohnung: "2 × Funkenbombe und 3 Fackeln", text: "Grüne Augen im Wald, sagst du? Meine Großmutter hat von solchen Wesen erzählt. Rinde und Dornen, und sie wachsen nach, so schnell man sie schneidet. Nur Feuer hält sie auf.\nBring mir drei Büschel Sternmoos vom Waldrand am Nordweg, dann mische ich dir etwas, das brennt." }
+      { titel: "Nebelfarn am Lindbach", rang: "F", belohnung: "2 × Heilkräutersalbe (Nebelfarn)", text: "Meine Augen sind nicht mehr die besten, Kind. Am Lindbach wächst Nebelfarn, fünf Wedel brauche ich. Pflück nur die mit den silbrigen Spitzen (Naturkunde 12)." },
+      { titel: "Feuer gegen Dornen", rang: "E", belohnung: "2 × Funkenbombe und 3 × Fackel", text: "Grüne Augen im Wald, sagst du? Meine Großmutter hat von solchen Wesen erzählt. Rinde und Dornen, und sie wachsen nach, so schnell man sie schneidet. Nur Feuer hält sie auf.\nBring mir drei Büschel Sternmoos vom Waldrand am Nordweg, dann mische ich dir etwas, das brennt." }
     ]
   },
   "Bruder Aled": {
@@ -187,7 +211,7 @@ const LINDHAIN_WERTE = {
     bausteine: [["gruss", "Halt. Was wollt ihr hier oben?"], ["sonst", "Keinen Schritt weiter in den Wald."], ["abschied", "Und jetzt zurück ins Dorf."]],
     level: 14, schwerpunkt: "kampf", kes: 200, waffe: "Eisenschwert", schild: "Holzschild", skills: ["Schwung des Krieger", "Erweiterte Verteidigung"],
     quests: [
-      { titel: "Proviant für den Posten", rang: "F", belohnung: "10 SK", text: "Meine Leute am Waldrand warten auf Brot und Bier aus dem Lindenblatt. Bring es hoch zum Wachturm, und keinen Schritt weiter in den Wald." },
+      QUEST_TOR,
       QUEST_MEIN_SCHWERT
     ]
   },
@@ -202,7 +226,7 @@ const LINDHAIN_WERTE = {
   "Ivo Brandt": {
     bausteine: [["gruss", "Hm. Bleibt auf der Straße, dann gibt's keinen Ärger."], ["sonst", "Zwanzig Jahre steh ich an diesem Tor. Hab schon alles gesehen."], ["abschied", "Und grüßt die Hanne von mir."]],
     level: 7, schwerpunkt: "kampf", kes: 60, waffe: "Gilden Lanze",
-    quests: [{ titel: "Der Händler kommt nicht", rang: "F", belohnung: "Tamms Dank: 2 × Kleiner Heiltrank aus seinem Karren", text: "Jedes Jahr zur Saatwende kommt der Händler Tamm mit seinem Karren aus Illmaris. Gestern hätte er da sein sollen. Wir zwei dürfen die Straße nicht verlassen, solange der Hauptmann oben am Wald steht.\nGeht ihr ihm entgegen? Weit kann er nicht sein, vielleicht bis zur Gabelung beim alten Wegstein." }]
+    quests: [QUEST_HAENDLER]
   },
   "Lene Asch": {
     bausteine: [["gruss", "Hey! Ihr seid doch die vom Fest, oder?"], ["sonst", "Irgendwann geh ich auch nach Illmaris. Zur echten Gilde!"], ["abschied", "Passt auf euch auf da draußen!"]],
@@ -212,7 +236,13 @@ const LINDHAIN_WERTE = {
   "Gerold Wiese": {
     bausteine: [["gruss", "Ach, ihr seid's. Habt ihr was gesehen? Auf meinem Feld?"], ["sonst", "Das Korn ist alles, was wir haben."], ["abschied", "Und wenn ihr den Keiler seht: lauft nicht weg, lauft schneller."]],
     level: 2, schwerpunkt: "zivil", kes: 20, waffe: "Holzkeule",
-    quests: [{ titel: "Der Keiler im Kornfeld", rang: "E", belohnung: "25 SK und ein Sack Sonnenkorn (5 Portionen)", text: "Jede Nacht wühlt mir etwas das Kornfeld um. Ein Keiler, groß wie ein Kalb, und seine Augen … die leuchten. Violett.\nDie Wachen sagen, sie dürfen die Straße nicht verlassen. Bitte, wenn er noch eine Nacht kommt, ist die halbe Ernte hin." }]
+    quests: [{ titel: "Der Keiler im Kornfeld", rang: "E", belohnung: "25 SK und 5 × Sonnenkorn", text: "Jede Nacht wühlt mir etwas das Kornfeld um. Ein Keiler, groß wie ein Kalb, und seine Augen … die leuchten. Violett.\nDie Wachen sagen, sie dürfen die Straße nicht verlassen. Bitte, wenn er noch eine Nacht kommt, ist die halbe Ernte hin." }]
+  },
+  "Tamm": {
+    bausteine: [["gruss", "Ah, Kundschaft! Kommt näher, kommt näher!"], ["handel", "Frisch aus Illmaris, alles beste Ware!"], ["handel", "Für Retter gibt's natürlich einen Freundschaftspreis."], ["sonst", "Ist es weg? Das Biest? Bei allen Göttern, ich dachte, das war's."], ["abschied", "Beehrt mich bald wieder, in Illmaris findet ihr mich am Markt!"]],
+    level: 5, schwerpunkt: "zivil", kes: 600, waffe: "Bronze Dolch",
+    handel: { kauft: ["weapon", "armor", "equipment", "consumable", "material", "natural", "mineral"], ankauf: 40, andere: 0, verkauf: 110 },
+    waren: [["Kleiner Heiltrank", 4], ["Heiltrank", 1], ["Gegengift", 2], ["Verband", 6], ["Fackel", 10], ["Seil (15 m)", 3], ["Laterne", 1], ["Schlafsack", 2], ["Wasserschlauch", 3], ["Proviant (1 Tagesration)", 10], ["Funkenbombe", 2], ["Lederhelm", 1], ["Lederstiefel", 1], ["Rucksack S", 1], ["Skill-Orb T1", 1]]
   },
   "Finn": {
     bausteine: [["gruss", "G-geht weg! … Seid ihr vom Dorf?"], ["sonst", "Ich wollte doch nur ein Held sein. So wie die Abenteurer."], ["sonst", "Da draußen ist was. Es knackt und hat grüne Augen."], ["abschied", "Sagt ihr Toma, dass ich nicht geweint hab?"]],
@@ -224,15 +254,170 @@ export function lindhainWerte(name) {
   return LINDHAIN_WERTE[name] ?? null;
 }
 
-function bausteineAus(werte) {
-  return (werte?.bausteine ?? []).map(([art, text]) => ({ id: foundry.utils.randomID(), art, text }));
+// Textbausteine je Quest (Anlass: Text). Ein Klick im Gespräch übernimmt den Text nur ins Eingabefeld,
+// damit der GM ihn an die Situation anpasst, bevor der NSC ihn sagt.
+const QUEST_BAUSTEINE = {
+  "Kessa Dorn": {
+    "Ein Platz in Illmaris": [
+      ["Kristalltest", "Na, nervös? Stellt euch in die Reihe. Eine Hand auf den Kristall, mehr ist es nicht."],
+      ["Kristall leuchtet", "Da! Seht ihr das Licht? Ihr tragt den Kern in euch. Das hab ich in diesem Dorf nicht erwartet."],
+      ["Angebot", "Die Gilde hat einen Platz für euch, an unseren Schulen in Illmaris. Dort lernt ihr alles, was ein Abenteurer wissen muss."],
+      ["Annahme", "Gut. In sieben Tagen reise ich ab. Wer mitkommt, steht bei Sonnenaufgang am Südtor. Bis dahin zeige ich euch, was ich kann."],
+      ["Zögern", "Niemand zwingt euch. Aber so eine Gelegenheit kommt nicht zweimal."],
+      ["Abreise", "Alle da? Dann los. Zwei Wochen bis Illmaris, und glaubt mir, ihr werdet jeden Tag davon brauchen."]
+    ],
+    "Erste Lektion: Der Kampf": [
+      ["Angebot", "Zeigt mir, wie ihr euch bewegt. Die Strohpuppen hinter dem Schrein beißen nicht. Meistens."],
+      ["Der Zug", "Jeder Zug: eine Aktion, eine Schnellaktion und eure Bewegung. Und bis zum nächsten Zug eine Reaktion. Mehr nicht."],
+      ["Treffen", "Ein Angriff muss den Rüstwert schlagen, Magie die Magieresistenz. Wer nicht trifft, deckt sich besser: Abwehr gibt zwei Punkte auf beides."],
+      ["Skills", "Eure Skills sind stark, aber sie brauchen Zeit, bis sie wieder bereit sind. Überlegt, wann ihr sie einsetzt."],
+      ["Todeswurf", "Fällt einer von euch auf null, kommt der Todeswurf. Zehn oder mehr, und ihr steht wieder. Sonst habt ihr drei Runden, bis euch jemand hilft."],
+      ["Abschluss", "Nicht schlecht. Wirklich nicht schlecht. Hier, für die Kratzer."]
+    ],
+    "Zweite Lektion: EXP-Kristalle": [
+      ["Angebot", "Habt ihr schon etwas erlegt? Dann zeigt mal her, was ihr dabei gefunden habt."],
+      ["Verwenden", "Ein EXP-Kristall. Nehmt ihn in die Hand und lasst ihn zerfallen, dann wird euer Kern stärker. Aber nicht mitten im Kampf."],
+      ["Geben oder verkaufen", "Ihr könnt ihn auch jemandem geben, der ihn nötiger hat. Oder ihr verkauft ihn mir, die Gilde zahlt den vollen Wert."],
+      ["Abyss-Kristall", "Und die violetten? Finger weg. Sie geben mehr, aber sie fressen sich in euch hinein. Nach dem Gildenpakt gehört jeder davon der Gilde."],
+      ["Abschluss", "Für den ersten zahle ich das Doppelte. Merkt euch das Gefühl: ehrlich verdientes Geld."]
+    ],
+    "Dritte Lektion: Skill-Orbs": [
+      ["Angebot", "Fangt! Skill-Orbs. Jeder bekommt einen."],
+      ["Untersuchen", "Haltet ihn ins Licht und konzentriert euch. Mit etwas Glück zeigt er euch, was in ihm steckt. Ihr habt nur einen Versuch."],
+      ["Lernen", "Lernen könnt ihr ihn nur, wenn noch Platz in euch ist. Und je öfter ihr den Skill nutzt, desto besser beherrscht ihr ihn."],
+      ["Pech gehabt", "Nichts? Kommt vor. Die Gilde in Illmaris kann ihn für euch öffnen, gegen eine Gebühr natürlich."],
+      ["Abschluss", "So fängt jeder an. Auch ich."]
+    ]
+  },
+  "Mira Holm": {
+    "Bänke für die Saatwende": [
+      ["Angebot", "Ah, junge Hände! Die Bänke für heute Abend liegen noch hinter der Mühle."],
+      ["Unterwegs", "Vorsicht mit den Girlanden, die hat schon meine Mutter genäht!"],
+      ["Abschluss", "Wunderbar. Erste Reihe für euch, wie versprochen."]
+    ]
+  },
+  "Hanne Brook": {
+    "Ratten im Keller": [
+      ["Angebot", "Ihr seht aus, als könntet ihr zupacken. Hört ihr das Kratzen da unten? Mein Keller …"],
+      ["Vor der Tür", "Die Laterne hängt an der Treppe. Und macht bitte nicht alle Fässer kaputt!"],
+      ["Abschluss", "Ihr seid meine Helden! Eine Woche freies Essen, und keine Widerrede."]
+    ],
+    "Wo bleibt Brom?": [
+      ["Angebot", "Habt ihr den alten Brom gesehen? Er wollte mir längst die Lämmer für den Festbraten bringen."],
+      ["Sorge", "Brom ist sonst pünktlich wie der Hahn. Seine Weiden liegen hinter der Brücke, im Osten."],
+      ["Schlechte Nachricht", "Brom? Bei allen Göttern … Danke, dass ihr es mir sagt. Setzt euch. Ich bring euch was."],
+      ["Abschluss", "Hier, für euren Weg. Und der erste Teller vom Festbraten gehört euch, auch wenn es nicht Broms Lämmer sind."]
+    ]
+  },
+  "Jorun Feldt": {
+    "Kohle für die Esse": [
+      ["Angebot", "Ihr da. Wollt ihr euch ein paar Münzen verdienen? Meine Esse braucht Kohle."],
+      ["Hinweis", "Die alte Scheune am Westweg. Drei Säcke. Und der Köhler faselt was von toten Tieren dahinter."],
+      ["Abschluss", "Gut. Endlich wird es hier wieder warm. Nimm den Wetzstein, du wirst ihn brauchen."]
+    ],
+    "Aus Teilen wird Ausrüstung": [
+      ["Angebot", "Was ist das, Fell? Zähne? Zeig her. Daraus lässt sich was machen."],
+      ["Ablauf", "Gib mir die Teile und das Geld fürs Material. Dann schauen wir, wie gut meine Hand heute ist."],
+      ["Gut gelungen", "Ha! Das ist eins meiner besten Stücke seit Jahren."],
+      ["Schlecht gelungen", "Hm. Hält. Schön ist es nicht. Aber es hält."],
+      ["Abschluss", "Da. Trag es mit Stolz, und bring es mir, wenn es kaputtgeht."]
+    ]
+  },
+  "Oma Wendel": {
+    "Nebelfarn am Lindbach": [
+      ["Angebot", "Kind, kannst du einer alten Frau helfen? Am Lindbach wächst Nebelfarn."],
+      ["Hinweis", "Nur die mit den silbrigen Spitzen, die anderen taugen nichts."],
+      ["Abschluss", "Genau die richtigen. Hier, zwei Salben, für wenn es mal brennt."]
+    ],
+    "Feuer gegen Dornen": [
+      ["Angebot", "Grüne Augen, sagst du? Setz dich. Da gibt es eine alte Geschichte."],
+      ["Geschichte", "Rinde und Dornen, und sie wachsen nach, so schnell man sie schneidet. Nur Feuer hält sie auf."],
+      ["Auftrag", "Bring mir drei Büschel Sternmoos vom Waldrand am Nordweg. Dann mische ich dir etwas, das brennt."],
+      ["Abschluss", "Vorsicht damit. Wirf sie nur, wenn du es ernst meinst."]
+    ]
+  },
+  "Bruder Aled": {
+    "Blumen für den Wegstein": [
+      ["Angebot", "Das Licht sei mit euch. Würdet ihr einem alten Mann einen Gang abnehmen?"],
+      ["Der Segen", "Legt den Kranz nieder und sprecht: Möge die Erde geben, was wir säen, und das Licht behüten, was wir lieben."],
+      ["Fragen zum Stein", "Der Stein? Er stand schon hier, bevor es Lindhain gab. Wer die Gestalten darauf sind, weiß niemand mehr."],
+      ["Abschluss", "Der Hüter hat euch gesehen. Geht mit seinem Segen."]
+    ]
+  },
+  "Hauptmann Rell": {
+    "Ein Tor für den Waldrand": [
+      ["Angebot", "Ihr da. Ich steh hier oben fest, solange der Weg in den Wald offen ist. Ich brauche Holz und Leute, die anpacken können."],
+      ["Holz", "Stämme liegen am Waldrand, Bretter hat die Mühle. Und keinen Schritt weiter in den Wald, verstanden?"],
+      ["Gut gebaut", "Das hält. Das hält sogar einen Ochsen. Gut gemacht."],
+      ["Wackelig", "Hm. Das wackelt. Besser als nichts, aber ich lasse heute Nacht noch eine Fackel hier brennen."],
+      ["Eingestürzt", "Na wunderbar. Holt mehr Holz, und diesmal bindet ihr die Stämme richtig."],
+      ["Abschluss", "Jetzt kann ich endlich runter ins Dorf. Sagt Ivo, dass einer von ihnen los kann."]
+    ],
+    "Mein Schwert": [
+      ["Angebot", "Irgendwer war in meinem Turm. Mein Schwert ist weg."],
+      ["Hinweis", "Ein Löwenknauf. Zwanzig Jahre trag ich es. Wer es hat, der wird es bereuen."],
+      ["Verdacht", "Kinder waren in letzter Zeit oft hier oben. Zu oft."],
+      ["Abschluss", "Mein Schwert … wo habt ihr … Nein. Ich will es gar nicht wissen. Hier, wie versprochen."]
+    ]
+  },
+  "Toma": {
+    "Der Holzvogel": [
+      ["Angebot", "Habt ihr meinen Holzvogel gesehen? Papa hat ihn geschnitzt!"],
+      ["Abschluss", "Mein Vogel! Ihr seid die Besten! Hier, das ist mein glattester Stein."]
+    ],
+    "Wo ist Finn?": [
+      ["Angebot", "Bitte! Ihr müsst mir helfen! Finn ist weg!"],
+      ["Das Schwert", "Er hat das Schwert vom Hauptmann. Aber das dürft ihr ihm nicht sagen! Bitte!"],
+      ["Wo suchen", "Er redet immer vom Wald. Dass da Helden hingehen. Ich glaub, er ist da hoch."],
+      ["Abschluss", "Finn! Du Idiot! … Danke. Danke, danke, danke."]
+    ]
+  },
+  "Ivo Brandt": {
+    "Der Händler kommt nicht": [
+      ["Angebot", "Jetzt, wo der Hauptmann wieder unten ist, kann einer von uns los. Tamm ist überfällig."],
+      ["Aufteilung", "Ich bleib am Tor. Lene, du gehst mit ihnen. Und passt auf, irgendwas wühlt da draußen die Felder um."],
+      ["Abschluss", "Tamm, du alter Halunke! Gut, dass ihr ihn gefunden habt. Hier, aus der Wachkasse."]
+    ]
+  },
+  "Lene Asch": {
+    "Nachtwache zur Saatwende": [
+      ["Angebot", "Habt ihr Lust auf eine Nacht am Tor? Ivo schnarcht eh nach einer Stunde."],
+      ["Grüne Augen", "Da! Siehst du das? Da oben am Waldrand … zwei grüne Punkte."],
+      ["Der Keiler", "Hörst du das Rascheln? Das kommt aus Gerolds Feld. Etwas Großes."],
+      ["Finn", "Ich hab Finn gesehen, vor drei Nächten. Er ist Richtung Wald gelaufen, mit etwas Langem auf dem Rücken."],
+      ["Abschluss", "Danke, dass ihr geblieben seid. Allein wäre es mir unheimlich gewesen."]
+    ]
+  },
+  "Gerold Wiese": {
+    "Der Keiler im Kornfeld": [
+      ["Angebot", "Bitte, ihr müsst mir helfen. Jede Nacht kommt er wieder."],
+      ["Beschreibung", "Groß wie ein Kalb, und die Augen … violett. So was hab ich noch nie gesehen."],
+      ["Abschluss", "Er ist tot? Wirklich? … Danke. Hier, das Geld und das Sonnenkorn. Ihr habt es euch verdient."]
+    ]
+  },
+  "Tamm": {
+    "Der Händler kommt nicht": [
+      ["Gerettet", "Ist es weg? Das Biest? Bei allen Göttern, ich dachte, das war's."],
+      ["Dank", "Hier, nehmt das. Ohne euch hätte ich die Nacht nicht überlebt."],
+      ["Das Rad", "Das Rad ist hin. Kann einer von euch mit Holz umgehen? Sonst müssen wir tragen."]
+    ]
+  }
+};
+
+function questBausteineAus(name) {
+  return Object.entries(QUEST_BAUSTEINE[name] ?? {}).flatMap(([quest, liste]) =>
+    liste.map(([anlass, text]) => ({ id: foundry.utils.randomID(), art: "quest", quest, anlass, text })));
+}
+
+function bausteineAus(werte, name) {
+  return [...(werte?.bausteine ?? []).map(([art, text]) => ({ id: foundry.utils.randomID(), art, text })), ...questBausteineAus(name)];
 }
 
 // Textbausteine für Lindhain-NSC nachtragen, die vor v0.9.0 ausgestattet wurden (eigene Bausteine bleiben).
 export async function lindhainBausteine() {
   for (const actor of game.actors.filter((a) => a.type === "npc" && LINDHAIN_WERTE[a.name])) {
     if (Array.isArray(actor.getFlag(SYSTEM_ID, "talk")?.bausteine)) continue;
-    await actor.update({ [`flags.${SYSTEM_ID}.talk.bausteine`]: bausteineAus(LINDHAIN_WERTE[actor.name]) });
+    await actor.update({ [`flags.${SYSTEM_ID}.talk.bausteine`]: bausteineAus(LINDHAIN_WERTE[actor.name], actor.name) });
   }
 }
 
@@ -247,21 +432,37 @@ export async function lindhainHandel() {
 // Neue Lindhain-Quests in bestehende Welten eintragen (nach Titel; vorhandene Quests bleiben, wie sie sind).
 export async function lindhainQuestsNachtragen() {
   let anzahl = 0;
-  for (const actor of game.actors.filter((a) => a.type === "npc" && LINDHAIN_WERTE[a.name]?.quests)) {
+  for (const actor of game.actors.filter((a) => a.type === "npc" && LINDHAIN_WERTE[a.name])) {
     const talk = actor.getFlag(SYSTEM_ID, "talk") ?? {};
-    let vorhanden = Array.isArray(talk.quests) ? talk.quests : [];
-    // Unveränderte alte Fassungen durch die neue ersetzen (Stand und „angenommen von“ bleiben)
-    let ersetzt = 0;
-    vorhanden = vorhanden.map((q) => {
-      const e = (QUEST_ERSATZ[actor.name] ?? []).find((x) => x.alt === q.titel && x.altText === q.text);
-      if (!e) return q;
-      ersetzt += 1;
-      return { ...q, ...e.neu };
-    });
-    const fehlen = LINDHAIN_WERTE[actor.name].quests.filter((q) => !vorhanden.some((v) => v.titel === q.titel));
-    if (!fehlen.length && !ersetzt) continue;
-    await actor.update({ [`flags.${SYSTEM_ID}.talk.quests`]: [...vorhanden, ...fehlen.map((q) => ({ id: foundry.utils.randomID(), status: "verborgen", ...q }))] });
-    anzahl += fehlen.length + ersetzt;
+    const update = {};
+    if (LINDHAIN_WERTE[actor.name].quests) {
+      let vorhanden = Array.isArray(talk.quests) ? talk.quests : [];
+      const vorher = JSON.stringify(vorhanden);
+      // Entfernte Quests (noch nicht angenommen, Text unverändert)
+      vorhanden = vorhanden.filter((q) => !(QUEST_ENTFERNT[actor.name] ?? []).some((e) => e.titel === q.titel && e.text === q.text && ["verborgen", "angeboten"].includes(q.status)));
+      // Unveränderte alte Fassungen durch die neue ersetzen (Stand und „angenommen von“ bleiben)
+      vorhanden = vorhanden.map((q) => {
+        const e = (QUEST_ERSATZ[actor.name] ?? []).find((x) => x.alt === q.titel && (!x.altText || x.altText === q.text) && (!x.altBelohnung || x.altBelohnung === q.belohnung));
+        return e ? { ...q, ...e.neu } : q;
+      });
+      // Hauptquest-Markierung nachtragen
+      vorhanden = vorhanden.map((q) => {
+        const def = LINDHAIN_WERTE[actor.name].quests.find((d) => d.titel === q.titel);
+        return def?.haupt && q.haupt === undefined ? { ...q, haupt: true } : q;
+      });
+      const fehlen = LINDHAIN_WERTE[actor.name].quests.filter((q) => !vorhanden.some((v) => v.titel === q.titel));
+      vorhanden = [...vorhanden, ...fehlen.map((q) => ({ id: foundry.utils.randomID(), status: "verborgen", ...q }))];
+      if (JSON.stringify(vorhanden) !== vorher) {
+        update[`flags.${SYSTEM_ID}.talk.quests`] = vorhanden;
+        anzahl += 1;
+      }
+    }
+    // Quest-Textbausteine ergänzen (nach Text; eigene Bausteine bleiben)
+    if (Array.isArray(talk.bausteine)) {
+      const fehlend = questBausteineAus(actor.name).filter((b) => !talk.bausteine.some((x) => x.text === b.text));
+      if (fehlend.length) update[`flags.${SYSTEM_ID}.talk.bausteine`] = [...talk.bausteine, ...fehlend];
+    }
+    if (Object.keys(update).length) await actor.update(update);
   }
   return anzahl;
 }
@@ -285,7 +486,7 @@ export async function nscAusstatten(actor, werte) {
   const update = { "system.resources.kes.value": werte.kes ?? 0 };
   if (!talk.handel && werte.handel) update[`flags.${SYSTEM_ID}.talk.handel`] = werte.handel;
   if (!Array.isArray(talk.bausteine)) {
-    update[`flags.${SYSTEM_ID}.talk.bausteine`] = bausteineAus(werte);
+    update[`flags.${SYSTEM_ID}.talk.bausteine`] = bausteineAus(werte, actor.name);
   }
   if (!Array.isArray(talk.quests) || !talk.quests.length) {
     update[`flags.${SYSTEM_ID}.talk.quests`] = (werte.quests ?? []).map((q) => ({ id: foundry.utils.randomID(), status: "verborgen", ...q }));
@@ -305,6 +506,62 @@ export async function lindhainAusstatten({ alle = false } = {}) {
   return anzahl;
 }
 
+// ---------- Quest-Belohnung (GM stellt eine Quest auf „Erledigt“) ----------
+// Die Belohnung wird aus dem Belohnungstext gelesen, damit es auch für selbst geschriebene Quests klappt:
+//   „20 SK“, „1 GK 50 SK“ → Geld · „2 × Kleiner Heiltrank“ oder „ein Wetzstein“ → Gegenstände (Name wie in den Import-Listen)
+//   „… pro Person“ → jeder Spielercharakter bekommt alles, sonst nur der, der die Quest angenommen hat.
+// Alles andere (ein Platz in Illmaris, ein Segen …) bleibt Text und steht nur auf der Chat-Karte.
+const ZAHLWORT = { ein: 1, eine: 1, einen: 1, zwei: 2, drei: 3, vier: 4, "fünf": 5 };
+
+export async function belohnungLesen(text) {
+  const t = String(text ?? "");
+  let sk = 0;
+  for (const m of t.matchAll(/(\d+)\s*(GK|SK)\b/g)) sk += Number(m[1]) * (m[2] === "GK" ? 100 : 1);
+  const namen = [...(await importListe()).keys()].sort((a, b) => b.length - a.length);
+  const items = [];
+  const muster = /(?:(\d+)\s*×\s*|\b(ein|eine|einen|zwei|drei|vier|fünf)\s+)([^,;]+?)(?=\s+und\s+|\s+pro Person|\s*[,;:]|$)/gi;
+  for (const m of t.matchAll(muster)) {
+    const anzahl = m[1] ? Number(m[1]) : ZAHLWORT[m[2].toLowerCase()];
+    const rest = m[3].trim();
+    const name = namen.find((n) => rest === n || rest.startsWith(`${n} `) || rest.startsWith(`${n}(`) || rest.startsWith(`${n},`));
+    if (name && anzahl) items.push([name, anzahl]);
+  }
+  return { sk, items, proPerson: /pro Person/i.test(t) };
+}
+
+function questEmpfaenger(quest, proPerson) {
+  if (proPerson) return game.actors.filter((a) => a.type === "character" && a.hasPlayerOwner);
+  const charakter = game.actors.get(quest.angenommenVonId) ?? game.actors.find((a) => a.type === "character" && a.name === quest.angenommenVon);
+  return charakter ? [charakter] : [];
+}
+
+async function gegenstandDazu(actor, name, anzahl) {
+  const gleich = actor.items.find((i) => i.name === name && !i.system?.equipped && !i.getFlag(SYSTEM_ID, "rucksack"));
+  if (gleich && ["consumable", "equipment", "foodDrink", "material", "natural", "mineral", "junk"].includes(gleich.type)) {
+    return gleich.update({ "system.quantity": Math.max(Number(gleich.system?.quantity) || 1, 1) + anzahl });
+  }
+  const daten = await itemDaten(name, { system: { quantity: anzahl, equipped: false } });
+  if (daten) return actor.createEmbeddedDocuments("Item", [daten]);
+}
+
+export async function questBelohnen(nsc, quest) {
+  if (!game.user?.isGM || !quest) return;
+  const lohn = await belohnungLesen(quest.belohnung);
+  const empfaenger = questEmpfaenger(quest, lohn.proPerson);
+  const teile = [lohn.sk ? kes(lohn.sk) : "", ...lohn.items.map(([n, a]) => `${a} × ${n}`)].filter(Boolean);
+  if (teile.length && !empfaenger.length) ui.notifications?.warn(`„${quest.titel}“: Niemand hat die Quest angenommen. Gib die Belohnung bitte selbst.`);
+  for (const actor of teile.length ? empfaenger : []) {
+    if (lohn.sk) await actor.update({ "system.resources.kes.value": kesVon(actor) + lohn.sk });
+    for (const [name, anzahl] of lohn.items) await gegenstandDazu(actor, name, anzahl);
+  }
+  const wer = empfaenger.map((a) => a.name).join(", ");
+  const zeile = teile.length && empfaenger.length ? `<p><b>${wer}</b> ${empfaenger.length > 1 ? "bekommen je" : "bekommt"}: ${teile.join(", ")}.</p>` : "";
+  await ChatMessage.create({
+    speaker: ChatMessage.getSpeaker({ actor: nsc }),
+    content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>Quest erledigt: ${quest.titel}</h2>${zeile}<p><b>Belohnung:</b> ${quest.belohnung || "–"}</p></div>`
+  });
+}
+
 // ---------- GM-Übersicht Kapitel 1 (Journal nur für den GM) ----------
 // Wo die Quest spielt, wie sie abläuft und was sie den Spielern beibringt. Keine Lore-Geheimnisse.
 const KAPITEL1_GM = {
@@ -320,13 +577,13 @@ const KAPITEL1_GM = {
   "Nebelfarn am Lindbach": { ort: "Lindbach am Ostrand des Dorfs", ablauf: "Naturkunde 12 für die richtigen Wedel.", lehrt: "Sammeln, Pflanzen" },
   "Feuer gegen Dornen": { ort: "Waldrand am Nordweg (Sternmoos)", ablauf: "Naturkunde 15 findet drei Büschel Sternmoos. Oma Wendel gibt Funkenbomben und Fackeln: Feuer stoppt die Regeneration des Dornenschrats.", lehrt: "Schwächen von Gegnern nutzen" },
   "Blumen für den Wegstein": { ort: "Straße nach Illmaris, Gabelung am alten Wegstein", ablauf: "Kranz ablegen, alten Segen sprechen (Religion 12). Der Stein zeigt vier verwitterte Gestalten (siehe GM-Kampagnenstart). Passt gut mit „Der Händler kommt nicht“ zusammen.", lehrt: "Ruhige Erkundung, erster stiller Hinweis" },
-  "Proviant für den Posten": { ort: "Gasthaus, dann Wachturm am Waldrand", ablauf: "Brot und Bier tragen. Rell warnt vor dem Wald und erwähnt sein verschwundenes Schwert, wenn man nachfragt.", lehrt: "Inventar und Tragen" },
-  "Mein Schwert": { ort: "Wachturm", ablauf: "Finn hat das Schwert. Gibt die Gruppe es Rell zurück, bekommt sie die Kristalle und das Geld; Tomas Belohnung (das Schwert) fällt dann weg. Beides geht nicht.", lehrt: "Entscheidungen mit Folgen" },
+  "Ein Tor für den Waldrand": { ort: "Nordweg an der Schranke (Zaunteile und Tor als Kacheln: assets/lindhain/bauten)", ablauf: "Hauptquest. Holz holen: Stämme am Waldrand (Athletik 15, zwei, drei Gänge) und Bretter von der Mühle (Wortgewandtheit 12 beim Müller). Bauen: Jeder würfelt Handwerk 15. Mehrheit geschafft: stabiles Tor. Knapp: wackelig (Rell lässt eine Fackel brennen, später kann etwas durch). Mehrheit misslungen: es stürzt ein, einer nimmt 1W6 Schaden, mehr Holz holen. Steht das Tor, geht Rell ins Dorf, und Ivo bietet „Der Händler kommt nicht“ an.", lehrt: "Gruppenproben, Folgen guter und schlechter Würfe" },
+  "Mein Schwert": { ort: "Wachturm, später im Dorf", ablauf: "Finn hat das Schwert. Gibt die Gruppe es Rell zurück, bekommt sie die Kristalle und das Geld; Tomas Belohnung (das Schwert) fällt dann weg. Beides geht nicht. Rell wird die Quest erst los, wenn er das Tor hat und Zeit zum Suchen findet.", lehrt: "Entscheidungen mit Folgen" },
   "Der Holzvogel": { ort: "Lindbach bei der Mühle", ablauf: "Scharfsinnigkeit 12 findet den Vogel im Schilf.", lehrt: "Einfache Suche" },
   "Wo ist Finn?": { ort: "Nordweg, „Lichtung im Norden“, dann „Alte Hütte“", ablauf: "Auf der Lichtung wartet der Dornenschrat (schwerster Kampf des Kapitels). Oben rechts führt ein Wildwechsel weiter (Scharfsinnigkeit 20) zur versteckten Hütte, in der Finn mit dem Schwert sitzt. Einen Hinweis gibt Lene bei der Nachtwache.", lehrt: "Großer Kampf, versteckte Orte, Entscheidung um das Schwert" },
-  "Der Händler kommt nicht": { ort: "Straße nach Illmaris, Gabelung am alten Wegstein", ablauf: "Tamms Karren hat ein gebrochenes Rad. Handwerk 15 repariert es, sonst gemeinsam tragen (Athletik 15). Tamm verkauft beim Fest seine Waren.", lehrt: "Hilfe unterwegs, Händler" },
+  "Der Händler kommt nicht": { ort: "Straße nach Illmaris (Wagen mit gebrochenem Rad unten auf der Straße)", ablauf: "Hauptquest, erst nach dem Tor. Ivo bleibt am Südtor, Lene begleitet die Gruppe. Der Korrumpierte Keiler (verborgen im Feld rechts der Straße) hat Tamm angegriffen; Tamm versteckt sich hinter dem Wagen (verborgen). Der Keiler greift die Gruppe an. Sieg: Ivos Belohnung, Gerolds „Der Keiler im Kornfeld“ ist damit auch erledigt, und Tamm bedankt sich. Rad: Handwerk 15, sonst gemeinsam tragen (Athletik 15). Danach verkauft Tamm im Dorf.", lehrt: "Großer Kampf, eine Tat erledigt mehrere Quests" },
   "Nachtwache zur Saatwende": { ort: "Südtor, Festnacht", ablauf: "Drei Proben Scharfsinnigkeit 15: grüne Augen weit im Norden am Waldrand; ein Keiler zieht über Gerolds Kornfeld; Lene erzählt, dass sie Finn vor drei Nächten mit etwas Langem auf dem Rücken Richtung Wald laufen sah.", lehrt: "Stimmung, Hinweise auf andere Quests" },
-  "Der Keiler im Kornfeld": { ort: "Kornfeld unten links in Lindhain, nachts", ablauf: "Wildschwein aus dem Bestiarium, im Bogen auf Corrupted Stufe 1 stellen (HP × 1,25, Genauigkeit +1, violette Augen). Lässt einen Abyss-Kristall.", lehrt: "Kampf in der Nacht, Corrupted-Tiere" }
+  "Der Keiler im Kornfeld": { ort: "Gerolds Kornfeld; der Keiler selbst wartet auf der Straße nach Illmaris", ablauf: "Der Korrumpierte Keiler (Wildschwein, Corrupted Stufe 1) liegt verborgen auf der Südstraße und greift bei „Der Händler kommt nicht“ an. Wer ihn besiegt, erledigt beide Quests. Er lässt einen Abyss-Kristall.", lehrt: "Kampf, Corrupted-Tiere" }
 };
 
 export async function kapitel1Journal({ neu = false } = {}) {
@@ -337,7 +594,8 @@ export async function kapitel1Journal({ neu = false } = {}) {
   const absatz = (t) => String(t ?? "").split("\n").map((z) => `<p>${z}</p>`).join("");
   const ueberblick = `<h2>Kapitel 1: Lindhain</h2>
     <p>Die Saatwende. Kessa Dorn von der Gilde sucht junge Leute mit der Fähigkeit und bietet einen Platz an den Schulen in Illmaris an. Nehmen die Spieler an, bleibt eine Woche bis zur Abreise.</p>
-    <p><b>Tag 1 (Fest):</b> Kristalltest, Kessas Lektionen, Bänke, Ratten im Keller, Nachtwache. <b>Tag 2 bis 6:</b> die Wege hinaus (Nord: Finn und der Dornenschrat, schwerster Kampf; Ost: Brom; West: die Senke; Süd: Wegstein und Händler) und der Keiler. <b>Tag 7:</b> Abreise am Südtor, nächstes Kapitel.</p>
+    <p><b>Tag 1 (Fest):</b> Kristalltest, Kessas Lektionen, Bänke, Ratten im Keller, Nachtwache. <b>Tag 2 bis 6:</b> Hauptquests in Reihenfolge: Rells Tor am Waldrand, danach sucht die Gruppe mit Lene den Händler Tamm und trifft auf den Keiler. Daneben die Wege hinaus (Nord: Finn und der Dornenschrat, schwerster Kampf; Ost: Brom; West: die Senke; Süd: der Wegstein). <b>Tag 7:</b> Abreise am Südtor, nächstes Kapitel.</p>
+    <p>Belohnungen: Stellst du eine Quest auf „Erledigt“, bekommt der Charakter, der sie angenommen hat, Geld und Gegenstände aus dem Belohnungstext direkt ins Inventar („pro Person“: jeder Spielercharakter). Was kein Gegenstand ist, steht nur auf der Chat-Karte.</p>
     <p>Alle Quests sind bei den NSC verborgen hinterlegt. Im Gespräch (Rechtsklick auf die Figur → Quests) zeigst du sie, die Spieler nehmen sie an; im Questlog stellst du sie auf „Erledigt“. Die Spieler entscheiden selbst, was sie erledigen und was offen bleibt.</p>`;
   const seiten = [{ name: "Überblick", type: "text", text: { content: ueberblick } }];
   for (const [nsc, werte] of Object.entries(LINDHAIN_WERTE)) {

@@ -1,7 +1,7 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
-import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen } from "./hlw-szenen.js";
+import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
@@ -2768,6 +2768,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "kristallHandel", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainQuestsNord", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainKapitel1", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "lindhainHauptquests", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2827,6 +2828,7 @@ Hooks.once("ready", async () => {
     erstelleQuestOrte,
     tarnungAufheben,
     lindhainErgaenzen,
+    wegeErgaenzen,
     kapitel1Journal,
     questlog: () => HopeLiesWithinQuestlog.oeffnen(),
     entferneOrtsmarker,
@@ -2932,6 +2934,14 @@ Hooks.once("ready", async () => {
     await lindhainQuestsNachtragen();
     await kapitel1Journal();
     await game.settings.set("hope-lies-within-2", "lindhainKapitel1", true);
+  }
+  // Hauptquests (2026-10-31): Rells Tor statt Proviant, Händler-Hauptquest, Tamm mit Wagen und Keiler auf der Südstraße,
+  // Belohnungstexte, Quest-Textbausteine, GM-Übersicht neu
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainHauptquests")) {
+    await lindhainQuestsNachtragen();
+    await wegeErgaenzen();
+    await kapitel1Journal({ neu: true });
+    await game.settings.set("hope-lies-within-2", "lindhainHauptquests", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {

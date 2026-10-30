@@ -7,7 +7,7 @@
 // Nur der GM schreibt Actor-Daten; Spieler schicken ihre Wünsche (Notiz, kaufen, verkaufen, Quest annehmen) per Socket.
 
 import { kes } from "./hlw-regeln.js";
-import { istWare, preisVon, ankaufVon, kaufen, verkaufen, handelVon, istHaendler, WAREN_ARTEN, warenSuche, wareHinzufuegen } from "./hlw-nsc.js";
+import { istWare, preisVon, ankaufVon, kaufen, verkaufen, handelVon, istHaendler, WAREN_ARTEN, warenSuche, wareHinzufuegen, questBelohnen } from "./hlw-nsc.js";
 
 const SYSTEM_ID = "hope-lies-within-2";
 const SOCKET = `system.${SYSTEM_ID}`;
@@ -15,7 +15,7 @@ const VERLAUF_MAX = 40;
 const QUEST_RAENGE = ["F", "E", "D", "C", "B", "A", "S", "SS"];
 export const QUEST_STATUS = { verborgen: "Verborgen", angeboten: "Angeboten", angenommen: "Angenommen", erledigt: "Erledigt" };
 const REITER = { gespraech: "Gespräch", handel: "Handel", quests: "Quests", wissen: "Wissen" };
-const BAUSTEIN_ARTEN = { gruss: "Begrüßung", abschied: "Abschied", handel: "Handel", sonst: "Sonstiges" };
+const BAUSTEIN_ARTEN = { gruss: "Begrüßung", abschied: "Abschied", handel: "Handel", sonst: "Sonstiges", quest: "Quests" };
 // Gilt für jeden NSC, bis der GM eigene Bausteine anlegt.
 const STANDARD_BAUSTEINE = [
   { id: "std-gruss-1", art: "gruss", text: "Seid gegrüßt, Reisende." },
@@ -100,8 +100,12 @@ export function zeileHinzufuegen(actor, zeile) {
   return talkAendern(actor, (talk) => ({ verlauf: [...talk.verlauf, { id: foundry.utils.randomID(), ...zeile }].slice(-VERLAUF_MAX) }));
 }
 
-export function questAendern(actor, questId, changes) {
-  return talkAendern(actor, (talk) => ({ quests: talk.quests.map((q) => (q.id === questId ? { ...q, ...changes } : q)) }));
+// Wird eine Quest „Erledigt“, bekommt der Charakter, der sie angenommen hat, die Belohnung (einmal, siehe questBelohnen).
+export async function questAendern(actor, questId, changes) {
+  const alt = getTalkData(actor).quests.find((q) => q.id === questId);
+  const belohnen = changes.status === "erledigt" && alt && alt.status !== "erledigt" && !alt.belohnt && game.user?.isGM;
+  await talkAendern(actor, (talk) => ({ quests: talk.quests.map((q) => (q.id === questId ? { ...q, ...changes, ...(belohnen ? { belohnt: true } : {}) } : q)) }));
+  if (belohnen) await questBelohnen(actor, { ...alt, ...changes });
 }
 
 function sprecherVon(userId, actorId) {
@@ -140,7 +144,8 @@ async function gmAusfuehren(data) {
     } else if (data.type === "nscQuestAnnehmen") {
       const quest = getTalkData(actor).quests.find((q) => q.id === data.questId);
       if (!quest || quest.status !== "angeboten") return;
-      await questAendern(actor, quest.id, { status: "angenommen", angenommenVon: sprecherVon(data.userId, data.charakterId) });
+      const charakter = eigenerCharakter(data.charakterId) ?? (user?.character ?? null);
+      await questAendern(actor, quest.id, { status: "angenommen", angenommenVon: sprecherVon(data.userId, data.charakterId), angenommenVonId: charakter?.id ?? null });
       await zeileHinzufuegen(actor, { art: "handel", text: `${sprecherVon(data.userId, data.charakterId)} nimmt die Quest „${quest.titel}“ an.` });
     }
   } catch (fehler) {
@@ -253,7 +258,7 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
       ? `<button type="button" data-gs="annehmen" data-quest="${escapeHtml(quest.id)}"><i class="fa-solid fa-check"></i> Annehmen</button>` : "";
     return `
       <div class="gs-questkarte status-${escapeHtml(quest.status)}">
-        <em>Quest · Rang ${escapeHtml(quest.rang || "F")} · ${escapeHtml(QUEST_STATUS[quest.status] ?? "")}</em>
+        <em>${quest.haupt ? "Hauptquest" : "Quest"} · Rang ${escapeHtml(quest.rang || "F")} · ${escapeHtml(QUEST_STATUS[quest.status] ?? "")}</em>
         <strong>${escapeHtml(quest.titel || "Ohne Titel")}</strong>
         <p>${absaetze(quest.text)}</p>
         ${quest.belohnung ? `<small><b>Belohnung:</b> ${escapeHtml(quest.belohnung)}</small>` : ""}
@@ -293,11 +298,17 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
       .map((z) => `<li>${escapeHtml(z.text)}</li>`).join("");
     if (!isGM) return `${buehne}${hinweise ? `<ul class="gs-hinweise">${hinweise}</ul>` : ""}`;
 
-    const bausteine = Object.entries(BAUSTEIN_ARTEN).map(([art, label]) => {
+    // Ein Klick übernimmt den Baustein nur ins Eingabefeld; dort passt der GM ihn an und sagt ihn dann.
+    const bausteine = Object.entries(BAUSTEIN_ARTEN).filter(([art]) => art !== "quest").map(([art, label]) => {
       const liste = talk.bausteine.filter((b) => b.art === art);
       if (!liste.length) return "";
-      return `<div class="gs-bausteingruppe"><span>${label}</span>${liste.map((b) => `<button type="button" class="gs-baustein" data-baustein="${escapeHtml(b.id)}" title="Klick: sofort sagen · Umschalt+Klick: ins Feld übernehmen">${escapeHtml(b.text)}</button>`).join("")}</div>`;
+      return `<div class="gs-bausteingruppe"><span>${label}</span>${liste.map((b) => `<button type="button" class="gs-baustein" data-baustein="${escapeHtml(b.id)}" title="${escapeHtml(b.text)}">${escapeHtml(b.text)}</button>`).join("")}</div>`;
     }).join("");
+    const questBausteine = talk.bausteine.filter((b) => b.art === "quest");
+    const nachQuest = new Map();
+    for (const b of questBausteine) nachQuest.set(b.quest || "Quests", [...(nachQuest.get(b.quest || "Quests") ?? []), b]);
+    const questAuswahl = questBausteine.length ? `<div class="gs-bausteingruppe gs-questbausteine"><span>Quests</span>
+      <select data-questbaustein><option value="">Quest-Baustein ins Feld übernehmen …</option>${[...nachQuest.entries()].map(([titel, liste]) => `<optgroup label="${escapeHtml(titel)}">${liste.map((b) => `<option value="${escapeHtml(b.id)}">${escapeHtml(b.anlass ? `${b.anlass}: ` : "")}${escapeHtml(b.text.length > 70 ? `${b.text.slice(0, 70)} …` : b.text)}</option>`).join("")}</optgroup>`).join("")}</select></div>` : "";
     const bausteinEdit = talk.bausteine.map((b) => `
       <li data-baustein-id="${escapeHtml(b.id)}">
         <select data-bfeld="art">${Object.entries(BAUSTEIN_ARTEN).map(([k, l]) => `<option value="${k}" ${k === b.art ? "selected" : ""}>${l}</option>`).join("")}</select>
@@ -317,7 +328,7 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
       ${buehne}
       ${hinweise ? `<ul class="gs-hinweise">${hinweise}</ul>` : ""}
       <div class="gs-steuerung">
-        <div class="gs-bausteine">${bausteine}</div>
+        <div class="gs-bausteine">${bausteine}${questAuswahl}</div>
         <div class="gs-eingabe">
           <textarea name="zeile" rows="2" placeholder="Was sagt ${escapeHtml(this.actor.name)}? Enter = sagen, Umschalt+Enter = neue Zeile"></textarea>
           <div class="gs-eingabeknoepfe">
@@ -435,7 +446,8 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
           <select data-feld="status">${Object.entries(QUEST_STATUS).map(([k, l]) => `<option value="${k}" ${k === q.status ? "selected" : ""}>${l}</option>`).join("")}</select>
         </div>
         <textarea data-feld="text" rows="4" placeholder="Was der NSC sagt, wenn er die Quest anbietet …">${escapeHtml(q.text)}</textarea>
-        <input type="text" data-feld="belohnung" value="${escapeHtml(q.belohnung)}" placeholder="Belohnung">
+        <input type="text" data-feld="belohnung" value="${escapeHtml(q.belohnung)}" placeholder="Belohnung, z. B. 20 SK und 2 × Kleiner Heiltrank (kommt beim Erledigen ins Inventar)">
+        <label class="gs-hauptquest"><input type="checkbox" data-haupt ${q.haupt ? "checked" : ""}> Hauptquest</label>
         <div class="gs-questknoepfe">
           <button type="button" data-gs="questZeigen" class="gs-haupt"><i class="fa-solid fa-scroll"></i> Im Gespräch zeigen</button>
           <button type="button" data-gs="questLoeschen" title="Quest löschen"><i class="fa-solid fa-trash"></i></button>
@@ -580,14 +592,18 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     if (this.reiter === "gespraech") eingabe?.focus();
     root.querySelector("[data-gs='sagen']")?.addEventListener("click", () => senden("nsc"));
     root.querySelector("[data-gs='erzaehlen']")?.addEventListener("click", () => senden("erzaehler"));
-    root.querySelectorAll("[data-baustein]").forEach((knopf) => knopf.addEventListener("click", (event) => {
-      const baustein = getTalkData(this.actor).bausteine.find((b) => b.id === knopf.dataset.baustein);
-      if (!baustein) return;
-      if (event.shiftKey && eingabe) {
-        eingabe.value = baustein.text;
-        eingabe.focus();
-      } else zeileHinzufuegen(this.actor, { art: "nsc", text: baustein.text });
-    }));
+    const insFeld = (id) => {
+      const baustein = getTalkData(this.actor).bausteine.find((b) => b.id === id);
+      if (!baustein || !eingabe) return;
+      eingabe.value = baustein.text;
+      eingabe.focus();
+      eingabe.setSelectionRange(eingabe.value.length, eingabe.value.length);
+    };
+    root.querySelectorAll("[data-baustein]").forEach((knopf) => knopf.addEventListener("click", () => insFeld(knopf.dataset.baustein)));
+    root.querySelector("[data-questbaustein]")?.addEventListener("change", (event) => {
+      insFeld(event.currentTarget.value);
+      event.currentTarget.value = "";
+    });
     root.querySelectorAll("[data-aufklapp]").forEach((el) => el.addEventListener("toggle", () => {
       if (el.dataset.aufklapp === "bausteine") this._bausteineOffen = el.open;
       else this._frueherOffen = el.open;
@@ -685,6 +701,9 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     root.querySelectorAll(".gs-questedit [data-feld]").forEach((feld) => feld.addEventListener("change", () => {
       const id = feld.closest("[data-quest]")?.dataset.quest;
       questAendern(this.actor, id, { [feld.dataset.feld]: feld.value });
+    }));
+    root.querySelectorAll(".gs-questedit [data-haupt]").forEach((feld) => feld.addEventListener("change", () => {
+      questAendern(this.actor, feld.closest("[data-quest]")?.dataset.quest, { haupt: feld.checked });
     }));
     root.querySelectorAll("[data-gs='questZeigen']").forEach((knopf) => knopf.addEventListener("click", async () => {
       const id = knopf.closest("[data-quest]")?.dataset.quest;

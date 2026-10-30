@@ -812,3 +812,7 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-questlog .ql-status.status-erledigt { background: #233524; color: #8fd08a; }
 .hlw-questlog select { background: #0e1014; color: #e8e4da; border: 1px solid #2f3440; border-radius: 6px; height: 28px; }
 .hlw-questlog .ql-leer { color: #8f8b7f; text-align: center; margin-top: 40px; }
+.hlw-questlog .ql-haupt { color: #d8b46a; font-weight: 700; }
+.hlw-talk .gs-questbausteine select { flex: 1; min-width: 0; height: 28px; font-size: 0.8rem; }
+.hlw-talk .gs-hauptquest { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+.hlw-talk .gs-hauptquest input { width: auto; margin: 0; }

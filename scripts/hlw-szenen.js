@@ -333,10 +333,59 @@ export async function erstelleLindhain({ neu = false } = {}) {
 // „zumDorf“ = Bildrand, an dem der Weg ins Dorf zurückführt.
 const WEGE = [
   { id: "nord", name: "Lindhain – Nordweg", zumDorf: "unten", text: "Waldpfad in den Wald der Zauberer: Schranke und Wachposten der Gilde, dahinter alte Bäume, leuchtende Pilze und eine Lichtung." },
-  { id: "sued", name: "Lindhain – Straße nach Illmaris", zumDorf: "oben", text: "Karrenweg zwischen den Feldern nach Süden. An der Gabelung der alte Wegstein im Steinkreis, daneben Bank und Eiche." },
+  { id: "sued", name: "Lindhain – Straße nach Illmaris", zumDorf: "oben", text: "Karrenweg zwischen den Feldern nach Süden. An der Gabelung der alte Wegstein im Steinkreis, daneben Bank und Eiche. Unten auf der Straße Tamms Wagen mit gebrochenem Rad, Tamm versteckt sich dahinter, im Feld rechts lauert der Korrumpierte Keiler (beide verborgen).",
+    kacheln: [{ bild: "bauten/haendlerwagen-kaputt", x: 1960, y: 3000, w: 220, h: 368 }],
+    figuren: [{ nsc: "Tamm", x: 2240, y: 3150 }, { monster: "Korrumpierter Keiler", x: 2480, y: 2640 }] },
   { id: "ost", name: "Lindhain – Ostweg", zumDorf: "links", text: "Über die Brücke am Lindbach hinaus: Weiden mit Steinmauern, ein Birkenhain, ein Teich und ein Wegweiser zum Pfad nach Norden." },
   { id: "west", name: "Lindhain – Westweg", zumDorf: "rechts", text: "Trampelpfad am Waldrand entlang. Eine verfallene Scheune ohne Dach und eine aufgewühlte Suhle mitten in der Wiese." }
 ];
+
+// Kacheln und Figuren eines Wegs setzen (nur, was noch fehlt). Figuren liegen verborgen, der GM deckt sie auf.
+async function wegAusstatten(scene, ort) {
+  if (!scene) return;
+  const level = scene.initialLevel?.id ?? scene.firstLevel?.id;
+  const kacheln = (ort.kacheln ?? []).filter((k) => !scene.tiles.some((t) => t.texture?.src?.endsWith(`${k.bild}.webp`)));
+  if (kacheln.length) {
+    await scene.createEmbeddedDocuments("Tile", kacheln.map((k) => ({ texture: { src: `${ASSETS}/lindhain/${k.bild}.webp` }, x: k.x, y: k.y, width: k.w, height: k.h, rotation: k.rot ?? 0, levels: level ? [level] : undefined })));
+  }
+  const nscOrdner = await getOrCreateFolder("Lindhain", "Actor");
+  const tokens = [];
+  for (const figur of ort.figuren ?? []) {
+    let actor = null;
+    if (figur.nsc === "Finn") {
+      actor = await nscAnlegen(FINN, nscOrdner);
+      if (!actor.items.some((i) => i.name === "Schwert des Hauptmanns")) await actor.createEmbeddedDocuments("Item", [await schwertDesHauptmanns()]);
+    } else if (figur.nsc === "Tamm") {
+      actor = await nscAnlegen(TAMM, nscOrdner);
+    } else {
+      actor = await gegnerActor(figur.monster);
+    }
+    if (!actor || scene.tokens.some((t) => t.actorId === actor.id)) continue;
+    const breite = actor.prototypeToken.width ?? 1;
+    const daten = (await actor.getTokenDocument({ x: figur.x - (breite * GRID) / 2, y: figur.y - (breite * GRID) / 2, hidden: true, level })).toObject();
+    if (figur.tarnung) {
+      daten.name = figur.tarnung.name;
+      daten.texture = { ...daten.texture, src: figur.tarnung.bild };
+      daten.disposition = CONST.TOKEN_DISPOSITIONS.NEUTRAL;
+      foundry.utils.setProperty(daten, `flags.${SYSTEM_ID}.tarnung`, { name: daten.name, echt: actor.prototypeToken.name, bild: actor.prototypeToken.texture.src });
+    }
+    tokens.push(daten);
+  }
+  if (tokens.length) await scene.createEmbeddedDocuments("Token", tokens);
+}
+
+// Bestehende Wege-Szenen ergänzen (z. B. Tamm, Wagen und Keiler auf der Straße nach Illmaris)
+export async function wegeErgaenzen() {
+  if (!game.user?.isGM) return;
+  const journal = game.journal.getName("Wege um Lindhain");
+  for (const weg of WEGE) {
+    const scene = game.scenes.getName(weg.name);
+    if (scene) await wegAusstatten(scene, weg);
+    const seite = journal?.pages.getName(weg.name);
+    const inhalt = `<p>${weg.text}</p><p>Zurück ins Dorf: Bildrand ${weg.zumDorf}.</p>`;
+    if (seite && seite.text?.content !== inhalt) await seite.update({ "text.content": inhalt });
+  }
+}
 
 export async function erstelleWege({ neu = false } = {}) {
   if (!game.user?.isGM) return ui.notifications?.warn("Nur der GM kann Szenen anlegen.");
@@ -356,6 +405,7 @@ export async function erstelleWege({ neu = false } = {}) {
       levels: [{ name: "Weg", background: { src: `${ASSETS}/lindhain/wege/weg-${weg.id}.webp` }, textures: { fit: "fill" } }],
       flags: { [SYSTEM_ID]: { weg: weg.id, zumDorf: weg.zumDorf } }
     }));
+    await wegAusstatten(angelegt.at(-1), weg);
   }
   // Kurzbeschreibung für den GM (Journal nur für den GM sichtbar)
   if (angelegt.length && !game.journal.getName("Wege um Lindhain")) {
@@ -417,8 +467,21 @@ async function monsterDaten(name) {
 async function gegnerActor(name) {
   const vorhanden = game.actors.find((a) => a.type === "monster" && a.name === name);
   if (vorhanden) return vorhanden;
-  const daten = await monsterDaten(name);
+  const variante = VARIANTEN[name];
+  let daten = await monsterDaten(variante?.basis ?? name);
   if (!daten) return null;
+  if (variante) {
+    daten = foundry.utils.deepClone(daten);
+    const m = daten.system.monster;
+    const faktor = { 1: 1.25, 2: 1.5, 3: 2 }[variante.corrupted] ?? 1;
+    m.hp = Math.round(Number(m.hp) * faktor);
+    m.acc = Number(m.acc) + (variante.corrupted >= 3 ? 2 : 1);
+    m.corrupted = variante.corrupted;
+    m.behavior = "aggressiv";
+    m.special = `${variante.text} ${m.special ?? ""}`.trim();
+    daten.system.resources = { ...(daten.system.resources ?? {}), hp: { value: m.hp, max: m.hp } };
+    daten.name = name;
+  }
   const ordner = await getOrCreateFolder("Lindhain – Begegnungen", "Actor");
   const groesse = { "Groß": 2, "Riesig": 3 }[daten.system?.monster?.size] ?? 1;
   return Actor.create({
@@ -446,6 +509,16 @@ async function schwertDesHauptmanns() {
   };
 }
 
+const TAMM = {
+  name: "Tamm", bild: "tamm", role: "Händler aus Illmaris",
+  facts: [["Kommt jedes Jahr zur Saatwende mit seinem Karren aus Illmaris.", true]]
+};
+
+// Gegner-Varianten aus dem Bestiarium (z. B. ein korrumpiertes Wildschwein, Corrupted Stufe 1: HP × 1,25, Genauigkeit +1)
+const VARIANTEN = {
+  "Korrumpierter Keiler": { basis: "Wildschwein", corrupted: 1, img: "wildschwein", text: "Violette Augen, Kristallsplitter im Fell. Hat Tamms Wagen angegriffen und wühlt nachts Gerolds Kornfeld um." }
+};
+
 const FINN = {
   name: "Finn", bild: "finn", role: "Tomas kleiner Bruder",
   facts: [["Tomas kleiner Bruder, acht Jahre alt.", true], ["Seit drei Tagen verschwunden.", true]]
@@ -471,7 +544,6 @@ async function plakatAushaengen() {
 export async function erstelleQuestOrte({ neu = false } = {}) {
   if (!game.user?.isGM) return [];
   const ordner = await getOrCreateFolder("Wege um Lindhain", "Scene");
-  const nscOrdner = await getOrCreateFolder("Lindhain", "Actor");
   const angelegt = [];
   for (const ort of QUEST_ORTE) {
     if (neu) await game.scenes.getName(ort.name)?.delete();
@@ -494,27 +566,7 @@ export async function erstelleQuestOrte({ neu = false } = {}) {
         c: [x1, y1, x2, y2], door: tuer ? CONST.WALL_DOOR_TYPES.DOOR : CONST.WALL_DOOR_TYPES.NONE, ds: CONST.WALL_DOOR_STATES.CLOSED, levels: [level]
       })));
     }
-    const tokens = [];
-    for (const figur of ort.figuren ?? []) {
-      let actor = null;
-      if (figur.nsc === "Finn") {
-        actor = await nscAnlegen(FINN, nscOrdner);
-        if (!actor.items.some((i) => i.name === "Schwert des Hauptmanns")) await actor.createEmbeddedDocuments("Item", [await schwertDesHauptmanns()]);
-      } else {
-        actor = await gegnerActor(figur.monster);
-      }
-      if (!actor) continue;
-      const breite = actor.prototypeToken.width ?? 1;
-      const daten = (await actor.getTokenDocument({ x: figur.x - (breite * GRID) / 2, y: figur.y - (breite * GRID) / 2, hidden: true, level })).toObject();
-      if (figur.tarnung) {
-        daten.name = figur.tarnung.name;
-        daten.texture = { ...daten.texture, src: figur.tarnung.bild };
-        daten.disposition = CONST.TOKEN_DISPOSITIONS.NEUTRAL;
-        foundry.utils.setProperty(daten, `flags.${SYSTEM_ID}.tarnung`, { name: daten.name, echt: actor.prototypeToken.name, bild: actor.prototypeToken.texture.src });
-      }
-      tokens.push(daten);
-    }
-    if (tokens.length) await scene.createEmbeddedDocuments("Token", tokens);
+    await wegAusstatten(scene, ort);
     angelegt.push(scene);
   }
   // GM-Notizen ins Journal „Wege um Lindhain“ (fehlende Seiten ergänzen)

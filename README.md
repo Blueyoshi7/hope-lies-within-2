@@ -7,7 +7,7 @@ Foundry-VTT-System (Version 14) für das Pen-&-Paper **Hope lies Within**, Regel
 In Foundry unter *Game Systems → Install System* diese Manifest-URL eintragen:
 
 ```text
-https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json
+https://github.com/Blueyoshi7/hope-lies-within-2/releases/latest/download/system.json
 ```
 
 
@@ -119,7 +119,13 @@ Quests: Toma „Wo ist Finn?“ (Belohnung: das Schwert, „aber sagt das nicht 
 
 ## Questlog
 
-Die Schriftrolle in der linken Werkzeugleiste (Figuren) öffnet das Questlog, ebenso `game.hlw.questlog()`. Spieler sehen alle angenommenen und erledigten Quests der Gruppe mit Auftraggeber, Text und Belohnung. Der GM sieht zusätzlich alle anderen Quests und stellt den Stand direkt im Questlog um (z. B. auf „Erledigt“). Angeboten und angenommen werden Quests weiter im Gespräch mit dem NSC.
+Die Schriftrolle in der linken Werkzeugleiste (Figuren) öffnet das Questlog, ebenso `game.hlw.questlog()`. Spieler sehen alle angenommenen und erledigten Quests der Gruppe mit Auftraggeber, Text und Belohnung. Der GM sieht zusätzlich alle anderen Quests und stellt den Stand direkt im Questlog um (z. B. auf „Erledigt“). Angeboten und angenommen werden Quests weiter im Gespräch mit dem NSC. Hauptquests stehen oben und sind markiert (im Quest-Editor des NSC: „Hauptquest“).
+
+**Belohnung beim Abschluss:** Stellt der GM eine Quest auf „Erledigt“ (im Questlog oder im Gespräch), bekommt der Charakter, der sie angenommen hat, die Belohnung sofort: Geld („20 SK“, „1 GK 50 SK“) und Gegenstände („2 × Kleiner Heiltrank“, „ein Wetzstein“, Namen wie in den Import-Listen) werden aus dem Belohnungstext gelesen. Steht „pro Person“ darin, bekommt jeder Spielercharakter alles. Anderes (ein Platz in Illmaris, ein Segen) steht nur auf der Chat-Karte. Jede Quest belohnt nur einmal. Das gilt auch für selbst geschriebene Quests.
+
+**Textbausteine:** Ein Klick auf einen Baustein übernimmt den Text nur ins Eingabefeld, dort passt der GM ihn an und sagt ihn dann. Zu jeder Lindhain-Quest gibt es Bausteine (Angebot, Hinweise, gute und schlechte Ausgänge, Abschluss) in der Auswahl „Quests“, sortiert nach Quest.
+
+**Bauteile und Wagen** (als Kachel einsetzen, Kachel-Werkzeug → Bild wählen): `assets/lindhain/bauten/` mit `palisade`, `palisade-ecke`, `tor-zu`, `tor-offen`, `haendlerwagen` und `haendlerwagen-kaputt`. Händler Tamm (mit Waren) steht mit seinem Wagen und dem Korrumpierten Keiler verborgen auf der Straße nach Illmaris.
 
 
 **Häuser und Türen (jede Szene):** Dächer (Kacheln mit Ausblenden) gehen für einen Spieler nur auf, wenn seine eigene Figur darunter steht, nicht beim Darüberfahren mit der Maus und nicht wegen NSC im Haus; Figuren unter einem geschlossenen Dach verraten sich auch nicht beim Darüberfahren. Der GM sieht immer hinein (Dächer halbdurchsichtig). Türen: Spieler klicken auf das Türsymbol, darüber erscheint „Geöffnet“, „Geschlossen“ oder „Verschlossen“. Der GM sperrt eine Tür mit Rechtsklick auf das Türsymbol ab oder auf („Abgesperrt“ / „Aufgesperrt“); abgesperrte Türen können Spieler nicht öffnen.

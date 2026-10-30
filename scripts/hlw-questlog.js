@@ -53,7 +53,7 @@ export class HopeLiesWithinQuestlog extends ApplicationV2 {
     if (!reiterListe.some(([key]) => key === this.reiter)) this.reiter = "laufend";
     const alle = alleQuests();
     const zaehler = Object.fromEntries(reiterListe.map(([key]) => [key, alle.filter(({ quest }) => passtZuReiter(quest, key)).length]));
-    const karten = alle.filter(({ quest }) => passtZuReiter(quest, this.reiter)).map(({ actor, quest }) => {
+    const karten = alle.filter(({ quest }) => passtZuReiter(quest, this.reiter)).sort((a, b) => Number(!!b.quest.haupt) - Number(!!a.quest.haupt)).map(({ actor, quest }) => {
       const talk = getTalkData(actor);
       const status = isGM
         ? `<select data-ql-status data-actor="${actor.id}" data-quest="${escapeHtml(quest.id)}">${Object.entries(QUEST_STATUS).map(([k, l]) => `<option value="${k}" ${k === quest.status ? "selected" : ""}>${l}</option>`).join("")}</select>`
@@ -64,7 +64,7 @@ export class HopeLiesWithinQuestlog extends ApplicationV2 {
             <img src="${escapeHtml(talk.portrait)}" alt="">
             <div>
               <strong>${escapeHtml(quest.titel || "Ohne Titel")}</strong>
-              <em>Rang ${escapeHtml(quest.rang || "F")} · von ${escapeHtml(anzeigeName(actor))}</em>
+              <em>${quest.haupt ? `<b class="ql-haupt">Hauptquest</b> · ` : ""}Rang ${escapeHtml(quest.rang || "F")} · von ${escapeHtml(anzeigeName(actor))}</em>
             </div>
             ${status}
           </header>
