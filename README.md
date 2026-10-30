@@ -96,6 +96,17 @@ game.hlw.erstelleLindhain({ neu: true })  // Szene und Ortsliste neu aufbauen, N
 
 Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts, Gesprächsdaten, Level, Waffen, Waren und Quests (Hanne: Essen, Jorun: Waffen und Rüstung, Oma Wendel: Heilmittel) sowie die Ortsliste „Lindhain – Orte“ im Journal (ohne Marker auf der Karte; alte Buch-Marker entfernt das System beim ersten GM-Start, sonst `game.hlw.entferneOrtsmarker()`). Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein. Wurde Lindhain mit einer älteren Version angelegt, bekommen die NSC Werte, Waren und Quests beim ersten GM-Start automatisch (sonst `game.hlw.lindhainAusstatten()`).
 
+Seit 0.13.2 sind Dorfboden, Gebäude und Dächer in hoher Auflösung (KI-hochgerechnet, scharf auch beim Reinzoomen). Bestehende Lindhain-Szenen zeigen die neuen Bilder nach dem Update von selbst (eventuell einmal neu laden).
+
+**Wege aus dem Dorf:**
+
+```js
+game.hlw.erstelleWege()              // die vier Wege anlegen
+game.hlw.erstelleWege({ neu: true })  // neu aufbauen
+```
+
+Legt im Szenenordner „Wege um Lindhain“ vier Karten an (je 64 × 64 Felder, 1 Feld = 1,5 m): Nordweg in den Wald der Zauberer, Straße nach Illmaris (Süden), Ostweg über die Brücke und Westweg am Waldrand. Eine Kurzbeschreibung steht im Journal „Wege um Lindhain“ (nur für den GM).
+
 
 **Häuser und Türen (jede Szene):** Dächer (Kacheln mit Ausblenden) gehen für einen Spieler nur auf, wenn seine eigene Figur darunter steht, nicht beim Darüberfahren mit der Maus und nicht wegen NSC im Haus; Figuren unter einem geschlossenen Dach verraten sich auch nicht beim Darüberfahren. Der GM sieht immer hinein (Dächer halbdurchsichtig). Türen: Spieler klicken auf das Türsymbol, darüber erscheint „Geöffnet“, „Geschlossen“ oder „Verschlossen“. Der GM sperrt eine Tür mit Rechtsklick auf das Türsymbol ab oder auf („Abgesperrt“ / „Aufgesperrt“); abgesperrte Türen können Spieler nicht öffnen.
 ## Dashboard und Login-Hintergrund

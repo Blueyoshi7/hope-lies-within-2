@@ -252,3 +252,43 @@ export async function erstelleLindhain({ neu = false } = {}) {
   ui.notifications?.info("Lindhain ist angelegt: Dorf mit 10 Gebäuden samt Dächern, 8 NSC und der Ortsliste.");
   return scene;
 }
+
+// Die vier Wege aus Lindhain hinaus, je eine Karte (4096 px, 64 × 64 Felder wie das Dorf).
+// „zumDorf“ = Bildrand, an dem der Weg ins Dorf zurückführt.
+const WEGE = [
+  { id: "nord", name: "Lindhain – Nordweg", zumDorf: "unten", text: "Waldpfad in den Wald der Zauberer: Schranke und Wachposten der Gilde, dahinter alte Bäume, leuchtende Pilze und eine Lichtung." },
+  { id: "sued", name: "Lindhain – Straße nach Illmaris", zumDorf: "oben", text: "Karrenweg zwischen den Feldern nach Süden. An der Gabelung der alte Wegstein im Steinkreis, daneben Bank und Eiche." },
+  { id: "ost", name: "Lindhain – Ostweg", zumDorf: "links", text: "Über die Brücke am Lindbach hinaus: Weiden mit Steinmauern, ein Birkenhain, ein Teich und ein Wegweiser zum Pfad nach Norden." },
+  { id: "west", name: "Lindhain – Westweg", zumDorf: "rechts", text: "Trampelpfad am Waldrand entlang. Eine verfallene Scheune ohne Dach und eine aufgewühlte Suhle mitten in der Wiese." }
+];
+
+export async function erstelleWege({ neu = false } = {}) {
+  if (!game.user?.isGM) return ui.notifications?.warn("Nur der GM kann Szenen anlegen.");
+  const ordner = await getOrCreateFolder("Wege um Lindhain", "Scene");
+  const angelegt = [];
+  for (const weg of WEGE) {
+    if (neu) await game.scenes.getName(weg.name)?.delete();
+    if (game.scenes.getName(weg.name)) continue;
+    angelegt.push(await Scene.create({
+      name: weg.name,
+      folder: ordner.id,
+      width: SIZE,
+      height: SIZE,
+      padding: 0,
+      grid: { type: CONST.GRID_TYPES.SQUARE, size: GRID, distance: 1.5, units: "m" },
+      tokenVision: false,
+      levels: [{ name: "Weg", background: { src: `${ASSETS}/lindhain/wege/weg-${weg.id}.webp` }, textures: { fit: "fill" } }],
+      flags: { [SYSTEM_ID]: { weg: weg.id, zumDorf: weg.zumDorf } }
+    }));
+  }
+  // Kurzbeschreibung für den GM (Journal nur für den GM sichtbar)
+  if (angelegt.length && !game.journal.getName("Wege um Lindhain")) {
+    await JournalEntry.create({
+      name: "Wege um Lindhain",
+      pages: WEGE.map((weg) => ({ name: weg.name, type: "text", text: { content: `<p>${weg.text}</p><p>Zurück ins Dorf: Bildrand ${weg.zumDorf}.</p>` } }))
+    });
+  }
+  if (!angelegt.length) return ui.notifications?.warn("Die Wege gibt es schon. Neu aufbauen: game.hlw.erstelleWege({ neu: true })");
+  ui.notifications?.info(`${angelegt.length} Wege um Lindhain angelegt (Ordner „Wege um Lindhain“).`);
+  return angelegt;
+}

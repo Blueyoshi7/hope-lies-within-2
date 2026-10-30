@@ -1,6 +1,6 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
-import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
+import { erstelleLindhain, erstelleWege, entferneOrtsmarker } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
@@ -2818,6 +2818,7 @@ Hooks.once("ready", async () => {
     aktualisiereBilder,
     aktualisiereBestiarium,
     erstelleLindhain,
+    erstelleWege,
     entferneOrtsmarker,
     erstelleDashboard,
     dashboardAktualisieren,
