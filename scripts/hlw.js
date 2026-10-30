@@ -1383,8 +1383,11 @@ export class HopeLiesWithinActor extends Actor {
     // Ohne Ziel und Wurf (z. B. Verstärkungen): die Wirkung ist hier das Wichtige
     const wirkung = !result ? escapeHtml(item.system?.description || item.system?.effect) : "";
 
+    // Die Würfe hängen an der Nachricht: Foundry spielt den Würfelklang, und Module wie „Dice So Nice“ würfeln sie in 3D.
+    const wuerfe = [result?.angriff, result?.roll].filter((r) => r && r.total !== undefined);
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
+      ...(wuerfe.length ? { rolls: wuerfe, sound: game.modules.get("dice-so-nice")?.active ? undefined : CONFIG.sounds.dice } : {}),
       content: `
         <div class="hlw-chat-card hlw-chat-kurz">
           <h2>${escapeHtml(item.name)}${unterzeile ? ` <small>${unterzeile}</small>` : ""}</h2>

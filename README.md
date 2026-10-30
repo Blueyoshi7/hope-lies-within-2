@@ -10,6 +10,8 @@ In Foundry unter *Game Systems → Install System* diese Manifest-URL eintragen:
 https://raw.githubusercontent.com/Blueyoshi7/hope-lies-within-2/main/system.json
 ```
 
+
+**3D-Würfel (optional):** Mit dem Modul [Dice So Nice](https://gitlab.com/riccisi/foundryvtt-dice-so-nice) rollen alle automatischen Würfe als 3D-Würfel über den Bildschirm: Angriffe, Schaden, Heilung, World-Skill-Proben, Appraisal und Zähmen. Ohne das Modul spielt Foundry den Würfelklang.
 ## Regeln (Kanon 2.0)
 
 - **Werte:** STR, DEX, CON, INT, WIS, CHA, AGL, SPE, EDU, SOU. Jeder Wert startet bei 1. Level 1: 5 freie Punkte + 1 Herkunftspunkt, bis Level 10 +1 pro Level, ab Level 11 +2 pro Level. Der Bogen zeigt verteilte und erlaubte Punkte.
