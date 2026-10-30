@@ -575,8 +575,10 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-bogen .hi-rand-rot.is-voll { border-color: #9a3f3a; }
 .hlw-bogen .hb-insignie .hb-tag { font-size: 11px; }
 .hlw-insignien-wahl .window-content { display: flex; flex-direction: column; gap: 10px; }
+/* Formular und Inhalt auf Fensterhöhe begrenzen, damit nur die Liste scrollt */
+.hlw-insignien-wahl .window-content > .dialog-form, .hlw-insignien-wahl .dialog-content { flex: 1; min-height: 0; overflow: hidden; }
 .hlw-insignien-wahl input[type="search"] { background: #0e1014; border: 1px solid #2f3440; color: #e8e4da; border-radius: 6px; height: 32px; padding: 0 10px; }
-.hlw-insignien-wahl .hi-liste { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; display: grid; gap: 6px; }
+.hlw-insignien-wahl .hi-liste { list-style: none; margin: 0; padding: 0 4px 0 0; overflow-y: auto; flex: 1; min-height: 0; display: grid; align-content: start; gap: 6px; }
 .hlw-insignien-wahl .hi-liste li { display: grid; grid-template-columns: 48px 1fr; gap: 10px; align-items: center; padding: 6px 8px; border-radius: 8px; background: #1a1d25; border: 1px solid #2f3440; cursor: pointer; }
 .hlw-insignien-wahl .hi-liste li:hover { border-color: #d8b46a; }
 .hlw-insignien-wahl .hi-liste li[hidden] { display: none; }
@@ -787,3 +789,26 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-bogen .hb-sterben button { margin-left: auto; width: auto; padding: 2px 14px; background: #8a2a24; color: #fff; border: 1px solid #c2493f; }
 .hlw-hud .hh-aktionen .hh-todeswurf { grid-column: span 2; background: linear-gradient(180deg, #b23a31, #7a221c); color: #fff; border-color: #d8675d; }
 .hlw-hud .hh-aktionen .hh-sterben { grid-column: span 2; text-align: center; color: #f3a59c; font-weight: bold; padding: 4px 0; }
+
+/* Questlog */
+.hlw-questlog .window-content { display: flex; flex-direction: column; gap: 10px; padding: 10px; background: #14161c; color: #e8e4da; overflow: hidden; }
+.hlw-questlog .ql-reiter { display: flex; gap: 6px; flex: none; }
+.hlw-questlog .ql-reiter button { flex: 1; background: #1a1d25; border: 1px solid #2f3440; color: #c9c4b6; border-radius: 6px; height: 32px; font-size: 13px; }
+.hlw-questlog .ql-reiter button span { display: inline-block; min-width: 18px; padding: 0 5px; margin-left: 4px; border-radius: 9px; background: #2f3440; font-size: 11px; }
+.hlw-questlog .ql-reiter button.is-aktiv { border-color: #d8b46a; color: #f3e6c4; }
+.hlw-questlog .ql-liste { flex: 1; min-height: 0; overflow-y: auto; display: grid; align-content: start; gap: 8px; padding-right: 4px; }
+.hlw-questlog .ql-quest { background: #1a1d25; border: 1px solid #2f3440; border-radius: 8px; padding: 10px 12px; display: grid; gap: 6px; }
+.hlw-questlog .ql-quest.status-erledigt { opacity: 0.75; }
+.hlw-questlog .ql-quest header { display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; align-items: center; }
+.hlw-questlog .ql-quest header img { width: 44px; height: 44px; object-fit: cover; object-position: top; border-radius: 50%; border: 2px solid #8c6234; background: #0e1014; }
+.hlw-questlog .ql-quest header div { display: grid; gap: 2px; }
+.hlw-questlog .ql-quest strong { font-size: 15px; color: #f3e6c4; }
+.hlw-questlog .ql-quest em { font-style: normal; font-size: 11.5px; color: #a6a294; }
+.hlw-questlog .ql-quest p { margin: 0; font-size: 13px; line-height: 1.45; color: #ddd8cb; }
+.hlw-questlog .ql-quest .ql-belohnung { color: #e2c25a; }
+.hlw-questlog .ql-quest small { color: #8f8b7f; font-size: 11px; }
+.hlw-questlog .ql-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #2f3440; color: #c9c4b6; }
+.hlw-questlog .ql-status.status-angenommen { background: #3a3220; color: #e2c25a; }
+.hlw-questlog .ql-status.status-erledigt { background: #233524; color: #8fd08a; }
+.hlw-questlog select { background: #0e1014; color: #e8e4da; border: 1px solid #2f3440; border-radius: 6px; height: 28px; }
+.hlw-questlog .ql-leer { color: #8f8b7f; text-align: center; margin-top: 40px; }

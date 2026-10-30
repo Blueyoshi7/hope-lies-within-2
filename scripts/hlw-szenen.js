@@ -31,12 +31,19 @@ const ORTE_OHNE_GEBAEUDE = [
 
 // Nur Eintraege, die die Spieler sofort sehen. Verdecktes GM-Wissen (siehe GM-Kampagnenstart) traegt der GM
 // im Gespraechsfenster selbst ein, damit es nicht im oeffentlichen Code steht.
+// Warum Kessa da ist (Dominik 2026-10-30): wegen des Fests, und weil die Gilde junge Leute mit der Fähigkeit sucht
+const KESSA_GRUND = "Ist wegen der Saatwende in Lindhain. Die Gilde sucht junge Leute mit der Fähigkeit und bringt sie nach Illmaris an ihre Schulen, als Vorbereitung auf ein Leben für die Gilde und als Abenteurer.";
+const KESSA_GRUND_ALT = "Kam zum Saatwendefest nach Lindhain, um Hero-Kinder für die Schulen in Illmaris zu finden.";
+
+// Kessas Strohpuppen für die erste Lektion (Hof hinter dem Schrein)
+const STROHPUPPEN = [{ x: 1000, y: 2800 }, { x: 1200, y: 2800 }, { x: 1400, y: 2800 }];
+
 const LINDHAIN_NSC = [
   {
     name: "Kessa Dorn", bild: "kessa-dorn", role: "Werberin der Abenteurergilde", x: 1940, y: 2140,
     facts: [
-      ["Kam zum Saatwendefest nach Lindhain, um Hero-Kinder für die Schulen in Illmaris zu finden.", true],
-      ["Prüft Kinder mit einem Kristall, der bei einem magischen Kern leuchtet.", true]
+      [KESSA_GRUND, true],
+      ["Prüft junge Leute mit einem Kristall, der bei einem magischen Kern leuchtet.", true]
     ]
   },
   {
@@ -87,6 +94,18 @@ const LINDHAIN_NSC = [
       ["Kam 788 mit seiner Familie von der Grenze nach Lindhain.", true],
       ["Will unbedingt mit den Großen mitgehen.", true]
     ]
+  },
+  {
+    name: "Ivo Brandt", bild: "ivo-brandt", role: "Wache der Gilde am Südtor", x: 1740, y: 3800,
+    facts: [["Bewacht mit Lene die Straße nach Süden, solange Hauptmann Rell oben am Wald steht.", true], ["Steht seit zwanzig Jahren an diesem Tor.", true]]
+  },
+  {
+    name: "Lene Asch", bild: "lene-asch", role: "Wache der Gilde am Südtor", x: 2290, y: 3800,
+    facts: [["Die jüngste Wache im Dorf. Träumt von der Gilde in Illmaris.", true]]
+  },
+  {
+    name: "Gerold Wiese", bild: "gerold-wiese", role: "Bauer am Kornfeld", x: 1570, y: 3460,
+    facts: [["Sein Kornfeld liegt an der Straße nach Süden.", true]]
   }
 ];
 
@@ -147,6 +166,92 @@ export async function entferneOrtsmarker() {
   return anzahl;
 }
 
+// NSC aus der Liste anlegen (oder den vorhandenen im Ordner nehmen) und einmal ausstatten
+async function nscAnlegen(nsc, actorFolder) {
+  const token = `${ASSETS}/npc/${nsc.bild}-token.webp`;
+  const actor = game.actors.find((a) => a.name === nsc.name && a.folder?.id === actorFolder.id)
+    ?? await Actor.create({
+      name: nsc.name,
+      type: "npc",
+      img: token,
+      folder: actorFolder.id,
+      prototypeToken: {
+        name: nsc.name,
+        actorLink: true,
+        displayName: CONST.TOKEN_DISPLAY_MODES.OWNER,
+        disposition: CONST.TOKEN_DISPOSITIONS.NEUTRAL,
+        texture: { src: token },
+        sight: { enabled: false }
+      },
+      flags: {
+        [SYSTEM_ID]: {
+          talk: {
+            portrait: `${ASSETS}/npc/${nsc.bild}.webp`,
+            role: nsc.role,
+            nameRevealed: false,
+            facts: nsc.facts.map(([text, revealed]) => ({ id: foundry.utils.randomID(), text, revealed, highlight: false }))
+          }
+        }
+      }
+    });
+  // Level, Werte, Waffen, Waren und Quests (einmal pro NSC)
+  if (!actor.getFlag(SYSTEM_ID, "ausgestattet")) {
+    await nscAusstatten(actor, lindhainWerte(nsc.name));
+    await actor.setFlag(SYSTEM_ID, "ausgestattet", true);
+  }
+  return actor;
+}
+
+// Übungsziel für Kessas erste Lektion: greift nicht an, lässt keine Kristalle und gibt keine EXP
+async function strohpuppeActor() {
+  const vorhanden = game.actors.find((a) => a.type === "monster" && a.name === "Strohpuppe");
+  if (vorhanden) return vorhanden;
+  const ordner = await getOrCreateFolder("Lindhain", "Actor");
+  return Actor.create({
+    name: "Strohpuppe", type: "monster", img: `${ASSETS}/monster/strohpuppe.webp`, folder: ordner.id,
+    system: {
+      monster: { rank: "E", role: "Diener", size: "Mittel", category: "Tier", corrupted: 0, hp: 12, rw: 8, mr: 8, acc: 0, damage: "–", initiative: 0, movement: 0, reach: 1,
+        probe: 15, exp: 0, traits: "Harmlos", habitat: "Lindhain", special: "Kessas Übungspuppe. Greift nicht an, bewegt sich nicht.", harmless: true, behavior: "friedlich", tameable: false },
+      resources: { hp: { value: 12, max: 12 } }
+    },
+    flags: { [SYSTEM_ID]: { uebung: true } },
+    prototypeToken: { name: "Strohpuppe", actorLink: false, disposition: CONST.TOKEN_DISPOSITIONS.NEUTRAL, displayName: CONST.TOKEN_DISPLAY_MODES.HOVER,
+      texture: { src: `${ASSETS}/monster/strohpuppe-token.webp` }, sight: { enabled: false } }
+  });
+}
+
+async function strohpuppenAufstellen(scene) {
+  if (scene.tokens.some((t) => t.name === "Strohpuppe")) return;
+  const actor = await strohpuppeActor();
+  const level = scene.initialLevel?.id ?? scene.firstLevel?.id;
+  const tokens = [];
+  for (const p of STROHPUPPEN) tokens.push((await actor.getTokenDocument({ x: p.x - GRID / 2, y: p.y - GRID / 2, level })).toObject());
+  await scene.createEmbeddedDocuments("Token", tokens);
+}
+
+// Bestehendes Lindhain auf den Stand von Kapitel 1 bringen: neue NSC (Wachen am Südtor, Bauer), Strohpuppen,
+// Kessas neuer Grund (nur wenn der alte Text unverändert ist). Eigene Änderungen des GM bleiben.
+export async function lindhainErgaenzen() {
+  if (!game.user?.isGM) return;
+  const kessa = game.actors.find((a) => a.type === "npc" && a.name === "Kessa Dorn");
+  const talk = kessa?.getFlag(SYSTEM_ID, "talk");
+  if (talk?.facts?.some((f) => f.text === KESSA_GRUND_ALT)) {
+    await kessa.setFlag(SYSTEM_ID, "talk", { ...talk, facts: talk.facts.map((f) => (f.text === KESSA_GRUND_ALT ? { ...f, text: KESSA_GRUND } : f.text === "Prüft Kinder mit einem Kristall, der bei einem magischen Kern leuchtet." ? { ...f, text: "Prüft junge Leute mit einem Kristall, der bei einem magischen Kern leuchtet." } : f)) });
+  }
+  const scene = game.scenes.getName("Lindhain");
+  if (!scene) return;
+  const actorFolder = await getOrCreateFolder("Lindhain", "Actor");
+  const level = scene.initialLevel?.id ?? scene.firstLevel?.id;
+  const tokens = [];
+  for (const nsc of LINDHAIN_NSC) {
+    const actor = await nscAnlegen(nsc, actorFolder);
+    if (scene.tokens.some((t) => t.actorId === actor.id)) continue;
+    tokens.push((await actor.getTokenDocument({ x: nsc.x - GRID / 2, y: nsc.y - GRID / 2, level })).toObject());
+  }
+  if (tokens.length) await scene.createEmbeddedDocuments("Token", tokens);
+  await strohpuppenAufstellen(scene);
+}
+
 export async function erstelleLindhain({ neu = false } = {}) {
   if (!game.user?.isGM) return ui.notifications?.warn("Nur der GM kann Szenen anlegen.");
   if (neu) {
@@ -159,37 +264,7 @@ export async function erstelleLindhain({ neu = false } = {}) {
   const actorFolder = await getOrCreateFolder("Lindhain", "Actor");
   const actors = [];
   for (const nsc of LINDHAIN_NSC) {
-    const token = `${ASSETS}/npc/${nsc.bild}-token.webp`;
-    const actor = game.actors.find((a) => a.name === nsc.name && a.folder?.id === actorFolder.id)
-      ?? await Actor.create({
-        name: nsc.name,
-        type: "npc",
-        img: token,
-        folder: actorFolder.id,
-        prototypeToken: {
-          name: nsc.name,
-          actorLink: true,
-          displayName: CONST.TOKEN_DISPLAY_MODES.OWNER,
-          disposition: CONST.TOKEN_DISPOSITIONS.NEUTRAL,
-          texture: { src: token },
-          sight: { enabled: false }
-        },
-        flags: {
-          [SYSTEM_ID]: {
-            talk: {
-              portrait: `${ASSETS}/npc/${nsc.bild}.webp`,
-              role: nsc.role,
-              nameRevealed: false,
-              facts: nsc.facts.map(([text, revealed]) => ({ id: foundry.utils.randomID(), text, revealed, highlight: false }))
-            }
-          }
-        }
-      });
-    // Level, Werte, Waffen, Waren und Quests (einmal pro NSC)
-    if (!actor.getFlag(SYSTEM_ID, "ausgestattet")) {
-      await nscAusstatten(actor, lindhainWerte(nsc.name));
-      await actor.setFlag(SYSTEM_ID, "ausgestattet", true);
-    }
+    const actor = await nscAnlegen(nsc, actorFolder);
     actors.push([actor, nsc]);
   }
 
@@ -248,8 +323,9 @@ export async function erstelleLindhain({ neu = false } = {}) {
     tokens.push(token.toObject());
   }
   await scene.createEmbeddedDocuments("Token", tokens);
+  await strohpuppenAufstellen(scene);
 
-  ui.notifications?.info("Lindhain ist angelegt: Dorf mit 10 Gebäuden samt Dächern, 8 NSC und der Ortsliste.");
+  ui.notifications?.info(`Lindhain ist angelegt: Dorf mit 10 Gebäuden samt Dächern, ${LINDHAIN_NSC.length} NSC und der Ortsliste.`);
   return scene;
 }
 
@@ -288,7 +364,186 @@ export async function erstelleWege({ neu = false } = {}) {
       pages: WEGE.map((weg) => ({ name: weg.name, type: "text", text: { content: `<p>${weg.text}</p><p>Zurück ins Dorf: Bildrand ${weg.zumDorf}.</p>` } }))
     });
   }
-  if (!angelegt.length) return ui.notifications?.warn("Die Wege gibt es schon. Neu aufbauen: game.hlw.erstelleWege({ neu: true })");
-  ui.notifications?.info(`${angelegt.length} Wege um Lindhain angelegt (Ordner „Wege um Lindhain“).`);
+  const orte = await erstelleQuestOrte({ neu });
+  if (!angelegt.length && !orte.length) return ui.notifications?.warn("Die Wege gibt es schon. Neu aufbauen: game.hlw.erstelleWege({ neu: true })");
+  ui.notifications?.info(`${angelegt.length + orte.length} Karten um Lindhain angelegt (Ordner „Wege um Lindhain“).`);
+  return [...angelegt, ...orte];
+}
+
+// ---------- Quest-Orte hinter den Wegen ----------
+// Nord: Lichtung mit dem Dornenschrat (schwerster Kampf), dahinter versteckt die alte Hütte mit Finn.
+// Ost: der korrumpierte Hirte auf verdorbenem Boden. West: eine Kopierkatze, getarnt als verletztes Kleinhorn.
+// Figuren liegen verborgen auf der Karte; der GM deckt sie auf, wenn es so weit ist.
+const QUEST_ORTE = [
+  {
+    id: "nord-lichtung", name: "Lindhain – Lichtung im Norden", navigation: true,
+    figuren: [{ monster: "Dornenschrat", x: 2048, y: 1500 }],
+    text: "Hinter dem Nordweg, tief im Wald der Zauberer: eine große Lichtung, Kratzspuren an den Stämmen. Hier lauert der <b>Dornenschrat</b> (Rang C, schwerster Kampf des Kapitels). Feuer und Licht stoppen seine Regeneration (Tipp über Oma Wendel oder Bruder Aled).<br>Oben rechts verschwindet ein Wildwechsel im Farn: <b>Scharfsinnigkeit 20</b> findet ihn, er führt zur alten Hütte."
+  },
+  {
+    id: "nord-versteck", name: "Lindhain – Alte Hütte", navigation: false,
+    figuren: [{ nsc: "Finn", x: 1660, y: 1700 }],
+    // Hütte ohne Dach: Wände mit Tür unten in der Mitte
+    waende: [[1340, 990, 2920, 990], [2920, 990, 2920, 2480], [2920, 2480, 2200, 2480], [2200, 2480, 1880, 2480, true], [1880, 2480, 1340, 2480], [1340, 2480, 1340, 990]],
+    text: "Versteckt hinter der Lichtung (nicht in der Szenenleiste). In der alten Jägerhütte hat sich <b>Finn</b> versteckt, mit dem Schwert des Hauptmanns. Er hat Angst vor dem Wesen mit den grünen Augen und davor, dass Rell ihn bestraft.<br>Wem die Spieler das Schwert geben (Toma: „Wo ist Finn?“ oder Rell: „Mein Schwert“), entscheiden sie selbst."
+  },
+  {
+    id: "ost-weide", name: "Lindhain – Weide im Osten", navigation: true,
+    figuren: [{ monster: "Korrumpierter Hirte", x: 3200, y: 1664 }],
+    text: "Hinter dem Ostweg: eine Weide mit leerem Pferch, tote Schafe am Rand eines verdorbenen Flecks. Der <b>Korrumpierte Hirte</b> steht mitten im verdorbenen Boden (dort heilt er am Zugbeginn 1W6). Die erste korrumpierte Person, der die Gruppe begegnet. Lockt man ihn heraus, verliert er die Heilung."
+  },
+  {
+    id: "west-senke", name: "Lindhain – Senke im Westen", navigation: true,
+    figuren: [{ monster: "Kopierkatze", x: 2000, y: 2000, tarnung: { name: "Verletztes Kleinhorn", bild: `${ASSETS}/monster/kleinhorn-token.webp` } }],
+    text: "Hinter dem Westweg: eine Senke voller toter Tiere. In der Mitte liegt scheinbar ein <b>verletztes Kleinhorn</b>. In Wahrheit eine <b>Kopierkatze</b> (Scharfsinnigkeit 25 durchschaut sie). Wer sich zu ihr hinunterbeugt, wird überrascht.<br>Tarnung aufheben: Figur auswählen und <code>game.hlw.tarnungAufheben()</code>."
+  }
+];
+
+// Gegnerdaten aus dem Bestiarium (Import-Liste des Systems)
+let monsterCache = null;
+async function monsterDaten(name) {
+  if (!monsterCache) {
+    try {
+      const antwort = await fetch(`systems/${SYSTEM_ID}/import/monsters.json`);
+      monsterCache = antwort.ok ? await antwort.json() : [];
+    } catch {
+      monsterCache = [];
+    }
+  }
+  return monsterCache.find((m) => m.name === name) ?? null;
+}
+
+// Gegner der Welt nehmen (z. B. aus dem importierten Bestiarium) oder neu im Ordner „Lindhain – Begegnungen“ anlegen
+async function gegnerActor(name) {
+  const vorhanden = game.actors.find((a) => a.type === "monster" && a.name === name);
+  if (vorhanden) return vorhanden;
+  const daten = await monsterDaten(name);
+  if (!daten) return null;
+  const ordner = await getOrCreateFolder("Lindhain – Begegnungen", "Actor");
+  const groesse = { "Groß": 2, "Riesig": 3 }[daten.system?.monster?.size] ?? 1;
+  return Actor.create({
+    name: daten.name, type: "monster", img: daten.img, folder: ordner.id, system: daten.system, items: daten.items ?? [],
+    prototypeToken: { name: daten.name, actorLink: false, width: groesse, height: groesse, disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE,
+      displayName: CONST.TOKEN_DISPLAY_MODES.HOVER, texture: { src: daten.token || daten.img }, sight: { enabled: false } }
+  });
+}
+
+// Das Schwert, das Finn aus dem Wachturm mitgenommen hat (Grundlage: Eisenschwert, Genauigkeit +1)
+async function schwertDesHauptmanns() {
+  let basis = null;
+  try {
+    const antwort = await fetch(`systems/${SYSTEM_ID}/import/weapons.json`);
+    basis = antwort.ok ? (await antwort.json()).find((w) => w.name === "Eisenschwert") : null;
+  } catch {
+    basis = null;
+  }
+  return {
+    name: "Schwert des Hauptmanns", type: "weapon",
+    img: basis?.img ?? `${ASSETS}/icons/waffen/eisenschwert.webp`,
+    system: { ...(basis?.system ?? { damage: "2d6", weaponClass: "melee", range: 1, slot: "Schwert", damageCategory: "physical" }),
+      rank: "C", priceSk: 500, price: "5 GK", quantity: 1, equipped: false, source: "Quest Lindhain",
+      description: "Hauptmann Rells Dienstschwert mit dem Löwenknauf der Gildenwache. Genauigkeit +1.", effect: "Genauigkeit +1", bonuses: { acc: 1 } }
+  };
+}
+
+const FINN = {
+  name: "Finn", bild: "finn", role: "Tomas kleiner Bruder",
+  facts: [["Tomas kleiner Bruder, acht Jahre alt.", true], ["Seit drei Tagen verschwunden.", true]]
+};
+
+const PLAKAT = `${ASSETS}/lindhain/quests/vermisst-finn.webp`;
+
+// Vermisst-Plakat: Journal mit Bild (alle dürfen es sehen) und ein Aushang neben dem Dorfplatz in Lindhain
+async function plakatAushaengen() {
+  if (!game.journal.getName("Vermisst: Finn")) {
+    await JournalEntry.create({
+      name: "Vermisst: Finn",
+      ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER },
+      pages: [{ name: "Vermisst: Finn", type: "image", src: PLAKAT, image: { caption: "Hängt an der Linde auf dem Dorfplatz." } }]
+    });
+  }
+  const dorf = game.scenes.getName("Lindhain");
+  if (!dorf || dorf.tiles.some((t) => t.texture?.src === PLAKAT)) return;
+  const level = dorf.initialLevel?.id ?? dorf.firstLevel?.id;
+  await dorf.createEmbeddedDocuments("Tile", [{ texture: { src: PLAKAT }, x: 1480, y: 2010, width: 74, height: 96, rotation: -4, levels: level ? [level] : undefined }]);
+}
+
+export async function erstelleQuestOrte({ neu = false } = {}) {
+  if (!game.user?.isGM) return [];
+  const ordner = await getOrCreateFolder("Wege um Lindhain", "Scene");
+  const nscOrdner = await getOrCreateFolder("Lindhain", "Actor");
+  const angelegt = [];
+  for (const ort of QUEST_ORTE) {
+    if (neu) await game.scenes.getName(ort.name)?.delete();
+    if (game.scenes.getName(ort.name)) continue;
+    const scene = await Scene.create({
+      name: ort.name,
+      folder: ordner.id,
+      navigation: ort.navigation,
+      width: SIZE,
+      height: SIZE,
+      padding: 0,
+      grid: { type: CONST.GRID_TYPES.SQUARE, size: GRID, distance: 1.5, units: "m" },
+      tokenVision: false,
+      levels: [{ name: "Ort", background: { src: `${ASSETS}/lindhain/quests/karte-${ort.id}.webp` }, textures: { fit: "fill" } }],
+      flags: { [SYSTEM_ID]: { questOrt: ort.id } }
+    });
+    const level = scene.initialLevel?.id ?? scene.firstLevel?.id;
+    if (ort.waende) {
+      await scene.createEmbeddedDocuments("Wall", ort.waende.map(([x1, y1, x2, y2, tuer]) => ({
+        c: [x1, y1, x2, y2], door: tuer ? CONST.WALL_DOOR_TYPES.DOOR : CONST.WALL_DOOR_TYPES.NONE, ds: CONST.WALL_DOOR_STATES.CLOSED, levels: [level]
+      })));
+    }
+    const tokens = [];
+    for (const figur of ort.figuren ?? []) {
+      let actor = null;
+      if (figur.nsc === "Finn") {
+        actor = await nscAnlegen(FINN, nscOrdner);
+        if (!actor.items.some((i) => i.name === "Schwert des Hauptmanns")) await actor.createEmbeddedDocuments("Item", [await schwertDesHauptmanns()]);
+      } else {
+        actor = await gegnerActor(figur.monster);
+      }
+      if (!actor) continue;
+      const breite = actor.prototypeToken.width ?? 1;
+      const daten = (await actor.getTokenDocument({ x: figur.x - (breite * GRID) / 2, y: figur.y - (breite * GRID) / 2, hidden: true, level })).toObject();
+      if (figur.tarnung) {
+        daten.name = figur.tarnung.name;
+        daten.texture = { ...daten.texture, src: figur.tarnung.bild };
+        daten.disposition = CONST.TOKEN_DISPOSITIONS.NEUTRAL;
+        foundry.utils.setProperty(daten, `flags.${SYSTEM_ID}.tarnung`, { name: daten.name, echt: actor.prototypeToken.name, bild: actor.prototypeToken.texture.src });
+      }
+      tokens.push(daten);
+    }
+    if (tokens.length) await scene.createEmbeddedDocuments("Token", tokens);
+    angelegt.push(scene);
+  }
+  // GM-Notizen ins Journal „Wege um Lindhain“ (fehlende Seiten ergänzen)
+  const journal = game.journal.getName("Wege um Lindhain") ?? await JournalEntry.create({ name: "Wege um Lindhain" });
+  const seiten = QUEST_ORTE.filter((ort) => !journal.pages.getName(ort.name)).map((ort) => ({ name: ort.name, type: "text", text: { content: `<p>${ort.text}</p>` } }));
+  if (seiten.length) await journal.createEmbeddedDocuments("JournalEntryPage", seiten);
+  await plakatAushaengen();
   return angelegt;
+}
+
+// GM: Tarnung der ausgewählten Figuren aufheben (z. B. die Kopierkatze als „verletztes Kleinhorn“)
+export async function tarnungAufheben(tokens = canvas.tokens?.controlled ?? []) {
+  if (!game.user?.isGM) return;
+  const getarnt = tokens.map((t) => t.document ?? t).filter((t) => t.getFlag(SYSTEM_ID, "tarnung"));
+  if (!getarnt.length) return ui.notifications?.warn("Wähle eine getarnte Figur aus.");
+  for (const token of getarnt) {
+    const t = token.getFlag(SYSTEM_ID, "tarnung");
+    // Neue Figur statt Bildwechsel: Foundry zeigt einen geänderten Token-Bildpfad nicht in jedem Browser sofort an.
+    const daten = token.toObject();
+    delete daten._id;
+    daten.name = t.echt;
+    daten.texture = { ...daten.texture, src: t.bild };
+    daten.disposition = CONST.TOKEN_DISPOSITIONS.HOSTILE;
+    daten.hidden = false;
+    delete daten.flags?.[SYSTEM_ID]?.tarnung;
+    const [neu] = await token.parent.createEmbeddedDocuments("Token", [daten]);
+    const combatant = game.combats.contents.flatMap((c) => c.combatants.contents).find((c) => c.tokenId === token.id);
+    if (combatant && neu) await combatant.update({ tokenId: neu.id, name: t.echt, img: t.bild });
+    await token.delete();
+    await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${t.name}?</h2><p>Die Gestalt verzerrt sich. Es ist eine <b>${t.echt}</b>!</p></div>` });
+  }
 }

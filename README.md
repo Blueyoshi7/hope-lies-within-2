@@ -107,6 +107,20 @@ game.hlw.erstelleWege({ neu: true })  // neu aufbauen
 
 Legt im Szenenordner „Wege um Lindhain“ vier Karten an (je 64 × 64 Felder, 1 Feld = 1,5 m): Nordweg in den Wald der Zauberer, Straße nach Illmaris (Süden), Ostweg über die Brücke und Westweg am Waldrand. Eine Kurzbeschreibung steht im Journal „Wege um Lindhain“ (nur für den GM).
 
+Dazu kommen vier Quest-Orte hinter den Wegen (auch einzeln: `game.hlw.erstelleQuestOrte()`). Alle Gegner und Figuren liegen verborgen auf der Karte, der GM deckt sie auf:
+- **Lichtung im Norden:** der Dornenschrat (Rang C, Regeneration, Wurzelgriff), schwerster Kampf des Kapitels. Ein versteckter Wildwechsel (Scharfsinnigkeit 20) führt zur
+- **Alten Hütte** (nicht in der Szenenleiste): Finn, Tomas kleiner Bruder, mit dem Schwert des Hauptmanns (Eisenschwert, Genauigkeit +1).
+- **Weide im Osten:** der Korrumpierte Hirte (Rang D, Corrupted Stufe 1) auf verdorbenem Boden.
+- **Senke im Westen:** zwischen toten Tieren ein „verletztes Kleinhorn“, in Wahrheit eine Kopierkatze. Aufdecken: Figur auswählen, dann `game.hlw.tarnungAufheben()`.
+
+Quests: Toma „Wo ist Finn?“ (Belohnung: das Schwert, „aber sagt das nicht dem Hauptmann“) und Hauptmann Rell „Mein Schwert“ (2 × EXP-Kristall C und 30 SK). Bestehende Welten bekommen beide beim ersten GM-Start verborgen nachgetragen. Das Vermisst-Plakat hängt als Kachel neben der Linde in Lindhain und steht im Journal „Vermisst: Finn“.
+
+**Kapitel 1 (Lindhain):** 19 Quests bei 11 NSC, alle verborgen hinterlegt. Kessa Dorn ist wegen der Saatwende da und sucht junge Leute mit der Fähigkeit für die Gildenschulen in Illmaris. Ihre Hauptquest „Ein Platz in Illmaris“ endet mit der Abreise nach einer Woche (nächstes Kapitel), drei Lektionen erklären Kampf (gegen die Strohpuppen hinter dem Schrein, keine EXP), EXP-Kristalle und Skill-Orbs. Neu sind die Wachen Ivo Brandt und Lene Asch am Südtor und Bauer Gerold Wiese am Kornfeld. Die GM-Übersicht mit Ort, Ablauf, Proben und Lerninhalt jeder Quest steht im Journal „Kapitel 1 – Quests (GM)“ (`game.hlw.kapitel1Journal({ neu: true })` baut es neu). Bestehende Welten bekommen beim ersten GM-Start alles nachgetragen (`game.hlw.lindhainErgaenzen()`); unveränderte alte Quest-Texte werden ersetzt, eigene Änderungen bleiben.
+
+## Questlog
+
+Die Schriftrolle in der linken Werkzeugleiste (Figuren) öffnet das Questlog, ebenso `game.hlw.questlog()`. Spieler sehen alle angenommenen und erledigten Quests der Gruppe mit Auftraggeber, Text und Belohnung. Der GM sieht zusätzlich alle anderen Quests und stellt den Stand direkt im Questlog um (z. B. auf „Erledigt“). Angeboten und angenommen werden Quests weiter im Gespräch mit dem NSC.
+
 
 **Häuser und Türen (jede Szene):** Dächer (Kacheln mit Ausblenden) gehen für einen Spieler nur auf, wenn seine eigene Figur darunter steht, nicht beim Darüberfahren mit der Maus und nicht wegen NSC im Haus; Figuren unter einem geschlossenen Dach verraten sich auch nicht beim Darüberfahren. Der GM sieht immer hinein (Dächer halbdurchsichtig). Türen: Spieler klicken auf das Türsymbol, darüber erscheint „Geöffnet“, „Geschlossen“ oder „Verschlossen“. Der GM sperrt eine Tür mit Rechtsklick auf das Türsymbol ab oder auf („Abgesperrt“ / „Aufgesperrt“); abgesperrte Türen können Spieler nicht öffnen.
 ## Dashboard und Login-Hintergrund

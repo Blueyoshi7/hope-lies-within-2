@@ -13,7 +13,7 @@ const SYSTEM_ID = "hope-lies-within-2";
 const SOCKET = `system.${SYSTEM_ID}`;
 const VERLAUF_MAX = 40;
 const QUEST_RAENGE = ["F", "E", "D", "C", "B", "A", "S", "SS"];
-const QUEST_STATUS = { verborgen: "Verborgen", angeboten: "Angeboten", angenommen: "Angenommen", erledigt: "Erledigt" };
+export const QUEST_STATUS = { verborgen: "Verborgen", angeboten: "Angeboten", angenommen: "Angenommen", erledigt: "Erledigt" };
 const REITER = { gespraech: "Gespräch", handel: "Handel", quests: "Quests", wissen: "Wissen" };
 const BAUSTEIN_ARTEN = { gruss: "Begrüßung", abschied: "Abschied", handel: "Handel", sonst: "Sonstiges" };
 // Gilt für jeden NSC, bis der GM eigene Bausteine anlegt.
@@ -74,7 +74,7 @@ function getOwnName(actorId) {
 }
 
 // Wie der NSC für diesen Benutzer heißt: echter Name erst nach Freigabe, sonst der selbst eingetragene oder „???“.
-function anzeigeName(actor) {
+export function anzeigeName(actor) {
   if (game.user?.isGM || getTalkData(actor).nameRevealed) return actor.name;
   return getOwnName(actor.id) || "???";
 }
@@ -100,7 +100,7 @@ export function zeileHinzufuegen(actor, zeile) {
   return talkAendern(actor, (talk) => ({ verlauf: [...talk.verlauf, { id: foundry.utils.randomID(), ...zeile }].slice(-VERLAUF_MAX) }));
 }
 
-function questAendern(actor, questId, changes) {
+export function questAendern(actor, questId, changes) {
   return talkAendern(actor, (talk) => ({ quests: talk.quests.map((q) => (q.id === questId ? { ...q, ...changes } : q)) }));
 }
 

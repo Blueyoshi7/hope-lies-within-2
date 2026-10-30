@@ -1,6 +1,7 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
-import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
-import { erstelleLindhain, erstelleWege, entferneOrtsmarker } from "./hlw-szenen.js";
+import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
+import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
+import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
@@ -569,6 +570,7 @@ async function hpSetzen(targetToken, nextHp, { besiegt = false, toeterId = null 
 const EXP_RANG = { E: 2, D: 4, C: 8, B: 14, A: 24, S: 40, SS: 64 };
 const EXP_ROLLE = { Diener: 0.25, Normal: 1, Elite: 3, Boss: 8 };
 function monsterExp(actor) {
+  if (actor?.getFlag("hope-lies-within-2", "uebung")) return 0;  // Übungsziele (Kessas Strohpuppen)
   const m = actor?.system?.monster ?? {};
   const zahl = Number(m.exp);
   if (Number.isFinite(zahl) && zahl > 0) return Math.round(zahl);
@@ -2752,6 +2754,7 @@ Hooks.once("init", () => {
 
   CONFIG.HLW = HLW;
   registerTalkSettings();
+  registerQuestlog();
   // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
@@ -2763,6 +2766,8 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainBausteine", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainHandel", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "kristallHandel", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "lindhainQuestsNord", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "lindhainKapitel1", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2819,6 +2824,11 @@ Hooks.once("ready", async () => {
     aktualisiereBestiarium,
     erstelleLindhain,
     erstelleWege,
+    erstelleQuestOrte,
+    tarnungAufheben,
+    lindhainErgaenzen,
+    kapitel1Journal,
+    questlog: () => HopeLiesWithinQuestlog.oeffnen(),
     entferneOrtsmarker,
     erstelleDashboard,
     dashboardAktualisieren,
@@ -2910,6 +2920,18 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "kristallHandel")) {
     await lindhainHandel();
     await game.settings.set("hope-lies-within-2", "kristallHandel", true);
+  }
+  // Quests im Norden (2026-10-30): Toma „Wo ist Finn?“ und Rell „Mein Schwert“ in bestehende Welten eintragen (verborgen)
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainQuestsNord")) {
+    await lindhainQuestsNachtragen();
+    await game.settings.set("hope-lies-within-2", "lindhainQuestsNord", true);
+  }
+  // Kapitel 1 (2026-10-30): alle Lindhain-Quests, Kessas neuer Grund, Wachen am Südtor, Bauer Gerold, Strohpuppen, GM-Übersicht
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "lindhainKapitel1")) {
+    await lindhainErgaenzen();
+    await lindhainQuestsNachtragen();
+    await kapitel1Journal();
+    await game.settings.set("hope-lies-within-2", "lindhainKapitel1", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {

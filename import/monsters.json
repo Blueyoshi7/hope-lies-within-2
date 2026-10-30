@@ -4555,6 +4555,130 @@
   ]
  },
  {
+  "name": "Dornenschrat",
+  "type": "monster",
+  "img": "systems/hope-lies-within-2/assets/monster/dornenschrat.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/dornenschrat-token.webp",
+  "folder": "HLW Bestiarium/Rang C",
+  "system": {
+   "monster": {
+    "rank": "C",
+    "role": "Normal",
+    "size": "Groß",
+    "category": "Geist",
+    "corrupted": 0,
+    "hp": 48,
+    "rw": 10,
+    "mr": 11,
+    "acc": 2,
+    "damage": "2W8+4",
+    "initiative": 3,
+    "movement": 4,
+    "reach": 2,
+    "probe": 25,
+    "exp": 8,
+    "traits": "Regeneration",
+    "habitat": "Wald der Zauberer, alte Wälder",
+    "special": "Hüter alter Lichtungen aus Rinde und Dornen. Feuer und Licht stoppen seine Heilung, Feuer macht × 1,5 Schaden.",
+    "harmless": false,
+    "behavior": "territorial",
+    "tameable": false,
+    "tamers": ""
+   },
+   "resources": {
+    "hp": {
+     "value": 48,
+     "max": 48
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Dornenklaue",
+    "type": "weapon",
+    "img": "systems/hope-lies-within-2/assets/monster/dornenschrat.webp",
+    "system": {
+     "damage": "2d8+4",
+     "range": 2,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1,
+     "rank": "C"
+    }
+   },
+   {
+    "name": "Regeneration",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/regeneration.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde.",
+     "description": "Passiv: Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das für eine Runde."
+    }
+   },
+   {
+    "name": "Wurzelgriff",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/netzfalle.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "1d8+2",
+     "damageText": "1W8+2",
+     "range": 3,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Ein Ziel in 3 Feldern: Athletik 25 oder bewegungsunfähig, bis es sich befreit (Aktion, Athletik 25).",
+     "description": "Aktion: Ein Ziel in 3 Feldern: Athletik 25 oder bewegungsunfähig, bis es sich befreit (Aktion, Athletik 25)."
+    }
+   },
+   {
+    "name": "Dornenhaut",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/monster/dornenschrat.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "C",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Wer ihn im Nahkampf trifft, nimmt 1W4 Schaden.",
+     "description": "Passiv: Wer ihn im Nahkampf trifft, nimmt 1W4 Schaden."
+    }
+   }
+  ]
+ },
+ {
   "name": "Madenschlund",
   "type": "monster",
   "img": "systems/hope-lies-within-2/assets/monster/madenschlund.webp",
@@ -6502,6 +6626,107 @@
      "cooldownText": "",
      "effect": "Ein zusätzlicher Angriff mit halbem Schaden.",
      "description": "Schnellaktion: Ein zusätzlicher Angriff mit halbem Schaden."
+    }
+   }
+  ]
+ },
+ {
+  "name": "Korrumpierter Hirte",
+  "type": "monster",
+  "img": "systems/hope-lies-within-2/assets/monster/korrumpierter-hirte.webp",
+  "token": "systems/hope-lies-within-2/assets/monster/korrumpierter-hirte-token.webp",
+  "folder": "HLW Bestiarium/Rang D",
+  "system": {
+   "monster": {
+    "rank": "D",
+    "role": "Normal",
+    "size": "Mittel",
+    "category": "Corrupted",
+    "corrupted": 1,
+    "hp": 32,
+    "rw": 10,
+    "mr": 10,
+    "acc": 2,
+    "damage": "2W6+2",
+    "initiative": 2,
+    "movement": 4,
+    "reach": 1,
+    "probe": 20,
+    "exp": 4,
+    "traits": "–",
+    "habitat": "Weiden östlich von Lindhain",
+    "special": "Ein Mensch, den die Korruption gerade erst gepackt hat. Murmelt die Namen seiner Schafe. Auf verdorbenem Boden heilt er am Zugbeginn 1W6.",
+    "harmless": false,
+    "behavior": "aggressiv",
+    "tameable": false,
+    "tamers": ""
+   },
+   "resources": {
+    "hp": {
+     "value": 32,
+     "max": 32
+    }
+   }
+  },
+  "items": [
+   {
+    "name": "Hirtenstab",
+    "type": "weapon",
+    "img": "systems/hope-lies-within-2/assets/monster/korrumpierter-hirte.webp",
+    "system": {
+     "damage": "2d6+2",
+     "range": 1,
+     "equipped": true,
+     "weaponClass": "monster",
+     "damageCategory": "physical",
+     "quantity": 1,
+     "rank": "D"
+    }
+   },
+   {
+    "name": "Verdorbener Boden",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/skills/kleine-heilung.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "passive",
+     "castTime": "action",
+     "damage": "",
+     "damageText": "",
+     "range": "",
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 0
+     },
+     "cooldownText": "",
+     "effect": "Steht er auf verdorbenem Boden, heilt er am Zugbeginn 1W6.",
+     "description": "Passiv: Steht er auf verdorbenem Boden, heilt er am Zugbeginn 1W6."
+    }
+   },
+   {
+    "name": "Abyss-Hauch",
+    "type": "playerSkill",
+    "img": "systems/hope-lies-within-2/assets/icons/klassen/verzaubert.webp",
+    "system": {
+     "skillType": "Monster",
+     "source": "Bestiarium",
+     "rank": "D",
+     "activation": "active",
+     "castTime": "action",
+     "damage": "1d6+1",
+     "damageText": "1W6+1",
+     "range": 2,
+     "damageCategory": "physical",
+     "cooldown": {
+      "value": 0,
+      "max": 3
+     },
+     "cooldownText": "3 Runden",
+     "effect": "Kegel 2 Felder: Willenskraft 20 oder +1 Korruption und verängstigt bis zum nächsten Zug.",
+     "description": "Aktion: Kegel 2 Felder: Willenskraft 20 oder +1 Korruption und verängstigt bis zum nächsten Zug."
     }
    }
   ]
