@@ -11,7 +11,7 @@ Rolle;HP;Schaden;Werte;Aktionen;EXP;Token
 Diener;× 0,4;× 0,6;wie Rang;1 Aktion;× 0,25;Schwärme, Larven, Beschworene
 Normal;× 1;× 1;wie Rang;1 Aktion;× 1;Token „Common“
 Elite;× 3;× 1,25;ACC +1, RW +1;1 Aktion + 1 Angriff als Schnellaktion;× 3;Token „Epic“
-Boss;"× 8 (für 4 Spieler; ± 2 pro Spieler mehr oder weniger); Größe und Corrupted-Stufe ändern Boss-HP nicht";× 1,5;ACC +2, RW +2, MR +2;"2 Aktionen + 1 Reaktion; ab 50 % HP Phase 2";Boss-Regel: doppelte Quest-EXP;Token „Legendary“
+Boss;"× 8 (für 4 Spieler; ± 2 pro Spieler mehr oder weniger); Größe und Corrupted-Stufe ändern Boss-HP nicht";× 1,5;ACC +2, RW +2, MR +2;"2 Aktionen + 1 Reaktion; ab 50 % HP Phase 2";× 8 beim Sieg (dazu doppelte Quest-EXP am Dungeon-Ende);Token „Legendary“
 
 Größe;Bewegung;Reichweite;Änderung
 Winzig;5;1;RW +2, HP × 0,5
@@ -31,7 +31,7 @@ Regeneration;"Heilt am Zugbeginn 10 % seiner HP; Feuer oder Licht stoppt das fü
 Element (Feuer/Eis/Blitz/Erde/Wasser);"Schaden des Elements; immun dagegen; nimmt × 1,5 vom Gegenelement (Feuer↔Eis, Blitz↔Erde, Wasser↔Feuer)."
 Schleim;Waffen, die ihn treffen, kleben: −1 Schaden bis gereinigt. Teilt sich bei Feuer- oder Blitzschaden in 2 Diener.
 Explodiert;Beim Tod 1W6 pro Rang (E=1 … SS=7) an allen in 1 Feld Umkreis.
-Harmlos;Greift nicht an, flieht. Zählt für Tierkunde, Jagd und Beute.
+Harmlos;Greift nicht an, flieht. Zählt für Tierkunde, Jagd und Beute. EXP × 0,2 (Jagd).
 Beschwörer;Ruft als Aktion 1W4 Diener seines Rangs (einmal pro Kampf, Boss zweimal).
 Schatten;"In Dunkelheit unsichtbar/getarnt; im Licht −2 ACC."
 Abyss-Aura;"Alle Würfe im Umkreis von 2 Feldern −1; zählt als Abyss-Nebel."

@@ -63,6 +63,8 @@ Alle Preise sind in Kes (`priceSk` in Silber-Kes), Ränge E bis SS. Rüstungs-HP
 
 ## Monster, Zähmen und Gefährten
 
+- **Besiegt und EXP:** Fällt ein Monster auf 0 HP, bekommt sein Token den Totenkopf und gilt im Kampf als besiegt (mit „Besiegte Kampfteilnehmer überspringen“ in den Einstellungen des Kampftrackers wird sein Zug übersprungen). Wer es mit einem Angriff oder Skill besiegt, bekommt automatisch seine EXP (steht im Monsterbogen; Gefährten zählen für ihren Besitzer). In den Spieleinstellungen umstellbar: EXP an alle Spielercharaktere im Kampf. Der GM kann im Token-HUD eines Monsters mit dem Totenkopf-Knopf ein Monster von Hand als tot markieren (und wählen, wer die EXP bekommt) oder wiederbeleben. EXP gibt es pro Monster nur einmal; 0 HP von Hand eintragen markiert nur als tot. Reicht es für ein Level-Up, sagt das die Chatkarte (Level-Up bei der Gilde).
+
 - **Monster:** Alle 74 Monster aus dem Bestiarium haben eigene Bilder und runde Tokens (Rahmen: Holz normal, Silber Elite, Gold Boss), ihren Angriff und 1–6 Monster-Skills (aus Merkmalen, Rolle und Besonderheit). Im Bogen stehen **Verhalten** (friedlich, scheu, territorial, aggressiv) und ob das Monster **zähmbar** ist. Vorhandene Welten werden beim ersten GM-Start einmalig nachgezogen (`game.hlw.aktualisiereBestiarium()`).
 - **Zähmen:** nur Tier-Klassen (Tierbändiger bis Rang D, Tiermeister bis C, Bestienmeister und Bestienkönig bis B) über ihren Klassen-Skill **Zähmen**: Monster als Ziel markieren, Skill einsetzen. 1W20 + Tierkunde + Klassenbonus gegen den Probenwert. Bei Erfolg wird das Monster zum Gefährten des Charakters (eigene Figur, gehört dem Spieler).
 - **Gefährte:** belegt die Nebenhand (keine zweite Waffe, kein Schild). Rufen kostet die Schnellaktion; er bleibt so viele Runden wie die Klasse erlaubt (2/3/4), danach 2 Runden Pause. Er handelt im Zug seines Besitzers: Figur auswählen, die Kampfleiste zeigt seine Angriffe und Skills. Bei 0 HP kehrt er verletzt zurück (lange Rast nötig). Der GM kann im Menü des Nebenhand-Platzes „Lange Rast“ und „Freilassen“ wählen.
@@ -93,6 +95,22 @@ game.hlw.erstelleLindhain({ neu: true })  // Szene und Ortsliste neu aufbauen, N
 ```
 
 Legt die Szene „Lindhain“ an: 64 × 64 Felder (1 Feld = 1,5 m), 10 Gebäude mit Innenräumen, Wänden und Türen, Dächer, die ausblenden, sobald eine eigene Figur das Haus betritt, 8 Dorf-NSC mit Porträts, Gesprächsdaten, Level, Waffen, Waren und Quests (Hanne: Essen, Jorun: Waffen und Rüstung, Oma Wendel: Heilmittel) sowie die Ortsliste „Lindhain – Orte“ im Journal (ohne Marker auf der Karte; alte Buch-Marker entfernt das System beim ersten GM-Start, sonst `game.hlw.entferneOrtsmarker()`). Verdecktes GM-Wissen trägt der GM im Gesprächsfenster selbst ein. Wurde Lindhain mit einer älteren Version angelegt, bekommen die NSC Werte, Waren und Quests beim ersten GM-Start automatisch (sonst `game.hlw.lindhainAusstatten()`).
+
+
+**Häuser und Türen (jede Szene):** Dächer (Kacheln mit Ausblenden) gehen für einen Spieler nur auf, wenn seine eigene Figur darunter steht, nicht beim Darüberfahren mit der Maus und nicht wegen NSC im Haus; Figuren unter einem geschlossenen Dach verraten sich auch nicht beim Darüberfahren. Der GM sieht immer hinein (Dächer halbdurchsichtig). Türen: Spieler klicken auf das Türsymbol, darüber erscheint „Geöffnet“, „Geschlossen“ oder „Verschlossen“. Der GM sperrt eine Tür mit Rechtsklick auf das Türsymbol ab oder auf („Abgesperrt“ / „Aufgesperrt“); abgesperrte Türen können Spieler nicht öffnen.
+## Dashboard und Login-Hintergrund
+
+Als GM in der Konsole oder per Makro:
+
+```js
+game.hlw.erstelleDashboard()              // Szene „Dashboard“ und Journal „Willkommen in Gaia“ anlegen
+game.hlw.erstelleDashboard({ neu: true })  // beides neu aufbauen
+game.hlw.dashboardAktualisieren()          // Steckbriefe von Hand neu zeichnen
+```
+
+- **Szene „Dashboard“** (in der Navigation „Willkommen“, 3840 × 2160, ohne Raster): Titel wie auf der Website, links die **Weltkarte** (Spieleransicht des Atlas von Gaia, als Kachel austauschbar), rechts **Die Gruppe** mit einem Steckbrief pro Spielercharakter (Bild, Name, Level, Klasse, Herkunft, Alter, Spieler) und unten **Erste Schritte**. Die Steckbriefe ziehen sich selbst nach, sobald sich Name, Bild, Level, Klasse, Herkunft oder Besitzer eines Charakters ändern; Gefährten zählen nicht.
+- **Journal „Willkommen in Gaia“** (für alle lesbar): Willkommen, Dein Charakter, Proben, Kampf, Foundry, Am Tisch und die Weltkarte zum Zoomen. Ein Doppelklick auf die Symbole im Dashboard öffnet die Seiten. Nur Spielerwissen.
+- **Login-Hintergrund:** In Foundrys Setup bei der Welt auf **Welt bearbeiten** → **Hintergrundbild** `systems/hope-lies-within-2/assets/dashboard/login-hintergrund.webp` eintragen und als **Thema der Beitrittsseite** „Minimal“ wählen. Dunkles Violett mit dem Logo in Weiß groß hinter dem Anmeldefenster, darunter „Hope lies within“; beim Thema „Standard“ verdecken die breiten Felder das Logo. Foundry zeigt das Bild immer mit halber Helligkeit, die Farben im Bild sind deshalb heller angelegt. `titel.webp` ist dieselbe Fläche mittig gesetzt (z. B. als Szenenhintergrund).
 
 ## Struktur
 

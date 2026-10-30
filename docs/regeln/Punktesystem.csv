@@ -22,7 +22,7 @@ D: Kinder ruinierter Familien / Flüchtlinge;+1 SPE – Wer flieht, lernt zu ren
 
 EXP-Quelle;EXP;Hinweis
 Quest abgeschlossen;Rang F 60 · E 90 · D 150 · C 240 · B 360 · A 540 · S 800 · SS 1.200;Pro Spieler, nach Gildenrang der Quest.
-Gegner besiegt;Rang E 5 · D 10 · C 20 · B 35 · A 60 · S 100 · SS 160;Pro Gegner und Spieler, nach Rang des Gegners. Flucht des Gegners zählt halb.
+Gegner besiegt;"Rang E 5 · D 10 · C 20 · B 35 · A 60 · S 100 · SS 160 (Diener × 0,25 · Elite × 3 · Boss × 8 · harmlose Tiere × 0,2; Corrupted ab Stufe 2 zählt höher)";"Bekommt, wer den Gegner besiegt (in Foundry umstellbar: alle Spieler im Kampf). Steht auf jedem Monster im Bestiarium; Foundry verteilt es beim Sieg automatisch. Flucht des Gegners zählt halb."
 Boss / Dungeon-Ende;Doppelte Quest-EXP des Dungeon-Rangs;Einmalig pro Dungeon.
 Entdeckung;20 – 100;Neuer Ort, Dungeon-Ebene, Geheimnis, Ahnenrune, Wahrheit über die Welt.
 Große Tat / starkes Rollenspiel;25 – 100;GM-Entscheidung. Auch der Weg zu einer Insignie.

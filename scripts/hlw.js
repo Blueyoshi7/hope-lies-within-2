@@ -1,6 +1,7 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
 import { erstelleLindhain, entferneOrtsmarker } from "./hlw-szenen.js";
+import { erstelleDashboard, dashboardAktualisieren, registerDashboard } from "./hlw-dashboard.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
@@ -521,23 +522,100 @@ async function tokenBildSetzen(actor, pfad) {
 }
 
 // HP eines Ziels setzen. Gehört das Ziel nicht dem Spieler (Monster, NSC, andere Spieler), bucht es der aktive GM per Socket.
-async function hpSetzen(targetToken, nextHp, { besiegt = false } = {}) {
+// toeterId: wer den Treffer gesetzt hat (für die EXP, wenn das Ziel dabei fällt)
+async function hpSetzen(targetToken, nextHp, { besiegt = false, toeterId = null } = {}) {
   const target = targetToken?.actor;
   if (!target) return;
-  if (target.isOwner && (!besiegt || game.user?.isGM)) {
+  if (game.user?.isGM) {
     await target.update({ "system.resources.hp.value": nextHp });
-    if (besiegt) await kampfteilnehmerBesiegt(targetToken);
+    if (besiegt) await besiegtAbwickeln(targetToken.document ?? targetToken, toeterId);
     return;
   }
+  if (target.isOwner && !besiegt) return target.update({ "system.resources.hp.value": nextHp });
   if (!game.users?.activeGM) return ui.notifications?.warn("Kein GM online: Der Schaden muss von Hand eingetragen werden.");
-  game.socket.emit("system.hope-lies-within-2", { type: "hpSetzen", sceneId: targetToken.document?.parent?.id ?? canvas.scene?.id, tokenId: targetToken.document?.id ?? targetToken.id, hp: nextHp, besiegt, userId: game.user.id });
+  game.socket.emit("system.hope-lies-within-2", { type: "hpSetzen", sceneId: targetToken.document?.parent?.id ?? canvas.scene?.id, tokenId: targetToken.document?.id ?? targetToken.id, hp: nextHp, besiegt, toeterId, userId: game.user.id });
 }
 
-async function kampfteilnehmerBesiegt(targetToken) {
-  const target = targetToken?.actor;
-  if (target?.type !== "monster") return;
-  const combatant = game.combat?.combatants.find((entry) => entry.tokenId === (targetToken.document?.id ?? targetToken.id) || entry.actor?.id === target.id);
+// EXP eines Monsters (Bestiarium); alte Einträge ohne Zahl nach Rang und Rolle
+const EXP_RANG = { E: 5, D: 10, C: 20, B: 35, A: 60, S: 100, SS: 160 };
+const EXP_ROLLE = { Diener: 0.25, Normal: 1, Elite: 3, Boss: 8 };
+function monsterExp(actor) {
+  const m = actor?.system?.monster ?? {};
+  const zahl = Number(m.exp);
+  if (Number.isFinite(zahl) && zahl > 0) return Math.round(zahl);
+  const basis = EXP_RANG[String(m.rank ?? "").toUpperCase()] ?? 5;
+  const faktor = m.harmless ? 0.2 : EXP_ROLLE[m.role] ?? 1;
+  return Math.max(1, Math.round(basis * faktor));
+}
+
+// Wer bekommt die EXP? Einstellung: der, der besiegt (Gefährten zählen für ihren Besitzer), oder alle Spielercharaktere im Kampf.
+function expEmpfaenger(toeter) {
+  if (game.settings.get("hope-lies-within-2", "expVerteilung") === "alle") {
+    const imKampf = (game.combat?.combatants ?? []).map((c) => c.actor).filter(Boolean).map((a) => (a.isToken ? game.actors.get(a.id) : a));
+    const liste = imKampf.filter((a) => a?.type === "character");
+    if (liste.length) return [...new Map(liste.map((a) => [a.id, a])).values()];
+  }
+  const basisActor = toeter?.isToken ? game.actors.get(toeter.id) : toeter;
+  const spieler = basisActor?.type === "character" ? basisActor : besitzerVon(basisActor);
+  return spieler ? [spieler] : [];
+}
+
+// Beim GM: Monster als tot markieren (Totenkopf am Token, besiegt im Kampf) und EXP vergeben (einmal pro Monster).
+async function totMarkieren(tokenDoc) {
+  const actor = tokenDoc?.actor;
+  if (!actor || actor.type !== "monster") return;
+  const tot = CONFIG.specialStatusEffects?.DEFEATED ?? "dead";
+  if (!actor.statuses?.has(tot)) await actor.toggleStatusEffect(tot, { active: true, overlay: true });
+  const combatant = game.combat?.combatants.find((c) => c.tokenId === tokenDoc.id);
   if (combatant && !combatant.defeated) await combatant.update({ defeated: true });
+}
+
+async function besiegtAbwickeln(tokenDoc, toeterId = null, { empfaenger = null } = {}) {
+  const actor = tokenDoc?.actor;
+  if (!actor || actor.type !== "monster") return;
+  await totMarkieren(tokenDoc);
+  if (actor.getFlag("hope-lies-within-2", "expVergeben")) return;
+  const exp = monsterExp(actor);
+  const liste = empfaenger ?? expEmpfaenger(game.actors.get(toeterId) ?? canvas.tokens?.get(toeterId)?.actor ?? null);
+  await actor.setFlag("hope-lies-within-2", "expVergeben", true);
+  if (!liste.length || !exp) return;
+  const zeilen = [];
+  for (const spieler of liste) {
+    const neu = numberValue(spieler.system?.progression?.exp) + exp;
+    await spieler.update({ "system.progression.exp": neu });
+    const naechstes = numberValue(spieler.system?.derived?.expNext);
+    zeilen.push(`<strong>${escapeHtml(spieler.name)}</strong> erhält ${exp} EXP${naechstes && neu >= naechstes ? ` und hat genug für Level ${numberValue(spieler.system?.progression?.level) + 1} (Level-Up bei der Gilde)` : ""}.`);
+  }
+  await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${escapeHtml(tokenDoc.name ?? actor.name)} ist besiegt</h2><p>${zeilen.join("<br>")}</p></div>` });
+}
+
+// GM: Monster von Hand als tot markieren (mit Wahl, wer die EXP bekommt) oder wiederbeleben
+async function monsterTotMarkieren(tokenDoc) {
+  const actor = tokenDoc?.actor;
+  if (!actor) return;
+  const tot = CONFIG.specialStatusEffects?.DEFEATED ?? "dead";
+  if (actor.statuses?.has(tot)) {
+    await actor.toggleStatusEffect(tot, { active: false });
+    await actor.update({ "system.resources.hp.value": numberValue(actor.system?.resources?.hp?.max) || 1 });
+    const combatant = game.combat?.combatants.find((c) => c.tokenId === tokenDoc.id);
+    if (combatant?.defeated) await combatant.update({ defeated: false });
+    return ui.notifications?.info(`${tokenDoc.name} lebt wieder.`);
+  }
+  const spieler = [...new Map(canvas.scene.tokens.map((t) => t.actor).filter((a) => a?.type === "character").map((a) => [a.id, a])).values()];
+  const vergeben = actor.getFlag("hope-lies-within-2", "expVergeben");
+  const optionen = [`<option value="">Niemand</option>`, ...spieler.map((s) => `<option value="${s.id}">${escapeHtml(s.name)}</option>`), spieler.length > 1 ? `<option value="alle">Alle Spieler auf der Karte</option>` : ""].join("");
+  const wahl = await foundry.applications.api.DialogV2.prompt({
+    window: { title: `${tokenDoc.name} als tot markieren` },
+    classes: ["hope-lies-within", "hlw-detail-dialog"],
+    content: vergeben ? `<p>Die EXP für dieses Monster wurden schon vergeben.</p>` : `<label>EXP (${monsterExp(actor)}) an <select name="an">${optionen}</select></label>`,
+    ok: { label: "Tot markieren", icon: "fa-solid fa-skull", callback: (event, button) => button.form?.elements?.an?.value ?? "" },
+    rejectClose: false
+  });
+  if (wahl === null || wahl === undefined) return;
+  await actor.update({ "system.resources.hp.value": 0 });
+  const empfaenger = wahl === "alle" ? spieler : wahl ? [game.actors.get(wahl)].filter(Boolean) : [];
+  if (!empfaenger.length && !vergeben) await actor.setFlag("hope-lies-within-2", "expVergeben", true);
+  await besiegtAbwickeln(tokenDoc, null, { empfaenger });
 }
 
 // Würfel einer Formel lesbar: „3 + 1W4 + 2“ und „3 + 4 + 2 = 9“ (jeder Würfel mit seinem Ergebnis, feste Zahlen einzeln)
@@ -1335,7 +1413,7 @@ export class HopeLiesWithinActor extends Actor {
         const roll = await new Roll(formel, this.getRollData()).evaluate();
         const maxHp = numberValue(target?.system?.resources?.hp?.max) || currentHp + roll.total;
         const nextHp = Math.min(currentHp + numberValue(roll.total), maxHp);
-        if (target) await hpSetzen(targetToken, nextHp);
+        if (target) await hpSetzen(targetToken, nextHp, { toeterId: this.id });
         Object.assign(result, { roll, amount: nextHp - currentHp, nextHp });
       } else {
         const verteidigung = numberValue(magisch ? targetDerived.mr : targetDerived.rw) || 10;
@@ -1354,7 +1432,7 @@ export class HopeLiesWithinActor extends Actor {
           const finalDamage = Math.max(numberValue(roll.total) - block, 1);
           const nextHp = Math.max(currentHp - finalDamage, 0);
           const defeated = nextHp <= 0 && Boolean(target);
-          if (target) await hpSetzen(targetToken, nextHp, { besiegt: defeated });
+          if (target) await hpSetzen(targetToken, nextHp, { besiegt: defeated, toeterId: this.id });
           Object.assign(result, { roll, block, finalDamage, nextHp, defeated });
         }
       }
@@ -1372,7 +1450,8 @@ export class HopeLiesWithinActor extends Actor {
       const angriff = acc ? `${result.natur} ${acc > 0 ? "+" : "−"} ${Math.abs(acc)} = ${result.angriff.total}` : `${result.natur}`;
       const status = result.kritisch ? "Kritischer Treffer" : result.patzer ? "Natürliche 1: daneben" : result.trifft ? "Treffer" : "Verfehlt";
       unterzeile = `gegen ${escapeHtml(result.targetName)}`;
-      zeilen = `<dt>Angriff (1W20)</dt><dd>${angriff} gegen ${result.verteidigungsArt} ${result.verteidigung}</dd>
+      // Den Verteidigungswert des Ziels sieht nur der GM (Spieler sollen RW/MR der Gegner nicht kennen)
+      zeilen = `<dt>Angriff (1W20)</dt><dd>${angriff}<span class="hlw-nur-gm"> gegen ${result.verteidigungsArt} ${result.verteidigung}</span></dd>
         <dt>Ergebnis</dt><dd><strong>${status}</strong></dd>`;
       if (result.trifft) {
         const w = wuerfelText(result.roll);
@@ -2476,6 +2555,13 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainBausteine", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainHandel", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
+  game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
+  game.settings.register("hope-lies-within-2", "expVerteilung", {
+    name: "EXP für besiegte Monster",
+    hint: "Wer die EXP bekommt, wenn ein Monster fällt. Gefährten zählen für ihren Besitzer.",
+    scope: "world", config: true, type: String, default: "toeter",
+    choices: { toeter: "Wer das Monster besiegt", alle: "Alle Spielercharaktere im Kampf" }
+  });
   CONFIG.Actor.documentClass = HopeLiesWithinActor;
   CONFIG.Item.documentClass = HopeLiesWithinItem;
   CONFIG.Combat.initiative = {
@@ -2523,6 +2609,8 @@ Hooks.once("ready", async () => {
     aktualisiereBestiarium,
     erstelleLindhain,
     entferneOrtsmarker,
+    erstelleDashboard,
+    dashboardAktualisieren,
     spielercharakterAnlegen,
     gespraech: (actor) => HopeLiesWithinTalkApp.openFor(actor),
     gespraechAllen: zeigeAllen,
@@ -2532,6 +2620,7 @@ Hooks.once("ready", async () => {
   };
   registerTalk();
   registerGefaehrte();
+  registerDashboard();
 
   // Eigene Bilder für Skills und Ausrüstung: ersetzt einmalig die Foundry-Symbole (icons/…) in Welt und Charakteren.
   // Selbst gewählte Bilder bleiben unberührt.
@@ -2576,6 +2665,15 @@ Hooks.once("ready", async () => {
     await lindhainBausteine();
     await game.settings.set("hope-lies-within-2", "lindhainBausteine", true);
   }
+  // EXP-Werte aus dem Bestiarium in die Monster der Welt übernehmen (einmalig)
+  if (game.user?.isGM && game.settings.get("hope-lies-within-2", "expStand") < 1) {
+    const response = await fetch("systems/hope-lies-within-2/import/monsters.json");
+    if (response.ok) {
+      const exp = new Map((await response.json()).map((e) => [e.name, e.system?.monster?.exp]));
+      for (const actor of game.actors.filter((a) => a.type === "monster" && exp.has(a.name))) await actor.update({ "system.monster.exp": exp.get(actor.name) });
+    }
+    await game.settings.set("hope-lies-within-2", "expStand", 1);
+  }
   // Skills: feste Werte und Beschreibungen für die Spieler (Reichweite, Abklingzeit, Schaden, Schutz, Fläche, Dauer)
   if (game.user?.isGM && game.settings.get("hope-lies-within-2", "skillWerteStand") < SKILL_WERTE_STAND) {
     const anzahl = await skillWerteNachziehen();
@@ -2617,7 +2715,7 @@ Hooks.once("ready", async () => {
       const token = game.scenes.get(data.sceneId)?.tokens.get(data.tokenId);
       if (!token?.actor) return;
       await token.actor.update({ "system.resources.hp.value": Math.max(numberValue(data.hp), 0) });
-      if (data.besiegt) await kampfteilnehmerBesiegt(token.object ?? { document: token, actor: token.actor, id: token.id });
+      if (data.besiegt) await besiegtAbwickeln(token, data.toeterId);
       return;
     }
     if (data?.type !== "endTurn") return;
@@ -2693,6 +2791,88 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 Hooks.on("canvasReady", () => {
   clearPendingSkill();
   renderCombatHud();
+  // Dächer: Spieler sehen nur in ein Haus, wenn ihre EIGENE Figur darunter steht
+  // (sonst blendet Foundry Dächer auch bei sichtbaren NSC darunter aus).
+  if (!game.user?.isGM && canvas.tokens) canvas.tokens.occlusionMode = CONST.TOKEN_OCCLUSION_MODES.OWNED;
+});
+
+// Figuren unter einem geschlossenen Dach (für diesen Spieler nicht ausgeblendet) verraten sich nicht beim Darüberfahren.
+function unterGeschlossenemDach(token) {
+  const mitte = token.center;
+  const hoehe = numberValue(token.document?.elevation);
+  return (canvas.tiles?.placeables ?? []).some((tile) => {
+    const mesh = tile.mesh;
+    if (!mesh || mesh.occlusionMode === CONST.OCCLUSION_MODES.NONE || mesh.occluded) return false;
+    if (numberValue(tile.document.elevation) <= hoehe) return false;
+    return tile.bounds?.contains(mitte.x, mitte.y);
+  });
+}
+Hooks.once("setup", () => {
+  const TokenClass = CONFIG.Token.objectClass;
+  const original = TokenClass.prototype._canHover;
+  TokenClass.prototype._canHover = function (user, event) {
+    if (!game.user?.isGM && !this.isOwner && unterGeschlossenemDach(this)) return false;
+    return original.call(this, user, event);
+  };
+});
+
+// Türen: kleine Sprechblase über der Tür beim Anklicken („Geöffnet“, „Geschlossen“, „Verschlossen“);
+// der GM sperrt per Rechtsklick ab und schließt auf („Abgesperrt“ / „Aufgesperrt“).
+function tuerBlase(control, text, art) {
+  const c = control.wall?.document?.c;
+  if (!c) return;
+  const punkt = canvas.clientCoordinatesFromCanvas({ x: (c[0] + c[2]) / 2, y: (c[1] + c[3]) / 2 });
+  const blase = document.createElement("div");
+  blase.className = `hlw-tuerblase is-${art}`;
+  blase.textContent = text;
+  blase.style.left = `${Math.round(punkt.x)}px`;
+  blase.style.top = `${Math.round(punkt.y)}px`;
+  document.body.appendChild(blase);
+  window.setTimeout(() => blase.classList.add("is-weg"), 1600);
+  window.setTimeout(() => blase.remove(), 2300);
+}
+Hooks.once("setup", () => {
+  const DoorControl = foundry.canvas?.containers?.DoorControl ?? globalThis.DoorControl;
+  if (!DoorControl) return;
+  const S = CONST.WALL_DOOR_STATES;
+  const links = DoorControl.prototype._onMouseDown;
+  DoorControl.prototype._onMouseDown = function (event) {
+    const vorher = this.wall?.document?.ds;
+    const darf = event.button === 0 && game.user.can("WALL_DOORS") && !(game.paused && !game.user.isGM);
+    const ergebnis = links.call(this, event);
+    if (darf) {
+      if (vorher === S.LOCKED) tuerBlase(this, "Verschlossen", "zu");
+      else if (vorher === S.CLOSED) tuerBlase(this, "Geöffnet", "auf");
+      else if (vorher === S.OPEN) tuerBlase(this, "Geschlossen", "normal");
+    }
+    return ergebnis;
+  };
+  const rechts = DoorControl.prototype._onRightDown;
+  DoorControl.prototype._onRightDown = function (event) {
+    const vorher = this.wall?.document?.ds;
+    const ergebnis = rechts.call(this, event);
+    if (game.user.isGM && vorher !== S.OPEN) tuerBlase(this, vorher === S.LOCKED ? "Aufgesperrt" : "Abgesperrt", "gm");
+    return ergebnis;
+  };
+});
+
+// Dächer (Kacheln, die ausblenden können): Spieler lassen sie beim Darüberfahren mit der Maus nicht mehr durchsichtig werden;
+// der GM sieht immer hinein (Dach halbdurchsichtig).
+const DACH_GM_ALPHA = 0.35;
+function dachAnpassen(tile) {
+  const mesh = tile.mesh;
+  if (!mesh || mesh.occlusionMode === CONST.OCCLUSION_MODES.NONE) return;
+  if (game.user?.isGM) mesh.unoccludedAlpha = Math.min(numberValue(tile.document.alpha) || 1, DACH_GM_ALPHA);
+  else mesh.hoverFade = false;
+}
+Hooks.once("setup", () => {
+  const TileClass = CONFIG.Tile.objectClass;
+  const original = TileClass.prototype._refreshMesh;
+  TileClass.prototype._refreshMesh = function (...args) {
+    const ergebnis = original.apply(this, args);
+    dachAnpassen(this);
+    return ergebnis;
+  };
 });
 
 function handleCancelPendingSkill(event) {
@@ -2734,6 +2914,45 @@ Hooks.on("combatTurn", (combat) => {
   renderCombatHud();
 });
 Hooks.on("combatRound", () => HLW.pendingLegalMoves.clear());
+
+// Monster auf 0 HP (auch von Hand eingetragen): Totenkopf und „besiegt“. EXP gibt es nur über einen Treffer oder den HUD-Knopf.
+Hooks.on("updateActor", (actor, changes) => {
+  if (actor.type !== "monster" || !game.user?.isGM || game.users.activeGM?.id !== game.user.id) return;
+  if (!foundry.utils.hasProperty(changes, "system.resources.hp.value") || besitzerVon(actor)) return;
+  const tokenDoc = actor.token ?? actor.getActiveTokens?.()[0]?.document;
+  if (numberValue(actor.system?.resources?.hp?.value) <= 0 && tokenDoc) window.setTimeout(() => totMarkieren(tokenDoc), 50);
+});
+
+// Token-HUD (GM): Knopf „Tot markieren“ bzw. „Wiederbeleben“ an Monstern
+Hooks.on("renderTokenHUD", (hud, html) => {
+  if (!game.user?.isGM) return;
+  const tokenDoc = hud.object?.document;
+  const actor = hud.object?.actor;
+  if (actor?.type !== "monster" || besitzerVon(actor)) return;
+  const root = html?.[0] ?? html;
+  const spalte = root?.querySelector?.(".col.left") ?? root;
+  if (!spalte || spalte.querySelector("[data-hlw-tot]")) return;
+  const tot = actor.statuses?.has(CONFIG.specialStatusEffects?.DEFEATED ?? "dead");
+  const knopf = document.createElement("button");
+  knopf.type = "button";
+  knopf.className = "control-icon";
+  knopf.dataset.hlwTot = "true";
+  knopf.dataset.tooltip = tot ? "Wiederbeleben" : "Tot markieren (EXP vergeben)";
+  knopf.innerHTML = `<i class="fa-solid ${tot ? "fa-heart-pulse" : "fa-skull"}"></i>`;
+  knopf.addEventListener("click", (event) => {
+    event.preventDefault();
+    hud.close?.();
+    monsterTotMarkieren(tokenDoc);
+  });
+  spalte.appendChild(knopf);
+});
+
+// Chatkarten: Teile mit der Klasse „hlw-nur-gm“ (z. B. Rüstwert des Ziels) sehen Spieler nicht
+Hooks.on("renderChatMessageHTML", (message, html) => {
+  if (game.user?.isGM) return;
+  const root = html?.[0] ?? html;
+  root?.querySelectorAll?.(".hlw-nur-gm").forEach((el) => el.remove());
+});
 
 // Bewegung im Kampf: Der Browser, der die Figur zieht, prüft das Bewegungslimit und bucht erst dann,
 // wenn die Bewegung wirklich angekommen ist (Foundry kann sie verwerfen, z. B. an Wänden oder in der Pause).
