@@ -1,7 +1,8 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
+import { registerSchloss, tuerenAbschliessen, schlossKnacken } from "./hlw-schloss.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
-import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen } from "./hlw-szenen.js";
+import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
@@ -2755,6 +2756,7 @@ Hooks.once("init", () => {
   CONFIG.HLW = HLW;
   registerTalkSettings();
   registerQuestlog();
+  registerSchloss();
   // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
@@ -2769,6 +2771,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainQuestsNord", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainKapitel1", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainHauptquests", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "tammImDorf", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2829,6 +2832,9 @@ Hooks.once("ready", async () => {
     tarnungAufheben,
     lindhainErgaenzen,
     wegeErgaenzen,
+    wagenInsDorf,
+    tuerenAbschliessen,
+    schlossKnacken,
     kapitel1Journal,
     questlog: () => HopeLiesWithinQuestlog.oeffnen(),
     entferneOrtsmarker,
@@ -2942,6 +2948,11 @@ Hooks.once("ready", async () => {
     await wegeErgaenzen();
     await kapitel1Journal({ neu: true });
     await game.settings.set("hope-lies-within-2", "lindhainHauptquests", true);
+  }
+  // Tamms heiler Wagen (verborgen) und Tamm in Lindhain, für die Zeit nach „Der Händler kommt nicht“
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "tammImDorf")) {
+    await lindhainErgaenzen();
+    await game.settings.set("hope-lies-within-2", "tammImDorf", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {
@@ -3087,45 +3098,7 @@ Hooks.once("setup", () => {
   };
 });
 
-// Türen: kleine Sprechblase über der Tür beim Anklicken („Geöffnet“, „Geschlossen“, „Verschlossen“);
-// der GM sperrt per Rechtsklick ab und schließt auf („Abgesperrt“ / „Aufgesperrt“).
-function tuerBlase(control, text, art) {
-  const c = control.wall?.document?.c;
-  if (!c) return;
-  const punkt = canvas.clientCoordinatesFromCanvas({ x: (c[0] + c[2]) / 2, y: (c[1] + c[3]) / 2 });
-  const blase = document.createElement("div");
-  blase.className = `hlw-tuerblase is-${art}`;
-  blase.textContent = text;
-  blase.style.left = `${Math.round(punkt.x)}px`;
-  blase.style.top = `${Math.round(punkt.y)}px`;
-  document.body.appendChild(blase);
-  window.setTimeout(() => blase.classList.add("is-weg"), 1600);
-  window.setTimeout(() => blase.remove(), 2300);
-}
-Hooks.once("setup", () => {
-  const DoorControl = foundry.canvas?.containers?.DoorControl ?? globalThis.DoorControl;
-  if (!DoorControl) return;
-  const S = CONST.WALL_DOOR_STATES;
-  const links = DoorControl.prototype._onMouseDown;
-  DoorControl.prototype._onMouseDown = function (event) {
-    const vorher = this.wall?.document?.ds;
-    const darf = event.button === 0 && game.user.can("WALL_DOORS") && !(game.paused && !game.user.isGM);
-    const ergebnis = links.call(this, event);
-    if (darf) {
-      if (vorher === S.LOCKED) tuerBlase(this, "Verschlossen", "zu");
-      else if (vorher === S.CLOSED) tuerBlase(this, "Geöffnet", "auf");
-      else if (vorher === S.OPEN) tuerBlase(this, "Geschlossen", "normal");
-    }
-    return ergebnis;
-  };
-  const rechts = DoorControl.prototype._onRightDown;
-  DoorControl.prototype._onRightDown = function (event) {
-    const vorher = this.wall?.document?.ds;
-    const ergebnis = rechts.call(this, event);
-    if (game.user.isGM && vorher !== S.OPEN) tuerBlase(this, vorher === S.LOCKED ? "Aufgesperrt" : "Abgesperrt", "gm");
-    return ergebnis;
-  };
-});
+// Türen und Schlösser: siehe hlw-schloss.js
 
 // Dächer (Kacheln, die ausblenden können): Spieler lassen sie beim Darüberfahren mit der Maus nicht mehr durchsichtig werden;
 // der GM sieht immer hinein (Dach halbdurchsichtig).

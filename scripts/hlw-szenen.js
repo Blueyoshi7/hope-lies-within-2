@@ -229,6 +229,46 @@ async function strohpuppenAufstellen(scene) {
   await scene.createEmbeddedDocuments("Token", tokens);
 }
 
+// Tamms Wagen: kaputt auf der Straße nach Illmaris, heil (verborgen) in Lindhain an der Ostgasse neben dem Dorfplatz.
+// Beide sind Kacheln: im Kachel-Werkzeug verschieben, drehen und per Rechtsklick ein- oder ausblenden.
+const WAGEN_DORF = { x: 2950, y: 1740, w: 220, h: 368, rot: 90 };
+const TAMM_DORF = { x: 2950, y: 1960 };
+
+async function dorfWagenAufstellen(scene) {
+  if (!scene) return;
+  const level = scene.initialLevel?.id ?? scene.firstLevel?.id;
+  const heil = `${ASSETS}/lindhain/bauten/haendlerwagen.webp`;
+  if (!scene.tiles.some((t) => t.texture?.src === heil)) {
+    await scene.createEmbeddedDocuments("Tile", [{ texture: { src: heil }, x: WAGEN_DORF.x, y: WAGEN_DORF.y, width: WAGEN_DORF.w, height: WAGEN_DORF.h, rotation: WAGEN_DORF.rot, hidden: true, levels: level ? [level] : undefined }]);
+  }
+  const tamm = await nscAnlegen(TAMM, await getOrCreateFolder("Lindhain", "Actor"));
+  if (!scene.tokens.some((t) => t.actorId === tamm.id)) {
+    const daten = (await tamm.getTokenDocument({ x: TAMM_DORF.x - GRID / 2, y: TAMM_DORF.y - GRID / 2, hidden: true, level })).toObject();
+    await scene.createEmbeddedDocuments("Token", [daten]);
+  }
+}
+
+// GM nach „Der Händler kommt nicht“: kaputten Wagen und Tamm auf der Straße ausblenden, im Dorf einblenden
+export async function wagenInsDorf() {
+  if (!game.user?.isGM) return;
+  const dorf = game.scenes.getName("Lindhain");
+  const strasse = game.scenes.getName("Lindhain – Straße nach Illmaris");
+  if (!dorf) return ui.notifications?.warn("Die Szene „Lindhain“ fehlt.");
+  await dorfWagenAufstellen(dorf);
+  const tamm = game.actors.find((a) => a.type === "npc" && a.name === "Tamm");
+  if (strasse) {
+    const kaputt = strasse.tiles.filter((t) => t.texture?.src?.endsWith("haendlerwagen-kaputt.webp")).map((t) => ({ _id: t.id, hidden: true }));
+    if (kaputt.length) await strasse.updateEmbeddedDocuments("Tile", kaputt);
+    const weg = strasse.tokens.filter((t) => t.actorId === tamm?.id).map((t) => ({ _id: t.id, hidden: true }));
+    if (weg.length) await strasse.updateEmbeddedDocuments("Token", weg);
+  }
+  const heil = dorf.tiles.filter((t) => t.texture?.src?.endsWith("/haendlerwagen.webp")).map((t) => ({ _id: t.id, hidden: false }));
+  if (heil.length) await dorf.updateEmbeddedDocuments("Tile", heil);
+  const da = dorf.tokens.filter((t) => t.actorId === tamm?.id).map((t) => ({ _id: t.id, hidden: false }));
+  if (da.length) await dorf.updateEmbeddedDocuments("Token", da);
+  ui.notifications?.info("Tamm und sein Wagen stehen jetzt in Lindhain an der Ostgasse.");
+}
+
 // Bestehendes Lindhain auf den Stand von Kapitel 1 bringen: neue NSC (Wachen am Südtor, Bauer), Strohpuppen,
 // Kessas neuer Grund (nur wenn der alte Text unverändert ist). Eigene Änderungen des GM bleiben.
 export async function lindhainErgaenzen() {
@@ -250,6 +290,7 @@ export async function lindhainErgaenzen() {
   }
   if (tokens.length) await scene.createEmbeddedDocuments("Token", tokens);
   await strohpuppenAufstellen(scene);
+  await dorfWagenAufstellen(scene);
 }
 
 export async function erstelleLindhain({ neu = false } = {}) {
@@ -324,6 +365,7 @@ export async function erstelleLindhain({ neu = false } = {}) {
   }
   await scene.createEmbeddedDocuments("Token", tokens);
   await strohpuppenAufstellen(scene);
+  await dorfWagenAufstellen(scene);
 
   ui.notifications?.info(`Lindhain ist angelegt: Dorf mit 10 Gebäuden samt Dächern, ${LINDHAIN_NSC.length} NSC und der Ortsliste.`);
   return scene;

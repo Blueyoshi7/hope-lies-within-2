@@ -2,7 +2,7 @@
 // Gespräch (nur der GM spricht: der aktuelle Satz steht groß in der Mitte, Wort für Wort eingeblendet; Textbausteine),
 // Handel (Waren des NSC, Kaufen/Verkaufen), Quests (der GM schreibt und zeigt sie, Spieler nehmen an)
 // und Wissen (freigegebene Einträge, Notizen der Gruppe: jeder schreibt, alle lesen).
-// Daten am Actor: flags["hope-lies-within-2"].talk = { portrait, role, nameRevealed, facts[], quests[], verlauf[], bausteine[], notizen[] }
+// Daten am Actor: flags["hope-lies-within-2"].talk = { portrait, role, nameRevealed, zuneigung, facts[], quests[], verlauf[], bausteine[], notizen[] }
 // Namen am User:    flags["hope-lies-within-2"].talkNames[actorId] = "..." (bis der GM den echten Namen freigibt, steht dort „???“)
 // Nur der GM schreibt Actor-Daten; Spieler schicken ihre Wünsche (Notiz, kaufen, verkaufen, Quest annehmen) per Socket.
 
@@ -13,6 +13,17 @@ const SYSTEM_ID = "hope-lies-within-2";
 const SOCKET = `system.${SYSTEM_ID}`;
 const VERLAUF_MAX = 40;
 const QUEST_RAENGE = ["F", "E", "D", "C", "B", "A", "S", "SS"];
+// Zuneigung: wie sehr der NSC die Gruppe mag, 0 bis 100. Startet bei 0, jede erledigte Quest dieses NSC gibt +20,
+// der GM stellt sie im Gespräch auch selbst ein. Spieler sehen die Leiste im Gespräch.
+export const ZUNEIGUNG_PRO_QUEST = 20;
+const ZUNEIGUNG_STUFEN = [[100, "Verbündet"], [80, "Freund"], [60, "Vertraut"], [40, "Freundlich"], [20, "Bekannt"], [0, "Fremd"]];
+function zuneigungWert(wert) {
+  return Math.min(Math.max(Math.round(Number(wert) || 0), 0), 100);
+}
+export function zuneigungStufe(wert) {
+  return ZUNEIGUNG_STUFEN.find(([ab]) => zuneigungWert(wert) >= ab)[1];
+}
+
 export const QUEST_STATUS = { verborgen: "Verborgen", angeboten: "Angeboten", angenommen: "Angenommen", erledigt: "Erledigt" };
 const REITER = { gespraech: "Gespräch", handel: "Handel", quests: "Quests", wissen: "Wissen" };
 const BAUSTEIN_ARTEN = { gruss: "Begrüßung", abschied: "Abschied", handel: "Handel", sonst: "Sonstiges", quest: "Quests" };
@@ -44,6 +55,7 @@ export function getTalkData(actor) {
     portrait: talk.portrait || actor?.img || "icons/svg/mystery-man.svg",
     role: talk.role ?? "",
     nameRevealed: !!talk.nameRevealed,
+    zuneigung: zuneigungWert(talk.zuneigung),
     facts: Array.isArray(talk.facts) ? talk.facts : [],
     quests: Array.isArray(talk.quests) ? talk.quests : [],
     verlauf: Array.isArray(talk.verlauf) ? talk.verlauf : [],
@@ -104,8 +116,11 @@ export function zeileHinzufuegen(actor, zeile) {
 export async function questAendern(actor, questId, changes) {
   const alt = getTalkData(actor).quests.find((q) => q.id === questId);
   const belohnen = changes.status === "erledigt" && alt && alt.status !== "erledigt" && !alt.belohnt && game.user?.isGM;
-  await talkAendern(actor, (talk) => ({ quests: talk.quests.map((q) => (q.id === questId ? { ...q, ...changes, ...(belohnen ? { belohnt: true } : {}) } : q)) }));
-  if (belohnen) await questBelohnen(actor, { ...alt, ...changes });
+  await talkAendern(actor, (talk) => ({
+    quests: talk.quests.map((q) => (q.id === questId ? { ...q, ...changes, ...(belohnen ? { belohnt: true } : {}) } : q)),
+    ...(belohnen ? { zuneigung: zuneigungWert(talk.zuneigung + ZUNEIGUNG_PRO_QUEST) } : {})
+  }));
+  if (belohnen) await questBelohnen(actor, { ...alt, ...changes }, { zuneigung: getTalkData(actor).zuneigung });
 }
 
 function sprecherVon(userId, actorId) {
@@ -234,11 +249,26 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
         <header class="gs-kopf">
           ${this._nameHtml(isGM, talk)}
           <div class="hlw-talk-role">${escapeHtml(talk.role)}</div>
+          ${this._zuneigungHtml(isGM, talk)}
           ${gmLeiste}
         </header>
         <nav class="gs-reiterleiste">${nav}</nav>
         <div class="gs-inhalt gs-${this.reiter}">${inhalt}</div>
       </section>`;
+  }
+
+  _zuneigungHtml(isGM, talk) {
+    const wert = talk.zuneigung;
+    const steuerung = isGM ? `
+      <button type="button" data-zuneigung="-5" title="−5">−</button>
+      <input type="number" min="0" max="100" step="1" value="${wert}" data-zuneigung-wert title="Zuneigung 0–100">
+      <button type="button" data-zuneigung="5" title="+5">+</button>` : `<b>${wert}</b>`;
+    return `
+      <div class="gs-zuneigung" title="Wie sehr ${escapeHtml(anzeigeName(this.actor))} die Gruppe mag. Jede erledigte Quest gibt +${ZUNEIGUNG_PRO_QUEST}.">
+        <span class="gs-zuneigung-name"><i class="fa-solid fa-heart"></i> ${zuneigungStufe(wert)}</span>
+        <span class="gs-zuneigung-balken"><i style="width:${wert}%"></i></span>
+        ${steuerung}
+      </div>`;
   }
 
   _nameHtml(isGM, talk) {
@@ -728,6 +758,10 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     });
     root.querySelector("[data-hlw='add']")?.addEventListener("click", () => this._addFact(root));
     root.querySelector("[data-hlw='nameRevealed']")?.addEventListener("change", (event) => talkAendern(this.actor, { nameRevealed: event.currentTarget.checked }));
+    root.querySelectorAll("[data-zuneigung]").forEach((knopf) => knopf.addEventListener("click", () => {
+      talkAendern(this.actor, (talk) => ({ zuneigung: zuneigungWert(talk.zuneigung + Number(knopf.dataset.zuneigung)) }));
+    }));
+    root.querySelector("[data-zuneigung-wert]")?.addEventListener("change", (event) => talkAendern(this.actor, { zuneigung: zuneigungWert(event.currentTarget.value) }));
     root.querySelector("input[name='newFact']")?.addEventListener("keydown", (event) => {
       if (event.key === "Enter") this._addFact(root);
     });

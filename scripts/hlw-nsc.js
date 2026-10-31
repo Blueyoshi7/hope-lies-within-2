@@ -544,7 +544,7 @@ async function gegenstandDazu(actor, name, anzahl) {
   if (daten) return actor.createEmbeddedDocuments("Item", [daten]);
 }
 
-export async function questBelohnen(nsc, quest) {
+export async function questBelohnen(nsc, quest, { zuneigung = null } = {}) {
   if (!game.user?.isGM || !quest) return;
   const lohn = await belohnungLesen(quest.belohnung);
   const empfaenger = questEmpfaenger(quest, lohn.proPerson);
@@ -558,7 +558,7 @@ export async function questBelohnen(nsc, quest) {
   const zeile = teile.length && empfaenger.length ? `<p><b>${wer}</b> ${empfaenger.length > 1 ? "bekommen je" : "bekommt"}: ${teile.join(", ")}.</p>` : "";
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor: nsc }),
-    content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>Quest erledigt: ${quest.titel}</h2>${zeile}<p><b>Belohnung:</b> ${quest.belohnung || "–"}</p></div>`
+    content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>Quest erledigt: ${quest.titel}</h2>${zeile}<p><b>Belohnung:</b> ${quest.belohnung || "–"}</p>${zuneigung !== null ? `<p><i class="fa-solid fa-heart"></i> Zuneigung ${zuneigung} / 100</p>` : ""}</div>`
   });
 }
 
