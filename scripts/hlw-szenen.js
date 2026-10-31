@@ -153,6 +153,37 @@ function waendeFuer(geb, level) {
 
 // Ortsmarker (Notizen) auf Karten entfernen, die auf die Ortsliste „Lindhain – Orte“ zeigen.
 // Die Ortsliste selbst bleibt im Journal; auf der Karte stören die Buch-Symbole nur.
+// Echte Sicht: Spieler sehen nur, was ihre Figur sieht. Bis Dunkelheit 0,5 ist die Szene hell (globales Licht),
+// darüber nur noch Lichtquellen (Fackel, Laterne, Licht in der Szene). So lassen sich Spieler überraschen.
+const SICHT = { tokenVision: true, environment: { globalLight: { enabled: true, darkness: { min: 0, max: 0.5 } } } };
+
+// Bestehende Welten (einmal): Sicht in den Lindhain-Szenen an, Monsternamen nur noch für den GM beim Darüberfahren,
+// Spielerfiguren mit Sicht, Abwandlungen im Bestiarium beim Grundtier
+export async function sichtUndNamenSetzen() {
+  for (const scene of game.scenes.filter((s) => s.name === "Lindhain" || s.getFlag(SYSTEM_ID, "weg") || s.getFlag(SYSTEM_ID, "questOrt"))) {
+    if (!scene.tokenVision || !scene.environment?.globalLight?.enabled) {
+      await scene.update({ tokenVision: true, ...(scene.environment?.globalLight?.enabled ? {} : { "environment.globalLight": SICHT.environment.globalLight }) });
+    }
+  }
+  const nurGM = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER;
+  for (const actor of game.actors.filter((a) => a.type === "monster")) {
+    const update = {};
+    if ([CONST.TOKEN_DISPLAY_MODES.HOVER, CONST.TOKEN_DISPLAY_MODES.ALWAYS].includes(actor.prototypeToken.displayName) && !actor.getFlag(SYSTEM_ID, "uebung")) update["prototypeToken.displayName"] = nurGM;
+    const variante = VARIANTEN[actor.name];
+    if (variante && !actor.getFlag(SYSTEM_ID, "bestiarium")) update[`flags.${SYSTEM_ID}.bestiarium`] = variante.basis;
+    if (Object.keys(update).length) await actor.update(update);
+  }
+  for (const actor of game.actors.filter((a) => a.type === "character" && !a.prototypeToken.sight.enabled)) await actor.update({ "prototypeToken.sight.enabled": true });
+  for (const scene of game.scenes) {
+    const updates = scene.tokens.map((t) => {
+      if (t.actor?.type === "monster" && !t.actor.getFlag(SYSTEM_ID, "uebung") && [CONST.TOKEN_DISPLAY_MODES.HOVER, CONST.TOKEN_DISPLAY_MODES.ALWAYS].includes(t.displayName)) return { _id: t.id, displayName: nurGM };
+      if (t.actor?.type === "character" && !t.sight.enabled) return { _id: t.id, "sight.enabled": true };
+      return null;
+    }).filter(Boolean);
+    if (updates.length) await scene.updateEmbeddedDocuments("Token", updates);
+  }
+}
+
 export async function entferneOrtsmarker() {
   if (!game.user?.isGM) return 0;
   const journal = game.journal.getName("Lindhain – Orte");
@@ -322,7 +353,7 @@ export async function erstelleLindhain({ neu = false } = {}) {
     height: SIZE,
     padding: 0,          // ohne Rand: Bildkoordinaten = Szenenkoordinaten
     grid: { type: CONST.GRID_TYPES.SQUARE, size: GRID, distance: 1.5, units: "m" },
-    tokenVision: false,
+    ...SICHT,
     levels: [{ name: "Dorf", background: { src: `${ASSETS}/lindhain/lindhain-boden.webp` }, textures: { fit: "fill" } }]
   });
   // Foundry 14: Figuren, Kacheln, Waende und Notizen muessen einer Ebene (Level) der Szene zugeordnet sein.
@@ -443,7 +474,7 @@ export async function erstelleWege({ neu = false } = {}) {
       height: SIZE,
       padding: 0,
       grid: { type: CONST.GRID_TYPES.SQUARE, size: GRID, distance: 1.5, units: "m" },
-      tokenVision: false,
+      ...SICHT,
       levels: [{ name: "Weg", background: { src: `${ASSETS}/lindhain/wege/weg-${weg.id}.webp` }, textures: { fit: "fill" } }],
       flags: { [SYSTEM_ID]: { weg: weg.id, zumDorf: weg.zumDorf } }
     }));
@@ -529,7 +560,8 @@ async function gegnerActor(name) {
   return Actor.create({
     name: daten.name, type: "monster", img: daten.img, folder: ordner.id, system: daten.system, items: daten.items ?? [],
     prototypeToken: { name: daten.name, actorLink: false, width: groesse, height: groesse, disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE,
-      displayName: CONST.TOKEN_DISPLAY_MODES.HOVER, texture: { src: daten.token || daten.img }, sight: { enabled: false } }
+      displayName: CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER, texture: { src: daten.token || daten.img }, sight: { enabled: false } },
+    ...(variante ? { flags: { [SYSTEM_ID]: { bestiarium: variante.basis } } } : {})
   });
 }
 
@@ -598,7 +630,7 @@ export async function erstelleQuestOrte({ neu = false } = {}) {
       height: SIZE,
       padding: 0,
       grid: { type: CONST.GRID_TYPES.SQUARE, size: GRID, distance: 1.5, units: "m" },
-      tokenVision: false,
+      ...SICHT,
       levels: [{ name: "Ort", background: { src: `${ASSETS}/lindhain/quests/karte-${ort.id}.webp` }, textures: { fit: "fill" } }],
       flags: { [SYSTEM_ID]: { questOrt: ort.id } }
     });

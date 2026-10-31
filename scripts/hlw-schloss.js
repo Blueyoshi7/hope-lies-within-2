@@ -2,7 +2,8 @@
 // - Geschlossene Tür ohne Schloss: Spieler sehen „Aufdrücken“, ein Klick öffnet sie.
 // - Tür mit Schloss (Schwierigkeit gesetzt, verschlossen): Spieler sehen „Knacken“. Das geht nur mit einem Dietrich im Inventar
 //   und mit der eigenen Figur an der Tür: Heimlichkeit (1W20 + Wert) gegen die Schwierigkeit. Natürliche 20 gelingt immer,
-//   natürliche 1 misslingt immer und der Dietrich bricht. Geschafft: Der Browser des GM schließt die Tür auf und öffnet sie.
+//   natürliche 1 misslingt immer. Der Dietrich ist nach jedem Versuch hin, geschafft oder nicht (Dominik 2026-10-31).
+//   Geschafft: Der Browser des GM schließt die Tür auf und öffnet sie.
 // - GM: Linksklick öffnet und schließt wie gewohnt, Rechtsklick stellt die Schwierigkeit ein (0 = kein Schloss).
 // Schwierigkeit am Wall: flags["hope-lies-within-2"].schloss. Verschlossene Türen ohne Wert gelten als SCHLOSS_STANDARD.
 // schlossKnacken() ist allgemein gehalten, damit später auch Truhen damit geknackt werden können.
@@ -26,7 +27,7 @@ export function dietrichVon(actor) {
 }
 
 // Schloss knacken: Heimlichkeit gegen die Schwierigkeit. Die Schwierigkeit erfährt der Spieler nicht.
-// → { geschafft, gebrochen } oder null (kein Dietrich)
+// Jeder Versuch verbraucht einen Dietrich. → { geschafft, gebrochen } oder null (kein Dietrich)
 export async function schlossKnacken(actor, schwierigkeit, was = "Schloss") {
   const dietrich = dietrichVon(actor);
   if (!dietrich) {
@@ -37,15 +38,12 @@ export async function schlossKnacken(actor, schwierigkeit, was = "Schloss") {
   const roll = await new Roll(`1d20 + ${wert}`).evaluate();
   const natur = zahl(roll.dice?.[0]?.total);
   const geschafft = natur === 20 || (natur !== 1 && roll.total >= zahl(schwierigkeit));
-  const gebrochen = natur === 1;
-  const ergebnis = geschafft ? "<strong>Geknackt!</strong>" : gebrochen ? "<strong>Natürliche 1: Der Dietrich bricht.</strong>" : "<strong>Nicht geschafft.</strong>";
-  await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: `${escapeHtml(was)} knacken (Heimlichkeit) · ${ergebnis}` });
-  if (gebrochen) {
-    const menge = Math.max(zahl(dietrich.system?.quantity ?? 1), 1);
-    if (menge > 1) await dietrich.update({ "system.quantity": menge - 1 });
-    else await dietrich.delete();
-  }
-  return { geschafft, gebrochen };
+  const ergebnis = geschafft ? "<strong>Geknackt!</strong>" : natur === 1 ? "<strong>Natürliche 1: Nicht geschafft.</strong>" : "<strong>Nicht geschafft.</strong>";
+  await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: `${escapeHtml(was)} knacken (Heimlichkeit) · ${ergebnis} Der Dietrich ist verbraucht.` });
+  const menge = Math.max(zahl(dietrich.system?.quantity ?? 1), 1);
+  if (menge > 1) await dietrich.update({ "system.quantity": menge - 1 });
+  else await dietrich.delete();
+  return { geschafft, gebrochen: true };
 }
 
 // ---------- Türen ----------
@@ -113,7 +111,7 @@ async function knacken(wall) {
   if (!dietrichVon(figur.actor)) return ui.notifications?.warn(`${figur.actor.name} hat keinen Dietrich dabei.`);
   const ergebnis = await schlossKnacken(figur.actor, tuerSchloss(wall.document), "Tür");
   if (!ergebnis) return;
-  if (!ergebnis.geschafft) return tuerBlase(wall, ergebnis.gebrochen ? "Dietrich gebrochen" : "Hält stand", "zu");
+  if (!ergebnis.geschafft) return tuerBlase(wall, "Hält stand", "zu");
   tuerBlase(wall, "Geknackt", "auf");
   if (game.user.isGM) return wall.document.update({ ds: CONST.WALL_DOOR_STATES.OPEN });
   if (!game.users.activeGM) return ui.notifications?.warn("Gerade ist kein GM online, der die Tür öffnen kann.");

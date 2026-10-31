@@ -830,3 +830,64 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-tuermenue button { min-height: 0; height: 30px; padding: 0 14px; border: 0; border-radius: 8px; background: #d8b46a; color: #1b150c; font-family: Georgia, serif; font-size: 15px; font-weight: 700; cursor: pointer; white-space: nowrap; }
 .hlw-tuermenue button:hover { background: #f0cd84; }
 .hlw-tuermenue button i { margin-right: 4px; }
+
+/* Bestiarium (hlw-bestiarium.js) */
+.hlw-bestiarium .window-content { display: flex; flex-direction: column; gap: 10px; padding: 10px; background: #14161c; color: #e8e4da; overflow: hidden; }
+.hlw-bestiarium .bs-kopf { display: flex; align-items: center; gap: 12px; flex: none; }
+.hlw-bestiarium .bs-kopf input[type="search"] { flex: 1; background: #0e1014; color: #e8e4da; border: 1px solid #2f3440; border-radius: 6px; height: 30px; padding: 0 8px; }
+.hlw-bestiarium .bs-kopf label { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #c9c4b6; white-space: nowrap; }
+.hlw-bestiarium .bs-zaehler { font-size: 13px; color: #d8b46a; white-space: nowrap; }
+.hlw-bestiarium .bs-koerper { display: flex; gap: 10px; flex: 1; min-height: 0; }
+.hlw-bestiarium .bs-liste { width: 290px; flex: none; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; padding-right: 4px; }
+.hlw-bestiarium .bs-zeile { display: flex; align-items: center; gap: 8px; width: 100%; height: 40px; padding: 0 8px; background: #1a1d25; border: 1px solid #2f3440; border-radius: 6px; color: #e8e4da; text-align: left; font-size: 13px; }
+.hlw-bestiarium .bs-zeile.is-aktiv { border-color: #d8b46a; background: #22252e; }
+.hlw-bestiarium .bs-zeile.is-unbekannt { color: #6f6b62; }
+.hlw-bestiarium .bs-zeile img { width: 30px; height: 30px; object-fit: cover; border-radius: 50%; border: none; flex: none; }
+.hlw-bestiarium .bs-zeile > i { width: 30px; text-align: center; color: #4b4a45; flex: none; }
+.hlw-bestiarium .bs-nr { width: 20px; font-size: 11px; color: #6f6b62; flex: none; }
+.hlw-bestiarium .bs-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hlw-bestiarium .bs-pips { display: flex; gap: 3px; flex: none; }
+.hlw-bestiarium .bs-pips i { width: 7px; height: 7px; border-radius: 50%; background: #2f3440; }
+.hlw-bestiarium .bs-pips i.is-an { background: #d8b46a; }
+.hlw-bestiarium .bs-detail { flex: 1; min-width: 0; overflow-y: auto; background: #1a1d25; border: 1px solid #2f3440; border-radius: 8px; padding: 14px; }
+.hlw-bestiarium .bs-detail h4 { margin: 14px 0 6px; color: #d8b46a; border: none; font-size: 14px; }
+.hlw-bestiarium .bs-detail p { margin: 8px 0; line-height: 1.45; }
+.hlw-bestiarium .bs-titel { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+.hlw-bestiarium .bs-titel img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 1px solid #2f3440; flex: none; }
+.hlw-bestiarium .bs-titel h3 { margin: 0 0 4px; font-size: 22px; border: none; color: #f3e6c4; }
+.hlw-bestiarium .bs-titel em { color: #8f8b7f; font-size: 13px; }
+.hlw-bestiarium .bs-werte { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; margin: 8px 0; }
+.hlw-bestiarium .bs-wert { background: #14161c; border: 1px solid #2f3440; border-radius: 6px; padding: 6px 8px; display: flex; flex-direction: column; gap: 2px; }
+.hlw-bestiarium .bs-wert span { font-size: 11px; color: #8f8b7f; text-transform: uppercase; letter-spacing: .04em; }
+.hlw-bestiarium .bs-wert b { font-size: 14px; }
+.hlw-bestiarium .bs-faehigkeiten { margin: 0; padding-left: 18px; }
+.hlw-bestiarium .bs-faehigkeiten li { margin: 4px 0; line-height: 1.4; }
+.hlw-bestiarium .bs-faehigkeiten span { color: #c9c4b6; }
+.hlw-bestiarium .bs-hinweis { color: #8f8b7f; font-style: italic; }
+.hlw-bestiarium .bs-verdeckt { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; height: 70%; color: #6f6b62; text-align: center; }
+.hlw-bestiarium .bs-verdeckt > i { font-size: 64px; color: #2f3440; }
+.hlw-bestiarium .bs-leer { color: #8f8b7f; text-align: center; margin-top: 40px; }
+.hlw-bestiarium .bs-gm { background: #14161c; border: 1px dashed #4a4030; border-radius: 6px; padding: 8px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px; }
+.hlw-bestiarium .bs-stufen { display: flex; gap: 4px; }
+.hlw-bestiarium .bs-stufen button { flex: 1; height: 28px; font-size: 12px; background: #1a1d25; color: #c9c4b6; border: 1px solid #2f3440; border-radius: 5px; }
+.hlw-bestiarium .bs-stufen button.is-aktiv { border-color: #d8b46a; color: #f3e6c4; }
+.hlw-bestiarium .bs-siege { display: flex; align-items: center; gap: 6px; font-size: 13px; flex-wrap: wrap; }
+.hlw-bestiarium .bs-siege button { width: 26px; height: 26px; line-height: 1; padding: 0; background: #1a1d25; color: #e8e4da; border: 1px solid #2f3440; border-radius: 5px; }
+.hlw-bestiarium .bs-siege b { min-width: 20px; text-align: center; }
+.hlw-bestiarium .bs-siege small { color: #8f8b7f; width: 100%; }
+
+/* Gruppennotizen (hlw-notizen.js) */
+.hlw-notizen .window-content { display: flex; flex-direction: column; gap: 10px; padding: 10px; background: #14161c; color: #e8e4da; overflow: hidden; }
+.hlw-notizen textarea { width: 100%; resize: vertical; background: #0e1014; color: #e8e4da; border: 1px solid #2f3440; border-radius: 6px; padding: 8px; font-size: 14px; line-height: 1.4; font-family: inherit; }
+.hlw-notizen .nz-neu { display: flex; flex-direction: column; gap: 6px; flex: none; }
+.hlw-notizen .nz-neu button, .hlw-notizen .nz-knoepfe button { height: 30px; background: #1a1d25; color: #f3e6c4; border: 1px solid #d8b46a; border-radius: 6px; font-size: 13px; }
+.hlw-notizen .nz-knoepfe { display: flex; gap: 6px; margin-top: 6px; }
+.hlw-notizen .nz-knoepfe button + button { border-color: #2f3440; color: #c9c4b6; }
+.hlw-notizen .nz-liste { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; }
+.hlw-notizen .nz-notiz { background: #1a1d25; border: 1px solid #2f3440; border-left: 3px solid #d8b46a; border-radius: 6px; padding: 8px 10px; }
+.hlw-notizen .nz-notiz p { margin: 0 0 6px; line-height: 1.45; white-space: normal; overflow-wrap: anywhere; }
+.hlw-notizen .nz-notiz footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #8f8b7f; }
+.hlw-notizen .nz-notiz footer span { display: flex; gap: 4px; }
+.hlw-notizen .nz-notiz footer button { width: 26px; height: 24px; padding: 0; line-height: 1; background: transparent; border: 1px solid transparent; color: #8f8b7f; font-size: 12px; }
+.hlw-notizen .nz-notiz footer button:hover { border-color: #2f3440; color: #e8e4da; }
+.hlw-notizen .nz-leer { color: #8f8b7f; text-align: center; margin-top: 40px; }

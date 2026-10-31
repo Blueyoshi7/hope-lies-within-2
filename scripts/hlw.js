@@ -1,8 +1,10 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
 import { registerSchloss, tuerenAbschliessen, schlossKnacken } from "./hlw-schloss.js";
+import { HopeLiesWithinNotizen, registerNotizen, notizJournalAnlegen } from "./hlw-notizen.js";
+import { HopeLiesWithinBestiarium, registerBestiarium, bestiarSieg, bestiarSetzen, sichtbarerName, hpSichtbar } from "./hlw-bestiarium.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
-import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf } from "./hlw-szenen.js";
+import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf, sichtUndNamenSetzen } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
@@ -362,7 +364,7 @@ function rerenderActorSheet(actorId) {
 
 function getTokensInRange(sourceToken, rangeLimit) {
   return (canvas.tokens?.placeables ?? [])
-    .filter((token) => token.id !== sourceToken.id && token.actor)
+    .filter((token) => token.id !== sourceToken.id && token.actor && (game.user?.isGM || token.visible))
     .map((token) => ({
       token,
       distance: getTokenDistanceInTiles(sourceToken, token)
@@ -448,12 +450,12 @@ function showTargetPicker(actor, item, sourceToken, rangeLimit) {
       <button type="button" data-target-token-id="${token.id}">
         <img src="${escapeHtml(token.document?.texture?.src || token.actor?.img || "")}" alt="">
         <span>
-          <strong>${escapeHtml(token.name)}</strong>
+          <strong>${escapeHtml(sichtbarerName(token))}</strong>
           <small>${escapeHtml(getTokenGridLabel(token, index))}</small>
         </span>
         <span>
           <strong>${distance.toFixed(1)} Felder</strong>
-          <small>HP ${numberValue(token.actor?.system?.resources?.hp?.value)} / ${numberValue(token.actor?.system?.resources?.hp?.max)}</small>
+          <small>${hpSichtbar(token) ? `HP ${numberValue(token.actor?.system?.resources?.hp?.value)} / ${numberValue(token.actor?.system?.resources?.hp?.max)}` : "HP ?"}</small>
         </span>
       </button>
     `).join("")
@@ -641,6 +643,7 @@ async function besiegtAbwickeln(tokenDoc, toeterId = null, { empfaenger = null, 
   const toeter = game.actors.get(toeterId) ?? canvas.tokens?.get(toeterId)?.actor ?? null;
   const liste = empfaenger ?? expEmpfaenger(toeter);
   await actor.setFlag("hope-lies-within-2", "expVergeben", true);
+  await bestiarSieg(actor);   // Bestiarium: Sieg zählen (1 Sieg schaltet den Namen frei)
   // EXP-Kristall direkt ins Inventar dessen, der besiegt hat
   const kristallSpieler = kristallAn !== undefined ? kristallAn : toeterSpieler(toeter) ?? (liste.length === 1 ? liste[0] : null);
   const beute = kristallSpieler ? await kristallBeute(actor) : null;
@@ -1561,7 +1564,7 @@ export class HopeLiesWithinActor extends Actor {
       const target = targetToken.actor;
       const targetDerived = target?.system?.derived ?? {};
       const currentHp = numberValue(target?.system?.resources?.hp?.value);
-      result = { targetName: targetToken.name, targetIsMonster: target?.type === "monster", distance, range: rangeLimit, healing, magisch, waffe: waffe?.name, werte };
+      result = { targetName: sichtbarerName(targetToken), targetIsMonster: target?.type === "monster", distance, range: rangeLimit, healing, magisch, waffe: waffe?.name, werte };
 
       if (healing) {
         const roll = await new Roll(formel, this.getRollData()).evaluate();
@@ -2735,7 +2738,7 @@ async function importMonsters(path) {
       folder: folder?.id,
       system: entry.system,
       items: entry.items ?? [],
-      prototypeToken: { name: entry.name, disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE, texture: { src: entry.token || entry.img } }
+      prototypeToken: { name: entry.name, disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE, displayName: CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER, texture: { src: entry.token || entry.img } }
     });
   }
   const created = documents.length ? await Actor.createDocuments(documents) : [];
@@ -2757,6 +2760,8 @@ Hooks.once("init", () => {
   registerTalkSettings();
   registerQuestlog();
   registerSchloss();
+  registerBestiarium();
+  registerNotizen();
   // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
@@ -2772,6 +2777,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainKapitel1", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "lindhainHauptquests", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "tammImDorf", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "sichtUndNamen", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2837,6 +2843,9 @@ Hooks.once("ready", async () => {
     schlossKnacken,
     kapitel1Journal,
     questlog: () => HopeLiesWithinQuestlog.oeffnen(),
+    bestiarium: () => HopeLiesWithinBestiarium.oeffnen(),
+    notizen: () => HopeLiesWithinNotizen.oeffnen(),
+    bestiarSetzen,
     entferneOrtsmarker,
     erstelleDashboard,
     dashboardAktualisieren,
@@ -2953,6 +2962,13 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "tammImDorf")) {
     await lindhainErgaenzen();
     await game.settings.set("hope-lies-within-2", "tammImDorf", true);
+  }
+  await notizJournalAnlegen();
+  await schnellMakros();
+  // Sicht und Überraschung (2026-10-31): echte Sicht in den Lindhain-Szenen, Monsternamen nur für den GM, Bestiarium-Zuordnung
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "sichtUndNamen")) {
+    await sichtUndNamenSetzen();
+    await game.settings.set("hope-lies-within-2", "sichtUndNamen", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {
@@ -3091,6 +3107,12 @@ function unterGeschlossenemDach(token) {
 }
 Hooks.once("setup", () => {
   const TokenClass = CONFIG.Token.objectClass;
+  // Monster verraten Spielern beim Darüberfahren weder Namen noch HP-Leiste (Überraschung; Infos gibt es im Bestiarium)
+  const sichtModus = TokenClass.prototype._canViewMode;
+  TokenClass.prototype._canViewMode = function (mode) {
+    if (!game.user?.isGM && !this.isOwner && this.actor?.type === "monster") return false;
+    return sichtModus.call(this, mode);
+  };
   const original = TokenClass.prototype._canHover;
   TokenClass.prototype._canHover = function (user, event) {
     if (!game.user?.isGM && !this.isOwner && unterGeschlossenemDach(this)) return false;
@@ -3099,6 +3121,28 @@ Hooks.once("setup", () => {
 });
 
 // Türen und Schlösser: siehe hlw-schloss.js
+
+// Questlog, Bestiarium und Gruppennotizen auf den Makro-Plätzen 1, 2 und 3 (Taste 1 / 2 / 3). Der GM legt die Makros an,
+// jeder Benutzer bekommt sie auf seine Leiste, solange dort noch nichts anderes liegt.
+const SCHNELL_MAKROS = [
+  { id: "questlog", slot: 1, name: "Questlog", img: "icons/sundries/scrolls/scroll-bound-black-tan.webp", command: "game.hlw.questlog();" },
+  { id: "bestiarium", slot: 2, name: "Bestiarium", img: "icons/sundries/books/book-embossed-bound-brown.webp", command: "game.hlw.bestiarium();" },
+  { id: "notizen", slot: 3, name: "Gruppennotizen", img: "icons/sundries/documents/document-letter-tan.webp", command: "game.hlw.notizen();" }
+];
+async function schnellMakros() {
+  for (const m of SCHNELL_MAKROS) {
+    let macro = game.macros.find((x) => x.getFlag("hope-lies-within-2", "schnell") === m.id);
+    if (!macro && game.user?.isGM) {
+      macro = await Macro.create({ name: m.name, type: "script", img: m.img, command: m.command, ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER }, flags: { "hope-lies-within-2": { schnell: m.id } } });
+    }
+    if (!macro) continue;
+    const users = game.user?.isGM ? game.users.contents : [game.user];
+    for (const user of users) {
+      const belegt = user.hotbar?.[m.slot];
+      if (!belegt || !game.macros.get(belegt)) await user.update({ [`hotbar.${m.slot}`]: macro.id });
+    }
+  }
+}
 
 // Dächer (Kacheln, die ausblenden können): Spieler lassen sie beim Darüberfahren mit der Maus nicht mehr durchsichtig werden;
 // der GM sieht immer hinein (Dach halbdurchsichtig).
