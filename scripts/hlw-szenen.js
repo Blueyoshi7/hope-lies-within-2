@@ -147,14 +147,24 @@ function waendeFuer(geb, level) {
     c: [...drehe(x1, y1, cx, cy, geb.rot), ...drehe(x2, y2, cx, cy, geb.rot)],
     door: tuer ? CONST.WALL_DOOR_TYPES.DOOR : CONST.WALL_DOOR_TYPES.NONE,
     ds: CONST.WALL_DOOR_STATES.CLOSED,
+    sight: CONST.WALL_SENSE_TYPES.NONE,   // Hauswände sperren keine Sicht: Spieler sehen das Dach, das Innere verdeckt das Dach selbst
     levels: [level]
   }));
 }
 
+// Bestehende Welten (einmal): Hauswände in Lindhain ohne Sichtsperre. Sonst war hinter jedem Haus alles schwarz, auch das Dach.
+// Bewegung und Licht sperren die Wände weiter. Die Alte Hütte (ohne Dach) behält ihre Sichtsperre: Finn bleibt versteckt.
+export async function hauswaendeDurchsichtig() {
+  const scene = game.scenes.find((s) => s.name === "Lindhain");
+  if (!scene) return;
+  const updates = scene.walls.filter((w) => w.sight !== CONST.WALL_SENSE_TYPES.NONE).map((w) => ({ _id: w.id, sight: CONST.WALL_SENSE_TYPES.NONE }));
+  if (updates.length) await scene.updateEmbeddedDocuments("Wall", updates);
+}
+
 // Ortsmarker (Notizen) auf Karten entfernen, die auf die Ortsliste „Lindhain – Orte“ zeigen.
 // Die Ortsliste selbst bleibt im Journal; auf der Karte stören die Buch-Symbole nur.
-// Echte Sicht: Spieler sehen nur, was ihre Figur sieht. Bis Dunkelheit 0,5 ist die Szene hell (globales Licht),
-// darüber nur noch Lichtquellen (Fackel, Laterne, Licht in der Szene). So lassen sich Spieler überraschen.
+// Echte Sicht: Bis Dunkelheit 0,5 ist die Szene hell (globales Licht) und Spieler sehen die ganze Karte samt Dächern
+// (Hauswände sperren keine Sicht). Darüber sehen sie nur noch, was eine Lichtquelle beleuchtet. So lassen sich Spieler überraschen.
 const SICHT = { tokenVision: true, environment: { globalLight: { enabled: true, darkness: { min: 0, max: 0.5 } } } };
 
 // Bestehende Welten (einmal): Sicht in den Lindhain-Szenen an, Monsternamen nur noch für den GM beim Darüberfahren,

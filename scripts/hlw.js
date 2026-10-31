@@ -4,7 +4,7 @@ import { registerSchloss, tuerenAbschliessen, schlossKnacken } from "./hlw-schlo
 import { HopeLiesWithinNotizen, registerNotizen, notizJournalAnlegen } from "./hlw-notizen.js";
 import { HopeLiesWithinBestiarium, registerBestiarium, bestiarSieg, bestiarSetzen, sichtbarerName, hpSichtbar } from "./hlw-bestiarium.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
-import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf, sichtUndNamenSetzen } from "./hlw-szenen.js";
+import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf, sichtUndNamenSetzen, hauswaendeDurchsichtig } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
@@ -2778,6 +2778,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainHauptquests", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "tammImDorf", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "sichtUndNamen", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "hauswaendeDurchsichtig", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "expStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2969,6 +2970,11 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "sichtUndNamen")) {
     await sichtUndNamenSetzen();
     await game.settings.set("hope-lies-within-2", "sichtUndNamen", true);
+  }
+  // Tag = ganze Karte (2026-11-01): Hauswände in Lindhain sperren keine Sicht mehr, Dächer bleiben sichtbar
+  if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "hauswaendeDurchsichtig")) {
+    await hauswaendeDurchsichtig();
+    await game.settings.set("hope-lies-within-2", "hauswaendeDurchsichtig", true);
   }
   // Klassen-Skills mit Zusatzdaten (z. B. Trickshot: zwei Ziele, Waffenschaden) auf den aktuellen Stand bringen
   if (game.user?.isGM) {
