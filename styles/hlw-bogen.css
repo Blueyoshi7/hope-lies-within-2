@@ -891,3 +891,18 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-notizen .nz-notiz footer button { width: 26px; height: 24px; padding: 0; line-height: 1; background: transparent; border: 1px solid transparent; color: #8f8b7f; font-size: 12px; }
 .hlw-notizen .nz-notiz footer button:hover { border-color: #2f3440; color: #e8e4da; }
 .hlw-notizen .nz-leer { color: #8f8b7f; text-align: center; margin-top: 40px; }
+
+/* Almanach (hlw-sammeln.js; nutzt die Bestiarium-Klassen) */
+.hlw-almanach .al-reiter { display: flex; gap: 6px; flex: none; }
+.hlw-almanach .al-reiter button { flex: 1; background: #1a1d25; border: 1px solid #2f3440; color: #c9c4b6; border-radius: 6px; height: 32px; font-size: 13px; }
+.hlw-almanach .al-reiter button span { display: inline-block; padding: 0 6px; margin-left: 4px; border-radius: 9px; background: #2f3440; font-size: 11px; }
+.hlw-almanach .al-reiter button.is-aktiv { border-color: #7fbf6a; color: #e6f3dc; }
+.hlw-almanach .al-funde { font-size: 11px; color: #7fbf6a; flex: none; }
+.hlw-almanach .al-tag { flex: none; width: auto; height: 30px; padding: 0 10px; background: #1a1d25; color: #f3e6c4; border: 1px solid #d8b46a; border-radius: 6px; font-size: 13px; }
+.hlw-almanach .bs-titel img.al-bild { object-fit: contain; background: #14161c; padding: 10px; }
+.hlw-almanach .bs-pips { display: none; }
+
+/* Knopf „Suchen“ (hlw-sammeln.js): erscheint, solange die eigene Figur in einem Sammelgebiet steht */
+#hlw-suchen-knopf { position: fixed; left: 50%; bottom: 120px; transform: translateX(-50%); z-index: 60; width: auto; height: 38px; padding: 0 18px; background: #1f2a1c; color: #e6f3dc; border: 1px solid #7fbf6a; border-radius: 19px; font-size: 14px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5); cursor: pointer; }
+#hlw-suchen-knopf:hover { background: #2b3a27; }
+#hlw-suchen-knopf i { margin-right: 6px; }

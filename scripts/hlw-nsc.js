@@ -517,13 +517,18 @@ export async function belohnungLesen(text) {
   const t = String(text ?? "");
   let sk = 0;
   for (const m of t.matchAll(/(\d+)\s*(GK|SK)\b/g)) sk += Number(m[1]) * (m[2] === "GK" ? 100 : 1);
-  const namen = [...(await importListe()).keys()].sort((a, b) => b.length - a.length);
+  // Namen aus den Import-Listen und Quest-Gegenstände der Welt (z. B. „Glatter Flussstein“); Groß- und Kleinschreibung egal
+  const questGegenstaende = (game.items ?? []).filter((i) => i.getFlag(SYSTEM_ID, "questGegenstand")).map((i) => i.name);
+  const namen = [...new Set([...(await importListe()).keys(), ...questGegenstaende])].sort((a, b) => b.length - a.length);
   const items = [];
   const muster = /(?:(\d+)\s*×\s*|\b(ein|eine|einen|zwei|drei|vier|fünf)\s+)([^,;]+?)(?=\s+und\s+|\s+pro Person|\s*[,;:]|$)/gi;
   for (const m of t.matchAll(muster)) {
     const anzahl = m[1] ? Number(m[1]) : ZAHLWORT[m[2].toLowerCase()];
-    const rest = m[3].trim();
-    const name = namen.find((n) => rest === n || rest.startsWith(`${n} `) || rest.startsWith(`${n}(`) || rest.startsWith(`${n},`));
+    const rest = m[3].trim().toLowerCase();
+    const name = namen.find((n) => {
+      const k = n.toLowerCase();
+      return rest === k || rest.startsWith(`${k} `) || rest.startsWith(`${k}(`) || rest.startsWith(`${k},`);
+    });
     if (name && anzahl) items.push([name, anzahl]);
   }
   return { sk, items, proPerson: /pro Person/i.test(t) };
@@ -535,7 +540,7 @@ function questEmpfaenger(quest, proPerson) {
   return charakter ? [charakter] : [];
 }
 
-async function gegenstandDazu(actor, name, anzahl) {
+export async function gegenstandDazu(actor, name, anzahl) {
   const gleich = actor.items.find((i) => i.name === name && !i.system?.equipped && !i.getFlag(SYSTEM_ID, "rucksack"));
   if (gleich && ["consumable", "equipment", "foodDrink", "material", "natural", "mineral", "junk"].includes(gleich.type)) {
     return gleich.update({ "system.quantity": Math.max(Number(gleich.system?.quantity) || 1, 1) + anzahl });

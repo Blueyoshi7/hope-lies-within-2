@@ -2,10 +2,10 @@
   "id": "hope-lies-within-2",
   "title": "Hope lies Within 2.0",
   "description": "Foundry-VTT-System für Hope lies Within 2.0 (Regelstand Kanon 2.0).",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "url": "https://github.com/Blueyoshi7/hope-lies-within-2",
   "manifest": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/latest/download/system.json",
-  "download": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/download/v0.17.1/hope-lies-within-2-0.17.1.zip",
+  "download": "https://github.com/Blueyoshi7/hope-lies-within-2/releases/download/v0.18.0/hope-lies-within-2-0.18.0.zip",
   "authors": [
     {
       "name": "Dominik Bretterklieber"
@@ -19,6 +19,11 @@
     "scripts/hlw.js"
   ],
   "template": "template.json",
+  "documentTypes": {
+    "RegionBehavior": {
+      "sammeln": {}
+    }
+  },
   "styles": [
     "styles/hlw.css",
     "styles/hlw-bogen.css"

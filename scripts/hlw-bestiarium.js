@@ -252,7 +252,7 @@ export class HopeLiesWithinBestiarium extends ApplicationV2 {
 
   _replaceHTML(result, content) {
     content.innerHTML = result;
-    content.querySelector(".bs-zeile.is-aktiv")?.scrollIntoView({ block: "nearest" });
+    window.setTimeout(() => content.querySelector(".bs-zeile.is-aktiv")?.scrollIntoView({ block: "nearest" }), 0);
     content.querySelectorAll("[data-bs-name]").forEach((knopf) => knopf.addEventListener("click", () => {
       this.auswahl = knopf.dataset.bsName;
       this.render();

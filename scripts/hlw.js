@@ -1,6 +1,7 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
 import { registerSchloss, tuerenAbschliessen, schlossKnacken } from "./hlw-schloss.js";
+import { HopeLiesWithinAlmanach, registerSammeln, suchen, neuerTag, almanachFreischalten, almanachAusInventaren, questGegenstaendeAnlegen, sammelgebieteAnlegen } from "./hlw-sammeln.js";
 import { HopeLiesWithinNotizen, registerNotizen, notizJournalAnlegen } from "./hlw-notizen.js";
 import { HopeLiesWithinBestiarium, registerBestiarium, bestiarSieg, bestiarSetzen, sichtbarerName, hpSichtbar } from "./hlw-bestiarium.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
@@ -2762,6 +2763,7 @@ Hooks.once("init", () => {
   registerSchloss();
   registerBestiarium();
   registerNotizen();
+  registerSammeln();
   // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
@@ -2778,6 +2780,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainHauptquests", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "tammImDorf", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "sichtUndNamen", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "almanachStart", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "hauswaendeDurchsichtig", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "skillWerteStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2846,6 +2849,11 @@ Hooks.once("ready", async () => {
     questlog: () => HopeLiesWithinQuestlog.oeffnen(),
     bestiarium: () => HopeLiesWithinBestiarium.oeffnen(),
     notizen: () => HopeLiesWithinNotizen.oeffnen(),
+    almanach: () => HopeLiesWithinAlmanach.oeffnen(),
+    suchen,
+    neuerTag,
+    almanachFreischalten,
+    sammelgebieteAnlegen,
     bestiarSetzen,
     entferneOrtsmarker,
     erstelleDashboard,
@@ -2965,6 +2973,15 @@ Hooks.once("ready", async () => {
     await game.settings.set("hope-lies-within-2", "tammImDorf", true);
   }
   await notizJournalAnlegen();
+  // Suchen und Almanach (2026-11-01): Quest-Gegenstände, Sammelgebiete pro Szene (einmal), Almanach aus den Inventaren
+  if (game.user?.isGM) {
+    await questGegenstaendeAnlegen();
+    await sammelgebieteAnlegen();
+    if (!game.settings.get("hope-lies-within-2", "almanachStart")) {
+      await almanachAusInventaren();
+      await game.settings.set("hope-lies-within-2", "almanachStart", true);
+    }
+  }
   await schnellMakros();
   // Sicht und Überraschung (2026-10-31): echte Sicht in den Lindhain-Szenen, Monsternamen nur für den GM, Bestiarium-Zuordnung
   if (game.user?.isGM && !game.settings.get("hope-lies-within-2", "sichtUndNamen")) {
@@ -3128,12 +3145,14 @@ Hooks.once("setup", () => {
 
 // Türen und Schlösser: siehe hlw-schloss.js
 
-// Questlog, Bestiarium und Gruppennotizen auf den Makro-Plätzen 1, 2 und 3 (Taste 1 / 2 / 3). Der GM legt die Makros an,
+// Questlog, Bestiarium, Gruppennotizen, Almanach und Suchen auf den Makro-Plätzen 1 bis 5 (Tasten 1 bis 5). Der GM legt die Makros an,
 // jeder Benutzer bekommt sie auf seine Leiste, solange dort noch nichts anderes liegt.
 const SCHNELL_MAKROS = [
   { id: "questlog", slot: 1, name: "Questlog", img: "icons/sundries/scrolls/scroll-bound-black-tan.webp", command: "game.hlw.questlog();" },
   { id: "bestiarium", slot: 2, name: "Bestiarium", img: "icons/sundries/books/book-embossed-bound-brown.webp", command: "game.hlw.bestiarium();" },
-  { id: "notizen", slot: 3, name: "Gruppennotizen", img: "icons/sundries/documents/document-letter-tan.webp", command: "game.hlw.notizen();" }
+  { id: "notizen", slot: 3, name: "Gruppennotizen", img: "icons/sundries/documents/document-letter-tan.webp", command: "game.hlw.notizen();" },
+  { id: "almanach", slot: 4, name: "Almanach", img: "icons/consumables/plants/leaf-herb-green.webp", command: "game.hlw.almanach();" },
+  { id: "suchen", slot: 5, name: "Suchen", img: "icons/tools/scribal/magnifying-glass.webp", command: "game.hlw.suchen();" }
 ];
 async function schnellMakros() {
   for (const m of SCHNELL_MAKROS) {

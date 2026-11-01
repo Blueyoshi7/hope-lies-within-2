@@ -123,7 +123,17 @@ Das Buch in der linken Werkzeugleiste (Figuren) öffnet das Bestiarium, ebenso `
 
 **Überraschung:** Monster zeigen Spielern beim Darüberfahren weder Namen noch HP-Leiste. Solange ein Monster unbekannt ist (Stufe 0), heißt es für Spieler in der Kampfleiste, in der Zielauswahl und auf Angriffskarten „Unbekanntes Wesen“. HP in der Zielauswahl sehen Spieler erst ab Stufe 2. Die Zielauswahl zeigt nur Figuren, die der Spieler sieht. Die Lindhain-Szenen nutzen echte Sicht: Bis Dunkelheit 0,5 ist es Tag, und Spieler sehen die ganze Karte samt Dächern (Hauswände sperren keine Sicht, ins Haus schaut man trotzdem nicht, weil das Dach es verdeckt). Darüber ist es Nacht: Spieler sehen nur noch, was eine Lichtquelle beleuchtet (Fackel an der Figur, Licht in der Szene). Die Alte Hütte hat kein Dach; ihre Wände sperren die Sicht weiter, bis die Tür aufgeht.
 
-**Makro-Leiste:** Questlog liegt auf Platz **1**, Bestiarium auf Platz **2**, Gruppennotizen auf Platz **3** (Taste 1, 2 bzw. 3). Das System legt die Makros an und setzt sie bei jedem Benutzer ein, solange die Plätze frei sind.
+**Makro-Leiste:** Questlog liegt auf Platz **1**, Bestiarium auf Platz **2**, Gruppennotizen auf Platz **3**, Almanach auf Platz **4**, Suchen auf Platz **5** (Tasten 1 bis 5). Das System legt die Makros an und setzt sie bei jedem Benutzer ein, solange die Plätze frei sind.
+
+## Suchen und Almanach
+
+**Sammelgebiete** sind Regionen auf der Karte mit dem Verhalten **Sammelgebiet** (Regionen-Werkzeug: Region zeichnen, Verhalten hinzufügen). Darin stehen Name (sehen die Spieler), Wurf (World-Skill), Schwierigkeit (sehen die Spieler nicht; 0 = ohne Wurf), Funde und Versuche pro Tag. Funde als Text, getrennt mit `;`: `Nebelfarn` (sicherer Fund), `2 × Holz (Bündel)` (Menge), `Wasserbeere 30 %` (Chance), `Holzvogel einmal` (nur einmal für die ganze Gruppe). Namen wie in den Import-Listen oder Gegenstände der Welt.
+
+Steht die eigene Figur in einem Sammelgebiet, erscheint unten der Knopf **Suchen: <Ort>** (auch Taste 5 oder `game.hlw.suchen()`). Gewürfelt wird 1W20 + World-Skill gegen die Schwierigkeit; natürliche 20 gelingt, natürliche 1 misslingt. Geschafft: alle sicheren Funde, je 5 Punkte über der Schwierigkeit ein Stück mehr, dazu %-Funde mit ihrer Chance. Der Fund landet direkt im Inventar, eine Chatkarte zeigt ihn. Jede Figur darf pro Gebiet und Spieltag so oft suchen, wie im Gebiet steht. Einen neuen Tag beginnt der GM im Almanach (**Neuer Tag**) oder mit `game.hlw.neuerTag()`.
+
+Kapitel 1 bringt sechs Sammelgebiete mit (beim ersten GM-Start, einmal pro Szene; danach frei verschieben, ändern oder löschen): Lindhain: **Lindbach** (Nebelfarn, Naturkunde 12), **Schilf am Mühlbach** (Holzvogel einmal, glatter Flussstein, Scharfsinnigkeit 12), **Bretter an der Mühle** (Holz, ohne Wurf). Nordweg: **Waldrand** (Sternmoos, Naturkunde 15), **Umgestürzte Stämme** (Holz, Athletik 15). Westweg: **Alte Scheune** (3 Säcke Kohle einmal, Scharfsinnigkeit 8). Die Quest-Gegenstände Holzvogel, Glatter Flussstein und Kranz für den Wegstein liegen im Ordner „Kapitel 1 – Quest-Gegenstände“.
+
+Der **Almanach** (Taste 4, `game.hlw.almanach()`) enthält alle Pflanzen und Mineralien, verdeckt als „???“. Bekommt ein Spielercharakter eines davon (Suchen, Kauf, Belohnung, Geben), ist es eingetragen: Bild, Rang, Preis, Beschreibung, Fundorte und wie oft die Gruppe es gefunden hat. Der GM kann Einträge von Hand eintragen oder verdecken.
 
 ## Gruppennotizen
 
