@@ -60,7 +60,8 @@ export function getTalkData(actor) {
     quests: Array.isArray(talk.quests) ? talk.quests : [],
     verlauf: Array.isArray(talk.verlauf) ? talk.verlauf : [],
     bausteine: Array.isArray(talk.bausteine) ? talk.bausteine : STANDARD_BAUSTEINE,
-    notizen: Array.isArray(talk.notizen) ? talk.notizen : []
+    notizen: Array.isArray(talk.notizen) ? talk.notizen : [],
+    speisekarte: talk.speisekarte || ""   // Bild einer Speisekarte (z. B. Hanne im Lindenblatt)
   };
 }
 
@@ -240,6 +241,7 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
       <div class="gs-gmleiste">
         <button type="button" data-hlw="show"><i class="fa-solid fa-users"></i> Allen zeigen</button>
         <button type="button" data-hlw="hide"><i class="fa-solid fa-xmark"></i> Bei allen schließen</button>
+        ${talk.speisekarte ? `<button type="button" data-hlw="speisekarte"><i class="fa-solid fa-utensils"></i> Speisekarte zeigen</button>` : ""}
       </div>` : "";
 
     return `
@@ -769,6 +771,11 @@ export class HopeLiesWithinTalkApp extends ApplicationV2 {
     root.querySelector("[data-hlw='portrait']")?.addEventListener("click", () => this._pickPortrait());
     root.querySelector("[data-hlw='show']")?.addEventListener("click", () => zeigeAllen(this.actor, this.reiter));
     root.querySelector("[data-hlw='hide']")?.addEventListener("click", () => game.socket.emit(SOCKET, { type: "talkClose", actorId: this.actor.id }));
+    root.querySelector("[data-hlw='speisekarte']")?.addEventListener("click", async () => {
+      const fenster = new foundry.applications.apps.ImagePopout({ src: getTalkData(this.actor).speisekarte, window: { title: "Speisekarte" } });   // ohne NSC-Namen: den kennen die Spieler vielleicht noch nicht
+      await fenster.render(true);
+      fenster.shareImage();
+    });
   }
 
   _zeileBearbeiten(li) {

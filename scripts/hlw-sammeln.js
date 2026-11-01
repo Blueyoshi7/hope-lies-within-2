@@ -5,7 +5,9 @@
 // Steht die eigene Figur in einem Sammelgebiet, erscheint der Knopf „Suchen“ (auch Makro-Platz 5 oder game.hlw.suchen()).
 // 1W20 + World-Skill gegen die Schwierigkeit (sehen die Spieler nicht); natürliche 20 gelingt, natürliche 1 misslingt.
 // Geschafft: sichere Funde (ohne %) + 1 Stück je 5 Punkte über der Schwierigkeit, %-Funde mit ihrer Chance, „einmal“-Funde einmal.
-// Versuche zählen pro Figur, Gebiet und Spieltag; der GM beginnt einen neuen Tag im Almanach („Neuer Tag“).
+// Versuche zählen pro Figur, Gebiet und Spieltag. Dazu hat jedes Gebiet einen Vorrat pro Tag für die ganze Gruppe
+// (z. B. 6 Nebelfarn): ist er aufgebraucht, ist das Gebiet für heute abgeerntet. Der GM beginnt einen neuen Tag im
+// Almanach („Neuer Tag“), am besten wenn die Gruppe schlafen geht. Sammelgebiete sieht der GM immer, Spieler nie.
 // Almanach: alle Pflanzen und Mineralien, verdeckt, bis ein Spielercharakter eines davon bekommt (Suchen, Kauf, Belohnung …).
 // Stand in der Welt-Einstellung "almanach": { [Name]: { offen, funde } }. Öffnen: Makro-Platz 4 oder game.hlw.almanach().
 
@@ -36,7 +38,8 @@ export class SammelgebietDaten extends foundry.data.regionBehaviors.RegionBehavi
       wurf: new f.StringField({ required: true, initial: "naturkunde", choices: Object.fromEntries(Object.entries(WORLD_SKILLS).map(([k, v]) => [k, v.label])), label: "Wurf", hint: "Pflanzen und Mineralien: Naturkunde. Versteckte Dinge: Scharfsinnigkeit." }),
       schwierigkeit: new f.NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 12, label: "Schwierigkeit", hint: "Sehen die Spieler nicht. 0 = ohne Wurf, man findet immer etwas." }),
       funde: new f.StringField({ required: true, blank: true, initial: "", label: "Funde", hint: "Getrennt mit ; z. B. „Nebelfarn; 2 × Holz (Bündel); Wasserbeere 30 %; Holzvogel einmal“. Ohne % = sicherer Fund, einmal = nur einmal für die ganze Gruppe." }),
-      proTag: new f.NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 1, label: "Versuche pro Tag", hint: "Wie oft jede Figur hier pro Spieltag suchen darf. 0 = beliebig oft." })
+      proTag: new f.NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 1, label: "Versuche pro Tag", hint: "Wie oft jede Figur hier pro Spieltag suchen darf. 0 = beliebig oft." }),
+      vorrat: new f.NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 6, label: "Vorrat pro Tag", hint: "So viele Stück gibt das Gebiet pro Spieltag her, für die ganze Gruppe zusammen. Danach ist es bis zum nächsten Tag abgeerntet. 0 = unbegrenzt. „einmal“-Funde zählen nicht mit." })
     };
   }
 }
@@ -98,7 +101,8 @@ export async function neuerTag() {
   if (!game.user?.isGM) return;
   const tag = spieltag() + 1;
   await game.settings.set(SYSTEM_ID, "spieltag", tag);
-  await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>Tag ${tag}</h2><p>Ein neuer Tag beginnt. In den Sammelgebieten ist wieder etwas nachgewachsen.</p></div>` });
+  await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2><i class="fa-solid fa-cloud-sun"></i> Tag ${tag} beginnt</h2><p>Ein neuer Morgen. In den Sammelgebieten ist wieder etwas nachgewachsen.</p></div>` });
+  Hooks.callAll("hlwNeuerTag", tag);   // hlw-tageszeit.js stellt auf Morgen
 }
 
 export async function suchen() {
@@ -109,8 +113,14 @@ export async function suchen() {
   const daten = behavior.system;
   const ort = gebietName(behavior);
 
-  // Versuche pro Figur, Gebiet und Spieltag
+  // Vorrat des Gebiets für heute (ganze Gruppe) und Versuche pro Figur, Gebiet und Spieltag
   const tag = spieltag();
+  const vorrat = zahl(daten.vorrat);
+  const genommen = behavior.getFlag(SYSTEM_ID, "vorrat")?.tag === tag ? zahl(behavior.getFlag(SYSTEM_ID, "vorrat").genommen) : 0;
+  let rest = vorrat > 0 ? Math.max(vorrat - genommen, 0) : Infinity;
+  const vergebenVorher = behavior.getFlag(SYSTEM_ID, "vergeben") ?? [];
+  const nurEinmalUebrig = fundeLesen(daten.funde).some((f) => f.einmal && !vergebenVorher.includes(f.name));
+  if (rest <= 0 && !nurEinmalUebrig) return ui.notifications?.warn(`Am Ort „${ort}“ ist für heute alles abgeerntet. Morgen wächst wieder etwas nach.`);
   const stand = actor.getFlag(SYSTEM_ID, "suche");
   const heute = stand?.tag === tag ? (stand.gebiete ?? {}) : {};
   const versuche = zahl(heute[behavior.id]);
@@ -139,8 +149,12 @@ export async function suchen() {
   if (geschafft) {
     for (const f of uebrig) {
       if (f.chance < 100 && Math.random() * 100 >= f.chance) continue;
-      const menge = f.menge + (f.einmal || f.chance < 100 ? 0 : Math.floor(ueber / 5));
-      funde.push({ ...f, menge });
+      let menge = f.menge + (f.einmal || f.chance < 100 ? 0 : Math.floor(ueber / 5));
+      if (!f.einmal) {
+        menge = Math.min(menge, rest);
+        rest -= menge;
+      }
+      if (menge > 0) funde.push({ ...f, menge });
     }
   }
   const erhalten = [];
@@ -152,14 +166,15 @@ export async function suchen() {
 
   const ergebnis = !geschafft ? "Nichts gefunden."
     : erhalten.length ? `Gefunden: ${erhalten.map((f) => `<b>${f.menge} × ${escapeHtml(f.name)}</b>`).join(", ")}`
-    : uebrig.length ? "Diesmal nichts gefunden." : "Hier ist nichts mehr zu holen.";
+    : !uebrig.length ? "Hier ist nichts mehr zu holen."
+    : rest <= 0 ? "Für heute ist hier alles abgeerntet." : "Diesmal nichts gefunden.";
   const flavor = `Sucht am Ort „${escapeHtml(ort)}“ (${escapeHtml(skill)}) · ${ergebnis}`;
   if (roll) await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor });
   else await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }), content: `<div class="hlw-chat-card hlw-chat-kurz"><p>${flavor}</p></div>` });
 
   // GM merkt sich „einmal“-Funde und zählt die Funde im Almanach
   if (erhalten.length) {
-    const meldung = { type: "sucheFund", sceneId: behavior.parent.parent.id, regionId: behavior.parent.id, behaviorId: behavior.id, funde: erhalten.map(({ name, menge, einmal }) => ({ name, menge, einmal })) };
+    const meldung = { type: "sucheFund", sceneId: behavior.parent.parent.id, regionId: behavior.parent.id, behaviorId: behavior.id, tag, funde: erhalten.map(({ name, menge, einmal }) => ({ name, menge, einmal })) };
     if (game.users.activeGM?.isSelf) await sucheFundVerbuchen(meldung);
     else game.socket.emit(SOCKET, meldung);
   }
@@ -172,6 +187,13 @@ async function sucheFundVerbuchen(meldung) {
   if (behavior && einmal.length) {
     const vergeben = behavior.getFlag(SYSTEM_ID, "vergeben") ?? [];
     await behavior.setFlag(SYSTEM_ID, "vergeben", [...new Set([...vergeben, ...einmal])]);
+  }
+  // Vorrat für heute verbuchen
+  const menge = meldung.funde.filter((f) => !f.einmal).reduce((summe, f) => summe + zahl(f.menge), 0);
+  if (behavior && menge) {
+    const alt = behavior.getFlag(SYSTEM_ID, "vorrat");
+    const genommen = alt?.tag === meldung.tag ? zahl(alt.genommen) : 0;
+    await behavior.setFlag(SYSTEM_ID, "vorrat", { tag: meldung.tag, genommen: genommen + menge });
   }
   await almanachZaehlen(meldung.funde);
 }
@@ -394,12 +416,12 @@ export async function questGegenstaendeAnlegen() {
 }
 
 const GEBIETE_KAPITEL1 = [
-  { szene: (s) => s.name === "Lindhain", name: "Lindbach", rechteck: [3470, 450, 320, 1110], wurf: "naturkunde", schwierigkeit: 12, funde: "Nebelfarn; Wasserbeere 30 %", proTag: 1 },
-  { szene: (s) => s.name === "Lindhain", name: "Schilf am Mühlbach", rechteck: [3560, 2120, 340, 660], wurf: "scharfsinnigkeit", schwierigkeit: 12, funde: "Holzvogel einmal; Glatter Flussstein 25 %", proTag: 1 },
-  { szene: (s) => s.name === "Lindhain", name: "Bretter an der Mühle", rechteck: [3000, 2830, 220, 400], wurf: "athletik", schwierigkeit: 0, funde: "Holz (Bündel)", proTag: 3 },
-  { szene: (s) => s.getFlag(SYSTEM_ID, "weg") === "nord", name: "Waldrand", rechteck: [200, 2850, 1500, 650], wurf: "naturkunde", schwierigkeit: 15, funde: "Sternmoos; Schattenpilz 25 %", proTag: 1 },
-  { szene: (s) => s.getFlag(SYSTEM_ID, "weg") === "nord", name: "Umgestürzte Stämme", rechteck: [2350, 1100, 750, 600], wurf: "athletik", schwierigkeit: 15, funde: "Holz (Bündel)", proTag: 2 },
-  { szene: (s) => s.getFlag(SYSTEM_ID, "weg") === "west", name: "Alte Scheune", rechteck: [450, 2000, 1400, 1450], wurf: "scharfsinnigkeit", schwierigkeit: 8, funde: "3 × Kohle (Sack) einmal; Holz (Bündel) 30 %", proTag: 1 }
+  { szene: (s) => s.name === "Lindhain", name: "Lindbach", rechteck: [3470, 450, 320, 1110], wurf: "naturkunde", schwierigkeit: 12, funde: "Nebelfarn; Wasserbeere 30 %", proTag: 1, vorrat: 6 },
+  { szene: (s) => s.name === "Lindhain", name: "Schilf am Mühlbach", rechteck: [3560, 2120, 340, 660], wurf: "scharfsinnigkeit", schwierigkeit: 12, funde: "Holzvogel einmal; Glatter Flussstein 25 %", proTag: 1, vorrat: 2 },
+  { szene: (s) => s.name === "Lindhain", name: "Bretter an der Mühle", rechteck: [3000, 2830, 220, 400], wurf: "athletik", schwierigkeit: 0, funde: "Holz (Bündel)", proTag: 3, vorrat: 8 },
+  { szene: (s) => s.getFlag(SYSTEM_ID, "weg") === "nord", name: "Waldrand", rechteck: [200, 2850, 1500, 650], wurf: "naturkunde", schwierigkeit: 15, funde: "Sternmoos; Leuchtbeere 25 %", proTag: 1, vorrat: 4 },
+  { szene: (s) => s.getFlag(SYSTEM_ID, "weg") === "nord", name: "Umgestürzte Stämme", rechteck: [2350, 1100, 750, 600], wurf: "athletik", schwierigkeit: 15, funde: "Holz (Bündel)", proTag: 2, vorrat: 6 },
+  { szene: (s) => s.getFlag(SYSTEM_ID, "weg") === "west", name: "Alte Scheune", rechteck: [450, 2000, 1400, 1450], wurf: "scharfsinnigkeit", schwierigkeit: 8, funde: "3 × Kohle (Sack) einmal; Holz (Bündel) 30 %", proTag: 1, vorrat: 3 }
 ];
 
 // Legt die Sammelgebiete aus Kapitel 1 an, einmal pro Szene (beim GM-Start; neue Szenen bekommen sie beim nächsten Start).
@@ -416,15 +438,41 @@ export async function sammelgebieteAnlegen({ neu = false } = {}) {
       const level = scene.initialLevel?.id ?? scene.firstLevel?.id;
       await scene.createEmbeddedDocuments("Region", [{
         name: `Sammelgebiet: ${g.name}`,
-        color: "#5fae5a",
+        color: "#2fe05a",
+        visibility: CONST.REGION_VISIBILITY.GAMEMASTER,   // der GM sieht Sammelgebiete immer, Spieler nie
         shapes: [{ type: "rectangle", x, y, width, height }],
         ...(level ? { levels: [level] } : {}),
         flags: { [SYSTEM_ID]: { sammelgebiet: g.name } },
-        behaviors: [{ name: "Sammelgebiet", type: "sammeln", system: { name: g.name, wurf: g.wurf, schwierigkeit: g.schwierigkeit, funde: g.funde, proTag: g.proTag } }]
+        behaviors: [{ name: "Sammelgebiet", type: "sammeln", system: { name: g.name, wurf: g.wurf, schwierigkeit: g.schwierigkeit, funde: g.funde, proTag: g.proTag, vorrat: g.vorrat } }]
       }]);
     }
   }
   for (const scene of erledigt) if (!scene.getFlag(SYSTEM_ID, "sammelgebiete")) await scene.setFlag(SYSTEM_ID, "sammelgebiete", true);
+}
+
+// Region nur sichtbar, solange das Regionen-Werkzeug aktiv ist (Foundry-Standard)
+function nurImWerkzeug(region) {
+  return [CONST.REGION_VISIBILITY.LAYER, CONST.REGION_VISIBILITY.LAYER_UNLOCKED].includes(region?.visibility);
+}
+
+// Bestehende Welten (einmal): Sammelgebiete für den GM sichtbar, Vorrat pro Tag eintragen, Leuchtbeere statt Schattenpilz
+export async function sammelgebieteNachruesten() {
+  if (!game.user?.isGM) return;
+  for (const scene of game.scenes) {
+    for (const region of scene.regions) {
+      const behaviors = region.behaviors.filter((b) => b.type === "sammeln");
+      if (!behaviors.length) continue;
+      if (nurImWerkzeug(region)) await region.update({ visibility: CONST.REGION_VISIBILITY.GAMEMASTER });
+      if (region.getFlag(SYSTEM_ID, "sammelgebiet") && region.color?.toString() === "#5fae5a") await region.update({ color: "#2fe05a" });
+      const vorlage = GEBIETE_KAPITEL1.find((g) => g.name === region.getFlag(SYSTEM_ID, "sammelgebiet"));
+      if (!vorlage) continue;
+      for (const behavior of behaviors) {
+        const update = { "system.vorrat": vorlage.vorrat };
+        if (behavior.system.funde === "Sternmoos; Schattenpilz 25 %") update["system.funde"] = vorlage.funde;
+        await behavior.update(update);
+      }
+    }
+  }
 }
 
 // ---------- Anmeldung ----------
@@ -446,6 +494,12 @@ export function registerSammeln() {
   Hooks.on("deleteToken", knopfPruefen);
   Hooks.on("updateRegion", knopfPruefen);
   Hooks.on("createRegionBehavior", knopfPruefen);
+  // Selbst gezeichnete Sammelgebiete: der GM sieht sie immer (Foundry zeigt Regionen sonst nur im Regionen-Werkzeug)
+  Hooks.on("createRegionBehavior", (behavior) => {
+    const region = behavior.parent;
+    if (behavior.type !== "sammeln" || !game.users.activeGM?.isSelf || !nurImWerkzeug(region)) return;
+    region.update({ visibility: CONST.REGION_VISIBILITY.GAMEMASTER });
+  });
   Hooks.on("updateRegionBehavior", knopfPruefen);
   Hooks.on("deleteRegionBehavior", knopfPruefen);
 

@@ -178,8 +178,11 @@ const LINDHAIN_WERTE = {
   "Hanne Brook": {
     bausteine: [["gruss", "Willkommen im Lindenblatt! Setzt euch, setzt euch!"], ["gruss", "Na, ihr seht hungrig aus!"], ["handel", "Suppe gibt's für drei Silber, Brot obendrauf."], ["abschied", "Kommt bald wieder, die Suppe wartet!"]],
     level: 3, schwerpunkt: "zivil", kes: 120, waffe: "Holzkeule",
-    handel: { kauft: ["foodDrink", "natural"], ankauf: 40, andere: 0, verkauf: 100 },
-    waren: [["Sonnenkornbrot", 10], ["Nebeltraum-Suppe", 8], ["Schattenfeuer-Eintopf", 4], ["Windgrass-Bier", 12], ["Proviant (1 Tagesration)", 10], ["Kerzen (5 Stück)", 4]],
+    handel: { kauft: ["foodDrink", "natural"], ankauf: 40, andere: 0, verkauf: 100 }, speisekarte: true,
+    // Die ganze Speisekarte (assets/lindhain/speisekarte-lindenblatt.webp); Preise = Marktpreise der Import-Listen
+    waren: [["Nebeltraum-Suppe", 10], ["Sonnenkornbrot", 10], ["Sonnenflimmerbrot", 8], ["(Erd-)Wurzelschnitte", 8], ["Erdwurzen-Brötle", 6], ["Wolkenwunderauflauf", 6], ["Schattenfeuer-Eintopf", 4],
+      ["Flüsterkuchen", 8], ["Blumelade", 4], ["Wasserbeeren-Drink", 12], ["Funkengebräu", 10], ["Windgrass-Bier", 16], ["Tränenkraut-Vodka", 6], ["Eiswein", 4], ["Schattendorn-Whisky", 2],
+      ["Proviant (1 Tagesration)", 10], ["Kerzen (5 Stück)", 4]],
     quests: [
       { titel: "Ratten im Keller", rang: "F", belohnung: "15 SK und eine Woche freies Essen", text: "Irgendwas frisst mir die Vorräte im Keller weg. Ratten, so groß wie Katzen! Wer den Keller freiräumt, isst eine Woche lang umsonst bei mir." },
       { titel: "Wo bleibt Brom?", rang: "E", belohnung: "20 SK und der erste Teller vom Festbraten", text: "Der alte Brom hütet seine Schafe draußen hinter der Brücke im Osten. Er hat mir zwei Lämmer für den Festbraten versprochen, aber seit Tagen lässt er sich nicht blicken. Das sieht ihm gar nicht ähnlich.\nSchaut ihr nach ihm? Folgt einfach dem Ostweg über die Weiden." }
@@ -249,6 +252,42 @@ const LINDHAIN_WERTE = {
     level: 1, schwerpunkt: "kundschaft", kes: 0
   }
 };
+
+// ---------- Gasthaus „Zum Lindenblatt“ ----------
+// Speisekarte als Kreidetafel. Bestellt wird über Hannes Handel (Preise wie auf der Karte); Schlafsaal, Zimmer und Festmahl
+// stehen nur auf der Karte, die zieht der GM von Hand ab.
+export const SPEISEKARTE = `systems/${SYSTEM_ID}/assets/lindhain/speisekarte-lindenblatt.webp`;
+
+// GM: Speisekarte groß für alle zeigen (Spieler: nur für sich)
+export async function speisekarteZeigen() {
+  const ImagePopout = foundry.applications.apps.ImagePopout;
+  const fenster = new ImagePopout({ src: SPEISEKARTE, window: { title: "Speisekarte: Zum Lindenblatt" } });
+  await fenster.render(true);
+  if (game.user?.isGM) fenster.shareImage();
+  return fenster;
+}
+
+// Bestehende Welten (einmal): Hanne bekommt die fehlenden Gerichte und Getränke, Journal mit der Speisekarte
+export async function gasthausNachruesten() {
+  if (!game.user?.isGM) return;
+  const hanne = game.actors.find((a) => a.type === "npc" && a.name === "Hanne Brook");
+  if (hanne) {
+    const vorhanden = new Set(hanne.items.map((i) => i.name));
+    const neu = [];
+    for (const [name, anzahl] of LINDHAIN_WERTE["Hanne Brook"].waren) {
+      if (!vorhanden.has(name)) neu.push(await itemDaten(name, { system: { quantity: anzahl, equipped: false } }));
+    }
+    if (neu.filter(Boolean).length) await hanne.createEmbeddedDocuments("Item", neu.filter(Boolean));
+    if (!hanne.getFlag(SYSTEM_ID, "talk")?.speisekarte) await hanne.setFlag(SYSTEM_ID, "talk.speisekarte", SPEISEKARTE);
+  }
+  if (!game.journal.getName("Speisekarte: Zum Lindenblatt")) {
+    await JournalEntry.create({
+      name: "Speisekarte: Zum Lindenblatt",
+      ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER },
+      pages: [{ name: "Speisekarte", type: "image", src: SPEISEKARTE, image: { caption: "Bestellt wird bei Hanne (Handel). Zimmer und Festmahl bezahlt ihr direkt bei ihr." } }]
+    });
+  }
+}
 
 export function lindhainWerte(name) {
   return LINDHAIN_WERTE[name] ?? null;
@@ -485,6 +524,7 @@ export async function nscAusstatten(actor, werte) {
   const talk = actor.getFlag(SYSTEM_ID, "talk") ?? {};
   const update = { "system.resources.kes.value": werte.kes ?? 0 };
   if (!talk.handel && werte.handel) update[`flags.${SYSTEM_ID}.talk.handel`] = werte.handel;
+  if (!talk.speisekarte && werte.speisekarte) update[`flags.${SYSTEM_ID}.talk.speisekarte`] = SPEISEKARTE;
   if (!Array.isArray(talk.bausteine)) {
     update[`flags.${SYSTEM_ID}.talk.bausteine`] = bausteineAus(werte, actor.name);
   }

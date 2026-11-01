@@ -906,3 +906,12 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 #hlw-suchen-knopf { position: fixed; left: 50%; bottom: 120px; transform: translateX(-50%); z-index: 60; width: auto; height: 38px; padding: 0 18px; background: #1f2a1c; color: #e6f3dc; border: 1px solid #7fbf6a; border-radius: 19px; font-size: 14px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5); cursor: pointer; }
 #hlw-suchen-knopf:hover { background: #2b3a27; }
 #hlw-suchen-knopf i { margin-right: 6px; }
+
+/* Tageszeit und Spieltag oben in der Mitte (hlw-tageszeit.js) */
+#hlw-tageszeit { position: fixed; top: 8px; left: 50%; transform: translateX(-50%); z-index: 70; display: flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(20, 22, 28, 0.88); color: #f3e6c4; border: 1px solid #4a4030; border-radius: 16px; font-size: 14px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45); pointer-events: auto; }
+#hlw-tageszeit .tz-tag { font-weight: 700; color: #d8b46a; }
+#hlw-tageszeit button { width: 30px; height: 26px; padding: 0; line-height: 1; background: transparent; color: #c9c4b6; border: 1px solid transparent; border-radius: 6px; font-size: 13px; }
+#hlw-tageszeit button:hover { border-color: #4a4030; color: #f3e6c4; }
+#hlw-tageszeit button.is-aktiv { border-color: #d8b46a; color: #f3e6c4; background: rgba(216, 180, 106, 0.15); }
+#hlw-tageszeit button.tz-neu { width: auto; padding: 0 8px; margin-left: 4px; border-color: #4a4030; font-size: 12px; }
+#hlw-tageszeit:not(.is-gm) i { color: #d8b46a; }

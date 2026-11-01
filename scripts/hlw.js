@@ -1,10 +1,11 @@
 import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen } from "./hlw-talk.js";
 import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
 import { registerSchloss, tuerenAbschliessen, schlossKnacken } from "./hlw-schloss.js";
-import { HopeLiesWithinAlmanach, registerSammeln, suchen, neuerTag, almanachFreischalten, almanachAusInventaren, questGegenstaendeAnlegen, sammelgebieteAnlegen } from "./hlw-sammeln.js";
+import { registerTageszeit, tageszeitSetzen } from "./hlw-tageszeit.js";
+import { HopeLiesWithinAlmanach, registerSammeln, suchen, neuerTag, almanachFreischalten, almanachAusInventaren, questGegenstaendeAnlegen, sammelgebieteAnlegen, sammelgebieteNachruesten } from "./hlw-sammeln.js";
 import { HopeLiesWithinNotizen, registerNotizen, notizJournalAnlegen } from "./hlw-notizen.js";
 import { HopeLiesWithinBestiarium, registerBestiarium, bestiarSieg, bestiarSetzen, sichtbarerName, hpSichtbar } from "./hlw-bestiarium.js";
-import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE } from "./hlw-nsc.js";
+import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE, speisekarteZeigen, gasthausNachruesten } from "./hlw-nsc.js";
 import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf, sichtUndNamenSetzen, hauswaendeDurchsichtig } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
@@ -2764,6 +2765,7 @@ Hooks.once("init", () => {
   registerBestiarium();
   registerNotizen();
   registerSammeln();
+  registerTageszeit();
   // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
@@ -2780,6 +2782,8 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "lindhainHauptquests", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "tammImDorf", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "sichtUndNamen", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "gasthausKarte", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "sammelVorrat", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "almanachStart", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "hauswaendeDurchsichtig", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2850,6 +2854,8 @@ Hooks.once("ready", async () => {
     bestiarium: () => HopeLiesWithinBestiarium.oeffnen(),
     notizen: () => HopeLiesWithinNotizen.oeffnen(),
     almanach: () => HopeLiesWithinAlmanach.oeffnen(),
+    tageszeit: tageszeitSetzen,
+    speisekarte: speisekarteZeigen,
     suchen,
     neuerTag,
     almanachFreischalten,
@@ -2977,6 +2983,14 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM) {
     await questGegenstaendeAnlegen();
     await sammelgebieteAnlegen();
+    if (!game.settings.get("hope-lies-within-2", "gasthausKarte")) {
+      await gasthausNachruesten();
+      await game.settings.set("hope-lies-within-2", "gasthausKarte", true);
+    }
+    if (!game.settings.get("hope-lies-within-2", "sammelVorrat")) {
+      await sammelgebieteNachruesten();
+      await game.settings.set("hope-lies-within-2", "sammelVorrat", true);
+    }
     if (!game.settings.get("hope-lies-within-2", "almanachStart")) {
       await almanachAusInventaren();
       await game.settings.set("hope-lies-within-2", "almanachStart", true);
