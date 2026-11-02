@@ -2,6 +2,7 @@ import { HopeLiesWithinTalkApp, registerTalk, registerTalkSettings, zeigeAllen }
 import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
 import { registerSchloss, tuerenAbschliessen, schlossKnacken } from "./hlw-schloss.js";
 import { registerTageszeit, tageszeitSetzen } from "./hlw-tageszeit.js";
+import { HopeLiesWithinSkills, registerSkills } from "./hlw-skills.js";
 import { HopeLiesWithinAlmanach, registerSammeln, suchen, neuerTag, almanachFreischalten, almanachAusInventaren, questGegenstaendeAnlegen, sammelgebieteAnlegen, sammelgebieteNachruesten } from "./hlw-sammeln.js";
 import { HopeLiesWithinNotizen, registerNotizen, notizJournalAnlegen } from "./hlw-notizen.js";
 import { HopeLiesWithinBestiarium, registerBestiarium, bestiarSieg, bestiarSetzen, sichtbarerName, hpSichtbar } from "./hlw-bestiarium.js";
@@ -2766,6 +2767,7 @@ Hooks.once("init", () => {
   registerNotizen();
   registerSammeln();
   registerTageszeit();
+  registerSkills();
   // Stand der eigenen Bilder in dieser Welt; steigt, wenn neue Bilder dazukommen (dann werden Foundry-Symbole einmal ersetzt).
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
@@ -2855,6 +2857,7 @@ Hooks.once("ready", async () => {
     notizen: () => HopeLiesWithinNotizen.oeffnen(),
     almanach: () => HopeLiesWithinAlmanach.oeffnen(),
     tageszeit: tageszeitSetzen,
+    skills: () => HopeLiesWithinSkills.oeffnen(),
     speisekarte: speisekarteZeigen,
     suchen,
     neuerTag,

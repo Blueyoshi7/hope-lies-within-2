@@ -915,3 +915,23 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 #hlw-tageszeit button.is-aktiv { border-color: #d8b46a; color: #f3e6c4; background: rgba(216, 180, 106, 0.15); }
 #hlw-tageszeit button.tz-neu { width: auto; padding: 0 8px; margin-left: 4px; border-color: #4a4030; font-size: 12px; }
 #hlw-tageszeit:not(.is-gm) i { color: #d8b46a; }
+
+/* Skill-Übersicht für den GM (hlw-skills.js; nutzt die Bestiarium- und Almanach-Klassen) */
+.hlw-skills .bs-kopf select { background: #0e1014; color: #e8e4da; border: 1px solid #2f3440; border-radius: 6px; height: 30px; width: auto; }
+.hlw-skills .bs-liste.sk-liste { width: 470px; }
+.hlw-skills .sk-spalten, .hlw-skills .sk-zeile { display: grid; grid-template-columns: 30px 1fr 30px 86px 84px 52px; gap: 8px; align-items: center; }
+.hlw-skills .sk-spalten { flex: none; width: 470px; padding: 0 16px 0 8px; font-size: 11px; color: #8f8b7f; text-transform: uppercase; letter-spacing: .04em; }
+.hlw-skills .sk-zeile { width: 100%; min-height: 40px; padding: 4px 8px; background: #1a1d25; border: 1px solid #2f3440; border-radius: 6px; color: #e8e4da; text-align: left; font-size: 13px; }
+.hlw-skills .sk-zeile.is-aktiv { border-color: #d8b46a; background: #22252e; }
+.hlw-skills .sk-zeile img { width: 28px; height: 28px; border: none; border-radius: 4px; }
+.hlw-skills .sk-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hlw-skills .sk-name small { display: block; font-size: 11px; color: #8f8b7f; }
+.hlw-skills .sk-rang { text-align: center; font-weight: 700; border-radius: 4px; background: #2f3440; font-size: 12px; }
+.hlw-skills .sk-rang.rang-C { background: #3a4a2c; } .hlw-skills .sk-rang.rang-B { background: #2c3f55; } .hlw-skills .sk-rang.rang-A { background: #4d2f55; }
+.hlw-skills .sk-rang.rang-S, .hlw-skills .sk-rang.rang-SS { background: #5a2c2c; }
+.hlw-skills .sk-art, .hlw-skills .sk-schaden, .hlw-skills .sk-cd { font-size: 12px; color: #c9c4b6; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hlw-skills .sk-wahl { flex: none; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 8px 10px; background: #2b2416; border: 1px solid #d8b46a; border-radius: 8px; color: #f3e6c4; font-size: 13px; }
+.hlw-skills .sk-wahl span { flex: 1; }
+.hlw-skills .sk-wahl button { width: auto; height: 28px; padding: 0 10px; background: #1a1d25; color: #f3e6c4; border: 1px solid #4a4030; border-radius: 6px; font-size: 12px; }
+.hlw-skills .sk-offen span { flex: none; }
+.hlw-skills .sk-legen { width: 100%; height: 36px; margin-bottom: 12px; background: #3a2f18; color: #f3e6c4; border: 1px solid #d8b46a; border-radius: 6px; font-size: 14px; }

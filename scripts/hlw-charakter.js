@@ -114,6 +114,8 @@ export function klasseEnthuellen(actor, klasse, alteKlasse) {
 // Der GM gibt Skill-Orbs T1–T3 (Verbrauchsgegenstände). Appraisal ist ein Glücksspiel (Kanon: Punktesystem):
 // 1W20 + SOU gegen 10 / 15 / 20. Gelingt es, verschwindet der Orb und ein bestimmter Skill-Orb wird zufällig gezogen
 // (T1: D, 5 % C · T2: D oder C, 5 % B · T3: C oder B, 5 % A; nie Klassen- oder Abyss-Skills). Misslingt es, bleibt der Orb.
+// Einstellung „Skill aus Orbs“ = GM wählt (Standard): Gelingt das Appraisal, öffnet sich beim GM die Skill-Übersicht
+// (hlw-skills.js) und er legt den Skill in den Orb oder lässt ziehen. Ohne GM online wird gezogen wie bisher.
 // Ein bestimmter Skill-Orb ist ein noch nicht gelernter Skill im Inventar; er zeigt Namen und alle Werte.
 export const ORB_STUFEN = ["ungenau", "Art bekannt", "Art, Reichweite und Schaden", "alles bekannt (Gilde)"];
 
@@ -183,7 +185,7 @@ export async function orbUntersuchen(actor, item) {
 
 // ---------- Skill-Orbs T1–T3: Appraisal als Glücksspiel ----------
 const ORB_SCHWELLE = { 1: 10, 2: 15, 3: 20 };
-const ORB_RAENGE = { 1: { normal: ["D"], selten: "C" }, 2: { normal: ["D", "C"], selten: "B" }, 3: { normal: ["C", "B"], selten: "A" } };
+export const ORB_RAENGE = { 1: { normal: ["D"], selten: "C" }, 2: { normal: ["D", "C"], selten: "B" }, 3: { normal: ["C", "B"], selten: "A" } };
 const SELTEN_CHANCE = 0.05;
 let skillPool = null;
 
@@ -209,7 +211,7 @@ function zufall(liste) {
   return liste[Math.floor(Math.random() * liste.length)];
 }
 
-async function skillZiehen(tier) {
+export async function skillZiehen(tier) {
   const pool = await skillsZumZiehen();
   const raenge = ORB_RAENGE[tier];
   const selten = Math.random() < SELTEN_CHANCE;
@@ -224,6 +226,11 @@ function hatAdlerauge(actor) {
 export async function orbGluecksspiel(actor, item) {
   const tier = orbTier(item);
   if (!tier) return;
+  if (item.getFlag(SYSTEM_ID, "orbWartet")) {
+    ui.notifications?.info("Dieser Orb ist schon offen. Der GM sieht gerade nach, welcher Skill darin steckt.");
+    if (game.user?.isGM) Hooks.callAll("hlwOrbWahl", { type: "orbWahl", actorId: actor.id, itemId: item.id, tier });
+    return;
+  }
   if (orbTierVersucht(item) && !game.user?.isGM) {
     ui.notifications?.warn("Bei diesem Orb ist das Appraisal schon misslungen. Ein neuer Versuch nur mit Erlaubnis des GM.");
     return;
@@ -253,8 +260,42 @@ export async function orbGluecksspiel(actor, item) {
     return;
   }
 
+  // GM wählt den Skill (Einstellung), solange ein GM online ist
+  if (game.settings.get(SYSTEM_ID, "orbWahl") === "gm" && game.users.activeGM) {
+    const orb = await orbAbtrennen(actor, item);
+    await orb.setFlag(SYSTEM_ID, "orbWartet", true);
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `<div class="hlw-chat-card">${kopf}${adlerauge ? "" : `<p>Wurf: ${roll.total}</p>`}<p><strong>Gelungen!</strong> Der Orb öffnet sich. Gleich zeigt sich, welcher Skill darin steckt.</p></div>`
+    });
+    const anfrage = { type: "orbWahl", actorId: actor.id, itemId: orb.id, tier };
+    if (game.user?.isGM) Hooks.callAll("hlwOrbWahl", anfrage);
+    else game.socket.emit(`system.${SYSTEM_ID}`, anfrage);
+    return;
+  }
+
   const { skill, selten, rang } = await skillZiehen(tier);
   if (!skill) return ui.notifications?.error(`Kein Rang-${rang}-Skill zum Ziehen gefunden.`);
+  await orbFuellen(actor, item, skill, { selten, kopf, wurf: adlerauge ? null : roll });
+}
+
+// Ein Orb aus dem Stapel als eigener Gegenstand (der Rest bleibt unberührt)
+async function orbAbtrennen(actor, item) {
+  const menge = zahl(item.system?.quantity) || 1;
+  if (menge <= 1) return item;
+  await item.update({ "system.quantity": menge - 1 });
+  const daten = item.toObject();
+  delete daten._id;
+  daten.system.quantity = 1;
+  const [neu] = await actor.createEmbeddedDocuments("Item", [daten]);
+  return neu;
+}
+
+// Den Orb durch den Skill ersetzen und im Chat zeigen. Läuft beim Spieler (Zufall) oder beim GM (gewählt).
+export async function orbFuellen(actor, item, skill, { selten = false, kopf = "", wurf = null, gewaehlt = false } = {}) {
+  const rang = skill.system?.rank ?? "";
+  const tier = orbTier(item);
+  kopf ||= `<h2>Appraisal: Skill-Orb T${tier}</h2>`;
   const menge = zahl(item.system?.quantity) || 1;
   if (menge > 1) await item.update({ "system.quantity": menge - 1 });
   else await item.delete();
@@ -267,12 +308,12 @@ export async function orbGluecksspiel(actor, item) {
   const orbWert = zahl(item.system?.priceSk);
   const vergleich = orbWert ? (wert > orbWert ? "mehr wert als der Orb" : wert < orbWert ? "weniger wert als der Orb" : "genau so viel wert wie der Orb") : "";
   const content = `<div class="hlw-chat-card">${kopf}
-    ${adlerauge ? "" : `<p>Wurf: ${roll.total}</p>`}
-    <p><strong>Gelungen!</strong>${selten ? " <em>Ein seltener Fund!</em>" : ""}</p>
+    ${wurf ? `<p>Wurf: ${wurf.total}</p>` : ""}
+    <p><strong>${gewaehlt ? "Der Orb ist offen." : "Gelungen!"}</strong>${selten ? " <em>Ein seltener Fund!</em>" : ""}</p>
     <p>Im Orb steckt: <strong>${html(skill.name)}</strong> (Rang ${html(rang)}${wert ? `, Marktwert ${html(kesText(wert))}` : ""}${vergleich ? `, ${vergleich}` : ""}).</p>
     <p>${html(skill.system?.description || "")}</p></div>`;
-  if (adlerauge) await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }), content });
-  else await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: content });
+  if (wurf) await wurf.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: content });
+  else await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }), content });
 }
 
 function kesText(sk) {

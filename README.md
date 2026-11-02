@@ -125,6 +125,12 @@ Das Buch in der linken Werkzeugleiste (Figuren) öffnet das Bestiarium, ebenso `
 
 **Makro-Leiste:** Questlog liegt auf Platz **1**, Bestiarium auf Platz **2**, Gruppennotizen auf Platz **3**, Almanach auf Platz **4**, Suchen auf Platz **5** (Tasten 1 bis 5). Das System legt die Makros an und setzt sie bei jedem Benutzer ein, solange die Plätze frei sind.
 
+## Skill-Übersicht (GM) und Skill-Orbs
+
+Der Zauberstab in der linken Werkzeugleiste (nur GM) öffnet die **Skill-Übersicht**, ebenso `game.hlw.skills()`: alle 140 Spieler-Skills und 111 Klassen-Skills mit Rang, Art, Schaden oder Heilung, Abklingzeit, Reichweite, Skalierung, Meisterungs-Effekt, Preis und aus welchen Orbs ein Skill kommen kann. Filter nach Rang und Art, Suche nach Name, Effekt oder Klasse.
+
+**Skill aus Orbs** (Einstellungen → System, Standard „GM wählt“): Gelingt das Appraisal eines Skill-Orbs (1W20 + Seelenkraft gegen 10 / 15 / 20), öffnet sich der Orb, und beim GM springt die Skill-Übersicht auf, gefiltert auf die erlaubten Ränge (T1: D, selten C · T2: D oder C, selten B · T3: C oder B, selten A). **In den Orb legen** gibt dem Charakter den gewählten Skill (als Orb zum Lernen), **Zufällig ziehen** zieht wie früher. **Später** lässt den Orb offen; er steht dann oben unter „Offene Orbs“. Ist kein GM online oder steht die Einstellung auf „Zufall“, zieht das System den Skill selbst.
+
 ## Tageszeit und Spieltag
 
 Oben in der Mitte steht für alle **Tag 3 · Abend**. Der GM schaltet dort mit vier Knöpfen zwischen **Morgen** (Dunkelheit 0,25), **Tag** (0), **Abend** (0,45) und **Nacht** (0,85); das gilt für alle Szenen außer dem Dashboard und Szenen mit gesperrter Dunkelheit (Szene-Einstellungen: Dunkelheit sperren). Ab 0,5 sehen Spieler nur noch, was Licht abbekommt. **Neuer Tag** zählt den Spieltag hoch, stellt auf Morgen und meldet es im Chat; jeder Wechsel der Tageszeit steht kurz im Chat. Der Spieltag gilt auch fürs Suchen (Versuche und Vorrat). Per Makro: `game.hlw.tageszeit("abend")`, `game.hlw.neuerTag()`.
