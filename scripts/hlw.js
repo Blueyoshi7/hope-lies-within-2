@@ -3,6 +3,7 @@ import { HopeLiesWithinQuestlog, registerQuestlog } from "./hlw-questlog.js";
 import { registerSchloss, tuerenAbschliessen, schlossKnacken } from "./hlw-schloss.js";
 import { registerTageszeit, tageszeitSetzen } from "./hlw-tageszeit.js";
 import { HopeLiesWithinSkills, registerSkills } from "./hlw-skills.js";
+import { dauerRunden, energielauf, buffSetzen, buffsZugbeginn, buffsLeeren, buffBonus, buffLeisteHtml } from "./hlw-buffs.js";
 import { HopeLiesWithinAlmanach, registerSammeln, suchen, neuerTag, almanachFreischalten, almanachAusInventaren, questGegenstaendeAnlegen, sammelgebieteAnlegen, sammelgebieteNachruesten } from "./hlw-sammeln.js";
 import { HopeLiesWithinNotizen, registerNotizen, notizJournalAnlegen } from "./hlw-notizen.js";
 import { HopeLiesWithinBestiarium, registerBestiarium, bestiarSieg, bestiarSetzen, sichtbarerName, hpSichtbar } from "./hlw-bestiarium.js";
@@ -142,8 +143,13 @@ function getTokenDistanceInTiles(sourceToken, targetToken) {
   const gridSize = canvas.grid?.size || canvas.scene?.grid?.size || 100;
   const sourceCenter = sourceToken.center ?? { x: sourceToken.x + sourceToken.w / 2, y: sourceToken.y + sourceToken.h / 2 };
   const targetCenter = targetToken.center ?? { x: targetToken.x + targetToken.w / 2, y: targetToken.y + targetToken.h / 2 };
-  const distancePixels = Math.hypot(targetCenter.x - sourceCenter.x, targetCenter.y - sourceCenter.y);
-  return distancePixels / gridSize;
+  // Große Figuren (2×2, 3×3): gemessen wird zwischen den nächsten Feldern, nicht zwischen den Mittelpunkten.
+  // Sonst trifft ein Nahkampfangriff einen großen Gegner nicht, obwohl man direkt daneben steht.
+  const breite = (t) => (t.w ?? numberValue(t.document?.width) * gridSize) || gridSize;
+  const hoehe = (t) => (t.h ?? numberValue(t.document?.height) * gridSize) || gridSize;
+  const dx = Math.max(Math.abs(targetCenter.x - sourceCenter.x) - (breite(sourceToken) - gridSize) / 2 - (breite(targetToken) - gridSize) / 2, 0);
+  const dy = Math.max(Math.abs(targetCenter.y - sourceCenter.y) - (hoehe(sourceToken) - gridSize) / 2 - (hoehe(targetToken) - gridSize) / 2, 0);
+  return Math.hypot(dx, dy) / gridSize;
 }
 
 function getPointDistanceInTiles(from, to) {
@@ -701,7 +707,13 @@ async function monsterTotMarkieren(tokenDoc) {
 // Würfel einer Formel lesbar: „3 + 1W4 + 2“ und „3 + 4 + 2 = 9“ (jeder Würfel mit seinem Ergebnis, feste Zahlen einzeln)
 function wuerfelText(roll) {
   const roh = String(roll?.formula ?? "");
-  const schoen = (s) => s.replace(/[()]/g, "").replace(/\s*\+\s*/g, " + ").replace(/\s*-\s*/g, " − ").replace(/\s*\*\s*/g, " × ").replace(/\s+/g, " ").trim();
+  // Klammern weg, außer um eine Verdopplung (Energielauf): „(1 + 3 + 2) × 2“
+  const verdoppelt = /^\((.*)\)\s*\*\s*2$/.test(roh.trim());
+  const schoen = (t) => {
+    const innen = verdoppelt ? t.trim().replace(/^\((.*)\)\s*\*\s*2$/, "$1") : t;
+    const text = innen.replace(/[()]/g, "").replace(/\s*\+\s*/g, " + ").replace(/\s*-\s*/g, " − ").replace(/\s*\*\s*/g, " × ").replace(/\s+/g, " ").trim();
+    return verdoppelt ? `(${text}) × 2` : text;
+  };
   const formel = schoen(roh.replace(/(\d*)d(\d+)/gi, (m, n, f) => `${n || 1}W${f}`));
   const dice = roll?.dice ?? [];
   let i = 0;
@@ -827,6 +839,7 @@ function renderCombatHud() {
   const hud = document.createElement("aside");
   hud.className = `hope-lies-within hlw-hud ${isCurrentTurn ? "is-turn" : ""}`;
   hud.innerHTML = `
+    ${buffLeisteHtml(actor)}
     <div class="hh-person">
       <div class="hh-ring">
         <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#2a1514" stroke-width="5"/><circle cx="32" cy="32" r="29" fill="none" stroke="${hpProzent > 0.3 ? "#d0574f" : "#ff3b30"}" stroke-width="5" stroke-linecap="round" stroke-dasharray="${umfang.toFixed(1)}" stroke-dashoffset="${(umfang * (1 - hpProzent)).toFixed(1)}"/></svg>
@@ -963,6 +976,7 @@ async function resetActorTurnState(actor) {
   if (itemUpdates.length) await actor.updateEmbeddedDocuments("Item", itemUpdates);
   await zugbeginn(actor);
   await sterbenZugbeginn(actor);
+  await buffsZugbeginn(actor);
 }
 
 function handleCombatTurnChange(combat) {
@@ -1563,11 +1577,17 @@ export class HopeLiesWithinActor extends Actor {
       const teile = [damageFormula, waffenFormel].filter(isValidFormula).map((f) => `(${f})`);
       const mb = meisterBonus(item);
       const meisterPlus = healing ? mb.heilung : mb.schaden;
-      const formel = `${teile.join(" + ")}${werte.bonus ? ` + ${werte.bonus}` : ""}${meisterPlus ? ` + ${meisterPlus}` : ""}`;
+      // Laufende Verstärkungen geben Waffenangriffen Bonus-Schaden; Energielauf verdoppelt Natur-Skills (hlw-buffs.js)
+      const mitWaffe = !healing && (item.type === "weapon" || (waffe && !magisch));
+      const verstaerkungen = mitWaffe ? buffBonus(this, { nahkampf: rangeLimit <= 1.5 }) : [];
+      const energie = energielauf(this, item);
+      let formel = `${teile.join(" + ")}${werte.bonus ? ` + ${werte.bonus}` : ""}${meisterPlus ? ` + ${meisterPlus}` : ""}${verstaerkungen.map((b) => ` + (${b.bonus})`).join("")}`;
+      if (energie) formel = `(${formel}) * 2`;
       const target = targetToken.actor;
       const targetDerived = target?.system?.derived ?? {};
       const currentHp = numberValue(target?.system?.resources?.hp?.value);
-      result = { targetName: sichtbarerName(targetToken), targetIsMonster: target?.type === "monster", distance, range: rangeLimit, healing, magisch, waffe: waffe?.name, werte };
+      result = { targetName: sichtbarerName(targetToken), targetIsMonster: target?.type === "monster", distance, range: rangeLimit, healing, magisch, waffe: waffe?.name, werte,
+        hinweise: [...verstaerkungen.map((b) => `${b.name}: ${b.bonusText} Schaden`), ...(energie ? [`Energielauf: doppelte ${healing ? "Heilung" : "Wirkung"}`] : [])] };
 
       if (healing) {
         const roll = await new Roll(formel, this.getRollData()).evaluate();
@@ -1621,6 +1641,8 @@ export class HopeLiesWithinActor extends Actor {
     }
     // Ohne Ziel und Wurf (z. B. Verstärkungen): die Wirkung ist hier das Wichtige
     const wirkung = !result ? escapeHtml(item.system?.description || item.system?.effect) : "";
+    const hinweise = [...(result?.hinweise ?? [])];
+    if (!result && dauerRunden(item)) hinweise.push(`Hält ${dauerRunden(item) * (energielauf(this, item) ? 2 : 1)} Runden${energielauf(this, item) ? " (Energielauf: doppelte Dauer)" : ""}`);
 
     // Die Würfe hängen an der Nachricht: Foundry spielt den Würfelklang, und Module wie „Dice So Nice“ würfeln sie in 3D.
     const wuerfe = [result?.angriff, result?.roll].filter((r) => r && r.total !== undefined);
@@ -1632,6 +1654,7 @@ export class HopeLiesWithinActor extends Actor {
           <h2>${escapeHtml(item.name)}${unterzeile ? ` <small>${unterzeile}</small>` : ""}</h2>
           ${zeilen ? `<dl>${zeilen}</dl>` : ""}
           ${wirkung ? `<p>${wirkung}</p>` : ""}
+          ${hinweise.length ? `<p class="hlw-chat-hinweis">${hinweise.map(escapeHtml).join(" · ")}</p>` : ""}
         </div>
       `
     });
@@ -1645,6 +1668,14 @@ export class HopeLiesWithinActor extends Actor {
     const abkling = boolValue(item.system?.einmalProKampf) && game.combat?.started ? 999 : maxCooldown > 0 ? Math.max(maxCooldown - numberValue(meisterBonus(item).abklingzeit), 1) : 0;
     if (abkling > 0) {
       await item.update({ "system.cooldown.value": abkling });
+    }
+
+    // Skills mit Dauer: Eintrag in der Buff-Leiste (auf dir, einem eigenen Verbündeten oder als Merker für ein Ziel)
+    if (dauerRunden(item) > 0) {
+      const zielActor = targetToken?.actor;
+      const fremd = zielActor && zielActor.id !== this.id;
+      const verbuendet = fremd && zielActor.type === "character" && zielActor.isOwner;
+      await buffSetzen(verbuendet ? zielActor : this, item, { energie: energielauf(this, item), ziel: fremd && !verbuendet ? sichtbarerName(targetToken) : "" });
     }
 
     await spendItemAction(this, item);
@@ -2638,7 +2669,7 @@ async function freieWahlNachziehen() {
 }
 
 // Feste Skill-Werte aus dem Kanon (skillwerte.py) in Welt und Charaktere übernehmen. Gelernt, Lernleiste und Bild bleiben.
-const SKILL_WERTE_STAND = 2;
+const SKILL_WERTE_STAND = 5;   // 3: W8 → W6 (2026-11-02), 4: Element für alle Skills
 async function skillWerteNachziehen() {
   if (!game.user?.isGM) return 0;
   const neu = new Map();
@@ -2659,8 +2690,10 @@ async function skillWerteNachziehen() {
     if (k.skillDaten && !neu.has(`classSkill|${k.skill}|${k.name}`)) neu.set(`classSkill|${k.skill}|${k.name}`, { type: "classSkill", name: k.skill, system: { ...k.skillDaten, rank: { Basic: "E", T1: "D", T2: "C", T3: "B", Story: "A" }[k.category] } });
   }
   const quelle = (i) => (i.type === "classSkill" ? neu.get(`classSkill|${i.name}|${i.system?.className ?? ""}`) : neu.get(`${i.type}|${i.name}|${i.system?.rank ?? ""}`) ?? neu.get(`${i.type}|${i.name}`));
-  const updates = (items) => items.filter((i) => (["playerSkill", "classSkill"].includes(i.type) || orbTier(i)) && quelle(i) && !i.getFlag("hope-lies-within-2", "eigeneWerte")).map((i) => {
+  const updates = (items) => items.filter((i) => (["playerSkill", "classSkill"].includes(i.type) || orbTier(i)) && quelle(i)).map((i) => {
     const e = quelle(i).system ?? {};
+    // Vom GM angepasste Skills behalten ihre Werte; nur das Element (eine Einordnung, kein Wert) kommt dazu
+    if (i.getFlag("hope-lies-within-2", "eigeneWerte")) return ["playerSkill", "classSkill"].includes(i.type) && (i.system?.element ?? "") !== (e.element ?? "") ? { _id: i.id, "system.element": e.element ?? "" } : null;
     if (!["playerSkill", "classSkill"].includes(i.type)) return { _id: i.id, "system.description": e.description ?? "" };
     return {
       _id: i.id, "system.description": e.description ?? "", "system.effect": e.effect ?? "", ...(e.skillType ? { "system.skillType": e.skillType } : {}),
@@ -2669,10 +2702,11 @@ async function skillWerteNachziehen() {
       "system.damageText": e.damageText ?? "", "system.damageCategory": e.damageCategory ?? "physical", "system.ziele": e.ziele ?? 1,
       "system.einmalProKampf": Boolean(e.einmalProKampf), "system.heilung": e.heilung ?? "", "system.schutz": e.schutz ?? "",
       "system.flaeche": e.flaeche ?? "", "system.dauer": e.dauer ?? "", "system.bonuses": e.bonuses ?? {}, "system.scaling": e.scaling ?? {},
+      "system.element": e.element ?? "",
       ...(i.type === "playerSkill" ? { "system.mastery.effect": e.mastery?.effect ?? "", "system.mastery.bonus": e.mastery?.bonus ?? {} } : {}),
       ...(e.waffenSchaden !== undefined ? { "system.waffenSchaden": Boolean(e.waffenSchaden) } : {})
     };
-  });
+  }).filter(Boolean);
   let anzahl = 0;
   const welt = updates(game.items.contents);
   if (welt.length) await Item.updateDocuments(welt);
@@ -3223,6 +3257,7 @@ Hooks.on("combatStart", (combat) => {
 });
 
 Hooks.on("deleteCombat", (combat) => {
+  if (game.users.activeGM?.isSelf) buffsLeeren();
   showCombatOverlay(combat, "end");
   postCombatEndMessage(combat);
   clearPendingSkill();

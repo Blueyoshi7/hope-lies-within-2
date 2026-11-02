@@ -342,6 +342,7 @@ export function skillZeilen(item) {
   const zeilen = [
     ["Rang", s.rank],
     ["Art", ART_NAME[s.skillType] ?? s.skillType],
+    ["Element", s.element ? `${s.element}${["Erde", "Pflanze", "Wasser", "Wind"].includes(s.element) ? " (Natur)" : ""}` : ""],
     ["Einsatz", passiv ? "Passiv · wirkt immer" : EINSATZ_TEXT[s.castTime] ?? "Aktion"],
     ["Reichweite", passiv ? "" : reichweite],
     ["Abklingzeit", passiv ? "" : abklingText(s)],

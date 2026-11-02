@@ -56,6 +56,7 @@ export function tageszeitAnzeige() {
   const jetzt = tageszeit();
   const t = TAGESZEITEN[jetzt];
   box.classList.toggle("is-gm", !!game.user?.isGM);
+  box.classList.toggle("im-kampf", !!game.combat?.started);   // im Kampf unter die Kampfleiste oben (Combat Tracker Dock)
   box.innerHTML = game.user?.isGM
     ? `<span class="tz-tag">Tag ${spieltag()}</span>
        ${Object.entries(TAGESZEITEN).map(([k, z]) => `<button type="button" data-zeit="${k}" class="${k === jetzt ? "is-aktiv" : ""}" data-tooltip="${z.label}"><i class="${z.icon}"></i></button>`).join("")}
@@ -70,5 +71,6 @@ export function registerTageszeit() {
   });
   // Neuer Tag: Morgen (die Chatkarte zum neuen Tag kommt von neuerTag selbst)
   Hooks.on("hlwNeuerTag", () => tageszeitSetzen("morgen", { melden: false }));
+  for (const hook of ["combatStart", "updateCombat", "deleteCombat", "createCombat"]) Hooks.on(hook, () => window.setTimeout(tageszeitAnzeige, 50));
   Hooks.once("ready", () => tageszeitAnzeige());
 }

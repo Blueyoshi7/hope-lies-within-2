@@ -131,6 +131,20 @@ Der Zauberstab in der linken Werkzeugleiste (nur GM) öffnet die **Skill-Übersi
 
 **Skill aus Orbs** (Einstellungen → System, Standard „GM wählt“): Gelingt das Appraisal eines Skill-Orbs (1W20 + Seelenkraft gegen 10 / 15 / 20), öffnet sich der Orb, und beim GM springt die Skill-Übersicht auf, gefiltert auf die erlaubten Ränge (T1: D, selten C · T2: D oder C, selten B · T3: C oder B, selten A). **In den Orb legen** gibt dem Charakter den gewählten Skill (als Orb zum Lernen), **Zufällig ziehen** zieht wie früher. **Später** lässt den Orb offen; er steht dann oben unter „Offene Orbs“. Ist kein GM online oder steht die Einstellung auf „Zufall“, zieht das System den Skill selbst.
 
+## Buffs, Verstärkungen und Energielauf
+
+Skills mit Dauer („2 Runden“) erscheinen beim Einsetzen als Bild in der **Buff-Leiste** über dem Kampf-HUD. Die Zahl sagt, wie viele Runden nach dieser noch kommen: In der letzten Runde steht **0** (rot), danach verschwindet das Bild. Sie sinkt zu Beginn des eigenen Zugs; Kampfende räumt die Leiste. Auf einen eigenen Verbündeten gewirkt, landet der Eintrag bei ihm; auf einen Gegner gewirkt, bleibt er als Merker bei dir („Natur-Regen → Wolf“). Meisterung „Wirkt 1 Runde länger“ wird mitgezählt.
+
+**Verstärkungen** (Feuer-, Blitz-, Eis-, Erdverstärkung, Efeuklinge, Verzauberung Rot …) rechnen ihren Bonus automatisch in jeden Waffenangriff, solange sie laufen; die Chatkarte zeigt ihn („Feuerverstärkung: +1W6 Schaden“). Steht „Nahkampfwaffe“ oder „Nahkampfangriffe“ im Text, gilt der Bonus nur im Nahkampf.
+
+**Elemente:** Jeder Skill hat im Kanon ein Element oder keines (`skillwerte.py` / `klassenskillwerte.py` → ELEMENTE): Feuer, Eis, Blitz, Erde, Wasser, Pflanze, Wind, Licht (heilig) und Dunkelheit (Abyss, Schatten). Reine Waffen- und Körper-Skills haben keins. Das Element steht in der Skill-Ansicht und lässt sich in der Skill-Übersicht filtern. **Natur** = Erde, Pflanze, Wasser, Wind (Eis zählt nicht dazu).
+
+**Energielauf** (Runenmagier): Natur-Skills wirken doppelt: doppelter Schaden, doppelte Heilung, doppelte Dauer.
+
+**Würfel:** Es gibt keinen W8. Feuerverstärkung macht +1W6, die übrigen früheren W8-Skills bekommen +1 pro Würfel (gleicher Durchschnitt): Präzisionsschuss 1W6+1, Rasender Schlag 4W6+4, Or'ghavr 4W6+4, Kha'or'baal 2W6+2 pro Runde, Qor'athal 2W6+2, Le'or Heilung 3W6+3. **Lernpunkte** gibt es nicht mehr (Kanon 2.0: freie Wahl, begrenzt nur durch Skill-Slots).
+
+**Große Figuren:** Reichweite wird zwischen den nächsten Feldern gemessen. Wer direkt neben einem großen Gegner (2×2, 3×3) steht, trifft ihn mit Nahkampf.
+
 ## Tageszeit und Spieltag
 
 Oben in der Mitte steht für alle **Tag 3 · Abend**. Der GM schaltet dort mit vier Knöpfen zwischen **Morgen** (Dunkelheit 0,25), **Tag** (0), **Abend** (0,45) und **Nacht** (0,85); das gilt für alle Szenen außer dem Dashboard und Szenen mit gesperrter Dunkelheit (Szene-Einstellungen: Dunkelheit sperren). Ab 0,5 sehen Spieler nur noch, was Licht abbekommt. **Neuer Tag** zählt den Spieltag hoch, stellt auf Morgen und meldet es im Chat; jeder Wechsel der Tageszeit steht kurz im Chat. Der Spieltag gilt auch fürs Suchen (Versuche und Vorrat). Per Makro: `game.hlw.tageszeit("abend")`, `game.hlw.neuerTag()`.

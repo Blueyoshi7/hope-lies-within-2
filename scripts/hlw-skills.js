@@ -72,6 +72,7 @@ export class HopeLiesWithinSkills extends ApplicationV2 {
   suche = "";
   rang = "";
   art = "";
+  elementWahl = "";
   wahl = null;   // { actorId, itemId, tier }
 
   static oeffnen(wahl = null) {
@@ -100,6 +101,7 @@ export class HopeLiesWithinSkills extends ApplicationV2 {
       if (erlaubt && !erlaubt.includes(sys.rank)) return false;
       if (this.rang && sys.rank !== this.rang) return false;
       if (this.art && sys.skillType !== this.art) return false;
+      if (this.elementWahl && (sys.element || "–") !== this.elementWahl) return false;
       if (suche && !`${s.name} ${sys.description ?? ""} ${sys.effect ?? ""} ${sys.className ?? ""}`.toLowerCase().includes(suche)) return false;
       return true;
     });
@@ -111,6 +113,7 @@ export class HopeLiesWithinSkills extends ApplicationV2 {
     const liste = this.eintraege();
     if (!liste.some((s) => s.name === this.auswahl)) this.auswahl = liste[0]?.name ?? null;
     const arten = [...new Set(katalog[this.reiter].map((s) => s.system?.skillType).filter(Boolean))].sort();
+    const elemente = [...new Set(katalog[this.reiter].map((s) => s.system?.element || "–"))].sort((a, b) => (a === "–") - (b === "–") || a.localeCompare(b, "de"));
     const raenge = [...new Set(katalog[this.reiter].map((s) => s.system?.rank).filter(Boolean))].sort((a, b) => RANG_FOLGE.indexOf(a) - RANG_FOLGE.indexOf(b));
     const offen = offeneOrbs();
     const wahlActor = this.wahl ? game.actors.get(this.wahl.actorId) : null;
@@ -143,6 +146,7 @@ export class HopeLiesWithinSkills extends ApplicationV2 {
         <input type="search" data-sk-suche placeholder="Name, Effekt oder Klasse …" value="${escapeHtml(this.suche)}">
         <select data-sk-rang><option value="">Alle Ränge</option>${raenge.filter((r) => !this.wahl || this.wahlRaenge().includes(r)).map((r) => `<option value="${r}" ${r === this.rang ? "selected" : ""}>Rang ${r}</option>`).join("")}</select>
         <select data-sk-art><option value="">Alle Arten</option>${arten.map((a) => `<option value="${escapeHtml(a)}" ${a === this.art ? "selected" : ""}>${escapeHtml(a)}</option>`).join("")}</select>
+        <select data-sk-element><option value="">Alle Elemente</option>${elemente.map((e) => `<option value="${escapeHtml(e)}" ${e === this.elementWahl ? "selected" : ""}>${e === "–" ? "Kein Element" : escapeHtml(e)}</option>`).join("")}</select>
         <span class="bs-zaehler">${liste.length} Skills</span>
       </header>
       <div class="sk-spalten"><span></span><span>Name</span><span>Rang</span><span>Art</span><span>Schaden / Heilung</span><span>Abkl.</span></div>
@@ -168,7 +172,6 @@ export class HopeLiesWithinSkills extends ApplicationV2 {
       <p>${escapeHtml(sys.description || sys.effect || "")}</p>
       ${sys.effect && sys.effect !== sys.description ? `<p><b>Effekt:</b> ${escapeHtml(sys.effect)}</p>` : ""}
       <div class="bs-werte">${zeilen.map(([k, v]) => `<div class="bs-wert"><span>${escapeHtml(k)}</span><b>${escapeHtml(v)}</b></div>`).join("")}
-        ${sys.learningPoints ? `<div class="bs-wert"><span>Lernpunkte</span><b>${escapeHtml(sys.learningPoints)}</b></div>` : ""}
       </div>`;
   }
 
@@ -200,6 +203,7 @@ export class HopeLiesWithinSkills extends ApplicationV2 {
       this.reiter = k.dataset.skReiter;
       this.rang = "";
       this.art = "";
+      this.elementWahl = "";
       this.auswahl = null;
       this.render();
     }));
@@ -218,6 +222,7 @@ export class HopeLiesWithinSkills extends ApplicationV2 {
     }, 250));
     content.querySelector("[data-sk-rang]")?.addEventListener("change", (e) => { this.rang = e.currentTarget.value; this.render(); });
     content.querySelector("[data-sk-art]")?.addEventListener("change", (e) => { this.art = e.currentTarget.value; this.render(); });
+    content.querySelector("[data-sk-element]")?.addEventListener("change", (e) => { this.elementWahl = e.currentTarget.value; this.render(); });
     content.querySelector("[data-sk-legen]")?.addEventListener("click", () => this.legen(katalog.playerSkill.find((s) => s.name === this.auswahl)));
     content.querySelector("[data-sk-zufall]")?.addEventListener("click", () => this.legen(null, { zufall: true }));
     content.querySelector("[data-sk-wahl-ende]")?.addEventListener("click", () => { this.wahl = null; this.render(); });

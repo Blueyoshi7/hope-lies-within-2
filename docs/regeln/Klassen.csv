@@ -49,7 +49,7 @@ Bestienkrieger;D;T1;SOU;Magenta (Seelenkraft);#AD1457;5;;;;;;;;;8;SOU 8 · STR 5
 Tiermeister;D;T1;SOU;Magenta (Seelenkraft);#AD1457;;;;;;;5;;;8;SOU 8 · AGL 5;11;13;Herz der Tiere;"Darf einen Tiergefährten halten; mit Gefährte +10 HP.";Support;Klassenbaum
 Waldläufer;D;T1;SOU;Magenta (Seelenkraft);#AD1457;;5;;;;;;;;8;SOU 8 · DEX 5;11;13;Hinterhalt;"Tarnt sich in natürlicher Umgebung; der erste Angriff aus der Tarnung ist kritisch.";Fernkampf;Klassenbaum
 Beschwörer;D;T1;SOU;Magenta (Seelenkraft);#AD1457;;;;;;5;;;;8;SOU 8 · CHA 5;11;13;Seelenvergabe;Beschwört die Kraft der eigenen Seele, um Gegner anzugreifen (1W6) oder Verbündete zu heilen (1W6).;Magie;Klassenbaum
-Scharfschütze;D;T1;AGL;Grün (Beweglichkeit);#2E7D32;;5;;;;;8;;;;AGL 8 · DEX 5;11;13;Präzisionsschuss;Gezielter Fernangriff mit hoher Genauigkeit, 1W8 Schaden.;Fernkampf;Klassenbaum
+Scharfschütze;D;T1;AGL;Grün (Beweglichkeit);#2E7D32;;5;;;;;8;;;;AGL 8 · DEX 5;11;13;Präzisionsschuss;Gezielter Fernangriff mit hoher Genauigkeit, 1W6+1 Schaden.;Fernkampf;Klassenbaum
 Ranger;D;T1;AGL;Grün (Beweglichkeit);#2E7D32;;;;;;;8;;;5;AGL 8 · SOU 5;11;13;Naturinstinkt;Naturkunde +2, Schussschaden +2, Bewegung +1.;Fernkampf;Klassenbaum
 Runenschütze;D;T1;AGL;Grün (Beweglichkeit);#2E7D32;;;;5;;;8;;;;AGL 8 · INT 5;11;13;Magiegeboren;"Pfeile entstehen aus magischer Kraft; es werden keine Pfeile verbraucht.";Fernkampf;Klassenbaum
 Fallenleger;D;T1;AGL;Grün (Beweglichkeit);#2E7D32;;;;;5;;8;;;;AGL 8 · WIS 5;11;13;Netzfalle;"Fängt einen Gegner ein; er kann sich 2 Runden nicht bewegen.";Support;Klassenbaum
