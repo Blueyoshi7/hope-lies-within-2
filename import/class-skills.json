@@ -1720,7 +1720,7 @@
    "tier": 3,
    "priceSk": 0,
    "price": "nicht verkäuflich",
-   "description": "Alle unterdrückte Wut in einem Schlag, ohne Waffe. Danach kannst du 2 Runden lang weder angreifen noch dich bewegen.",
+   "description": "Kanalisiert deine Wut in einen Waffenangriff: +1W6 Schaden für jedes Viertel deiner HP, das dir fehlt (unter 75 % +1W6, unter 50 % +2W6, unter 25 % +3W6).",
    "source": "Klasse",
    "quantity": 1,
    "skillType": "Nahkampf",
@@ -1728,8 +1728,8 @@
    "element": "",
    "activation": "active",
    "castTime": "action",
-   "damage": "4d6+4",
-   "damageText": "4W6+4",
+   "damage": "",
+   "damageText": "Waffe +1W6 je fehlendem HP-Viertel",
    "damageCategory": "physical",
    "range": 1,
    "cooldown": {
@@ -1742,9 +1742,11 @@
    "heilung": "",
    "schutz": "",
    "flaeche": "",
-   "dauer": "danach 2 Runden erschöpft",
+   "dauer": "",
    "bonuses": {},
-   "awaken": ""
+   "awaken": "",
+   "waffenSchaden": true,
+   "wutBonus": true
   }
  },
  {

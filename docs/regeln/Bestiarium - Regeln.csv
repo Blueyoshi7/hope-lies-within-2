@@ -1,8 +1,8 @@
 ﻿Rang;Gruppen-Level;Gildenrang;HP;RW;MR;ACC;Schaden;Initiative;Probenwert;EXP
 E;1–4;F;18;9;9;0;1W6+1;+1;15;2
 D;5–9;E;26;10;10;1;2W6+2;+2;20;4
-C;10–15;D;38;11;11;2;2W8+4;+3;25;8
-B;16–22;C;50;13;12;3;3W8+4;+4;30;14
+C;10–15;D;38;11;11;2;2W6+6;+3;25;8
+B;16–22;C;50;13;12;3;3W6+7;+4;30;14
 A;23–29;B;62;15;14;5;3W10+6;+5;40;24
 S;30–35;A;78;16;16;6;4W10+6;+6;50;40
 SS;36–40;S;98;17;17;7;4W12+7;+7;60;64
@@ -23,7 +23,7 @@ Riesig;5;3;RW −2, HP × 1,5, belegt 3×3 Felder, immun gegen Zurückgestoßen
 Merkmal;Wirkung
 Flieger;"Ignoriert Gelände; Nahkampf gegen ihn nur mit Reichweite 2 oder wenn er landet."
 Rudel;+1 ACC für jeden weiteren Rudelgefährten neben dem Ziel (höchstens +2).
-Gift;Ein Treffer macht vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).
+Gift;Ein Treffer macht vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).
 Panzer;Blockwert +2 (Rang E–C) oder +4 (ab B).
 Schnell;"Bewegung +2; Rückzug ist eine Schnellaktion."
 Gräber;Kann sich als Aktion eingraben: nicht angreifbar bis zum nächsten Zug.
@@ -55,7 +55,7 @@ Erinnerung;Wer den Namen des Verlorenen kennt und ihn anspricht: Wortgewandtheit
 EXP;Wie ein Elite-Gegner seines Rangs (Rang nach Level wie in der Rang-Tabelle).
 
 Name;Level;Rang;HP;RW;MR;ACC;Angriff;Abyss-Skill;Typ
-Verlorener Gildenrekrut;8;D;100;10;9;2;Kurzschwert 1W6 + Schwung des Kriegers 1+1W4, +1;Or'ghavr (4W8, heilt halb);Rasend
+Verlorener Gildenrekrut;8;D;100;10;9;2;Kurzschwert 1W6 + Schwung des Kriegers 1+1W4, +1;Or'ghavr (4W6+4, heilt halb);Rasend
 Verlorene Klingenläuferin;18;B;190;12;10;4;Sturmschritt 2W6 + Stahlklinge 2W6, +2;Sarath'kil (5W6 Linie, Blutend);Still
-Verlorener Sturmzauberer;26;A;230;11;13;6;Blitzschritt 1W6 Fläche + Kettenblitz 3W8, +4;Kha'or'baal (Schlund 3×3);Rasend
-Verlorener Erzmagier;34;S;300;12;15;8;Elementarsturm 4W8 + Zauberstab 1W20, +6;Ha'thohom (6W6 Explosion);Still
+Verlorener Sturmzauberer;26;A;230;11;13;6;Blitzschritt 1W6 Fläche + Kettenblitz 3W6+3, +4;Kha'or'baal (Schlund 3×3);Rasend
+Verlorener Erzmagier;34;S;300;12;15;8;Elementarsturm 4W6+4 + Zauberstab 1W20, +6;Ha'thohom (6W6 Explosion);Still

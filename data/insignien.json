@@ -101,7 +101,7 @@
   "name": "Insignie des Schattenwolfs",
   "rank": "B",
   "kategorie": "Rot – Beschwörung & Begleiter",
-  "effekt": "Ein Schattenwolf begleitet dich: HP 5 × Level, Rüstwert 12, Biss 1W8 + ⌊Level ÷ 4⌋, eigener Zug. Fällt er, kehrt er nach einer langen Rast zurück.",
+  "effekt": "Ein Schattenwolf begleitet dich: HP 5 × Level, Rüstwert 12, Biss 1W6+1 + ⌊Level ÷ 4⌋, eigener Zug. Fällt er, kehrt er nach einer langen Rast zurück.",
   "bild": "hlw-insignien/insignie-des-schattenwolfs.webp"
  },
  {
@@ -143,14 +143,14 @@
   "name": "Insignie des Hinterhalts",
   "rank": "C",
   "kategorie": "Grün – Kampf & Magie",
-  "effekt": "Angriffe von hinten oder aus der Unsichtbarkeit +1W8.",
+  "effekt": "Angriffe von hinten oder aus der Unsichtbarkeit +1W6+1.",
   "bild": "hlw-insignien/backstabber.webp"
  },
  {
   "name": "Insignie der Bestiengestalt",
   "rank": "B",
   "kategorie": "Rot – Beschwörung & Begleiter",
-  "effekt": "Einmal pro Kapitel für 3 Runden Tiergestalt: +20 HP, Bewegung +2, Nahkampf 2W8, keine Skills.",
+  "effekt": "Einmal pro Kapitel für 3 Runden Tiergestalt: +20 HP, Bewegung +2, Nahkampf 2W6+2, keine Skills.",
   "bild": "hlw-insignien/beastial-transformation.webp"
  },
  {
@@ -178,7 +178,7 @@
   "name": "Insignie des Heldenrufs",
   "rank": "A",
   "kategorie": "Rot – Beschwörung & Begleiter",
-  "effekt": "Einmal pro Kapitel ruft das Echo eines gefallenen Heroes für 3 Runden (kämpft auf deinem Level, 2W8 pro Runde).",
+  "effekt": "Einmal pro Kapitel ruft das Echo eines gefallenen Heroes für 3 Runden (kämpft auf deinem Level, 2W6+2 pro Runde).",
   "bild": "hlw-insignien/call-hero.webp"
  },
  {
@@ -444,7 +444,7 @@
   "name": "Insignie des Opfers",
   "rank": "B",
   "kategorie": "Grün – Kampf & Magie",
-  "effekt": "Einmal pro Kampf den Schaden eines Verbündeten auf dich nehmen; dein nächster Angriff +1W8.",
+  "effekt": "Einmal pro Kampf den Schaden eines Verbündeten auf dich nehmen; dein nächster Angriff +1W6+1.",
   "bild": "hlw-insignien/sacrifice.webp"
  },
  {
@@ -535,7 +535,7 @@
   "name": "Insignie der Wandlungskunst",
   "rank": "B",
   "kategorie": "Grün – Kampf & Magie",
-  "effekt": "Verwandlungen halten doppelt so lange, beim Verwandeln 1W8 Heilung.",
+  "effekt": "Verwandlungen halten doppelt so lange, beim Verwandeln 1W6+1 Heilung.",
   "bild": "hlw-insignien/wild-shape-adept.webp"
  }
 ]

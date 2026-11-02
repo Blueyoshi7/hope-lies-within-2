@@ -1581,13 +1581,17 @@ export class HopeLiesWithinActor extends Actor {
       const mitWaffe = !healing && (item.type === "weapon" || (waffe && !magisch));
       const verstaerkungen = mitWaffe ? buffBonus(this, { nahkampf: rangeLimit <= 1.5 }) : [];
       const energie = energielauf(this, item);
-      let formel = `${teile.join(" + ")}${werte.bonus ? ` + ${werte.bonus}` : ""}${meisterPlus ? ` + ${meisterPlus}` : ""}${verstaerkungen.map((b) => ` + (${b.bonus})`).join("")}`;
+      // Rasender Schlag (Klassenliste): +1W6 für jedes fehlende Viertel der eigenen HP (unter 75 / 50 / 25 %)
+      const hpAnteil = numberValue(this.system?.resources?.hp?.value) / Math.max(numberValue(this.system?.resources?.hp?.max), 1);
+      const wut = boolValue(item.system?.wutBonus) ? [0.75, 0.5, 0.25].filter((grenze) => hpAnteil < grenze).length : 0;
+      let formel = `${teile.join(" + ")}${werte.bonus ? ` + ${werte.bonus}` : ""}${meisterPlus ? ` + ${meisterPlus}` : ""}${verstaerkungen.map((b) => ` + (${b.bonus})`).join("")}${wut ? ` + ${wut}d6` : ""}`;
       if (energie) formel = `(${formel}) * 2`;
       const target = targetToken.actor;
       const targetDerived = target?.system?.derived ?? {};
       const currentHp = numberValue(target?.system?.resources?.hp?.value);
       result = { targetName: sichtbarerName(targetToken), targetIsMonster: target?.type === "monster", distance, range: rangeLimit, healing, magisch, waffe: waffe?.name, werte,
-        hinweise: [...verstaerkungen.map((b) => `${b.name}: ${b.bonusText} Schaden`), ...(energie ? [`Energielauf: doppelte ${healing ? "Heilung" : "Wirkung"}`] : [])] };
+        hinweise: [...verstaerkungen.map((b) => `${b.name}: ${b.bonusText} Schaden`), ...(energie ? [`Energielauf: doppelte ${healing ? "Heilung" : "Wirkung"}`] : []),
+          ...(boolValue(item.system?.wutBonus) ? [wut ? `Wut: +${wut}W6 (${Math.round(hpAnteil * 100)} % HP)` : "Wut: noch kein Bonus (volle HP)"] : [])] };
 
       if (healing) {
         const roll = await new Roll(formel, this.getRollData()).evaluate();
@@ -2669,7 +2673,7 @@ async function freieWahlNachziehen() {
 }
 
 // Feste Skill-Werte aus dem Kanon (skillwerte.py) in Welt und Charaktere übernehmen. Gelernt, Lernleiste und Bild bleiben.
-const SKILL_WERTE_STAND = 5;   // 3: W8 → W6 (2026-11-02), 4: Element für alle Skills
+const SKILL_WERTE_STAND = 6;   // 3: W8 → W6 (2026-11-02), 4/5: Element für alle Skills, 6: Rasender Schlag nach der Klassenliste
 async function skillWerteNachziehen() {
   if (!game.user?.isGM) return 0;
   const neu = new Map();
@@ -2704,7 +2708,8 @@ async function skillWerteNachziehen() {
       "system.flaeche": e.flaeche ?? "", "system.dauer": e.dauer ?? "", "system.bonuses": e.bonuses ?? {}, "system.scaling": e.scaling ?? {},
       "system.element": e.element ?? "",
       ...(i.type === "playerSkill" ? { "system.mastery.effect": e.mastery?.effect ?? "", "system.mastery.bonus": e.mastery?.bonus ?? {} } : {}),
-      ...(e.waffenSchaden !== undefined ? { "system.waffenSchaden": Boolean(e.waffenSchaden) } : {})
+      ...(e.waffenSchaden !== undefined ? { "system.waffenSchaden": Boolean(e.waffenSchaden) } : {}),
+      "system.wutBonus": Boolean(e.wutBonus)
     };
   }).filter(Boolean);
   let anzahl = 0;
@@ -2719,7 +2724,8 @@ async function skillWerteNachziehen() {
   return anzahl;
 }
 
-const BESTIARIUM_STAND = 1;
+const INSIGNIEN_STAND = 1;   // 1: kein W8 mehr (2026-11-02)
+const BESTIARIUM_STAND = 2;   // 2: kein W8 mehr (2026-11-02)
 
 // Vorhandene Monster auf den aktuellen Stand bringen: eigenes Bild und Token, Verhalten, Zähmbarkeit,
 // Angriff und Monster-Skills. Vom GM geänderte Bilder (nicht aus Foundrys Bibliothek) bleiben.
@@ -2736,7 +2742,8 @@ async function aktualisiereBestiarium() {
     const update = {
       "system.monster.behavior": e.system.monster.behavior,
       "system.monster.tameable": e.system.monster.tameable,
-      "system.monster.tamers": e.system.monster.tamers
+      "system.monster.tamers": e.system.monster.tamers,
+      "system.monster.damage": e.system.monster.damage
     };
     const altesBild = actor.img;
     if (alt(actor.img)) update.img = e.img;
@@ -2820,6 +2827,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "sichtUndNamen", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "gasthausKarte", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "sammelVorrat", { scope: "world", config: false, type: Boolean, default: false });
+  game.settings.register("hope-lies-within-2", "insignienStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "almanachStart", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "hauswaendeDurchsichtig", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "dashboardTextStand", { scope: "world", config: false, type: Number, default: 0 });
@@ -2864,6 +2872,18 @@ Hooks.once("ready", async () => {
   try {
     HLW.klassen = await (await fetch("systems/hope-lies-within-2/data/klassen.json")).json();
     HLW.insignien = await (await fetch("systems/hope-lies-within-2/data/insignien.json")).json();
+    // Gewählte Insignien mit dem aktuellen Text (2026-11-02: kein W8 mehr); einmal pro Stand, nur der GM
+    if (game.user?.isGM && game.settings.get("hope-lies-within-2", "insignienStand") < INSIGNIEN_STAND) {
+      const texte = new Map(HLW.insignien.map((i) => [i.name, i.effekt]));
+      for (const actor of game.actors.filter((a) => a.type === "character")) {
+        const update = {};
+        for (const [key, slot] of Object.entries(actor.system?.insigniaSlots ?? {})) {
+          if (slot?.name && texte.has(slot.name) && slot.description !== texte.get(slot.name)) update[`system.insigniaSlots.${key}.description`] = texte.get(slot.name);
+        }
+        if (Object.keys(update).length) await actor.update(update);
+      }
+      await game.settings.set("hope-lies-within-2", "insignienStand", INSIGNIEN_STAND);
+    }
     setzeKlassen(HLW.klassen);
     for (const actor of game.actors ?? []) actor.prepareData();
   } catch (error) {

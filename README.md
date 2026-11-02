@@ -141,7 +141,7 @@ Skills mit Dauer („2 Runden“) erscheinen beim Einsetzen als Bild in der **Bu
 
 **Energielauf** (Runenmagier): Natur-Skills wirken doppelt: doppelter Schaden, doppelte Heilung, doppelte Dauer.
 
-**Würfel:** Es gibt keinen W8. Feuerverstärkung macht +1W6, die übrigen früheren W8-Skills bekommen +1 pro Würfel (gleicher Durchschnitt): Präzisionsschuss 1W6+1, Rasender Schlag 4W6+4, Or'ghavr 4W6+4, Kha'or'baal 2W6+2 pro Runde, Qor'athal 2W6+2, Le'or Heilung 3W6+3. **Lernpunkte** gibt es nicht mehr (Kanon 2.0: freie Wahl, begrenzt nur durch Skill-Slots).
+**Würfel:** Es gibt keinen W8, nirgends (Skills, Monster, Insignien). Feuerverstärkung macht +1W6, sonst wird aus W8 ein W6 mit +1 pro Würfel (gleicher Durchschnitt): Präzisionsschuss 1W6+1, Or'ghavr 4W6+4, Kha'or'baal 2W6+2 pro Runde, Qor'athal 2W6+2, Le'or Heilung 3W6+3; Monster Rang C 2W6+6, Rang B 3W6+7. **Rasender Schlag** (Berserker) ist ein Waffenangriff mit +1W6 für jedes fehlende Viertel der eigenen HP (unter 75 % +1W6, unter 50 % +2W6, unter 25 % +3W6); die Chatkarte zeigt den Wut-Bonus. **Lernpunkte** gibt es nicht mehr (Kanon 2.0: freie Wahl, begrenzt nur durch Skill-Slots).
 
 **Große Figuren:** Reichweite wird zwischen den nächsten Feldern gemessen. Wer direkt neben einem großen Gegner (2×2, 3×3) steht, trifft ihn mit Nahkampf.
 

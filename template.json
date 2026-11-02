@@ -377,7 +377,6 @@
         "cooldownText": "",
         "className": "",
         "awaken": "",
-        "learningPoints": 0,
         "bonuses": {
           "rw": 0,
           "mr": 0,
@@ -402,6 +401,7 @@
         },
         "ziele": 1,
         "waffenSchaden": false,
+        "wutBonus": false,
         "einmalProKampf": false,
         "heilung": "",
         "schutz": "",

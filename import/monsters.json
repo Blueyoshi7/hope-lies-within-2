@@ -1697,8 +1697,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -2234,8 +2234,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -2615,8 +2615,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    }
   ]
@@ -2794,8 +2794,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -3345,8 +3345,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -3965,7 +3965,7 @@
     "rw": 11,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 6,
     "reach": 1,
@@ -3992,7 +3992,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/raptor.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -4089,7 +4089,7 @@
     "rw": 11,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 4,
     "reach": 1,
@@ -4116,7 +4116,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/schattenwolf.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -4190,7 +4190,7 @@
     "rw": 13,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 5,
     "reach": 1,
@@ -4217,7 +4217,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/chimaerchen.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -4291,7 +4291,7 @@
     "rw": 12,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 4,
     "reach": 1,
@@ -4318,7 +4318,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/zaubersalamander.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -4360,8 +4360,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "action",
-     "damage": "2d8+4",
-     "damageText": "2W8+4",
+     "damage": "2d6+6",
+     "damageText": "2W6+6",
      "range": 4,
      "damageCategory": "magical",
      "cooldown": {
@@ -4392,7 +4392,7 @@
     "rw": 13,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 5,
     "reach": 1,
@@ -4419,7 +4419,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/kopierkatze.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -4493,7 +4493,7 @@
     "rw": 11,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 4,
     "reach": 1,
@@ -4520,7 +4520,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/moornixe.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -4571,7 +4571,7 @@
     "rw": 10,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 4,
     "reach": 2,
@@ -4598,7 +4598,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/dornenschrat.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -4640,8 +4640,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "action",
-     "damage": "1d8+2",
-     "damageText": "1W8+2",
+     "damage": "1d6+3",
+     "damageText": "1W6+3",
      "range": 3,
      "damageCategory": "physical",
      "cooldown": {
@@ -4695,7 +4695,7 @@
     "rw": 11,
     "mr": 11,
     "acc": 2,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 4,
     "reach": 1,
@@ -4722,7 +4722,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/madenschlund.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -4750,8 +4750,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -4819,7 +4819,7 @@
     "rw": 11,
     "mr": 12,
     "acc": 3,
-    "damage": "2W8+7",
+    "damage": "2W6+9",
     "initiative": 3,
     "movement": 4,
     "reach": 2,
@@ -4846,7 +4846,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/ameisenkoenig.webp",
     "system": {
-     "damage": "2d8+7",
+     "damage": "2d6+9",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -4934,8 +4934,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "quick",
-     "damage": "1d8+2",
-     "damageText": "1W8+2",
+     "damage": "1d6+3",
+     "damageText": "1W6+3",
      "range": 2,
      "damageCategory": "physical",
      "cooldown": {
@@ -4966,7 +4966,7 @@
     "rw": 13,
     "mr": 12,
     "acc": 3,
-    "damage": "2W8+7",
+    "damage": "2W6+9",
     "initiative": 3,
     "movement": 4,
     "reach": 1,
@@ -4993,7 +4993,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/schleimgans.webp",
     "system": {
-     "damage": "2d8+7",
+     "damage": "2d6+9",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -5035,8 +5035,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "action",
-     "damage": "4d8+8",
-     "damageText": "4W8+8",
+     "damage": "4d6+12",
+     "damageText": "4W6+12",
      "range": 3,
      "damageCategory": "physical",
      "cooldown": {
@@ -5058,8 +5058,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "quick",
-     "damage": "1d8+2",
-     "damageText": "1W8+2",
+     "damage": "1d6+3",
+     "damageText": "1W6+3",
      "range": 1,
      "damageCategory": "physical",
      "cooldown": {
@@ -5090,7 +5090,7 @@
     "rw": 11,
     "mr": 12,
     "acc": 3,
-    "damage": "2W8+7",
+    "damage": "2W6+9",
     "initiative": 3,
     "movement": 4,
     "reach": 2,
@@ -5117,7 +5117,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/flickkeiler.webp",
     "system": {
-     "damage": "2d8+7",
+     "damage": "2d6+9",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -5159,8 +5159,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "quick",
-     "damage": "1d8+2",
-     "damageText": "1W8+2",
+     "damage": "1d6+3",
+     "damageText": "1W6+3",
      "range": 2,
      "damageCategory": "physical",
      "cooldown": {
@@ -5191,7 +5191,7 @@
     "rw": 13,
     "mr": 12,
     "acc": 3,
-    "damage": "3W8+4",
+    "damage": "3W6+7",
     "initiative": 4,
     "movement": 4,
     "reach": 1,
@@ -5218,7 +5218,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/psilotus.webp",
     "system": {
-     "damage": "3d8+4",
+     "damage": "3d6+7",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -5269,7 +5269,7 @@
     "rw": 13,
     "mr": 12,
     "acc": 3,
-    "damage": "3W8+4",
+    "damage": "3W6+7",
     "initiative": 4,
     "movement": 4,
     "reach": 1,
@@ -5296,7 +5296,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/sturmhaar-geist.webp",
     "system": {
-     "damage": "3d8+4",
+     "damage": "3d6+7",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -5393,7 +5393,7 @@
     "rw": 14,
     "mr": 13,
     "acc": 4,
-    "damage": "4W8+4",
+    "damage": "4W6+8",
     "initiative": 4,
     "movement": 4,
     "reach": 1,
@@ -5420,7 +5420,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/allseher.webp",
     "system": {
-     "damage": "4d8+4",
+     "damage": "4d6+8",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -5462,8 +5462,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "action",
-     "damage": "4d8+4",
-     "damageText": "4W8+4",
+     "damage": "4d6+8",
+     "damageText": "4W6+8",
      "range": 6,
      "damageCategory": "magical",
      "cooldown": {
@@ -5508,8 +5508,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "quick",
-     "damage": "2d8",
-     "damageText": "2W8",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
      "range": 1,
      "damageCategory": "physical",
      "cooldown": {
@@ -5540,7 +5540,7 @@
     "rw": 13,
     "mr": 13,
     "acc": 4,
-    "damage": "4W8+4",
+    "damage": "4W6+8",
     "initiative": 4,
     "movement": 4,
     "reach": 2,
@@ -5567,7 +5567,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/kristallspinne.webp",
     "system": {
-     "damage": "4d8+4",
+     "damage": "4d6+8",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -5595,8 +5595,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -5655,8 +5655,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "quick",
-     "damage": "2d8",
-     "damageText": "2W8",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
      "range": 2,
      "damageCategory": "physical",
      "cooldown": {
@@ -5687,7 +5687,7 @@
     "rw": 13,
     "mr": 13,
     "acc": 4,
-    "damage": "4W8+4",
+    "damage": "4W6+8",
     "initiative": 4,
     "movement": 4,
     "reach": 2,
@@ -5714,7 +5714,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/quellhirsch.webp",
     "system": {
-     "damage": "4d8+4",
+     "damage": "4d6+8",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -5779,8 +5779,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "quick",
-     "damage": "2d8",
-     "damageText": "2W8",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
      "range": 2,
      "damageCategory": "physical",
      "cooldown": {
@@ -5811,7 +5811,7 @@
     "rw": 12,
     "mr": 13,
     "acc": 4,
-    "damage": "4W8+4",
+    "damage": "4W6+8",
     "initiative": 4,
     "movement": 5,
     "reach": 3,
@@ -5838,7 +5838,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/tiefenaal.webp",
     "system": {
-     "damage": "4d8+4",
+     "damage": "4d6+8",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
@@ -5857,8 +5857,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "action",
-     "damage": "4d8+4",
-     "damageText": "4W8+4",
+     "damage": "4d6+8",
+     "damageText": "4W6+8",
      "range": 2,
      "damageCategory": "physical",
      "cooldown": {
@@ -5880,8 +5880,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "quick",
-     "damage": "2d8",
-     "damageText": "2W8",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
      "range": 3,
      "damageCategory": "physical",
      "cooldown": {
@@ -5912,7 +5912,7 @@
     "rw": 12,
     "mr": 13,
     "acc": 4,
-    "damage": "4W8+4",
+    "damage": "4W6+8",
     "initiative": 4,
     "movement": 5,
     "reach": 3,
@@ -5939,7 +5939,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/moosschlund.webp",
     "system": {
-     "damage": "4d8+4",
+     "damage": "4d6+8",
      "range": 3,
      "equipped": true,
      "weaponClass": "monster",
@@ -6004,8 +6004,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "quick",
-     "damage": "2d8",
-     "damageText": "2W8",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
      "range": 3,
      "damageCategory": "physical",
      "cooldown": {
@@ -6238,8 +6238,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -6748,7 +6748,7 @@
     "rw": 10,
     "mr": 11,
     "acc": 3,
-    "damage": "2W8+4",
+    "damage": "2W6+6",
     "initiative": 3,
     "movement": 4,
     "reach": 2,
@@ -6775,7 +6775,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/abyss-hummel.webp",
     "system": {
-     "damage": "2d8+4",
+     "damage": "2d6+6",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -6826,8 +6826,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8).",
-     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W8)."
+     "effect": "Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1).",
+     "description": "Passiv: Ein Treffer vergiftet: 1W4 pro Runde für 3 Runden (ab Rang B 1W6+1)."
     }
    },
    {
@@ -6872,7 +6872,7 @@
     "rw": 12,
     "mr": 13,
     "acc": 5,
-    "damage": "3W8+6",
+    "damage": "3W6+9",
     "initiative": 3,
     "movement": 4,
     "reach": 2,
@@ -6899,7 +6899,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/muskelgans.webp",
     "system": {
-     "damage": "3d8+6",
+     "damage": "3d6+9",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -6918,8 +6918,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "action",
-     "damage": "1d8+2",
-     "damageText": "1W8+2",
+     "damage": "1d6+3",
+     "damageText": "1W6+3",
      "range": 3,
      "damageCategory": "physical",
      "cooldown": {
@@ -6973,7 +6973,7 @@
     "rw": 13,
     "mr": 12,
     "acc": 4,
-    "damage": "4W8+4",
+    "damage": "4W6+7",
     "initiative": 3,
     "movement": 4,
     "reach": 1,
@@ -7000,7 +7000,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/stachelglut-laeufer.webp",
     "system": {
-     "damage": "4d8+4",
+     "damage": "4d6+7",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",
@@ -7088,8 +7088,8 @@
      "rank": "C",
      "activation": "active",
      "castTime": "quick",
-     "damage": "1d8+2",
-     "damageText": "1W8+2",
+     "damage": "1d6+3",
+     "damageText": "1W6+3",
      "range": 1,
      "damageCategory": "physical",
      "cooldown": {
@@ -7120,7 +7120,7 @@
     "rw": 13,
     "mr": 13,
     "acc": 5,
-    "damage": "5W8+5",
+    "damage": "5W6+9",
     "initiative": 4,
     "movement": 4,
     "reach": 2,
@@ -7147,7 +7147,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/knochenhirsch.webp",
     "system": {
-     "damage": "5d8+5",
+     "damage": "5d6+9",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -7212,8 +7212,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "quick",
-     "damage": "2d8",
-     "damageText": "2W8",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
      "range": 2,
      "damageCategory": "physical",
      "cooldown": {
@@ -7244,7 +7244,7 @@
     "rw": 13,
     "mr": 13,
     "acc": 5,
-    "damage": "5W8+5",
+    "damage": "5W6+9",
     "initiative": 4,
     "movement": 4,
     "reach": 2,
@@ -7271,7 +7271,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/arturu-der-schattenhirsch.webp",
     "system": {
-     "damage": "5d8+5",
+     "damage": "5d6+9",
      "range": 2,
      "equipped": true,
      "weaponClass": "monster",
@@ -7336,8 +7336,8 @@
      "rank": "B",
      "activation": "active",
      "castTime": "quick",
-     "damage": "2d8",
-     "damageText": "2W8",
+     "damage": "2d6+2",
+     "damageText": "2W6+2",
      "range": 2,
      "damageCategory": "physical",
      "cooldown": {
@@ -7376,7 +7376,7 @@
     "exp": 120,
     "traits": "–",
     "habitat": "Wald der Zauberer",
-    "special": "Treffer: Blutend 1W8 für 3 Runden.",
+    "special": "Treffer: Blutend 1W6+1 für 3 Runden.",
     "harmless": false,
     "behavior": "aggressiv",
     "tameable": false,
@@ -7423,8 +7423,8 @@
       "max": 0
      },
      "cooldownText": "",
-     "effect": "Treffer: blutend 1W8 für 3 Runden.",
-     "description": "Passiv: Treffer: blutend 1W8 für 3 Runden."
+     "effect": "Treffer: blutend 1W6+1 für 3 Runden.",
+     "description": "Passiv: Treffer: blutend 1W6+1 für 3 Runden."
     }
    },
    {
@@ -7616,7 +7616,7 @@
     "rw": 13,
     "mr": 12,
     "acc": 3,
-    "damage": "3W8+4",
+    "damage": "3W6+7",
     "initiative": 4,
     "movement": 4,
     "reach": 1,
@@ -7643,7 +7643,7 @@
     "type": "weapon",
     "img": "systems/hope-lies-within-2/assets/monster/sternenschaedel.webp",
     "system": {
-     "damage": "3d8+4",
+     "damage": "3d6+7",
      "range": 1,
      "equipped": true,
      "weaponClass": "monster",

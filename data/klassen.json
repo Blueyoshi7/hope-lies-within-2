@@ -1925,16 +1925,18 @@
    },
    "cooldownText": "3 Züge",
    "einmalProKampf": false,
-   "damage": "4d6+4",
-   "damageText": "4W6+4",
+   "damage": "",
+   "damageText": "Waffe +1W6 je fehlendem HP-Viertel",
    "heilung": "",
    "schutz": "",
    "flaeche": "",
-   "dauer": "danach 2 Runden erschöpft",
+   "dauer": "",
    "ziele": 1,
    "bonuses": {},
-   "description": "Alle unterdrückte Wut in einem Schlag, ohne Waffe. Danach kannst du 2 Runden lang weder angreifen noch dich bewegen.",
-   "effect": "Alle unterdrückte Wut in einem Schlag, ohne Waffe. Danach kannst du 2 Runden lang weder angreifen noch dich bewegen."
+   "description": "Kanalisiert deine Wut in einen Waffenangriff: +1W6 Schaden für jedes Viertel deiner HP, das dir fehlt (unter 75 % +1W6, unter 50 % +2W6, unter 25 % +3W6).",
+   "effect": "Kanalisiert deine Wut in einen Waffenangriff: +1W6 Schaden für jedes Viertel deiner HP, das dir fehlt (unter 75 % +1W6, unter 50 % +2W6, unter 25 % +3W6).",
+   "waffenSchaden": true,
+   "wutBonus": true
   }
  },
  {
