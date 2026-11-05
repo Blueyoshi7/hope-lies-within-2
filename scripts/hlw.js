@@ -13,6 +13,7 @@ import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboard
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
+import { istKarte, karteOeffnen, kartenAnlegen, registerKarte } from "./hlw-karte.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
 import { textBoni, WORLD_SKILLS, ATTRS, PLAETZE, klasseVorschlag, verteiltePunkte, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
@@ -2172,6 +2173,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     }
     const angelegt = boolValue(item.system?.equipped);
     const eintraege = [];
+    if (istKarte(item)) eintraege.push(["karte", "Karte ansehen", "fa-map"]);
     if (["weapon", "armor", "accessory", "equipment"].includes(item.type)) eintraege.push(["equip", angelegt ? "Ablegen" : "Ausrüsten", "fa-shirt"]);
     const kristall = kristallInfo(item);
     if (kristall) {
@@ -2185,6 +2187,7 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     this._menue(element, item.name, eintraege, {
       ...packAktionen,
       equip: () => this.actor.toggleEquipped(id),
+      karte: () => karteOeffnen(item),
       consume: () => this.actor.consumeOwnedItem(id),
       einsetzen: () => kristallEinsetzen(this.actor, item),
       verabreichen: () => this.actor.heilenMit(id, { aufZiel: true }),
@@ -2806,6 +2809,7 @@ Hooks.once("init", () => {
   registerSchloss();
   registerBestiarium();
   registerNotizen();
+  registerKarte();
   registerSammeln();
   registerTageszeit();
   registerSkills();
@@ -2909,6 +2913,7 @@ Hooks.once("ready", async () => {
     questlog: () => HopeLiesWithinQuestlog.oeffnen(),
     bestiarium: () => HopeLiesWithinBestiarium.oeffnen(),
     notizen: () => HopeLiesWithinNotizen.oeffnen(),
+    karte: karteOeffnen,
     almanach: () => HopeLiesWithinAlmanach.oeffnen(),
     tageszeit: tageszeitSetzen,
     skills: () => HopeLiesWithinSkills.oeffnen(),
@@ -3036,6 +3041,7 @@ Hooks.once("ready", async () => {
     await game.settings.set("hope-lies-within-2", "tammImDorf", true);
   }
   await notizJournalAnlegen();
+  await kartenAnlegen();
   // Suchen und Almanach (2026-11-01): Quest-Gegenstände, Sammelgebiete pro Szene (einmal), Almanach aus den Inventaren
   if (game.user?.isGM) {
     await questGegenstaendeAnlegen();

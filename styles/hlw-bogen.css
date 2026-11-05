@@ -945,3 +945,21 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-hud .hh-buff.is-letzte b { background: #d0574f; color: #fff; }
 .hlw-chat-card .hlw-chat-hinweis { font-size: 12px; color: #8a6d2f; font-style: italic; margin-top: 4px; }
 #hlw-tageszeit.im-kampf { top: 118px; }
+
+/* Karte von Gaia (hlw-karte.js): Werkzeugleiste oben, darunter die Karte zum Zoomen, Verschieben und Bemalen */
+.hlw-karte .window-content { display: flex; flex-direction: column; padding: 0; background: #14161c; color: #e8e4da; overflow: hidden; }
+.hlw-karte .kt-leiste { flex: none; display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-bottom: 1px solid #2f3440; flex-wrap: wrap; }
+.hlw-karte .kt-leiste button { width: 32px; height: 30px; padding: 0; display: grid; place-items: center; background: #1a1d25; color: #c9c4b6; border: 1px solid #2f3440; border-radius: 6px; font-size: 14px; line-height: 1; }
+.hlw-karte .kt-leiste button:hover { color: #f3e6c4; border-color: #8a7a52; }
+.hlw-karte .kt-leiste button.is-aktiv { color: #f3e6c4; border-color: #d8b46a; background: #262a34; }
+.hlw-karte .kt-farben { display: flex; gap: 4px; margin: 0 4px; }
+.hlw-karte .kt-farben button { width: 22px; height: 22px; border-radius: 50%; background: var(--kt-farbe); border: 2px solid #2f3440; }
+.hlw-karte .kt-farben button.is-aktiv { border-color: #f3e6c4; box-shadow: 0 0 0 2px #d8b46a; background: var(--kt-farbe); }
+.hlw-karte .kt-leiste select { height: 30px; width: auto; background: #1a1d25; color: #e8e4da; border: 1px solid #2f3440; border-radius: 6px; }
+.hlw-karte .kt-platz { flex: 1; }
+.hlw-karte .kt-flaeche { flex: 1; min-height: 0; position: relative; overflow: hidden; background: #0b1a2a; touch-action: none; outline: none; cursor: crosshair; }
+.hlw-karte .kt-flaeche[data-werkzeug="hand"] { cursor: grab; }
+.hlw-karte .kt-flaeche[data-werkzeug="hand"]:active { cursor: grabbing; }
+.hlw-karte .kt-flaeche[data-werkzeug="radierer"] { cursor: cell; }
+.hlw-karte .kt-inhalt { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.hlw-karte .kt-inhalt img, .hlw-karte .kt-inhalt canvas { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; border: 0; user-select: none; pointer-events: none; }
