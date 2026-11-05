@@ -848,23 +848,63 @@
 .hlw-geben-liste small { display: block; color: var(--hlw-muted); }
 .hlw-geben-liste button { width: auto; padding: 2px 12px; }
 
-/* Bosskampf: großes Boss-Bild hinter „IM KAMPF“ (hlw-boss.js) */
+/* Bosskampf: Banner mit einem Ausschnitt des Bosses über „IM KAMPF“ (hlw-boss.js) */
 .hlw-combat-overlay.is-boss {
   background:
-    radial-gradient(ellipse at center 60%, rgba(120, 10, 10, 0.55), transparent 55%),
+    radial-gradient(ellipse at center, rgba(120, 10, 10, 0.5), transparent 60%),
     rgba(0, 0, 0, 0.78);
 }
 
-.hlw-combat-overlay__boss {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  height: min(92vh, 1100px);
-  max-width: 90vw;
-  object-fit: contain;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 0 40px rgba(200, 30, 30, 0.55)) drop-shadow(0 20px 30px rgba(0, 0, 0, 0.9));
+/* Banner mit 3D-Effekt: das Band sitzt hinter dem Bild und deckt nur das untere Stück ab,
+   Kopf und Hörner ragen oben über die Bandkante hinaus */
+.hlw-combat-overlay__banner {
+  position: relative;
+  width: min(90vw, 1100px, 110vh);
+  aspect-ratio: 1792 / 768;
+  margin-bottom: -2.2em;
   animation: hlw-boss-auftritt 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hlw-combat-overlay__banner .bn-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70%;
+  background:
+    radial-gradient(ellipse at center 70%, rgba(150, 20, 20, 0.55), transparent 65%),
+    linear-gradient(to bottom, #2a0d0b, #120606);
+  border-top: 3px solid #d8b46a;
+  border-bottom: 3px solid #d8b46a;
+  box-shadow: 0 0 40px rgba(200, 30, 30, 0.45), inset 0 0 60px rgba(0, 0, 0, 0.8);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.hlw-combat-overlay__banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  filter: drop-shadow(0 -6px 14px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 24px rgba(200, 30, 30, 0.35));
+  /* oben weich auslaufen (Bildkante), seitlich mit dem Band ausblenden */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 9%), linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent, #000 9%), linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
+}
+
+/* Unterkante des Bands liegt vor dem Bild */
+.hlw-combat-overlay__banner::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #d8b46a 15%, #d8b46a 85%, transparent);
 }
 
 .hlw-combat-overlay.is-boss .hlw-combat-overlay__text,
@@ -874,16 +914,14 @@
 }
 
 .hlw-combat-overlay.is-boss .hlw-combat-overlay__sub {
-  padding: 4px 18px;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.55);
   color: #ffb3a0;
+  letter-spacing: 0.3em;
 }
 
 @keyframes hlw-boss-auftritt {
-  from { opacity: 0; transform: translateX(-50%) translateY(6%) scale(0.92); filter: brightness(0) drop-shadow(0 0 0 transparent); }
-  60% { opacity: 1; filter: brightness(0.6) drop-shadow(0 0 60px rgba(220, 40, 40, 0.8)); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  from { opacity: 0; transform: scale(1.08); filter: brightness(0); }
+  60% { opacity: 1; filter: brightness(0.7); }
+  to { opacity: 1; transform: scale(1); filter: brightness(1); }
 }
 
 @keyframes hlw-boss-text {

@@ -346,15 +346,15 @@ function showCombatOverlay(combat, mode = "start", actorName = "") {
   const existing = document.querySelector(".hlw-combat-overlay");
   if (existing) existing.remove();
 
-  // Bosskampf: groß das Boss-Bild hinter „IM KAMPF“, die Einblendung bleibt länger stehen
+  // Bosskampf: Banner mit dem Boss-Bild über „IM KAMPF“ (ohne Namen), die Einblendung bleibt länger stehen
   const boss = mode === "start" ? bossVon(combat) : null;
   const bild = boss ? bossBild(boss.actor) : "";
   const overlay = document.createElement("div");
   overlay.className = `hlw-combat-overlay ${isEnd ? "is-end" : isTurn ? "is-turn" : "is-start"}${boss ? " is-boss" : ""}`;
   overlay.innerHTML = `
-    ${bild ? `<img class="hlw-combat-overlay__boss" src="${escapeHtml(bild)}" alt="">` : ""}
+    ${bild ? `<div class="hlw-combat-overlay__banner"><div class="bn-band"></div><img src="${escapeHtml(bild)}" alt=""></div>` : ""}
     <div class="hlw-combat-overlay__text">${isEnd ? "KAMPF BEENDET" : isTurn ? "DU BIST AM ZUG" : "IM KAMPF"}</div>
-    <div class="hlw-combat-overlay__sub">${isEnd ? "Zurueck in den Erkundungsmodus" : isTurn ? escapeHtml(actorName) : boss ? `Bosskampf · ${escapeHtml(sichtbarerName(boss.token ?? boss))}` : `Runde ${combat.round || 1} beginnt`}</div>
+    <div class="hlw-combat-overlay__sub">${isEnd ? "Zurueck in den Erkundungsmodus" : isTurn ? escapeHtml(actorName) : boss ? "Bosskampf" : `Runde ${combat.round || 1} beginnt`}</div>
   `;
   document.body.appendChild(overlay);
 
