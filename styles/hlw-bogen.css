@@ -963,3 +963,10 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-karte .kt-flaeche[data-werkzeug="radierer"] { cursor: cell; }
 .hlw-karte .kt-inhalt { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 .hlw-karte .kt-inhalt img, .hlw-karte .kt-inhalt canvas { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; border: 0; user-select: none; pointer-events: none; }
+
+/* Bosskampf-Felder am Gegnerbogen (nur GM) */
+.hlw-bogen .hb-boss { display: grid; gap: 6px; margin-top: 8px; padding: 8px; border: 1px solid var(--hb-linie); border-radius: 8px; }
+.hlw-bogen .hb-pfad { display: flex; gap: 4px; }
+.hlw-bogen .hb-pfad input { flex: 1; min-height: 0; height: 28px; text-align: left; }
+.hlw-bogen .hb-pfad button { flex: 0 0 32px; width: 32px; height: 28px; min-height: 0; padding: 0; }
+.hlw-bogen .hb-boss > label.hb-zaehmbar { flex-direction: row; justify-content: flex-start; gap: 8px; }

@@ -309,7 +309,10 @@
           "harmless": false,
           "behavior": "territorial",
           "tameable": false,
-          "tamers": ""
+          "tamers": "",
+          "boss": false,
+          "bossBild": "",
+          "bossMusik": ""
         }
       }
     },

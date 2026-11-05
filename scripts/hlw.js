@@ -14,6 +14,7 @@ import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVer
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { istKarte, karteOeffnen, kartenAnlegen, registerKarte } from "./hlw-karte.js";
+import { bossVon, bossBild, bossMusikStarten, registerBoss } from "./hlw-boss.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
 import { textBoni, WORLD_SKILLS, ATTRS, PLAETZE, klasseVorschlag, verteiltePunkte, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
@@ -63,6 +64,8 @@ HLW.rangeHelp = null;
 HLW.targetPicker = null;
 HLW.combatHud = null;
 HLW.lastHandledTurnKey = null;
+HLW.kampfGestartet = new Set();   // Kämpfe, deren Start dieser Browser schon gezeigt hat
+HLW.startOverlayBis = 0;
 HLW.lastLegalTokenPositions = new Map();
 HLW.pendingLegalMoves = new Map();
 HLW.movementSpentCache = new Map();
@@ -332,21 +335,42 @@ function getActivationLabel(item) {
 }
 
 function showCombatOverlay(combat, mode = "start", actorName = "") {
+  const isEnd = mode === "end";
+  const isTurn = mode === "turn";
+  // „Du bist am Zug“ wartet, bis die Start-Einblendung durch ist
+  const rest = HLW.startOverlayBis - Date.now();
+  if (isTurn && rest > 0) {
+    window.setTimeout(() => showCombatOverlay(combat, mode, actorName), rest);
+    return;
+  }
   const existing = document.querySelector(".hlw-combat-overlay");
   if (existing) existing.remove();
 
-  const isEnd = mode === "end";
-  const isTurn = mode === "turn";
+  // Bosskampf: groß das Boss-Bild hinter „IM KAMPF“, die Einblendung bleibt länger stehen
+  const boss = mode === "start" ? bossVon(combat) : null;
+  const bild = boss ? bossBild(boss.actor) : "";
   const overlay = document.createElement("div");
-  overlay.className = `hlw-combat-overlay ${isEnd ? "is-end" : isTurn ? "is-turn" : "is-start"}`;
+  overlay.className = `hlw-combat-overlay ${isEnd ? "is-end" : isTurn ? "is-turn" : "is-start"}${boss ? " is-boss" : ""}`;
   overlay.innerHTML = `
+    ${bild ? `<img class="hlw-combat-overlay__boss" src="${escapeHtml(bild)}" alt="">` : ""}
     <div class="hlw-combat-overlay__text">${isEnd ? "KAMPF BEENDET" : isTurn ? "DU BIST AM ZUG" : "IM KAMPF"}</div>
-    <div class="hlw-combat-overlay__sub">${isEnd ? "Zurueck in den Erkundungsmodus" : isTurn ? escapeHtml(actorName) : `Runde ${combat.round || 1} beginnt`}</div>
+    <div class="hlw-combat-overlay__sub">${isEnd ? "Zurueck in den Erkundungsmodus" : isTurn ? escapeHtml(actorName) : boss ? `Bosskampf · ${escapeHtml(sichtbarerName(boss.token ?? boss))}` : `Runde ${combat.round || 1} beginnt`}</div>
   `;
   document.body.appendChild(overlay);
 
-  window.setTimeout(() => overlay.classList.add("is-fading"), 1800);
-  window.setTimeout(() => overlay.remove(), 2600);
+  const dauer = boss ? 4200 : 1800;
+  if (mode === "start") HLW.startOverlayBis = Date.now() + dauer + 800;
+  window.setTimeout(() => overlay.classList.add("is-fading"), dauer);
+  window.setTimeout(() => overlay.remove(), dauer + 800);
+}
+
+// Kampfbeginn in jedem Browser: Foundry meldet „combatStart“ nur dem, der den Kampf startet,
+// alle anderen erkennen ihn an Runde 1 im Kampf-Update.
+function kampfBeginnt(combat) {
+  if (!combat?.id || HLW.kampfGestartet.has(combat.id)) return;
+  HLW.kampfGestartet.add(combat.id);
+  showCombatOverlay(combat);
+  bossMusikStarten(combat);
 }
 
 function showTurnOverlayForActor(actor) {
@@ -1823,6 +1847,13 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       event.preventDefault();
       bildWaehlen(this.actor.prototypeToken?.texture?.src || this.actor.img, (pfad) => tokenBildSetzen(this.actor, pfad));
     });
+    // Bosskampf: Bild und Musik für die Einblendung wählen
+    html.find("[data-boss-datei]").on("click", (event) => {
+      event.preventDefault();
+      const feld = event.currentTarget.dataset.bossDatei;
+      const Picker = foundry.applications.apps?.FilePicker?.implementation ?? globalThis.FilePicker;
+      new Picker({ type: feld === "bossMusik" ? "audio" : "image", current: this.actor.system.monster?.[feld] || "", callback: (pfad) => this.actor.update({ [`system.monster.${feld}`]: pfad }) }).render(true);
+    });
     html.find("[data-nsc-gespraech]").on("click", (event) => {
       event.preventDefault();
       zeigeAllen(this.actor, event.currentTarget.dataset.nscGespraech || "gespraech");
@@ -2115,10 +2146,13 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
     menue.className = "hope-lies-within hb-menue";
     menue.innerHTML = `<strong>${escapeHtml(titel)}</strong>${eintraege.map(([key, label, icon]) => `<button type="button" data-menue="${key}"><i class="fa-solid ${icon}"></i> ${label}</button>`).join("")}`;
     document.body.appendChild(menue);
+    // Neben das Icon (rechts, sonst links), damit der Namen-Tooltip über dem Icon frei bleibt
+    game.tooltip?.deactivate?.();
     const a = element.getBoundingClientRect();
     const hoehe = menue.offsetHeight;
-    menue.style.left = `${Math.min(a.left, window.innerWidth - menue.offsetWidth - 8)}px`;
-    menue.style.top = `${a.bottom + hoehe + 8 > window.innerHeight ? a.top - hoehe - 4 : a.bottom + 4}px`;
+    const breite = menue.offsetWidth;
+    menue.style.left = `${a.right + 6 + breite + 8 > window.innerWidth ? Math.max(8, a.left - breite - 6) : a.right + 6}px`;
+    menue.style.top = `${Math.max(8, Math.min(a.top, window.innerHeight - hoehe - 8))}px`;
     const schliessen = (event) => {
       if (menue.contains(event.target)) return;
       menue.remove();
@@ -2810,6 +2844,7 @@ Hooks.once("init", () => {
   registerBestiarium();
   registerNotizen();
   registerKarte();
+  registerBoss();
   registerSammeln();
   registerTageszeit();
   registerSkills();
@@ -3275,8 +3310,13 @@ function handleCancelPendingSkill(event) {
 document.addEventListener("keydown", handleCancelPendingSkill, true);
 window.addEventListener("keydown", handleCancelPendingSkill, true);
 
+// Nach dem Neuladen laufende Kämpfe nicht noch einmal ankündigen
+Hooks.once("ready", () => {
+  for (const combat of game.combats ?? []) if (combat.started) HLW.kampfGestartet.add(combat.id);
+});
+
 Hooks.on("combatStart", (combat) => {
-  showCombatOverlay(combat);
+  kampfBeginnt(combat);
   postCombatStartMessage(combat);
   showTurnOverlayForActor(combat.combatant?.actor);
   renderCombatHud();
@@ -3293,6 +3333,7 @@ Hooks.on("deleteCombat", (combat) => {
 });
 
 Hooks.on("updateCombat", (combat, changed) => {
+  if (changed.round === 1 && combat.started) kampfBeginnt(combat);
   if (!("turn" in changed)) return;
   handleCombatTurnChange(combat);
   renderCombatHud();
