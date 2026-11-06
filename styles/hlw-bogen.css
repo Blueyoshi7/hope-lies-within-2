@@ -976,3 +976,31 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 #hlw-tageszeit button.tz-naehe.is-aktiv { border-color: #6fc28b; color: #c9f2d6; background: rgba(111, 194, 139, 0.18); }
 #hlw-tageszeit .tz-naehe-an { margin-left: 4px; color: #6fc28b !important; }
 .camera-view.hlw-ausser-hoerweite { opacity: 0.35; filter: grayscale(0.8); transition: opacity 0.3s, filter 0.3s; }
+
+/* Spezialeffekte (hlw-effekte.js): Ebene über allem, Klicks gehen durch; GM-Fenster */
+.hlw-effekt { position: fixed; inset: 0; z-index: 9000; pointer-events: none; }
+.hlw-effekt canvas { width: 100%; height: 100%; display: block; }
+/* Blitz: bläulich-weißer Schein über allem, blendet nach dem Flackern weich aus */
+.hlw-effekt.hlw-blitz { opacity: 0; background: radial-gradient(ellipse at 50% 20%, rgba(255, 255, 255, 0.95), rgba(214, 228, 255, 0.8) 45%, rgba(170, 195, 255, 0.55)); mix-blend-mode: screen; }
+.hlw-effekt.hlw-blitz.is-aus { transition: opacity 650ms ease-out; }
+.hlw-effekt .hlw-effekt-text {
+  position: absolute; left: 50%; top: 22%; transform: translate(-50%, -50%) rotate(-2deg);
+  color: #fff6d8; font-family: Georgia, serif; font-size: clamp(40px, 7vw, 110px); font-weight: 900; white-space: nowrap;
+  text-shadow: 0 4px 0 #8a2b5c, 0 0 28px rgba(249, 199, 79, 0.9), 0 0 70px rgba(241, 91, 181, 0.6);
+  animation: hlw-effekt-text 900ms cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+@keyframes hlw-effekt-text { from { opacity: 0; transform: translate(-50%, -50%) scale(0.3) rotate(-8deg); } to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(-2deg); } }
+
+.hlw-effekte .window-content { padding: 10px; }
+.hlw-effekte .ef-inhalt { display: grid; gap: 10px; }
+.hlw-effekte .ef-hinweis { margin: 0; font-size: 12px; color: #c9bc9c; }
+.hlw-effekte .ef-karte { display: grid; gap: 8px; padding: 10px 12px; border: 1px solid #4a4030; border-radius: 10px; background: rgba(216, 180, 106, 0.06); }
+.hlw-effekte .ef-karte header { display: flex; align-items: center; gap: 8px; }
+.hlw-effekte .ef-karte header i { color: #d8b46a; font-size: 18px; }
+.hlw-effekte .ef-karte h3 { margin: 0; border: 0; font-size: 16px; }
+.hlw-effekte .ef-karte p { margin: 0; font-size: 12.5px; }
+.hlw-effekte .ef-zeile { display: grid; grid-template-columns: 50px 1fr auto; align-items: center; gap: 8px; font-size: 12px; }
+.hlw-effekte .ef-zeile input[type="text"] { grid-column: 2 / 4; }
+.hlw-effekte button[data-abspielen] { background: #d8b46a; color: #1b150c; border: 0; font-weight: 700; }
+.hlw-effekte button[data-abspielen]:hover { background: #f0cd84; }
+.hlw-effekte .ef-stopp { margin-top: 2px; }
