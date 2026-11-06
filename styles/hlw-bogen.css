@@ -970,3 +970,9 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-bogen .hb-pfad input { flex: 1; min-height: 0; height: 28px; text-align: left; }
 .hlw-bogen .hb-pfad button { flex: 0 0 32px; width: 32px; height: 28px; min-height: 0; padding: 0; }
 .hlw-bogen .hb-boss > label.hb-zaehmbar { flex-direction: row; justify-content: flex-start; gap: 8px; }
+
+/* Nähe-Sprachchat (hlw-naehe.js): GM-Schalter in der Tageszeit-Leiste, Ohr für Spieler, blasse Kameras außer Hörweite */
+#hlw-tageszeit button.tz-naehe { margin-left: 2px; border-color: #4a4030; }
+#hlw-tageszeit button.tz-naehe.is-aktiv { border-color: #6fc28b; color: #c9f2d6; background: rgba(111, 194, 139, 0.18); }
+#hlw-tageszeit .tz-naehe-an { margin-left: 4px; color: #6fc28b !important; }
+.camera-view.hlw-ausser-hoerweite { opacity: 0.35; filter: grayscale(0.8); transition: opacity 0.3s, filter 0.3s; }

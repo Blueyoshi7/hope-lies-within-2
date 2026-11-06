@@ -3,8 +3,10 @@
 // Die Tageszeit stellt die Dunkelheit aller Szenen ein (außer dem Dashboard und Szenen mit gesperrter Dunkelheit):
 // Morgen 0,25 · Tag 0 · Abend 0,45 · Nacht 0,85. Ab 0,5 sehen Spieler nur noch, was Licht abbekommt (siehe hlw-szenen.js).
 // Ein neuer Tag beginnt am Morgen und meldet sich im Chat; der Zähler (Einstellung "spieltag") zählt für Suchen und Quests.
+// Daneben der Schalter für den Nähe-Sprachchat (hlw-naehe.js): der GM schaltet, Spieler sehen ein Ohr, solange er an ist.
 
 import { spieltag, neuerTag } from "./hlw-sammeln.js";
+import { naeheAn } from "./hlw-naehe.js";
 
 const SYSTEM_ID = "hope-lies-within-2";
 
@@ -51,24 +53,30 @@ export function tageszeitAnzeige() {
       if (!knopf || !game.user?.isGM) return;
       if (knopf.dataset.zeit) tageszeitSetzen(knopf.dataset.zeit);
       if (knopf.dataset.neuerTag !== undefined) neuerTag();
+      if (knopf.dataset.naehe !== undefined) game.settings.set(SYSTEM_ID, "naeheChat", !naeheAn());
     });
   }
   const jetzt = tageszeit();
   const t = TAGESZEITEN[jetzt];
   box.classList.toggle("is-gm", !!game.user?.isGM);
   box.classList.toggle("im-kampf", !!game.combat?.started);   // im Kampf unter die Kampfleiste oben (Combat Tracker Dock)
+  const naehe = naeheAn();
   box.innerHTML = game.user?.isGM
     ? `<span class="tz-tag">Tag ${spieltag()}</span>
        ${Object.entries(TAGESZEITEN).map(([k, z]) => `<button type="button" data-zeit="${k}" class="${k === jetzt ? "is-aktiv" : ""}" data-tooltip="${z.label}"><i class="${z.icon}"></i></button>`).join("")}
-       <button type="button" data-neuer-tag class="tz-neu" data-tooltip="Neuer Tag: beginnt am Morgen, alle dürfen wieder suchen"><i class="fa-solid fa-forward"></i> Neuer Tag</button>`
-    : `<i class="${t.icon}"></i><span class="tz-tag">Tag ${spieltag()}</span><span>· ${t.label}</span>`;
+       <button type="button" data-neuer-tag class="tz-neu" data-tooltip="Neuer Tag: beginnt am Morgen, alle dürfen wieder suchen"><i class="fa-solid fa-forward"></i> Neuer Tag</button>
+       <button type="button" data-naehe class="tz-naehe ${naehe ? "is-aktiv" : ""}" data-tooltip="Nähe-Sprachchat ${naehe ? "an: Spieler hören sich nur in der Nähe (klicken zum Ausschalten)" : "aus (klicken zum Einschalten)"}"><i class="fa-solid fa-ear-listen"></i></button>`
+    : `<i class="${t.icon}"></i><span class="tz-tag">Tag ${spieltag()}</span><span>· ${t.label}</span>${naehe ? `<i class="fa-solid fa-ear-listen tz-naehe-an" data-tooltip="Nähe-Chat: Ihr hört nur, wer in der Nähe steht"></i>` : ""}`;
 }
 
 export function registerTageszeit() {
   game.settings.register(SYSTEM_ID, "tageszeit", { scope: "world", config: false, type: String, default: "tag", onChange: () => tageszeitAnzeige() });
-  Hooks.on("updateSetting", (setting) => {
-    if (setting.key === `${SYSTEM_ID}.spieltag`) tageszeitAnzeige();
-  });
+  // Beim ersten Setzen legt Foundry die Einstellung neu an (createSetting), danach updateSetting
+  const neuZeigen = (setting) => {
+    if (setting.key === `${SYSTEM_ID}.spieltag` || setting.key === `${SYSTEM_ID}.naeheChat`) tageszeitAnzeige();
+  };
+  Hooks.on("createSetting", neuZeigen);
+  Hooks.on("updateSetting", neuZeigen);
   // Neuer Tag: Morgen (die Chatkarte zum neuen Tag kommt von neuerTag selbst)
   Hooks.on("hlwNeuerTag", () => tageszeitSetzen("morgen", { melden: false }));
   for (const hook of ["combatStart", "updateCombat", "deleteCombat", "createCombat"]) Hooks.on(hook, () => window.setTimeout(tageszeitAnzeige, 50));

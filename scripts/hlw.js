@@ -15,6 +15,7 @@ import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { istKarte, karteOeffnen, kartenAnlegen, registerKarte } from "./hlw-karte.js";
 import { bossVon, bossBild, bossMusikStarten, registerBoss } from "./hlw-boss.js";
+import { registerNaehe } from "./hlw-naehe.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
 import { gefaehrteVon, besitzerVon, zaehmen, zaehmSkillDaten, rufen, zurueckrufen, langeRast, freilassen, zugbeginn, registerGefaehrte } from "./hlw-gefaehrte.js";
 import { textBoni, WORLD_SKILLS, ATTRS, PLAETZE, klasseVorschlag, verteiltePunkte, berechneWerte, berechneMonster, angriffsWerte, kes, parseKes, ausruestungsPlatz, passivBoni, boniText } from "./hlw-regeln.js";
@@ -2845,6 +2846,7 @@ Hooks.once("init", () => {
   registerNotizen();
   registerKarte();
   registerBoss();
+  registerNaehe();
   registerSammeln();
   registerTageszeit();
   registerSkills();
