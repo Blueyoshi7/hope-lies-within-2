@@ -3255,6 +3255,14 @@ Hooks.once("setup", () => {
     if (!game.user?.isGM && !this.isOwner && this.actor?.type === "monster") return false;
     return sichtModus.call(this, mode);
   };
+  // Sicht nur durch eigene Figuren (Dominik 2026-11-06): Foundry gibt Spielern ohne ausgewählte Figur auch die Sicht
+  // aller Figuren, die sie nur beobachten dürfen (z. B. die Bögen der anderen). So sieht jeder nur, was seine Figuren
+  // und Gefährten sehen, und nachts muss man sich suchen.
+  const sichtQuelle = TokenClass.prototype._isVisionSource;
+  TokenClass.prototype._isVisionSource = function () {
+    if (!game.user?.isGM && !this.controlled && !this.isOwner) return false;
+    return sichtQuelle.call(this);
+  };
   const original = TokenClass.prototype._canHover;
   TokenClass.prototype._canHover = function (user, event) {
     if (!game.user?.isGM && !this.isOwner && unterGeschlossenemDach(this)) return false;
