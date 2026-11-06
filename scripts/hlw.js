@@ -8,7 +8,7 @@ import { HopeLiesWithinAlmanach, registerSammeln, suchen, neuerTag, almanachFrei
 import { HopeLiesWithinNotizen, registerNotizen, notizJournalAnlegen } from "./hlw-notizen.js";
 import { HopeLiesWithinBestiarium, registerBestiarium, bestiarSieg, bestiarSetzen, sichtbarerName, hpSichtbar } from "./hlw-bestiarium.js";
 import { setzeKlassen, lindhainAusstatten, lindhainBausteine, lindhainHandel, lindhainQuestsNachtragen, kapitel1Journal, nscWerteSetzen, SCHWERPUNKTE, speisekarteZeigen, gasthausNachruesten } from "./hlw-nsc.js";
-import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf, sichtUndNamenSetzen, hauswaendeDurchsichtig } from "./hlw-szenen.js";
+import { erstelleLindhain, erstelleWege, erstelleQuestOrte, tarnungAufheben, entferneOrtsmarker, lindhainErgaenzen, wegeErgaenzen, wagenInsDorf, sichtUndNamenSetzen, hauswaendeDurchsichtig, erstelleTestmap } from "./hlw-szenen.js";
 import { erstelleDashboard, dashboardAktualisieren, registerDashboard, dashboardTexteAktualisieren, DASHBOARD_TEXT_STAND } from "./hlw-dashboard.js";
 import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVerwenden, kristallEinsetzen } from "./hlw-kristalle.js";
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
@@ -2852,6 +2852,7 @@ Hooks.once("init", () => {
   game.settings.register("hope-lies-within-2", "bildStand", { scope: "world", config: false, type: Number, default: 0 });
   game.settings.register("hope-lies-within-2", "ortsmarkerEntfernt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "bestiariumStand", { scope: "world", config: false, type: Number, default: 0 });
+  game.settings.register("hope-lies-within-2", "testmapAngelegt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "skillOrbsGesetzt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "freieWahlGesetzt", { scope: "world", config: false, type: Boolean, default: false });
   game.settings.register("hope-lies-within-2", "einKlassenSkill", { scope: "world", config: false, type: Boolean, default: false });
@@ -2937,6 +2938,7 @@ Hooks.once("ready", async () => {
     aktualisiereBestiarium,
     erstelleLindhain,
     erstelleWege,
+    erstelleTestmap,
     erstelleQuestOrte,
     tarnungAufheben,
     lindhainErgaenzen,
@@ -3077,6 +3079,11 @@ Hooks.once("ready", async () => {
   }
   await notizJournalAnlegen();
   await kartenAnlegen();
+  // Testmap für Verbindungstests einmal anlegen (gelöscht bleibt sie gelöscht)
+  if (game.users.activeGM?.isSelf && !game.settings.get("hope-lies-within-2", "testmapAngelegt")) {
+    if (!game.scenes.getName("Testmap")) await erstelleTestmap();
+    await game.settings.set("hope-lies-within-2", "testmapAngelegt", true);
+  }
   // Suchen und Almanach (2026-11-01): Quest-Gegenstände, Sammelgebiete pro Szene (einmal), Almanach aus den Inventaren
   if (game.user?.isGM) {
     await questGegenstaendeAnlegen();

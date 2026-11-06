@@ -683,3 +683,38 @@ export async function tarnungAufheben(tokens = canvas.tokens?.controlled ?? []) 
     await ChatMessage.create({ content: `<div class="hlw-chat-card hlw-chat-kurz"><h2>${t.name}?</h2><p>Die Gestalt verzerrt sich. Es ist eine <b>${t.echt}</b>!</p></div>` });
   }
 }
+
+// ---------- Testmap (Dominik 2026-11-06) ----------
+// Eine neutrale Karte, um die Verbindung mit den Spielern zu testen, ohne etwas vom Kapitel zu zeigen:
+// Wald mit Lichtung, darin ein Wohnhaus wie im Dorf (Dach blendet erst aus, wenn eine eigene Figur drinsteht,
+// Wände mit einer Tür zum Pfad). Wird einmal von selbst angelegt; neu aufbauen: game.hlw.erstelleTestmap({ neu: true })
+const TESTMAP = "Testmap";
+const TESTMAP_GROESSE = 2048;   // 32 × 32 Felder
+const TESTHAUS = { id: "wohnhaus-a", x: 768, y: 640, w: 8, h: 6, rot: 0 };   // Tür unten zum Pfad
+
+export async function erstelleTestmap({ neu = false } = {}) {
+  if (!game.user?.isGM) return ui.notifications?.warn("Nur der GM kann Szenen anlegen.");
+  if (neu) await game.scenes.getName(TESTMAP)?.delete();
+  if (game.scenes.getName(TESTMAP)) return ui.notifications?.warn("Die Testmap gibt es schon. Neu aufbauen: game.hlw.erstelleTestmap({ neu: true })");
+  const scene = await Scene.create({
+    name: TESTMAP,
+    width: TESTMAP_GROESSE,
+    height: TESTMAP_GROESSE,
+    padding: 0,
+    navigation: false,
+    grid: { type: CONST.GRID_TYPES.SQUARE, size: GRID, distance: 1.5, units: "m" },
+    ...SICHT,
+    levels: [{ name: "Wald", background: { src: `${ASSETS}/testmap/wald.webp` }, textures: { fit: "fill" } }],
+    flags: { [SYSTEM_ID]: { testmap: true } }
+  });
+  const level = scene.initialLevel?.id ?? scene.firstLevel?.id;
+  const geb = TESTHAUS;
+  const mitte = { x: geb.x + (geb.w * GRID) / 2, y: geb.y + (geb.h * GRID) / 2, width: geb.w * GRID, height: geb.h * GRID, rotation: geb.rot, levels: [level] };
+  await scene.createEmbeddedDocuments("Tile", [
+    { ...mitte, texture: { src: `${ASSETS}/lindhain/gebaeude/${geb.id}.webp` } },
+    { ...mitte, texture: { src: `${ASSETS}/lindhain/daecher/${geb.id}.webp` }, elevation: scene.initialLevel?.elevation?.top ?? 20, occlusion: { modes: [CONST.OCCLUSION_MODES.FADE], alpha: 0 } }
+  ]);
+  await scene.createEmbeddedDocuments("Wall", waendeFuer(geb, level));
+  ui.notifications?.info("Die Testmap ist angelegt: Wald mit einem Haus (Tür und Dach). Aktivieren, um die Spieler dorthin zu holen.");
+  return scene;
+}
