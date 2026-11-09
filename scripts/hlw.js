@@ -14,7 +14,7 @@ import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVer
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { istKarte, karteOeffnen, kartenAnlegen, registerKarte } from "./hlw-karte.js";
-import { registerBoss } from "./hlw-boss.js";
+import { registerBoss, skillFrei, BONI } from "./hlw-boss.js";
 import { registerNaehe } from "./hlw-naehe.js";
 import { HopeLiesWithinEffekte, registerEffekte } from "./hlw-effekte.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
@@ -781,7 +781,8 @@ function getUsableCombatItems(actor) {
   };
   const alle = Array.from(actor.items ?? []);
   const waffen = alle.filter((item) => item.type === "weapon").sort((a, b) => Number(boolValue(b.system?.equipped)) - Number(boolValue(a.system?.equipped)));
-  const skills = alle.filter((item) => ["playerSkill", "classSkill"].includes(item.type) && !isPassiveItem(item) && !istOrb(item));
+  // Boss-Skills „ab Phase N“ erscheinen erst, wenn die Phase erreicht ist
+  const skills = alle.filter((item) => ["playerSkill", "classSkill"].includes(item.type) && !isPassiveItem(item) && !istOrb(item) && skillFrei(actor, item));
   return [...waffen.filter((item) => boolValue(item.system?.equipped)), ...skills].map((item) => {
     const s = item.system ?? {};
     const kategorie = normalizeDamageCategory(s.damageCategory, `${s.skillType} ${s.element}`);
@@ -843,7 +844,7 @@ function renderCombatHud() {
   const umfang = 2 * Math.PI * 29;
   const hpProzent = Math.min(Math.max(hpWert / hpMax, 0), 1);
   const tokenBild = actor.prototypeToken?.texture?.src || actor.img || "";
-  const passive = Array.from(actor.items ?? []).filter((item) => ["playerSkill", "classSkill"].includes(item.type) && isPassiveItem(item) && !istOrb(item));
+  const passive = Array.from(actor.items ?? []).filter((item) => ["playerSkill", "classSkill"].includes(item.type) && isPassiveItem(item) && !istOrb(item) && skillFrei(actor, item));
 
   const tasten = getUsableCombatItems(actor);
   const waffenTasten = tasten.filter((item) => item.type === "weapon");
@@ -1047,6 +1048,10 @@ export class HopeLiesWithinActor extends Actor {
     if (numberValue(system.resources.hp.value) > derived.hpMax) system.resources.hp.value = derived.hpMax;
     system.resources.movement.value = derived.movement;
     if (this.type !== "monster") system.resources.inventorySlots.max = derived.inventory;
+    // Boss-Phase mit mehr Aktionen: Maximum = eingetragener Wert + Phasen-Bonus (immer vom gespeicherten Wert aus)
+    if (this.type === "monster" && system.resources.actionPoints) {
+      system.resources.actionPoints.max = numberValue(foundry.utils.getProperty(this._source, "system.resources.actionPoints.max") ?? 1) + numberValue(derived.aktionenBonus);
+    }
 
     for (const [key, definition] of Object.entries(HLW.worldSkills)) {
       const current = system.worldSkills[key] ?? { bonus: 0 };
@@ -1748,7 +1753,16 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       || context.actor.img;
     context.isGM = game.user?.isGM;
     // Boss-Phasen am Gegnerbogen: immer drei Blöcke, auch wenn ältere Gegner die Felder noch nicht haben
-    context.bossPhasen = ["p1", "p2", "p3"].map((key, i) => ({ key, nr: i + 1, ...(context.system.monster?.phasen?.[key] ?? {}) }));
+    context.bossPhasen = ["p1", "p2", "p3"].map((key, i) => {
+      const phase = context.system.monster?.phasen?.[key] ?? {};
+      return { key, nr: i + 1, ...phase, boni: BONI.map(([feld, name]) => ({ feld, name, wert: numberValue(phase.boni?.[feld]) })) };
+    });
+    // Boss-Skills: ab welcher Phase sie im HUD erscheinen
+    context.bossSkills = context.actor.type === "monster"
+      ? context.actor.items.filter((i) => ["playerSkill", "classSkill", "weapon"].includes(i.type))
+        .map((i) => ({ id: i.id, name: i.name, img: i.img, ab: Math.max(1, numberValue(i.getFlag("hope-lies-within-2", "abPhase"))) }))
+      : [];
+    context.phaseAktiv = numberValue(context.system.monster?.phaseAktiv);
     context.canAct = hasActionPoints(context.actor);
     context.inventoryUsed = countInventorySlots(context.actor.items);
     context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
@@ -1846,12 +1860,20 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       event.preventDefault();
       bildWaehlen(this.actor.prototypeToken?.texture?.src || this.actor.img, (pfad) => tokenBildSetzen(this.actor, pfad));
     });
+    // Boss-Skills: „ab Phase“ setzen (Item-Flag)
+    html.find("[data-ab-phase]").on("change", (event) => {
+      const item = this.actor.items.get(event.currentTarget.dataset.abPhase);
+      const nr = Number(event.currentTarget.value) || 1;
+      if (item) nr > 1 ? item.setFlag("hope-lies-within-2", "abPhase", nr) : item.unsetFlag("hope-lies-within-2", "abPhase");
+    });
     // Bosskampf: Bild, Kartenbild und Musik je Phase wählen (Feld z. B. „phasen.p2.musik“)
     html.find("[data-boss-datei]").on("click", (event) => {
       event.preventDefault();
       const feld = event.currentTarget.dataset.bossDatei;
       const Picker = foundry.applications.apps?.FilePicker?.implementation ?? globalThis.FilePicker;
-      new Picker({ type: feld.endsWith("musik") ? "audio" : "image", current: foundry.utils.getProperty(this.actor.system.monster ?? {}, feld) || "", callback: (pfad) => this.actor.update({ [`system.monster.${feld}`]: pfad }) }).render(true);
+      // Leeres Feld: Auswahl öffnet gleich im Musik- bzw. Wächter-Ordner des Systems
+      const ordner = feld.endsWith("musik") ? "systems/hope-lies-within-2/assets/musik/" : "systems/hope-lies-within-2/assets/waechter-des-abyss/";
+      new Picker({ type: feld.endsWith("musik") ? "audio" : "image", current: foundry.utils.getProperty(this.actor.system.monster ?? {}, feld) || ordner, callback: (pfad) => this.actor.update({ [`system.monster.${feld}`]: pfad }) }).render(true);
     });
     html.find("[data-nsc-gespraech]").on("click", (event) => {
       event.preventDefault();
@@ -2932,6 +2954,7 @@ Hooks.once("ready", async () => {
   }
 
   game.hlw = {
+    zugNeuSetzen,
     importJsonFile,
     importAllJson: importAllJsonFiles,
     importMonsters,
@@ -3161,6 +3184,8 @@ Hooks.once("ready", async () => {
       return;
     }
     if (data?.type !== "endTurn") return;
+    // Nur der aktive GM schaltet weiter, sonst springt der Zug bei zwei offenen GM-Fenstern doppelt
+    if (game.users.activeGM?.id !== game.user.id) return;
 
     const combat = game.combats?.get(data.combatId);
     if (!combat?.started) return;
@@ -3332,7 +3357,59 @@ Hooks.once("ready", () => {
   for (const combat of game.combats ?? []) if (combat.started) HLW.kampfGestartet.add(combat.id);
 });
 
+// GM-Notfallknopf „Zug neu setzen“ (Dominik 2026-11-09: Kampfleiste zeigte den Boss, das System den Spieler):
+// schickt den aktuellen Zug noch einmal an alle, gibt dem, der dran ist, frische Aktionspunkte
+// und warnt, wenn auf der Szene noch ein zweiter Kampf läuft (dann sehen Spieler womöglich den anderen).
+function weitereKaempfe(combat) {
+  return game.combats.filter((c) => c.started && c.id !== combat.id && (!c.scene || !combat.scene || c.scene.id === combat.scene.id));
+}
+
+function zugNeuLokal() {
+  HLW.lastHandledTurnKey = null;
+  clearPendingSkill();
+  HLW.pendingLegalMoves.clear();
+  HLW.movementSpentCache.clear();
+  renderCombatHud();
+  ui.combat?.render?.();
+}
+
+async function zugNeuSetzen() {
+  const combat = game.combat;
+  if (!game.user?.isGM) return;
+  if (!combat?.started) return ui.notifications?.warn("Es läuft gerade kein Kampf.");
+  if (!combat.isActive) await combat.activate();
+  await combat.update({ round: combat.round, turn: combat.turn }, { diff: false });
+  // Nur Aktionen auffrischen (keine Abklingzeit abziehen, die zählt schon beim echten Zugwechsel)
+  const amZug = combat.combatant?.actor;
+  if (amZug) await amZug.update({
+    "system.actions.main.available": true, "system.actions.movement.available": true, "system.actions.bonus.available": true,
+    "system.actions.quick.available": true, "system.actions.reaction.available": true,
+    "system.resources.actionPoints.value": Math.max(numberValue(amZug.system?.resources?.actionPoints?.max), 1)
+  });
+  game.socket.emit("system.hope-lies-within-2", { type: "zugNeu" });
+  zugNeuLokal();
+  const andere = weitereKaempfe(combat);
+  ui.notifications?.info(`Zug neu gesetzt: ${combat.combatant?.name ?? "?"} ist am Zug (Runde ${combat.round}).`);
+  if (andere.length) ui.notifications?.warn(`Achtung: Auf dieser Szene laufen noch ${andere.length} weitere Kämpfe. Beende sie im Kampftracker, sonst sehen Spieler womöglich einen anderen Zug.`, { permanent: true });
+}
+
+Hooks.on("getSceneControlButtons", (controls) => {
+  const figuren = controls.tokens ?? controls.token;
+  if (!figuren?.tools || !game.user?.isGM) return;
+  figuren.tools.hlwZugNeu = {
+    name: "hlwZugNeu", order: Object.keys(figuren.tools).length + 1, title: "Kampf: Zug neu setzen (wenn Anzeige und Zug nicht zusammenpassen)",
+    icon: "fa-solid fa-arrows-rotate", button: true, visible: true, onChange: () => zugNeuSetzen()
+  };
+});
+
+Hooks.once("ready", () => {
+  game.socket.on("system.hope-lies-within-2", (data) => { if (data?.type === "zugNeu") zugNeuLokal(); });
+});
+
 Hooks.on("combatStart", (combat) => {
+  if (game.user?.isGM && weitereKaempfe(combat).length) {
+    ui.notifications?.warn("Auf dieser Szene läuft schon ein anderer Kampf. Beende ihn im Kampftracker, sonst sehen Spieler und GM verschiedene Züge.", { permanent: true });
+  }
   kampfBeginnt(combat);
   postCombatStartMessage(combat);
   showTurnOverlayForActor(combat.combatant?.actor);

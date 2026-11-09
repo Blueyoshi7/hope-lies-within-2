@@ -871,19 +871,29 @@
 .hlw-bossphase .bp-bild {
   position: relative;
   flex: 0 0 auto;
-  height: min(80vh, 52vw);
-  aspect-ratio: 1;
+  height: min(76vh, 40vw);
+  aspect-ratio: 4 / 3;   /* wird per Skript auf die oberen 75 % des Bildes gesetzt */
+  max-width: 60vw;
   filter: drop-shadow(0 0 34px rgba(160, 90, 255, 0.5)) drop-shadow(0 12px 30px rgba(0, 0, 0, 0.9));
 }
-.hlw-bossphase.ohne-text .bp-bild { height: min(74vh, 70vw); }
-.hlw-bossphase .bp-bild img {
+.hlw-bossphase.ohne-text .bp-bild { height: min(72vh, 52vw); max-width: 90vw; }
+/* Nur die oberen 75 %: Bild in voller Breite oben angelegt, der Rahmen schneidet unten ab und blendet weich aus */
+.hlw-bossphase .bp-rahmen {
   position: absolute;
   inset: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+}
+.hlw-bossphase .bp-bild img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   border: 0;
   max-width: none;
+  transform-origin: 50% 30%;
 }
 .hlw-bossphase .bp-neu { animation: hlw-bp-einblenden 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .hlw-bossphase.is-wechsel .bp-alt { animation: hlw-bp-alt-weg 700ms ease-in 1400ms both; }
@@ -901,16 +911,18 @@
 .hlw-bossphase.is-wechsel .bp-blitz { animation: hlw-bp-blitz 900ms ease-out 1340ms both; }
 
 .hlw-bossphase .bp-text {
-  flex: 0 1 34vw;
+  flex: 0 1 30vw;
   color: #c48dff;
   font-family: serif;
   font-size: clamp(20px, 2.3vw, 40px);
   font-weight: 700;
   line-height: 1.35;
   text-shadow: 0 0 18px rgba(170, 90, 255, 0.85), 0 0 42px rgba(120, 50, 220, 0.55), 0 2px 4px #000;
-  animation: hlw-bp-text 1000ms ease-out 900ms both;
 }
-.hlw-bossphase.is-wechsel .bp-text { animation-delay: 1900ms; }
+.hlw-bossphase .bp-phase { animation: hlw-bp-text 1000ms ease-out 700ms both; }
+.hlw-bossphase.is-wechsel .bp-phase { animation-delay: 1700ms; }
+/* Wörter blenden nacheinander ein (Verzögerung je Wort setzt hlw-boss.js) */
+.hlw-bossphase .bp-wort { display: inline-block; animation: hlw-bp-wort 700ms ease-out both; }
 .hlw-bossphase.ohne-text .bp-text { flex: none; text-align: center; }
 .hlw-bossphase .bp-text p { margin: 0; }
 .hlw-bossphase .bp-phase {
@@ -948,6 +960,10 @@
   40% { transform: translate(9px, -5px); }
   60% { transform: translate(-6px, 3px); }
   80% { transform: translate(4px, -2px); }
+}
+@keyframes hlw-bp-wort {
+  from { opacity: 0; transform: translateY(6px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 @keyframes hlw-bp-text {
   from { opacity: 0; transform: translateX(30px); filter: blur(6px); }

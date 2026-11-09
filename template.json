@@ -313,10 +313,11 @@
           "boss": false,
           "bossBild": "",
           "bossMusik": "",
+          "phaseAktiv": 0,
           "phasen": {
-            "p1": { "bild": "", "token": "", "musik": "", "text": "" },
-            "p2": { "bild": "", "token": "", "musik": "", "text": "" },
-            "p3": { "bild": "", "token": "", "musik": "", "text": "" }
+            "p1": { "bild": "", "token": "", "musik": "", "text": "", "boni": { "bewegung": 0, "aktionen": 0, "rw": 0, "mr": 0, "acc": 0, "schaden": 0 } },
+            "p2": { "bild": "", "token": "", "musik": "", "text": "", "boni": { "bewegung": 0, "aktionen": 0, "rw": 0, "mr": 0, "acc": 0, "schaden": 0 } },
+            "p3": { "bild": "", "token": "", "musik": "", "text": "", "boni": { "bewegung": 0, "aktionen": 0, "rw": 0, "mr": 0, "acc": 0, "schaden": 0 } }
           }
         }
       }

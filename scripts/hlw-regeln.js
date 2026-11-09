@@ -1,6 +1,8 @@
 // Regeln aus Kanon 2.0: Kampfwerte, Punktesystem, Klassenzuteilung, Korruption und Kes.
 // Die Zahlen stammen aus den Tabs Kampfwerte, Punktesystem, Klassenregeln und Korruption der Markt- und Tierliste.
 
+import { phasenBoni } from "./hlw-boss.js";
+
 export const ATTRS = ["str", "dex", "con", "int", "wis", "cha", "agl", "spe", "edu", "sou"];
 
 export const WORLD_SKILLS = {
@@ -268,21 +270,23 @@ export function berechneWerte(system, items, klassen) {
   return derived;
 }
 
-// Monster: feste Werte aus dem Bestiarium, Panzer gibt Blockwert.
+// Monster: feste Werte aus dem Bestiarium, Panzer gibt Blockwert. Bosse bekommen dazu die Boni ihrer aktiven Phase.
 export function berechneMonster(system) {
   const m = system.monster ?? {};
+  const pb = phasenBoni(system);
   const panzer = /Panzer/.test(m.traits ?? "") ? (["B", "A", "S", "SS"].includes(m.rank) ? 4 : 2) : 0;
   const abwehr = system.combat?.defending ? 2 : 0;
   return {
     level: 1,
     hpMax: zahl(m.hp) || zahl(system.resources?.hp?.max) || 10,
-    rw: (zahl(m.rw) || 10) + abwehr,
-    mr: (zahl(m.mr) || 10) + abwehr,
+    rw: (zahl(m.rw) || 10) + abwehr + pb.rw,
+    mr: (zahl(m.mr) || 10) + abwehr + pb.mr,
     block: Math.min(panzer, BLOCK_MAX),
-    accBonus: zahl(m.acc),
-    damageBonus: 0,
+    accBonus: zahl(m.acc) + pb.acc,
+    damageBonus: pb.schaden,
+    aktionenBonus: pb.aktionen,
     magicBonus: 0,
-    movement: zahl(m.movement) || 4,
+    movement: (zahl(m.movement) || 4) + pb.bewegung,
     initiative: zahl(m.initiative),
     inventory: 0,
     points: { used: 0, allowed: 0, free: 0 },
@@ -299,7 +303,7 @@ export function berechneMonster(system) {
 export function angriffsWerte(actor, item) {
   const system = actor.system;
   const derived = system.derived ?? {};
-  if (actor.type === "monster") return { acc: zahl(derived.accBonus), bonus: 0, primaer: "Bestiarium" };
+  if (actor.type === "monster") return { acc: zahl(derived.accBonus), bonus: zahl(derived.damageBonus), primaer: "Bestiarium" };
   let primaer = item?.system?.scaling?.primary || "";
   let sekundaer = item?.system?.scaling?.secondary || "";
   if (item?.type === "weapon" || !primaer) {

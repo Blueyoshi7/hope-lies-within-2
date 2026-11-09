@@ -974,6 +974,14 @@ body:has(.hlw-hud) #hotbar { visibility: hidden; }
 .hlw-bogen .hb-phase legend { padding: 0 6px; color: #c48dff; font-weight: 700; }
 .hlw-bogen .hb-phase legend small { color: #8f8b7f; font-weight: 400; }
 .hlw-bogen .hb-phase textarea { min-height: 54px; }
+.hlw-bogen .hb-phase-boni { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 8px; }
+.hlw-bogen .hb-phase-boni > span { grid-column: 1 / -1; color: #c48dff; font-size: 12px; }
+.hlw-bogen .hb-phase-boni > span small { color: #8f8b7f; }
+.hlw-bogen .hb-phase-boni label { font-size: 11px; }
+.hlw-bogen .hb-phase-boni input { height: 26px; min-height: 0; text-align: center; }
+.hlw-bogen .hb-phase-skill { display: grid; grid-template-columns: 26px 1fr 130px; align-items: center; gap: 8px; flex-direction: row; }
+.hlw-bogen .hb-phase-skill img { width: 26px; height: 26px; border: 0; border-radius: 4px; }
+.hlw-bogen .hb-phase-skill select { height: 26px; min-height: 0; }
 
 /* Nähe-Sprachchat (hlw-naehe.js): GM-Schalter in der Tageszeit-Leiste, Ohr für Spieler, blasse Kameras außer Hörweite */
 #hlw-tageszeit button.tz-naehe { margin-left: 2px; border-color: #4a4030; }
