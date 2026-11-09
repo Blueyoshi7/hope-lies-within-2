@@ -848,83 +848,146 @@
 .hlw-geben-liste small { display: block; color: var(--hlw-muted); }
 .hlw-geben-liste button { width: auto; padding: 2px 12px; }
 
-/* Bosskampf: Banner mit einem Ausschnitt des Bosses über „IM KAMPF“ (hlw-boss.js) */
-.hlw-combat-overlay.is-boss {
+/* Boss-Phasen (hlw-boss.js): dunkler Hintergrund, großes Phasenbild, violetter Text rechts daneben.
+   Beim Wechsel steht erst das alte Bild, nach 1,4 s springt das neue mit Lichtblitz darüber. */
+.hlw-bossphase {
+  position: fixed;
+  inset: 0;
+  z-index: 8500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4vw;
+  padding: 4vh 5vw;
   background:
-    radial-gradient(ellipse at center, rgba(120, 10, 10, 0.5), transparent 60%),
-    rgba(0, 0, 0, 0.78);
+    radial-gradient(ellipse at 38% 50%, rgba(110, 40, 170, 0.32), transparent 58%),
+    rgba(4, 2, 8, 0.88);
+  cursor: pointer;
+  animation: hlw-bp-dunkel 900ms ease-out both;
 }
+.hlw-bossphase.is-fading { opacity: 0; transition: opacity 900ms ease-in; }
+.hlw-bossphase.ohne-text { flex-direction: column; gap: 1vh; }
 
-/* Banner mit 3D-Effekt: das Band sitzt hinter dem Bild und deckt nur das untere Stück ab,
-   Kopf und Hörner ragen oben über die Bandkante hinaus */
-.hlw-combat-overlay__banner {
+.hlw-bossphase .bp-bild {
   position: relative;
-  width: min(90vw, 1100px, 110vh);
-  aspect-ratio: 1792 / 768;
-  margin-bottom: -2.2em;
-  animation: hlw-boss-auftritt 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  flex: 0 0 auto;
+  height: min(80vh, 52vw);
+  aspect-ratio: 1;
+  filter: drop-shadow(0 0 34px rgba(160, 90, 255, 0.5)) drop-shadow(0 12px 30px rgba(0, 0, 0, 0.9));
 }
-
-.hlw-combat-overlay__banner .bn-band {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 70%;
-  background:
-    radial-gradient(ellipse at center 70%, rgba(150, 20, 20, 0.55), transparent 65%),
-    linear-gradient(to bottom, #2a0d0b, #120606);
-  border-top: 3px solid #d8b46a;
-  border-bottom: 3px solid #d8b46a;
-  box-shadow: 0 0 40px rgba(200, 30, 30, 0.45), inset 0 0 60px rgba(0, 0, 0, 0.8);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-}
-
-.hlw-combat-overlay__banner img {
+.hlw-bossphase.ohne-text .bp-bild { height: min(74vh, 70vw); }
+.hlw-bossphase .bp-bild img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
-  filter: drop-shadow(0 -6px 14px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 24px rgba(200, 30, 30, 0.35));
-  /* oben weich auslaufen (Bildkante), seitlich mit dem Band ausblenden */
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 9%), linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, transparent, #000 9%), linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-  mask-composite: intersect;
+  object-fit: contain;
+  border: 0;
+  max-width: none;
 }
-
-/* Unterkante des Bands liegt vor dem Bild */
-.hlw-combat-overlay__banner::after {
-  content: "";
+.hlw-bossphase .bp-neu { animation: hlw-bp-einblenden 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hlw-bossphase.is-wechsel .bp-alt { animation: hlw-bp-alt-weg 700ms ease-in 1400ms both; }
+.hlw-bossphase.is-wechsel .bp-neu { animation: hlw-bp-pop 750ms cubic-bezier(0.2, 1.5, 0.4, 1) 1400ms both; }
+.hlw-bossphase.is-wechsel .bp-bild { animation: hlw-bp-wackeln 480ms ease-out 1420ms; }
+.hlw-bossphase .bp-blitz {
   position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 0;
-  height: 3px;
-  background: linear-gradient(to right, transparent, #d8b46a 15%, #d8b46a 85%, transparent);
+  inset: -12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 220, 255, 0.95), rgba(170, 100, 255, 0.55) 32%, transparent 68%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+}
+.hlw-bossphase.is-wechsel .bp-blitz { animation: hlw-bp-blitz 900ms ease-out 1340ms both; }
+
+.hlw-bossphase .bp-text {
+  flex: 0 1 34vw;
+  color: #c48dff;
+  font-family: serif;
+  font-size: clamp(20px, 2.3vw, 40px);
+  font-weight: 700;
+  line-height: 1.35;
+  text-shadow: 0 0 18px rgba(170, 90, 255, 0.85), 0 0 42px rgba(120, 50, 220, 0.55), 0 2px 4px #000;
+  animation: hlw-bp-text 1000ms ease-out 900ms both;
+}
+.hlw-bossphase.is-wechsel .bp-text { animation-delay: 1900ms; }
+.hlw-bossphase.ohne-text .bp-text { flex: none; text-align: center; }
+.hlw-bossphase .bp-text p { margin: 0; }
+.hlw-bossphase .bp-phase {
+  margin-bottom: 0.6em;
+  color: #e6d2ff;
+  font-size: 0.5em;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
-.hlw-combat-overlay.is-boss .hlw-combat-overlay__text,
-.hlw-combat-overlay.is-boss .hlw-combat-overlay__sub {
-  position: relative;
-  animation: hlw-boss-text 700ms ease-out 500ms both;
-}
-
-.hlw-combat-overlay.is-boss .hlw-combat-overlay__sub {
-  color: #ffb3a0;
-  letter-spacing: 0.3em;
-}
-
-@keyframes hlw-boss-auftritt {
-  from { opacity: 0; transform: scale(1.08); filter: brightness(0); }
-  60% { opacity: 1; filter: brightness(0.7); }
+@keyframes hlw-bp-dunkel { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hlw-bp-einblenden {
+  from { opacity: 0; transform: scale(1.06); filter: brightness(0); }
+  60% { opacity: 1; filter: brightness(0.75); }
   to { opacity: 1; transform: scale(1); filter: brightness(1); }
 }
-
-@keyframes hlw-boss-text {
-  from { opacity: 0; transform: scale(1.25) rotate(-1deg); }
-  to { opacity: 1; transform: scale(1) rotate(-1deg); }
+@keyframes hlw-bp-pop {
+  from { opacity: 0; transform: scale(0.5); filter: brightness(3) saturate(0.4); }
+  55% { opacity: 1; transform: scale(1.12); filter: brightness(1.7); }
+  to { opacity: 1; transform: scale(1); filter: brightness(1); }
 }
+@keyframes hlw-bp-alt-weg {
+  from { opacity: 1; transform: scale(1); filter: brightness(1); }
+  to { opacity: 0; transform: scale(0.92); filter: brightness(0.2); }
+}
+@keyframes hlw-bp-blitz {
+  from { opacity: 0; transform: scale(0.4); }
+  25% { opacity: 1; }
+  to { opacity: 0; transform: scale(1.5); }
+}
+@keyframes hlw-bp-wackeln {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-10px, 4px); }
+  40% { transform: translate(9px, -5px); }
+  60% { transform: translate(-6px, 3px); }
+  80% { transform: translate(4px, -2px); }
+}
+@keyframes hlw-bp-text {
+  from { opacity: 0; transform: translateX(30px); filter: blur(6px); }
+  to { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+
+/* GM-Leiste mit den Phase-Knöpfen, unter der Tageszeit-Leiste */
+#hlw-bossleiste {
+  position: fixed;
+  top: 46px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8600;   /* über der Phasen-Einblendung, damit du direkt weiterschalten kannst */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 4px 6px;
+  background: rgba(22, 12, 30, 0.92);
+  color: #e6d2ff;
+  border: 1px solid #5b3a80;
+  border-radius: 16px;
+  font-size: 13px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5), 0 0 14px rgba(140, 70, 220, 0.25);
+}
+#hlw-bossleiste .bl-boss { display: flex; align-items: center; gap: 6px; }
+#hlw-bossleiste .bl-boss img { width: 26px; height: 26px; border: 0; border-radius: 50%; object-fit: cover; }
+#hlw-bossleiste .bl-boss span { margin-right: 4px; font-weight: 700; color: #f0e2ff; }
+#hlw-bossleiste button {
+  width: auto;
+  height: 26px;
+  min-height: 0;
+  padding: 0 10px;
+  line-height: 1;
+  background: rgba(120, 60, 190, 0.18);
+  color: #d9c2ff;
+  border: 1px solid #5b3a80;
+  border-radius: 8px;
+  font-size: 12px;
+}
+#hlw-bossleiste button:hover { background: rgba(150, 80, 230, 0.35); color: #fff; }
+#hlw-bossleiste button.is-aktiv { background: #7c3fd0; border-color: #c48dff; color: #fff; box-shadow: 0 0 10px rgba(196, 141, 255, 0.6); }
+#hlw-bossleiste button.bl-stumm { padding: 0 8px; }
+

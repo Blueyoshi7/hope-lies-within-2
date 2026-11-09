@@ -312,7 +312,12 @@
           "tamers": "",
           "boss": false,
           "bossBild": "",
-          "bossMusik": ""
+          "bossMusik": "",
+          "phasen": {
+            "p1": { "bild": "", "token": "", "musik": "", "text": "" },
+            "p2": { "bild": "", "token": "", "musik": "", "text": "" },
+            "p3": { "bild": "", "token": "", "musik": "", "text": "" }
+          }
         }
       }
     },

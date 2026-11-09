@@ -111,9 +111,16 @@
             <label class="hb-breit">Besonderheit <textarea name="system.monster.special">{{system.monster.special}}</textarea></label>
             {{#if isGM}}
               <div class="hb-boss">
-                <label class="hb-zaehmbar"><input name="system.monster.boss" type="checkbox" {{checked system.monster.boss}} /> Bosskampf: Einblendung und Musik beim Kampfstart (Rolle „Boss“ zählt auch)</label>
-                <label class="hb-breit">Boss-Bild <span class="hb-pfad"><input name="system.monster.bossBild" type="text" value="{{system.monster.bossBild}}" placeholder="leer = Bild des Gegners" /><button type="button" data-boss-datei="bossBild" data-tooltip="Bild wählen"><i class="fa-solid fa-image"></i></button></span></label>
-                <label class="hb-breit">Boss-Musik <span class="hb-pfad"><input name="system.monster.bossMusik" type="text" value="{{system.monster.bossMusik}}" placeholder="leer = keine Musik" /><button type="button" data-boss-datei="bossMusik" data-tooltip="Musik wählen"><i class="fa-solid fa-music"></i></button></span></label>
+                <label class="hb-zaehmbar"><input name="system.monster.boss" type="checkbox" {{checked system.monster.boss}} /> Bosskampf: im Kampf bekommst du oben Phase-Knöpfe (Rolle „Boss“ zählt auch)</label>
+                {{#each bossPhasen as |phase|}}
+                  <fieldset class="hb-phase">
+                    <legend>Phase {{phase.nr}}{{#unless (eq phase.nr 1)}} <small>(leer lassen = keine Phase {{phase.nr}})</small>{{/unless}}</legend>
+                    <label class="hb-breit">Bild <span class="hb-pfad"><input name="system.monster.phasen.{{phase.key}}.bild" type="text" value="{{phase.bild}}" placeholder="{{#if (eq phase.nr 1)}}leer = Bild des Gegners{{else}}leer = Bild der vorigen Phase{{/if}}" /><button type="button" data-boss-datei="phasen.{{phase.key}}.bild" data-tooltip="Bild wählen"><i class="fa-solid fa-image"></i></button></span></label>
+                    <label class="hb-breit">Kartenbild <span class="hb-pfad"><input name="system.monster.phasen.{{phase.key}}.token" type="text" value="{{phase.token}}" placeholder="leer = Token bleibt" /><button type="button" data-boss-datei="phasen.{{phase.key}}.token" data-tooltip="Token-Bild wählen"><i class="fa-solid fa-chess-pawn"></i></button></span></label>
+                    <label class="hb-breit">Musik <span class="hb-pfad"><input name="system.monster.phasen.{{phase.key}}.musik" type="text" value="{{phase.musik}}" placeholder="{{#if (eq phase.nr 1)}}leer = keine Musik{{else}}leer = Musik läuft weiter{{/if}}" /><button type="button" data-boss-datei="phasen.{{phase.key}}.musik" data-tooltip="Musik wählen"><i class="fa-solid fa-music"></i></button></span></label>
+                    <label class="hb-breit">Text <textarea name="system.monster.phasen.{{phase.key}}.text" placeholder="erscheint violett neben dem Bild">{{phase.text}}</textarea></label>
+                  </fieldset>
+                {{/each}}
               </div>
             {{/if}}
           </section>
@@ -188,7 +195,7 @@
                   {{#each system.attributes as |attribute key|}}
                     <label class="hb-attr" title="{{attribute.label}}">
                       <span>{{attribute.abbr}}</span>
-                      <input name="system.attributes.{{key}}.value" type="number" min="1" max="25" value="{{attribute.value}}" />
+                      <input name="system.attributes.{{phase.key}}.value" type="number" min="1" max="25" value="{{attribute.value}}" />
                     </label>
                   {{/each}}
                 </div>

@@ -14,7 +14,7 @@ import { kristallInfo, kristallBeute, kristalleGeben, kristallZeile, kristallVer
 import { sterbeZustand, istAmBoden, todeswurf, sterbenZugbeginn, registerSterben, STERBE_RUNDEN } from "./hlw-sterben.js";
 import { HopeLiesWithinGebenApp, skillSlots } from "./hlw-geben.js";
 import { istKarte, karteOeffnen, kartenAnlegen, registerKarte } from "./hlw-karte.js";
-import { bossVon, bossBild, bossMusikStarten, registerBoss } from "./hlw-boss.js";
+import { registerBoss } from "./hlw-boss.js";
 import { registerNaehe } from "./hlw-naehe.js";
 import { HopeLiesWithinEffekte, registerEffekte } from "./hlw-effekte.js";
 import { spielercharakterAnlegen, klasseEnthuellen, HERKUNFT, istOrb, orbStufe, orbName, orbWissen, orbUntersuchen, orbLernen, ORB_STUFEN, meisterung, meisterungPlus, istGelernterSkill, orbTier, orbTierVersucht, orbGluecksspiel, zeigeSkill, skillZeilen } from "./hlw-charakter.js";
@@ -348,19 +348,15 @@ function showCombatOverlay(combat, mode = "start", actorName = "") {
   const existing = document.querySelector(".hlw-combat-overlay");
   if (existing) existing.remove();
 
-  // Bosskampf: Banner mit dem Boss-Bild über „IM KAMPF“ (ohne Namen), die Einblendung bleibt länger stehen
-  const boss = mode === "start" ? bossVon(combat) : null;
-  const bild = boss ? bossBild(boss.actor) : "";
   const overlay = document.createElement("div");
-  overlay.className = `hlw-combat-overlay ${isEnd ? "is-end" : isTurn ? "is-turn" : "is-start"}${boss ? " is-boss" : ""}`;
+  overlay.className = `hlw-combat-overlay ${isEnd ? "is-end" : isTurn ? "is-turn" : "is-start"}`;
   overlay.innerHTML = `
-    ${bild ? `<div class="hlw-combat-overlay__banner"><div class="bn-band"></div><img src="${escapeHtml(bild)}" alt=""></div>` : ""}
     <div class="hlw-combat-overlay__text">${isEnd ? "KAMPF BEENDET" : isTurn ? "DU BIST AM ZUG" : "IM KAMPF"}</div>
-    <div class="hlw-combat-overlay__sub">${isEnd ? "Zurueck in den Erkundungsmodus" : isTurn ? escapeHtml(actorName) : boss ? "Bosskampf" : `Runde ${combat.round || 1} beginnt`}</div>
+    <div class="hlw-combat-overlay__sub">${isEnd ? "Zurueck in den Erkundungsmodus" : isTurn ? escapeHtml(actorName) : `Runde ${combat.round || 1} beginnt`}</div>
   `;
   document.body.appendChild(overlay);
 
-  const dauer = boss ? 4200 : 1800;
+  const dauer = 1800;
   if (mode === "start") HLW.startOverlayBis = Date.now() + dauer + 800;
   window.setTimeout(() => overlay.classList.add("is-fading"), dauer);
   window.setTimeout(() => overlay.remove(), dauer + 800);
@@ -372,7 +368,6 @@ function kampfBeginnt(combat) {
   if (!combat?.id || HLW.kampfGestartet.has(combat.id)) return;
   HLW.kampfGestartet.add(combat.id);
   showCombatOverlay(combat);
-  bossMusikStarten(combat);
 }
 
 function showTurnOverlayForActor(actor) {
@@ -1752,6 +1747,8 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       || (context.actor.type === "npc" ? context.actor.getFlag("hope-lies-within-2", "talk")?.portrait : "")
       || context.actor.img;
     context.isGM = game.user?.isGM;
+    // Boss-Phasen am Gegnerbogen: immer drei Blöcke, auch wenn ältere Gegner die Felder noch nicht haben
+    context.bossPhasen = ["p1", "p2", "p3"].map((key, i) => ({ key, nr: i + 1, ...(context.system.monster?.phasen?.[key] ?? {}) }));
     context.canAct = hasActionPoints(context.actor);
     context.inventoryUsed = countInventorySlots(context.actor.items);
     context.inventoryMax = numberValue(context.system.resources?.inventorySlots?.max);
@@ -1849,12 +1846,12 @@ export class HopeLiesWithinActorSheet extends (BaseActorSheet ?? class {}) {
       event.preventDefault();
       bildWaehlen(this.actor.prototypeToken?.texture?.src || this.actor.img, (pfad) => tokenBildSetzen(this.actor, pfad));
     });
-    // Bosskampf: Bild und Musik für die Einblendung wählen
+    // Bosskampf: Bild, Kartenbild und Musik je Phase wählen (Feld z. B. „phasen.p2.musik“)
     html.find("[data-boss-datei]").on("click", (event) => {
       event.preventDefault();
       const feld = event.currentTarget.dataset.bossDatei;
       const Picker = foundry.applications.apps?.FilePicker?.implementation ?? globalThis.FilePicker;
-      new Picker({ type: feld === "bossMusik" ? "audio" : "image", current: this.actor.system.monster?.[feld] || "", callback: (pfad) => this.actor.update({ [`system.monster.${feld}`]: pfad }) }).render(true);
+      new Picker({ type: feld.endsWith("musik") ? "audio" : "image", current: foundry.utils.getProperty(this.actor.system.monster ?? {}, feld) || "", callback: (pfad) => this.actor.update({ [`system.monster.${feld}`]: pfad }) }).render(true);
     });
     html.find("[data-nsc-gespraech]").on("click", (event) => {
       event.preventDefault();
